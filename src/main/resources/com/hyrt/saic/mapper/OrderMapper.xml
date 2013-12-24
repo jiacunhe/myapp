@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hyrt.saic.dao.OrderMapper" >
+  <resultMap id="BaseResultMap" type="com.hyrt.saic.bean.Order" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="userId" property="userid" jdbcType="VARCHAR" />
+    <result column="businessId" property="businessid" jdbcType="INTEGER" />
+    <result column="cycle" property="cycle" jdbcType="INTEGER" />
+    <result column="loops" property="loops" jdbcType="INTEGER" />
+    <result column="sumMoney" property="summoney" jdbcType="DECIMAL" />
+    <result column="status" property="status" jdbcType="CHAR" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="payTime" property="paytime" jdbcType="TIMESTAMP" />
+    <result column="verifyTime" property="verifytime" jdbcType="TIMESTAMP" />
+    <result column="finishTime" property="finishtime" jdbcType="TIMESTAMP" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.hyrt.saic.bean.Order" extends="BaseResultMap" >
+    <result column="requirement" property="requirement" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, userId, businessId, cycle, loops, sumMoney, status, createTime, payTime, verifyTime, 
+    finishTime, remark
+  </sql>
+  <sql id="Blob_Column_List" >
+    requirement
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_order
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_order
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.hyrt.saic.bean.Order" >
+    insert into t_order (id, userId, businessId, 
+      cycle, loops, sumMoney, 
+      status, createTime, payTime, 
+      verifyTime, finishTime, remark, 
+      requirement)
+    values (#{id,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{businessid,jdbcType=INTEGER}, 
+      #{cycle,jdbcType=INTEGER}, #{loops,jdbcType=INTEGER}, #{summoney,jdbcType=DECIMAL}, 
+      #{status,jdbcType=CHAR}, #{createtime,jdbcType=TIMESTAMP}, #{paytime,jdbcType=TIMESTAMP}, 
+      #{verifytime,jdbcType=TIMESTAMP}, #{finishtime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, 
+      #{requirement,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hyrt.saic.bean.Order" >
+    insert into t_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userid != null" >
+        userId,
+      </if>
+      <if test="businessid != null" >
+        businessId,
+      </if>
+      <if test="cycle != null" >
+        cycle,
+      </if>
+      <if test="loops != null" >
+        loops,
+      </if>
+      <if test="summoney != null" >
+        sumMoney,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="paytime != null" >
+        payTime,
+      </if>
+      <if test="verifytime != null" >
+        verifyTime,
+      </if>
+      <if test="finishtime != null" >
+        finishTime,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="requirement != null" >
+        requirement,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="businessid != null" >
+        #{businessid,jdbcType=INTEGER},
+      </if>
+      <if test="cycle != null" >
+        #{cycle,jdbcType=INTEGER},
+      </if>
+      <if test="loops != null" >
+        #{loops,jdbcType=INTEGER},
+      </if>
+      <if test="summoney != null" >
+        #{summoney,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="paytime != null" >
+        #{paytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="verifytime != null" >
+        #{verifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="finishtime != null" >
+        #{finishtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="requirement != null" >
+        #{requirement,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hyrt.saic.bean.Order" >
+    update t_order
+    <set >
+      <if test="userid != null" >
+        userId = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="businessid != null" >
+        businessId = #{businessid,jdbcType=INTEGER},
+      </if>
+      <if test="cycle != null" >
+        cycle = #{cycle,jdbcType=INTEGER},
+      </if>
+      <if test="loops != null" >
+        loops = #{loops,jdbcType=INTEGER},
+      </if>
+      <if test="summoney != null" >
+        sumMoney = #{summoney,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=CHAR},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="paytime != null" >
+        payTime = #{paytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="verifytime != null" >
+        verifyTime = #{verifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="finishtime != null" >
+        finishTime = #{finishtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="requirement != null" >
+        requirement = #{requirement,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.hyrt.saic.bean.Order" >
+    update t_order
+    set userId = #{userid,jdbcType=VARCHAR},
+      businessId = #{businessid,jdbcType=INTEGER},
+      cycle = #{cycle,jdbcType=INTEGER},
+      loops = #{loops,jdbcType=INTEGER},
+      sumMoney = #{summoney,jdbcType=DECIMAL},
+      status = #{status,jdbcType=CHAR},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      payTime = #{paytime,jdbcType=TIMESTAMP},
+      verifyTime = #{verifytime,jdbcType=TIMESTAMP},
+      finishTime = #{finishtime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR},
+      requirement = #{requirement,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hyrt.saic.bean.Order" >
+    update t_order
+    set userId = #{userid,jdbcType=VARCHAR},
+      businessId = #{businessid,jdbcType=INTEGER},
+      cycle = #{cycle,jdbcType=INTEGER},
+      loops = #{loops,jdbcType=INTEGER},
+      sumMoney = #{summoney,jdbcType=DECIMAL},
+      status = #{status,jdbcType=CHAR},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      payTime = #{paytime,jdbcType=TIMESTAMP},
+      verifyTime = #{verifytime,jdbcType=TIMESTAMP},
+      finishTime = #{finishtime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

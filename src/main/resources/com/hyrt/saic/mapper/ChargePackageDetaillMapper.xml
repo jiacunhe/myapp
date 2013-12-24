@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hyrt.saic.dao.ChargePackageDetaillMapper" >
+  <resultMap id="BaseResultMap" type="com.hyrt.saic.bean.ChargePackageDetaill" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <id column="packageId" property="packageid" jdbcType="INTEGER" />
+    <result column="businessTypeId" property="businesstypeid" jdbcType="INTEGER" />
+    <result column="quantity" property="quantity" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, packageId, businessTypeId, quantity, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.hyrt.saic.bean.ChargePackageDetaillKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_charge_package_detail
+    where id = #{id,jdbcType=INTEGER}
+      and packageId = #{packageid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.hyrt.saic.bean.ChargePackageDetaillKey" >
+    delete from t_charge_package_detail
+    where id = #{id,jdbcType=INTEGER}
+      and packageId = #{packageid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hyrt.saic.bean.ChargePackageDetaill" >
+    insert into t_charge_package_detail (id, packageId, businessTypeId, 
+      quantity, remark)
+    values (#{id,jdbcType=INTEGER}, #{packageid,jdbcType=INTEGER}, #{businesstypeid,jdbcType=INTEGER}, 
+      #{quantity,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hyrt.saic.bean.ChargePackageDetaill" >
+    insert into t_charge_package_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="packageid != null" >
+        packageId,
+      </if>
+      <if test="businesstypeid != null" >
+        businessTypeId,
+      </if>
+      <if test="quantity != null" >
+        quantity,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="packageid != null" >
+        #{packageid,jdbcType=INTEGER},
+      </if>
+      <if test="businesstypeid != null" >
+        #{businesstypeid,jdbcType=INTEGER},
+      </if>
+      <if test="quantity != null" >
+        #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hyrt.saic.bean.ChargePackageDetaill" >
+    update t_charge_package_detail
+    <set >
+      <if test="businesstypeid != null" >
+        businessTypeId = #{businesstypeid,jdbcType=INTEGER},
+      </if>
+      <if test="quantity != null" >
+        quantity = #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+      and packageId = #{packageid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hyrt.saic.bean.ChargePackageDetaill" >
+    update t_charge_package_detail
+    set businessTypeId = #{businesstypeid,jdbcType=INTEGER},
+      quantity = #{quantity,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+      and packageId = #{packageid,jdbcType=INTEGER}
+  </update>
+</mapper>

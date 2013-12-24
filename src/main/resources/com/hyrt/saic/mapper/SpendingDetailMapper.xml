@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hyrt.saic.dao.SpendingDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.hyrt.saic.bean.SpendingDetail" >
+    <id column="yearmonth" property="yearmonth" jdbcType="CHAR" />
+    <id column="userId" property="userid" jdbcType="VARCHAR" />
+    <result column="amount" property="amount" jdbcType="DECIMAL" />
+    <result column="lastbalance" property="lastbalance" jdbcType="DECIMAL" />
+    <result column="recharge" property="recharge" jdbcType="DECIMAL" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    yearmonth, userId, amount, lastbalance, recharge, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.hyrt.saic.bean.SpendingDetailKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_spending_detail
+    where yearmonth = #{yearmonth,jdbcType=CHAR}
+      and userId = #{userid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.hyrt.saic.bean.SpendingDetailKey" >
+    delete from t_spending_detail
+    where yearmonth = #{yearmonth,jdbcType=CHAR}
+      and userId = #{userid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.hyrt.saic.bean.SpendingDetail" >
+    insert into t_spending_detail (yearmonth, userId, amount, 
+      lastbalance, recharge, remark
+      )
+    values (#{yearmonth,jdbcType=CHAR}, #{userid,jdbcType=VARCHAR}, #{amount,jdbcType=DECIMAL}, 
+      #{lastbalance,jdbcType=DECIMAL}, #{recharge,jdbcType=DECIMAL}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hyrt.saic.bean.SpendingDetail" >
+    insert into t_spending_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="yearmonth != null" >
+        yearmonth,
+      </if>
+      <if test="userid != null" >
+        userId,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="lastbalance != null" >
+        lastbalance,
+      </if>
+      <if test="recharge != null" >
+        recharge,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="yearmonth != null" >
+        #{yearmonth,jdbcType=CHAR},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="lastbalance != null" >
+        #{lastbalance,jdbcType=DECIMAL},
+      </if>
+      <if test="recharge != null" >
+        #{recharge,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hyrt.saic.bean.SpendingDetail" >
+    update t_spending_detail
+    <set >
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="lastbalance != null" >
+        lastbalance = #{lastbalance,jdbcType=DECIMAL},
+      </if>
+      <if test="recharge != null" >
+        recharge = #{recharge,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where yearmonth = #{yearmonth,jdbcType=CHAR}
+      and userId = #{userid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hyrt.saic.bean.SpendingDetail" >
+    update t_spending_detail
+    set amount = #{amount,jdbcType=DECIMAL},
+      lastbalance = #{lastbalance,jdbcType=DECIMAL},
+      recharge = #{recharge,jdbcType=DECIMAL},
+      remark = #{remark,jdbcType=VARCHAR}
+    where yearmonth = #{yearmonth,jdbcType=CHAR}
+      and userId = #{userid,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hyrt.saic.dao.CommonMapper" >
+    <select id="selectByPrimaryKey" resultType="java.util.Map" parameterType="java.util.Map" >
+        select  *  from  ${_table}    where ${_column}  =
+        <if test="_ptype == 1" >
+            #{_id,jdbcType=VARCHAR}
+        </if>
+        <if test="_ptype == 0" >
+            #{_id,jdbcType=INTEGER}
+        </if>
+    </select>
+</mapper>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hyrt.saic.dao.UserRateMapper" >
+  <resultMap id="BaseResultMap" type="com.hyrt.saic.bean.UserRate" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="userId" property="userid" jdbcType="VARCHAR" />
+    <result column="businessTypeId" property="businesstypeid" jdbcType="INTEGER" />
+    <result column="rate" property="rate" jdbcType="DECIMAL" />
+    <result column="status" property="status" jdbcType="CHAR" />
+    <result column="effectiveDate" property="effectivedate" jdbcType="DATE" />
+    <result column="deadline" property="deadline" jdbcType="DATE" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, userId, businessTypeId, rate, status, effectiveDate, deadline, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_user_rate
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_user_rate
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hyrt.saic.bean.UserRate" >
+    insert into t_user_rate (id, userId, businessTypeId, 
+      rate, status, effectiveDate, 
+      deadline, remark)
+    values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=VARCHAR}, #{businesstypeid,jdbcType=INTEGER}, 
+      #{rate,jdbcType=DECIMAL}, #{status,jdbcType=CHAR}, #{effectivedate,jdbcType=DATE}, 
+      #{deadline,jdbcType=DATE}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hyrt.saic.bean.UserRate" >
+    insert into t_user_rate
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userid != null" >
+        userId,
+      </if>
+      <if test="businesstypeid != null" >
+        businessTypeId,
+      </if>
+      <if test="rate != null" >
+        rate,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="effectivedate != null" >
+        effectiveDate,
+      </if>
+      <if test="deadline != null" >
+        deadline,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="businesstypeid != null" >
+        #{businesstypeid,jdbcType=INTEGER},
+      </if>
+      <if test="rate != null" >
+        #{rate,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="effectivedate != null" >
+        #{effectivedate,jdbcType=DATE},
+      </if>
+      <if test="deadline != null" >
+        #{deadline,jdbcType=DATE},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hyrt.saic.bean.UserRate" >
+    update t_user_rate
+    <set >
+      <if test="userid != null" >
+        userId = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="businesstypeid != null" >
+        businessTypeId = #{businesstypeid,jdbcType=INTEGER},
+      </if>
+      <if test="rate != null" >
+        rate = #{rate,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=CHAR},
+      </if>
+      <if test="effectivedate != null" >
+        effectiveDate = #{effectivedate,jdbcType=DATE},
+      </if>
+      <if test="deadline != null" >
+        deadline = #{deadline,jdbcType=DATE},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hyrt.saic.bean.UserRate" >
+    update t_user_rate
+    set userId = #{userid,jdbcType=VARCHAR},
+      businessTypeId = #{businesstypeid,jdbcType=INTEGER},
+      rate = #{rate,jdbcType=DECIMAL},
+      status = #{status,jdbcType=CHAR},
+      effectiveDate = #{effectivedate,jdbcType=DATE},
+      deadline = #{deadline,jdbcType=DATE},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

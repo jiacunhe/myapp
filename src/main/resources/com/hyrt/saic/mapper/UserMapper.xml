@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hyrt.saic.dao.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.hyrt.saic.bean.User" >
+    <id column="userId" property="userid" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="linkman" property="linkman" jdbcType="VARCHAR" />
+    <result column="telephone" property="telephone" jdbcType="VARCHAR" />
+    <result column="moblephone" property="moblephone" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="regtime" property="regtime" jdbcType="TIMESTAMP" />
+    <result column="updatetime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="usertype" property="usertype" jdbcType="VARCHAR" />
+    <result column="certificate" property="certificate" jdbcType="VARCHAR" />
+    <result column="certificateCode" property="certificatecode" jdbcType="VARCHAR" />
+    <result column="creatorId" property="creatorid" jdbcType="VARCHAR" />
+    <result column="isBasal" property="isbasal" jdbcType="CHAR" />
+    <result column="trade" property="trade" jdbcType="VARCHAR" />
+    <result column="vocation" property="vocation" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="CHAR" />
+    <result column="vipLevel" property="viplevel" jdbcType="INTEGER" />
+    <result column="PaymentRule" property="paymentrule" jdbcType="CHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    userId, password, username, linkman, telephone, moblephone, email, address, regtime, 
+    updatetime, usertype, certificate, certificateCode, creatorId, isBasal, trade, vocation, 
+    status, vipLevel, PaymentRule, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_user
+    where userId = #{userid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_user
+    where userId = #{userid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.hyrt.saic.bean.User" >
+    insert into t_user (userId, password, username, 
+      linkman, telephone, moblephone, 
+      email, address, regtime, 
+      updatetime, usertype, certificate, 
+      certificateCode, creatorId, isBasal, 
+      trade, vocation, status, 
+      vipLevel, PaymentRule, remark
+      )
+    values (#{userid,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+      #{linkman,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, #{moblephone,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{regtime,jdbcType=TIMESTAMP}, 
+      #{updatetime,jdbcType=TIMESTAMP}, #{usertype,jdbcType=VARCHAR}, #{certificate,jdbcType=VARCHAR}, 
+      #{certificatecode,jdbcType=VARCHAR}, #{creatorid,jdbcType=VARCHAR}, #{isbasal,jdbcType=CHAR}, 
+      #{trade,jdbcType=VARCHAR}, #{vocation,jdbcType=VARCHAR}, #{status,jdbcType=CHAR}, 
+      #{viplevel,jdbcType=INTEGER}, #{paymentrule,jdbcType=CHAR}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hyrt.saic.bean.User" >
+    insert into t_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        userId,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="linkman != null" >
+        linkman,
+      </if>
+      <if test="telephone != null" >
+        telephone,
+      </if>
+      <if test="moblephone != null" >
+        moblephone,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="regtime != null" >
+        regtime,
+      </if>
+      <if test="updatetime != null" >
+        updatetime,
+      </if>
+      <if test="usertype != null" >
+        usertype,
+      </if>
+      <if test="certificate != null" >
+        certificate,
+      </if>
+      <if test="certificatecode != null" >
+        certificateCode,
+      </if>
+      <if test="creatorid != null" >
+        creatorId,
+      </if>
+      <if test="isbasal != null" >
+        isBasal,
+      </if>
+      <if test="trade != null" >
+        trade,
+      </if>
+      <if test="vocation != null" >
+        vocation,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="viplevel != null" >
+        vipLevel,
+      </if>
+      <if test="paymentrule != null" >
+        PaymentRule,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman != null" >
+        #{linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="moblephone != null" >
+        #{moblephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="regtime != null" >
+        #{regtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="usertype != null" >
+        #{usertype,jdbcType=VARCHAR},
+      </if>
+      <if test="certificate != null" >
+        #{certificate,jdbcType=VARCHAR},
+      </if>
+      <if test="certificatecode != null" >
+        #{certificatecode,jdbcType=VARCHAR},
+      </if>
+      <if test="creatorid != null" >
+        #{creatorid,jdbcType=VARCHAR},
+      </if>
+      <if test="isbasal != null" >
+        #{isbasal,jdbcType=CHAR},
+      </if>
+      <if test="trade != null" >
+        #{trade,jdbcType=VARCHAR},
+      </if>
+      <if test="vocation != null" >
+        #{vocation,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="viplevel != null" >
+        #{viplevel,jdbcType=INTEGER},
+      </if>
+      <if test="paymentrule != null" >
+        #{paymentrule,jdbcType=CHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hyrt.saic.bean.User" >
+    update t_user
+    <set >
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman != null" >
+        linkman = #{linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="moblephone != null" >
+        moblephone = #{moblephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="regtime != null" >
+        regtime = #{regtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="usertype != null" >
+        usertype = #{usertype,jdbcType=VARCHAR},
+      </if>
+      <if test="certificate != null" >
+        certificate = #{certificate,jdbcType=VARCHAR},
+      </if>
+      <if test="certificatecode != null" >
+        certificateCode = #{certificatecode,jdbcType=VARCHAR},
+      </if>
+      <if test="creatorid != null" >
+        creatorId = #{creatorid,jdbcType=VARCHAR},
+      </if>
+      <if test="isbasal != null" >
+        isBasal = #{isbasal,jdbcType=CHAR},
+      </if>
+      <if test="trade != null" >
+        trade = #{trade,jdbcType=VARCHAR},
+      </if>
+      <if test="vocation != null" >
+        vocation = #{vocation,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=CHAR},
+      </if>
+      <if test="viplevel != null" >
+        vipLevel = #{viplevel,jdbcType=INTEGER},
+      </if>
+      <if test="paymentrule != null" >
+        PaymentRule = #{paymentrule,jdbcType=CHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where userId = #{userid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hyrt.saic.bean.User" >
+    update t_user
+    set password = #{password,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      linkman = #{linkman,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      moblephone = #{moblephone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      regtime = #{regtime,jdbcType=TIMESTAMP},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      usertype = #{usertype,jdbcType=VARCHAR},
+      certificate = #{certificate,jdbcType=VARCHAR},
+      certificateCode = #{certificatecode,jdbcType=VARCHAR},
+      creatorId = #{creatorid,jdbcType=VARCHAR},
+      isBasal = #{isbasal,jdbcType=CHAR},
+      trade = #{trade,jdbcType=VARCHAR},
+      vocation = #{vocation,jdbcType=VARCHAR},
+      status = #{status,jdbcType=CHAR},
+      vipLevel = #{viplevel,jdbcType=INTEGER},
+      PaymentRule = #{paymentrule,jdbcType=CHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where userId = #{userid,jdbcType=VARCHAR}
+  </update>
+</mapper>

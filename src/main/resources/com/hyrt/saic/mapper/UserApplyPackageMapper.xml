@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hyrt.saic.dao.UserApplyPackageMapper" >
+  <resultMap id="BaseResultMap" type="com.hyrt.saic.bean.UserApplyPackage" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="userId" property="userid" jdbcType="VARCHAR" />
+    <result column="assignorId" property="assignorid" jdbcType="VARCHAR" />
+    <result column="yearMonth" property="yearmonth" jdbcType="CHAR" />
+    <result column="businessId" property="businessid" jdbcType="INTEGER" />
+    <result column="assignQuantity" property="assignquantity" jdbcType="INTEGER" />
+    <result column="usedQuantity" property="usedquantity" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, userId, assignorId, yearMonth, businessId, assignQuantity, usedQuantity, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_user_apply_package
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_user_apply_package
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hyrt.saic.bean.UserApplyPackage" >
+    insert into t_user_apply_package (id, userId, assignorId, 
+      yearMonth, businessId, assignQuantity, 
+      usedQuantity, remark)
+    values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=VARCHAR}, #{assignorid,jdbcType=VARCHAR}, 
+      #{yearmonth,jdbcType=CHAR}, #{businessid,jdbcType=INTEGER}, #{assignquantity,jdbcType=INTEGER}, 
+      #{usedquantity,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hyrt.saic.bean.UserApplyPackage" >
+    insert into t_user_apply_package
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userid != null" >
+        userId,
+      </if>
+      <if test="assignorid != null" >
+        assignorId,
+      </if>
+      <if test="yearmonth != null" >
+        yearMonth,
+      </if>
+      <if test="businessid != null" >
+        businessId,
+      </if>
+      <if test="assignquantity != null" >
+        assignQuantity,
+      </if>
+      <if test="usedquantity != null" >
+        usedQuantity,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="assignorid != null" >
+        #{assignorid,jdbcType=VARCHAR},
+      </if>
+      <if test="yearmonth != null" >
+        #{yearmonth,jdbcType=CHAR},
+      </if>
+      <if test="businessid != null" >
+        #{businessid,jdbcType=INTEGER},
+      </if>
+      <if test="assignquantity != null" >
+        #{assignquantity,jdbcType=INTEGER},
+      </if>
+      <if test="usedquantity != null" >
+        #{usedquantity,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hyrt.saic.bean.UserApplyPackage" >
+    update t_user_apply_package
+    <set >
+      <if test="userid != null" >
+        userId = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="assignorid != null" >
+        assignorId = #{assignorid,jdbcType=VARCHAR},
+      </if>
+      <if test="yearmonth != null" >
+        yearMonth = #{yearmonth,jdbcType=CHAR},
+      </if>
+      <if test="businessid != null" >
+        businessId = #{businessid,jdbcType=INTEGER},
+      </if>
+      <if test="assignquantity != null" >
+        assignQuantity = #{assignquantity,jdbcType=INTEGER},
+      </if>
+      <if test="usedquantity != null" >
+        usedQuantity = #{usedquantity,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hyrt.saic.bean.UserApplyPackage" >
+    update t_user_apply_package
+    set userId = #{userid,jdbcType=VARCHAR},
+      assignorId = #{assignorid,jdbcType=VARCHAR},
+      yearMonth = #{yearmonth,jdbcType=CHAR},
+      businessId = #{businessid,jdbcType=INTEGER},
+      assignQuantity = #{assignquantity,jdbcType=INTEGER},
+      usedQuantity = #{usedquantity,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
