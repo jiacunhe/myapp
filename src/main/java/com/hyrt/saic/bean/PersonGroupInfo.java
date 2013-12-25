@@ -1,5 +1,7 @@
 package com.hyrt.saic.bean;
 
+import com.hyrt.saic.util.enums.PersonGroupInfoType;
+
 public class PersonGroupInfo {
     private Long id;
 
@@ -23,9 +25,23 @@ public class PersonGroupInfo {
 
     private String orderid;
 
+
+    public PersonGroupInfo(PersonGroupInfoType persontype,String a){
+
+        this.id = id;
+        this.persontype=persontype.toString();
+        this.a = a;
+
+    }
+
+    public    PersonGroupInfo(){
+
+    }
+
     public Long getId() {
         return id;
     }
+
 
     public void setId(Long id) {
         this.id = id;
@@ -35,8 +51,8 @@ public class PersonGroupInfo {
         return persontype;
     }
 
-    public void setPersontype(String persontype) {
-        this.persontype = persontype == null ? null : persontype.trim();
+    public void setPersontype(PersonGroupInfoType persontype) {
+        this.persontype = persontype == null ? null : persontype.toString().trim();
     }
 
     public String getA() {

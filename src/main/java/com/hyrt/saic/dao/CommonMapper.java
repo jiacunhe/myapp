@@ -1,6 +1,7 @@
 package com.hyrt.saic.dao;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -14,16 +15,14 @@ public interface CommonMapper {
 
     public Map selectByPrimaryKey(Map params);
 
- /*   public void update(T t){
+    public void insert(Map params);
 
-    }
+    public void delete(Map params);
 
-    public void save(T t){
+    public void update(Map params);
 
-    }
+    public List selectBySql(String sql);
 
-    public void delete(T t){
+    public Integer selectCount(String sql);
 
-    }
-*/
 }

@@ -6,6 +6,5 @@
   </head>
   <body>
                     Hello,${name};
-                    <c:if test="${name eq 'jsp'}"> haha</c:if>
   </body>
 </html>

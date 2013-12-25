@@ -48,8 +48,12 @@ public class User {
     private String remark;
 
 
-    public User(){}
+    public User(){
 
+    }
+    public User(String userid){
+              this.userid = userid;
+    }
     public User(String userid,String password, String username,Timestamp regtime,String usertype,String paymentrule){
              this.userid = userid;
         this.password = password;
