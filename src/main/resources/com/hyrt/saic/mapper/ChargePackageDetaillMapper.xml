@@ -3,30 +3,28 @@
 <mapper namespace="com.hyrt.saic.dao.ChargePackageDetaillMapper" >
   <resultMap id="BaseResultMap" type="com.hyrt.saic.bean.ChargePackageDetaill" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <id column="packageId" property="packageid" jdbcType="INTEGER" />
-    <result column="businessTypeId" property="businesstypeid" jdbcType="INTEGER" />
+    <result column="packageId" property="packageId" jdbcType="INTEGER" />
+    <result column="businessTypeId" property="businessTypeId" jdbcType="INTEGER" />
     <result column="quantity" property="quantity" jdbcType="INTEGER" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, packageId, businessTypeId, quantity, remark
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.hyrt.saic.bean.ChargePackageDetaillKey" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from t_charge_package_detail
     where id = #{id,jdbcType=INTEGER}
-      and packageId = #{packageid,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="com.hyrt.saic.bean.ChargePackageDetaillKey" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from t_charge_package_detail
     where id = #{id,jdbcType=INTEGER}
-      and packageId = #{packageid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.hyrt.saic.bean.ChargePackageDetaill" >
     insert into t_charge_package_detail (id, packageId, businessTypeId, 
       quantity, remark)
-    values (#{id,jdbcType=INTEGER}, #{packageid,jdbcType=INTEGER}, #{businesstypeid,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=INTEGER}, #{packageId,jdbcType=INTEGER}, #{businessTypeId,jdbcType=INTEGER},
       #{quantity,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.hyrt.saic.bean.ChargePackageDetaill" >
@@ -35,10 +33,10 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="packageid != null" >
+      <if test="packageId != null" >
         packageId,
       </if>
-      <if test="businesstypeid != null" >
+      <if test="businessTypeId != null" >
         businessTypeId,
       </if>
       <if test="quantity != null" >
@@ -52,11 +50,11 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="packageid != null" >
-        #{packageid,jdbcType=INTEGER},
+      <if test="packageId != null" >
+        #{packageId,jdbcType=INTEGER},
       </if>
-      <if test="businesstypeid != null" >
-        #{businesstypeid,jdbcType=INTEGER},
+      <if test="businessTypeId != null" >
+        #{businessTypeId,jdbcType=INTEGER},
       </if>
       <if test="quantity != null" >
         #{quantity,jdbcType=INTEGER},
@@ -69,8 +67,11 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.hyrt.saic.bean.ChargePackageDetaill" >
     update t_charge_package_detail
     <set >
-      <if test="businesstypeid != null" >
-        businessTypeId = #{businesstypeid,jdbcType=INTEGER},
+      <if test="packageId != null" >
+        packageId = #{packageId,jdbcType=INTEGER},
+      </if>
+      <if test="businessTypeId != null" >
+        businessTypeId = #{businessTypeId,jdbcType=INTEGER},
       </if>
       <if test="quantity != null" >
         quantity = #{quantity,jdbcType=INTEGER},
@@ -80,14 +81,13 @@
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
-      and packageId = #{packageid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hyrt.saic.bean.ChargePackageDetaill" >
     update t_charge_package_detail
-    set businessTypeId = #{businesstypeid,jdbcType=INTEGER},
+    set packageId = #{packageId,jdbcType=INTEGER},
+      businessTypeId = #{businessTypeId,jdbcType=INTEGER},
       quantity = #{quantity,jdbcType=INTEGER},
       remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
-      and packageId = #{packageid,jdbcType=INTEGER}
   </update>
 </mapper>

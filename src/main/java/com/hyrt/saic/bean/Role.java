@@ -3,7 +3,7 @@ package com.hyrt.saic.bean;
 public class Role {
     private Integer id;
 
-    private String rolename;
+    private String roleName;
 
     private String remark;
 
@@ -15,12 +15,12 @@ public class Role {
         this.id = id;
     }
 
-    public String getRolename() {
-        return rolename;
+    public String getRoleName() {
+        return roleName;
     }
 
-    public void setRolename(String rolename) {
-        this.rolename = rolename == null ? null : rolename.trim();
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
     }
 
     public String getRemark() {

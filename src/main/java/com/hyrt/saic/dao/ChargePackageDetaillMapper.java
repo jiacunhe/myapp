@@ -1,16 +1,15 @@
 package com.hyrt.saic.dao;
 
 import com.hyrt.saic.bean.ChargePackageDetaill;
-import com.hyrt.saic.bean.ChargePackageDetaillKey;
 
 public interface ChargePackageDetaillMapper {
-    int deleteByPrimaryKey(ChargePackageDetaillKey key);
+    int deleteByPrimaryKey(Integer id);
 
     int insert(ChargePackageDetaill record);
 
     int insertSelective(ChargePackageDetaill record);
 
-    ChargePackageDetaill selectByPrimaryKey(ChargePackageDetaillKey key);
+    ChargePackageDetaill selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKeySelective(ChargePackageDetaill record);
 

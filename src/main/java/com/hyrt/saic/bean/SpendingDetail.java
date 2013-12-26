@@ -1,22 +1,52 @@
 package com.hyrt.saic.bean;
 
-public class SpendingDetail extends SpendingDetailKey {
-    private Integer businessid;
+public class SpendingDetail {
+    private Integer id;
+
+    private String userId;
+
+    private String yearMonth;
+
+    private Integer businessId;
 
     private Integer amount;
 
-    private Integer lastbalance;
+    private Integer lastBalance;
 
     private Integer recharge;
 
     private String remark;
 
-    public Integer getBusinessid() {
-        return businessid;
+    public Integer getId() {
+        return id;
     }
 
-    public void setBusinessid(Integer businessid) {
-        this.businessid = businessid;
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getYearMonth() {
+        return yearMonth;
+    }
+
+    public void setYearMonth(String yearMonth) {
+        this.yearMonth = yearMonth;
+    }
+
+    public Integer getBusinessId() {
+        return businessId;
+    }
+
+    public void setBusinessId(Integer businessId) {
+        this.businessId = businessId;
     }
 
     public Integer getAmount() {
@@ -27,12 +57,12 @@ public class SpendingDetail extends SpendingDetailKey {
         this.amount = amount;
     }
 
-    public Integer getLastbalance() {
-        return lastbalance;
+    public Integer getLastBalance() {
+        return lastBalance;
     }
 
-    public void setLastbalance(Integer lastbalance) {
-        this.lastbalance = lastbalance;
+    public void setLastBalance(Integer lastBalance) {
+        this.lastBalance = lastBalance;
     }
 
     public Integer getRecharge() {
@@ -48,6 +78,6 @@ public class SpendingDetail extends SpendingDetailKey {
     }
 
     public void setRemark(String remark) {
-        this.remark = remark == null ? null : remark.trim();
+        this.remark = remark;
     }
 }

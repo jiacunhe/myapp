@@ -3,17 +3,27 @@ package com.hyrt.saic.bean;
 public class GroupShareholderInfo {
     private Long id;
 
-    private Long groupid;
+    private Long groupId;
 
     private String shareholder;
 
-    private String contributionamount;
+    private String contributionAmount;
 
-    private String currencytype;
+    private String currencyType;
 
-    private String contributiondate;
+    private String contributionDate;
+
 
     private String remark;
+
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
 
     public Long getId() {
         return id;
@@ -23,12 +33,12 @@ public class GroupShareholderInfo {
         this.id = id;
     }
 
-    public Long getGroupid() {
-        return groupid;
+    public Long getGroupId() {
+        return groupId;
     }
 
-    public void setGroupid(Long groupid) {
-        this.groupid = groupid;
+    public void setGroupId(Long groupId) {
+        this.groupId = groupId;
     }
 
     public String getShareholder() {
@@ -36,38 +46,33 @@ public class GroupShareholderInfo {
     }
 
     public void setShareholder(String shareholder) {
-        this.shareholder = shareholder == null ? null : shareholder.trim();
+        this.shareholder = shareholder;
     }
 
-    public String getContributionamount() {
-        return contributionamount;
+    public String getContributionAmount() {
+        return contributionAmount;
     }
 
-    public void setContributionamount(String contributionamount) {
-        this.contributionamount = contributionamount == null ? null : contributionamount.trim();
+    public void setContributionAmount(String contributionAmount) {
+        this.contributionAmount = contributionAmount;
     }
 
-    public String getCurrencytype() {
-        return currencytype;
+    public String getCurrencyType() {
+        return currencyType;
     }
 
-    public void setCurrencytype(String currencytype) {
-        this.currencytype = currencytype == null ? null : currencytype.trim();
+    public void setCurrencyType(String currencyType) {
+        this.currencyType = currencyType;
     }
 
-    public String getContributiondate() {
-        return contributiondate;
+    public String getContributionDate() {
+        return contributionDate;
     }
 
-    public void setContributiondate(String contributiondate) {
-        this.contributiondate = contributiondate == null ? null : contributiondate.trim();
+    public void setContributionDate(String contributionDate) {
+        this.contributionDate = contributionDate;
     }
 
-    public String getRemark() {
-        return remark;
-    }
 
-    public void setRemark(String remark) {
-        this.remark = remark == null ? null : remark.trim();
-    }
+
 }

@@ -3,15 +3,15 @@ package com.hyrt.saic.bean;
 public class GroupAnnualInspection {
     private Long id;
 
-    private Long groupid;
+    private Long groupId;
 
-    private String inspectionyear;
+    private String inspectionYear;
 
-    private String inspectionresult;
+    private String inspectionResult;
 
-    private String inspectiondate;
+    private String inspectionDate;
 
-    private String inspectiontype;
+    private String inspectionType;
 
     private String remark;
 
@@ -23,44 +23,44 @@ public class GroupAnnualInspection {
         this.id = id;
     }
 
-    public Long getGroupid() {
-        return groupid;
+    public Long getGroupId() {
+        return groupId;
     }
 
-    public void setGroupid(Long groupid) {
-        this.groupid = groupid;
+    public void setGroupId(Long groupId) {
+        this.groupId = groupId;
     }
 
-    public String getInspectionyear() {
-        return inspectionyear;
+    public String getInspectionYear() {
+        return inspectionYear;
     }
 
-    public void setInspectionyear(String inspectionyear) {
-        this.inspectionyear = inspectionyear == null ? null : inspectionyear.trim();
+    public void setInspectionYear(String inspectionYear) {
+        this.inspectionYear = inspectionYear;
     }
 
-    public String getInspectionresult() {
-        return inspectionresult;
+    public String getInspectionResult() {
+        return inspectionResult;
     }
 
-    public void setInspectionresult(String inspectionresult) {
-        this.inspectionresult = inspectionresult == null ? null : inspectionresult.trim();
+    public void setInspectionResult(String inspectionResult) {
+        this.inspectionResult = inspectionResult;
     }
 
-    public String getInspectiondate() {
-        return inspectiondate;
+    public String getInspectionDate() {
+        return inspectionDate;
     }
 
-    public void setInspectiondate(String inspectiondate) {
-        this.inspectiondate = inspectiondate == null ? null : inspectiondate.trim();
+    public void setInspectionDate(String inspectionDate) {
+        this.inspectionDate = inspectionDate;
     }
 
-    public String getInspectiontype() {
-        return inspectiontype;
+    public String getInspectionType() {
+        return inspectionType;
     }
 
-    public void setInspectiontype(String inspectiontype) {
-        this.inspectiontype = inspectiontype == null ? null : inspectiontype.trim();
+    public void setInspectionType(String inspectionType) {
+        this.inspectionType = inspectionType;
     }
 
     public String getRemark() {
@@ -68,6 +68,6 @@ public class GroupAnnualInspection {
     }
 
     public void setRemark(String remark) {
-        this.remark = remark == null ? null : remark.trim();
+        this.remark = remark;
     }
 }

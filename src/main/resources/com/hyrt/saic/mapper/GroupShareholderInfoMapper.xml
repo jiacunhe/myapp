@@ -3,11 +3,11 @@
 <mapper namespace="com.hyrt.saic.dao.GroupShareholderInfoMapper" >
   <resultMap id="BaseResultMap" type="com.hyrt.saic.bean.GroupShareholderInfo" >
     <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="groupId" property="groupid" jdbcType="BIGINT" />
+    <result column="groupId" property="groupId" jdbcType="BIGINT" />
     <result column="shareholder" property="shareholder" jdbcType="VARCHAR" />
-    <result column="contributionAmount" property="contributionamount" jdbcType="VARCHAR" />
-    <result column="currencyType" property="currencytype" jdbcType="VARCHAR" />
-    <result column="contributionDate" property="contributiondate" jdbcType="VARCHAR" />
+    <result column="contributionAmount" property="contributionAmount" jdbcType="VARCHAR" />
+    <result column="currencyType" property="currencyType" jdbcType="VARCHAR" />
+    <result column="contributionDate" property="contributionDate" jdbcType="VARCHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
@@ -27,8 +27,8 @@
     insert into t_group_shareholder_info (id, groupId, shareholder, 
       contributionAmount, currencyType, contributionDate, 
       remark)
-    values (#{id,jdbcType=BIGINT}, #{groupid,jdbcType=BIGINT}, #{shareholder,jdbcType=VARCHAR}, 
-      #{contributionamount,jdbcType=VARCHAR}, #{currencytype,jdbcType=VARCHAR}, #{contributiondate,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=BIGINT}, #{groupId,jdbcType=BIGINT}, #{shareholder,jdbcType=VARCHAR},
+      #{contributionAmount,jdbcType=VARCHAR}, #{currencyType,jdbcType=VARCHAR}, #{contributionDate,jdbcType=VARCHAR},
       #{remark,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.hyrt.saic.bean.GroupShareholderInfo" >
@@ -37,19 +37,19 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="groupid != null" >
+      <if test="groupId != null" >
         groupId,
       </if>
       <if test="shareholder != null" >
         shareholder,
       </if>
-      <if test="contributionamount != null" >
+      <if test="contributionAmount != null" >
         contributionAmount,
       </if>
-      <if test="currencytype != null" >
+      <if test="currencyType != null" >
         currencyType,
       </if>
-      <if test="contributiondate != null" >
+      <if test="contributionDate != null" >
         contributionDate,
       </if>
       <if test="remark != null" >
@@ -60,20 +60,20 @@
       <if test="id != null" >
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="groupid != null" >
-        #{groupid,jdbcType=BIGINT},
+      <if test="groupId != null" >
+        #{groupId,jdbcType=BIGINT},
       </if>
       <if test="shareholder != null" >
         #{shareholder,jdbcType=VARCHAR},
       </if>
-      <if test="contributionamount != null" >
-        #{contributionamount,jdbcType=VARCHAR},
+      <if test="contributionAmount != null" >
+        #{contributionAmount,jdbcType=VARCHAR},
       </if>
-      <if test="currencytype != null" >
-        #{currencytype,jdbcType=VARCHAR},
+      <if test="currencyType != null" >
+        #{currencyType,jdbcType=VARCHAR},
       </if>
-      <if test="contributiondate != null" >
-        #{contributiondate,jdbcType=VARCHAR},
+      <if test="contributionDate != null" >
+        #{contributionDate,jdbcType=VARCHAR},
       </if>
       <if test="remark != null" >
         #{remark,jdbcType=VARCHAR},
@@ -83,20 +83,20 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.hyrt.saic.bean.GroupShareholderInfo" >
     update t_group_shareholder_info
     <set >
-      <if test="groupid != null" >
-        groupId = #{groupid,jdbcType=BIGINT},
+      <if test="groupId != null" >
+        groupId = #{groupId,jdbcType=BIGINT},
       </if>
       <if test="shareholder != null" >
         shareholder = #{shareholder,jdbcType=VARCHAR},
       </if>
-      <if test="contributionamount != null" >
-        contributionAmount = #{contributionamount,jdbcType=VARCHAR},
+      <if test="contributionAmount != null" >
+        contributionAmount = #{contributionAmount,jdbcType=VARCHAR},
       </if>
-      <if test="currencytype != null" >
-        currencyType = #{currencytype,jdbcType=VARCHAR},
+      <if test="currencyType != null" >
+        currencyType = #{currencyType,jdbcType=VARCHAR},
       </if>
-      <if test="contributiondate != null" >
-        contributionDate = #{contributiondate,jdbcType=VARCHAR},
+      <if test="contributionDate != null" >
+        contributionDate = #{contributionDate,jdbcType=VARCHAR},
       </if>
       <if test="remark != null" >
         remark = #{remark,jdbcType=VARCHAR},
@@ -106,11 +106,11 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hyrt.saic.bean.GroupShareholderInfo" >
     update t_group_shareholder_info
-    set groupId = #{groupid,jdbcType=BIGINT},
+    set groupId = #{groupId,jdbcType=BIGINT},
       shareholder = #{shareholder,jdbcType=VARCHAR},
-      contributionAmount = #{contributionamount,jdbcType=VARCHAR},
-      currencyType = #{currencytype,jdbcType=VARCHAR},
-      contributionDate = #{contributiondate,jdbcType=VARCHAR},
+      contributionAmount = #{contributionAmount,jdbcType=VARCHAR},
+      currencyType = #{currencyType,jdbcType=VARCHAR},
+      contributionDate = #{contributionDate,jdbcType=VARCHAR},
       remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>

@@ -3,10 +3,10 @@
 <mapper namespace="com.hyrt.saic.dao.UserOperationMapper" >
   <resultMap id="BaseResultMap" type="com.hyrt.saic.bean.UserOperation" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="userId" property="userid" jdbcType="VARCHAR" />
-    <result column="resourceUri" property="resourceuri" jdbcType="VARCHAR" />
+    <result column="userId" property="userId" jdbcType="VARCHAR" />
+    <result column="resourceUri" property="resourceUri" jdbcType="VARCHAR" />
     <result column="description" property="description" jdbcType="VARCHAR" />
-    <result column="operateTime" property="operatetime" jdbcType="TIMESTAMP" />
+    <result column="operateTime" property="operateTime" jdbcType="TIMESTAMP" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
@@ -26,8 +26,8 @@
     insert into t_user_operation (id, userId, resourceUri, 
       description, operateTime, remark
       )
-    values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=VARCHAR}, #{resourceuri,jdbcType=VARCHAR}, 
-      #{description,jdbcType=VARCHAR}, #{operatetime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, #{resourceUri,jdbcType=VARCHAR},
+      #{description,jdbcType=VARCHAR}, #{operateTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.hyrt.saic.bean.UserOperation" >
@@ -36,16 +36,16 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="userid != null" >
+      <if test="userId != null" >
         userId,
       </if>
-      <if test="resourceuri != null" >
+      <if test="resourceUri != null" >
         resourceUri,
       </if>
       <if test="description != null" >
         description,
       </if>
-      <if test="operatetime != null" >
+      <if test="operateTime != null" >
         operateTime,
       </if>
       <if test="remark != null" >
@@ -56,17 +56,17 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="userid != null" >
-        #{userid,jdbcType=VARCHAR},
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
       </if>
-      <if test="resourceuri != null" >
-        #{resourceuri,jdbcType=VARCHAR},
+      <if test="resourceUri != null" >
+        #{resourceUri,jdbcType=VARCHAR},
       </if>
       <if test="description != null" >
         #{description,jdbcType=VARCHAR},
       </if>
-      <if test="operatetime != null" >
-        #{operatetime,jdbcType=TIMESTAMP},
+      <if test="operateTime != null" >
+        #{operateTime,jdbcType=TIMESTAMP},
       </if>
       <if test="remark != null" >
         #{remark,jdbcType=VARCHAR},
@@ -76,17 +76,17 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.hyrt.saic.bean.UserOperation" >
     update t_user_operation
     <set >
-      <if test="userid != null" >
-        userId = #{userid,jdbcType=VARCHAR},
+      <if test="userId != null" >
+        userId = #{userId,jdbcType=VARCHAR},
       </if>
-      <if test="resourceuri != null" >
-        resourceUri = #{resourceuri,jdbcType=VARCHAR},
+      <if test="resourceUri != null" >
+        resourceUri = #{resourceUri,jdbcType=VARCHAR},
       </if>
       <if test="description != null" >
         description = #{description,jdbcType=VARCHAR},
       </if>
-      <if test="operatetime != null" >
-        operateTime = #{operatetime,jdbcType=TIMESTAMP},
+      <if test="operateTime != null" >
+        operateTime = #{operateTime,jdbcType=TIMESTAMP},
       </if>
       <if test="remark != null" >
         remark = #{remark,jdbcType=VARCHAR},
@@ -96,10 +96,10 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hyrt.saic.bean.UserOperation" >
     update t_user_operation
-    set userId = #{userid,jdbcType=VARCHAR},
-      resourceUri = #{resourceuri,jdbcType=VARCHAR},
+    set userId = #{userId,jdbcType=VARCHAR},
+      resourceUri = #{resourceUri,jdbcType=VARCHAR},
       description = #{description,jdbcType=VARCHAR},
-      operateTime = #{operatetime,jdbcType=TIMESTAMP},
+      operateTime = #{operateTime,jdbcType=TIMESTAMP},
       remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>

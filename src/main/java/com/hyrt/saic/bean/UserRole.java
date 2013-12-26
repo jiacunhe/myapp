@@ -3,9 +3,9 @@ package com.hyrt.saic.bean;
 public class UserRole {
     private Integer id;
 
-    private String userid;
+    private String userId;
 
-    private Integer roleid;
+    private Integer roleId;
 
     private String remark;
 
@@ -17,20 +17,20 @@ public class UserRole {
         this.id = id;
     }
 
-    public String getUserid() {
-        return userid;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUserid(String userid) {
-        this.userid = userid == null ? null : userid.trim();
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
-    public Integer getRoleid() {
-        return roleid;
+    public Integer getRoleId() {
+        return roleId;
     }
 
-    public void setRoleid(Integer roleid) {
-        this.roleid = roleid;
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
     }
 
     public String getRemark() {

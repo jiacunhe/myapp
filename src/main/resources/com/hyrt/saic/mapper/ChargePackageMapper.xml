@@ -3,10 +3,10 @@
 <mapper namespace="com.hyrt.saic.dao.ChargePackageMapper" >
   <resultMap id="BaseResultMap" type="com.hyrt.saic.bean.ChargePackage" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="packageName" property="packagename" jdbcType="VARCHAR" />
+    <result column="packageName" property="packageName" jdbcType="VARCHAR" />
     <result column="price" property="price" jdbcType="DECIMAL" />
     <result column="type" property="type" jdbcType="VARCHAR" />
-    <result column="userId" property="userid" jdbcType="VARCHAR" />
+    <result column="userId" property="userId" jdbcType="VARCHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
@@ -26,8 +26,8 @@
     insert into t_charge_package (id, packageName, price, 
       type, userId, remark
       )
-    values (#{id,jdbcType=INTEGER}, #{packagename,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, 
-      #{type,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
+    values (#{id,jdbcType=INTEGER}, #{packageName,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL},
+      #{type,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.hyrt.saic.bean.ChargePackage" >
@@ -36,7 +36,7 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="packagename != null" >
+      <if test="packageName != null" >
         packageName,
       </if>
       <if test="price != null" >
@@ -56,8 +56,8 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="packagename != null" >
-        #{packagename,jdbcType=VARCHAR},
+      <if test="packageName != null" >
+        #{packageName,jdbcType=VARCHAR},
       </if>
       <if test="price != null" >
         #{price,jdbcType=DECIMAL},
@@ -65,8 +65,8 @@
       <if test="type != null" >
         #{type,jdbcType=VARCHAR},
       </if>
-      <if test="userid != null" >
-        #{userid,jdbcType=VARCHAR},
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
       </if>
       <if test="remark != null" >
         #{remark,jdbcType=VARCHAR},
@@ -76,8 +76,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.hyrt.saic.bean.ChargePackage" >
     update t_charge_package
     <set >
-      <if test="packagename != null" >
-        packageName = #{packagename,jdbcType=VARCHAR},
+      <if test="packageName != null" >
+        packageName = #{packageName,jdbcType=VARCHAR},
       </if>
       <if test="price != null" >
         price = #{price,jdbcType=DECIMAL},
@@ -85,8 +85,8 @@
       <if test="type != null" >
         type = #{type,jdbcType=VARCHAR},
       </if>
-      <if test="userid != null" >
-        userId = #{userid,jdbcType=VARCHAR},
+      <if test="userId != null" >
+        userId = #{userId,jdbcType=VARCHAR},
       </if>
       <if test="remark != null" >
         remark = #{remark,jdbcType=VARCHAR},
@@ -96,10 +96,10 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hyrt.saic.bean.ChargePackage" >
     update t_charge_package
-    set packageName = #{packagename,jdbcType=VARCHAR},
+    set packageName = #{packageName,jdbcType=VARCHAR},
       price = #{price,jdbcType=DECIMAL},
       type = #{type,jdbcType=VARCHAR},
-      userId = #{userid,jdbcType=VARCHAR},
+      userId = #{userId,jdbcType=VARCHAR},
       remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>

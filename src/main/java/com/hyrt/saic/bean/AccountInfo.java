@@ -1,9 +1,9 @@
 package com.hyrt.saic.bean;
 
 public class AccountInfo {
-    private String userid;
+    private String userId;
 
-    private Integer businessid;
+    private Integer businessId;
 
     private Integer balance;
 
@@ -12,19 +12,19 @@ public class AccountInfo {
     private String remark;
 
     public String getUserid() {
-        return userid;
+        return userId;
     }
 
-    public void setUserid(String userid) {
-        this.userid = userid == null ? null : userid.trim();
+    public void setUserid(String userId) {
+        this.userId = userId == null ? null : userId.trim();
     }
 
-    public Integer getBusinessid() {
-        return businessid;
+    public Integer getBusinessId() {
+        return businessId;
     }
 
-    public void setBusinessid(Integer businessid) {
-        this.businessid = businessid;
+    public void setBusinessId(Integer businessId) {
+        this.businessId = businessId;
     }
 
     public Integer getBalance() {

@@ -6,19 +6,19 @@ import java.util.Date;
 public class RechargeRecord {
     private Integer id;
 
-    private String userid;
+    private String userId;
 
-    private Integer packageid;
+    private Integer packageId;
 
-    private Date chargetime;
+    private Date chargeTime;
 
-    private Date createtime;
+    private Date createTime;
 
     private BigDecimal amount;
 
-    private String chargetype;
+    private String chargeType;
 
-    private String returnresult;
+    private String returnResult;
 
     private String status;
 
@@ -32,36 +32,36 @@ public class RechargeRecord {
         this.id = id;
     }
 
-    public String getUserid() {
-        return userid;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUserid(String userid) {
-        this.userid = userid == null ? null : userid.trim();
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
-    public Integer getPackageid() {
-        return packageid;
+    public Integer getPackageId() {
+        return packageId;
     }
 
-    public void setPackageid(Integer packageid) {
-        this.packageid = packageid;
+    public void setPackageId(Integer packageId) {
+        this.packageId = packageId;
     }
 
-    public Date getChargetime() {
-        return chargetime;
+    public Date getChargeTime() {
+        return chargeTime;
     }
 
-    public void setChargetime(Date chargetime) {
-        this.chargetime = chargetime;
+    public void setChargeTime(Date chargeTime) {
+        this.chargeTime = chargeTime;
     }
 
-    public Date getCreatetime() {
-        return createtime;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreatetime(Date createtime) {
-        this.createtime = createtime;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     public BigDecimal getAmount() {
@@ -72,20 +72,20 @@ public class RechargeRecord {
         this.amount = amount;
     }
 
-    public String getChargetype() {
-        return chargetype;
+    public String getChargeType() {
+        return chargeType;
     }
 
-    public void setChargetype(String chargetype) {
-        this.chargetype = chargetype == null ? null : chargetype.trim();
+    public void setChargeType(String chargeType) {
+        this.chargeType = chargeType;
     }
 
-    public String getReturnresult() {
-        return returnresult;
+    public String getReturnResult() {
+        return returnResult;
     }
 
-    public void setReturnresult(String returnresult) {
-        this.returnresult = returnresult == null ? null : returnresult.trim();
+    public void setReturnResult(String returnResult) {
+        this.returnResult = returnResult;
     }
 
     public String getStatus() {
@@ -93,7 +93,7 @@ public class RechargeRecord {
     }
 
     public void setStatus(String status) {
-        this.status = status == null ? null : status.trim();
+        this.status = status;
     }
 
     public String getRemark() {
@@ -101,6 +101,6 @@ public class RechargeRecord {
     }
 
     public void setRemark(String remark) {
-        this.remark = remark == null ? null : remark.trim();
+        this.remark = remark;
     }
 }

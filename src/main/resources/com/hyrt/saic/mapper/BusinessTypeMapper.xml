@@ -3,7 +3,7 @@
 <mapper namespace="com.hyrt.saic.dao.BusinessTypeMapper" >
   <resultMap id="BaseResultMap" type="com.hyrt.saic.bean.BusinessType" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="businessName" property="businessname" jdbcType="VARCHAR" />
+    <result column="businessName" property="businessName" jdbcType="VARCHAR" />
     <result column="description" property="description" jdbcType="VARCHAR" />
     <result column="price" property="price" jdbcType="DECIMAL" />
     <result column="area" property="area" jdbcType="VARCHAR" />
@@ -26,7 +26,7 @@
     insert into t_business_type (id, businessName, description, 
       price, area, remark
       )
-    values (#{id,jdbcType=INTEGER}, #{businessname,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{businessName,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR},
       #{price,jdbcType=DECIMAL}, #{area,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
       )
   </insert>
@@ -36,7 +36,7 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="businessname != null" >
+      <if test="businessName != null" >
         businessName,
       </if>
       <if test="description != null" >
@@ -56,8 +56,8 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="businessname != null" >
-        #{businessname,jdbcType=VARCHAR},
+      <if test="businessName != null" >
+        #{businessName,jdbcType=VARCHAR},
       </if>
       <if test="description != null" >
         #{description,jdbcType=VARCHAR},
@@ -76,8 +76,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.hyrt.saic.bean.BusinessType" >
     update t_business_type
     <set >
-      <if test="businessname != null" >
-        businessName = #{businessname,jdbcType=VARCHAR},
+      <if test="businessName != null" >
+        businessName = #{businessName,jdbcType=VARCHAR},
       </if>
       <if test="description != null" >
         description = #{description,jdbcType=VARCHAR},
@@ -96,7 +96,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hyrt.saic.bean.BusinessType" >
     update t_business_type
-    set businessName = #{businessname,jdbcType=VARCHAR},
+    set businessName = #{businessName,jdbcType=VARCHAR},
       description = #{description,jdbcType=VARCHAR},
       price = #{price,jdbcType=DECIMAL},
       area = #{area,jdbcType=VARCHAR},

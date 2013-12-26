@@ -3,9 +3,9 @@ package com.hyrt.saic.bean;
 public class UserChagePackage {
     private Integer id;
 
-    private String userid;
+    private String userId;
 
-    private Integer chargepackageid;
+    private Integer chargePackageId;
 
     private String remark;
 
@@ -17,20 +17,20 @@ public class UserChagePackage {
         this.id = id;
     }
 
-    public String getUserid() {
-        return userid;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUserid(String userid) {
-        this.userid = userid == null ? null : userid.trim();
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
-    public Integer getChargepackageid() {
-        return chargepackageid;
+    public Integer getChargePackageId() {
+        return chargePackageId;
     }
 
-    public void setChargepackageid(Integer chargepackageid) {
-        this.chargepackageid = chargepackageid;
+    public void setChargePackageId(Integer chargePackageId) {
+        this.chargePackageId = chargePackageId;
     }
 
     public String getRemark() {
@@ -38,6 +38,6 @@ public class UserChagePackage {
     }
 
     public void setRemark(String remark) {
-        this.remark = remark == null ? null : remark.trim();
+        this.remark = remark;
     }
 }

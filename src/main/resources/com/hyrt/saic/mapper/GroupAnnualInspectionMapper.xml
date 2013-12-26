@@ -3,11 +3,11 @@
 <mapper namespace="com.hyrt.saic.dao.GroupAnnualInspectionMapper" >
   <resultMap id="BaseResultMap" type="com.hyrt.saic.bean.GroupAnnualInspection" >
     <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="groupId" property="groupid" jdbcType="BIGINT" />
-    <result column="inspectionYear" property="inspectionyear" jdbcType="VARCHAR" />
-    <result column="inspectionResult" property="inspectionresult" jdbcType="VARCHAR" />
-    <result column="inspectionDate" property="inspectiondate" jdbcType="VARCHAR" />
-    <result column="inspectionType" property="inspectiontype" jdbcType="VARCHAR" />
+    <result column="groupId" property="groupId" jdbcType="BIGINT" />
+    <result column="inspectionYear" property="inspectionYear" jdbcType="VARCHAR" />
+    <result column="inspectionResult" property="inspectionResult" jdbcType="VARCHAR" />
+    <result column="inspectionDate" property="inspectionDate" jdbcType="VARCHAR" />
+    <result column="inspectionType" property="inspectionType" jdbcType="VARCHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
@@ -27,8 +27,8 @@
     insert into t_group_annual_inspection (id, groupId, inspectionYear, 
       inspectionResult, inspectionDate, inspectionType, 
       remark)
-    values (#{id,jdbcType=BIGINT}, #{groupid,jdbcType=BIGINT}, #{inspectionyear,jdbcType=VARCHAR}, 
-      #{inspectionresult,jdbcType=VARCHAR}, #{inspectiondate,jdbcType=VARCHAR}, #{inspectiontype,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=BIGINT}, #{groupId,jdbcType=BIGINT}, #{inspectionYear,jdbcType=VARCHAR},
+      #{inspectionResult,jdbcType=VARCHAR}, #{inspectionDate,jdbcType=VARCHAR}, #{inspectionType,jdbcType=VARCHAR},
       #{remark,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.hyrt.saic.bean.GroupAnnualInspection" >
@@ -37,19 +37,19 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="groupid != null" >
+      <if test="groupId != null" >
         groupId,
       </if>
-      <if test="inspectionyear != null" >
+      <if test="inspectionYear != null" >
         inspectionYear,
       </if>
-      <if test="inspectionresult != null" >
+      <if test="inspectionResult != null" >
         inspectionResult,
       </if>
-      <if test="inspectiondate != null" >
+      <if test="inspectionDate != null" >
         inspectionDate,
       </if>
-      <if test="inspectiontype != null" >
+      <if test="inspectionType != null" >
         inspectionType,
       </if>
       <if test="remark != null" >
@@ -60,20 +60,20 @@
       <if test="id != null" >
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="groupid != null" >
-        #{groupid,jdbcType=BIGINT},
+      <if test="groupId != null" >
+        #{groupId,jdbcType=BIGINT},
       </if>
-      <if test="inspectionyear != null" >
-        #{inspectionyear,jdbcType=VARCHAR},
+      <if test="inspectionYear != null" >
+        #{inspectionYear,jdbcType=VARCHAR},
       </if>
-      <if test="inspectionresult != null" >
-        #{inspectionresult,jdbcType=VARCHAR},
+      <if test="inspectionResult != null" >
+        #{inspectionResult,jdbcType=VARCHAR},
       </if>
-      <if test="inspectiondate != null" >
-        #{inspectiondate,jdbcType=VARCHAR},
+      <if test="inspectionDate != null" >
+        #{inspectionDate,jdbcType=VARCHAR},
       </if>
-      <if test="inspectiontype != null" >
-        #{inspectiontype,jdbcType=VARCHAR},
+      <if test="inspectionType != null" >
+        #{inspectionType,jdbcType=VARCHAR},
       </if>
       <if test="remark != null" >
         #{remark,jdbcType=VARCHAR},
@@ -83,20 +83,20 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.hyrt.saic.bean.GroupAnnualInspection" >
     update t_group_annual_inspection
     <set >
-      <if test="groupid != null" >
-        groupId = #{groupid,jdbcType=BIGINT},
+      <if test="groupId != null" >
+        groupId = #{groupId,jdbcType=BIGINT},
       </if>
-      <if test="inspectionyear != null" >
-        inspectionYear = #{inspectionyear,jdbcType=VARCHAR},
+      <if test="inspectionYear != null" >
+        inspectionYear = #{inspectionYear,jdbcType=VARCHAR},
       </if>
-      <if test="inspectionresult != null" >
-        inspectionResult = #{inspectionresult,jdbcType=VARCHAR},
+      <if test="inspectionResult != null" >
+        inspectionResult = #{inspectionResult,jdbcType=VARCHAR},
       </if>
-      <if test="inspectiondate != null" >
-        inspectionDate = #{inspectiondate,jdbcType=VARCHAR},
+      <if test="inspectionDate != null" >
+        inspectionDate = #{inspectionDate,jdbcType=VARCHAR},
       </if>
-      <if test="inspectiontype != null" >
-        inspectionType = #{inspectiontype,jdbcType=VARCHAR},
+      <if test="inspectionType != null" >
+        inspectionType = #{inspectionType,jdbcType=VARCHAR},
       </if>
       <if test="remark != null" >
         remark = #{remark,jdbcType=VARCHAR},
@@ -106,11 +106,11 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hyrt.saic.bean.GroupAnnualInspection" >
     update t_group_annual_inspection
-    set groupId = #{groupid,jdbcType=BIGINT},
-      inspectionYear = #{inspectionyear,jdbcType=VARCHAR},
-      inspectionResult = #{inspectionresult,jdbcType=VARCHAR},
-      inspectionDate = #{inspectiondate,jdbcType=VARCHAR},
-      inspectionType = #{inspectiontype,jdbcType=VARCHAR},
+    set groupId = #{groupId,jdbcType=BIGINT},
+      inspectionYear = #{inspectionYear,jdbcType=VARCHAR},
+      inspectionResult = #{inspectionResult,jdbcType=VARCHAR},
+      inspectionDate = #{inspectionDate,jdbcType=VARCHAR},
+      inspectionType = #{inspectionType,jdbcType=VARCHAR},
       remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>

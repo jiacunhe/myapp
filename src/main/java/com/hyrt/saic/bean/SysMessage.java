@@ -5,11 +5,11 @@ import java.util.Date;
 public class SysMessage {
     private Integer id;
 
-    private String userid;
+    private String userId;
 
     private String content;
 
-    private Date createtime;
+    private Date createTime;
 
     private String type;
 
@@ -25,12 +25,12 @@ public class SysMessage {
         this.id = id;
     }
 
-    public String getUserid() {
-        return userid;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUserid(String userid) {
-        this.userid = userid == null ? null : userid.trim();
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getContent() {
@@ -38,15 +38,15 @@ public class SysMessage {
     }
 
     public void setContent(String content) {
-        this.content = content == null ? null : content.trim();
+        this.content = content;
     }
 
-    public Date getCreatetime() {
-        return createtime;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreatetime(Date createtime) {
-        this.createtime = createtime;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     public String getType() {
@@ -54,7 +54,7 @@ public class SysMessage {
     }
 
     public void setType(String type) {
-        this.type = type == null ? null : type.trim();
+        this.type = type;
     }
 
     public String getStatus() {
@@ -62,7 +62,7 @@ public class SysMessage {
     }
 
     public void setStatus(String status) {
-        this.status = status == null ? null : status.trim();
+        this.status = status;
     }
 
     public String getRemark() {
@@ -70,6 +70,6 @@ public class SysMessage {
     }
 
     public void setRemark(String remark) {
-        this.remark = remark == null ? null : remark.trim();
+        this.remark = remark;
     }
 }

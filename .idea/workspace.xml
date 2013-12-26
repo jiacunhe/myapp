@@ -41,12 +41,12 @@
     <file path="/log4j.properties" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1387776049965" ignored="false" />
     <file path="/index.ftl" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1387776324949" ignored="false" />
     <file path="/pom.xml" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1387780137797" ignored="false" />
-    <file path="/TestController.java" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1387959490244" ignored="false" />
+    <file path="/TestController.java" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388042006405" ignored="false" />
     <file path="/ApplicationContext.xml" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1387786720251" ignored="false" />
     <file path="/TestService.java" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1387784788432" ignored="false" />
     <file path="/TestServiceImpl.java" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1387852856754" ignored="false" />
     <file path="/UserMapper.java" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1387786102013" ignored="false" />
-    <file path="/User.java" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388029908402" ignored="false" />
+    <file path="/User.java" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388050971165" ignored="false" />
     <file path="/CommonMapper.java" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1387958612469" ignored="false" />
     <file path="/CommonService.java" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1387958394256" ignored="false" />
     <file path="/CommonServiceImpl.java" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1387959137364" ignored="false" />
@@ -58,9 +58,58 @@
     <file path="E:/106612315-server/106612315-server/src/main/java/com/hyrt/saic/controller/TestController.java" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1387874716287" ignored="false" />
     <file path="$PROJECT_DIR$/../../SAIC/.idea/workspace.xml" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1387933902230" ignored="false" />
     <file path="$PROJECT_DIR$/.idea/workspace.xml" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1387960399887" ignored="false" />
-    <file path="/PersonGroupInfo.java" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388030080034" ignored="false" />
+    <file path="/PersonGroupInfo.java" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388051137329" ignored="false" />
     <file path="/DaoOperateType.java" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1387947569751" ignored="false" />
     <file path="$PROJECT_DIR$/target/classes/com/hyrt/saic/mapper/CommonMapper.xml" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1387960396436" ignored="false" />
+    <file path="/AccountInfo.java" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388041597451" ignored="false" />
+    <file path="/BusinessType.java" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388041653680" ignored="false" />
+    <file path="/ChargePackage.java" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388041706688" ignored="false" />
+    <file path="/ChargePackageDetaill.java" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388042120004" ignored="false" />
+    <file path="/GroupAnnualInspection.java" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388042829336" ignored="false" />
+    <file path="/GroupChanging.java" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388042885565" ignored="false" />
+    <file path="/GroupExternalInvestment.java" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388042947640" ignored="false" />
+    <file path="/GroupSenior.java" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388042984427" ignored="false" />
+    <file path="/GroupShareholderInfo.java" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388043025044" ignored="false" />
+    <file path="/Order.java" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388043269868" ignored="false" />
+    <file path="/OrderDetail.java" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388043319011" ignored="false" />
+    <file path="/RechargeRecord.java" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388043427538" ignored="false" />
+    <file path="/RoleSysResource.java" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388043457587" ignored="false" />
+    <file path="/SpendingDetail.java" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388044111533" ignored="false" />
+    <file path="/SysMessage.java" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388044218942" ignored="false" />
+    <file path="/UserApplyPackage.java" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388044272478" ignored="false" />
+    <file path="/UserChagePackage.java" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388044303004" ignored="false" />
+    <file path="/UserOperation.java" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388044330317" ignored="false" />
+    <file path="/VipLevel.java" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388044347629" ignored="false" />
+    <file path="/GroupInfo.java" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388044545051" ignored="false" />
+    <file path="/OrderResult.java" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388044594115" ignored="false" />
+    <file path="/Role.java" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388044634250" ignored="false" />
+    <file path="/SysResoure.java" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388044668569" ignored="false" />
+    <file path="/UserMapper.xml" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388047110853" ignored="false" />
+    <file path="/UserAssignPackage.java" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388044913140" ignored="false" />
+    <file path="/UserRole.java" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388044941983" ignored="false" />
+    <file path="/AccountInfoMapper.xml" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388045093776" ignored="false" />
+    <file path="/BusinessTypeMapper.xml" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388045107695" ignored="false" />
+    <file path="/ChargePackageDetaillMapper.xml" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388045208527" ignored="false" />
+    <file path="/ChargePackageMapper.xml" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388045274292" ignored="false" />
+    <file path="/GroupAnnualInspectionMapper.xml" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388045490676" ignored="false" />
+    <file path="/UserRoleMapper.xml" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388045878321" ignored="false" />
+    <file path="/UserOperationMapper.xml" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388045985498" ignored="false" />
+    <file path="/UserChagePackageMapper.xml" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388047181451" ignored="false" />
+    <file path="/UserAssignPackageMapper.xml" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388047348206" ignored="false" />
+    <file path="/UserApplyPackageMapper.xml" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388047515563" ignored="false" />
+    <file path="/SysResoureMapper.xml" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388047585704" ignored="false" />
+    <file path="/SysMessageMapper.xml" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388047883470" ignored="false" />
+    <file path="/SpendingDetailMapper.xml" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388048116152" ignored="false" />
+    <file path="/RoleSysResourceMapper.xml" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388048140609" ignored="false" />
+    <file path="/RoleMapper.xml" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388048187760" ignored="false" />
+    <file path="/RechargeRecordMapper.xml" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388048377206" ignored="false" />
+    <file path="/PersonGroupInfoMapper.xml" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388048457959" ignored="false" />
+    <file path="/OrderResultMapper.xml" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388048535102" ignored="false" />
+    <file path="/OrderMapper.xml" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388048789961" ignored="false" />
+    <file path="/OrderDetailMapper.xml" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388048905451" ignored="false" />
+    <file path="/GroupShareholderInfoMapper.xml" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388049171930" ignored="false" />
+    <file path="/GroupSeniorMapper.xml" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388049280088" ignored="false" />
+    <file path="/GroupInfoMapper.xml" changelist="2041ba55-1cc4-4891-9ad8-9ae1d8375249" time="1388050146162" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,10 +170,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="TestController.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="TestController.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/hyrt/saic/controller/TestController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="69" selection-start="714" selection-end="714" vertical-scroll-proportion="0.7359155">
+            <state line="86" column="0" selection-start="2516" selection-end="2516" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -132,28 +181,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AccountInfo.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hyrt/saic/bean/AccountInfo.java">
+      <file leaf-file-name="CommonServiceImpl.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hyrt/saic/service/impl/CommonServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="122" column="57" selection-start="4084" selection-end="4087" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AccountInfoMapper.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/AccountInfoMapper.java">
+      <file leaf-file-name="PersonGroupInfo.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hyrt/saic/bean/PersonGroupInfo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AccountInfoMapper.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/AccountInfoMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="48" column="49" selection-start="834" selection-end="834" vertical-scroll-proportion="0.8028169">
               <folding />
             </state>
           </provider>
@@ -169,20 +209,20 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/resources/ApplicationContext.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hyrt/saic/service/TestService.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$USER_HOME$/Desktop/catalina.out" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hyrt/saic/util/enums/PersonGroupInfoType.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hyrt/saic/util/enums/DaoOperateType.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hyrt/saic/util/enums/DataOperateType.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hyrt/saic/service/CommonService.java" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/jsp/index.jsp" />
+        <option value="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/SysResoureMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/SysMessageMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/SpendingDetailMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/RoleSysResourceMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/RoleMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/RechargeRecordMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/PersonGroupInfoMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/OrderResultMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/OrderMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/OrderDetailMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/GroupShareholderInfoMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/GroupSeniorMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/GroupInfoMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/hyrt/saic/service/impl/CommonServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/CommonMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/CommonMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hyrt/saic/controller/TestController.java" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/main/java/com/hyrt/saic/bean/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hyrt/saic/bean/PersonGroupInfo.java" />
       </list>
@@ -285,28 +325,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SAIC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="106612315-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="PackagesPane" />
@@ -335,8 +353,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\workbench\server\106612315-server\src\main\resources\com\hyrt\saic\mapper" />
       <recent name="E:\workbench\server\106612315-server\src\main\java\com\hyrt\saic\dao" />
+      <recent name="E:\workbench\server\106612315-server\src\main\resources\com\hyrt\saic\mapper" />
       <recent name="E:\workbench\server\106612315-server\src\main\java\com\hyrt\saic\bean" />
       <recent name="E:\workbench\server\106612315-server\src\main\java\com\hyrt\saic\controller" />
       <recent name="E:\workbench\server\106612315-server\src\main\java\com\hyrt\saic\service\impl" />
@@ -566,31 +584,31 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="1" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="JavaEE:App" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32941177" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32941177" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.11092437" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32941177" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34848484" sideWeight="0.11092437" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34848484" sideWeight="0.11092437" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.88907564" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -662,91 +680,117 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hyrt/saic/util/enums/DataOperateType.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/SpendingDetailMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="4" selection-start="333" selection-end="333" vertical-scroll-proportion="0.6742857" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/jsp/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="34" selection-start="219" selection-end="219" vertical-scroll-proportion="0.25675675" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/CommonMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="21" selection-start="1161" selection-end="1161" vertical-scroll-proportion="0.5913978" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hyrt/saic/service/impl/CommonServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="46" selection-start="985" selection-end="985" vertical-scroll-proportion="-9.002786" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hyrt/saic/service/CommonService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="77" selection-start="654" selection-end="654" vertical-scroll-proportion="0.5913978" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/CommonMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="0" selection-start="534" selection-end="534" vertical-scroll-proportion="0.5913978" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hyrt/saic/bean/AccountInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="93" column="24" selection-start="3470" selection-end="3470" vertical-scroll-proportion="3.1109154">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/AccountInfoMapper.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/RoleMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="66" column="29" selection-start="2286" selection-end="2286" vertical-scroll-proportion="2.2077465">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/AccountInfoMapper.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/RoleSysResourceMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="77" column="30" selection-start="2847" selection-end="2847" vertical-scroll-proportion="0.6690141">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hyrt/saic/bean/User.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/RechargeRecordMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="128" column="20" selection-start="2650" selection-end="2650" vertical-scroll-proportion="0.34234235">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hyrt/saic/util/enums/PersonGroupInfoType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="31" selection-start="200" selection-end="219" vertical-scroll-proportion="0.31318682">
+        <state line="11" column="51" selection-start="831" selection-end="831" vertical-scroll-proportion="-3.846831">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hyrt/saic/bean/PersonGroupInfo.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/PersonGroupInfoMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="42" selection-start="750" selection-end="750" vertical-scroll-proportion="0.568662">
+        <state line="159" column="24" selection-start="5160" selection-end="5160" vertical-scroll-proportion="5.318662">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/OrderResultMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="116" column="28" selection-start="4187" selection-end="4187" vertical-scroll-proportion="3.8802817">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/OrderMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="140" column="24" selection-start="4995" selection-end="4995" vertical-scroll-proportion="4.683099">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/OrderDetailMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="101" column="22" selection-start="3614" selection-end="3614" vertical-scroll-proportion="3.3785212">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/GroupShareholderInfoMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="112" column="40" selection-start="4490" selection-end="4490" vertical-scroll-proportion="3.7464788">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/GroupSeniorMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="71" column="121" selection-start="2623" selection-end="2623" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/GroupExternalInvestmentMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-1.8063381">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/GroupInfoMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="108" column="25" selection-start="5065" selection-end="5065" vertical-scroll-proportion="-5.0545774">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hyrt/saic/controller/TestController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="69" selection-start="714" selection-end="714" vertical-scroll-proportion="0.7359155">
+        <state line="86" column="0" selection-start="2516" selection-end="2516" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hyrt/saic/bean/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="188" column="21" selection-start="3610" selection-end="3610" vertical-scroll-proportion="0.6234234">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hyrt/saic/service/impl/CommonServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="122" column="57" selection-start="4084" selection-end="4087" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hyrt/saic/bean/PersonGroupInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="48" column="49" selection-start="834" selection-end="834" vertical-scroll-proportion="0.8028169">
+          <folding />
         </state>
       </provider>
     </entry>
@@ -805,7 +849,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>SAIC</last-edited>
+          <last-edited>Web|SAIC</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

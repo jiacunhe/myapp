@@ -3,7 +3,7 @@
 <mapper namespace="com.hyrt.saic.dao.VipLevelMapper" >
   <resultMap id="BaseResultMap" type="com.hyrt.saic.bean.VipLevel" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="levelName" property="levelname" jdbcType="VARCHAR" />
+    <result column="levelName" property="levelName" jdbcType="VARCHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
@@ -22,7 +22,7 @@
   <insert id="insert" parameterType="com.hyrt.saic.bean.VipLevel" >
     insert into t_vip_level (id, levelName, remark
       )
-    values (#{id,jdbcType=INTEGER}, #{levelname,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
+    values (#{id,jdbcType=INTEGER}, #{levelName,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.hyrt.saic.bean.VipLevel" >
@@ -31,7 +31,7 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="levelname != null" >
+      <if test="levelName != null" >
         levelName,
       </if>
       <if test="remark != null" >
@@ -42,8 +42,8 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="levelname != null" >
-        #{levelname,jdbcType=VARCHAR},
+      <if test="levelName != null" >
+        #{levelName,jdbcType=VARCHAR},
       </if>
       <if test="remark != null" >
         #{remark,jdbcType=VARCHAR},
@@ -53,8 +53,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.hyrt.saic.bean.VipLevel" >
     update t_vip_level
     <set >
-      <if test="levelname != null" >
-        levelName = #{levelname,jdbcType=VARCHAR},
+      <if test="levelName != null" >
+        levelName = #{levelName,jdbcType=VARCHAR},
       </if>
       <if test="remark != null" >
         remark = #{remark,jdbcType=VARCHAR},
@@ -64,7 +64,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hyrt.saic.bean.VipLevel" >
     update t_vip_level
-    set levelName = #{levelname,jdbcType=VARCHAR},
+    set levelName = #{levelName,jdbcType=VARCHAR},
       remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>

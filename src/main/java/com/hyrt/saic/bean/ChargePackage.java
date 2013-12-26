@@ -5,13 +5,13 @@ import java.math.BigDecimal;
 public class ChargePackage {
     private Integer id;
 
-    private String packagename;
+    private String packageName;
 
     private BigDecimal price;
 
     private String type;
 
-    private String userid;
+    private String userId;
 
     private String remark;
 
@@ -23,12 +23,12 @@ public class ChargePackage {
         this.id = id;
     }
 
-    public String getPackagename() {
-        return packagename;
+    public String getPackageName() {
+        return packageName;
     }
 
-    public void setPackagename(String packagename) {
-        this.packagename = packagename == null ? null : packagename.trim();
+    public void setPackageName(String packageName) {
+        this.packageName = packageName == null ? null : packageName.trim();
     }
 
     public BigDecimal getPrice() {
@@ -47,12 +47,12 @@ public class ChargePackage {
         this.type = type == null ? null : type.trim();
     }
 
-    public String getUserid() {
-        return userid;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUserid(String userid) {
-        this.userid = userid == null ? null : userid.trim();
+    public void setUserId(String userId) {
+        this.userId = userId == null ? null : userId.trim();
     }
 
     public String getRemark() {

@@ -3,8 +3,8 @@
 <mapper namespace="com.hyrt.saic.dao.SysResoureMapper" >
   <resultMap id="BaseResultMap" type="com.hyrt.saic.bean.SysResoure" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="resourceName" property="resourcename" jdbcType="VARCHAR" />
-    <result column="resourceUri" property="resourceuri" jdbcType="VARCHAR" />
+    <result column="resourceName" property="resourceName" jdbcType="VARCHAR" />
+    <result column="resourceUri" property="resourceUri" jdbcType="VARCHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
@@ -23,7 +23,7 @@
   <insert id="insert" parameterType="com.hyrt.saic.bean.SysResoure" >
     insert into t_sys_resource (id, resourceName, resourceUri, 
       remark)
-    values (#{id,jdbcType=INTEGER}, #{resourcename,jdbcType=VARCHAR}, #{resourceuri,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{resourceName,jdbcType=VARCHAR}, #{resourceUri,jdbcType=VARCHAR},
       #{remark,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.hyrt.saic.bean.SysResoure" >
@@ -32,10 +32,10 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="resourcename != null" >
+      <if test="resourceName != null" >
         resourceName,
       </if>
-      <if test="resourceuri != null" >
+      <if test="resourceUri != null" >
         resourceUri,
       </if>
       <if test="remark != null" >
@@ -46,11 +46,11 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="resourcename != null" >
-        #{resourcename,jdbcType=VARCHAR},
+      <if test="resourceName != null" >
+        #{resourceName,jdbcType=VARCHAR},
       </if>
-      <if test="resourceuri != null" >
-        #{resourceuri,jdbcType=VARCHAR},
+      <if test="resourceUri != null" >
+        #{resourceUri,jdbcType=VARCHAR},
       </if>
       <if test="remark != null" >
         #{remark,jdbcType=VARCHAR},
@@ -60,11 +60,11 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.hyrt.saic.bean.SysResoure" >
     update t_sys_resource
     <set >
-      <if test="resourcename != null" >
-        resourceName = #{resourcename,jdbcType=VARCHAR},
+      <if test="resourceName != null" >
+        resourceName = #{resourceName,jdbcType=VARCHAR},
       </if>
-      <if test="resourceuri != null" >
-        resourceUri = #{resourceuri,jdbcType=VARCHAR},
+      <if test="resourceUri != null" >
+        resourceUri = #{resourceUri,jdbcType=VARCHAR},
       </if>
       <if test="remark != null" >
         remark = #{remark,jdbcType=VARCHAR},
@@ -74,8 +74,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hyrt.saic.bean.SysResoure" >
     update t_sys_resource
-    set resourceName = #{resourcename,jdbcType=VARCHAR},
-      resourceUri = #{resourceuri,jdbcType=VARCHAR},
+    set resourceName = #{resourceName,jdbcType=VARCHAR},
+      resourceUri = #{resourceUri,jdbcType=VARCHAR},
       remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>

@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 public class BusinessType {
     private Integer id;
 
-    private String businessname;
+    private String businessName;
 
     private String description;
 
@@ -23,12 +23,12 @@ public class BusinessType {
         this.id = id;
     }
 
-    public String getBusinessname() {
-        return businessname;
+    public String getBusinessName() {
+        return businessName;
     }
 
-    public void setBusinessname(String businessname) {
-        this.businessname = businessname == null ? null : businessname.trim();
+    public void setBusinessName(String businessName) {
+        this.businessName = businessName == null ? null : businessName.trim();
     }
 
     public String getDescription() {

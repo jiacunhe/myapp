@@ -5,13 +5,13 @@ import java.util.Date;
 public class UserOperation {
     private Integer id;
 
-    private String userid;
+    private String userId;
 
-    private String resourceuri;
+    private String resourceUri;
 
     private String description;
 
-    private Date operatetime;
+    private Date operateTime;
 
     private String remark;
 
@@ -23,20 +23,20 @@ public class UserOperation {
         this.id = id;
     }
 
-    public String getUserid() {
-        return userid;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUserid(String userid) {
-        this.userid = userid == null ? null : userid.trim();
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
-    public String getResourceuri() {
-        return resourceuri;
+    public String getResourceUri() {
+        return resourceUri;
     }
 
-    public void setResourceuri(String resourceuri) {
-        this.resourceuri = resourceuri == null ? null : resourceuri.trim();
+    public void setResourceUri(String resourceUri) {
+        this.resourceUri = resourceUri;
     }
 
     public String getDescription() {
@@ -44,15 +44,15 @@ public class UserOperation {
     }
 
     public void setDescription(String description) {
-        this.description = description == null ? null : description.trim();
+        this.description = description;
     }
 
-    public Date getOperatetime() {
-        return operatetime;
+    public Date getOperateTime() {
+        return operateTime;
     }
 
-    public void setOperatetime(Date operatetime) {
-        this.operatetime = operatetime;
+    public void setOperateTime(Date operateTime) {
+        this.operateTime = operateTime;
     }
 
     public String getRemark() {
@@ -60,6 +60,6 @@ public class UserOperation {
     }
 
     public void setRemark(String remark) {
-        this.remark = remark == null ? null : remark.trim();
+        this.remark = remark;
     }
 }

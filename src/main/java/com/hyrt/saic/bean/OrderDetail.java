@@ -3,13 +3,13 @@ package com.hyrt.saic.bean;
 public class OrderDetail {
     private Long id;
 
-    private String orderid;
+    private String orderId;
 
-    private String monitortype;
+    private String monitorType;
 
-    private String objname;
+    private String objName;
 
-    private String objcode;
+    private String objCode;
 
     private String remark;
 
@@ -21,36 +21,36 @@ public class OrderDetail {
         this.id = id;
     }
 
-    public String getOrderid() {
-        return orderid;
+    public String getOrderId() {
+        return orderId;
     }
 
-    public void setOrderid(String orderid) {
-        this.orderid = orderid == null ? null : orderid.trim();
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
     }
 
-    public String getMonitortype() {
-        return monitortype;
+    public String getMonitorType() {
+        return monitorType;
     }
 
-    public void setMonitortype(String monitortype) {
-        this.monitortype = monitortype == null ? null : monitortype.trim();
+    public void setMonitorType(String monitorType) {
+        this.monitorType = monitorType;
     }
 
-    public String getObjname() {
-        return objname;
+    public String getObjName() {
+        return objName;
     }
 
-    public void setObjname(String objname) {
-        this.objname = objname == null ? null : objname.trim();
+    public void setObjName(String objName) {
+        this.objName = objName;
     }
 
-    public String getObjcode() {
-        return objcode;
+    public String getObjCode() {
+        return objCode;
     }
 
-    public void setObjcode(String objcode) {
-        this.objcode = objcode == null ? null : objcode.trim();
+    public void setObjCode(String objCode) {
+        this.objCode = objCode;
     }
 
     public String getRemark() {
@@ -58,6 +58,6 @@ public class OrderDetail {
     }
 
     public void setRemark(String remark) {
-        this.remark = remark == null ? null : remark.trim();
+        this.remark = remark;
     }
 }

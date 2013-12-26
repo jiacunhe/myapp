@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.hyrt.saic.dao.AccountInfoMapper" >
   <resultMap id="BaseResultMap" type="com.hyrt.saic.bean.AccountInfo" >
-    <id column="userId" property="userid" jdbcType="VARCHAR" />
-    <result column="businessId" property="businessid" jdbcType="INTEGER" />
+    <id column="userId" property="userId" jdbcType="VARCHAR" />
+    <result column="businessId" property="businessId" jdbcType="INTEGER" />
     <result column="balance" property="balance" jdbcType="INTEGER" />
     <result column="summation" property="summation" jdbcType="INTEGER" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
@@ -15,25 +15,25 @@
     select 
     <include refid="Base_Column_List" />
     from t_account_info
-    where userId = #{userid,jdbcType=VARCHAR}
+    where userId = #{userId,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from t_account_info
-    where userId = #{userid,jdbcType=VARCHAR}
+    where userId = #{userId,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.hyrt.saic.bean.AccountInfo" >
     insert into t_account_info (userId, businessId, balance, 
       summation, remark)
-    values (#{userid,jdbcType=VARCHAR}, #{businessid,jdbcType=INTEGER}, #{balance,jdbcType=INTEGER}, 
+    values (#{userId,jdbcType=VARCHAR}, #{businessId,jdbcType=INTEGER}, #{balance,jdbcType=INTEGER},
       #{summation,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.hyrt.saic.bean.AccountInfo" >
     insert into t_account_info
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="userid != null" >
+      <if test="userId != null" >
         userId,
       </if>
-      <if test="businessid != null" >
+      <if test="businessId != null" >
         businessId,
       </if>
       <if test="balance != null" >
@@ -47,11 +47,11 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="userid != null" >
-        #{userid,jdbcType=VARCHAR},
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
       </if>
-      <if test="businessid != null" >
-        #{businessid,jdbcType=INTEGER},
+      <if test="businessId != null" >
+        #{businessId,jdbcType=INTEGER},
       </if>
       <if test="balance != null" >
         #{balance,jdbcType=INTEGER},
@@ -67,8 +67,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.hyrt.saic.bean.AccountInfo" >
     update t_account_info
     <set >
-      <if test="businessid != null" >
-        businessId = #{businessid,jdbcType=INTEGER},
+      <if test="businessId != null" >
+        businessId = #{businessId,jdbcType=INTEGER},
       </if>
       <if test="balance != null" >
         balance = #{balance,jdbcType=INTEGER},
@@ -80,14 +80,14 @@
         remark = #{remark,jdbcType=VARCHAR},
       </if>
     </set>
-    where userId = #{userid,jdbcType=VARCHAR}
+    where userId = #{userId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hyrt.saic.bean.AccountInfo" >
     update t_account_info
-    set businessId = #{businessid,jdbcType=INTEGER},
+    set businessId = #{businessId,jdbcType=INTEGER},
       balance = #{balance,jdbcType=INTEGER},
       summation = #{summation,jdbcType=INTEGER},
       remark = #{remark,jdbcType=VARCHAR}
-    where userId = #{userid,jdbcType=VARCHAR}
+    where userId = #{userId,jdbcType=VARCHAR}
   </update>
 </mapper>

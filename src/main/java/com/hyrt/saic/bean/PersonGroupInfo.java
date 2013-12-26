@@ -5,7 +5,7 @@ import com.hyrt.saic.util.enums.PersonGroupInfoType;
 public class PersonGroupInfo {
     private Long id;
 
-    private String persontype;
+    private String personType;
 
     private String a;
 
@@ -23,15 +23,15 @@ public class PersonGroupInfo {
 
     private String remark;
 
-    private String orderid;
+    private String orderId;
 
 
     public  PersonGroupInfo(){
 
     }
-    public  PersonGroupInfo(PersonGroupInfoType persontype,String a){
+    public  PersonGroupInfo(PersonGroupInfoType personType,String a){
                                       this.a = a;
-        this.persontype = persontype.toString();
+        this.personType = personType.toString();
     }
 
     public Long getId() {
@@ -42,12 +42,12 @@ public class PersonGroupInfo {
         this.id = id;
     }
 
-    public String getPersontype() {
-        return persontype;
+    public String getPersonType() {
+        return personType;
     }
 
-    public void setPersontype(PersonGroupInfoType persontype) {
-        this.persontype = persontype == null ? null : persontype.toString();
+    public void setPersonType(PersonGroupInfoType personType) {
+        this.personType = personType == null ? null : personType.toString();
     }
 
     public String getA() {
@@ -114,11 +114,11 @@ public class PersonGroupInfo {
         this.remark = remark == null ? null : remark.trim();
     }
 
-    public String getOrderid() {
-        return orderid;
+    public String getOrderId() {
+        return orderId;
     }
 
-    public void setOrderid(String orderid) {
-        this.orderid = orderid == null ? null : orderid.trim();
+    public void setOrderId(String orderId) {
+        this.orderId = orderId == null ? null : orderId.trim();
     }
 }

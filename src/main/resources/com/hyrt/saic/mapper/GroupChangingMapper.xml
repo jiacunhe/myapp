@@ -3,10 +3,10 @@
 <mapper namespace="com.hyrt.saic.dao.GroupChangingMapper" >
   <resultMap id="BaseResultMap" type="com.hyrt.saic.bean.GroupChanging" >
     <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="groupId" property="groupid" jdbcType="BIGINT" />
-    <result column="changeItem" property="changeitem" jdbcType="VARCHAR" />
-    <result column="beforeChange" property="beforechange" jdbcType="VARCHAR" />
-    <result column="afterChange" property="afterchange" jdbcType="VARCHAR" />
+    <result column="groupId" property="groupId" jdbcType="BIGINT" />
+    <result column="changeItem" property="changeItem" jdbcType="VARCHAR" />
+    <result column="beforeChange" property="beforeChange" jdbcType="VARCHAR" />
+    <result column="afterChange" property="afterChange" jdbcType="VARCHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
@@ -26,8 +26,8 @@
     insert into t_group_changing (id, groupId, changeItem, 
       beforeChange, afterChange, remark
       )
-    values (#{id,jdbcType=BIGINT}, #{groupid,jdbcType=BIGINT}, #{changeitem,jdbcType=VARCHAR}, 
-      #{beforechange,jdbcType=VARCHAR}, #{afterchange,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
+    values (#{id,jdbcType=BIGINT}, #{groupId,jdbcType=BIGINT}, #{changeItem,jdbcType=VARCHAR},
+      #{beforeChange,jdbcType=VARCHAR}, #{afterChange,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.hyrt.saic.bean.GroupChanging" >
@@ -36,16 +36,16 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="groupid != null" >
+      <if test="groupId != null" >
         groupId,
       </if>
-      <if test="changeitem != null" >
+      <if test="changeItem != null" >
         changeItem,
       </if>
-      <if test="beforechange != null" >
+      <if test="beforeChange != null" >
         beforeChange,
       </if>
-      <if test="afterchange != null" >
+      <if test="afterChange != null" >
         afterChange,
       </if>
       <if test="remark != null" >
@@ -56,17 +56,17 @@
       <if test="id != null" >
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="groupid != null" >
-        #{groupid,jdbcType=BIGINT},
+      <if test="groupId != null" >
+        #{groupId,jdbcType=BIGINT},
       </if>
-      <if test="changeitem != null" >
-        #{changeitem,jdbcType=VARCHAR},
+      <if test="changeItem != null" >
+        #{changeItem,jdbcType=VARCHAR},
       </if>
-      <if test="beforechange != null" >
-        #{beforechange,jdbcType=VARCHAR},
+      <if test="beforeChange != null" >
+        #{beforeChange,jdbcType=VARCHAR},
       </if>
-      <if test="afterchange != null" >
-        #{afterchange,jdbcType=VARCHAR},
+      <if test="afterChange != null" >
+        #{afterChange,jdbcType=VARCHAR},
       </if>
       <if test="remark != null" >
         #{remark,jdbcType=VARCHAR},
@@ -76,17 +76,17 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.hyrt.saic.bean.GroupChanging" >
     update t_group_changing
     <set >
-      <if test="groupid != null" >
-        groupId = #{groupid,jdbcType=BIGINT},
+      <if test="groupId != null" >
+        groupId = #{groupId,jdbcType=BIGINT},
       </if>
-      <if test="changeitem != null" >
-        changeItem = #{changeitem,jdbcType=VARCHAR},
+      <if test="changeItem != null" >
+        changeItem = #{changeItem,jdbcType=VARCHAR},
       </if>
-      <if test="beforechange != null" >
-        beforeChange = #{beforechange,jdbcType=VARCHAR},
+      <if test="beforeChange != null" >
+        beforeChange = #{beforeChange,jdbcType=VARCHAR},
       </if>
-      <if test="afterchange != null" >
-        afterChange = #{afterchange,jdbcType=VARCHAR},
+      <if test="afterChange != null" >
+        afterChange = #{afterChange,jdbcType=VARCHAR},
       </if>
       <if test="remark != null" >
         remark = #{remark,jdbcType=VARCHAR},
@@ -96,10 +96,10 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hyrt.saic.bean.GroupChanging" >
     update t_group_changing
-    set groupId = #{groupid,jdbcType=BIGINT},
-      changeItem = #{changeitem,jdbcType=VARCHAR},
-      beforeChange = #{beforechange,jdbcType=VARCHAR},
-      afterChange = #{afterchange,jdbcType=VARCHAR},
+    set groupId = #{groupId,jdbcType=BIGINT},
+      changeItem = #{changeItem,jdbcType=VARCHAR},
+      beforeChange = #{beforeChange,jdbcType=VARCHAR},
+      afterChange = #{afterChange,jdbcType=VARCHAR},
       remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>

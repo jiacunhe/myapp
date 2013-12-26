@@ -5,11 +5,11 @@ import java.util.Date;
 public class OrderResult {
     private Integer id;
 
-    private String orderid;
+    private String orderId;
 
     private String status;
 
-    private Date returntime;
+    private Date returnTime;
 
     private String remark;
 
@@ -23,13 +23,6 @@ public class OrderResult {
         this.id = id;
     }
 
-    public String getOrderid() {
-        return orderid;
-    }
-
-    public void setOrderid(String orderid) {
-        this.orderid = orderid == null ? null : orderid.trim();
-    }
 
     public String getStatus() {
         return status;
@@ -39,12 +32,20 @@ public class OrderResult {
         this.status = status == null ? null : status.trim();
     }
 
-    public Date getReturntime() {
-        return returntime;
+    public String getOrderId() {
+        return orderId;
     }
 
-    public void setReturntime(Date returntime) {
-        this.returntime = returntime;
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
+    }
+
+    public Date getReturnTime() {
+        return returnTime;
+    }
+
+    public void setReturnTime(Date returnTime) {
+        this.returnTime = returnTime;
     }
 
     public String getRemark() {
