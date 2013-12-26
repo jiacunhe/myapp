@@ -1,8 +1,9 @@
+.idea
 out/*
 target/*
-*.iml
 *.bak
 *.swp
 *.log
 *.class
+.idea/*
 web/WEB-INF/classes/
