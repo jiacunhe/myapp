@@ -1,37 +1,45 @@
 package com.hyrt.saic.bean;
 
-import java.math.BigDecimal;
-
 public class SpendingDetail extends SpendingDetailKey {
-    private BigDecimal amount;
+    private Integer businessid;
 
-    private BigDecimal lastbalance;
+    private Integer amount;
 
-    private BigDecimal recharge;
+    private Integer lastbalance;
+
+    private Integer recharge;
 
     private String remark;
 
-    public BigDecimal getAmount() {
+    public Integer getBusinessid() {
+        return businessid;
+    }
+
+    public void setBusinessid(Integer businessid) {
+        this.businessid = businessid;
+    }
+
+    public Integer getAmount() {
         return amount;
     }
 
-    public void setAmount(BigDecimal amount) {
+    public void setAmount(Integer amount) {
         this.amount = amount;
     }
 
-    public BigDecimal getLastbalance() {
+    public Integer getLastbalance() {
         return lastbalance;
     }
 
-    public void setLastbalance(BigDecimal lastbalance) {
+    public void setLastbalance(Integer lastbalance) {
         this.lastbalance = lastbalance;
     }
 
-    public BigDecimal getRecharge() {
+    public Integer getRecharge() {
         return recharge;
     }
 
-    public void setRecharge(BigDecimal recharge) {
+    public void setRecharge(Integer recharge) {
         this.recharge = recharge;
     }
 

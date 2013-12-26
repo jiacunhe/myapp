@@ -1,6 +1,5 @@
 package com.hyrt.saic.bean;
 
-
 import java.sql.Timestamp;
 import java.util.Date;
 
@@ -47,21 +46,20 @@ public class User {
 
     private String remark;
 
-
-    public User(){
-
-    }
+    public User(){}
     public User(String userid){
-              this.userid = userid;
+        this.userid = userid;
     }
+
     public User(String userid,String password, String username,Timestamp regtime,String usertype,String paymentrule){
-             this.userid = userid;
+        this.userid = userid;
         this.password = password;
         this.paymentrule = paymentrule;
         this.username=username;
         this.regtime = regtime;
         this.usertype = usertype;
     }
+
 
 
     public String getUserid() {

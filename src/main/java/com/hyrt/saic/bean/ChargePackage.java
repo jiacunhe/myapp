@@ -9,6 +9,10 @@ public class ChargePackage {
 
     private BigDecimal price;
 
+    private String type;
+
+    private String userid;
+
     private String remark;
 
     public Integer getId() {
@@ -33,6 +37,22 @@ public class ChargePackage {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type == null ? null : type.trim();
+    }
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid == null ? null : userid.trim();
     }
 
     public String getRemark() {

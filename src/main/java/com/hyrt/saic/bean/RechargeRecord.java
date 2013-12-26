@@ -8,6 +8,8 @@ public class RechargeRecord {
 
     private String userid;
 
+    private Integer packageid;
+
     private Date chargetime;
 
     private Date createtime;
@@ -36,6 +38,14 @@ public class RechargeRecord {
 
     public void setUserid(String userid) {
         this.userid = userid == null ? null : userid.trim();
+    }
+
+    public Integer getPackageid() {
+        return packageid;
+    }
+
+    public void setPackageid(Integer packageid) {
+        this.packageid = packageid;
     }
 
     public Date getChargetime() {

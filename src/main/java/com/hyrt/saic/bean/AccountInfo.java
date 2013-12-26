@@ -1,16 +1,15 @@
 package com.hyrt.saic.bean;
 
-import java.math.BigDecimal;
-
-public class Account {
+public class AccountInfo {
     private String userid;
 
-    private BigDecimal balance;
+    private Integer businessid;
 
-    private BigDecimal summation;
+    private Integer balance;
+
+    private Integer summation;
 
     private String remark;
-
 
     public String getUserid() {
         return userid;
@@ -20,19 +19,27 @@ public class Account {
         this.userid = userid == null ? null : userid.trim();
     }
 
-    public BigDecimal getBalance() {
+    public Integer getBusinessid() {
+        return businessid;
+    }
+
+    public void setBusinessid(Integer businessid) {
+        this.businessid = businessid;
+    }
+
+    public Integer getBalance() {
         return balance;
     }
 
-    public void setBalance(BigDecimal balance) {
+    public void setBalance(Integer balance) {
         this.balance = balance;
     }
 
-    public BigDecimal getSummation() {
+    public Integer getSummation() {
         return summation;
     }
 
-    public void setSummation(BigDecimal summation) {
+    public void setSummation(Integer summation) {
         this.summation = summation;
     }
 

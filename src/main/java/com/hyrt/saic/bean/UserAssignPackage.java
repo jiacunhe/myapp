@@ -19,6 +19,8 @@ public class UserAssignPackage {
 
     private String effectivetype;
 
+    private String status;
+
     private String remark;
 
     public Integer getId() {
@@ -83,6 +85,14 @@ public class UserAssignPackage {
 
     public void setEffectivetype(String effectivetype) {
         this.effectivetype = effectivetype == null ? null : effectivetype.trim();
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status == null ? null : status.trim();
     }
 
     public String getRemark() {

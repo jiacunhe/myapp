@@ -4,13 +4,14 @@
   <resultMap id="BaseResultMap" type="com.hyrt.saic.bean.SpendingDetail" >
     <id column="yearmonth" property="yearmonth" jdbcType="CHAR" />
     <id column="userId" property="userid" jdbcType="VARCHAR" />
-    <result column="amount" property="amount" jdbcType="DECIMAL" />
-    <result column="lastbalance" property="lastbalance" jdbcType="DECIMAL" />
-    <result column="recharge" property="recharge" jdbcType="DECIMAL" />
+    <result column="businessId" property="businessid" jdbcType="INTEGER" />
+    <result column="amount" property="amount" jdbcType="INTEGER" />
+    <result column="lastbalance" property="lastbalance" jdbcType="INTEGER" />
+    <result column="recharge" property="recharge" jdbcType="INTEGER" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    yearmonth, userId, amount, lastbalance, recharge, remark
+    yearmonth, userId, businessId, amount, lastbalance, recharge, remark
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.hyrt.saic.bean.SpendingDetailKey" >
     select 
@@ -25,12 +26,12 @@
       and userId = #{userid,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.hyrt.saic.bean.SpendingDetail" >
-    insert into t_spending_detail (yearmonth, userId, amount, 
-      lastbalance, recharge, remark
-      )
-    values (#{yearmonth,jdbcType=CHAR}, #{userid,jdbcType=VARCHAR}, #{amount,jdbcType=DECIMAL}, 
-      #{lastbalance,jdbcType=DECIMAL}, #{recharge,jdbcType=DECIMAL}, #{remark,jdbcType=VARCHAR}
-      )
+    insert into t_spending_detail (yearmonth, userId, businessId, 
+      amount, lastbalance, recharge, 
+      remark)
+    values (#{yearmonth,jdbcType=CHAR}, #{userid,jdbcType=VARCHAR}, #{businessid,jdbcType=INTEGER}, 
+      #{amount,jdbcType=INTEGER}, #{lastbalance,jdbcType=INTEGER}, #{recharge,jdbcType=INTEGER}, 
+      #{remark,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.hyrt.saic.bean.SpendingDetail" >
     insert into t_spending_detail
@@ -40,6 +41,9 @@
       </if>
       <if test="userid != null" >
         userId,
+      </if>
+      <if test="businessid != null" >
+        businessId,
       </if>
       <if test="amount != null" >
         amount,
@@ -61,14 +65,17 @@
       <if test="userid != null" >
         #{userid,jdbcType=VARCHAR},
       </if>
+      <if test="businessid != null" >
+        #{businessid,jdbcType=INTEGER},
+      </if>
       <if test="amount != null" >
-        #{amount,jdbcType=DECIMAL},
+        #{amount,jdbcType=INTEGER},
       </if>
       <if test="lastbalance != null" >
-        #{lastbalance,jdbcType=DECIMAL},
+        #{lastbalance,jdbcType=INTEGER},
       </if>
       <if test="recharge != null" >
-        #{recharge,jdbcType=DECIMAL},
+        #{recharge,jdbcType=INTEGER},
       </if>
       <if test="remark != null" >
         #{remark,jdbcType=VARCHAR},
@@ -78,14 +85,17 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.hyrt.saic.bean.SpendingDetail" >
     update t_spending_detail
     <set >
+      <if test="businessid != null" >
+        businessId = #{businessid,jdbcType=INTEGER},
+      </if>
       <if test="amount != null" >
-        amount = #{amount,jdbcType=DECIMAL},
+        amount = #{amount,jdbcType=INTEGER},
       </if>
       <if test="lastbalance != null" >
-        lastbalance = #{lastbalance,jdbcType=DECIMAL},
+        lastbalance = #{lastbalance,jdbcType=INTEGER},
       </if>
       <if test="recharge != null" >
-        recharge = #{recharge,jdbcType=DECIMAL},
+        recharge = #{recharge,jdbcType=INTEGER},
       </if>
       <if test="remark != null" >
         remark = #{remark,jdbcType=VARCHAR},
@@ -96,9 +106,10 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hyrt.saic.bean.SpendingDetail" >
     update t_spending_detail
-    set amount = #{amount,jdbcType=DECIMAL},
-      lastbalance = #{lastbalance,jdbcType=DECIMAL},
-      recharge = #{recharge,jdbcType=DECIMAL},
+    set businessId = #{businessid,jdbcType=INTEGER},
+      amount = #{amount,jdbcType=INTEGER},
+      lastbalance = #{lastbalance,jdbcType=INTEGER},
+      recharge = #{recharge,jdbcType=INTEGER},
       remark = #{remark,jdbcType=VARCHAR}
     where yearmonth = #{yearmonth,jdbcType=CHAR}
       and userId = #{userid,jdbcType=VARCHAR}

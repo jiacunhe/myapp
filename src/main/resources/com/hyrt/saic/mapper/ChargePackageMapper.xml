@@ -5,10 +5,12 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="packageName" property="packagename" jdbcType="VARCHAR" />
     <result column="price" property="price" jdbcType="DECIMAL" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="userId" property="userid" jdbcType="VARCHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, packageName, price, remark
+    id, packageName, price, type, userId, remark
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -22,9 +24,11 @@
   </delete>
   <insert id="insert" parameterType="com.hyrt.saic.bean.ChargePackage" >
     insert into t_charge_package (id, packageName, price, 
-      remark)
+      type, userId, remark
+      )
     values (#{id,jdbcType=INTEGER}, #{packagename,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, 
-      #{remark,jdbcType=VARCHAR})
+      #{type,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.hyrt.saic.bean.ChargePackage" >
     insert into t_charge_package
@@ -37,6 +41,12 @@
       </if>
       <if test="price != null" >
         price,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="userid != null" >
+        userId,
       </if>
       <if test="remark != null" >
         remark,
@@ -52,6 +62,12 @@
       <if test="price != null" >
         #{price,jdbcType=DECIMAL},
       </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
       <if test="remark != null" >
         #{remark,jdbcType=VARCHAR},
       </if>
@@ -66,6 +82,12 @@
       <if test="price != null" >
         price = #{price,jdbcType=DECIMAL},
       </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        userId = #{userid,jdbcType=VARCHAR},
+      </if>
       <if test="remark != null" >
         remark = #{remark,jdbcType=VARCHAR},
       </if>
@@ -76,6 +98,8 @@
     update t_charge_package
     set packageName = #{packagename,jdbcType=VARCHAR},
       price = #{price,jdbcType=DECIMAL},
+      type = #{type,jdbcType=VARCHAR},
+      userId = #{userid,jdbcType=VARCHAR},
       remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>

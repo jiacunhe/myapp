@@ -1,36 +1,40 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.hyrt.saic.dao.AccountMapper" >
-  <resultMap id="BaseResultMap" type="com.hyrt.saic.bean.Account" >
+<mapper namespace="com.hyrt.saic.dao.AccountInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.hyrt.saic.bean.AccountInfo" >
     <id column="userId" property="userid" jdbcType="VARCHAR" />
-    <result column="balance" property="balance" jdbcType="DECIMAL" />
-    <result column="summation" property="summation" jdbcType="DECIMAL" />
+    <result column="businessId" property="businessid" jdbcType="INTEGER" />
+    <result column="balance" property="balance" jdbcType="INTEGER" />
+    <result column="summation" property="summation" jdbcType="INTEGER" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    userId, balance, summation, remark
+    userId, businessId, balance, summation, remark
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
-    from t_account
+    from t_account_info
     where userId = #{userid,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
-    delete from t_account
+    delete from t_account_info
     where userId = #{userid,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.hyrt.saic.bean.Account" >
-    insert into t_account (userId, balance, summation, 
-      remark)
-    values (#{userid,jdbcType=VARCHAR}, #{balance,jdbcType=DECIMAL}, #{summation,jdbcType=DECIMAL}, 
-      #{remark,jdbcType=VARCHAR})
+  <insert id="insert" parameterType="com.hyrt.saic.bean.AccountInfo" >
+    insert into t_account_info (userId, businessId, balance, 
+      summation, remark)
+    values (#{userid,jdbcType=VARCHAR}, #{businessid,jdbcType=INTEGER}, #{balance,jdbcType=INTEGER}, 
+      #{summation,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.hyrt.saic.bean.Account" >
-    insert into t_account
+  <insert id="insertSelective" parameterType="com.hyrt.saic.bean.AccountInfo" >
+    insert into t_account_info
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="userid != null" >
         userId,
+      </if>
+      <if test="businessid != null" >
+        businessId,
       </if>
       <if test="balance != null" >
         balance,
@@ -46,25 +50,31 @@
       <if test="userid != null" >
         #{userid,jdbcType=VARCHAR},
       </if>
+      <if test="businessid != null" >
+        #{businessid,jdbcType=INTEGER},
+      </if>
       <if test="balance != null" >
-        #{balance,jdbcType=DECIMAL},
+        #{balance,jdbcType=INTEGER},
       </if>
       <if test="summation != null" >
-        #{summation,jdbcType=DECIMAL},
+        #{summation,jdbcType=INTEGER},
       </if>
       <if test="remark != null" >
         #{remark,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.hyrt.saic.bean.Account" >
-    update t_account
+  <update id="updateByPrimaryKeySelective" parameterType="com.hyrt.saic.bean.AccountInfo" >
+    update t_account_info
     <set >
+      <if test="businessid != null" >
+        businessId = #{businessid,jdbcType=INTEGER},
+      </if>
       <if test="balance != null" >
-        balance = #{balance,jdbcType=DECIMAL},
+        balance = #{balance,jdbcType=INTEGER},
       </if>
       <if test="summation != null" >
-        summation = #{summation,jdbcType=DECIMAL},
+        summation = #{summation,jdbcType=INTEGER},
       </if>
       <if test="remark != null" >
         remark = #{remark,jdbcType=VARCHAR},
@@ -72,10 +82,11 @@
     </set>
     where userId = #{userid,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.hyrt.saic.bean.Account" >
-    update t_account
-    set balance = #{balance,jdbcType=DECIMAL},
-      summation = #{summation,jdbcType=DECIMAL},
+  <update id="updateByPrimaryKey" parameterType="com.hyrt.saic.bean.AccountInfo" >
+    update t_account_info
+    set businessId = #{businessid,jdbcType=INTEGER},
+      balance = #{balance,jdbcType=INTEGER},
+      summation = #{summation,jdbcType=INTEGER},
       remark = #{remark,jdbcType=VARCHAR}
     where userId = #{userid,jdbcType=VARCHAR}
   </update>

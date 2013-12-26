@@ -10,11 +10,12 @@
     <result column="durationMonths" property="durationmonths" jdbcType="INTEGER" />
     <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
     <result column="effectiveType" property="effectivetype" jdbcType="CHAR" />
+    <result column="status" property="status" jdbcType="CHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, userId, assignorId, businessId, quantity, durationMonths, createTime, effectiveType, 
-    remark
+    status, remark
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -29,12 +30,12 @@
   <insert id="insert" parameterType="com.hyrt.saic.bean.UserAssignPackage" >
     insert into t_user_assign_package (id, userId, assignorId, 
       businessId, quantity, durationMonths, 
-      createTime, effectiveType, remark
-      )
+      createTime, effectiveType, status, 
+      remark)
     values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=VARCHAR}, #{assignorid,jdbcType=VARCHAR}, 
       #{businessid,jdbcType=INTEGER}, #{quantity,jdbcType=INTEGER}, #{durationmonths,jdbcType=INTEGER}, 
-      #{createtime,jdbcType=TIMESTAMP}, #{effectivetype,jdbcType=CHAR}, #{remark,jdbcType=VARCHAR}
-      )
+      #{createtime,jdbcType=TIMESTAMP}, #{effectivetype,jdbcType=CHAR}, #{status,jdbcType=CHAR}, 
+      #{remark,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.hyrt.saic.bean.UserAssignPackage" >
     insert into t_user_assign_package
@@ -62,6 +63,9 @@
       </if>
       <if test="effectivetype != null" >
         effectiveType,
+      </if>
+      <if test="status != null" >
+        status,
       </if>
       <if test="remark != null" >
         remark,
@@ -92,6 +96,9 @@
       <if test="effectivetype != null" >
         #{effectivetype,jdbcType=CHAR},
       </if>
+      <if test="status != null" >
+        #{status,jdbcType=CHAR},
+      </if>
       <if test="remark != null" >
         #{remark,jdbcType=VARCHAR},
       </if>
@@ -121,6 +128,9 @@
       <if test="effectivetype != null" >
         effectiveType = #{effectivetype,jdbcType=CHAR},
       </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=CHAR},
+      </if>
       <if test="remark != null" >
         remark = #{remark,jdbcType=VARCHAR},
       </if>
@@ -136,6 +146,7 @@
       durationMonths = #{durationmonths,jdbcType=INTEGER},
       createTime = #{createtime,jdbcType=TIMESTAMP},
       effectiveType = #{effectivetype,jdbcType=CHAR},
+      status = #{status,jdbcType=CHAR},
       remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>

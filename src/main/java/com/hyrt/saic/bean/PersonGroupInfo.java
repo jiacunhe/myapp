@@ -26,22 +26,17 @@ public class PersonGroupInfo {
     private String orderid;
 
 
-    public PersonGroupInfo(PersonGroupInfoType persontype,String a){
-
-        this.id = id;
-        this.persontype=persontype.toString();
-        this.a = a;
+    public  PersonGroupInfo(){
 
     }
-
-    public    PersonGroupInfo(){
-
+    public  PersonGroupInfo(PersonGroupInfoType persontype,String a){
+                                      this.a = a;
+        this.persontype = persontype.toString();
     }
 
     public Long getId() {
         return id;
     }
-
 
     public void setId(Long id) {
         this.id = id;
@@ -52,7 +47,7 @@ public class PersonGroupInfo {
     }
 
     public void setPersontype(PersonGroupInfoType persontype) {
-        this.persontype = persontype == null ? null : persontype.toString().trim();
+        this.persontype = persontype == null ? null : persontype.toString();
     }
 
     public String getA() {

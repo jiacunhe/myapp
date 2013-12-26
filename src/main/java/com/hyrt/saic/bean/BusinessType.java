@@ -11,6 +11,8 @@ public class BusinessType {
 
     private BigDecimal price;
 
+    private String area;
+
     private String remark;
 
     public Integer getId() {
@@ -43,6 +45,14 @@ public class BusinessType {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public String getArea() {
+        return area;
+    }
+
+    public void setArea(String area) {
+        this.area = area == null ? null : area.trim();
     }
 
     public String getRemark() {
