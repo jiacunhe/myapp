@@ -5,19 +5,21 @@ import java.util.Date;
 public class UserAssignPackage {
     private Integer id;
 
-    private String userid;
+    private String userId;
 
-    private String assignorid;
+    private String assignorId;
 
-    private Integer businessid;
+    private Integer businessId;
 
     private Integer quantity;
 
-    private Integer durationmonths;
+    private Integer durationMonths;
 
-    private Date createtime;
+    private Date createTime;
 
-    private String effectivetype;
+    private String effectiveType;
+
+    private String status;
 
     private String remark;
 
@@ -29,28 +31,28 @@ public class UserAssignPackage {
         this.id = id;
     }
 
-    public String getUserid() {
-        return userid;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUserid(String userid) {
-        this.userid = userid == null ? null : userid.trim();
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
-    public String getAssignorid() {
-        return assignorid;
+    public String getAssignorId() {
+        return assignorId;
     }
 
-    public void setAssignorid(String assignorid) {
-        this.assignorid = assignorid == null ? null : assignorid.trim();
+    public void setAssignorId(String assignorId) {
+        this.assignorId = assignorId;
     }
 
-    public Integer getBusinessid() {
-        return businessid;
+    public Integer getBusinessId() {
+        return businessId;
     }
 
-    public void setBusinessid(Integer businessid) {
-        this.businessid = businessid;
+    public void setBusinessId(Integer businessId) {
+        this.businessId = businessId;
     }
 
     public Integer getQuantity() {
@@ -61,28 +63,36 @@ public class UserAssignPackage {
         this.quantity = quantity;
     }
 
-    public Integer getDurationmonths() {
-        return durationmonths;
+    public Integer getDurationMonths() {
+        return durationMonths;
     }
 
-    public void setDurationmonths(Integer durationmonths) {
-        this.durationmonths = durationmonths;
+    public void setDurationMonths(Integer durationMonths) {
+        this.durationMonths = durationMonths;
     }
 
-    public Date getCreatetime() {
-        return createtime;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreatetime(Date createtime) {
-        this.createtime = createtime;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public String getEffectivetype() {
-        return effectivetype;
+    public String getEffectiveType() {
+        return effectiveType;
     }
 
-    public void setEffectivetype(String effectivetype) {
-        this.effectivetype = effectivetype == null ? null : effectivetype.trim();
+    public void setEffectiveType(String effectiveType) {
+        this.effectiveType = effectiveType;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getRemark() {
@@ -90,6 +100,6 @@ public class UserAssignPackage {
     }
 
     public void setRemark(String remark) {
-        this.remark = remark == null ? null : remark.trim();
+        this.remark = remark;
     }
 }

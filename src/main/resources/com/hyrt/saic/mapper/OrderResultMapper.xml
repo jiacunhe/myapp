@@ -3,9 +3,9 @@
 <mapper namespace="com.hyrt.saic.dao.OrderResultMapper" >
   <resultMap id="BaseResultMap" type="com.hyrt.saic.bean.OrderResult" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="orderId" property="orderid" jdbcType="VARCHAR" />
+    <result column="orderId" property="orderId" jdbcType="VARCHAR" />
     <result column="status" property="status" jdbcType="CHAR" />
-    <result column="returnTime" property="returntime" jdbcType="TIMESTAMP" />
+    <result column="returnTime" property="returnTime" jdbcType="TIMESTAMP" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.hyrt.saic.bean.OrderResult" extends="BaseResultMap" >
@@ -33,8 +33,8 @@
     insert into t_order_result (id, orderId, status, 
       returnTime, remark, content
       )
-    values (#{id,jdbcType=INTEGER}, #{orderid,jdbcType=VARCHAR}, #{status,jdbcType=CHAR}, 
-      #{returntime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR}
+    values (#{id,jdbcType=INTEGER}, #{orderId,jdbcType=VARCHAR}, #{status,jdbcType=CHAR},
+      #{returnTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.hyrt.saic.bean.OrderResult" >
@@ -43,13 +43,13 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="orderid != null" >
+      <if test="orderId != null" >
         orderId,
       </if>
       <if test="status != null" >
         status,
       </if>
-      <if test="returntime != null" >
+      <if test="returnTime != null" >
         returnTime,
       </if>
       <if test="remark != null" >
@@ -63,14 +63,14 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="orderid != null" >
-        #{orderid,jdbcType=VARCHAR},
+      <if test="orderId != null" >
+        #{orderId,jdbcType=VARCHAR},
       </if>
       <if test="status != null" >
         #{status,jdbcType=CHAR},
       </if>
-      <if test="returntime != null" >
-        #{returntime,jdbcType=TIMESTAMP},
+      <if test="returnTime != null" >
+        #{returnTime,jdbcType=TIMESTAMP},
       </if>
       <if test="remark != null" >
         #{remark,jdbcType=VARCHAR},
@@ -84,13 +84,13 @@
     update t_order_result
     <set >
       <if test="orderid != null" >
-        orderId = #{orderid,jdbcType=VARCHAR},
+        orderId = #{orderId,jdbcType=VARCHAR},
       </if>
       <if test="status != null" >
         status = #{status,jdbcType=CHAR},
       </if>
-      <if test="returntime != null" >
-        returnTime = #{returntime,jdbcType=TIMESTAMP},
+      <if test="returnTime != null" >
+        returnTime = #{returnTime,jdbcType=TIMESTAMP},
       </if>
       <if test="remark != null" >
         remark = #{remark,jdbcType=VARCHAR},
@@ -103,18 +103,18 @@
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.hyrt.saic.bean.OrderResult" >
     update t_order_result
-    set orderId = #{orderid,jdbcType=VARCHAR},
+    set orderId = #{orderId,jdbcType=VARCHAR},
       status = #{status,jdbcType=CHAR},
-      returnTime = #{returntime,jdbcType=TIMESTAMP},
+      returnTime = #{returnTime,jdbcType=TIMESTAMP},
       remark = #{remark,jdbcType=VARCHAR},
       content = #{content,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hyrt.saic.bean.OrderResult" >
     update t_order_result
-    set orderId = #{orderid,jdbcType=VARCHAR},
+    set orderId = #{orderId,jdbcType=VARCHAR},
       status = #{status,jdbcType=CHAR},
-      returnTime = #{returntime,jdbcType=TIMESTAMP},
+      returnTime = #{returnTime,jdbcType=TIMESTAMP},
       remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>

@@ -3,9 +3,9 @@ package com.hyrt.saic.bean;
 public class SysResoure {
     private Integer id;
 
-    private String resourcename;
+    private String resourceName;
 
-    private String resourceuri;
+    private String resourceUri;
 
     private String remark;
 
@@ -17,20 +17,20 @@ public class SysResoure {
         this.id = id;
     }
 
-    public String getResourcename() {
-        return resourcename;
+    public String getResourceUri() {
+        return resourceUri;
     }
 
-    public void setResourcename(String resourcename) {
-        this.resourcename = resourcename == null ? null : resourcename.trim();
+    public void setResourceUri(String resourceUri) {
+        this.resourceUri = resourceUri;
     }
 
-    public String getResourceuri() {
-        return resourceuri;
+    public String getResourceName() {
+        return resourceName;
     }
 
-    public void setResourceuri(String resourceuri) {
-        this.resourceuri = resourceuri == null ? null : resourceuri.trim();
+    public void setResourceName(String resourceName) {
+        this.resourceName = resourceName;
     }
 
     public String getRemark() {

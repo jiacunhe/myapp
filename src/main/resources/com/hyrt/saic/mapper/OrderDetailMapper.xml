@@ -3,10 +3,10 @@
 <mapper namespace="com.hyrt.saic.dao.OrderDetailMapper" >
   <resultMap id="BaseResultMap" type="com.hyrt.saic.bean.OrderDetail" >
     <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="orderId" property="orderid" jdbcType="VARCHAR" />
-    <result column="monitorType" property="monitortype" jdbcType="CHAR" />
-    <result column="objName" property="objname" jdbcType="VARCHAR" />
-    <result column="objCode" property="objcode" jdbcType="VARCHAR" />
+    <result column="orderId" property="orderId" jdbcType="VARCHAR" />
+    <result column="monitorType" property="monitorType" jdbcType="CHAR" />
+    <result column="objName" property="objName" jdbcType="VARCHAR" />
+    <result column="objCode" property="objCode" jdbcType="VARCHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
@@ -26,8 +26,8 @@
     insert into t_order_detail (id, orderId, monitorType, 
       objName, objCode, remark
       )
-    values (#{id,jdbcType=BIGINT}, #{orderid,jdbcType=VARCHAR}, #{monitortype,jdbcType=CHAR}, 
-      #{objname,jdbcType=VARCHAR}, #{objcode,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
+    values (#{id,jdbcType=BIGINT}, #{orderId,jdbcType=VARCHAR}, #{monitorType,jdbcType=CHAR},
+      #{objName,jdbcType=VARCHAR}, #{objCode,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.hyrt.saic.bean.OrderDetail" >
@@ -36,16 +36,16 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="orderid != null" >
+      <if test="orderId != null" >
         orderId,
       </if>
-      <if test="monitortype != null" >
+      <if test="monitorType != null" >
         monitorType,
       </if>
-      <if test="objname != null" >
+      <if test="objName != null" >
         objName,
       </if>
-      <if test="objcode != null" >
+      <if test="objCode != null" >
         objCode,
       </if>
       <if test="remark != null" >
@@ -56,17 +56,17 @@
       <if test="id != null" >
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="orderid != null" >
-        #{orderid,jdbcType=VARCHAR},
+      <if test="orderId != null" >
+        #{orderId,jdbcType=VARCHAR},
       </if>
-      <if test="monitortype != null" >
-        #{monitortype,jdbcType=CHAR},
+      <if test="monitorType != null" >
+        #{monitorType,jdbcType=CHAR},
       </if>
-      <if test="objname != null" >
-        #{objname,jdbcType=VARCHAR},
+      <if test="objName != null" >
+        #{objName,jdbcType=VARCHAR},
       </if>
-      <if test="objcode != null" >
-        #{objcode,jdbcType=VARCHAR},
+      <if test="objCode != null" >
+        #{objCode,jdbcType=VARCHAR},
       </if>
       <if test="remark != null" >
         #{remark,jdbcType=VARCHAR},
@@ -76,17 +76,17 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.hyrt.saic.bean.OrderDetail" >
     update t_order_detail
     <set >
-      <if test="orderid != null" >
-        orderId = #{orderid,jdbcType=VARCHAR},
+      <if test="orderId != null" >
+        orderId = #{orderId,jdbcType=VARCHAR},
       </if>
-      <if test="monitortype != null" >
-        monitorType = #{monitortype,jdbcType=CHAR},
+      <if test="monitorType != null" >
+        monitorType = #{monitorType,jdbcType=CHAR},
       </if>
-      <if test="objname != null" >
-        objName = #{objname,jdbcType=VARCHAR},
+      <if test="objName != null" >
+        objName = #{objName,jdbcType=VARCHAR},
       </if>
-      <if test="objcode != null" >
-        objCode = #{objcode,jdbcType=VARCHAR},
+      <if test="objCode != null" >
+        objCode = #{objCode,jdbcType=VARCHAR},
       </if>
       <if test="remark != null" >
         remark = #{remark,jdbcType=VARCHAR},
@@ -96,10 +96,10 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hyrt.saic.bean.OrderDetail" >
     update t_order_detail
-    set orderId = #{orderid,jdbcType=VARCHAR},
-      monitorType = #{monitortype,jdbcType=CHAR},
-      objName = #{objname,jdbcType=VARCHAR},
-      objCode = #{objcode,jdbcType=VARCHAR},
+    set orderId = #{orderId,jdbcType=VARCHAR},
+      monitorType = #{monitorType,jdbcType=CHAR},
+      objName = #{objName,jdbcType=VARCHAR},
+      objCode = #{objCode,jdbcType=VARCHAR},
       remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>

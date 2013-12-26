@@ -3,8 +3,8 @@
 <mapper namespace="com.hyrt.saic.dao.UserRoleMapper" >
   <resultMap id="BaseResultMap" type="com.hyrt.saic.bean.UserRole" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="userId" property="userid" jdbcType="VARCHAR" />
-    <result column="roleId" property="roleid" jdbcType="INTEGER" />
+    <result column="userId" property="userId" jdbcType="VARCHAR" />
+    <result column="roleId" property="roleId" jdbcType="INTEGER" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
@@ -23,7 +23,7 @@
   <insert id="insert" parameterType="com.hyrt.saic.bean.UserRole" >
     insert into t_user_role (id, userId, roleId, 
       remark)
-    values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=VARCHAR}, #{roleid,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, #{roleId,jdbcType=INTEGER},
       #{remark,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.hyrt.saic.bean.UserRole" >
@@ -32,10 +32,10 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="userid != null" >
+      <if test="userId != null" >
         userId,
       </if>
-      <if test="roleid != null" >
+      <if test="roleId != null" >
         roleId,
       </if>
       <if test="remark != null" >
@@ -46,11 +46,11 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="userid != null" >
-        #{userid,jdbcType=VARCHAR},
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
       </if>
-      <if test="roleid != null" >
-        #{roleid,jdbcType=INTEGER},
+      <if test="roleId != null" >
+        #{roleId,jdbcType=INTEGER},
       </if>
       <if test="remark != null" >
         #{remark,jdbcType=VARCHAR},
@@ -60,11 +60,11 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.hyrt.saic.bean.UserRole" >
     update t_user_role
     <set >
-      <if test="userid != null" >
-        userId = #{userid,jdbcType=VARCHAR},
+      <if test="userId != null" >
+        userId = #{userId,jdbcType=VARCHAR},
       </if>
-      <if test="roleid != null" >
-        roleId = #{roleid,jdbcType=INTEGER},
+      <if test="roleId != null" >
+        roleId = #{roleId,jdbcType=INTEGER},
       </if>
       <if test="remark != null" >
         remark = #{remark,jdbcType=VARCHAR},
@@ -74,8 +74,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hyrt.saic.bean.UserRole" >
     update t_user_role
-    set userId = #{userid,jdbcType=VARCHAR},
-      roleId = #{roleid,jdbcType=INTEGER},
+    set userId = #{userId,jdbcType=VARCHAR},
+      roleId = #{roleId,jdbcType=INTEGER},
       remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>

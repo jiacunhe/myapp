@@ -2,9 +2,7 @@ package com.hyrt.saic.dao;
 
 import com.hyrt.saic.bean.User;
 
-
 public interface UserMapper {
-
     int deleteByPrimaryKey(String userid);
 
     int insert(User record);

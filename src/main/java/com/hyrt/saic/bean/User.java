@@ -1,11 +1,9 @@
 package com.hyrt.saic.bean;
 
-
 import java.sql.Timestamp;
-import java.util.Date;
 
 public class User {
-    private String userid;
+    private String userId;
 
     private String password;
 
@@ -15,25 +13,27 @@ public class User {
 
     private String telephone;
 
-    private String moblephone;
+    private String mobilePhone;
 
     private String email;
 
     private String address;
 
-    private Timestamp regtime;
+    private Timestamp regTime;
 
-    private Timestamp updatetime;
+    private Timestamp updateTime;
 
-    private String usertype;
+    private String userType;
 
     private String certificate;
 
-    private String certificatecode;
+    private String certificateCode;
 
-    private String creatorid;
+    private String creatorId;
 
-    private String isbasal;
+    private String isBasal;
+
+    private String isChild;
 
     private String trade;
 
@@ -41,35 +41,33 @@ public class User {
 
     private String status;
 
-    private Integer viplevel;
+    private Integer vipLevel;
 
-    private String paymentrule;
+    private String paymentRule;
+
 
     private String remark;
 
-
-    public User(){
-
+    public User(){}
+    public User(String userId){
+        this.userId = userId;
     }
-    public User(String userid){
-              this.userid = userid;
-    }
-    public User(String userid,String password, String username,Timestamp regtime,String usertype,String paymentrule){
-             this.userid = userid;
+
+    public User(String userId,String password, String username,Timestamp regTime,String userType,String paymentRule){
+        this.userId = userId;
         this.password = password;
-        this.paymentrule = paymentrule;
+        this.paymentRule = paymentRule;
         this.username=username;
-        this.regtime = regtime;
-        this.usertype = usertype;
+        this.regTime = regTime;
+        this.userType = userType;
     }
 
-
-    public String getUserid() {
-        return userid;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUserid(String userid) {
-        this.userid = userid == null ? null : userid.trim();
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getPassword() {
@@ -77,7 +75,7 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
+        this.password = password;
     }
 
     public String getUsername() {
@@ -85,7 +83,7 @@ public class User {
     }
 
     public void setUsername(String username) {
-        this.username = username == null ? null : username.trim();
+        this.username = username;
     }
 
     public String getLinkman() {
@@ -93,7 +91,7 @@ public class User {
     }
 
     public void setLinkman(String linkman) {
-        this.linkman = linkman == null ? null : linkman.trim();
+        this.linkman = linkman;
     }
 
     public String getTelephone() {
@@ -101,15 +99,15 @@ public class User {
     }
 
     public void setTelephone(String telephone) {
-        this.telephone = telephone == null ? null : telephone.trim();
+        this.telephone = telephone;
     }
 
-    public String getMoblephone() {
-        return moblephone;
+    public String getMobilePhone() {
+        return mobilePhone;
     }
 
-    public void setMoblephone(String moblephone) {
-        this.moblephone = moblephone == null ? null : moblephone.trim();
+    public void setMobilePhone(String mobilePhone) {
+        this.mobilePhone = mobilePhone;
     }
 
     public String getEmail() {
@@ -117,7 +115,7 @@ public class User {
     }
 
     public void setEmail(String email) {
-        this.email = email == null ? null : email.trim();
+        this.email = email;
     }
 
     public String getAddress() {
@@ -125,31 +123,31 @@ public class User {
     }
 
     public void setAddress(String address) {
-        this.address = address == null ? null : address.trim();
+        this.address = address;
     }
 
-    public Timestamp getRegtime() {
-        return regtime;
+    public Timestamp getRegTime() {
+        return regTime;
     }
 
-    public void setRegtime(Timestamp regtime) {
-        this.regtime = regtime;
+    public void setRegTime(Timestamp regTime) {
+        this.regTime = regTime;
     }
 
-    public Timestamp getUpdatetime() {
-        return updatetime;
+    public Timestamp getUpdateTime() {
+        return updateTime;
     }
 
-    public void setUpdatetime(Timestamp updatetime) {
-        this.updatetime = updatetime;
+    public void setUpdateTime(Timestamp updateTime) {
+        this.updateTime = updateTime;
     }
 
-    public String getUsertype() {
-        return usertype;
+    public String getUserType() {
+        return userType;
     }
 
-    public void setUsertype(String usertype) {
-        this.usertype = usertype == null ? null : usertype.trim();
+    public void setUserType(String userType) {
+        this.userType = userType;
     }
 
     public String getCertificate() {
@@ -157,31 +155,39 @@ public class User {
     }
 
     public void setCertificate(String certificate) {
-        this.certificate = certificate == null ? null : certificate.trim();
+        this.certificate = certificate;
     }
 
-    public String getCertificatecode() {
-        return certificatecode;
+    public String getCertificateCode() {
+        return certificateCode;
     }
 
-    public void setCertificatecode(String certificatecode) {
-        this.certificatecode = certificatecode == null ? null : certificatecode.trim();
+    public void setCertificateCode(String certificateCode) {
+        this.certificateCode = certificateCode;
     }
 
-    public String getCreatorid() {
-        return creatorid;
+    public String getCreatorId() {
+        return creatorId;
     }
 
-    public void setCreatorid(String creatorid) {
-        this.creatorid = creatorid == null ? null : creatorid.trim();
+    public void setCreatorId(String creatorId) {
+        this.creatorId = creatorId;
     }
 
-    public String getIsbasal() {
-        return isbasal;
+    public String getIsBasal() {
+        return isBasal;
     }
 
-    public void setIsbasal(String isbasal) {
-        this.isbasal = isbasal == null ? null : isbasal.trim();
+    public void setIsBasal(String basal) {
+        isBasal = basal;
+    }
+
+    public String getIsChild() {
+        return isChild;
+    }
+
+    public void setIsChild(String child) {
+        isChild = child;
     }
 
     public String getTrade() {
@@ -189,7 +195,7 @@ public class User {
     }
 
     public void setTrade(String trade) {
-        this.trade = trade == null ? null : trade.trim();
+        this.trade = trade;
     }
 
     public String getVocation() {
@@ -197,7 +203,7 @@ public class User {
     }
 
     public void setVocation(String vocation) {
-        this.vocation = vocation == null ? null : vocation.trim();
+        this.vocation = vocation;
     }
 
     public String getStatus() {
@@ -205,23 +211,23 @@ public class User {
     }
 
     public void setStatus(String status) {
-        this.status = status == null ? null : status.trim();
+        this.status = status;
     }
 
-    public Integer getViplevel() {
-        return viplevel;
+    public Integer getVipLevel() {
+        return vipLevel;
     }
 
-    public void setViplevel(Integer viplevel) {
-        this.viplevel = viplevel;
+    public void setVipLevel(Integer vipLevel) {
+        this.vipLevel = vipLevel;
     }
 
-    public String getPaymentrule() {
-        return paymentrule;
+    public String getPaymentRule() {
+        return paymentRule;
     }
 
-    public void setPaymentrule(String paymentrule) {
-        this.paymentrule = paymentrule == null ? null : paymentrule.trim();
+    public void setPaymentRule(String paymentRule) {
+        this.paymentRule = paymentRule;
     }
 
     public String getRemark() {
@@ -229,6 +235,6 @@ public class User {
     }
 
     public void setRemark(String remark) {
-        this.remark = remark == null ? null : remark.trim();
+        this.remark = remark;
     }
 }

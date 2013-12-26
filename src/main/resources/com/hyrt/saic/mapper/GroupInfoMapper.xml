@@ -3,26 +3,26 @@
 <mapper namespace="com.hyrt.saic.dao.GroupInfoMapper" >
   <resultMap id="BaseResultMap" type="com.hyrt.saic.bean.GroupInfo" >
     <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="groupName" property="groupname" jdbcType="VARCHAR" />
-    <result column="legalPersonName" property="legalpersonname" jdbcType="VARCHAR" />
-    <result column="registrationCode" property="registrationcode" jdbcType="VARCHAR" />
-    <result column="registeredCapital" property="registeredcapital" jdbcType="VARCHAR" />
-    <result column="currencyType" property="currencytype" jdbcType="VARCHAR" />
-    <result column="createTime" property="createtime" jdbcType="VARCHAR" />
-    <result column="effectiveDate" property="effectivedate" jdbcType="VARCHAR" />
+    <result column="groupName" property="groupName" jdbcType="VARCHAR" />
+    <result column="legalPersonName" property="legalPersonName" jdbcType="VARCHAR" />
+    <result column="registrationCode" property="registrationCode" jdbcType="VARCHAR" />
+    <result column="registeredCapital" property="registeredCapital" jdbcType="VARCHAR" />
+    <result column="currencyType" property="currencyType" jdbcType="VARCHAR" />
+    <result column="createTime" property="createTime" jdbcType="VARCHAR" />
+    <result column="effectiveDate" property="effectiveDate" jdbcType="VARCHAR" />
     <result column="deadline" property="deadline" jdbcType="VARCHAR" />
-    <result column="groupType" property="grouptype" jdbcType="VARCHAR" />
+    <result column="groupType" property="groupType" jdbcType="VARCHAR" />
     <result column="status" property="status" jdbcType="VARCHAR" />
     <result column="address" property="address" jdbcType="VARCHAR" />
-    <result column="permissionProject" property="permissionproject" jdbcType="VARCHAR" />
-    <result column="generalProject" property="generalproject" jdbcType="VARCHAR" />
-    <result column="businessScope" property="businessscope" jdbcType="VARCHAR" />
-    <result column="businessMode" property="businessmode" jdbcType="VARCHAR" />
+    <result column="permissionProject" property="permissionProject" jdbcType="VARCHAR" />
+    <result column="generalProject" property="generalProject" jdbcType="VARCHAR" />
+    <result column="businessScope" property="businessScope" jdbcType="VARCHAR" />
+    <result column="businessMode" property="businessMode" jdbcType="VARCHAR" />
     <result column="RA" property="ra" jdbcType="VARCHAR" />
-    <result column="lastInspectionYear" property="lastinspectionyear" jdbcType="VARCHAR" />
-    <result column="lastInspectionDate" property="lastinspectiondate" jdbcType="VARCHAR" />
+    <result column="lastInspectionYear" property="lastInspectionYear" jdbcType="VARCHAR" />
+    <result column="lastInspectionDate" property="lastInspectionDate" jdbcType="VARCHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
-    <result column="orderId" property="orderid" jdbcType="INTEGER" />
+    <result column="orderId" property="orderId" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, groupName, legalPersonName, registrationCode, registeredCapital, currencyType, 
@@ -49,13 +49,13 @@
       businessMode, RA, lastInspectionYear, 
       lastInspectionDate, remark, orderId
       )
-    values (#{id,jdbcType=BIGINT}, #{groupname,jdbcType=VARCHAR}, #{legalpersonname,jdbcType=VARCHAR}, 
-      #{registrationcode,jdbcType=VARCHAR}, #{registeredcapital,jdbcType=VARCHAR}, #{currencytype,jdbcType=VARCHAR}, 
-      #{createtime,jdbcType=VARCHAR}, #{effectivedate,jdbcType=VARCHAR}, #{deadline,jdbcType=VARCHAR}, 
-      #{grouptype,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
-      #{permissionproject,jdbcType=VARCHAR}, #{generalproject,jdbcType=VARCHAR}, #{businessscope,jdbcType=VARCHAR}, 
-      #{businessmode,jdbcType=VARCHAR}, #{ra,jdbcType=VARCHAR}, #{lastinspectionyear,jdbcType=VARCHAR}, 
-      #{lastinspectiondate,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{orderid,jdbcType=INTEGER}
+    values (#{id,jdbcType=BIGINT}, #{groupName,jdbcType=VARCHAR}, #{legalPersonName,jdbcType=VARCHAR},
+      #{registrationCode,jdbcType=VARCHAR}, #{registeredCapital,jdbcType=VARCHAR}, #{currencyType,jdbcType=VARCHAR},
+      #{createTime,jdbcType=VARCHAR}, #{effectiveDate,jdbcType=VARCHAR}, #{deadline,jdbcType=VARCHAR},
+      #{groupType,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR},
+      #{generalProject,jdbcType=VARCHAR}, #{generalProject,jdbcType=VARCHAR}, #{businessScope,jdbcType=VARCHAR},
+      #{businessMode,jdbcType=VARCHAR}, #{ra,jdbcType=VARCHAR}, #{lastInspectionYear,jdbcType=VARCHAR},
+      #{lastInspectionDate,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{orderid,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.hyrt.saic.bean.GroupInfo" >
@@ -64,31 +64,31 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="groupname != null" >
+      <if test="groupName != null" >
         groupName,
       </if>
-      <if test="legalpersonname != null" >
+      <if test="legalPersonName != null" >
         legalPersonName,
       </if>
-      <if test="registrationcode != null" >
+      <if test="registrationCode != null" >
         registrationCode,
       </if>
-      <if test="registeredcapital != null" >
+      <if test="registeredCapital != null" >
         registeredCapital,
       </if>
-      <if test="currencytype != null" >
+      <if test="currencyType != null" >
         currencyType,
       </if>
-      <if test="createtime != null" >
+      <if test="createTime != null" >
         createTime,
       </if>
-      <if test="effectivedate != null" >
+      <if test="effectiveDate != null" >
         effectiveDate,
       </if>
       <if test="deadline != null" >
         deadline,
       </if>
-      <if test="grouptype != null" >
+      <if test="groupType != null" >
         groupType,
       </if>
       <if test="status != null" >
@@ -97,31 +97,31 @@
       <if test="address != null" >
         address,
       </if>
-      <if test="permissionproject != null" >
+      <if test="permissionProject != null" >
         permissionProject,
       </if>
-      <if test="generalproject != null" >
+      <if test="generalProject != null" >
         generalProject,
       </if>
-      <if test="businessscope != null" >
+      <if test="businessScope != null" >
         businessScope,
       </if>
-      <if test="businessmode != null" >
+      <if test="businessMode != null" >
         businessMode,
       </if>
       <if test="ra != null" >
         RA,
       </if>
-      <if test="lastinspectionyear != null" >
+      <if test="lastInspectionYear != null" >
         lastInspectionYear,
       </if>
-      <if test="lastinspectiondate != null" >
+      <if test="lastInspectionDate != null" >
         lastInspectionDate,
       </if>
       <if test="remark != null" >
         remark,
       </if>
-      <if test="orderid != null" >
+      <if test="orderId != null" >
         orderId,
       </if>
     </trim>
@@ -129,32 +129,32 @@
       <if test="id != null" >
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="groupname != null" >
-        #{groupname,jdbcType=VARCHAR},
+      <if test="groupName != null" >
+        #{groupName,jdbcType=VARCHAR},
       </if>
-      <if test="legalpersonname != null" >
-        #{legalpersonname,jdbcType=VARCHAR},
+      <if test="legalPersonName != null" >
+        #{legalPersonName,jdbcType=VARCHAR},
       </if>
-      <if test="registrationcode != null" >
-        #{registrationcode,jdbcType=VARCHAR},
+      <if test="registrationCode != null" >
+        #{registrationCode,jdbcType=VARCHAR},
       </if>
-      <if test="registeredcapital != null" >
-        #{registeredcapital,jdbcType=VARCHAR},
+      <if test="registeredCapital != null" >
+        #{registeredCapital,jdbcType=VARCHAR},
       </if>
-      <if test="currencytype != null" >
-        #{currencytype,jdbcType=VARCHAR},
+      <if test="currencyType != null" >
+        #{currencyType,jdbcType=VARCHAR},
       </if>
-      <if test="createtime != null" >
-        #{createtime,jdbcType=VARCHAR},
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
       </if>
-      <if test="effectivedate != null" >
-        #{effectivedate,jdbcType=VARCHAR},
+      <if test="effectiveDate != null" >
+        #{effectiveDate,jdbcType=VARCHAR},
       </if>
       <if test="deadline != null" >
         #{deadline,jdbcType=VARCHAR},
       </if>
-      <if test="grouptype != null" >
-        #{grouptype,jdbcType=VARCHAR},
+      <if test="groupType != null" >
+        #{groupType,jdbcType=VARCHAR},
       </if>
       <if test="status != null" >
         #{status,jdbcType=VARCHAR},
@@ -162,64 +162,64 @@
       <if test="address != null" >
         #{address,jdbcType=VARCHAR},
       </if>
-      <if test="permissionproject != null" >
-        #{permissionproject,jdbcType=VARCHAR},
+      <if test="permissionProject != null" >
+        #{permissionProject,jdbcType=VARCHAR},
       </if>
-      <if test="generalproject != null" >
-        #{generalproject,jdbcType=VARCHAR},
+      <if test="generalProject != null" >
+        #{generalProject,jdbcType=VARCHAR},
       </if>
-      <if test="businessscope != null" >
-        #{businessscope,jdbcType=VARCHAR},
+      <if test="businessScope != null" >
+        #{businessScope,jdbcType=VARCHAR},
       </if>
-      <if test="businessmode != null" >
-        #{businessmode,jdbcType=VARCHAR},
+      <if test="businessMode != null" >
+        #{businessMode,jdbcType=VARCHAR},
       </if>
       <if test="ra != null" >
         #{ra,jdbcType=VARCHAR},
       </if>
-      <if test="lastinspectionyear != null" >
-        #{lastinspectionyear,jdbcType=VARCHAR},
+      <if test="lastInspectionYear != null" >
+        #{lastInspectionYear,jdbcType=VARCHAR},
       </if>
-      <if test="lastinspectiondate != null" >
-        #{lastinspectiondate,jdbcType=VARCHAR},
+      <if test="lastInspectionDate != null" >
+        #{lastInspectionDate,jdbcType=VARCHAR},
       </if>
       <if test="remark != null" >
         #{remark,jdbcType=VARCHAR},
       </if>
-      <if test="orderid != null" >
-        #{orderid,jdbcType=INTEGER},
+      <if test="orderId != null" >
+        #{orderId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.hyrt.saic.bean.GroupInfo" >
     update t_group_info
     <set >
-      <if test="groupname != null" >
-        groupName = #{groupname,jdbcType=VARCHAR},
+      <if test="groupName != null" >
+        groupName = #{groupName,jdbcType=VARCHAR},
       </if>
-      <if test="legalpersonname != null" >
-        legalPersonName = #{legalpersonname,jdbcType=VARCHAR},
+      <if test="legalPersonName != null" >
+        legalPersonName = #{legalPersonName,jdbcType=VARCHAR},
       </if>
-      <if test="registrationcode != null" >
-        registrationCode = #{registrationcode,jdbcType=VARCHAR},
+      <if test="registrationCode != null" >
+        registrationCode = #{registrationCode,jdbcType=VARCHAR},
       </if>
-      <if test="registeredcapital != null" >
-        registeredCapital = #{registeredcapital,jdbcType=VARCHAR},
+      <if test="registeredCapital != null" >
+        registeredCapital = #{registeredCapital,jdbcType=VARCHAR},
       </if>
-      <if test="currencytype != null" >
-        currencyType = #{currencytype,jdbcType=VARCHAR},
+      <if test="currencyType != null" >
+        currencyType = #{currencyType,jdbcType=VARCHAR},
       </if>
-      <if test="createtime != null" >
-        createTime = #{createtime,jdbcType=VARCHAR},
+      <if test="createTime != null" >
+        createTime = #{createTime,jdbcType=VARCHAR},
       </if>
-      <if test="effectivedate != null" >
-        effectiveDate = #{effectivedate,jdbcType=VARCHAR},
+      <if test="effectiveDate != null" >
+        effectiveDate = #{effectiveDate,jdbcType=VARCHAR},
       </if>
       <if test="deadline != null" >
         deadline = #{deadline,jdbcType=VARCHAR},
       </if>
-      <if test="grouptype != null" >
-        groupType = #{grouptype,jdbcType=VARCHAR},
+      <if test="groupType != null" >
+        groupType = #{groupType,jdbcType=VARCHAR},
       </if>
       <if test="status != null" >
         status = #{status,jdbcType=VARCHAR},
@@ -227,58 +227,58 @@
       <if test="address != null" >
         address = #{address,jdbcType=VARCHAR},
       </if>
-      <if test="permissionproject != null" >
-        permissionProject = #{permissionproject,jdbcType=VARCHAR},
+      <if test="permissionProject != null" >
+        permissionProject = #{permissionProject,jdbcType=VARCHAR},
       </if>
-      <if test="generalproject != null" >
-        generalProject = #{generalproject,jdbcType=VARCHAR},
+      <if test="generalProject != null" >
+        generalProject = #{generalProject,jdbcType=VARCHAR},
       </if>
-      <if test="businessscope != null" >
-        businessScope = #{businessscope,jdbcType=VARCHAR},
+      <if test="businessScope != null" >
+        businessScope = #{businessScope,jdbcType=VARCHAR},
       </if>
-      <if test="businessmode != null" >
-        businessMode = #{businessmode,jdbcType=VARCHAR},
+      <if test="businessMode != null" >
+        businessMode = #{businessMode,jdbcType=VARCHAR},
       </if>
       <if test="ra != null" >
         RA = #{ra,jdbcType=VARCHAR},
       </if>
-      <if test="lastinspectionyear != null" >
-        lastInspectionYear = #{lastinspectionyear,jdbcType=VARCHAR},
+      <if test="lastInspectionYear != null" >
+        lastInspectionYear = #{lastInspectionYear,jdbcType=VARCHAR},
       </if>
-      <if test="lastinspectiondate != null" >
-        lastInspectionDate = #{lastinspectiondate,jdbcType=VARCHAR},
+      <if test="lastInspectionDate != null" >
+        lastInspectionDate = #{lastInspectionDate,jdbcType=VARCHAR},
       </if>
       <if test="remark != null" >
         remark = #{remark,jdbcType=VARCHAR},
       </if>
-      <if test="orderid != null" >
-        orderId = #{orderid,jdbcType=INTEGER},
+      <if test="orderId != null" >
+        orderId = #{orderId,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hyrt.saic.bean.GroupInfo" >
     update t_group_info
-    set groupName = #{groupname,jdbcType=VARCHAR},
-      legalPersonName = #{legalpersonname,jdbcType=VARCHAR},
-      registrationCode = #{registrationcode,jdbcType=VARCHAR},
-      registeredCapital = #{registeredcapital,jdbcType=VARCHAR},
-      currencyType = #{currencytype,jdbcType=VARCHAR},
-      createTime = #{createtime,jdbcType=VARCHAR},
-      effectiveDate = #{effectivedate,jdbcType=VARCHAR},
+    set groupName = #{groupName,jdbcType=VARCHAR},
+      legalPersonName = #{legalPersonName,jdbcType=VARCHAR},
+      registrationCode = #{registrationCode,jdbcType=VARCHAR},
+      registeredCapital = #{registeredCapital,jdbcType=VARCHAR},
+      currencyType = #{currencyType,jdbcType=VARCHAR},
+      createTime = #{createTime,jdbcType=VARCHAR},
+      effectiveDate = #{effectiveDate,jdbcType=VARCHAR},
       deadline = #{deadline,jdbcType=VARCHAR},
-      groupType = #{grouptype,jdbcType=VARCHAR},
+      groupType = #{groupType,jdbcType=VARCHAR},
       status = #{status,jdbcType=VARCHAR},
       address = #{address,jdbcType=VARCHAR},
-      permissionProject = #{permissionproject,jdbcType=VARCHAR},
-      generalProject = #{generalproject,jdbcType=VARCHAR},
-      businessScope = #{businessscope,jdbcType=VARCHAR},
-      businessMode = #{businessmode,jdbcType=VARCHAR},
+      permissionProject = #{permissionProject,jdbcType=VARCHAR},
+      generalProject = #{generalProject,jdbcType=VARCHAR},
+      businessScope = #{businessScope,jdbcType=VARCHAR},
+      businessMode = #{businessMode,jdbcType=VARCHAR},
       RA = #{ra,jdbcType=VARCHAR},
-      lastInspectionYear = #{lastinspectionyear,jdbcType=VARCHAR},
-      lastInspectionDate = #{lastinspectiondate,jdbcType=VARCHAR},
+      lastInspectionYear = #{lastInspectionYear,jdbcType=VARCHAR},
+      lastInspectionDate = #{lastInspectionDate,jdbcType=VARCHAR},
       remark = #{remark,jdbcType=VARCHAR},
-      orderId = #{orderid,jdbcType=INTEGER}
+      orderId = #{orderId,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

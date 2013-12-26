@@ -3,21 +3,21 @@ package com.hyrt.saic.bean;
 public class GroupExternalInvestment {
     private Long id;
 
-    private Long groupid;
+    private Long groupId;
 
-    private String groupname;
+    private String groupName;
 
-    private String registrationcode;
+    private String registrationCode;
 
-    private String registeredcapital;
+    private String registeredCapital;
 
     private String status;
 
     private String ra;
 
-    private String contributionamount;
+    private String contributionAmount;
 
-    private String currencytype;
+    private String currencyType;
 
     private String remark;
 
@@ -29,36 +29,36 @@ public class GroupExternalInvestment {
         this.id = id;
     }
 
-    public Long getGroupid() {
-        return groupid;
+    public Long getGroupId() {
+        return groupId;
     }
 
-    public void setGroupid(Long groupid) {
-        this.groupid = groupid;
+    public void setGroupId(Long groupId) {
+        this.groupId = groupId;
     }
 
-    public String getGroupname() {
-        return groupname;
+    public String getGroupName() {
+        return groupName;
     }
 
-    public void setGroupname(String groupname) {
-        this.groupname = groupname == null ? null : groupname.trim();
+    public void setGroupName(String groupName) {
+        this.groupName = groupName;
     }
 
-    public String getRegistrationcode() {
-        return registrationcode;
+    public String getRegistrationCode() {
+        return registrationCode;
     }
 
-    public void setRegistrationcode(String registrationcode) {
-        this.registrationcode = registrationcode == null ? null : registrationcode.trim();
+    public void setRegistrationCode(String registrationCode) {
+        this.registrationCode = registrationCode;
     }
 
-    public String getRegisteredcapital() {
-        return registeredcapital;
+    public String getRegisteredCapital() {
+        return registeredCapital;
     }
 
-    public void setRegisteredcapital(String registeredcapital) {
-        this.registeredcapital = registeredcapital == null ? null : registeredcapital.trim();
+    public void setRegisteredCapital(String registeredCapital) {
+        this.registeredCapital = registeredCapital;
     }
 
     public String getStatus() {
@@ -66,7 +66,7 @@ public class GroupExternalInvestment {
     }
 
     public void setStatus(String status) {
-        this.status = status == null ? null : status.trim();
+        this.status = status;
     }
 
     public String getRa() {
@@ -74,23 +74,23 @@ public class GroupExternalInvestment {
     }
 
     public void setRa(String ra) {
-        this.ra = ra == null ? null : ra.trim();
+        this.ra = ra;
     }
 
-    public String getContributionamount() {
-        return contributionamount;
+    public String getContributionAmount() {
+        return contributionAmount;
     }
 
-    public void setContributionamount(String contributionamount) {
-        this.contributionamount = contributionamount == null ? null : contributionamount.trim();
+    public void setContributionAmount(String contributionAmount) {
+        this.contributionAmount = contributionAmount;
     }
 
-    public String getCurrencytype() {
-        return currencytype;
+    public String getCurrencyType() {
+        return currencyType;
     }
 
-    public void setCurrencytype(String currencytype) {
-        this.currencytype = currencytype == null ? null : currencytype.trim();
+    public void setCurrencyType(String currencyType) {
+        this.currencyType = currencyType;
     }
 
     public String getRemark() {
@@ -98,6 +98,6 @@ public class GroupExternalInvestment {
     }
 
     public void setRemark(String remark) {
-        this.remark = remark == null ? null : remark.trim();
+        this.remark = remark;
     }
 }

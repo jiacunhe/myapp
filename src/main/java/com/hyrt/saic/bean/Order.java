@@ -6,25 +6,25 @@ import java.util.Date;
 public class Order {
     private String id;
 
-    private String userid;
+    private String userId;
 
-    private Integer businessid;
+    private Integer businessId;
 
     private Integer cycle;
 
     private Integer loops;
 
-    private BigDecimal summoney;
+    private BigDecimal sumMoney;
 
     private String status;
 
-    private Date createtime;
+    private Date createTime;
 
-    private Date paytime;
+    private Date payTime;
 
-    private Date verifytime;
+    private Date verifyTime;
 
-    private Date finishtime;
+    private Date finishTime;
 
     private String remark;
 
@@ -35,23 +35,23 @@ public class Order {
     }
 
     public void setId(String id) {
-        this.id = id == null ? null : id.trim();
+        this.id = id;
     }
 
-    public String getUserid() {
-        return userid;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUserid(String userid) {
-        this.userid = userid == null ? null : userid.trim();
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
-    public Integer getBusinessid() {
-        return businessid;
+    public Integer getBusinessId() {
+        return businessId;
     }
 
-    public void setBusinessid(Integer businessid) {
-        this.businessid = businessid;
+    public void setBusinessId(Integer businessId) {
+        this.businessId = businessId;
     }
 
     public Integer getCycle() {
@@ -70,12 +70,12 @@ public class Order {
         this.loops = loops;
     }
 
-    public BigDecimal getSummoney() {
-        return summoney;
+    public BigDecimal getSumMoney() {
+        return sumMoney;
     }
 
-    public void setSummoney(BigDecimal summoney) {
-        this.summoney = summoney;
+    public void setSumMoney(BigDecimal sumMoney) {
+        this.sumMoney = sumMoney;
     }
 
     public String getStatus() {
@@ -83,39 +83,39 @@ public class Order {
     }
 
     public void setStatus(String status) {
-        this.status = status == null ? null : status.trim();
+        this.status = status;
     }
 
-    public Date getCreatetime() {
-        return createtime;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreatetime(Date createtime) {
-        this.createtime = createtime;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public Date getPaytime() {
-        return paytime;
+    public Date getPayTime() {
+        return payTime;
     }
 
-    public void setPaytime(Date paytime) {
-        this.paytime = paytime;
+    public void setPayTime(Date payTime) {
+        this.payTime = payTime;
     }
 
-    public Date getVerifytime() {
-        return verifytime;
+    public Date getVerifyTime() {
+        return verifyTime;
     }
 
-    public void setVerifytime(Date verifytime) {
-        this.verifytime = verifytime;
+    public void setVerifyTime(Date verifyTime) {
+        this.verifyTime = verifyTime;
     }
 
-    public Date getFinishtime() {
-        return finishtime;
+    public Date getFinishTime() {
+        return finishTime;
     }
 
-    public void setFinishtime(Date finishtime) {
-        this.finishtime = finishtime;
+    public void setFinishTime(Date finishTime) {
+        this.finishTime = finishTime;
     }
 
     public String getRemark() {
@@ -123,7 +123,7 @@ public class Order {
     }
 
     public void setRemark(String remark) {
-        this.remark = remark == null ? null : remark.trim();
+        this.remark = remark;
     }
 
     public String getRequirement() {
@@ -131,6 +131,6 @@ public class Order {
     }
 
     public void setRequirement(String requirement) {
-        this.requirement = requirement == null ? null : requirement.trim();
+        this.requirement = requirement;
     }
 }

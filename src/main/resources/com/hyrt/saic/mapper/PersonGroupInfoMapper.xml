@@ -3,7 +3,7 @@
 <mapper namespace="com.hyrt.saic.dao.PersonGroupInfoMapper" >
   <resultMap id="BaseResultMap" type="com.hyrt.saic.bean.PersonGroupInfo" >
     <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="personType" property="persontype" jdbcType="VARCHAR" />
+    <result column="personType" property="personType" jdbcType="VARCHAR" />
     <result column="A" property="a" jdbcType="VARCHAR" />
     <result column="B" property="b" jdbcType="VARCHAR" />
     <result column="C" property="c" jdbcType="VARCHAR" />
@@ -12,7 +12,7 @@
     <result column="F" property="f" jdbcType="VARCHAR" />
     <result column="G" property="g" jdbcType="VARCHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
-    <result column="orderId" property="orderid" jdbcType="VARCHAR" />
+    <result column="orderId" property="orderId" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, personType, A, B, C, D, E, F, G, remark, orderId
@@ -32,9 +32,9 @@
       B, C, D, E, 
       F, G, remark, orderId
       )
-    values (#{id,jdbcType=BIGINT}, #{persontype,jdbcType=VARCHAR}, #{a,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=BIGINT}, #{personType,jdbcType=VARCHAR}, #{a,jdbcType=VARCHAR},
       #{b,jdbcType=VARCHAR}, #{c,jdbcType=VARCHAR}, #{d,jdbcType=VARCHAR}, #{e,jdbcType=VARCHAR}, 
-      #{f,jdbcType=VARCHAR}, #{g,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{orderid,jdbcType=VARCHAR}
+      #{f,jdbcType=VARCHAR}, #{g,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{orderId,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.hyrt.saic.bean.PersonGroupInfo" >
@@ -43,7 +43,7 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="persontype != null" >
+      <if test="personType != null" >
         personType,
       </if>
       <if test="a != null" >
@@ -70,7 +70,7 @@
       <if test="remark != null" >
         remark,
       </if>
-      <if test="orderid != null" >
+      <if test="orderId != null" >
         orderId,
       </if>
     </trim>
@@ -78,8 +78,8 @@
       <if test="id != null" >
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="persontype != null" >
-        #{persontype,jdbcType=VARCHAR},
+      <if test="personType != null" >
+        #{personType,jdbcType=VARCHAR},
       </if>
       <if test="a != null" >
         #{a,jdbcType=VARCHAR},
@@ -105,16 +105,16 @@
       <if test="remark != null" >
         #{remark,jdbcType=VARCHAR},
       </if>
-      <if test="orderid != null" >
-        #{orderid,jdbcType=VARCHAR},
+      <if test="orderId != null" >
+        #{orderId,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.hyrt.saic.bean.PersonGroupInfo" >
     update t_person_group_info
     <set >
-      <if test="persontype != null" >
-        personType = #{persontype,jdbcType=VARCHAR},
+      <if test="personType != null" >
+        personType = #{personType,jdbcType=VARCHAR},
       </if>
       <if test="a != null" >
         A = #{a,jdbcType=VARCHAR},
@@ -140,15 +140,15 @@
       <if test="remark != null" >
         remark = #{remark,jdbcType=VARCHAR},
       </if>
-      <if test="orderid != null" >
-        orderId = #{orderid,jdbcType=VARCHAR},
+      <if test="orderId != null" >
+        orderId = #{orderId,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hyrt.saic.bean.PersonGroupInfo" >
     update t_person_group_info
-    set personType = #{persontype,jdbcType=VARCHAR},
+    set personType = #{personType,jdbcType=VARCHAR},
       A = #{a,jdbcType=VARCHAR},
       B = #{b,jdbcType=VARCHAR},
       C = #{c,jdbcType=VARCHAR},
@@ -157,7 +157,7 @@
       F = #{f,jdbcType=VARCHAR},
       G = #{g,jdbcType=VARCHAR},
       remark = #{remark,jdbcType=VARCHAR},
-      orderId = #{orderid,jdbcType=VARCHAR}
+      orderId = #{orderId,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

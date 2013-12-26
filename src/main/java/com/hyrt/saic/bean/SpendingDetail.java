@@ -1,37 +1,75 @@
 package com.hyrt.saic.bean;
 
-import java.math.BigDecimal;
+public class SpendingDetail {
+    private Integer id;
 
-public class SpendingDetail extends SpendingDetailKey {
-    private BigDecimal amount;
+    private String userId;
 
-    private BigDecimal lastbalance;
+    private String yearMonth;
 
-    private BigDecimal recharge;
+    private Integer businessId;
+
+    private Integer amount;
+
+    private Integer lastBalance;
+
+    private Integer recharge;
 
     private String remark;
 
-    public BigDecimal getAmount() {
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getYearMonth() {
+        return yearMonth;
+    }
+
+    public void setYearMonth(String yearMonth) {
+        this.yearMonth = yearMonth;
+    }
+
+    public Integer getBusinessId() {
+        return businessId;
+    }
+
+    public void setBusinessId(Integer businessId) {
+        this.businessId = businessId;
+    }
+
+    public Integer getAmount() {
         return amount;
     }
 
-    public void setAmount(BigDecimal amount) {
+    public void setAmount(Integer amount) {
         this.amount = amount;
     }
 
-    public BigDecimal getLastbalance() {
-        return lastbalance;
+    public Integer getLastBalance() {
+        return lastBalance;
     }
 
-    public void setLastbalance(BigDecimal lastbalance) {
-        this.lastbalance = lastbalance;
+    public void setLastBalance(Integer lastBalance) {
+        this.lastBalance = lastBalance;
     }
 
-    public BigDecimal getRecharge() {
+    public Integer getRecharge() {
         return recharge;
     }
 
-    public void setRecharge(BigDecimal recharge) {
+    public void setRecharge(Integer recharge) {
         this.recharge = recharge;
     }
 
@@ -40,6 +78,6 @@ public class SpendingDetail extends SpendingDetailKey {
     }
 
     public void setRemark(String remark) {
-        this.remark = remark == null ? null : remark.trim();
+        this.remark = remark;
     }
 }

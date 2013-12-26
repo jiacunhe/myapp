@@ -3,9 +3,9 @@ package com.hyrt.saic.bean;
 public class RoleSysResource {
     private Integer id;
 
-    private Integer roleid;
+    private Integer roleId;
 
-    private Integer resourceid;
+    private Integer resourceId;
 
     private String remark;
 
@@ -17,20 +17,20 @@ public class RoleSysResource {
         this.id = id;
     }
 
-    public Integer getRoleid() {
-        return roleid;
+    public Integer getRoleId() {
+        return roleId;
     }
 
-    public void setRoleid(Integer roleid) {
-        this.roleid = roleid;
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
     }
 
-    public Integer getResourceid() {
-        return resourceid;
+    public Integer getResourceId() {
+        return resourceId;
     }
 
-    public void setResourceid(Integer resourceid) {
-        this.resourceid = resourceid;
+    public void setResourceId(Integer resourceId) {
+        this.resourceId = resourceId;
     }
 
     public String getRemark() {
@@ -38,6 +38,6 @@ public class RoleSysResource {
     }
 
     public void setRemark(String remark) {
-        this.remark = remark == null ? null : remark.trim();
+        this.remark = remark;
     }
 }

@@ -1,18 +1,38 @@
 package com.hyrt.saic.bean;
 
-public class ChargePackageDetaill extends ChargePackageDetaillKey {
-    private Integer businesstypeid;
+public class ChargePackageDetaill {
+    private Integer id;
+
+    private Integer packageId;
+
+    private Integer businessTypeId;
 
     private Integer quantity;
 
     private String remark;
 
-    public Integer getBusinesstypeid() {
-        return businesstypeid;
+    public Integer getId() {
+        return id;
     }
 
-    public void setBusinesstypeid(Integer businesstypeid) {
-        this.businesstypeid = businesstypeid;
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getPackageId() {
+        return packageId;
+    }
+
+    public void setPackageId(Integer packageId) {
+        this.packageId = packageId;
+    }
+
+    public Integer getBusinessTypeId() {
+        return businessTypeId;
+    }
+
+    public void setBusinessTypeId(Integer businessTypeId) {
+        this.businessTypeId = businessTypeId;
     }
 
     public Integer getQuantity() {

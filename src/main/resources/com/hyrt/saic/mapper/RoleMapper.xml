@@ -3,7 +3,7 @@
 <mapper namespace="com.hyrt.saic.dao.RoleMapper" >
   <resultMap id="BaseResultMap" type="com.hyrt.saic.bean.Role" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="roleName" property="rolename" jdbcType="VARCHAR" />
+    <result column="roleName" property="roleName" jdbcType="VARCHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
@@ -22,7 +22,7 @@
   <insert id="insert" parameterType="com.hyrt.saic.bean.Role" >
     insert into t_role (id, roleName, remark
       )
-    values (#{id,jdbcType=INTEGER}, #{rolename,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
+    values (#{id,jdbcType=INTEGER}, #{roleName,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.hyrt.saic.bean.Role" >
@@ -31,7 +31,7 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="rolename != null" >
+      <if test="roleName != null" >
         roleName,
       </if>
       <if test="remark != null" >
@@ -42,8 +42,8 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="rolename != null" >
-        #{rolename,jdbcType=VARCHAR},
+      <if test="roleName != null" >
+        #{roleName,jdbcType=VARCHAR},
       </if>
       <if test="remark != null" >
         #{remark,jdbcType=VARCHAR},
@@ -53,8 +53,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.hyrt.saic.bean.Role" >
     update t_role
     <set >
-      <if test="rolename != null" >
-        roleName = #{rolename,jdbcType=VARCHAR},
+      <if test="roleName != null" >
+        roleName = #{roleName,jdbcType=VARCHAR},
       </if>
       <if test="remark != null" >
         remark = #{remark,jdbcType=VARCHAR},
@@ -64,7 +64,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hyrt.saic.bean.Role" >
     update t_role
-    set roleName = #{rolename,jdbcType=VARCHAR},
+    set roleName = #{roleName,jdbcType=VARCHAR},
       remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>

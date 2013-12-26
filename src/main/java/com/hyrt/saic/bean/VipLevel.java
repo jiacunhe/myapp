@@ -3,7 +3,7 @@ package com.hyrt.saic.bean;
 public class VipLevel {
     private Integer id;
 
-    private String levelname;
+    private String levelName;
 
     private String remark;
 
@@ -15,12 +15,12 @@ public class VipLevel {
         this.id = id;
     }
 
-    public String getLevelname() {
-        return levelname;
+    public String getLevelName() {
+        return levelName;
     }
 
-    public void setLevelname(String levelname) {
-        this.levelname = levelname == null ? null : levelname.trim();
+    public void setLevelName(String levelName) {
+        this.levelName = levelName;
     }
 
     public String getRemark() {
@@ -28,6 +28,6 @@ public class VipLevel {
     }
 
     public void setRemark(String remark) {
-        this.remark = remark == null ? null : remark.trim();
+        this.remark = remark;
     }
 }

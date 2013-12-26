@@ -3,13 +3,13 @@ package com.hyrt.saic.bean;
 public class GroupChanging {
     private Long id;
 
-    private Long groupid;
+    private Long groupId;
 
-    private String changeitem;
+    private String changeItem;
 
-    private String beforechange;
+    private String beforeChange;
 
-    private String afterchange;
+    private String afterChange;
 
     private String remark;
 
@@ -21,36 +21,36 @@ public class GroupChanging {
         this.id = id;
     }
 
-    public Long getGroupid() {
-        return groupid;
+    public Long getGroupId() {
+        return groupId;
     }
 
-    public void setGroupid(Long groupid) {
-        this.groupid = groupid;
+    public void setGroupId(Long groupId) {
+        this.groupId = groupId;
     }
 
-    public String getChangeitem() {
-        return changeitem;
+    public String getChangeItem() {
+        return changeItem;
     }
 
-    public void setChangeitem(String changeitem) {
-        this.changeitem = changeitem == null ? null : changeitem.trim();
+    public void setChangeItem(String changeItem) {
+        this.changeItem = changeItem;
     }
 
-    public String getBeforechange() {
-        return beforechange;
+    public String getBeforeChange() {
+        return beforeChange;
     }
 
-    public void setBeforechange(String beforechange) {
-        this.beforechange = beforechange == null ? null : beforechange.trim();
+    public void setBeforeChange(String beforeChange) {
+        this.beforeChange = beforeChange;
     }
 
-    public String getAfterchange() {
-        return afterchange;
+    public String getAfterChange() {
+        return afterChange;
     }
 
-    public void setAfterchange(String afterchange) {
-        this.afterchange = afterchange == null ? null : afterchange.trim();
+    public void setAfterChange(String afterChange) {
+        this.afterChange = afterChange;
     }
 
     public String getRemark() {
@@ -58,6 +58,6 @@ public class GroupChanging {
     }
 
     public void setRemark(String remark) {
-        this.remark = remark == null ? null : remark.trim();
+        this.remark = remark;
     }
 }

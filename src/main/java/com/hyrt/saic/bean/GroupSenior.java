@@ -3,9 +3,9 @@ package com.hyrt.saic.bean;
 public class GroupSenior {
     private Long id;
 
-    private Long groupid;
+    private Long groupId;
 
-    private String seniorname;
+    private String seniorName;
 
     private String position;
 
@@ -19,20 +19,20 @@ public class GroupSenior {
         this.id = id;
     }
 
-    public Long getGroupid() {
-        return groupid;
+    public Long getGroupId() {
+        return groupId;
     }
 
-    public void setGroupid(Long groupid) {
-        this.groupid = groupid;
+    public void setGroupId(Long groupId) {
+        this.groupId = groupId;
     }
 
-    public String getSeniorname() {
-        return seniorname;
+    public String getSeniorName() {
+        return seniorName;
     }
 
-    public void setSeniorname(String seniorname) {
-        this.seniorname = seniorname == null ? null : seniorname.trim();
+    public void setSeniorName(String seniorName) {
+        this.seniorName = seniorName;
     }
 
     public String getPosition() {
@@ -40,7 +40,7 @@ public class GroupSenior {
     }
 
     public void setPosition(String position) {
-        this.position = position == null ? null : position.trim();
+        this.position = position;
     }
 
     public String getRemark() {
@@ -48,6 +48,6 @@ public class GroupSenior {
     }
 
     public void setRemark(String remark) {
-        this.remark = remark == null ? null : remark.trim();
+        this.remark = remark;
     }
 }

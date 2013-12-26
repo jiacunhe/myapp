@@ -3,8 +3,8 @@
 <mapper namespace="com.hyrt.saic.dao.GroupSeniorMapper" >
   <resultMap id="BaseResultMap" type="com.hyrt.saic.bean.GroupSenior" >
     <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="groupId" property="groupid" jdbcType="BIGINT" />
-    <result column="seniorName" property="seniorname" jdbcType="VARCHAR" />
+    <result column="groupId" property="groupId" jdbcType="BIGINT" />
+    <result column="seniorName" property="seniorName" jdbcType="VARCHAR" />
     <result column="position" property="position" jdbcType="VARCHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
   </resultMap>
@@ -24,7 +24,7 @@
   <insert id="insert" parameterType="com.hyrt.saic.bean.GroupSenior" >
     insert into t_group_senior (id, groupId, seniorName, 
       position, remark)
-    values (#{id,jdbcType=BIGINT}, #{groupid,jdbcType=BIGINT}, #{seniorname,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=BIGINT}, #{groupId,jdbcType=BIGINT}, #{seniorName,jdbcType=VARCHAR},
       #{position,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.hyrt.saic.bean.GroupSenior" >
@@ -33,10 +33,10 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="groupid != null" >
+      <if test="groupId != null" >
         groupId,
       </if>
-      <if test="seniorname != null" >
+      <if test="seniorName != null" >
         seniorName,
       </if>
       <if test="position != null" >
@@ -50,11 +50,11 @@
       <if test="id != null" >
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="groupid != null" >
-        #{groupid,jdbcType=BIGINT},
+      <if test="groupId != null" >
+        #{groupId,jdbcType=BIGINT},
       </if>
-      <if test="seniorname != null" >
-        #{seniorname,jdbcType=VARCHAR},
+      <if test="seniorName != null" >
+        #{seniorName,jdbcType=VARCHAR},
       </if>
       <if test="position != null" >
         #{position,jdbcType=VARCHAR},
@@ -67,11 +67,11 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.hyrt.saic.bean.GroupSenior" >
     update t_group_senior
     <set >
-      <if test="groupid != null" >
-        groupId = #{groupid,jdbcType=BIGINT},
+      <if test="groupId != null" >
+        groupId = #{groupId,jdbcType=BIGINT},
       </if>
-      <if test="seniorname != null" >
-        seniorName = #{seniorname,jdbcType=VARCHAR},
+      <if test="seniorName != null" >
+        seniorName = #{seniorName,jdbcType=VARCHAR},
       </if>
       <if test="position != null" >
         position = #{position,jdbcType=VARCHAR},
@@ -84,8 +84,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hyrt.saic.bean.GroupSenior" >
     update t_group_senior
-    set groupId = #{groupid,jdbcType=BIGINT},
-      seniorName = #{seniorname,jdbcType=VARCHAR},
+    set groupId = #{groupId,jdbcType=BIGINT},
+      seniorName = #{seniorName,jdbcType=VARCHAR},
       position = #{position,jdbcType=VARCHAR},
       remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}

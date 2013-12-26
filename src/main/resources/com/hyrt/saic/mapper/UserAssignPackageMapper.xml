@@ -3,18 +3,19 @@
 <mapper namespace="com.hyrt.saic.dao.UserAssignPackageMapper" >
   <resultMap id="BaseResultMap" type="com.hyrt.saic.bean.UserAssignPackage" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="userId" property="userid" jdbcType="VARCHAR" />
-    <result column="assignorId" property="assignorid" jdbcType="VARCHAR" />
-    <result column="businessId" property="businessid" jdbcType="INTEGER" />
+    <result column="userId" property="userId" jdbcType="VARCHAR" />
+    <result column="assignorId" property="assignorId" jdbcType="VARCHAR" />
+    <result column="businessId" property="businessId" jdbcType="INTEGER" />
     <result column="quantity" property="quantity" jdbcType="INTEGER" />
-    <result column="durationMonths" property="durationmonths" jdbcType="INTEGER" />
-    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
-    <result column="effectiveType" property="effectivetype" jdbcType="CHAR" />
+    <result column="durationMonths" property="durationMonths" jdbcType="INTEGER" />
+    <result column="createTime" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="effectiveType" property="effectiveType" jdbcType="CHAR" />
+    <result column="status" property="status" jdbcType="CHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, userId, assignorId, businessId, quantity, durationMonths, createTime, effectiveType, 
-    remark
+    status, remark
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -29,12 +30,12 @@
   <insert id="insert" parameterType="com.hyrt.saic.bean.UserAssignPackage" >
     insert into t_user_assign_package (id, userId, assignorId, 
       businessId, quantity, durationMonths, 
-      createTime, effectiveType, remark
-      )
-    values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=VARCHAR}, #{assignorid,jdbcType=VARCHAR}, 
-      #{businessid,jdbcType=INTEGER}, #{quantity,jdbcType=INTEGER}, #{durationmonths,jdbcType=INTEGER}, 
-      #{createtime,jdbcType=TIMESTAMP}, #{effectivetype,jdbcType=CHAR}, #{remark,jdbcType=VARCHAR}
-      )
+      createTime, effectiveType, status, 
+      remark)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, #{assignorId,jdbcType=VARCHAR},
+      #{businessId,jdbcType=INTEGER}, #{quantity,jdbcType=INTEGER}, #{durationMonths,jdbcType=INTEGER},
+      #{createTime,jdbcType=TIMESTAMP}, #{effectiveType,jdbcType=CHAR}, #{status,jdbcType=CHAR},
+      #{remark,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.hyrt.saic.bean.UserAssignPackage" >
     insert into t_user_assign_package
@@ -42,26 +43,29 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="userid != null" >
+      <if test="userId != null" >
         userId,
       </if>
-      <if test="assignorid != null" >
+      <if test="assignorId != null" >
         assignorId,
       </if>
-      <if test="businessid != null" >
+      <if test="businessId != null" >
         businessId,
       </if>
       <if test="quantity != null" >
         quantity,
       </if>
-      <if test="durationmonths != null" >
+      <if test="durationMonths != null" >
         durationMonths,
       </if>
-      <if test="createtime != null" >
+      <if test="createTime != null" >
         createTime,
       </if>
-      <if test="effectivetype != null" >
+      <if test="effectiveType != null" >
         effectiveType,
+      </if>
+      <if test="status != null" >
+        status,
       </if>
       <if test="remark != null" >
         remark,
@@ -71,26 +75,29 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="userid != null" >
-        #{userid,jdbcType=VARCHAR},
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
       </if>
-      <if test="assignorid != null" >
-        #{assignorid,jdbcType=VARCHAR},
+      <if test="assignorId != null" >
+        #{assignorId,jdbcType=VARCHAR},
       </if>
-      <if test="businessid != null" >
-        #{businessid,jdbcType=INTEGER},
+      <if test="businessId != null" >
+        #{businessId,jdbcType=INTEGER},
       </if>
       <if test="quantity != null" >
         #{quantity,jdbcType=INTEGER},
       </if>
-      <if test="durationmonths != null" >
-        #{durationmonths,jdbcType=INTEGER},
+      <if test="durationMonths != null" >
+        #{durationMonths,jdbcType=INTEGER},
       </if>
       <if test="createtime != null" >
         #{createtime,jdbcType=TIMESTAMP},
       </if>
-      <if test="effectivetype != null" >
-        #{effectivetype,jdbcType=CHAR},
+      <if test="effectiveType != null" >
+        #{effectiveType,jdbcType=CHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=CHAR},
       </if>
       <if test="remark != null" >
         #{remark,jdbcType=VARCHAR},
@@ -100,26 +107,29 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.hyrt.saic.bean.UserAssignPackage" >
     update t_user_assign_package
     <set >
-      <if test="userid != null" >
+      <if test="userId != null" >
         userId = #{userid,jdbcType=VARCHAR},
       </if>
-      <if test="assignorid != null" >
+      <if test="assignorId != null" >
         assignorId = #{assignorid,jdbcType=VARCHAR},
       </if>
-      <if test="businessid != null" >
-        businessId = #{businessid,jdbcType=INTEGER},
+      <if test="businessId != null" >
+        businessId = #{businessId,jdbcType=INTEGER},
       </if>
       <if test="quantity != null" >
         quantity = #{quantity,jdbcType=INTEGER},
       </if>
-      <if test="durationmonths != null" >
-        durationMonths = #{durationmonths,jdbcType=INTEGER},
+      <if test="durationMonths != null" >
+        durationMonths = #{durationMonths,jdbcType=INTEGER},
       </if>
-      <if test="createtime != null" >
-        createTime = #{createtime,jdbcType=TIMESTAMP},
+      <if test="createTime != null" >
+        createTime = #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="effectivetype != null" >
-        effectiveType = #{effectivetype,jdbcType=CHAR},
+      <if test="effectiveType != null" >
+        effectiveType = #{effectiveType,jdbcType=CHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=CHAR},
       </if>
       <if test="remark != null" >
         remark = #{remark,jdbcType=VARCHAR},
@@ -129,13 +139,14 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hyrt.saic.bean.UserAssignPackage" >
     update t_user_assign_package
-    set userId = #{userid,jdbcType=VARCHAR},
-      assignorId = #{assignorid,jdbcType=VARCHAR},
-      businessId = #{businessid,jdbcType=INTEGER},
+    set userId = #{userId,jdbcType=VARCHAR},
+      assignorId = #{assignorId,jdbcType=VARCHAR},
+      businessId = #{businessId,jdbcType=INTEGER},
       quantity = #{quantity,jdbcType=INTEGER},
-      durationMonths = #{durationmonths,jdbcType=INTEGER},
-      createTime = #{createtime,jdbcType=TIMESTAMP},
-      effectiveType = #{effectivetype,jdbcType=CHAR},
+      durationMonths = #{durationMonths,jdbcType=INTEGER},
+      createTime = #{createTime,jdbcType=TIMESTAMP},
+      effectiveType = #{effectiveType,jdbcType=CHAR},
+      status = #{status,jdbcType=CHAR},
       remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>

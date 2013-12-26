@@ -26,7 +26,7 @@ public class TestController {
     public String test(@ModelAttribute("user") User user, HttpServletRequest request){
 
 
-        if(user.getUserid().equals("ftl")){
+        if(user.getUserId().equals("ftl")){
             request.setAttribute("name","ftl");
             return   "/index.ftl";
         }else{

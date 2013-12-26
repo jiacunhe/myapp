@@ -3,9 +3,9 @@
 <mapper namespace="com.hyrt.saic.dao.SysMessageMapper" >
   <resultMap id="BaseResultMap" type="com.hyrt.saic.bean.SysMessage" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="userId" property="userid" jdbcType="VARCHAR" />
+    <result column="userId" property="userId" jdbcType="VARCHAR" />
     <result column="content" property="content" jdbcType="VARCHAR" />
-    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="createTime" property="createTime" jdbcType="TIMESTAMP" />
     <result column="type" property="type" jdbcType="CHAR" />
     <result column="status" property="status" jdbcType="CHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
@@ -27,8 +27,8 @@
     insert into t_sys_message (id, userId, content, 
       createTime, type, status, 
       remark)
-    values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
-      #{createtime,jdbcType=TIMESTAMP}, #{type,jdbcType=CHAR}, #{status,jdbcType=CHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR},
+      #{createTime,jdbcType=TIMESTAMP}, #{type,jdbcType=CHAR}, #{status,jdbcType=CHAR},
       #{remark,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.hyrt.saic.bean.SysMessage" >
@@ -37,13 +37,13 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="userid != null" >
+      <if test="userId != null" >
         userId,
       </if>
       <if test="content != null" >
         content,
       </if>
-      <if test="createtime != null" >
+      <if test="createTime != null" >
         createTime,
       </if>
       <if test="type != null" >
@@ -60,14 +60,14 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="userid != null" >
-        #{userid,jdbcType=VARCHAR},
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
       </if>
       <if test="content != null" >
         #{content,jdbcType=VARCHAR},
       </if>
-      <if test="createtime != null" >
-        #{createtime,jdbcType=TIMESTAMP},
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="type != null" >
         #{type,jdbcType=CHAR},
@@ -83,14 +83,14 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.hyrt.saic.bean.SysMessage" >
     update t_sys_message
     <set >
-      <if test="userid != null" >
-        userId = #{userid,jdbcType=VARCHAR},
+      <if test="userId != null" >
+        userId = #{userId,jdbcType=VARCHAR},
       </if>
       <if test="content != null" >
         content = #{content,jdbcType=VARCHAR},
       </if>
-      <if test="createtime != null" >
-        createTime = #{createtime,jdbcType=TIMESTAMP},
+      <if test="createTime != null" >
+        createTime = #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="type != null" >
         type = #{type,jdbcType=CHAR},
@@ -106,9 +106,9 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hyrt.saic.bean.SysMessage" >
     update t_sys_message
-    set userId = #{userid,jdbcType=VARCHAR},
+    set userId = #{userId,jdbcType=VARCHAR},
       content = #{content,jdbcType=VARCHAR},
-      createTime = #{createtime,jdbcType=TIMESTAMP},
+      createTime = #{createTime,jdbcType=TIMESTAMP},
       type = #{type,jdbcType=CHAR},
       status = #{status,jdbcType=CHAR},
       remark = #{remark,jdbcType=VARCHAR}

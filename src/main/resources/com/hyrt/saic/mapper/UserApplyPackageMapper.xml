@@ -4,11 +4,11 @@
   <resultMap id="BaseResultMap" type="com.hyrt.saic.bean.UserApplyPackage" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="userId" property="userid" jdbcType="VARCHAR" />
-    <result column="assignorId" property="assignorid" jdbcType="VARCHAR" />
-    <result column="yearMonth" property="yearmonth" jdbcType="CHAR" />
-    <result column="businessId" property="businessid" jdbcType="INTEGER" />
-    <result column="assignQuantity" property="assignquantity" jdbcType="INTEGER" />
-    <result column="usedQuantity" property="usedquantity" jdbcType="INTEGER" />
+    <result column="assignorId" property="assignorId" jdbcType="VARCHAR" />
+    <result column="yearMonth" property="yearMonth" jdbcType="CHAR" />
+    <result column="businessId" property="businessId" jdbcType="INTEGER" />
+    <result column="assignQuantity" property="assignQuantity" jdbcType="INTEGER" />
+    <result column="usedQuantity" property="usedQuantity" jdbcType="INTEGER" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
@@ -28,9 +28,9 @@
     insert into t_user_apply_package (id, userId, assignorId, 
       yearMonth, businessId, assignQuantity, 
       usedQuantity, remark)
-    values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=VARCHAR}, #{assignorid,jdbcType=VARCHAR}, 
-      #{yearmonth,jdbcType=CHAR}, #{businessid,jdbcType=INTEGER}, #{assignquantity,jdbcType=INTEGER}, 
-      #{usedquantity,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR})
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, #{assignorId,jdbcType=VARCHAR},
+      #{yearMonth,jdbcType=CHAR}, #{businessId,jdbcType=INTEGER}, #{assignQuantity,jdbcType=INTEGER},
+      #{usedQuantity,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.hyrt.saic.bean.UserApplyPackage" >
     insert into t_user_apply_package
@@ -38,22 +38,22 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="userid != null" >
+      <if test="userId != null" >
         userId,
       </if>
-      <if test="assignorid != null" >
+      <if test="assignorId != null" >
         assignorId,
       </if>
-      <if test="yearmonth != null" >
+      <if test="yearMonth != null" >
         yearMonth,
       </if>
-      <if test="businessid != null" >
+      <if test="businessId != null" >
         businessId,
       </if>
-      <if test="assignquantity != null" >
+      <if test="assignQuantity != null" >
         assignQuantity,
       </if>
-      <if test="usedquantity != null" >
+      <if test="usedQuantity != null" >
         usedQuantity,
       </if>
       <if test="remark != null" >
@@ -64,23 +64,23 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="userid != null" >
-        #{userid,jdbcType=VARCHAR},
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
       </if>
-      <if test="assignorid != null" >
-        #{assignorid,jdbcType=VARCHAR},
+      <if test="assignorId != null" >
+        #{assignorId,jdbcType=VARCHAR},
       </if>
-      <if test="yearmonth != null" >
-        #{yearmonth,jdbcType=CHAR},
+      <if test="yearMonth != null" >
+        #{yearMonth,jdbcType=CHAR},
       </if>
-      <if test="businessid != null" >
-        #{businessid,jdbcType=INTEGER},
+      <if test="businessId != null" >
+        #{businessId,jdbcType=INTEGER},
       </if>
-      <if test="assignquantity != null" >
-        #{assignquantity,jdbcType=INTEGER},
+      <if test="assignQuantity != null" >
+        #{assignQuantity,jdbcType=INTEGER},
       </if>
-      <if test="usedquantity != null" >
-        #{usedquantity,jdbcType=INTEGER},
+      <if test="usedQuantity != null" >
+        #{usedQuantity,jdbcType=INTEGER},
       </if>
       <if test="remark != null" >
         #{remark,jdbcType=VARCHAR},
@@ -90,23 +90,23 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.hyrt.saic.bean.UserApplyPackage" >
     update t_user_apply_package
     <set >
-      <if test="userid != null" >
-        userId = #{userid,jdbcType=VARCHAR},
+      <if test="userId != null" >
+        userId = #{userId,jdbcType=VARCHAR},
       </if>
-      <if test="assignorid != null" >
-        assignorId = #{assignorid,jdbcType=VARCHAR},
+      <if test="assignorId != null" >
+        assignorId = #{assignorId,jdbcType=VARCHAR},
       </if>
-      <if test="yearmonth != null" >
-        yearMonth = #{yearmonth,jdbcType=CHAR},
+      <if test="yearMonth != null" >
+        yearMonth = #{yearMonth,jdbcType=CHAR},
       </if>
-      <if test="businessid != null" >
-        businessId = #{businessid,jdbcType=INTEGER},
+      <if test="businessId != null" >
+        businessId = #{businessId,jdbcType=INTEGER},
       </if>
-      <if test="assignquantity != null" >
-        assignQuantity = #{assignquantity,jdbcType=INTEGER},
+      <if test="assignQuantity != null" >
+        assignQuantity = #{assignQuantity,jdbcType=INTEGER},
       </if>
-      <if test="usedquantity != null" >
-        usedQuantity = #{usedquantity,jdbcType=INTEGER},
+      <if test="usedQuantity != null" >
+        usedQuantity = #{usedQuantity,jdbcType=INTEGER},
       </if>
       <if test="remark != null" >
         remark = #{remark,jdbcType=VARCHAR},
@@ -116,12 +116,12 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hyrt.saic.bean.UserApplyPackage" >
     update t_user_apply_package
-    set userId = #{userid,jdbcType=VARCHAR},
-      assignorId = #{assignorid,jdbcType=VARCHAR},
-      yearMonth = #{yearmonth,jdbcType=CHAR},
-      businessId = #{businessid,jdbcType=INTEGER},
-      assignQuantity = #{assignquantity,jdbcType=INTEGER},
-      usedQuantity = #{usedquantity,jdbcType=INTEGER},
+    set userId = #{userId,jdbcType=VARCHAR},
+      assignorId = #{assignorId,jdbcType=VARCHAR},
+      yearMonth = #{yearMonth,jdbcType=CHAR},
+      businessId = #{businessId,jdbcType=INTEGER},
+      assignQuantity = #{assignQuantity,jdbcType=INTEGER},
+      usedQuantity = #{usedQuantity,jdbcType=INTEGER},
       remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>

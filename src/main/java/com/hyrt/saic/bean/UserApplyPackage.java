@@ -3,17 +3,17 @@ package com.hyrt.saic.bean;
 public class UserApplyPackage {
     private Integer id;
 
-    private String userid;
+    private String userId;
 
-    private String assignorid;
+    private String assignorId;
 
-    private String yearmonth;
+    private String yearMonth;
 
-    private Integer businessid;
+    private Integer businessId;
 
-    private Integer assignquantity;
+    private Integer assignQuantity;
 
-    private Integer usedquantity;
+    private Integer usedQuantity;
 
     private String remark;
 
@@ -25,52 +25,52 @@ public class UserApplyPackage {
         this.id = id;
     }
 
-    public String getUserid() {
-        return userid;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUserid(String userid) {
-        this.userid = userid == null ? null : userid.trim();
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
-    public String getAssignorid() {
-        return assignorid;
+    public String getAssignorId() {
+        return assignorId;
     }
 
-    public void setAssignorid(String assignorid) {
-        this.assignorid = assignorid == null ? null : assignorid.trim();
+    public void setAssignorId(String assignorId) {
+        this.assignorId = assignorId;
     }
 
-    public String getYearmonth() {
-        return yearmonth;
+    public String getYearMonth() {
+        return yearMonth;
     }
 
-    public void setYearmonth(String yearmonth) {
-        this.yearmonth = yearmonth == null ? null : yearmonth.trim();
+    public void setYearMonth(String yearMonth) {
+        this.yearMonth = yearMonth;
     }
 
-    public Integer getBusinessid() {
-        return businessid;
+    public Integer getBusinessId() {
+        return businessId;
     }
 
-    public void setBusinessid(Integer businessid) {
-        this.businessid = businessid;
+    public void setBusinessId(Integer businessId) {
+        this.businessId = businessId;
     }
 
-    public Integer getAssignquantity() {
-        return assignquantity;
+    public Integer getAssignQuantity() {
+        return assignQuantity;
     }
 
-    public void setAssignquantity(Integer assignquantity) {
-        this.assignquantity = assignquantity;
+    public void setAssignQuantity(Integer assignQuantity) {
+        this.assignQuantity = assignQuantity;
     }
 
-    public Integer getUsedquantity() {
-        return usedquantity;
+    public Integer getUsedQuantity() {
+        return usedQuantity;
     }
 
-    public void setUsedquantity(Integer usedquantity) {
-        this.usedquantity = usedquantity;
+    public void setUsedQuantity(Integer usedQuantity) {
+        this.usedQuantity = usedQuantity;
     }
 
     public String getRemark() {
@@ -78,6 +78,6 @@ public class UserApplyPackage {
     }
 
     public void setRemark(String remark) {
-        this.remark = remark == null ? null : remark.trim();
+        this.remark = remark;
     }
 }

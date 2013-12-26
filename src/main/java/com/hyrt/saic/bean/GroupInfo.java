@@ -3,45 +3,45 @@ package com.hyrt.saic.bean;
 public class GroupInfo {
     private Long id;
 
-    private String groupname;
+    private String groupName;
 
-    private String legalpersonname;
+    private String legalPersonName;
 
-    private String registrationcode;
+    private String registrationCode;
 
-    private String registeredcapital;
+    private String registeredCapital;
 
-    private String currencytype;
+    private String currencyType;
 
-    private String createtime;
+    private String createTime;
 
-    private String effectivedate;
+    private String effectiveDate;
 
     private String deadline;
 
-    private String grouptype;
+    private String groupType;
 
     private String status;
 
     private String address;
 
-    private String permissionproject;
+    private String permissionProject;
 
-    private String generalproject;
+    private String generalProject;
 
-    private String businessscope;
+    private String businessScope;
 
-    private String businessmode;
+    private String businessMode;
 
     private String ra;
 
-    private String lastinspectionyear;
+    private String lastInspectionYear;
 
-    private String lastinspectiondate;
+    private String lastInspectionDate;
 
     private String remark;
 
-    private Integer orderid;
+    private Integer orderId;
 
     public Long getId() {
         return id;
@@ -51,60 +51,60 @@ public class GroupInfo {
         this.id = id;
     }
 
-    public String getGroupname() {
-        return groupname;
+    public String getGroupName() {
+        return groupName;
     }
 
-    public void setGroupname(String groupname) {
-        this.groupname = groupname == null ? null : groupname.trim();
+    public void setGroupName(String groupName) {
+        this.groupName = groupName;
     }
 
-    public String getLegalpersonname() {
-        return legalpersonname;
+    public String getLegalPersonName() {
+        return legalPersonName;
     }
 
-    public void setLegalpersonname(String legalpersonname) {
-        this.legalpersonname = legalpersonname == null ? null : legalpersonname.trim();
+    public void setLegalPersonName(String legalPersonName) {
+        this.legalPersonName = legalPersonName;
     }
 
-    public String getRegistrationcode() {
-        return registrationcode;
+    public String getRegistrationCode() {
+        return registrationCode;
     }
 
-    public void setRegistrationcode(String registrationcode) {
-        this.registrationcode = registrationcode == null ? null : registrationcode.trim();
+    public void setRegistrationCode(String registrationCode) {
+        this.registrationCode = registrationCode;
     }
 
-    public String getRegisteredcapital() {
-        return registeredcapital;
+    public String getRegisteredCapital() {
+        return registeredCapital;
     }
 
-    public void setRegisteredcapital(String registeredcapital) {
-        this.registeredcapital = registeredcapital == null ? null : registeredcapital.trim();
+    public void setRegisteredCapital(String registeredCapital) {
+        this.registeredCapital = registeredCapital;
     }
 
-    public String getCurrencytype() {
-        return currencytype;
+    public String getCurrencyType() {
+        return currencyType;
     }
 
-    public void setCurrencytype(String currencytype) {
-        this.currencytype = currencytype == null ? null : currencytype.trim();
+    public void setCurrencyType(String currencyType) {
+        this.currencyType = currencyType;
     }
 
-    public String getCreatetime() {
-        return createtime;
+    public String getCreateTime() {
+        return createTime;
     }
 
-    public void setCreatetime(String createtime) {
-        this.createtime = createtime == null ? null : createtime.trim();
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
     }
 
-    public String getEffectivedate() {
-        return effectivedate;
+    public String getEffectiveDate() {
+        return effectiveDate;
     }
 
-    public void setEffectivedate(String effectivedate) {
-        this.effectivedate = effectivedate == null ? null : effectivedate.trim();
+    public void setEffectiveDate(String effectiveDate) {
+        this.effectiveDate = effectiveDate;
     }
 
     public String getDeadline() {
@@ -112,15 +112,15 @@ public class GroupInfo {
     }
 
     public void setDeadline(String deadline) {
-        this.deadline = deadline == null ? null : deadline.trim();
+        this.deadline = deadline;
     }
 
-    public String getGrouptype() {
-        return grouptype;
+    public String getGroupType() {
+        return groupType;
     }
 
-    public void setGrouptype(String grouptype) {
-        this.grouptype = grouptype == null ? null : grouptype.trim();
+    public void setGroupType(String groupType) {
+        this.groupType = groupType;
     }
 
     public String getStatus() {
@@ -128,7 +128,7 @@ public class GroupInfo {
     }
 
     public void setStatus(String status) {
-        this.status = status == null ? null : status.trim();
+        this.status = status;
     }
 
     public String getAddress() {
@@ -136,39 +136,39 @@ public class GroupInfo {
     }
 
     public void setAddress(String address) {
-        this.address = address == null ? null : address.trim();
+        this.address = address;
     }
 
-    public String getPermissionproject() {
-        return permissionproject;
+    public String getPermissionProject() {
+        return permissionProject;
     }
 
-    public void setPermissionproject(String permissionproject) {
-        this.permissionproject = permissionproject == null ? null : permissionproject.trim();
+    public void setPermissionProject(String permissionProject) {
+        this.permissionProject = permissionProject;
     }
 
-    public String getGeneralproject() {
-        return generalproject;
+    public String getGeneralProject() {
+        return generalProject;
     }
 
-    public void setGeneralproject(String generalproject) {
-        this.generalproject = generalproject == null ? null : generalproject.trim();
+    public void setGeneralProject(String generalProject) {
+        this.generalProject = generalProject;
     }
 
-    public String getBusinessscope() {
-        return businessscope;
+    public String getBusinessScope() {
+        return businessScope;
     }
 
-    public void setBusinessscope(String businessscope) {
-        this.businessscope = businessscope == null ? null : businessscope.trim();
+    public void setBusinessScope(String businessScope) {
+        this.businessScope = businessScope;
     }
 
-    public String getBusinessmode() {
-        return businessmode;
+    public String getBusinessMode() {
+        return businessMode;
     }
 
-    public void setBusinessmode(String businessmode) {
-        this.businessmode = businessmode == null ? null : businessmode.trim();
+    public void setBusinessMode(String businessMode) {
+        this.businessMode = businessMode;
     }
 
     public String getRa() {
@@ -176,23 +176,23 @@ public class GroupInfo {
     }
 
     public void setRa(String ra) {
-        this.ra = ra == null ? null : ra.trim();
+        this.ra = ra;
     }
 
-    public String getLastinspectionyear() {
-        return lastinspectionyear;
+    public String getLastInspectionYear() {
+        return lastInspectionYear;
     }
 
-    public void setLastinspectionyear(String lastinspectionyear) {
-        this.lastinspectionyear = lastinspectionyear == null ? null : lastinspectionyear.trim();
+    public void setLastInspectionYear(String lastInspectionYear) {
+        this.lastInspectionYear = lastInspectionYear;
     }
 
-    public String getLastinspectiondate() {
-        return lastinspectiondate;
+    public String getLastInspectionDate() {
+        return lastInspectionDate;
     }
 
-    public void setLastinspectiondate(String lastinspectiondate) {
-        this.lastinspectiondate = lastinspectiondate == null ? null : lastinspectiondate.trim();
+    public void setLastInspectionDate(String lastInspectionDate) {
+        this.lastInspectionDate = lastInspectionDate;
     }
 
     public String getRemark() {
@@ -200,14 +200,14 @@ public class GroupInfo {
     }
 
     public void setRemark(String remark) {
-        this.remark = remark == null ? null : remark.trim();
+        this.remark = remark;
     }
 
-    public Integer getOrderid() {
-        return orderid;
+    public Integer getOrderId() {
+        return orderId;
     }
 
-    public void setOrderid(Integer orderid) {
-        this.orderid = orderid;
+    public void setOrderId(Integer orderId) {
+        this.orderId = orderId;
     }
 }
