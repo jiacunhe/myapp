@@ -14,4 +14,7 @@ public interface ChargePackageDetaillMapper {
     int updateByPrimaryKeySelective(ChargePackageDetaill record);
 
     int updateByPrimaryKey(ChargePackageDetaill record);
+
+
+    void deleteByPackageId(int packageId);
 }

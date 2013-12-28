@@ -21,6 +21,10 @@
     delete from t_charge_package_detail
     where id = #{id,jdbcType=INTEGER}
   </delete>
+   <delete id="deleteByPackageId" parameterType="java.lang.Integer" >
+    delete from t_charge_package_detail
+    where PackageId = #{packageId,jdbcType=INTEGER}  <!-->hh增加<-->
+   </delete>
   <insert id="insert" parameterType="com.hyrt.saic.bean.ChargePackageDetaill" >
     insert into t_charge_package_detail (id, packageId, businessTypeId, 
       quantity, remark)
