@@ -6,4 +6,5 @@ out/*
 *.log
 *.class
 target/*
+classes/*
 web/WEB-INF/classes/*
