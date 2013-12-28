@@ -1,6 +1,9 @@
 package com.hyrt.saic.bean;
 
+import com.hyrt.saic.util.enums.OrderStatus;
+
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class Order {
@@ -18,17 +21,31 @@ public class Order {
 
     private String status;
 
-    private Date createTime;
+    private Timestamp createTime;
 
-    private Date payTime;
+    private Timestamp payTime;
 
-    private Date verifyTime;
+    private Timestamp verifyTime;
 
-    private Date finishTime;
+    private Timestamp finishTime;
 
     private String remark;
 
     private String requirement;
+
+
+    public Order(){
+
+    }
+
+    public Order(String id,Integer businessType,Timestamp createTime,String userId,OrderStatus status){
+        this.id = id;
+        this.businessId = businessType;
+        this.createTime = createTime;
+        this.userId = userId;
+        this.status = status.toString();
+    }
+
 
     public String getId() {
         return id;
@@ -86,35 +103,35 @@ public class Order {
         this.status = status;
     }
 
-    public Date getCreateTime() {
+    public Timestamp getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(Timestamp createTime) {
         this.createTime = createTime;
     }
 
-    public Date getPayTime() {
+    public Timestamp getPayTime() {
         return payTime;
     }
 
-    public void setPayTime(Date payTime) {
+    public void setPayTime(Timestamp payTime) {
         this.payTime = payTime;
     }
 
-    public Date getVerifyTime() {
+    public Timestamp getVerifyTime() {
         return verifyTime;
     }
 
-    public void setVerifyTime(Date verifyTime) {
+    public void setVerifyTime(Timestamp verifyTime) {
         this.verifyTime = verifyTime;
     }
 
-    public Date getFinishTime() {
+    public Timestamp getFinishTime() {
         return finishTime;
     }
 
-    public void setFinishTime(Date finishTime) {
+    public void setFinishTime(Timestamp finishTime) {
         this.finishTime = finishTime;
     }
 

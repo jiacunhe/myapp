@@ -1,9 +1,19 @@
+<<<<<<< HEAD
+=======
+.idea/*
+>>>>>>> 8077de327cf0ad8471913b84bd44e2ce4498cdc7
 out/*
-target/*
+*.iml
 *.bak
 *.swp
 *.log
 *.class
+<<<<<<< HEAD
 .idea/*
 classes/*
 web/WEB-INF/classes/
+=======
+target/*
+classes/*
+web/WEB-INF/classes/*
+>>>>>>> 8077de327cf0ad8471913b84bd44e2ce4498cdc7
