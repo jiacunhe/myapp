@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hyrt.saic.dao.RechargeRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.hyrt.saic.bean.RechargeRecord" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="userId" property="userId" jdbcType="VARCHAR" />
+    <result column="packageId" property="packageId" jdbcType="INTEGER" />
+    <result column="chargeTime" property="chargeTime" jdbcType="TIMESTAMP" />
+    <result column="createTime" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="amount" property="amount" jdbcType="DECIMAL" />
+    <result column="chargeType" property="chargetype" jdbcType="CHAR" />
+    <result column="returnResult" property="returnResult" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="CHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, userId, packageId, chargeTime, createTime, amount, chargeType, returnResult, 
+    status, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_recharge_record
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_recharge_record
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hyrt.saic.bean.RechargeRecord" >
+    insert into t_recharge_record (id, userId, packageId, 
+      chargeTime, createTime, amount, 
+      chargeType, returnResult, status, 
+      remark)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, #{packageId,jdbcType=INTEGER},
+      #{chargeTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, #{amount,jdbcType=DECIMAL},
+      #{chargeType,jdbcType=CHAR}, #{returnResult,jdbcType=VARCHAR}, #{status,jdbcType=CHAR},
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hyrt.saic.bean.RechargeRecord" >
+    insert into t_recharge_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        userId,
+      </if>
+      <if test="packageId != null" >
+        packageId,
+      </if>
+      <if test="chargeTime != null" >
+        chargeTime,
+      </if>
+      <if test="createTime != null" >
+        createTime,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="chargeType != null" >
+        chargeType,
+      </if>
+      <if test="returnResult != null" >
+        returnResult,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="packageId != null" >
+        #{packageId,jdbcType=INTEGER},
+      </if>
+      <if test="chargeTime != null" >
+        #{chargeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="chargeType != null" >
+        #{chargeType,jdbcType=CHAR},
+      </if>
+      <if test="returnResult != null" >
+        #{returnResult,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hyrt.saic.bean.RechargeRecord" >
+    update t_recharge_record
+    <set >
+      <if test="userId != null" >
+        userId = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="packageId != null" >
+        packageId = #{packageId,jdbcType=INTEGER},
+      </if>
+      <if test="chargeTime != null" >
+        chargeTime = #{chargeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="chargeType != null" >
+        chargeType = #{chargeType,jdbcType=CHAR},
+      </if>
+      <if test="returnResult != null" >
+        returnResult = #{returnResult,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=CHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hyrt.saic.bean.RechargeRecord" >
+    update t_recharge_record
+    set userId = #{userId,jdbcType=VARCHAR},
+      packageId = #{packageId,jdbcType=INTEGER},
+      chargeTime = #{chargeTime,jdbcType=TIMESTAMP},
+      createTime = #{createTime,jdbcType=TIMESTAMP},
+      amount = #{amount,jdbcType=DECIMAL},
+      chargeType = #{chargeType,jdbcType=CHAR},
+      returnResult = #{returnResult,jdbcType=VARCHAR},
+      status = #{status,jdbcType=CHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

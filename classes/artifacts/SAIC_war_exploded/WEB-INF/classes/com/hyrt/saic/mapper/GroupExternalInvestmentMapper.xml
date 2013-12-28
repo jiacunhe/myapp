@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hyrt.saic.dao.GroupExternalInvestmentMapper" >
+  <resultMap id="BaseResultMap" type="com.hyrt.saic.bean.GroupExternalInvestment" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="groupId" property="groupId" jdbcType="BIGINT" />
+    <result column="groupName" property="groupName" jdbcType="VARCHAR" />
+    <result column="registrationCode" property="registrationCode" jdbcType="VARCHAR" />
+    <result column="registeredCapital" property="registeredCapital" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="RA" property="ra" jdbcType="VARCHAR" />
+    <result column="contributionAmount" property="contributionAmount" jdbcType="VARCHAR" />
+    <result column="currencyType" property="currencyType" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, groupId, groupName, registrationCode, registeredCapital, status, RA, contributionAmount, 
+    currencyType, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_group_external_investment
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_group_external_investment
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.hyrt.saic.bean.GroupExternalInvestment" >
+    insert into t_group_external_investment (id, groupId, groupName, 
+      registrationCode, registeredCapital, status, 
+      RA, contributionAmount, currencyType, 
+      remark)
+    values (#{id,jdbcType=BIGINT}, #{groupId,jdbcType=BIGINT}, #{groupName,jdbcType=VARCHAR},
+      #{registrationCode,jdbcType=VARCHAR}, #{registeredCapital,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR},
+      #{ra,jdbcType=VARCHAR}, #{contributionAmount,jdbcType=VARCHAR}, #{currencyType,jdbcType=VARCHAR},
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hyrt.saic.bean.GroupExternalInvestment" >
+    insert into t_group_external_investment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="groupId != null" >
+        groupId,
+      </if>
+      <if test="groupName != null" >
+        groupName,
+      </if>
+      <if test="registrationCode != null" >
+        registrationCode,
+      </if>
+      <if test="registeredCapital != null" >
+        registeredCapital,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="ra != null" >
+        RA,
+      </if>
+      <if test="contributionAmount != null" >
+        contributionAmount,
+      </if>
+      <if test="currencyType != null" >
+        currencyType,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="groupId != null" >
+        #{groupId,jdbcType=BIGINT},
+      </if>
+      <if test="groupName != null" >
+        #{groupName,jdbcType=VARCHAR},
+      </if>
+      <if test="registrationCode != null" >
+        #{registrationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="registeredCapital != null" >
+        #{registeredCapital,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="ra != null" >
+        #{ra,jdbcType=VARCHAR},
+      </if>
+      <if test="contributionAmount != null" >
+        #{contributionAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="currencyType != null" >
+        #{currencyType,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hyrt.saic.bean.GroupExternalInvestment" >
+    update t_group_external_investment
+    <set >
+      <if test="groupId != null" >
+        groupId = #{groupId,jdbcType=BIGINT},
+      </if>
+      <if test="groupName != null" >
+        groupName = #{groupName,jdbcType=VARCHAR},
+      </if>
+      <if test="registrationCode != null" >
+        registrationCode = #{registrationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="registeredCapital != null" >
+        registeredCapital = #{registeredCapital,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="ra != null" >
+        RA = #{ra,jdbcType=VARCHAR},
+      </if>
+      <if test="contributionAmount != null" >
+        contributionAmount = #{contributionAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="currencyType != null" >
+        currencyType = #{currencyType,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hyrt.saic.bean.GroupExternalInvestment" >
+    update t_group_external_investment
+    set groupId = #{groupId,jdbcType=BIGINT},
+      groupName = #{groupName,jdbcType=VARCHAR},
+      registrationCode = #{registrationCode,jdbcType=VARCHAR},
+      registeredCapital = #{registeredCapital,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      RA = #{ra,jdbcType=VARCHAR},
+      contributionAmount = #{contributionAmount,jdbcType=VARCHAR},
+      currencyType = #{currencyType,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

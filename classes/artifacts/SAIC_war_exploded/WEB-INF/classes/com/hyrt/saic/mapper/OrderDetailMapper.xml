@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hyrt.saic.dao.OrderDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.hyrt.saic.bean.OrderDetail" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="orderId" property="orderId" jdbcType="VARCHAR" />
+    <result column="monitorType" property="monitorType" jdbcType="CHAR" />
+    <result column="objName" property="objName" jdbcType="VARCHAR" />
+    <result column="objCode" property="objCode" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, orderId, monitorType, objName, objCode, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_order_detail
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_order_detail
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.hyrt.saic.bean.OrderDetail" >
+    insert into t_order_detail (id, orderId, monitorType, 
+      objName, objCode, remark
+      )
+    values (#{id,jdbcType=BIGINT}, #{orderId,jdbcType=VARCHAR}, #{monitorType,jdbcType=CHAR},
+      #{objName,jdbcType=VARCHAR}, #{objCode,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hyrt.saic.bean.OrderDetail" >
+    insert into t_order_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="orderId != null" >
+        orderId,
+      </if>
+      <if test="monitorType != null" >
+        monitorType,
+      </if>
+      <if test="objName != null" >
+        objName,
+      </if>
+      <if test="objCode != null" >
+        objCode,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="monitorType != null" >
+        #{monitorType,jdbcType=CHAR},
+      </if>
+      <if test="objName != null" >
+        #{objName,jdbcType=VARCHAR},
+      </if>
+      <if test="objCode != null" >
+        #{objCode,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hyrt.saic.bean.OrderDetail" >
+    update t_order_detail
+    <set >
+      <if test="orderId != null" >
+        orderId = #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="monitorType != null" >
+        monitorType = #{monitorType,jdbcType=CHAR},
+      </if>
+      <if test="objName != null" >
+        objName = #{objName,jdbcType=VARCHAR},
+      </if>
+      <if test="objCode != null" >
+        objCode = #{objCode,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hyrt.saic.bean.OrderDetail" >
+    update t_order_detail
+    set orderId = #{orderId,jdbcType=VARCHAR},
+      monitorType = #{monitorType,jdbcType=CHAR},
+      objName = #{objName,jdbcType=VARCHAR},
+      objCode = #{objCode,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

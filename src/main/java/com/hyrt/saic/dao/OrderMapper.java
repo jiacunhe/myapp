@@ -16,4 +16,5 @@ public interface OrderMapper {
     int updateByPrimaryKeyWithBLOBs(Order record);
 
     int updateByPrimaryKey(Order record);
+
 }

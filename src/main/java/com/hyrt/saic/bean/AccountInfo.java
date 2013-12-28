@@ -11,11 +11,11 @@ public class AccountInfo {
 
     private String remark;
 
-    public String getUserid() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserid(String userId) {
+    public void setUserId(String userId) {
         this.userId = userId == null ? null : userId.trim();
     }
 
