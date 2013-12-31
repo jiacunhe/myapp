@@ -2,6 +2,8 @@ package com.hyrt.saic.dao;
 
 import com.hyrt.saic.bean.PersonGroupInfo;
 
+import java.util.List;
+
 public interface PersonGroupInfoMapper {
     int deleteByPrimaryKey(Long id);
 
@@ -14,4 +16,6 @@ public interface PersonGroupInfoMapper {
     int updateByPrimaryKeySelective(PersonGroupInfo record);
 
     int updateByPrimaryKey(PersonGroupInfo record);
+
+    List selectByOrderDetailId(Long id);
 }

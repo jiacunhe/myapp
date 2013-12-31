@@ -2,6 +2,8 @@ package com.hyrt.saic.dao;
 
 import com.hyrt.saic.bean.GroupExternalInvestment;
 
+import java.util.List;
+
 public interface GroupExternalInvestmentMapper {
     int deleteByPrimaryKey(Long id);
 
@@ -14,4 +16,6 @@ public interface GroupExternalInvestmentMapper {
     int updateByPrimaryKeySelective(GroupExternalInvestment record);
 
     int updateByPrimaryKey(GroupExternalInvestment record);
+
+    List selectByGroupId(Long id);
 }

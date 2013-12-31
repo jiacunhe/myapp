@@ -1,17 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: yang
-  Date: 13-12-27
-  Time: 上午9:53
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%
-		String sn = java.util.UUID.randomUUID().toString();
-		org.apache.commons.fileupload.ObjectPool pool = org.apache.commons.fileupload.ObjectPool.getPool();
-		pool.p.put(sn, new org.apache.commons.fileupload.UpfileProgress());
-        request.getSession().setAttribute("fileSerialNumber", sn);
-%>
 <html>
 <head>
     <title>xxxxxxxxx</title>
@@ -51,7 +38,7 @@
     </tr>
 
 </table>
-<form action="/order/group" method="post">
+<form action="/order/groupSubmit" method="post">
 <p>
 
 <input type="submit" value="提交" onClick=" return checkdata()">
@@ -92,6 +79,7 @@
 	<div id="pro" style="float: left; width: 30%; height:90%;  padding-top:10px"></div>
 
 </fieldset>
+
 </div>
 
 <script type="text/javascript">
@@ -120,7 +108,7 @@
   }
  	function progress() {
 
-		var url = '/group/progress';
+		var url = '/order/progress';
 		request.open("GET", url, "true");
 		request.onreadystatechange = writeprogress;//隐性的循环
 		request.send(null);

@@ -9,11 +9,11 @@ package com.hyrt.saic.util.enums;
  */
 public enum OrderStatus {
 
-    下单,审核中,通过审核,结束;
+    下单,审核中,通过审核,进行中,结束,查询无果,未通过审核,账户支付失败;
 
     @Override
     public String toString() {
-        return String.valueOf((char)this.ordinal());    //To change body of overridden methods use File | Settings | File Templates.
+        return (this.ordinal()+1)+"";    //To change body of overridden methods use File | Settings | File Templates.
     }
 
 }

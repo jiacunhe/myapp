@@ -1,4 +1,4 @@
-package com.hyrt.saic.bean;
+package com.hyrt.saic.bean.order;
 
 import com.hyrt.saic.util.enums.OrderStatus;
 
@@ -12,6 +12,8 @@ public class Order {
     private String userId;
 
     private Integer businessId;
+
+    private Integer orderType;
 
     private Integer cycle;
 
@@ -69,6 +71,14 @@ public class Order {
 
     public void setBusinessId(Integer businessId) {
         this.businessId = businessId;
+    }
+
+    public Integer getOrderType() {
+        return orderType;
+    }
+
+    public void setOrderType(Integer orderType) {
+        this.orderType = orderType;
     }
 
     public Integer getCycle() {

@@ -2,6 +2,8 @@ package com.hyrt.saic.dao;
 
 import com.hyrt.saic.bean.GroupChanging;
 
+import java.util.List;
+
 public interface GroupChangingMapper {
     int deleteByPrimaryKey(Long id);
 
@@ -14,4 +16,6 @@ public interface GroupChangingMapper {
     int updateByPrimaryKeySelective(GroupChanging record);
 
     int updateByPrimaryKey(GroupChanging record);
+
+    List selectByGroupId(Long id);
 }
