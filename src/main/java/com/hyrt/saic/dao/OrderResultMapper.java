@@ -1,6 +1,6 @@
 package com.hyrt.saic.dao;
 
-import com.hyrt.saic.bean.OrderResult;
+import com.hyrt.saic.bean.order.OrderResult;
 
 public interface OrderResultMapper {
     int deleteByPrimaryKey(Integer id);

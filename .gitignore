@@ -8,4 +8,6 @@ out/*
 .idea/
 target/
 classes/
+out/
 web/WEB-INF/classes/
+

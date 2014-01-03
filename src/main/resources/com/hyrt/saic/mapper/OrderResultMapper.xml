@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.hyrt.saic.dao.OrderResultMapper" >
-  <resultMap id="BaseResultMap" type="com.hyrt.saic.bean.OrderResult" >
+  <resultMap id="BaseResultMap" type="com.hyrt.saic.bean.order.OrderResult" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="orderId" property="orderId" jdbcType="VARCHAR" />
     <result column="status" property="status" jdbcType="CHAR" />
     <result column="returnTime" property="returnTime" jdbcType="TIMESTAMP" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.hyrt.saic.bean.OrderResult" extends="BaseResultMap" >
+  <resultMap id="ResultMapWithBLOBs" type="com.hyrt.saic.bean.order.OrderResult" extends="BaseResultMap" >
     <result column="content" property="content" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
@@ -29,7 +29,7 @@
     delete from t_order_result
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.hyrt.saic.bean.OrderResult" >
+  <insert id="insert" parameterType="com.hyrt.saic.bean.order.OrderResult" >
     insert into t_order_result (id, orderId, status, 
       returnTime, remark, content
       )
@@ -37,7 +37,7 @@
       #{returnTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.hyrt.saic.bean.OrderResult" >
+  <insert id="insertSelective" parameterType="com.hyrt.saic.bean.order.OrderResult" >
     insert into t_order_result
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -80,7 +80,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.hyrt.saic.bean.OrderResult" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.hyrt.saic.bean.order.OrderResult" >
     update t_order_result
     <set >
       <if test="orderid != null" >
@@ -101,7 +101,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.hyrt.saic.bean.OrderResult" >
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.hyrt.saic.bean.order.OrderResult" >
     update t_order_result
     set orderId = #{orderId,jdbcType=VARCHAR},
       status = #{status,jdbcType=CHAR},
@@ -110,7 +110,7 @@
       content = #{content,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.hyrt.saic.bean.OrderResult" >
+  <update id="updateByPrimaryKey" parameterType="com.hyrt.saic.bean.order.OrderResult" >
     update t_order_result
     set orderId = #{orderId,jdbcType=VARCHAR},
       status = #{status,jdbcType=CHAR},

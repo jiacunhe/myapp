@@ -1,4 +1,4 @@
-package com.hyrt.saic.bean;
+package com.hyrt.saic.bean.order;
 
 public class OrderDetail {
     private Long id;
@@ -11,7 +11,25 @@ public class OrderDetail {
 
     private String objCode;
 
+    private String certType;
+
+    private String status;
+
     private String remark;
+
+
+    public OrderDetail(){
+
+    }
+
+    public OrderDetail(String orderId,String monitorType,String objName, String objCode,String certType,String remark){
+        this.objCode = objCode;
+        this.orderId= orderId;
+        this.monitorType=monitorType;
+        this.objName=objName;
+        this.certType=certType;
+        this.remark=remark;
+    }
 
     public Long getId() {
         return id;
@@ -59,5 +77,22 @@ public class OrderDetail {
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+
+    public String getCertType() {
+        return certType;
+    }
+
+    public void setCertType(String certType) {
+        this.certType = certType;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

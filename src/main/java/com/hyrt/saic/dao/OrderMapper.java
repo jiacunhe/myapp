@@ -1,6 +1,10 @@
 package com.hyrt.saic.dao;
 
-import com.hyrt.saic.bean.Order;
+import com.hyrt.saic.bean.order.Order;
+import com.hyrt.saic.bean.order.OrderInfo;
+
+import java.util.List;
+import java.util.Map;
 
 public interface OrderMapper {
     int deleteByPrimaryKey(String id);
@@ -16,4 +20,11 @@ public interface OrderMapper {
     int updateByPrimaryKeyWithBLOBs(Order record);
 
     int updateByPrimaryKey(Order record);
+
+    List selectOrderInfo(Map params);
+
+    int selectCount(Map params);
+
+    OrderInfo selectOrderInfoByOrderId(String id);
+
 }

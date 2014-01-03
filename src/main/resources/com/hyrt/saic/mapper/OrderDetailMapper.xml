@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.hyrt.saic.dao.OrderDetailMapper" >
-  <resultMap id="BaseResultMap" type="com.hyrt.saic.bean.OrderDetail" >
+  <resultMap id="BaseResultMap" type="com.hyrt.saic.bean.order.OrderDetail" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="orderId" property="orderId" jdbcType="VARCHAR" />
     <result column="monitorType" property="monitorType" jdbcType="CHAR" />
     <result column="objName" property="objName" jdbcType="VARCHAR" />
     <result column="objCode" property="objCode" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, orderId, monitorType, objName, objCode, remark
+    id, orderId, monitorType, objName, objCode,status, remark
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
@@ -18,19 +19,34 @@
     from t_order_detail
     where id = #{id,jdbcType=BIGINT}
   </select>
+
+
+    <select id="selectByOrderId" resultMap="BaseResultMap" parameterType="java.util.Map" >
+        select
+        <include refid="Base_Column_List" />
+        from t_order_detail
+        where orderId = #{orderId,jdbcType=VARCHAR} order by id desc  limit #{cursor,jdbcType=INTEGER} ,#{length,jdbcType=INTEGER}
+    </select>
+
+    <select id="selectCount" resultType="java.lang.Integer" parameterType="java.util.Map" >
+        select  count(*)
+        from t_order_detail
+        where orderId = #{orderId,jdbcType=VARCHAR}
+    </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from t_order_detail
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.hyrt.saic.bean.OrderDetail" >
+  <insert id="insert" parameterType="com.hyrt.saic.bean.order.OrderDetail" >
     insert into t_order_detail (id, orderId, monitorType, 
-      objName, objCode, remark
+      objName, objCode,status, remark
       )
     values (#{id,jdbcType=BIGINT}, #{orderId,jdbcType=VARCHAR}, #{monitorType,jdbcType=CHAR},
-      #{objName,jdbcType=VARCHAR}, #{objCode,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
+      #{objName,jdbcType=VARCHAR}, #{objCode,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.hyrt.saic.bean.OrderDetail" >
+  <insert id="insertSelective" parameterType="com.hyrt.saic.bean.order.OrderDetail" >
     insert into t_order_detail
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -48,6 +64,9 @@
       <if test="objCode != null" >
         objCode,
       </if>
+        <if test="status != null" >
+            status,
+        </if>
       <if test="remark != null" >
         remark,
       </if>
@@ -68,12 +87,15 @@
       <if test="objCode != null" >
         #{objCode,jdbcType=VARCHAR},
       </if>
+        <if test="status != null" >
+            #{status,jdbcType=VARCHAR},
+        </if>
       <if test="remark != null" >
         #{remark,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.hyrt.saic.bean.OrderDetail" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.hyrt.saic.bean.order.OrderDetail" >
     update t_order_detail
     <set >
       <if test="orderId != null" >
@@ -88,18 +110,21 @@
       <if test="objCode != null" >
         objCode = #{objCode,jdbcType=VARCHAR},
       </if>
+        <if test="status != null" >
+            status = #{status,jdbcType=VARCHAR},
+        </if>
       <if test="remark != null" >
         remark = #{remark,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.hyrt.saic.bean.OrderDetail" >
+  <update id="updateByPrimaryKey" parameterType="com.hyrt.saic.bean.order.OrderDetail" >
     update t_order_detail
     set orderId = #{orderId,jdbcType=VARCHAR},
       monitorType = #{monitorType,jdbcType=CHAR},
       objName = #{objName,jdbcType=VARCHAR},
-      objCode = #{objCode,jdbcType=VARCHAR},
+      objCode = #{objCode,jdbcType=VARCHAR}, status = #{status,jdbcType=VARCHAR},
       remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
