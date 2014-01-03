@@ -1,0 +1,16 @@
+/* CSS Document */
+.sy_right{ width:749px; height:530px; overflow:hidden; margin:70px 0px 0px 51px;}
+.sy_right ul li{ width:320px; height:240px; border:1px solid #0f9bc6; overflow:hidden; background:url(../images/bg1.png) no-repeat; margin:0px 48px 38px 0px; float:left;}
+.sy_right ul li img{ width:110px; height:110px; float:left; margin:65px 16px 0px 16px; display:inline;}
+.sy_span1{ width:144px; display:block; overflow:hidden; float:left; margin-top:60px;}
+.sy_span1 h2{ font-family:"微软雅黑"; overflow:hidden; font-size:20px; color:#fff; width:144px; height:30px; line-height:30px;}
+.sy_span1 h2 b{ float:left; font-weight:600;}
+.sy_span1 a{ font-family:"微软雅黑"; font-size:14px; font-weight:normal; color:#ffb400; float:right;}
+.sy_span1 p{ clear:both; color:#addbf8; line-height:22px; margin-top:20px;}
+
+.sy_span2{ width:144px; display:block; overflow:hidden; float:left; margin-top:60px;}
+.sy_span2 h2{ font-family:"微软雅黑"; overflow:hidden; font-size:18px; color:#fff; width:144px; height:30px; line-height:30px;}
+.sy_span2 h2 b{ float:left; font-weight:600;}
+.sy_span2 a{ font-family:"微软雅黑"; font-size:14px; font-weight:normal; color:#ffb400; float:right;}
+.sy_span2 p{ clear:both; color:#addbf8; line-height:22px; margin-top:10px;}
+
