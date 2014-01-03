@@ -9,37 +9,75 @@
     <result column="userId" property="userId" jdbcType="VARCHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
   </resultMap>
+
+    <resultMap id="resultMap" type="com.hyrt.saic.bean.ChargePackageResultMap" >
+        <result column="id" property="id" jdbcType="INTEGER" />
+        <result column="packageName" property="packageName" jdbcType="VARCHAR" />
+        <result column="price" property="price" jdbcType="DECIMAL" />
+        <result column="type" property="type" jdbcType="VARCHAR" />
+        <result column="userId" property="userId" jdbcType="VARCHAR" />
+        <result column="remark" property="remark" jdbcType="VARCHAR" />
+        <result column="detailId" property="detailId" jdbcType="INTEGER" />
+        <result column="detailPackageId" property="detailPackageId" jdbcType="INTEGER" />
+        <result column="detailBusinessTypeId" property="detailBusinessTypeId" jdbcType="INTEGER" />
+        <result column="detailQuantity" property="detailQuantity" jdbcType="INTEGER" />
+        <result column="detailRemark" property="detailRemark" jdbcType="VARCHAR" />
+    </resultMap>
   <sql id="Base_Column_List" >
     id, packageName, price, type, userId, remark
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
+    select   LAST_INSERT_ID()
+      <include refid="Base_Column_List" />
     from t_charge_package
     where id = #{id,jdbcType=INTEGER}
   </select>
-    <select id="countNum" resultMap="java.lang.Integer" >
+    <select id="countNum" resultType="java.lang.Integer" >
         select
         count(id)
         from t_charge_package
     </select> <!-->hh增加<-->
     <select id="select" resultType="java.util.Map" parameterType="java.util.Map"  >
-        select
-         t1.* ,t2.*
-         from t_charge_package t1
-         left join t_charge_package_detail t2
-         on t1.id=t2.packageId
+        SELECT id,MAX(packageName) packageName,MAX(price) price,MAX(TYPE) _type,MAX(userId) userId, MAX(remark) remark,
+        MAX(CASE businessTypeId WHEN  1 THEN detailId ELSE 0 END) detailIdA,
+        MAX(CASE businessTypeId WHEN  1 THEN businessName ELSE 0 END) businessNameA,
+        MAX(CASE businessTypeId WHEN  1 THEN quantity ELSE 0 END) quantityA,
+        MAX(CASE businessTypeId WHEN  1 THEN detailRemark ELSE 0 END) detailRemarkA,
+        MAX(CASE businessTypeId WHEN  2 THEN detailId ELSE 0 END) detailIdB,
+        MAX(CASE businessTypeId WHEN  2 THEN businessName ELSE 0 END) businessNameB,
+        MAX(CASE businessTypeId WHEN  2 THEN quantity ELSE 0 END) quantityB,
+        MAX(CASE businessTypeId WHEN  2 THEN detailRemark ELSE 0 END) detailRemarkB FROM(
+        SELECT p.*,d.id detailId,d.`businessTypeId`,b.`businessName`,d.`quantity`,d.`remark` detailRemark
+        FROM t_charge_package p,t_charge_package_detail d,t_business_type b WHERE d.`packageId` = p.`id` AND d.`businessTypeId` = b.`id`
         <if test="type!= null" >
-         where type=#{type,jdbcType=VARCHAR}
+            and p.type=#{type,jdbcType=VARCHAR}
         </if>
-        <if test="order!= DEFAULT" >
-         order by t1.price
-        <if test="order!= up" >
-            desc
+        <if test="order!= null" >
+            order by p.price
+            <if test="order!= up" >
+                desc
+            </if>
         </if>
-        </if>
-        limit  #{start,jdbcType=INTEGER} ,#{num,jdbcType=INTEGER}
+        limit  #{start,jdbcType=INTEGER} ,#{num,jdbcType=INTEGER}) xx GROUP BY id
     </select> <!-->hh增加<-->
+    <select id="selectById" resultType="java.util.Map" parameterType="java.lang.Integer" >
+         SELECT id,MAX(packageName) packageName,MAX(price) price,MAX(TYPE) _type,MAX(userId) userId, MAX(remark) remark,
+            MAX(CASE businessTypeId WHEN  1 THEN detailId ELSE 0 END) detailIdA,
+            MAX(CASE businessTypeId WHEN  1 THEN businessName ELSE 0 END) businessNameA,
+            MAX(CASE businessTypeId WHEN  1 THEN quantity ELSE 0 END) quantityA,
+            MAX(CASE businessTypeId WHEN  1 THEN detailRemark ELSE 0 END) detailRemarkA,
+            MAX(CASE businessTypeId WHEN  2 THEN detailId ELSE 0 END) detailIdB,
+            MAX(CASE businessTypeId WHEN  2 THEN businessName ELSE 0 END) businessNameB,
+            MAX(CASE businessTypeId WHEN  2 THEN quantity ELSE 0 END) quantityB,
+            MAX(CASE businessTypeId WHEN  2 THEN detailRemark ELSE 0 END) detailRemarkB FROM(
+            SELECT p.*,d.id detailId,d.`businessTypeId`,b.`businessName`,d.`quantity`,d.`remark` detailRemark FROM t_charge_package p,t_charge_package_detail d,t_business_type b WHERE d.`packageId` = p.`id` AND d.`businessTypeId` = b.`id`
+             and p.id = #{id,jdbcType=INTEGER}) xx GROUP BY id
+
+    </select>   <!-->hh增加<-->
+
+    <select id="lastInsertId" resultType="java.lang.Integer">
+        SELECT LAST_INSERT_ID()
+    </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from t_charge_package
@@ -68,7 +106,7 @@
       <if test="type != null" >
         type,
       </if>
-      <if test="userid != null" >
+      <if test="userId != null" >
         userId,
       </if>
       <if test="remark != null" >

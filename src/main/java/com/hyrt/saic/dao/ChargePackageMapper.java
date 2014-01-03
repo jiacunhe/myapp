@@ -18,8 +18,12 @@ public interface ChargePackageMapper {
 
     int updateByPrimaryKey(ChargePackage record);
 
-    int countNum();
+
+    Integer countNum();
 
     List select(Map map);
 
+    Map selectById(int id);
+
+    int lastInsertId();
 }

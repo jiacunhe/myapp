@@ -21,5 +21,5 @@ public interface PackageService  {
     public void deleteById(int id);
     public void insert(ChargePackage chargePackage, List<ChargePackageDetaill> ChargePackageDetaillList);
     public void update(ChargePackage chargePackage,List<ChargePackageDetaill> ChargePackageDetaillList);
-
+    public Map  selectById(int id);
 }
