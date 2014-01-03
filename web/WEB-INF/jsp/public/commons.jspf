@@ -1,0 +1,22 @@
+<%@ page language="java" pageEncoding="UTF-8" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path;
+    // http://localhost:8080/saic
+    request.setAttribute("basePath", basePath);
+%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="sp" %>
+
+<script language="javascript" src="${basePath}/js/jquery.min.js"></script>
+<script language="javascript" src="${basePath}/js/public.js"></script>
+<script language="javascript" src="${basePath}/js/iepng.js"></script>
+<script language="javascript" src="${basePath}/js/js.js"></script>
+<script language="javascript" src="${basePath}/js/1.js"></script>
+<link type="text/css" rel="stylesheet" href="${basePath}/css/public.css"/>
+<link type="text/css" rel="stylesheet" href="${basePath}/css/sub.css"/>
+<link type="text/css" rel="stylesheet" href="${basePath}/css/index.css"/>
+
+<script type="text/javascript">
+    EvPNG.fix('div, ul, img, li, input,dt');
+</script>
