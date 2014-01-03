@@ -1,6 +1,7 @@
 package me.sfce.library.mybatis.interceptor;
 
-import com.hyrt.saic.util.Page;
+import me.sfce.library.mybatis.util.Page;
+import me.sfce.library.mybatis.util.ReflectUtil;
 import org.apache.ibatis.executor.parameter.ParameterHandler;
 import org.apache.ibatis.executor.statement.RoutingStatementHandler;
 import org.apache.ibatis.executor.statement.StatementHandler;
@@ -10,7 +11,6 @@ import org.apache.ibatis.mapping.ParameterMapping;
 import org.apache.ibatis.plugin.*;
 import org.apache.ibatis.scripting.defaults.DefaultParameterHandler;
 
-import java.lang.reflect.Field;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -62,6 +62,13 @@ public class PaginationInterceptor implements Interceptor {
         BoundSql boundSql = delegate.getBoundSql();
         //拿到当前绑定Sql的参数对象，就是我们在调用对应的Mapper映射语句时所传入的参数对象
         Object obj = boundSql.getParameterObject();
+
+        //TODO
+        System.out.println("===========================================");
+        System.out.println(boundSql.getSql());
+        System.out.println(obj.toString());
+        System.out.println("############################################");
+
         //这里我们简单的通过传入的是Page对象就认定它是需要进行分页操作的。
         if (obj instanceof Page<?>) {
             Page<?> page = (Page<?>) obj;
@@ -204,72 +211,4 @@ public class PaginationInterceptor implements Interceptor {
         this.databaseType = databaseType;
     }
 
-    /**
-     * 利用反射进行操作的一个工具类
-     */
-    private static class ReflectUtil {
-        /**
-         * 利用反射获取指定对象的指定属性
-         *
-         * @param obj       目标对象
-         * @param fieldName 目标属性
-         * @return 目标属性的值
-         */
-        public static Object getFieldValue(Object obj, String fieldName) {
-            Object result = null;
-            Field field = ReflectUtil.getField(obj, fieldName);
-            if (field != null) {
-                field.setAccessible(true);
-                try {
-                    result = field.get(obj);
-                } catch (IllegalArgumentException e) {
-                    e.printStackTrace();
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                }
-            }
-            return result;
-        }
-
-        /**
-         * 利用反射获取指定对象里面的指定属性
-         *
-         * @param obj       目标对象
-         * @param fieldName 目标属性
-         * @return 目标字段
-         */
-        private static Field getField(Object obj, String fieldName) {
-            Field field = null;
-            for (Class<?> clazz = obj.getClass(); clazz != Object.class; clazz = clazz.getSuperclass()) {
-                try {
-                    field = clazz.getDeclaredField(fieldName);
-                    break;
-                } catch (NoSuchFieldException e) {
-                    //这里不用做处理，子类没有该字段可能对应的父类有，都没有就返回null。
-                }
-            }
-            return field;
-        }
-
-        /**
-         * 利用反射设置指定对象的指定属性为指定的值
-         *
-         * @param obj        目标对象
-         * @param fieldName  目标属性
-         * @param fieldValue 目标值
-         */
-        public static void setFieldValue(Object obj, String fieldName, String fieldValue) {
-            Field field = ReflectUtil.getField(obj, fieldName);
-            if (field != null) {
-                try {
-                    field.setAccessible(true);
-                    field.set(obj, fieldValue);
-                } catch (IllegalArgumentException e) {
-                    e.printStackTrace();
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
 }
