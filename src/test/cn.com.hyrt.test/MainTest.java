@@ -2,6 +2,9 @@ package cn.com.hyrt.test;
 
 import com.hyrt.saic.util.enums.OrderStatus;
 
+import java.io.UnsupportedEncodingException;
+import java.math.BigDecimal;
+
 /**
  * Created with IntelliJ IDEA.
  * User: yang
@@ -13,7 +16,16 @@ public class MainTest {
 
     public static void main(String args[]){
 
+
+        char [] chars = "中国梦".toCharArray();
+        String asciiArgs="";
+        for(char c:chars){
+                         asciiArgs+="\\u"+Integer.toHexString(c);
+        }
+        System.out.println(asciiArgs+"-----------");
         System.out.println(OrderStatus.下单);
+
+
 
     }
 }
