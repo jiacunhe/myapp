@@ -15,7 +15,7 @@ import java.sql.Timestamp;
 import java.util.*;
 
 @Controller
-@RequestMapping("/test")
+
 public class TestController {
 
     @Autowired
@@ -37,11 +37,17 @@ public class TestController {
     }
 
 
+    @RequestMapping("/index")
+    public String main( HttpServletRequest request){
+
+        return "/main.jsp";
+
+    }
 
 
 
     //按主键查询
-    @RequestMapping("/select")
+/*    @RequestMapping("/select")
     public String selectByPrimaryKey(HttpServletRequest request){
 
 
@@ -55,9 +61,7 @@ public class TestController {
             request.setAttribute("name","error:"+e.getMessage());
             return "index.ftl";
         }
-
-
-    }
+    }*/
 
     //增删改全套服务 ，同一个事务内完成
     @RequestMapping("/testall")

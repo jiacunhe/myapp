@@ -11,7 +11,7 @@
         .content{border:1px solid #ff359a;border-top:0;width:100%;height:300px;padding:1px; margin-top:5px; float:left}
 		td{ border: 1px #FFCC66 solid}
     </style>
-    <script type="text/javascript" language="javascript"   src="/script/calendar.js"></script>
+    <script type="text/javascript" language="javascript"   src="/js/calendar.js/calendar.js"></script>
 </head>
 <body>
 <div style="width: 100%; height: 40px;">
