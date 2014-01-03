@@ -5,6 +5,9 @@ out/*
 *.swp
 *.log
 *.class
-target/*
-classes/*
-web/WEB-INF/classes/*
+.idea/
+target/
+classes/
+out/
+web/WEB-INF/classes/
+
