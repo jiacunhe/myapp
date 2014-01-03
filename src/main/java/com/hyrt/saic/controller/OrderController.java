@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Timestamp;
 import java.util.*;
 
@@ -240,8 +241,9 @@ public class OrderController {
         return "/order/upFileProgress.jsp";
     }
 
-    @RequestMapping("/progress")
+    @RequestMapping(value="/progress",produces="text/plain;charset=UTF-8")
     public @ResponseBody String  progress(String param,HttpServletRequest request, HttpServletResponse response){
+
 
         String result=null;
         if (request.getSession().getAttribute("fileSerialNumber") != null) {
@@ -255,15 +257,23 @@ public class OrderController {
             }else{
                 //返回进度信息
                 ObjectPool pool = ObjectPool.getPool();
-                UpfileProgress ufp = (UpfileProgress) pool.p.get(sn);
-                result = ufp.progress;
+                Object obj =pool.p.get(sn);
+                if(obj!=null)   {
+                    result = ((UpfileProgress)obj).progress ;
+                }
+
             }
         } else {
             result = "0.00%;   非法操作<a href='/exit'>返回</a>";
         }
-     //   System.out.println(result+"------request----------------------------");
+        System.out.println(result+"------request----------------------------");
+//        char [] chars = result.toCharArray();
+//        String asciiArgs="";
+//        for(char c:chars){
+//            asciiArgs+="\\u"+Integer.toHexString(c);
+//        }
 
-        return result;
+         return result;
 
     }
 

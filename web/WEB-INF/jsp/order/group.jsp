@@ -119,7 +119,7 @@
 			if (request.status == 200) {
 				var rest = request.responseText;
 				if (rest != "") {
-					document.getElementById("pro").innerText = rest;
+					document.getElementById("pro").innerHTML = rest;
 					if (rest != "100%")
 						window.setTimeout("progress()", 2000);
 					//endloop();

@@ -8,6 +8,7 @@ import org.apache.commons.fileupload.UpfileProgress;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,11 +65,11 @@ public class ExcelAnalyze implements Runnable{
 
             }
 
-
+            ufp.setProgress("100%,成功导入" + success + "个,失败" + error + "个");
         }catch (Exception e) {
             e.printStackTrace();
         }
-        ufp.setProgress("100%,成功导入"+success+"个,失败"+error+"个");
+
         pool.p.put(sn, ufp);
         pool.p.put(sn+"reslist",reslist);
     }
