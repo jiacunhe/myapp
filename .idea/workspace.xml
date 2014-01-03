@@ -2,135 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3dab618f-9010-4632-a950-2204d3fa7ecf" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/bg.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/bg.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/bg0.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/bg0.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/bg1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/bg2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/bg3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/bg4.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/bg5.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/bottom_bg.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/but_bg1.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/but_bg2.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/but_bg3.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/but_bg4.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/button1.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/button2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/button3.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/button4.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/button5.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/button6.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/button7.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/button8.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/dl_tt1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico01.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico010.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico011.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico012.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico013.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico014.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico015.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico016.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico017.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico02.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico03.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico04.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico05.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico06.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico07.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico08.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico09.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico5.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico6.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico7.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/index.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/input_bg1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/left-bg0.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/left_bg0.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/left_bg1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/logo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/pub_top.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/sub_bg1.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/sub_bg2.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/sub_ttbg1.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/sub_ttbg2.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/sub_ttbg3.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/sub_ttbg4.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/top_bg1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ttbg1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ttbg2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ttbg3.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ttbg4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ttbg5.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ttbg6.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ym_bg.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/util/ActiveUserListener.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/bean/Customer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/cn.com.hyrt.test/MainTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/bean/Manager.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/bean/order/OrderInfo.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/bean/order/OrderType.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/OrderTypeMapper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/OrderTypeMapper.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/util/enums/PaymentRule.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/controller/UserController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/service/UserService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/service/impl/UserServiceImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/util/enums/UserType.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/script/calendar.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/public/commons.jspf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/order/detail.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/order/groupResult.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/order/personResult.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/order/search.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/order/upFileResult.jsp" />
-      <change type="DELETED" beforePath="D:\code\106612315-server\web\WEB-INF\jsp\index.jsp" afterPath="" />
-      <change type="DELETED" beforePath="D:\code\106612315-server\web\images\z.ico" afterPath="" />
-      <change type="DELETED" beforePath="D:\code\106612315-server\web\index.jsp" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/util/ExcelAnalyze.java" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/util/ExcelAnalyze.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/GroupAnnualInspectionMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/GroupAnnualInspectionMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/GroupAnnualInspectionMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/GroupAnnualInspectionMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/GroupChangingMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/GroupChangingMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/GroupChangingMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/GroupChangingMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/GroupExternalInvestmentMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/GroupExternalInvestmentMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/GroupExternalInvestmentMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/GroupExternalInvestmentMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/GroupInfoMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/GroupInfoMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/GroupInfoMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/GroupInfoMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/GroupSeniorMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/GroupSeniorMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/GroupSeniorMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/GroupSeniorMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/GroupShareholderInfoMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/GroupShareholderInfoMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/GroupShareholderInfoMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/GroupShareholderInfoMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/controller/OrderController.java" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/controller/OrderController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/OrderDetailMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/OrderDetailMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/OrderDetailMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/OrderDetailMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/OrderMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/OrderMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/OrderMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/OrderMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/OrderResultMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/OrderResultMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/OrderResultMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/OrderResultMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/service/OrderService.java" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/service/OrderService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/service/impl/OrderServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/service/impl/OrderServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/util/enums/OrderStatus.java" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/util/enums/OrderStatus.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/PersonGroupInfoMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/PersonGroupInfoMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/PersonGroupInfoMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/PersonGroupInfoMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/d12305-2.0.pdm" afterPath="$PROJECT_DIR$/d12305-2.0.pdm" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/public.js" afterPath="$PROJECT_DIR$/web/js/public.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/qdxx.htc.txt" afterPath="$PROJECT_DIR$/web/js/qdxx.htc.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="D:\code\106612315-server\src\main\java\com\hyrt\saic\bean\Order.java" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/bean/order/Order.java" />
-      <change type="MOVED" beforePath="D:\code\106612315-server\src\main\java\com\hyrt\saic\bean\OrderDetail.java" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/bean/order/OrderDetail.java" />
-      <change type="MOVED" beforePath="D:\code\106612315-server\src\main\java\com\hyrt\saic\bean\OrderResult.java" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/bean/order/OrderResult.java" />
-      <change type="MOVED" beforePath="D:\code\106612315-server\web\WEB-INF\jsp\orderupfileprogress.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/order/upFileProgress.jsp" />
-      <change type="MOVED" beforePath="D:\code\106612315-server\web\findbygroup.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/order/group.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/main.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/main.jsp" />
     </list>
     <ignored path="SAIC.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -147,6 +19,8 @@
     <file path="/packageInsert.jsp" changelist="3dab618f-9010-4632-a950-2204d3fa7ecf" time="1388647445753" ignored="false" />
     <file path="/PackageService.java" changelist="3dab618f-9010-4632-a950-2204d3fa7ecf" time="1388476130456" ignored="false" />
     <file path="/tcgm.jsp" changelist="3dab618f-9010-4632-a950-2204d3fa7ecf" time="1388720608914" ignored="false" />
+    <file path="$PROJECT_DIR$/src/main/java/com/hyrt/saic/controller/TestController.java" changelist="3dab618f-9010-4632-a950-2204d3fa7ecf" time="1388733790296" ignored="false" />
+    <file path="/main.jsp" changelist="3dab618f-9010-4632-a950-2204d3fa7ecf" time="1388733998327" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -243,10 +117,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="1.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="1.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/js/1.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="32" selection-start="268" selection-end="268" vertical-scroll-proportion="0.2883895">
+            <state line="12" column="32" selection-start="268" selection-end="268" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.jsp" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/WEB-INF/jsp/main.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="93" column="100" selection-start="3869" selection-end="3872" vertical-scroll-proportion="0.46247464">
               <folding />
             </state>
           </provider>
@@ -288,7 +171,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/hyrt/saic/bean/ChargePackageResultMap.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/jsp/packageUpdate.jsp.js" />
         <option value="$PROJECT_DIR$/web/WEB-INF/jsp/packageUpdate.jsp" />
         <option value="$PROJECT_DIR$/web/WEB-INF/packageInsert.jsp" />
@@ -304,6 +186,7 @@
         <option value="$PROJECT_DIR$/web/WEB-INF/jsp/tcgm.jsp" />
         <option value="$PROJECT_DIR$/web/js/1.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/jsp/main.jsp" />
       </list>
     </option>
   </component>
@@ -768,7 +651,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -789,7 +672,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32933104" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28636363" sideWeight="0.13893653" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28636363" sideWeight="0.13893653" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.8610635" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -963,7 +846,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/js/1.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="32" selection-start="268" selection-end="268" vertical-scroll-proportion="0.2883895">
+        <state line="12" column="32" selection-start="268" selection-end="268" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/jsp/main.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="93" column="100" selection-start="3869" selection-end="3872" vertical-scroll-proportion="0.46247464">
           <folding />
         </state>
       </provider>

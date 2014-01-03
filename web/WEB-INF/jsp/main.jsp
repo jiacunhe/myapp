@@ -91,7 +91,7 @@
         </dl>
 
         <dl>
-            <dt><img src="../images/ico3.png" /> <A onclick=javascript:ShowFLT(3) href="javascript:void(null)">套餐购买</A></dt>
+            <dt><img src="../images/ico3.png" /> <A onclick=javascript:ShowFLT(3) href="/package/buy" target="mainIframe">套餐购买</A></dt>
             <dd id=LM3 style="DISPLAY: none"></dd>
         </dl>
 
