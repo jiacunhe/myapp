@@ -6,4 +6,6 @@ out/*
 *.log
 *.class
 .idea/
+target/
+classes/
 web/WEB-INF/classes/
