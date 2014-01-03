@@ -1,4 +1,4 @@
-package com.hyrt.saic.bean;
+package com.hyrt.saic.bean.order;
 
 import java.util.Date;
 

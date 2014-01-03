@@ -2,6 +2,8 @@ package com.hyrt.saic.dao;
 
 import com.hyrt.saic.bean.GroupSenior;
 
+import java.util.List;
+
 public interface GroupSeniorMapper {
     int deleteByPrimaryKey(Long id);
 
@@ -14,4 +16,7 @@ public interface GroupSeniorMapper {
     int updateByPrimaryKeySelective(GroupSenior record);
 
     int updateByPrimaryKey(GroupSenior record);
+
+
+    List selectByGroupId(Long id);
 }

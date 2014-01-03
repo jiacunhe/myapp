@@ -1,5 +1,9 @@
 
+<<<<<<< HEAD
 //Ñ¡Ïî¿¨²å¼þ
+=======
+//é€‰é¡¹å¡æ’ä»¶
+>>>>>>> 0f6281e20e609089f09d54158833dd359089e44c
 (function($){
 	$.fn.tabs=function(options){
 		var setting={event:"mouseover",now:1};    

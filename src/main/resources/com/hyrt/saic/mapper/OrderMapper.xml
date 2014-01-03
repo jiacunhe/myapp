@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.hyrt.saic.dao.OrderMapper" >
-  <resultMap id="BaseResultMap" type="com.hyrt.saic.bean.Order" >
+  <resultMap id="BaseResultMap" type="com.hyrt.saic.bean.order.Order" >
     <id column="id" property="id" jdbcType="VARCHAR" />
     <result column="userId" property="userId" jdbcType="VARCHAR" />
     <result column="businessId" property="businessId" jdbcType="INTEGER" />
+      <result column="orderType" property="orderType" jdbcType="INTEGER" />
     <result column="cycle" property="cycle" jdbcType="INTEGER" />
     <result column="loops" property="loops" jdbcType="INTEGER" />
     <result column="sumMoney" property="sumMoney" jdbcType="DECIMAL" />
@@ -15,18 +16,36 @@
     <result column="finishTime" property="finishTime" jdbcType="TIMESTAMP" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.hyrt.saic.bean.Order" extends="BaseResultMap" >
+
+    <resultMap id="orderInfo" type="com.hyrt.saic.bean.order.OrderInfo">
+        <result column="id" property="id" jdbcType="VARCHAR" />
+        <result column="userId" property="userId" jdbcType="VARCHAR" />
+        <result column="orderType" property="orderType" jdbcType="VARCHAR" />
+        <result column="createTime" property="createTime" jdbcType="VARCHAR" />
+        <result column="status" property="status" jdbcType="VARCHAR" />
+        <result column="total" property="total" jdbcType="INTEGER" />
+        <result column="doneNum" property="doneNum" jdbcType="INTEGER" />
+        <result column="undoneNum" property="undoneNum" jdbcType="INTEGER" />
+        <result column="payTime" property="payTime" jdbcType="VARCHAR" />
+        <result column="verifyTime" property="verifyTime" jdbcType="VARCHAR" />
+        <result column="finishTime" property="finishTime" jdbcType="VARCHAR" />
+        <result column="remark" property="remark" jdbcType="VARCHAR" />
+        <result column="orderTypeName" property="orderTypeName" jdbcType="VARCHAR" />
+
+    </resultMap>
+
+  <resultMap id="ResultMapWithBLOBs" type="com.hyrt.saic.bean.order.Order" extends="BaseResultMap" >
     <result column="requirement" property="requirement" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, userId, businessId, cycle, loops, sumMoney, status, createTime, payTime, verifyTime, 
+    id, userId, businessId, orderType, cycle, loops, sumMoney, status, createTime, payTime, verifyTime,
     finishTime, remark
   </sql>
   <sql id="Blob_Column_List" >
     requirement
   </sql>
   <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
-    select 
+    select
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
@@ -37,19 +56,19 @@
     delete from t_order
     where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.hyrt.saic.bean.Order" >
-    insert into t_order (id, userId, businessId, 
+  <insert id="insert" parameterType="com.hyrt.saic.bean.order.Order" >
+    insert into t_order (id, userId, businessId,orderType,
       cycle, loops, sumMoney, 
       status, createTime, payTime, 
       verifyTime, finishTime, remark, 
       requirement)
-    values (#{id,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{businessId,jdbcType=INTEGER},
+    values (#{id,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{businessId,jdbcType=INTEGER},   #{orderType,jdbcType=INTEGER},
       #{cycle,jdbcType=INTEGER}, #{loops,jdbcType=INTEGER}, #{sumMoney,jdbcType=DECIMAL},
       #{status,jdbcType=CHAR}, #{createTime,jdbcType=TIMESTAMP}, #{payTime,jdbcType=TIMESTAMP},
       #{verifyTime,jdbcType=TIMESTAMP}, #{finishTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR},
       #{requirement,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.hyrt.saic.bean.Order" >
+  <insert id="insertSelective" parameterType="com.hyrt.saic.bean.order.Order" >
     insert into t_order
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -61,6 +80,10 @@
       <if test="businessId != null" >
         businessId,
       </if>
+        <if test="orderType != null" >
+            orderType,
+        </if>
+
       <if test="cycle != null" >
         cycle,
       </if>
@@ -102,6 +125,10 @@
       <if test="businessId != null" >
         #{businessId,jdbcType=INTEGER},
       </if>
+        <if test="orderType != null" >
+            #{orderType,jdbcType=INTEGER},
+        </if>
+
       <if test="cycle != null" >
         #{cycle,jdbcType=INTEGER},
       </if>
@@ -134,7 +161,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.hyrt.saic.bean.Order" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.hyrt.saic.bean.order.Order" >
     update t_order
     <set >
       <if test="userId != null" >
@@ -143,6 +170,10 @@
       <if test="businessId != null" >
         businessId = #{businessId,jdbcType=INTEGER},
       </if>
+        <if test="orderType != null" >
+            orderType = #{orderType,jdbcType=INTEGER},
+        </if>
+
       <if test="cycle != null" >
         cycle = #{cycle,jdbcType=INTEGER},
       </if>
@@ -176,10 +207,10 @@
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.hyrt.saic.bean.Order" >
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.hyrt.saic.bean.order.Order" >
     update t_order
     set userId = #{userId,jdbcType=VARCHAR},
-      businessId = #{businessId,jdbcType=INTEGER},
+      businessId = #{businessId,jdbcType=INTEGER},       orderType = #{orderType,jdbcType=INTEGER},
       cycle = #{cycle,jdbcType=INTEGER},
       loops = #{loops,jdbcType=INTEGER},
       sumMoney = #{sumMoney,jdbcType=DECIMAL},
@@ -192,10 +223,10 @@
       requirement = #{requirement,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.hyrt.saic.bean.Order" >
+  <update id="updateByPrimaryKey" parameterType="com.hyrt.saic.bean.order.Order" >
     update t_order
     set userId = #{userId,jdbcType=VARCHAR},
-      businessId = #{businessId,jdbcType=INTEGER},
+      businessId = #{businessId,jdbcType=INTEGER},    orderType = #{orderType,jdbcType=INTEGER},
       cycle = #{cycle,jdbcType=INTEGER},
       loops = #{loops,jdbcType=INTEGER},
       sumMoney = #{sumMoney,jdbcType=DECIMAL},
@@ -207,4 +238,69 @@
       remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
+
+
+    <select id="selectOrderInfo" resultMap="orderInfo" parameterType="java.util.Map" >
+        SELECT o.id,o.userId,t.orderName orderType,o.createTime,o.status,
+                (SELECT COUNT(*) FROM t_order_detail WHERE orderId = o.id) total,
+                (SELECT COUNT(*) FROM t_order_detail WHERE orderId = o.id AND STATUS in ('5','6','7','8')) doneNum
+        FROM t_order o LEFT JOIN t_order_type t ON t.id = o.orderType  where 1=1
+        <if test="id != null" >
+            and o.id = #{id,jdbcType=VARCHAR}
+        </if>
+        <if test="type != null" >
+            and o.orderType = #{type,jdbcType=VARCHAR}
+        </if>
+        <if test="sday != null" >
+            and DATE_FORMAT(o.createTime,'%Y-%m-%d') > #{sday,jdbcType=VARCHAR}
+        </if>
+        <if test="eday != null" >
+            and DATE_FORMAT(o.createTime,'%Y-%m-%d')  = #{eday,jdbcType=VARCHAR}
+        </if>
+        <if test="userId != null" >
+            and o.userId = #{userId,jdbcType=VARCHAR}
+        </if>
+        <if test="orderStatus != null" >
+            and o.status in (${orderStatus})
+        </if>
+        order by id desc limit #{cursor,jdbcType=INTEGER} ,#{length,jdbcType=INTEGER}
+
+    </select>
+
+    <select id="selectOrderInfoByOrderId" resultMap="orderInfo" parameterType="java.lang.String" >
+        SELECT o.id,o.userId,o.orderType,t.orderName orderTypeName,o.createTime,o.status,o.payTime,o.verifyTime,o.finishTime,o.remark,
+        (SELECT COUNT(*) FROM t_order_detail WHERE orderId = o.id) total,
+        (SELECT COUNT(*) FROM t_order_detail WHERE orderId = o.id AND STATUS in ('5','6','7','8')) doneNum
+        FROM t_order o LEFT JOIN t_order_type t ON t.id = o.orderType  where o.id = #{_parameter,jdbcType=VARCHAR}
+
+
+    </select>
+
+
+    <select id="selectCount" resultType="java.lang.Integer" parameterType="java.util.Map" >
+      select count(*) from(  SELECT o.id,o.userId,t.orderName,o.createTime,o.status,
+        (SELECT COUNT(*) FROM t_order_detail WHERE orderId = o.id) total,
+        (SELECT COUNT(*) FROM t_order_detail WHERE orderId = o.id AND STATUS in ('5','6','7','8')) doneNum
+        FROM t_order o LEFT JOIN t_order_type t ON t.id = o.orderType where 1=1
+        <if test="id != null" >
+            and o.id = #{id,jdbcType=VARCHAR}
+        </if>
+        <if test="type != null" >
+            and o.orderType = #{type,jdbcType=VARCHAR}
+        </if>
+        <if test="sday != null" >
+            and DATE_FORMAT(o.createTime,'%Y-%m-%d') > #{sday,jdbcType=VARCHAR}
+        </if>
+        <if test="eday != null" >
+            and DATE_FORMAT(o.createTime,'%Y-%m-%d')  = #{eday,jdbcType=VARCHAR}
+        </if>
+        <if test="userId != null" >
+            and o.userId = #{userId,jdbcType=VARCHAR}
+        </if>
+        <if test="orderStatus != null" >
+            and o.status in (${orderStatus})
+        </if>
+        )  ccc
+
+    </select>
 </mapper>

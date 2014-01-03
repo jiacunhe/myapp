@@ -2,6 +2,8 @@ package com.hyrt.saic.dao;
 
 import com.hyrt.saic.bean.GroupInfo;
 
+import java.util.List;
+
 public interface GroupInfoMapper {
     int deleteByPrimaryKey(Long id);
 
@@ -14,4 +16,8 @@ public interface GroupInfoMapper {
     int updateByPrimaryKeySelective(GroupInfo record);
 
     int updateByPrimaryKey(GroupInfo record);
+
+
+    GroupInfo selectByOrderDetailId(Long orderDetailId);
+
 }

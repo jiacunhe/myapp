@@ -2,19 +2,139 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3dab618f-9010-4632-a950-2204d3fa7ecf" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/bg.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/bg.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/bg0.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/bg0.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/bg1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/bg2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/bg3.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/bg4.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/bg5.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/bottom_bg.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/but_bg1.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/but_bg2.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/but_bg3.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/but_bg4.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/button1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/button2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/button3.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/button4.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/button5.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/button6.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/button7.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/button8.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/dl_tt1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico01.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico010.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico011.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico012.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico013.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico014.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico015.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico016.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico017.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico02.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico03.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico04.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico05.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico06.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico07.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico08.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico09.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico3.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico4.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico5.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico6.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ico7.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/index.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/input_bg1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/left-bg0.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/left_bg0.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/left_bg1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/logo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/pub_top.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/sub_bg1.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/sub_bg2.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/sub_ttbg1.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/sub_ttbg2.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/sub_ttbg3.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/sub_ttbg4.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/top_bg1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ttbg1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ttbg2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ttbg3.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ttbg4.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ttbg5.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ttbg6.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/ym_bg.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/util/ActiveUserListener.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/bean/Customer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/cn.com.hyrt.test/MainTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/bean/Manager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/bean/order/OrderInfo.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/bean/order/OrderType.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/OrderTypeMapper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/OrderTypeMapper.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/util/enums/PaymentRule.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/controller/UserController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/service/UserService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/service/impl/UserServiceImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/util/enums/UserType.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/script/calendar.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/public/commons.jspf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/order/detail.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/order/groupResult.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/order/personResult.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/order/search.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/order/upFileResult.jsp" />
+      <change type="DELETED" beforePath="D:\code\106612315-server\web\WEB-INF\jsp\index.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\code\106612315-server\web\images\z.ico" afterPath="" />
+      <change type="DELETED" beforePath="D:\code\106612315-server\web\index.jsp" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/BusinessTypeMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/BusinessTypeMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/ChargePackageMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/ChargePackageMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/ChargePackageMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/ChargePackageMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/controller/PackageCotroller.java" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/controller/PackageCotroller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/service/PackageService.java" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/service/PackageService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/service/impl/PackageServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/service/impl/PackageServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/util/ExcelAnalyze.java" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/util/ExcelAnalyze.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/GroupAnnualInspectionMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/GroupAnnualInspectionMapper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/GroupAnnualInspectionMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/GroupAnnualInspectionMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/GroupChangingMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/GroupChangingMapper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/GroupChangingMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/GroupChangingMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/GroupExternalInvestmentMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/GroupExternalInvestmentMapper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/GroupExternalInvestmentMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/GroupExternalInvestmentMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/GroupInfoMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/GroupInfoMapper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/GroupInfoMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/GroupInfoMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/GroupSeniorMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/GroupSeniorMapper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/GroupSeniorMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/GroupSeniorMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/GroupShareholderInfoMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/GroupShareholderInfoMapper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/GroupShareholderInfoMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/GroupShareholderInfoMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/controller/OrderController.java" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/controller/OrderController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/OrderDetailMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/OrderDetailMapper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/OrderDetailMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/OrderDetailMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/OrderMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/OrderMapper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/OrderMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/OrderMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/OrderResultMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/OrderResultMapper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/OrderResultMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/OrderResultMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/service/OrderService.java" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/service/OrderService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/service/impl/OrderServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/service/impl/OrderServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/util/enums/OrderStatus.java" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/util/enums/OrderStatus.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/PersonGroupInfoMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/PersonGroupInfoMapper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/PersonGroupInfoMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/PersonGroupInfoMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/d12305-2.0.pdm" afterPath="$PROJECT_DIR$/d12305-2.0.pdm" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/public.js" afterPath="$PROJECT_DIR$/web/js/public.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/qdxx.htc.txt" afterPath="$PROJECT_DIR$/web/js/qdxx.htc.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="D:\code\106612315-server\web\WEB-INF\ftl\package.ftl" afterPath="$PROJECT_DIR$/web/WEB-INF/ftl/packageList.ftl" />
+      <change type="MOVED" beforePath="D:\code\106612315-server\src\main\java\com\hyrt\saic\bean\Order.java" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/bean/order/Order.java" />
+      <change type="MOVED" beforePath="D:\code\106612315-server\src\main\java\com\hyrt\saic\bean\OrderDetail.java" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/bean/order/OrderDetail.java" />
+      <change type="MOVED" beforePath="D:\code\106612315-server\src\main\java\com\hyrt\saic\bean\OrderResult.java" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/bean/order/OrderResult.java" />
+      <change type="MOVED" beforePath="D:\code\106612315-server\web\WEB-INF\jsp\orderupfileprogress.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/order/upFileProgress.jsp" />
+      <change type="MOVED" beforePath="D:\code\106612315-server\web\findbygroup.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/order/group.jsp" />
     </list>
     <ignored path="SAIC.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="3dab618f-9010-4632-a950-2204d3fa7ecf" time="1388710736359" ignored="false" />
+    <file path="/Dummy.txt" changelist="3dab618f-9010-4632-a950-2204d3fa7ecf" time="1388731410713" ignored="false" />
     <file path="/PackageServiceImpl.java" changelist="3dab618f-9010-4632-a950-2204d3fa7ecf" time="1388476154161" ignored="false" />
     <file path="/ChargePackageMapper.xml" changelist="3dab618f-9010-4632-a950-2204d3fa7ecf" time="1388720287265" ignored="false" />
     <file path="/ChargePackageMapper.java" changelist="3dab618f-9010-4632-a950-2204d3fa7ecf" time="1388476114409" ignored="false" />
@@ -41,6 +161,7 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -77,7 +198,6 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -87,15 +207,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="PackageServiceImpl.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hyrt/saic/service/impl/PackageServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="39" selection-start="1018" selection-end="1044" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="PackageCotroller.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/hyrt/saic/controller/PackageCotroller.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -126,7 +237,7 @@
       <file leaf-file-name="tcgm.jsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/WEB-INF/jsp/tcgm.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="96" selection-start="1696" selection-end="1696" vertical-scroll-proportion="-6.785714">
+            <state line="37" column="96" selection-start="1696" selection-end="1696" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -135,7 +246,7 @@
       <file leaf-file-name="1.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/js/1.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="12" column="32" selection-start="268" selection-end="268" vertical-scroll-proportion="0.2883895">
               <folding />
             </state>
           </provider>
@@ -144,16 +255,7 @@
       <file leaf-file-name="packageList.jsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/WEB-INF/jsp/packageList.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="36" selection-start="681" selection-end="695" vertical-scroll-proportion="-10.857142">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AccountInfoMapper.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/AccountInfoMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="56" column="33" selection-start="2265" selection-end="2265" vertical-scroll-proportion="0.0">
+            <state line="19" column="36" selection-start="681" selection-end="695" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -163,15 +265,6 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/hyrt/saic/service/PackageService.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="23" column="14" selection-start="722" selection-end="722" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ApplicationContext.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/ApplicationContext.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -195,8 +288,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/BusinessTypeMapper.xml" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/ftl/packageList.ftl" />
         <option value="$PROJECT_DIR$/src/main/java/com/hyrt/saic/bean/ChargePackageResultMap.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/jsp/packageUpdate.jsp.js" />
         <option value="$PROJECT_DIR$/web/WEB-INF/jsp/packageUpdate.jsp" />
@@ -211,6 +302,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/hyrt/saic/controller/PackageCotroller.java" />
         <option value="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/ChargePackageMapper.xml" />
         <option value="$PROJECT_DIR$/web/WEB-INF/jsp/tcgm.jsp" />
+        <option value="$PROJECT_DIR$/web/js/1.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -337,24 +430,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SAIC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="106612315-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="target" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -413,161 +488,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mapper" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SAIC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="106612315-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="saic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SAIC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="106612315-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="saic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SAIC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="106612315-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="saic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="impl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SAIC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="106612315-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="saic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SAIC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="106612315-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="saic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -591,11 +512,11 @@
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="MemberChooser.showClasses" value="true" />
     <property name="FullScreen" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -616,19 +537,6 @@
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
@@ -659,6 +567,19 @@
       <listeners />
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" />
@@ -681,25 +602,6 @@
       </JSRemoteDebuggerConfigurationSettings>
       <method />
     </configuration>
-    <configuration default="true" type="WebLogic Instance" factoryName="Local">
-      <option name="PORT" value="7001" />
-      <deployment />
-      <server-settings>
-        <option name="DOMAIN_PATH" value="" />
-        <option name="SERVER_NAME" value="myserver" />
-        <option name="DOMAIN_NAME" value="mydomain" />
-        <option name="ADMIN_SERVER_HOST" value="localhost" />
-        <option name="ADMIN_SERVER_PORT" value="7001" />
-        <option name="CLUSTER_NAME" value="mycluster" />
-        <option name="CONNECT_TO_MANAGED_SERVER" value="false" />
-        <option name="USERNAME" value="weblogic" />
-        <option name="PASSWORD" value="" />
-      </server-settings>
-      <predefined_log_file id="WEBLOGIC_DOMAIN_LOG_FILE" enabled="true" />
-      <predefined_log_file id="WEBLOGIC_SERVER_LOG_FILE" enabled="true" />
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <method />
-    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -719,6 +621,25 @@
       </option>
       <envs />
       <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="WebLogic Instance" factoryName="Local">
+      <option name="PORT" value="7001" />
+      <deployment />
+      <server-settings>
+        <option name="DOMAIN_PATH" value="" />
+        <option name="SERVER_NAME" value="myserver" />
+        <option name="DOMAIN_NAME" value="mydomain" />
+        <option name="ADMIN_SERVER_HOST" value="localhost" />
+        <option name="ADMIN_SERVER_PORT" value="7001" />
+        <option name="CLUSTER_NAME" value="mycluster" />
+        <option name="CONNECT_TO_MANAGED_SERVER" value="false" />
+        <option name="USERNAME" value="weblogic" />
+        <option name="PASSWORD" value="" />
+      </server-settings>
+      <predefined_log_file id="WEBLOGIC_DOMAIN_LOG_FILE" enabled="true" />
+      <predefined_log_file id="WEBLOGIC_SERVER_LOG_FILE" enabled="true" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <method />
     </configuration>
     <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local">
@@ -868,7 +789,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32933104" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28636363" sideWeight="0.13893653" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28636363" sideWeight="0.13893653" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.8610635" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -942,34 +863,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hyrt/saic/bean/ChargePackage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="132" selection-start="377" selection-end="377" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/jdbc.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/dispatcher-servlet.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hyrt/saic/service/OrderService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="17" selection-start="259" selection-end="259" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hyrt/saic/service/impl/OrderServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="21" column="13" selection-start="608" selection-end="608" vertical-scroll-proportion="0.0">
@@ -1007,7 +900,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/jsp/packageList.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="36" selection-start="681" selection-end="695" vertical-scroll-proportion="-10.857142">
+        <state line="19" column="36" selection-start="681" selection-end="695" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1042,14 +935,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/jsp/tcgm.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="96" selection-start="1696" selection-end="1696" vertical-scroll-proportion="-6.785714">
+        <state line="37" column="96" selection-start="1696" selection-end="1696" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/qdxx.htc.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="52" selection-start="431" selection-end="431" vertical-scroll-proportion="-9.282771">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/js/1.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="12" column="32" selection-start="268" selection-end="268" vertical-scroll-proportion="0.2883895">
           <folding />
         </state>
       </provider>

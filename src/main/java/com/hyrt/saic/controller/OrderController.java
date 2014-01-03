@@ -1,9 +1,10 @@
 package com.hyrt.saic.controller;
 
-import com.hyrt.saic.bean.Order;
-import com.hyrt.saic.bean.OrderDetail;
-import com.hyrt.saic.bean.User;
+import com.alibaba.fastjson.JSON;
+import com.hyrt.saic.bean.order.Order;
+import com.hyrt.saic.bean.order.OrderDetail;
 import com.hyrt.saic.service.CommonService;
+import com.hyrt.saic.service.OrderService;
 import com.hyrt.saic.util.enums.DataOperateType;
 import com.hyrt.saic.util.ExcelAnalyze;
 import com.hyrt.saic.util.enums.OrderStatus;
@@ -11,15 +12,14 @@ import org.apache.commons.fileupload.ObjectPool;
 import org.apache.commons.fileupload.UpfileProgress;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Timestamp;
 import java.util.*;
 
@@ -37,9 +37,129 @@ public class OrderController {
 
     @Autowired
     CommonService commonService;
+    @Autowired
+    OrderService orderService;
 
     @RequestMapping("/group")
-    public String test(String groupCode,String groupName,String groupRemark,String groupMonitor,Integer businessType, HttpServletRequest request){
+    public String groupOrder (HttpServletRequest request){
+
+        String sn = request.getSession().getId();
+        org.apache.commons.fileupload.ObjectPool pool = org.apache.commons.fileupload.ObjectPool.getPool();
+        pool.p.put(sn, new org.apache.commons.fileupload.UpfileProgress());
+        request.getSession().setAttribute("fileSerialNumber", sn);
+
+       return "/order/group.jsp";
+    }
+    @RequestMapping("/search")
+    public String orderSearch (String type,String sday,String eday,String id,String submit,HttpServletRequest request){
+        request.setAttribute("orderTypeList",orderService.selectOrderType());
+
+        if(submit!=null){
+            HashMap params = new HashMap();
+
+            params.put("userId","1");
+
+            if(!"".equals(id)) {
+                params.put("id",id);
+            }else{
+                if( !"".equals(type))  params.put("type",type);
+                if( !"".equals(sday))  params.put("sday",sday);
+                if( !"".equals(eday))  params.put("eday",eday);
+            }
+            Map all = orderService.selectOrder(params);
+            params.put("orderStatus","'"+OrderStatus.结束+"','"+OrderStatus.未通过审核+"','"+OrderStatus.查询无果+"','"+OrderStatus.账户支付失败+"'");
+            Map done = orderService.selectOrder(params);
+            params.put("orderStatus","'"+OrderStatus.下单+"','"+OrderStatus.审核中+"','"+OrderStatus.通过审核+"','"+OrderStatus.进行中+"'");
+            Map undone = orderService.selectOrder(params);
+            params.put("orderStatus","'"+OrderStatus.查询无果+"'");
+            Map nothing = orderService.selectOrder(params);
+
+            request.setAttribute("all",all);
+            request.setAttribute("done",done);
+            request.setAttribute("undone",undone);
+            request.setAttribute("nothing",nothing);
+
+
+            request.setAttribute("type",type);
+            request.setAttribute("sday",sday);
+            request.setAttribute("eday",eday);
+            request.setAttribute("id",id);
+
+        }
+
+        return "/order/search.jsp";
+    }
+
+    @RequestMapping("/detail")
+    public String detail(String id,Integer page,HttpServletRequest request){
+
+
+       request.setAttribute("orderInfo", orderService.selectOrderInfoByOrderId(id));
+
+        Map params = new HashMap();
+        params.put("orderId",id);
+        params.put("page",page);
+        request.setAttribute("objects",orderService.selectByOrderId(params));
+        return "/order/detail.jsp";
+    }
+
+
+
+
+    @RequestMapping("/result")
+    public String result(Long id, int orderType, HttpServletRequest request){
+        if(orderType==1 || orderType==3 || orderType==4){
+
+            request.setAttribute("result",JSON.toJSONString(orderService.selectGroupInfo(id)));
+            return "/order/groupResult.jsp";
+
+
+        }else{
+            request.setAttribute("result",JSON.toJSONString(orderService.selectPersonInfo(id)));
+            return "/order/personResult.jsp";
+        }
+
+
+
+    }
+
+    @RequestMapping("/searchForAjax")
+    public @ResponseBody String searchByAjax (String type,String sday,String eday,String id,Integer page,String status,HttpServletRequest request){
+        System.out.println(page+"------------------------");
+            HashMap params = new HashMap();
+
+            params.put("userId","1");
+
+            if(!"".equals(id)) {
+                params.put("id",id);
+            }else{
+                if( !"".equals(type))
+                    params.put("type",type);
+                if( !"".equals(sday))
+                    params.put("sday",sday);
+                if( !"".equals(eday))
+                    params.put("eday",eday);
+            }
+
+            params.put("page",page);
+            if(status==null || status.equals("all") ){
+
+            }else if("done".equals(status)){
+                params.put("orderStatus","'"+OrderStatus.结束+"','"+OrderStatus.未通过审核+"','"+OrderStatus.查询无果+"','"+OrderStatus.账户支付失败+"'");
+            }else if("undone".equals(status)){
+                params.put("orderStatus","'"+OrderStatus.下单+"','"+OrderStatus.审核中+"','"+OrderStatus.通过审核+"','"+OrderStatus.进行中+"'");
+            }else if("nothing".equals(status)){
+                params.put("orderStatus","'"+OrderStatus.查询无果+"'");
+            }
+
+            Map res = orderService.selectOrder(params);
+            System.out.println(JSON.toJSONString(res));
+        return JSON.toJSONString(res);
+    }
+
+
+    @RequestMapping("/groupSubmit")
+    public String groupOrderSubmit(String groupCode,String groupName,String groupRemark,String groupMonitor,Integer businessType, HttpServletRequest request){
 
         if(groupCode!=null && groupName!=null && groupRemark !=null && groupMonitor !=null){
           // && !"".equals(groupCode) && !"".equals(groupName) && !"".equals(groupRemark) && !"".equals(groupMonitor)
@@ -118,11 +238,12 @@ public class OrderController {
                     e.printStackTrace();
                 }*/
         }
-        return "orderupfileprogress.jsp";
+        return "/order/upFileProgress.jsp";
     }
 
-    @RequestMapping("/progress")
+    @RequestMapping(value="/progress",produces="text/plain;charset=UTF-8")
     public @ResponseBody String  progress(String param,HttpServletRequest request, HttpServletResponse response){
+
 
         String result=null;
         if (request.getSession().getAttribute("fileSerialNumber") != null) {
@@ -136,15 +257,40 @@ public class OrderController {
             }else{
                 //返回进度信息
                 ObjectPool pool = ObjectPool.getPool();
-                UpfileProgress ufp = (UpfileProgress) pool.p.get(sn);
-                result = ufp.progress;
+                Object obj =pool.p.get(sn);
+                if(obj!=null)   {
+                    result = ((UpfileProgress)obj).progress ;
+                }
+
             }
         } else {
-            result = "0.00%";
+            result = "0.00%;   非法操作<a href='/exit'>返回</a>";
         }
-     //   System.out.println(result+"------request----------------------------");
+        System.out.println(result+"------request----------------------------");
+//        char [] chars = result.toCharArray();
+//        String asciiArgs="";
+//        for(char c:chars){
+//            asciiArgs+="\\u"+Integer.toHexString(c);
+//        }
 
-        return result;
+         return result;
+
+    }
+
+
+    @RequestMapping("/upFileResult")
+    public String  upFileResult(HttpServletRequest request, HttpServletResponse response){
+
+        if (request.getSession().getAttribute("fileSerialNumber") != null) {
+            String sn = (String) request.getSession().getAttribute("fileSerialNumber");
+
+            ObjectPool pool = ObjectPool.getPool();
+            List upObjList = ((List) pool.p.get(sn+"reslist")).subList(0,10);
+            request.setAttribute("upObjList",upObjList);
+        }
+
+
+        return "/order/upFileResult.jsp";
 
     }
 }

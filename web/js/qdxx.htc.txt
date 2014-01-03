@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 <public:attach event=¡±onfocus¡± onevent=¡±example()¡± />
 <script language=¡±javascript¡±>
+=======
+<public:attach event="onfocus" onevent="example()" />
+<script language="javascript">
+>>>>>>> 0f6281e20e609089f09d54158833dd359089e44c
 function example(){
 this.blur();
 }

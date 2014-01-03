@@ -67,8 +67,9 @@ ${message}
 		if(request.readyState==4){
 			if(request.status==200){	
 				rest = request.responseText;
-				if(rest!=""){	
-					document.getElementById("pro").innerText =	rest;
+				if(rest!=""){
+
+					document.getElementById("pro").innerHTML =	rest;
 					if(rest.search("100%")==-1)
 						window.setTimeout("progress()",2000);
 					else
