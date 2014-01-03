@@ -152,15 +152,17 @@
 .ddzt li span{ color:#ff7e00;}
 
 .dl_content{ width:100%; height:100%; display:block; overflow:hidden; background:url(../images/bg0.png) no-repeat center center; position:relative;}
-.dl_nr{ width:594px; height:360px; position:absolute; top:50%; left:50%; margin-left:-297px; margin-top:-180px; overflow:hidden;}
+.dl_nr{ width:594px; height:422px; position:absolute; top:50%; left:50%; margin-left:-297px; margin-top:-211px; overflow:hidden;}
 .dl_nr h4{ background:url(../images/dl_tt1.png) no-repeat; width:539px; height:66px; margin-left:35px;}
-.dl_bd{ width:594px; height:173px; background:url(../images/bg2.png) no-repeat; overflow:hidden; font-family:"微软雅黑"; font-size:14px; color:#fff; font-weight:600; margin-top:60px;}
-.dl_bd form{ margin:44px 0px 0px 90px; width:414px; height:90px; overflow:hidden;}
-.dl_bd form span{ float:left;}
-.dl_bd form input{ color:#6a818d; font-size:12px;}
-.dl_input2{ float:right; width:72px; height:72px; border:none; background:url(../images/button6.png) no-repeat; margin:10px 0px 0px 0px; cursor:pointer;}
+.dl_bd{ width:594px; height:235px; background:url(../images/bg2.png) no-repeat; overflow:hidden; font-family:"微软雅黑"; font-size:14px; color:#fff; font-weight:600; margin-top:60px;}
+.dl_bd form{ margin:48px 0px 0px 90px; width:430px; height:152px; overflow:hidden;}
+.dl_bd form input{ color:#0e6999; font-size:12px;}
+.dl_input2{width:133px; height:40px; border:none; background:url(../images/button6.png) no-repeat; margin:10px 30px 0px 66px; cursor:pointer; float:left; display:inline;}
 .dl_input1{ width:252px; height:32px; line-height:32px; border:none; background:url(../images/input_bg1.png) no-repeat; text-indent:12px; margin-top:8px;}
 .dl_bg{ width:594px; height:73px; background:url(../images/bg3.png) no-repeat; overflow:hidden; margin-top:2px;}
+.dl_input3{ margin:24px 10px 0px 0px; float:left;} 
+.dl_bd form span{ margin-top:19px; font-size:12px; font-weight:normal; color:#ff0000;}
+.dl_bd form a{ line-height:40px; margin-top:10px; float:left; color:#fff;}
 
 .ddjg_wai{ width:100%; height:90px; overflow:hidden; background:url(../images/bg4.gif) repeat-x left bottom;}
 .ddjg_top{ width:1000px; height:90px; overflow:hidden; margin:0px auto;}
