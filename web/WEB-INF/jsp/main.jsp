@@ -129,7 +129,7 @@
     </div>
     <div class="content_right" style="background: none">
 
-        <iframe id="mainIframe" name="mainIframe"  scrolling="no"  frameborder="0" src="/welcome" width="100%" height="100%" onload="Javascript:SetWinHeight(this)" ></iframe>
+        <iframe id="mainIframe" name="mainIframe"  scrolling="no" frameborder="0" src="/welcome.jsp" width="100%" onload="SetWinHeight(this)" ></iframe>
 
     </div>
 </div>
@@ -138,7 +138,7 @@
 
 <!--bottom-->
 <div class="clear"></div>
-<div class="bottom"   style="position:absolute; bottom:0;">
+<div class="bottom">
     <div class="bottom_content">
         <p>Copyright 2011-2013 某某版权所有 豫ICP备00000000号</p>
     </div>
@@ -151,9 +151,9 @@
         if (document.getElementById){
             if (win && !window.opera) {
                 if (win.contentDocument && win.contentDocument.body.offsetHeight)
-                    win.height = win.contentDocument.body.offsetHeight+100;
+                    win.height = win.contentDocument.body.offsetHeight;
                 else if(win.Document && win.Document.body.scrollHeight)
-                    win.height = win.Document.body.scrollHeight+100;
+                    win.height = win.Document.body.scrollHeight;
             }
         }
     }

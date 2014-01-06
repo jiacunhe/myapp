@@ -6,25 +6,24 @@
     <link href="/css/public.css" rel="stylesheet" type="text/css" />
     <link href="/css/sub.css" rel="stylesheet" type="text/css" />
 
-    <link rel="stylesheet" type="text/css" media="all"  href="/images/dialog/dialog.css">
-
+    <link rel="stylesheet" type="text/css"  href="/images/dialog/dialog.css">
     <script src="/images/dialog/dialog.js" type="text/javascript"></script>
-    <script language=javascript src="/js/1.js" id=clientEventHandlersJS> </script>
+
+    <script language="javascript" src="/js/1.js"> </script>
     <title>企业查询</title>
 
 
 </head>
 
 <body>
-
-<div class="content_right">
+      <div style=" width: 100%; height: 700px; background-color:#eeeeee">
     <div class="yemei">
         <p>您当前所在位置：<a href="#">首页</a> >> <a href="#">信息查询</a> >> <span>企业查询</span></p>
     </div>
     <div class="sub_rttop">
         <a href="#" class="first"><img src="../images/button1.jpg" /></a>
-        <a href="javascript:openUpFile()"><img src="../images/button2.jpg" /></a>
-        <a href="javascript:insRow()"><img src="../images/button3.jpg" /></a>
+        <a href="#" onclick="openUpFile()"><img src="../images/button2.jpg" /></a>
+        <a href="#" onclick="insRow()"><img src="../images/button3.jpg" /></a>
     </div>
     <div class="content_right_nr">
         <h4 class="sub_title1"><p class="sub_p5">企业查询</p></h4>
@@ -53,10 +52,10 @@
                     <td align="center"><div style="width:120px; margin: auto"><input type="hidden" id="group1monitor" name="group1monitor" value="0"><a  href="javascript:monitoradd('group1')" id="group1add" style="float: left; width: 75px; text-align: center">加入监控</a> <a id="group1remove" href="javascript:monitorremove('group1')" style="display: none; float: left; width:75px; text-align: center">取消监控</a>  <a href="#" onclick="delrow(this)" style="float: left; width: 35px; text-align: center; margin-left: 10px;">删除</a></div></td>
                 </tr>
             </table>
-            <p class="cxjg">本次查询条数：<span>2</span>条</p>
-            <p ><a href="#">提交订单</a></p>
-            <form action="/order/groupSubmit" method="post" id="groupfrom">
-                <p class="tijiao1"> <a href="javascript; checkdata()">提交订单</a>   </p>
+            <!--p class="cxjg">本次查询条数：<span>2</span>条</p>
+            <p ><a href="#">提交订单</a></p -->
+            <form action="/order/submit" method="post" id="groupfrom">
+                <p class="tijiao1"> <a href="#" onclick="return checkdata()">提交订单</a>   </p>
                     <input type="hidden" value="1" name="businessType">
 
                     <input type="hidden" id="groupcode" name="groupCode" value="">
@@ -80,8 +79,7 @@
             </ul>
         </div>
     </div>
-
-</div>
+    </div>
 
 
 
@@ -174,7 +172,7 @@ function delrow(obj){
 
 	var i=document.getElementById('gtb').rows.length;
 	if(i<3){
-        alert("Sorry！您不能再删除了...");return false;
+        alert("Sorry！您不能再删除了..."); return false;
     }
     
 	var j=((obj.parentNode).parentNode).parentNode.rowIndex;
@@ -191,6 +189,10 @@ function insRow()
 	//alert(i);
 	if(j>5){
         alert("Sorry！您不能再增加了...");return false;
+
+//            dialog=new Dialog("提示");
+//            dialog.SetXY(200,200);
+//            dialog.OpenWindow2("<p class='msg'><span>Sorry！您不能再增加了...</span></p>");
     }
 //    var i=document.getElementById('gtb').rows.length;
     var row=document.getElementById('gtb').insertRow(j);
@@ -288,8 +290,6 @@ function openUpFile(){
 	dialog=new Dialog("上传文件");
 	dialog.SetRange(600,300);
 	dialog.SetXY((window.document.body.clientWidth -600)/2,50);
-	//dialog.OpenWindow("http://www.baidu.com");
-	
 	dialog.OpenWindow2(document.getElementById("upfile").innerHTML);
 }
 </script>

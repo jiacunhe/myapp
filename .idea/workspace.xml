@@ -2,11 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3dab618f-9010-4632-a950-2204d3fa7ecf" name="Default" comment="">
+      <change type="DELETED" beforePath="D:\106612315-server\web\images\dialog\Thumbs.db" afterPath="" />
+      <change type="DELETED" beforePath="D:\106612315-server\web\images\dialog\dialog.html" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/bean/order/Order.java" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/bean/order/Order.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/controller/OrderController.java" afterPath="$PROJECT_DIR$/src/main/java/com/hyrt/saic/controller/OrderController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/dialog/dialog.css" afterPath="$PROJECT_DIR$/web/images/dialog/dialog.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/dialog/dialog.js" afterPath="$PROJECT_DIR$/web/images/dialog/dialog.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/order/group.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/order/group.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/main.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/main.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/public.js" afterPath="$PROJECT_DIR$/web/js/public.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/css/sub.css" afterPath="$PROJECT_DIR$/web/css/sub.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SAIC.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="3dab618f-9010-4632-a950-2204d3fa7ecf" time="1388731410713" ignored="false" />
+    <file path="/Dummy.txt" changelist="3dab618f-9010-4632-a950-2204d3fa7ecf" time="1388969770723" ignored="false" />
     <file path="/PackageServiceImpl.java" changelist="3dab618f-9010-4632-a950-2204d3fa7ecf" time="1388476154161" ignored="false" />
     <file path="/ChargePackageMapper.xml" changelist="3dab618f-9010-4632-a950-2204d3fa7ecf" time="1388720287265" ignored="false" />
     <file path="/ChargePackageMapper.java" changelist="3dab618f-9010-4632-a950-2204d3fa7ecf" time="1388476114409" ignored="false" />
@@ -19,8 +29,16 @@
     <file path="/packageInsert.jsp" changelist="3dab618f-9010-4632-a950-2204d3fa7ecf" time="1388647445753" ignored="false" />
     <file path="/PackageService.java" changelist="3dab618f-9010-4632-a950-2204d3fa7ecf" time="1388476130456" ignored="false" />
     <file path="/tcgm.jsp" changelist="3dab618f-9010-4632-a950-2204d3fa7ecf" time="1388720608914" ignored="false" />
-    <file path="$PROJECT_DIR$/src/main/java/com/hyrt/saic/controller/TestController.java" changelist="3dab618f-9010-4632-a950-2204d3fa7ecf" time="1388733790296" ignored="false" />
     <file path="/main.jsp" changelist="3dab618f-9010-4632-a950-2204d3fa7ecf" time="1388733998327" ignored="false" />
+    <file path="/dialog.js" changelist="3dab618f-9010-4632-a950-2204d3fa7ecf" time="1388736212890" ignored="false" />
+    <file path="$PROJECT_DIR$/src/main/java/com/hyrt/saic/service/PackageService.java" changelist="3dab618f-9010-4632-a950-2204d3fa7ecf" time="1388736882358" ignored="false" />
+    <file path="/group.jsp" changelist="3dab618f-9010-4632-a950-2204d3fa7ecf" time="1388976742816" ignored="false" />
+    <file path="/dialog.css" changelist="3dab618f-9010-4632-a950-2204d3fa7ecf" time="1388737787857" ignored="false" />
+    <file path="/welcome.jsp" changelist="3dab618f-9010-4632-a950-2204d3fa7ecf" time="1388740502298" ignored="false" />
+    <file path="/OrderController.java" changelist="3dab618f-9010-4632-a950-2204d3fa7ecf" time="1388985379397" ignored="false" />
+    <file path="/orderConfirm.jsp" changelist="3dab618f-9010-4632-a950-2204d3fa7ecf" time="1388972595067" ignored="false" />
+    <file path="/Order.java" changelist="3dab618f-9010-4632-a950-2204d3fa7ecf" time="1388978537801" ignored="false" />
+    <file path="/SystemInitServlet.java" changelist="3dab618f-9010-4632-a950-2204d3fa7ecf" time="1388985298542" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,73 +99,68 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="PackageCotroller.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hyrt/saic/controller/PackageCotroller.java">
+      <file leaf-file-name="group.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/WEB-INF/jsp/order/group.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="52" column="41" selection-start="2236" selection-end="2236" vertical-scroll-proportion="0.0">
+            <state line="3" column="80" selection-start="238" selection-end="238" vertical-scroll-proportion="38.67857">
+              <folding>
+                <marker date="1388976746606" expanded="false" signature="7763:7787" placeholder="..." />
+                <marker date="1388976746606" expanded="false" signature="8007:8062" placeholder="..." />
+                <marker date="1388976746606" expanded="false" signature="8187:8248" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OrderController.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hyrt/saic/controller/OrderController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="197" column="128" selection-start="7837" selection-end="7837" vertical-scroll-proportion="0.69835234">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BusinessTypeMapper.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/BusinessTypeMapper.xml">
+      <file leaf-file-name="FirstTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/cn.com.hyrt.test/FirstTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="16" column="13" selection-start="552" selection-end="552" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ChargePackageMapper.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/ChargePackageMapper.xml">
+      <file leaf-file-name="SystemInitServlet.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hyrt/saic/util/SystemInitServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="88" selection-start="3003" selection-end="3003" vertical-scroll-proportion="0.0">
+            <state line="63" column="90" selection-start="2416" selection-end="2416" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tcgm.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/jsp/tcgm.jsp">
+      <file leaf-file-name="confirm.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/WEB-INF/jsp/order/confirm.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="96" selection-start="1696" selection-end="1696" vertical-scroll-proportion="0.0">
+            <state line="17" column="53" selection-start="662" selection-end="662" vertical-scroll-proportion="-11.535714">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="1.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/js/1.js">
+      <file leaf-file-name="Order.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hyrt/saic/bean/order/Order.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="32" selection-start="268" selection-end="268" vertical-scroll-proportion="0.0">
+            <state line="45" column="8" selection-start="829" selection-end="829" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.jsp" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/jsp/main.jsp">
+      <file leaf-file-name="OrderDetail.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hyrt/saic/bean/order/OrderDetail.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="93" column="100" selection-start="3869" selection-end="3872" vertical-scroll-proportion="0.46247464">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="packageList.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/jsp/packageList.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="36" selection-start="681" selection-end="695" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PackageService.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hyrt/saic/service/PackageService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="14" selection-start="722" selection-end="722" vertical-scroll-proportion="0.0">
+            <state line="24" column="56" selection-start="370" selection-end="381" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -171,22 +184,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/web/WEB-INF/jsp/packageUpdate.jsp.js" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/jsp/packageUpdate.jsp" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/packageInsert.jsp" />
-        <option value="$PROJECT_DIR$/web/packageChange.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hyrt/saic/service/PackageService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hyrt/saic/service/impl/PackageServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/ChargePackageMapper.java" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/jsp/packageList.jsp" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/jsp/packageChange.jsp" />
-        <option value="$PROJECT_DIR$/web/packageInsert.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hyrt/saic/controller/PackageCotroller.java" />
         <option value="$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/ChargePackageMapper.xml" />
         <option value="$PROJECT_DIR$/web/WEB-INF/jsp/tcgm.jsp" />
         <option value="$PROJECT_DIR$/web/js/1.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/web/js/public.js" />
+        <option value="$PROJECT_DIR$/web/images/dialog/dialog.css" />
+        <option value="$PROJECT_DIR$/web/images/dialog/dialog.js" />
+        <option value="$PROJECT_DIR$/web/welcome.jsp" />
+        <option value="$PROJECT_DIR$/web/css/sub.css" />
         <option value="$PROJECT_DIR$/web/WEB-INF/jsp/main.jsp" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/jsp/order/orderConfirm.jsp" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/jsp/order/group.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hyrt/saic/bean/order/Order.java" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/jsp/order/confirm.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hyrt/saic/util/SystemInitServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hyrt/saic/controller/OrderController.java" />
       </list>
     </option>
   </component>
@@ -200,8 +213,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="width" value="1296" />
+    <option name="height" value="1010" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -313,7 +326,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="target" />
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -328,6 +345,14 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cn.com.hyrt.test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -374,6 +399,70 @@
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="saic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SAIC" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="106612315-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="saic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SAIC" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="106612315-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="saic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
@@ -383,11 +472,11 @@
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="SDKs" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="options.lastSelected" value="preferences.pluginManager" />
+    <property name="options.lastSelected" value="File.Encoding" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -650,8 +739,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1296" height="1010" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -664,16 +753,16 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32933104" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32902467" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28606158" sideWeight="0.426557" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32933104" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28636363" sideWeight="0.13893653" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.8610635" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28606158" sideWeight="0.57226795" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.8601645" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -746,114 +835,119 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hyrt/saic/service/impl/OrderServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/web/css/public.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="13" selection-start="608" selection-end="608" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="43" column="11" selection-start="2626" selection-end="2627" vertical-scroll-proportion="0.51653945" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hyrt/saic/dao/ChargePackageMapper.java">
+    <entry file="file://$PROJECT_DIR$/web/css/index.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="49" selection-start="470" selection-end="470" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hyrt/saic/service/impl/PackageServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/web/welcome.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="39" selection-start="1018" selection-end="1044" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/ApplicationContext.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/AccountInfoMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="33" selection-start="2265" selection-end="2265" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/jsp/packageList.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="36" selection-start="681" selection-end="695" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hyrt/saic/service/PackageService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="14" selection-start="722" selection-end="722" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hyrt/saic/controller/PackageCotroller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="41" selection-start="2236" selection-end="2236" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/BusinessTypeMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/com/hyrt/saic/mapper/ChargePackageMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="88" selection-start="3003" selection-end="3003" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/jsp/tcgm.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="96" selection-start="1696" selection-end="1696" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/js/qdxx.htc.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="52" selection-start="431" selection-end="431" vertical-scroll-proportion="-9.282771">
+        <state line="12" column="64" selection-start="550" selection-end="550" vertical-scroll-proportion="0.28643215">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/css/sub.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="47" selection-start="179" selection-end="179" vertical-scroll-proportion="0.046855733" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/jsp/order/groupResult.jsp">
+      <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/js/1.js">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hyrt/saic/bean/order/Order.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="32" selection-start="268" selection-end="268" vertical-scroll-proportion="0.0">
+        <state line="45" column="8" selection-start="829" selection-end="829" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/jsp/order/group.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="80" selection-start="238" selection-end="238" vertical-scroll-proportion="38.67857">
+          <folding>
+            <marker date="1388976746606" expanded="false" signature="7763:7787" placeholder="..." />
+            <marker date="1388976746606" expanded="false" signature="8007:8062" placeholder="..." />
+            <marker date="1388976746606" expanded="false" signature="8187:8248" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/jsp/order/detail.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="0" selection-start="213" selection-end="276" vertical-scroll-proportion="0.19412516">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/jsp/main.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="93" column="100" selection-start="3869" selection-end="3872" vertical-scroll-proportion="0.46247464">
+        <state line="153" column="70" selection-start="5780" selection-end="5780" vertical-scroll-proportion="0.58748406">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hyrt/saic/bean/order/OrderDetail.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="56" selection-start="370" selection-end="381" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/jsp/order/confirm.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="53" selection-start="662" selection-end="662" vertical-scroll-proportion="-11.535714">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
+      <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorReferencesProvider">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="15" selection-start="454" selection-end="454" vertical-scroll-proportion="0.1904762">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleGeneralEditorProvider">
+        <state />
+      </provider>
+      <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/cn.com.hyrt.test/FirstTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="13" selection-start="552" selection-end="552" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hyrt/saic/util/SystemInitServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="90" selection-start="2416" selection-end="2416" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hyrt/saic/controller/OrderController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="197" column="128" selection-start="7837" selection-end="7837" vertical-scroll-proportion="0.69835234">
           <folding />
         </state>
       </provider>
@@ -889,6 +983,7 @@
       </state>
       <state key="GlobalLibrariesConfigurable.UI">
         <settings>
+          <last-edited>servlet-api</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -917,6 +1012,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>

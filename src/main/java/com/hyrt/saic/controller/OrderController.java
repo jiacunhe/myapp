@@ -42,7 +42,6 @@ public class OrderController {
 
     @RequestMapping("/group")
     public String groupOrder (HttpServletRequest request){
-
         String sn = request.getSession().getId();
         org.apache.commons.fileupload.ObjectPool pool = org.apache.commons.fileupload.ObjectPool.getPool();
         pool.p.put(sn, new org.apache.commons.fileupload.UpfileProgress());
@@ -158,8 +157,8 @@ public class OrderController {
     }
 
 
-    @RequestMapping("/groupSubmit")
-    public String groupOrderSubmit(String groupCode,String groupName,String groupRemark,String groupMonitor,Integer businessType, HttpServletRequest request){
+    @RequestMapping("/submit")
+    public String groupOrderSubmit(Integer orderType,String groupCode,String groupName,String groupRemark,String groupMonitor,Integer businessType, HttpServletRequest request){
 
         if(groupCode!=null && groupName!=null && groupRemark !=null && groupMonitor !=null){
           // && !"".equals(groupCode) && !"".equals(groupName) && !"".equals(groupRemark) && !"".equals(groupMonitor)
@@ -180,35 +179,36 @@ public class OrderController {
             for(int i=0;i<code.length;i++){
                 if(!code[i].equals("")&& monitor[i].equals("0")){
                     if(a==1){
-                        beans.add( new Order(orderId,businessType,new Timestamp(new Date().getTime()),userId,OrderStatus.下单));
+                        beans.add( new Order(orderId,businessType,orderType,new Timestamp(new Date().getTime()),userId,OrderStatus.下单));
                     }
-                    orderDetail = new  OrderDetail( orderId, "2", name[i],  code[i], null, remark[i]);
+                    orderDetail = new  OrderDetail( orderId, "0", name[i],  code[i], null, remark[i]);
                     beans.add(orderDetail);
                     a++;
                 } else if(!code[i].equals("")&& monitor[i].equals("1")){
                     if(b==1){
-                        beans.add( new Order(orderId2,2,new Timestamp(new Date().getTime()),userId,OrderStatus.下单));
+                        beans.add( new Order(orderId2,businessType+1,orderType,new Timestamp(new Date().getTime()),userId,OrderStatus.下单));
                     }
-                    orderDetail = new  OrderDetail( orderId2, "2", name[i],  code[i], null, remark[i]);
+                    orderDetail = new  OrderDetail( orderId2, "1", name[i],  code[i], null, remark[i]);
                     beans.add(orderDetail);
                     b++;
                 }
             }
-
-
-            Map map = new HashMap();
-
-            map.put(DataOperateType.INSERT,beans);
-
-            try {
-                commonService.saveOrUpdateOrDeleteAll(map);
-            } catch (Exception e) {
-                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-            }
+            request.getSession().setAttribute("orderBeans",beans);
+            request.setAttribute("orderType",((Map)request.getServletContext().getAttribute("orderType")).get(orderType));
+            request.setAttribute("businessType",((Map)request.getServletContext().getAttribute("businessType")).get(businessType));
+//            Map map = new HashMap();
+//
+//            map.put(DataOperateType.INSERT,beans);
+//
+//            try {
+//                commonService.saveOrUpdateOrDeleteAll(map);
+//            } catch (Exception e) {
+//                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+//            }
 
         }
-        request.setAttribute("name","订单已经提交,XXX等吧");
-        return "/index.jsp";
+
+        return "/order/orderConfirm.jsp";
     }
 
     @RequestMapping("/upFile")

@@ -40,9 +40,10 @@ public class Order {
 
     }
 
-    public Order(String id,Integer businessType,Timestamp createTime,String userId,OrderStatus status){
+    public Order(String id,Integer businessType,Integer orderType ,Timestamp createTime,String userId,OrderStatus status){
         this.id = id;
         this.businessId = businessType;
+
         this.createTime = createTime;
         this.userId = userId;
         this.status = status.toString();

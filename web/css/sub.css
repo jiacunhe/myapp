@@ -1,6 +1,6 @@
 /* CSS Document */
-.content_right{ background:#eee; width:779px; height:662px; overflow:auto; overflow-x:hidden; border-right:1px solid #013f68;}
-.content_right iframe{ width:100%; border:none; height:662px;}
+.content_right{ background:#eee; width:779px; overflow:auto; overflow-x:hidden; border-right:1px solid #013f68;}
+.content_right iframe{ width:100%; border:none;}
 .yemei{ height:33px; overflow:hidden; line-height:33px; background:url(../images/ym_bg.gif) repeat-x;}
 .yemei p{ color:#696969; margin-left:16px;}
 .yemei a{ color:#696969;}
