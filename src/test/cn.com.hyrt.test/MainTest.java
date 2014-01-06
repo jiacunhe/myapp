@@ -1,6 +1,7 @@
 package cn.com.hyrt.test;
 
 import com.hyrt.saic.util.enums.OrderStatus;
+import org.springframework.util.DigestUtils;
 
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
@@ -25,7 +26,11 @@ public class MainTest {
         System.out.println(asciiArgs+"-----------");
         System.out.println(OrderStatus.下单);
 
-
+        try {
+            System.out.println(new String(DigestUtils.md5Digest("123456".getBytes()),"iso8859-1"));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
 
     }
 }

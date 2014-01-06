@@ -1,65 +1,50 @@
 package com.hyrt.saic.bean;
 
+import com.hyrt.saic.util.enums.UserStatus;
+import com.hyrt.saic.util.enums.UserType;
+import me.sfce.library.mybatis.domain.BasePojo;
+
+import javax.persistence.Id;
 import java.sql.Timestamp;
+import java.util.List;
 
-public class User {
-    private String userId;
-
+public class User extends BasePojo {
+    @Id
+    private String userId; //用户名
     private String password;
-
-    private String username;
-
-    private String linkman;
-
-    private String telephone;
-
-    private String mobilePhone;
-
-    private String email;
-
-    private String address;
-
-    private Timestamp regTime;
-
-    private Timestamp updateTime;
-
-    private String userType;
-
-    private String certificate;
-
-    private String certificateCode;
-
-    private String creatorId;
-
-    private String isBasal;
-
-    private String isChild;
-
-    private String trade;
-
-    private String vocation;
-
-    private String status;
-
-    private Integer vipLevel;
-
-    private String paymentRule;
-
-
+    private String username; //姓名
+    private Timestamp regTime; //注册时间
+    private Timestamp updateTime; //修改时间
+    private UserType userType; //用户类型,管理员或客户
+    private String creatorId; //创建者
+    private boolean isBasal; //是否有子客户
+    private UserStatus status; //状态
     private String remark;
+    private List<Role> roles;
 
-    public User(){}
-    public User(String userId){
-        this.userId = userId;
+    public User(){
+        super(false);
     }
 
-    public User(String userId,String password, String username,Timestamp regTime,String userType,String paymentRule){
+    public String getCreatorId() {
+        return creatorId;
+    }
+
+    public void setCreatorId(String creatorId) {
+        this.creatorId = creatorId;
+    }
+
+    public boolean isBasal() {
+        return isBasal;
+    }
+
+    public void setBasal(boolean basal) {
+        isBasal = basal;
+    }
+
+    public User(String userId){
+        super(false);
         this.userId = userId;
-        this.password = password;
-        this.paymentRule = paymentRule;
-        this.username=username;
-        this.regTime = regTime;
-        this.userType = userType;
     }
 
     public String getUserId() {
@@ -86,46 +71,6 @@ public class User {
         this.username = username;
     }
 
-    public String getLinkman() {
-        return linkman;
-    }
-
-    public void setLinkman(String linkman) {
-        this.linkman = linkman;
-    }
-
-    public String getTelephone() {
-        return telephone;
-    }
-
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
-    }
-
-    public String getMobilePhone() {
-        return mobilePhone;
-    }
-
-    public void setMobilePhone(String mobilePhone) {
-        this.mobilePhone = mobilePhone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public Timestamp getRegTime() {
         return regTime;
     }
@@ -142,92 +87,20 @@ public class User {
         this.updateTime = updateTime;
     }
 
-    public String getUserType() {
+    public UserType getUserType() {
         return userType;
     }
 
-    public void setUserType(String userType) {
+    public void setUserType(UserType userType) {
         this.userType = userType;
     }
 
-    public String getCertificate() {
-        return certificate;
-    }
-
-    public void setCertificate(String certificate) {
-        this.certificate = certificate;
-    }
-
-    public String getCertificateCode() {
-        return certificateCode;
-    }
-
-    public void setCertificateCode(String certificateCode) {
-        this.certificateCode = certificateCode;
-    }
-
-    public String getCreatorId() {
-        return creatorId;
-    }
-
-    public void setCreatorId(String creatorId) {
-        this.creatorId = creatorId;
-    }
-
-    public String getIsBasal() {
-        return isBasal;
-    }
-
-    public void setIsBasal(String basal) {
-        isBasal = basal;
-    }
-
-    public String getIsChild() {
-        return isChild;
-    }
-
-    public void setIsChild(String child) {
-        isChild = child;
-    }
-
-    public String getTrade() {
-        return trade;
-    }
-
-    public void setTrade(String trade) {
-        this.trade = trade;
-    }
-
-    public String getVocation() {
-        return vocation;
-    }
-
-    public void setVocation(String vocation) {
-        this.vocation = vocation;
-    }
-
-    public String getStatus() {
+    public UserStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(UserStatus status) {
         this.status = status;
-    }
-
-    public Integer getVipLevel() {
-        return vipLevel;
-    }
-
-    public void setVipLevel(Integer vipLevel) {
-        this.vipLevel = vipLevel;
-    }
-
-    public String getPaymentRule() {
-        return paymentRule;
-    }
-
-    public void setPaymentRule(String paymentRule) {
-        this.paymentRule = paymentRule;
     }
 
     public String getRemark() {
@@ -236,5 +109,13 @@ public class User {
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 }

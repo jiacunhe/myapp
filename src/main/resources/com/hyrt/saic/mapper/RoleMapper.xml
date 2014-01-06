@@ -10,7 +10,7 @@
     id, roleName, remark
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from t_role
     where id = #{id,jdbcType=INTEGER}
@@ -19,7 +19,7 @@
     delete from t_role
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.hyrt.saic.bean.Role" >
+  <insert id="insert1" parameterType="com.hyrt.saic.bean.Role" >
     insert into t_role (id, roleName, remark
       )
     values (#{id,jdbcType=INTEGER}, #{roleName,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}

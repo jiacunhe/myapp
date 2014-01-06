@@ -1,11 +1,20 @@
 package com.hyrt.saic.bean;
 
-public class Role {
+import me.sfce.library.mybatis.domain.BasePojo;
+
+public class Role extends BasePojo {
     private Integer id;
 
     private String roleName;
 
     private String remark;
+
+    public Role() {
+    }
+
+    public Role(Integer id) {
+        this.id = id;
+    }
 
     public Integer getId() {
         return id;

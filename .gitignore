@@ -1,10 +1,13 @@
+.idea/*
 out/*
 *.iml
 *.bak
 *.swp
 *.log
 *.class
-.idea/*
-classes/*
-target/*
-web/WEB-INF/classes/*
+.idea/
+target/
+classes/
+out/
+web/WEB-INF/classes/
+

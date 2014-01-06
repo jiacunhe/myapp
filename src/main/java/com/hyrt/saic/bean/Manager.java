@@ -6,5 +6,5 @@ package com.hyrt.saic.bean;
  * Date: 13-12-27
  * Time: 下午3:14
  */
-public class Manager {
+public class Manager extends User {
 }
