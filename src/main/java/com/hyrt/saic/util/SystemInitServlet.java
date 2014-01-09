@@ -33,10 +33,11 @@ public class SystemInitServlet extends HttpServlet {
         try {
 
                 Properties prop = new Properties();
+
                 InputStream in = new FileInputStream(this.getClass().getResource("/").getPath() + "jdbc.properties");
                 prop.load(in);
-                Class.forName(prop.getProperty("jdbc.driver")).newInstance();
-            Connection conn = DriverManager.getConnection(prop.getProperty("jdbc.url"), prop.getProperty("jdbc.username"), prop.getProperty("jdbc.password"));
+                Class.forName(prop.getProperty("driver")).newInstance();
+                Connection conn = DriverManager.getConnection(prop.getProperty("url"), prop.getProperty("user"), prop.getProperty("password"));
                 in.close();
 
                 // Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -52,7 +53,7 @@ public class SystemInitServlet extends HttpServlet {
             }
             ResultSet rs2 = statement.executeQuery("SELECT id,orderName FROM t_order_type");
             while(rs2.next()) {
-                orderType.put(rs.getInt(1),rs.getString(2));
+                orderType.put(rs2.getInt(1),rs2.getString(2));
             }
 
             rs.close();
@@ -62,6 +63,7 @@ public class SystemInitServlet extends HttpServlet {
 
             config.getServletContext().setAttribute("businessType",businessType);
             config.getServletContext().setAttribute("orderType",orderType);
+            System.out.println("-------------system initialization----------------------");
         } catch (Exception e) {
             e.printStackTrace();
         }

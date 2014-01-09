@@ -243,7 +243,7 @@
     <select id="selectOrderInfo" resultMap="orderInfo" parameterType="java.util.Map" >
         SELECT o.id,o.userId,t.orderName orderType,o.createTime,o.status,
                 (SELECT COUNT(*) FROM t_order_detail WHERE orderId = o.id) total,
-                (SELECT COUNT(*) FROM t_order_detail WHERE orderId = o.id AND STATUS in ('5','6','7','8')) doneNum
+                (SELECT COUNT(*) FROM t_order_detail WHERE orderId = o.id AND STATUS  ='5') doneNum
         FROM t_order o LEFT JOIN t_order_type t ON t.id = o.orderType  where 1=1
         <if test="id != null" >
             and o.id = #{id,jdbcType=VARCHAR}
@@ -252,10 +252,10 @@
             and o.orderType = #{type,jdbcType=VARCHAR}
         </if>
         <if test="sday != null" >
-            and DATE_FORMAT(o.createTime,'%Y-%m-%d') > #{sday,jdbcType=VARCHAR}
+            <![CDATA[  and DATE_FORMAT(o.createTime,'%Y-%m-%d') >= #{sday,jdbcType=VARCHAR}]]>
         </if>
         <if test="eday != null" >
-            and DATE_FORMAT(o.createTime,'%Y-%m-%d')  = #{eday,jdbcType=VARCHAR}
+            <![CDATA[  and DATE_FORMAT(o.createTime,'%Y-%m-%d') <=  #{eday,jdbcType=VARCHAR}]]>
         </if>
         <if test="userId != null" >
             and o.userId = #{userId,jdbcType=VARCHAR}
@@ -263,24 +263,22 @@
         <if test="orderStatus != null" >
             and o.status in (${orderStatus})
         </if>
-        order by id desc limit #{cursor,jdbcType=INTEGER} ,#{length,jdbcType=INTEGER}
+        order by createTime desc limit #{cursor,jdbcType=INTEGER} ,#{length,jdbcType=INTEGER}
 
     </select>
 
     <select id="selectOrderInfoByOrderId" resultMap="orderInfo" parameterType="java.lang.String" >
         SELECT o.id,o.userId,o.orderType,t.orderName orderTypeName,o.createTime,o.status,o.payTime,o.verifyTime,o.finishTime,o.remark,
         (SELECT COUNT(*) FROM t_order_detail WHERE orderId = o.id) total,
-        (SELECT COUNT(*) FROM t_order_detail WHERE orderId = o.id AND STATUS in ('5','6','7','8')) doneNum
+        (SELECT COUNT(*) FROM t_order_detail WHERE orderId = o.id AND STATUS  ='5') doneNum
         FROM t_order o LEFT JOIN t_order_type t ON t.id = o.orderType  where o.id = #{_parameter,jdbcType=VARCHAR}
-
-
     </select>
 
 
     <select id="selectCount" resultType="java.lang.Integer" parameterType="java.util.Map" >
       select count(*) from(  SELECT o.id,o.userId,t.orderName,o.createTime,o.status,
         (SELECT COUNT(*) FROM t_order_detail WHERE orderId = o.id) total,
-        (SELECT COUNT(*) FROM t_order_detail WHERE orderId = o.id AND STATUS in ('5','6','7','8')) doneNum
+        (SELECT COUNT(*) FROM t_order_detail WHERE orderId = o.id AND STATUS ='5') doneNum
         FROM t_order o LEFT JOIN t_order_type t ON t.id = o.orderType where 1=1
         <if test="id != null" >
             and o.id = #{id,jdbcType=VARCHAR}
@@ -289,10 +287,10 @@
             and o.orderType = #{type,jdbcType=VARCHAR}
         </if>
         <if test="sday != null" >
-            and DATE_FORMAT(o.createTime,'%Y-%m-%d') > #{sday,jdbcType=VARCHAR}
+            <![CDATA[  and DATE_FORMAT(o.createTime,'%Y-%m-%d') >= #{sday,jdbcType=VARCHAR}    ]]>
         </if>
         <if test="eday != null" >
-            and DATE_FORMAT(o.createTime,'%Y-%m-%d')  = #{eday,jdbcType=VARCHAR}
+            <![CDATA[   and DATE_FORMAT(o.createTime,'%Y-%m-%d')  <= #{eday,jdbcType=VARCHAR}  ]]>
         </if>
         <if test="userId != null" >
             and o.userId = #{userId,jdbcType=VARCHAR}
@@ -303,4 +301,11 @@
         )  ccc
 
     </select>
+
+    <select id="selectForPermissionView" resultType="java.lang.Integer" parameterType="java.util.Map" >
+        SELECT r.orderType FROM t_order_detail o,t_order r WHERE o.orderId = r.id AND o.id=#{id,jdbcType=BIGINT} AND r.userId = #{userId,jdbcType=VARCHAR}
+
+    </select>
+
+
 </mapper>

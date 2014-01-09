@@ -5,12 +5,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style type="text/css">
 <!--
-body,td,th {
-	font-size: 12px;
-}
 body {
 	margin-left: 0pt;
-	margin-top: 0pt;
+	margin-top: 0pt; background-color:#ffffff; font-size:12px;
 }
 -->
 </style>
@@ -19,17 +16,17 @@ body {
 </head>
   
 <body>
-		<fieldset id="res"
-			style="height: 50px; width: 100%; padding-top: 6px; padding-left: 10px;">
+<div id="res" style="width: 99%; height: 99%">
 
-<div id="up" style=" float:left; width:50%; height:100%; padding-left:10px; padding-top:10px">
+    <div style="clear: both;width: 100%; height: 50px;"></div>
+<div id="up" style=" float:left; width:40%; height:30px; padding-left:10px;">
 
 
 ${message}
 
 </div>
-<div id="pro" style="float: left;  width:40%; height:100%; padding-top:10px"></div>
-</fieldset>
+<div id="pro" style="float: right;  width:50%; height:30px; padding-top:10px"></div>
+</div>
 <script  type="text/javascript">
   var request;
   try{
@@ -57,7 +54,7 @@ ${message}
 
 	function remov()
 	{
-		document.getElementById("pro").innerHTML =	rest+"<a href='/order/upFileResult'>查询结果</a>";
+		document.getElementById("pro").innerHTML =	rest+"<a href='javascript:viewResult()'>生成订单</a>";
 		var url='/order/progress?param=rm';
 		request.open("GET",url,"true");
 		request.send(null);
@@ -79,6 +76,12 @@ ${message}
 		}	
 	}progress();
 
+
+
+
+    function viewResult(){
+        parent.window.location.href="/order/upFileResult";
+    }
 </script>
 
 		

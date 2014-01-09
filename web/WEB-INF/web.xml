@@ -10,6 +10,12 @@
     <session-config>
         <session-timeout>10</session-timeout>
     </session-config>
+    <servlet>
+        <servlet-name>SystemInitServlet</servlet-name>
+        <servlet-class>com.hyrt.saic.util.SystemInitServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+
 
 	<!-- Spring context startup -->
 	<context-param>

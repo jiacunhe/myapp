@@ -110,6 +110,14 @@ public class OrderServiceImpl implements OrderService {
         if (params.get("page") == null) page = 1;else page = (Integer)params.get("page") ;
         if (params.get("pageSize") == null) pageSize = 5;else pageSize = (Integer)params.get("pageSize") ;
 
+        if(params.get("type")!=null){
+             if(params.get("type").equals("done")){
+                     params.put("status","'5'");
+             }else{
+                 params.put("status","'1','2','3','4','6','7','8'");
+             }
+        }
+
         int countItem = orderDetailMapper.selectCount(params);
 
         int totalpage = (countItem + pageSize - 1) / pageSize;
@@ -123,12 +131,12 @@ public class OrderServiceImpl implements OrderService {
         List list = orderDetailMapper.selectByOrderId(params);
 
 
-        Map res = new HashMap();
-        res.put("page",page);
-        res.put("totalpage",totalpage);
-        res.put("totalitem",countItem);
-        res.put("list",list);
-        return res;
+      //  Map res = new HashMap();
+        params.put("page",page);
+        params.put("totalpage",totalpage);
+        params.put("totalitem",countItem);
+        params.put("list",list);
+        return params;
 
     }
 
@@ -156,6 +164,12 @@ public class OrderServiceImpl implements OrderService {
 
         List resList =  personGroupInfoMapper.selectByOrderDetailId(id);
         return resList;
+    }
+
+
+    public Integer selectForPermissionView(Map params){
+
+        return orderMapper.selectForPermissionView(params);
     }
 
 }

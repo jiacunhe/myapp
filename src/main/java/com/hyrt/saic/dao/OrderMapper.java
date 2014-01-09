@@ -27,4 +27,6 @@ public interface OrderMapper {
 
     OrderInfo selectOrderInfoByOrderId(String id);
 
+    Integer selectForPermissionView(Map params);
+
 }

@@ -26,11 +26,15 @@ public class MainTest {
         System.out.println(asciiArgs+"-----------");
         System.out.println(OrderStatus.下单);
 
-        try {
-            System.out.println(new String(DigestUtils.md5Digest("123456".getBytes()),"iso8859-1"));
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+
+        String ppp="12,32,,,,,,,,22332,";
+
+        System.out.println(ppp.split(",").length);
+
+        for(String t:ppp.split(",")){
+            System.out.println(t+"------------------");
         }
+
 
     }
 }

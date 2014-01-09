@@ -1,5 +1,7 @@
 package com.hyrt.saic.bean.order;
 
+import com.hyrt.saic.util.enums.OrderStatus;
+
 import java.sql.Timestamp;
 
 /**
@@ -36,6 +38,8 @@ public class OrderInfo {
     private String remark;
 
     private String orderTypeName;
+
+    private String statusName;
 
     public String getOrderTypeName() {
         return orderTypeName;
@@ -83,6 +87,10 @@ public class OrderInfo {
 
     public void setStatus(String status) {
         this.status = status;
+        if(status !=null && !"".equals(status.trim()))
+        this.statusName= OrderStatus.values()[Integer.valueOf(status.trim())-1].name();
+        else
+            this.status = null;
     }
 
     public Integer getTotal() {
@@ -144,5 +152,14 @@ public class OrderInfo {
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+
+    public String getStatusName() {
+        return statusName;
+    }
+
+    public void setStatusName(String statusName) {
+        statusName = statusName;
     }
 }

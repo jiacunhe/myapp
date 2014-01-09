@@ -36,17 +36,20 @@ public class Order {
     private String requirement;
 
 
+
+
     public Order(){
 
     }
 
-    public Order(String id,Integer businessType,Integer orderType ,Timestamp createTime,String userId,OrderStatus status){
+    public Order(String id,Integer businessType,Integer orderType ,Timestamp createTime,String userId,OrderStatus status,Integer cycle ){
         this.id = id;
         this.businessId = businessType;
-
+        this.orderType = orderType;
         this.createTime = createTime;
         this.userId = userId;
         this.status = status.toString();
+        this.cycle = cycle;
     }
 
 
@@ -112,6 +115,7 @@ public class Order {
 
     public void setStatus(String status) {
         this.status = status;
+
     }
 
     public Timestamp getCreateTime() {
@@ -161,4 +165,5 @@ public class Order {
     public void setRequirement(String requirement) {
         this.requirement = requirement;
     }
+
 }

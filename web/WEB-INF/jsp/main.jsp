@@ -21,7 +21,7 @@
         <div class="top_xx">
             <div><p>当前用户：<span>xiaozhang</span></p>
 
-                <ul class="menu">
+              <!--  <ul class="menu">
                     <li>
                         <a href="#"class="tablink"><img src="../images/ico01.png" /></a>
                         <ul>
@@ -48,7 +48,7 @@
                         </ul>
                     </li>
 
-                </ul>
+                </ul> -->
 
 
             </div>
@@ -73,8 +73,8 @@
             <dd id=LM1 style="DISPLAY: none">
                 <ul>
                     <li><a href="/order/group" target="mainIframe">企业查询</a></li>
-                    <li><a href="#">人员</a></li>
-                    <li><a href="#">对外投资查询</a></li>
+                    <li><a href="/order/person" target="mainIframe">人员查询</a></li>
+                    <li><a href="/order/investment" target="mainIframe">对外投资</a></li>
                 </ul>
             </dd>
         </dl>
@@ -83,8 +83,8 @@
             <dt><img src="../images/ico2.png" /> <A onclick=javascript:ShowFLT(2) href="javascript:void(null)">信息监控</A></dt>
             <dd id=LM2 style="DISPLAY: none">
                 <ul>
-                    <li><a href="#">企业监控</a></li>
-                    <li><a href="#">人员监控</a></li>
+                    <li><a href="/order/groupMonitor" target="mainIframe">企业监控</a></li>
+                    <li><a href="/order/personMonitor" target="mainIframe">人员监控</a></li>
                     <li><a href="#">监控列表</a></li>
                 </ul>
             </dd>
@@ -96,7 +96,7 @@
         </dl>
 
         <dl>
-            <dt><img src="../images/ico4.png" /> <A onclick=javascript:ShowFLT(4) href="javascript:void(null)">我的订单</A></dt>
+            <dt><img src="../images/ico4.png" /> <A onclick=javascript:ShowFLT(4) href="/order/search" target="mainIframe">我的订单</A></dt>
             <dd id=LM4 style="DISPLAY: none"></dd>
         </dl>
 
@@ -151,9 +151,9 @@
         if (document.getElementById){
             if (win && !window.opera) {
                 if (win.contentDocument && win.contentDocument.body.offsetHeight)
-                    win.height = win.contentDocument.body.offsetHeight;
+                    win.height = win.contentDocument.body.offsetHeight+100>600?win.contentDocument.body.offsetHeight+100:600;
                 else if(win.Document && win.Document.body.scrollHeight)
-                    win.height = win.Document.body.scrollHeight;
+                    win.height = win.Document.body.scrollHeight+100>600? win.Document.body.scrollHeight+100:600;
             }
         }
     }

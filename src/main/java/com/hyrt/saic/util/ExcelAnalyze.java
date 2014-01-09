@@ -54,7 +54,6 @@ public class ExcelAnalyze implements Runnable{
                     reslist.add(new String[]{code,name,remark});
                     success++;
                     if (i % 100 == 0) {
-
                         ufp.write(i, rowCount);
                         System.out.println(i+"/"+ rowCount+"="+ufp.progress+"------------------------------");
                         pool.p.put(sn, ufp);

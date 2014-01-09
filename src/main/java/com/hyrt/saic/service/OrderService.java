@@ -32,4 +32,6 @@ public interface OrderService {
 
       public List selectPersonInfo(Long id);
 
+      public Integer selectForPermissionView(Map params);
+
 }

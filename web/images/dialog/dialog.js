@@ -66,7 +66,10 @@ function Dialog(title,x,y,width,height)
 
     this.OpenWindow=function (url)
     {
-        this.showModelessDialog();
+        //this.showModelessDialog();
+        dialogMask=document.createElement("div");
+        dialogMask.className="DialogMask";
+        document.body.appendChild(dialogMask);
         this.Dialog.childNodes[1].innerHTML="<iframe id='iframeurl' width='100%' src='"+url+"' frameborder=no border=0></iframe>";
         if (window.attachEvent) {
             //alert(this.Dialog.offsetHeight);

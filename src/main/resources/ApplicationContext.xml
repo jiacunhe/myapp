@@ -70,13 +70,13 @@
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="mapperLocations" value="classpath:/com/hyrt/saic/mapper/*Mapper.xml"/>
         <property name="dataSource" ref="dataSource"/>
-        <property name="plugins">
+        <!--property name="plugins">
             <list>
                 <bean class="me.sfce.library.mybatis.interceptor.PaginationInterceptor">
                     <property name="databaseType" value="mysql"/>
                 </bean>
             </list>
-        </property>
+        </property-->
     </bean>
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.hyrt.saic.dao"/>
