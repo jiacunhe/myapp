@@ -1,0 +1,38 @@
+<%@ page language="java" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<div class="gy_foot">
+	<div style="float: left; margin-left: 20px; display: inline;">
+		页次：${page.pageNo}/${page.totalPage}页 &nbsp;
+		每页显示：${page.pageSize}条 &nbsp;
+		总记录数：${page.totalRecord}条
+	</div>
+	<div style="float: right; margin-right: 20px; display: inline">
+		<a href="javascript:go2Page(1)" title="首页" style="cursor: hand;">
+            <img src="${pageContext.request.contextPath}/images/firstPage.png" style="float: left; margin: 3px;"/>
+		</a>
+		<c:forEach begin="${page.beginPageIndex}" end="${page.endPageIndex}" var="pageNo">
+			<c:if test="${pageNo != page.pageNo}">
+			<a href="javascript:go2Page(${pageNo});" style="float: left; margin: 3px;">${pageNo}</a>
+			</c:if>
+			<c:if test="${pageNo == page.pageNo}">
+			<span style="float: left; margin: 3px;">${pageNo}</span>
+			</c:if>
+		</c:forEach>
+		<a href="javascript: go2Page(${page.totalPage})" title="尾页" style="cursor: hand;">
+            <img src="${pageContext.request.contextPath}/images/lastPage.png" style="float: left; margin: 3px 8px 3px 3px;"/>
+        </a>
+		
+		转到第 <input id="pn" onFocus="this.select();" maxlength="2" type="text" value="1" name="currPage" tabindex="0" style="width: 18px; height: 14px; text-align: center; text-indent: 0"/> 页
+		<input type="button" name="goBtn" value="前往" class="MiddleButtonStyle" onclick="go2Page(document.getElementById('pn').value)" style="width: 32px; height: 20px; border: 1px solid #218bc6; background: #27a5ec; color: #fff;"/>
+	</div>
+</div>
+<script type="text/javascript">
+	function go2Page(pageNo) {
+		if (pageNo > ${page.totalPage}) {
+			alert("页码无效");
+			return;
+		}
+		window.document.forms[0].pageNo.value=pageNo;
+		window.document.forms[0].submit();
+	}
+</script>

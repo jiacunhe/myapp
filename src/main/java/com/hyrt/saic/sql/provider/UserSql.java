@@ -24,21 +24,23 @@ public class UserSql {
                 .WHERE("userId=#{userId}")
                 .AND()
                 .WHERE("password=#{password}")
+                .AND()
+                .WHERE("status='NORMAL'")
                 .toString();
     }
 
     /**
      * select * from t_user left join
      *
-     * @param params
+     * @param param
      * @return
      */
-    public String getManagers(Map<String, Object> params) {
+    public String getManagers(Map<String, Object> param) {
         SQL sql = new SQL();
-        String userId = (String) params.get("userId");
-        String username = (String) params.get("username");
-        int roleId = (int) params.get("roleId");
-        String status = (String) params.get("status");
+        String userId = (String) param.get("userId");
+        String username = (String) param.get("username");
+        Integer roleId = (Integer) param.get("roleId");
+        String status = (String) param.get("status");
         sql.SELECT("u.*, r.id roleId, r.roleName, s.username as creatorName").FROM(TABLE_USER_ROLE + " ur")
                 .RIGHT_OUTER_JOIN("(" + TABLE + " u LEFT OUTER JOIN " + TABLE + " s ON u.creatorId=s.userId )" + " ON u.userId=ur.userId")
                 .LEFT_OUTER_JOIN(TABLE_ROLE + " r ON r.id=ur.roleId")
@@ -49,7 +51,7 @@ public class UserSql {
         if (!StringUtils.isEmpty(username)) {
             sql.AND().WHERE("u.username like CONCAT('%',#{username},'%')");
         }
-        if (0 != roleId) {
+        if (null != roleId && !roleId.equals(0)) {
             sql.AND().WHERE("ur.roleId=#{roleId}");
         }
         if (!StringUtils.isEmpty(status)) {

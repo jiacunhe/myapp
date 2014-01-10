@@ -6,6 +6,7 @@ import com.hyrt.saic.controller.formbean.user.ManagerQueryForm;
 import com.hyrt.saic.service.RoleService;
 import com.hyrt.saic.service.UserService;
 import com.hyrt.saic.util.enums.UserStatus;
+import me.sfce.library.mybatis.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -98,7 +99,7 @@ public class ManagerController extends BaseController {
     }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public String list(String formUserId, String formUsername, Integer formRoleId, String formStatus, HttpServletRequest request) {
+    public String list(String formUserId, String formUsername, Integer formRoleId, String formStatus,Integer pageNo, HttpServletRequest request) {
         if (formUsername != null) {
             try {
                 formUsername = new String(formUsername.getBytes("ISO8859-1"), "UTF-8");
@@ -106,13 +107,18 @@ public class ManagerController extends BaseController {
                 e.printStackTrace();
             }
         }
-        HashMap<String, Object> condition = new HashMap<>();
-        condition.put("username", formUsername);
-        condition.put("userId", formUserId);
-        condition.put("roleId", formRoleId);
-        condition.put("status", formStatus);
-        List<Manager> managers = userService.queryManagersByCondition(condition);
-        request.setAttribute("managers", managers);
+        Page page = new Page();
+        page.put("username", formUsername);
+        page.put("userId", formUserId);
+        page.put("roleId", formRoleId);
+        page.put("status", formStatus);
+        if (null == pageNo) {
+            pageNo = 1;
+        }
+        page.setPageNo(pageNo);
+        List managers = userService.queryManagersByCondition(page);
+        page.setResults(managers);
+        request.setAttribute("page", page);
         ManagerQueryForm command = new ManagerQueryForm(formUserId, formUsername, formRoleId, formStatus);
         request.setAttribute("command", command);
         Map<Integer, String> roleMap = roleService.getRoleMap();

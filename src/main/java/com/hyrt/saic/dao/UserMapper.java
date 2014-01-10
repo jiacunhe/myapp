@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.SelectProvider;
 
 import java.util.List;
+import java.util.Map;
 
 public interface UserMapper extends BaseMapper<User> {
 
@@ -18,6 +19,7 @@ public interface UserMapper extends BaseMapper<User> {
 
     @SelectProvider(type = UserSql.class, method = "getManagers")
     @ResultMap({"managerWithRole"})
-    List<Manager> getManagers(@Param("userId") String userId, @Param("username") String username, @Param("roleId") int roleId, @Param("status") String status);
+    List<Manager> getManagers(Map<String, Object> param);
+//    List<Manager> getManagers(@Param("userId") String userId, @Param("username") String username, @Param("roleId") int roleId, @Param("status") String status);
 
 }

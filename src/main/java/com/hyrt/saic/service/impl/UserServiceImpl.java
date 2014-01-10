@@ -43,15 +43,17 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
 
     @Override
     public void update(User user) {
-        user.setUpdateTime(new Timestamp(System.currentTimeMillis()));
-        super.update(user);
+        if (!Config.ADMIN.equals(user.getUserId())) {
+            user.setUpdateTime(new Timestamp(System.currentTimeMillis()));
+            super.update(user);
+        }
     }
 
     @Override
     public boolean login(HttpServletRequest request, String userId, String password) {
         User user = userMapper.login(userId, toMD5(password));
         if (null != user) {
-            request.getSession().setAttribute("user", user);
+            request.getSession().setAttribute(Config.USER, user);
             return true;
         }
         return false;
@@ -72,7 +74,6 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
 
     @Override
     public void invalid(User user) {
-        userMapper.delete(user);
     }
 
     @Override
@@ -89,7 +90,7 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
 
     @Override
     public void addManager(Manager manager, HttpServletRequest request, String roleIds) {
-        User user = (User) request.getSession().getAttribute("user");
+        User user = (User) request.getSession().getAttribute(Config.USER);
         if (null != user) {
             manager.setCreatorId(user.getUserId());
         }
@@ -106,8 +107,10 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
 
     @Override
     public void lock(User user) {
-        user.setStatus(UserStatus.LOCK);
-        super.update(user);
+        if (!Config.ADMIN.equals(user.getUserId())) {
+            user.setStatus(UserStatus.LOCK);
+            super.update(user);
+        }
     }
 
     @Override
@@ -118,6 +121,7 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
 
     @Override
     public void modifyManager(Manager manager, String roleIds) {
+        if (Config.ADMIN.equals(manager.getUserId())) return;
         super.update(manager);
         userRoleMapper.deleteByUser(manager.getUserId());
         if (null != roleIds) {
@@ -129,7 +133,8 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     @Override
     public List<Manager> queryManagersByCondition(Map<String, Object> condition) {
         Object roleId = condition.get("roleId");
-        return userMapper.getManagers((String) condition.get("userId"), (String) condition.get("username"), null == roleId ? 0 : (int) roleId, (String) condition.get("status"));
+        return userMapper.getManagers(condition);
+//        return userMapper.getManagers((String) condition.get("userId"), (String) condition.get("username"), null == roleId ? 0 : (int) roleId, (String) condition.get("status"));
     }
 
     @Override
@@ -150,14 +155,14 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
             user.setPassword(toMD5(Config.PASSWORD_CUSTOMER_DEFAULT));
         }
         user.setUpdateTime(new Timestamp(System.currentTimeMillis()));
-        userMapper.update(user);
+        super.update(user);
     }
 
     @Override
     public void modifyPassword(User user, String newPassword) {
         user.setPassword(toMD5(newPassword));
         user.setUpdateTime(new Timestamp(System.currentTimeMillis()));
-        userMapper.update(user);
+        super.update(user);
     }
 
     @Override
@@ -172,7 +177,7 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
 
     @Override
     public void deleteRoles(String userId) {
-           userRoleMapper.deleteByUser(userId);
+        userRoleMapper.deleteByUser(userId);
     }
 
     @Override

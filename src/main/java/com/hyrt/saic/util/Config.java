@@ -9,4 +9,7 @@ package com.hyrt.saic.util;
 public class Config {
     public static final String PASSWORD_MANAGER_DEFAULT = "hyrt123";
     public static final String PASSWORD_CUSTOMER_DEFAULT = "hyrt789";
+    public static final String ADMIN = "admin";
+    public static final String USER = "user";
+    public static final int PAGE_SIZE = 10;
 }

@@ -46,13 +46,13 @@ public class SystemController extends BaseController {
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logout(HttpSession session) {
         session.invalidate();
-        return forwardTo("login");
+        return redirectTo("");
     }
 
     @RequestMapping(value = "/manage/logout", method = RequestMethod.GET)
     public String manageLogout(HttpSession session) {
         session.invalidate();
-        return forwardTo("manage/login");
+        return redirectTo("");
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)

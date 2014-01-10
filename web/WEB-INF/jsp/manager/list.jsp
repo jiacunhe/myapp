@@ -1,37 +1,62 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix='fmt' uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions"  prefix="fn"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <%@ include file="/WEB-INF/jsp/manage/commons.jspf" %>
     <title>用户管理</title>
     <script type="text/javascript">
         $(function () {
-            $("input[type='checkbox']:checked");
+            $("input[type='checkbox']").attr("checked", false);
+            $("#edit").parent().attr("style", "display:none");
+            $("#delete").parent().attr("style", "display:none");
+            $("#unlock").parent().attr("style", "display:none");
+            $("#resetPassword").parent().attr("style", "display:none");
             $("input[type='checkbox']").each(function () {
                 $(this).change(function () {
                     $("input[type='checkbox']").attr("checked", false);
                     $(this).attr("checked", true);
+                    $("#resetPassword").parent().removeAttr("style");
+                    var userId = $(this).attr("userId");
+                    if ('admin' == userId) {
+                        $("#edit").parent().attr("style", "display:none");
+                        $("#delete").parent().attr("style", "display:none");
+                        $("#unlock").parent().attr("style", "display:none");
+                    } else {
+                        $("#edit").parent().removeAttr("style");
+                        var status = $(this).attr("status");
+                        if ("NORMAL" == status) {
+                            $("#unlock").parent().attr("style", "display:none");
+                            $("#delete").parent().removeAttr("style");
+                        } else {
+                            $("#delete").parent().attr("style", "display:none");
+                            $("#unlock").parent().removeAttr("style");
+                        }
+                    }
                 });
             });
             $("#edit").click(function () {
                 var obj = $("input[type='checkbox']:checked");
-                if (obj) {
+                if (obj.length == 0) {
+                    alert("请选择一项");
+                    return false;
+                } else {
                     if (obj.length > 1) {
                         alert("只能选择一项");
+                        return false;
                     } else {
                         var param = $(obj).attr("id");
                         $("#edit").attr("href", "/manager/modify/UI" + param);
                     }
-                } else {
-                    alert("请选择一项");
                 }
             });
             $("#delete").click(function () {
                 var obj = $("input[type='checkbox']:checked");
-                if (obj) {
+                if (obj.length != 0) {
                     if (obj.length > 1) {
                         alert("只能选择一项");
+                        return false;
                     } else {
                         var param = $(obj).attr("id");
                         var name = $(obj).attr("name");
@@ -40,13 +65,15 @@
                     }
                 } else {
                     alert("请选择一项");
+                    return false;
                 }
             });
             $("#unlock").click(function () {
                 var obj = $("input[type='checkbox']:checked");
-                if (obj) {
+                if (obj.length != 0) {
                     if (obj.length > 1) {
                         alert("只能选择一项");
+                        return false;
                     } else {
                         var param = $(obj).attr("id");
                         var name = $(obj).attr("name");
@@ -55,6 +82,25 @@
                     }
                 } else {
                     alert("请选择一项");
+                    return false;
+                }
+            });
+            $("#resetPassword").click(function () {
+                var obj = $("input[type='checkbox']:checked");
+                if (obj.length != 0) {
+                    if (obj.length > 1) {
+                        alert("只能选择一项");
+                        return false;
+                    } else {
+                        var param = $(obj).attr("id");
+                        var name = $(obj).attr("name");
+                        $("#resetPassword").attr("href", "/manager/resetPassword" + param);
+                        alert(param);
+                        return window.confirm('确定要重置管理员：' + name + '的密码?');
+                    }
+                } else {
+                    alert("请选择一项");
+                    return false;
                 }
             });
         })
@@ -97,6 +143,7 @@
 
             <p>查询</p></h4>
         <sp:form action="/manager/list" method="get" class="ht_sub_form3">
+            <input type="hidden" id="pageNo" name="pageNo" value="1"/>
             <p>用户名：</p>
             <sp:input path="formUserId" class="ht_sub_input01"/>
             <p>角色： </p>
@@ -118,9 +165,6 @@
     </div>
 
     <div class="ht_sub_nr1">
-        <h4 class="ht_sub_title0"><img src="${basePath}/manage/images/ht_ico05.png"/>
-
-            <p>列表</p></h4>
         <table width="768" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="ht_sub_table1">
             <tr class="ht_sub_tr1">
                 <th width="30"></th>
@@ -132,10 +176,10 @@
                 <th WIDTH="150">备注</th>
                 <th>状态</th>
             </tr>
-            <c:forEach items="${managers}" var="manager">
+            <c:forEach items="${page.results}" var="manager">
                 <tr align="center">
-                    <td><input name="${manager.username}"
-                               id="?userId=${manager.userId}&formUserId=${command.formUserId}&formUsername=${command.formUsername}&formRoleId=${command.formRoleId}&formStatus=${command.formStatus}"
+                    <td><input name="${manager.username}" userId="${manager.userId}" status="${manager.status}"
+                               id="?userId=${manager.userId}&formUserId=${command.formUserId}&formUsername=${command.formUsername}&formRoleId=${empty command.formRoleId ? 0 : command.formRoleId}&formStatus=${command.formStatus}"
                                type="checkbox"/></td>
                     <td>${manager.username}</td>
                     <td>${manager.userId}</td>
@@ -152,11 +196,11 @@
                 </tr>
             </c:forEach>
         </table>
+        <%@ include file="/WEB-INF/jsp/public/page.jspf" %>
     </div>
 
     <!--<iframe src="jk_list.html" scrolling="no"></iframe>-->
 </div>
-
 
 </body>
 </html>

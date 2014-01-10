@@ -61,12 +61,6 @@ public class UserController extends BaseController {
         return null;
     }
 
-    @RequestMapping(value = "/invalid")
-    public String invalid(User user, HttpServletRequest request, HttpServletResponse response) {
-        userService.invalid(user);
-        return null;
-    }
-
     @RequestMapping(value = "/modifyType", method = RequestMethod.POST)
     public String modifyType(User user, HttpServletRequest request, HttpServletResponse response) {
         return null;
