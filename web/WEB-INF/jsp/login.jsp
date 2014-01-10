@@ -30,7 +30,7 @@
                 <sp:errors path="userId"/> <br/>
                 密&nbsp;&nbsp;&nbsp;码：
                 <sp:password onkeydown="hideErrors();" path="password" class="dl_input1"/>
-                <sp:errors path="password"/>
+                <sp:errors path="password"/><span>${error}</span>
                 <input type="submit" value="" class="dl_input2"/>
                 <a href="#">忘记密码</a>
             </sp:form>

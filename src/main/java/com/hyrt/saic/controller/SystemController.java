@@ -27,13 +27,19 @@ public class SystemController extends BaseController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST})
-    public String loginUI(@ModelAttribute User user) {
+    @RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.POST})
+    public String loginUI(@ModelAttribute User user, HttpServletRequest request) {
+        if (request.getSession().getAttribute(USER) != null) {
+            return jsp("home");
+        }
         return jsp("login");
     }
 
     @RequestMapping(value = "/manage", method = RequestMethod.GET)
-    public String managerLoginUI() {
+    public String managerLoginUI(HttpServletRequest request) {
+        if (request.getSession().getAttribute(USER) != null) {
+            return jsp("manage/home");
+        }
         return jsp("manage/login");
     }
 
@@ -41,6 +47,12 @@ public class SystemController extends BaseController {
     public String logout(HttpSession session) {
         session.invalidate();
         return forwardTo("login");
+    }
+
+    @RequestMapping(value = "/manage/logout", method = RequestMethod.GET)
+    public String manageLogout(HttpSession session) {
+        session.invalidate();
+        return forwardTo("manage/login");
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -51,7 +63,22 @@ public class SystemController extends BaseController {
         if (userService.login(request, user.getUserId(), user.getPassword())) {
             return jsp("main");
         } else {
-            return "";
+            request.setAttribute("error", "密码错误");
+            return jsp("login");
+        }
+    }
+
+    @RequestMapping(value = "/manage/login", method = RequestMethod.POST)
+    public String manageLogin(@Validated User user, BindingResult result, HttpServletRequest request) {
+        if (result.hasFieldErrors()) {
+            return jsp("manage/login");
+        }
+        if (userService.login(request, user.getUserId(), user.getPassword())) {
+            return redirectTo("");
+        } else {
+            request.setAttribute("userId", user.getUserId());
+            request.setAttribute("error", "账号与密码不匹配，请核对后重试");
+            return jsp("manage/login");
         }
     }
 
