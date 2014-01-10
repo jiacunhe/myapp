@@ -1,0 +1,104 @@
+/* CSS Document */
+.ht_content_rightnr{ width:768px; height:636px; overflow:auto; overflow-x:hidden; background:#e4e9f1;}
+.ht_content_right iframe{ width:100%; border:none; height:636px;}
+.ht_yemei{ height:33px; overflow:hidden; line-height:33px; background:url(../images/ht_ym.gif) repeat-x;}
+.ht_yemei p{ color:#696969; margin-left:16px; background:url(../images/ht_ico01.png) no-repeat left center; text-indent:26px;}
+.ht_yemei a{ color:#696969;}
+.ht_yemei a:hover{ color:#000;}
+.ht_yemei span{ color:#0570b4;}
+.ht_kongbai{ width:768px; height:6px; overflow:hidden; background:#fff;}
+.ht_rtbut{ height:66px; overflow:hidden; border-bottom:1px solid #c2c8d0; border-top:1px solid #c2c8d0; background:#f3f7fd;}
+.ht_rtbut ul li{ width:96px; height:66px; overflow:hidden; background:url(../images/ht_line1.gif) no-repeat right top; text-align:center; float:left;}
+.ht_rtbut ul li img{ margin-top:13px;}
+.ht_rtbut ul li p{ margin-top:6px;}
+.ht_rtbut ul li a{ font-family:"微软雅黑"; color:#585858;}
+.ht_rtbut ul li a:hover{ color:#f4a535;}
+.ht_sub_nr1{ width:100%; height:auto; overflow:hidden; border-bottom:1px solid #c2c8d0; border-top:1px solid #c2c8d0; background:#fff; margin-top:10px;}
+.ht_sub_title0{ height:33px; line-height:33px; overflow:hidden; font-size:12px; color:#37393a; background:url(../images/ht_ttbg0.gif) repeat-x;}
+.ht_sub_title0 img{ margin:7px 12px 0px 18px; float:left; display:inline;}
+.ht_sub_title0 p{ float:left;}
+.ht_sub_table1{ border-collapse:collapse; border-left:none; border:1px solid #dadada; border-left:none; margin-top:10px;}
+.ht_sub_table1 tr th{ border-color:#dadada; border-left:none; color:#3f3f3f;}
+.ht_sub_table1 tr td{ border-color:#dadada; border-left:none;}
+.ht_sub_table1 tr{ height:32px; line-height:32px;}
+.ht_sub_tr1{ background:#f6f6f6;}
+.ht_sub_table1 tr th p, td p{ text-align:left; margin-left:20px;}
+
+
+#massage_box{ position:absolute; left:expression((body.clientWidth-350)/2); top:expression((body.clientHeight-200)/2); width:40%; height:auto; overflow:hidden;filter:dropshadow(color=#666666,offx=3,offy=3,positive=2); z-index:2; visibility:hidden; /*top:10%;*/}
+#mask{ position:absolute; top:0; left:0; width:expression(body.scrollWidth); height:expression(body.scrollHeight); background:#000; filter:ALPHA(opacity=60); z-index:1; visibility:hidden;}
+.massage{border:4px solid #c0c0c0; width:95%; height:95%; background:#fff;  font-size:12px; line-height:24px;}
+.header{background:#eee; height:30px; line-height:30px; font-size:12px; padding:3 5 0 5; color:#03568c; font-weight:bold;}
+
+
+.ht_sub_form1{  margin:50px 0px 60px 70px;overflow:hidden; line-height:48px;}
+.ht_sub_form1 p{ float:left; font-size:14px; width:100px; text-align:right; margin-right:10px;}
+.ht_sub_form1 input{ height:28px; overflow:hidden; line-height:28px; }
+.ht_sub_input1{ width:178px; border:1px solid #d7d7d7;margin-top:6px; text-indent:10px;} 
+.ht_sub_input2{ width:416px; height:210px; border:1px solid #d7d7d7; margin-top:6px; text-indent:10px;}
+.ht_img1{ margin-top:10px;}
+.ht_but_qd{ width:90px; height:28px; border:none; background:url(../images/ht_button1.gif) no-repeat; font-weight:bold; color:#fff; text-align:center; line-height:28px; float:left; margin:30px 30px 0px 112px; display:inline; cursor:pointer;}
+.ht_but_qx{ width:90px; height:28px; border:none; background:url(../images/ht_button2.gif) no-repeat; font-weight:bold; color:#fff; text-align:center; line-height:28px; float:left; margin-top:30px; cursor:pointer;}
+
+
+.ht_sub_form3{  margin:20px 0px 20px 15px;overflow:hidden; line-height:40px; font-size:14px;}
+.ht_sub_form3 p{ float:left; font-size:14px; width:70px; text-align:right; margin-left:10px; display:inline;}
+.ht_sub_form3 input,select{ height:28px; overflow:hidden; line-height:28px; }
+.ht_sub_input013{ width:110px; border:1px solid #d7d7d7;margin-top:6px; text-indent:0px!important; text-indent:10px}
+.ht_span03{ float:left;}
+.ht_sub_form3 input{ float:left;}
+.ht_sub_input01{ width:100px; border:1px solid #d7d7d7;margin-top:6px; margin-right:14px; text-indent:10px;}
+.ht_but_cx0{ width:90px; height:28px; border:none; background:url(../images/ht_button1.gif) no-repeat; font-weight:bold; color:#fff; text-align:center; line-height:28px; float:left; margin:6px 0px 0px 0px; display:inline; cursor:pointer; display:inline;}
+
+.ht_sub_ul1{ width:250px; height:90px; border:1px solid #d7d7d7; background:#f7f7f7; overflow:hidden; margin-top:10px;}
+.ht_sub_ul1 li{ width:100px; line-height:26px; overflow:hidden; float:left; margin:11px 0px 0px 18px;display:inline;}
+.ht_sub_ul1 li span{ float:left;}
+.ht_sub_input3{ margin:0px 10px 0px 0px; display:inline; float:left;}
+.ht_but_qd0{ width:90px; height:28px; border:none; background:url(../images/ht_button1.gif) no-repeat; font-weight:bold; color:#fff; text-align:center; line-height:28px; float:left; margin:50px 30px 0px 131px; display:inline; cursor:pointer;}
+.ht_but_qx0{ width:90px; height:28px; border:none; background:url(../images/ht_button2.gif) no-repeat; font-weight:bold; color:#fff; text-align:center; line-height:28px; float:left; margin-top:50px; cursor:pointer;}
+
+/*password change*/
+.ht_mmxg_top{ width:100%; height:90px; overflow:hidden; background:url(../images/ht_line2.gif) repeat-x left bottom;}
+.ht_mmxg_topnr{ width:1000px; height:90px; text-align:center; margin:0px auto;}
+.ht_mmxg_topnr img{ margin-top:32px;}
+.ht_mmxg_content{ width:774px; height:452px; overflow:hidden; margin:50px auto; border:1px solid #d5d5d5; background:#fff;}
+.ht_mmxg_content h4{ height:108px; border-bottom:1px solid #eeeeee; overflow:hidden; font-size:12px; font-weight:normal;}
+.ht_mmxg_content h4 span{ width:480px; display:block; margin:30px 0px 0px 156px;}
+.ht_mmxg_content h4 span img{ float:left; margin:4px 10px 0px 0px;}
+.ht_mmxg_content h4 span p{ float:left; width:440px; line-height:26px; color:#7d7d7d;}
+.ht_sub_form2{  margin:40px 0px 60px 175px;overflow:hidden; line-height:54px;}
+.ht_sub_form2 p{ float:left; font-size:14px; width:100px; text-align:right; margin-right:10px;}
+.ht_sub_form2 input{ height:28px; overflow:hidden; line-height:28px; }
+.ht_sub_input4{ width:258px; height:210px; border:1px solid #d7d7d7; margin-top:6px; text-indent:10px;}
+.ht_sub_form2 span{ color:#ff8d00; font-size:14px;}
+.ht_but_qd1{ width:90px; height:28px; border:none; background:url(../images/ht_button1.gif) no-repeat; font-weight:bold; color:#fff; text-align:center; line-height:28px; float:left; margin:40px 30px 0px 134px; display:inline; cursor:pointer;}
+.ht_but_qx1{ width:90px; height:28px; border:none; background:url(../images/ht_button2.gif) no-repeat; font-weight:bold; color:#fff; text-align:center; line-height:28px; float:left; margin-top:40px; cursor:pointer;}
+
+/*customer management*/
+.ht_sub_form4{  margin:20px 0px 20px 50px;overflow:hidden; line-height:40px; font-size:14px;}
+.ht_sub_input5{ width:160px; height:28px; line-height:28px; overflow:hidden; float:left; margin-right:10px; border:1px solid #d7d7d7; margin-top:6px; text-indent:10px;}
+.ht_sub_input6{ width:90px; height:28px; border:none; background:url(../images/ht_button1.gif) no-repeat; font-weight:bold; color:#fff; text-align:center; line-height:28px; float:left; margin:7px 10px 0px 0px; display:inline; cursor:pointer;}
+.ht_sub_form4 p{ float:left;}
+.ht_sub_form4 p a{ color:#1176b1;}
+.ht_sub_input7{ float:left; margin:14px 10px 0px 50px; display:inline;}
+
+/*customer management_add*/
+.ht_sub_dl1 dt{width:100%; height:48px; overflow:hidden; background:url(../images/ht_ttbg3.gif) repeat-x left bottom;}
+.ht_sub_dl1 dt a{display:block;width:189px;height:36px;line-height:36px;float:left;text-align:center;font-weight:bold;font-size:12px; display:inline; color:#37393a;  margin-top:12px; }
+.ht_sub_dl1 dt a:hover,.ht_sub_dl1 dt a.now{  background:url(../images/ht_ttbg4.gif) no-repeat; color:#fff;}
+.ht_sub_ul2{ margin:32px 0px 0px 0px; line-height:37px; font-size:14px;}
+.ht_sub_ul2 li{ height:34px; overflow:hidden; clear:both; padding-left:100px; border-bottom:1px solid #fff; border-top:1px solid #fff; margin-top:4px;}
+.ht_sub_ul2 li.newline{ background:#f6f6f6;  border-bottom:1px solid #ddd; border-top:1px solid #ddd; margin-top:4px;}
+.ht_sub_ul2 li span{ color:#252525; width:100px; display:inline; float:left; margin-right:20px; text-align:right;}
+.ht_sub_li2{ width:170px; height:28px;  border:1px solid #ddd; background:#f7f7f7;font-size:14px;}
+.ht_sub_li3{ width:170px; height:26px; height:28px \9; *height:28px; _height:28px; border:1px solid #ddd; background:#fff; font-size:14px;}
+.ht_sub_li4{ width:330px; height:28px; border:1px solid #ddd; background:#fff; font-size:14px;}
+.ht_sub_button2{ height:98px; overflow:hidden; padding-left:110px;}
+.ht_sub_input8{ width:320px; border:1px solid #d7d7d7;margin-top:6px;}
+.ht_sub_input9{ width:178px; border:1px solid #d7d7d7;margin-top:6px;}
+.ht_sub_area1{ width:250px; height:40px; border:1px solid #d7d7d7; background:#f7f7f7; overflow:hidden; margin:10px 0px 0px 10px; float:left; display:inline; padding-top:6px;}
+.ht_sub_input10{ width:60px; float:left; margin:6px 6px 0px 0px;}
+.ht_sub_area2{ width:520px; height:130px; border:1px solid #d7d7d7; background:#f7f7f7; overflow:hidden; margin:10px 0px 0px 10px; float:left; display:inline; padding-top:6px; padding-left:10px;}
+.ht_sub_area2 span{ font-size:12px; margin-left:10px; color:#F90;}
+.ht_sub_yangshi{ width:100%; height:20px; overflow:hidden;}
+
