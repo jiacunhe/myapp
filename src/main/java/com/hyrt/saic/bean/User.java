@@ -17,6 +17,8 @@ public class User extends BasePojo {
     private Timestamp updateTime; //修改时间
     private UserType userType; //用户类型,管理员或客户
     private String creatorId; //创建者
+    @Ignore
+    private String creatorName; //创建者姓名
     private boolean isBasal; //是否有子客户
     private UserStatus status; //状态
     private String remark;
@@ -24,6 +26,14 @@ public class User extends BasePojo {
 
     public User(){
         super(false);
+    }
+
+    public String getCreatorName() {
+        return creatorName;
+    }
+
+    public void setCreatorName(String creatorName) {
+        this.creatorName = creatorName;
     }
 
     public String getCreatorId() {

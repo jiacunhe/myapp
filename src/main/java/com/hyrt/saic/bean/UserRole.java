@@ -1,6 +1,8 @@
 package com.hyrt.saic.bean;
 
-public class UserRole {
+import me.sfce.library.mybatis.domain.BasePojo;
+
+public class UserRole extends BasePojo {
     private Integer id;
 
     private String userId;

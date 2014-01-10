@@ -6,9 +6,15 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.*;
+
+import static java.lang.annotation.ElementType.FIELD;
+import static java.lang.annotation.ElementType.METHOD;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
  * Created with IntelliJ IDEA.
@@ -17,7 +23,10 @@ import java.util.*;
  * Time: 下午4:20
  */
 public class BasePojo implements Serializable {
-    private transient static Map<Class<? extends BasePojo>, List<String>> columnMap = new HashMap();
+    @Target({METHOD, FIELD})
+    @Retention(RUNTIME)
+    public @interface Ignore {}
+    private transient static Map<Class<? extends BasePojo>, List<String>> columnMap = new HashMap<>();
 
     public BasePojo() {
         calculateColumnList(false);
@@ -50,6 +59,14 @@ public class BasePojo implements Serializable {
         for (Field field : this.getClass().getDeclaredFields()) {
             if (field.isAnnotationPresent(Id.class))
                 return field.getName();
+        }
+        Class<?> superclass = this.getClass().getSuperclass();
+        if (superclass != BasePojo.class) {
+            Field[] declaredFields = superclass.getDeclaredFields();
+            for (Field field : declaredFields) {
+                if (field.isAnnotationPresent(Id.class))
+                    return field.getName();
+            }
         }
         return "id";
     }
@@ -91,7 +108,7 @@ public class BasePojo implements Serializable {
 
         for (Field field : fields) {
             if (!byAnnotation || field.isAnnotationPresent(Column.class)) {
-                if (!field.getType().isAssignableFrom(Collection.class)) {
+                if (!field.getType().isAssignableFrom(Collection.class) && !field.isAnnotationPresent(Ignore.class)) {
                     columnList.add(field.getName());
                 }
             }
@@ -102,7 +119,7 @@ public class BasePojo implements Serializable {
 
             for (Field field : fields) {
                 if (!byAnnotation || field.isAnnotationPresent(Column.class)) {
-                    if (!Collection.class.isAssignableFrom(field.getType())) {
+                    if (!Collection.class.isAssignableFrom(field.getType()) && !field.isAnnotationPresent(Ignore.class)) {
                         columnList.add(field.getName());
                     }
                 }

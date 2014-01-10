@@ -1,7 +1,6 @@
 package com.hyrt.saic.controller;
 
 import com.hyrt.saic.bean.Customer;
-import com.hyrt.saic.bean.Manager;
 import com.hyrt.saic.bean.User;
 import com.hyrt.saic.service.UserService;
 import com.hyrt.saic.util.enums.PaymentRule;
@@ -33,18 +32,7 @@ public class UserController extends BaseController {
         return null;
     }
 
-    @RequestMapping(value = "/addManager")
-    public String addManager(Manager manager, HttpServletRequest request, HttpServletResponse response) {
-        manager.setUserId("test");
-        manager.setPassword("111222");
-        manager.setUsername("华源");
-        manager.setRemark("remark");
-        manager.setStatus(UserStatus.NORMAL);
-        userService.addManager(manager, request);
-        return jsp("manager/list");
-    }
-
-    @RequestMapping(value = "/addCustomer")
+    @RequestMapping(value = "/customer/add", method = RequestMethod.POST)
     public String addCustomer(Customer customer, HttpServletRequest request, HttpServletResponse response) {
         customer.setUserId("test");
         customer.setPassword("11111");
@@ -66,22 +54,10 @@ public class UserController extends BaseController {
         return jsp("customer/list");
     }
 
-    @RequestMapping(value = "/modifyManager")
-    public String modifyManager(Manager manager, HttpServletRequest request, HttpServletResponse response) {
-        manager.setRemark("test");
-        userService.update(manager);
-        return null;
-    }
-
     @RequestMapping(value = "/modifyCustomer")
     public String modifyCustomer(Customer customer, HttpServletRequest request, HttpServletResponse response) {
         customer.setRemark("test");
         userService.update(customer);
-        return null;
-    }
-
-    @RequestMapping(value = "/list", method = RequestMethod.POST)
-    public String list(User user, HttpServletRequest request, HttpServletResponse response) {
         return null;
     }
 

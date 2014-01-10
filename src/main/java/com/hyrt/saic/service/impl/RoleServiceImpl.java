@@ -8,6 +8,10 @@ import me.sfce.library.mybatis.service.impl.BaseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * Created with IntelliJ IDEA.
  * User: sfce
@@ -31,5 +35,15 @@ public class RoleServiceImpl extends BaseServiceImpl<Role> implements RoleServic
             role.setId((Integer) id);
         }
         return role;
+    }
+
+    @Override
+    public Map<Integer, String> getRoleMap() {
+        List<Role> roles = listAll();
+        Map<Integer, String> roleMap = new HashMap<>();
+        for (Role role : roles) {
+            roleMap.put(role.getId(), role.getRoleName());
+        }
+        return roleMap;
     }
 }
