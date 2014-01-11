@@ -12,6 +12,23 @@
         <result column="remark" property="remark" jdbcType="VARCHAR"/>
         <result column="isBasal" property="isBasal" jdbcType="CHAR"/>
     </resultMap>
+    <resultMap id="managerWithRole" type="com.hyrt.saic.bean.Manager">
+        <id column="userId" property="userId" jdbcType="VARCHAR"/>
+        <result column="password" property="password" jdbcType="VARCHAR"/>
+        <result column="username" property="username" jdbcType="VARCHAR"/>
+        <result column="regTime" property="regTime" jdbcType="TIMESTAMP"/>
+        <result column="updateTime" property="updateTime" jdbcType="TIMESTAMP"/>
+        <result column="userType" property="userType" jdbcType="VARCHAR"/>
+        <result column="status" property="status" jdbcType="VARCHAR"/>
+        <result column="remark" property="remark" jdbcType="VARCHAR"/>
+        <result column="isBasal" property="isBasal" jdbcType="CHAR"/>
+        <result column="creatorName" property="creatorName" jdbcType="CHAR"/>
+
+        <collection property="roles" ofType="com.hyrt.saic.bean.Role">
+            <id property="id" column="roleId"/>
+            <result property="roleName" column="roleName" />
+        </collection>
+    </resultMap>
     <resultMap id="BaseResultMap" type="com.hyrt.saic.bean.User">
         <id column="userId" property="userId" jdbcType="VARCHAR"/>
         <result column="password" property="password" jdbcType="VARCHAR"/>
@@ -23,13 +40,7 @@
         <result column="remark" property="remark" jdbcType="VARCHAR"/>
         <result column="isBasal" property="isBasal" jdbcType="CHAR"/>
 
-        <association property="creator" column="creatorId" javaType="com.hyrt.saic.bean.User" jdbcType="VARCHAR" >
-        </association>
-
-        <collection property="users" resultMap="com.hyrt.saic.dao.UserMapper.BaseResultMap">
-        </collection>
-
-        <collection property="roles" resultMap="com.hyrt.saic.dao.RoleMapper.BaseResultMap">
+        <collection property="roles" resultMap="com.hyrt.saic.dao.RoleMapper.BaseResultMap" >
         </collection>
 
         <discriminator javaType="com.hyrt.saic.util.enums.UserType" column="userType">

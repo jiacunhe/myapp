@@ -1,8 +1,10 @@
 package me.sfce.library.mybatis.service.impl;
 
+import com.hyrt.saic.util.BeanUtils;
 import me.sfce.library.mybatis.domain.BasePojo;
 import me.sfce.library.mybatis.persistence.BaseMapper;
 import me.sfce.library.mybatis.service.BaseService;
+import me.sfce.library.mybatis.util.ReflectUtil;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -28,7 +30,9 @@ public abstract class BaseServiceImpl<T extends BasePojo> implements BaseService
     @Override
     @Transactional(readOnly = false)
     public void update(T t) {
-        getMapper().update(t);
+        T old = getById(ReflectUtil.getFieldValue(t, t.id()));
+        BeanUtils.copyProperties(t, old);
+        getMapper().update(old);
     }
 
     @Override

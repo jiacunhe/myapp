@@ -70,8 +70,8 @@ public class PaginationInterceptor implements Interceptor {
         System.out.println("############################################");
 
         //这里我们简单的通过传入的是Page对象就认定它是需要进行分页操作的。
-        if (obj instanceof Page<?>) {
-            Page<?> page = (Page<?>) obj;
+        if (obj instanceof Page) {
+            Page page = (Page) obj;
             //通过反射获取delegate父类BaseStatementHandler的mappedStatement属性
             MappedStatement mappedStatement = (MappedStatement) ReflectUtil.getFieldValue(delegate, "mappedStatement");
             //拦截到的prepare方法参数是一个Connection对象
@@ -106,7 +106,7 @@ public class PaginationInterceptor implements Interceptor {
      * @param sql  原sql语句
      * @return
      */
-    private String getPageSql(Page<?> page, String sql) {
+    private String getPageSql(Page page, String sql) {
         StringBuffer sqlBuffer = new StringBuffer(sql);
         if (MYSQL.equalsIgnoreCase(databaseType)) {
             return getMysqlPageSql(page, sqlBuffer);
@@ -123,7 +123,7 @@ public class PaginationInterceptor implements Interceptor {
      * @param sqlBuffer 包含原sql语句的StringBuffer对象
      * @return Mysql数据库分页语句
      */
-    private String getMysqlPageSql(Page<?> page, StringBuffer sqlBuffer) {
+    private String getMysqlPageSql(Page page, StringBuffer sqlBuffer) {
         //计算第一条记录的位置，Mysql中记录的位置是从0开始的。
         int offset = (page.getPageNo() - 1) * page.getPageSize();
         sqlBuffer.append(" limit ").append(offset).append(",").append(page.getPageSize());
@@ -137,7 +137,7 @@ public class PaginationInterceptor implements Interceptor {
      * @param sqlBuffer 包含原sql语句的StringBuffer对象
      * @return Oracle数据库的分页查询语句
      */
-    private String getOraclePageSql(Page<?> page, StringBuffer sqlBuffer) {
+    private String getOraclePageSql(Page page, StringBuffer sqlBuffer) {
         //计算第一条记录的位置，Oracle分页是通过rownum进行的，而rownum是从1开始的
         int offset = (page.getPageNo() - 1) * page.getPageSize() + 1;
         sqlBuffer.insert(0, "select u.*, rownum r from (").append(") u where rownum < ").append(offset + page.getPageSize());
@@ -154,7 +154,7 @@ public class PaginationInterceptor implements Interceptor {
      * @param mappedStatement Mapper映射语句
      * @param connection      当前的数据库连接
      */
-    private void setTotalRecord(Page<?> page, MappedStatement mappedStatement, Connection connection) {
+    private void setTotalRecord(Page page, MappedStatement mappedStatement, Connection connection) {
         //获取对应的BoundSql，这个BoundSql其实跟我们利用StatementHandler获取到的BoundSql是同一个对象。
         //delegate里面的boundSql也是通过mappedStatement.getBoundSql(paramObj)方法获取到的。
         BoundSql boundSql = mappedStatement.getBoundSql(page);
@@ -203,7 +203,7 @@ public class PaginationInterceptor implements Interceptor {
      * @return
      */
     private String getCountSql(String sql) {
-        int index = sql.indexOf("from");
+        int index = sql.toLowerCase().indexOf("from");
         return "select count(*) " + sql.substring(index);
     }
 

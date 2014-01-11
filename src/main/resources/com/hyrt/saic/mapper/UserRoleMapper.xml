@@ -20,12 +20,6 @@
     delete from t_user_role
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.hyrt.saic.bean.UserRole" >
-    insert into t_user_role (id, userId, roleId, 
-      remark)
-    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, #{roleId,jdbcType=INTEGER},
-      #{remark,jdbcType=VARCHAR})
-  </insert>
   <insert id="insertSelective" parameterType="com.hyrt.saic.bean.UserRole" >
     insert into t_user_role
     <trim prefix="(" suffix=")" suffixOverrides="," >

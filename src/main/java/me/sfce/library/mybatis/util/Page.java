@@ -1,5 +1,6 @@
 package me.sfce.library.mybatis.util;
 
+import com.hyrt.saic.util.Config;
 import me.sfce.library.mybatis.domain.BasePojo;
 
 import java.lang.reflect.Field;
@@ -12,59 +13,69 @@ import java.util.List;
  * Date: 13-12-28
  * Time: 上午10:35
  */
-public class Page<T> extends HashMap<String, Object> {
-    private int pageNo = 1;//页码，默认是第一页
-    private int pageSize = 15;//每页显示的记录数，默认是15
-    private int totalRecord;//总记录数
-    private int totalPage;//总页数
-    private List<T> results;//对应的当前页记录
+public class Page extends HashMap<String, Object> {
+    public Page() {
+        setPageSize(Config.PAGE_SIZE);
+    }
 
     public BasePojo getPojo() {
-        return pojo;
+        return (BasePojo) get("pojo");
     }
 
     public void setPojo(BasePojo pojo) {
-        this.pojo = pojo;
+        this.put("pojo" ,pojo);
     }
 
-    private BasePojo pojo; //for baseMapper
-
     public int getPageNo() {
-        return pageNo;
+        return (int) get("pageNo");
     }
 
     public void setPageNo(int pageNo) {
-        this.pageNo = pageNo;
+        this.put("pageNo", pageNo);
     }
 
     public int getPageSize() {
-        return pageSize;
+        return (int) get("pageSize");
     }
 
     public void setPageSize(int pageSize) {
-        this.pageSize = pageSize;
+        this.put("pageSize", pageSize);
     }
 
     public int getTotalRecord() {
-        return totalRecord;
+        return (int) get("totalRecord");
     }
 
     public void setTotalRecord(int totalRecord) {
-        this.totalRecord = totalRecord;
+        this.put("totalRecord", totalRecord);
         //在设置总页数的时候计算出对应的总页数。
-        this.totalPage = (totalRecord - 1) / pageSize + 1;
+        int pageCount = (totalRecord - 1) / getPageSize() + 1;
+        this.put("totalPage", pageCount);
+        // 计算开始、结束页码和总页数
+        int beginPageIndex = getPageNo() - 4;
+        int endPageIndex = getPageNo() + 5;
+        if (pageCount < 10) {
+            beginPageIndex = 1;
+            endPageIndex = pageCount;
+        } else {
+            if (beginPageIndex < 1) {
+                beginPageIndex = 1;
+                endPageIndex = 10;
+            } else if (endPageIndex > pageCount) {
+                endPageIndex = pageCount;
+                beginPageIndex = endPageIndex - 9;
+            }
+        }
+        this.put("beginPageIndex", beginPageIndex);
+        this.put("endPageIndex", endPageIndex);
     }
 
     public int getTotalPage() {
-        return totalPage;
+        return (int) get("totalPage");
     }
 
-    public List<T> getResults() {
-        return results;
-    }
-
-    public void setResults(List<T> results) {
-        this.results = results;
+    public void setResults(List<Object> results) {
+        this.put("results", results);
     }
 
     public void addBean(Object obj) {
