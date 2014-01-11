@@ -7,8 +7,6 @@ package com.hyrt.saic.controller;
  * Time: 上午9:58
  */
 public abstract class BaseController {
-    public static final String USER = "user";
-
     public static final String FTL = ".ftl";
     public static final String JSP = ".jsp";
 

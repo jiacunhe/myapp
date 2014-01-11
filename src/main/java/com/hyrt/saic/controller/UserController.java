@@ -3,6 +3,7 @@ package com.hyrt.saic.controller;
 import com.hyrt.saic.bean.Customer;
 import com.hyrt.saic.bean.User;
 import com.hyrt.saic.service.UserService;
+import com.hyrt.saic.util.Config;
 import com.hyrt.saic.util.enums.PaymentRule;
 import com.hyrt.saic.util.enums.UserStatus;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,7 @@ public class UserController extends BaseController {
     @RequestMapping(value = "/getById", method = RequestMethod.GET)
     public String getById(String userId, HttpServletRequest request, HttpServletResponse response) {
         User user = userService.getById(userId);
-        request.setAttribute(USER, user);
+        request.setAttribute(Config.USER, user);
         return null;
     }
 

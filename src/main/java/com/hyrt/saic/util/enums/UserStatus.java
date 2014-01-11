@@ -7,7 +7,7 @@ package com.hyrt.saic.util.enums;
  * Time: 上午11:30
  */
 public enum UserStatus {
-    NORMAL("正常"), LOCK("锁定");
+    NORMAL("正常"), LOCK("锁定"), DELETED("删除");
     private String desc;
 
     private UserStatus(String desc) {

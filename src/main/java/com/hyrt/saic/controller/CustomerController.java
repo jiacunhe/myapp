@@ -1,14 +1,16 @@
 package com.hyrt.saic.controller;
 
-import com.hyrt.saic.bean.Manager;
+import com.hyrt.saic.bean.Customer;
 import com.hyrt.saic.bean.User;
-import com.hyrt.saic.controller.formbean.user.ManagerQueryForm;
+import com.hyrt.saic.controller.formbean.user.CustomerQueryForm;
 import com.hyrt.saic.service.RoleService;
 import com.hyrt.saic.service.UserService;
+import com.hyrt.saic.util.enums.PaymentRule;
 import com.hyrt.saic.util.enums.UserStatus;
 import me.sfce.library.mybatis.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -33,101 +35,163 @@ public class CustomerController extends BaseController {
     RoleService roleService;
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String addManager(Manager manager, String roleIds, HttpServletRequest request) {
-        userService.addManager(manager, request, roleIds);
+    public String addCustomer(Customer customer, HttpServletRequest request) {
+        userService.addCustomer(customer, request);
         return redirectTo("list");
     }
 
     @RequestMapping(value = "/add/UI", method = RequestMethod.GET)
-    public String addManagerUI(HttpServletRequest request) {
-        request.setAttribute("command", new Manager());
-        Map<Integer, String> roleMap = roleService.getRoleMap();
-        request.setAttribute("roleMap", roleMap);
-        return jsp("manager/add");
+    public String addCustomerUI(HttpServletRequest request) {
+        request.setAttribute("paymentRules", PaymentRule.values());
+        return jsp("customer/add");
     }
 
     @RequestMapping(value = "/modify/UI", method = RequestMethod.GET)
-    public String modifyManagerUI(Manager manager, HttpServletRequest request) {
-        User user = userService.getById(manager.getUserId());
-        request.setAttribute("command", user);
-        request.setAttribute("roleMap", roleService.getRoleMap());
-        request.setAttribute("roleIds", userService.getRoleIds(manager));
-        request.setAttribute("formUserId", request.getParameter("formUserId"));
-        request.setAttribute("formUsername", request.getParameter("formUsername"));
-        request.setAttribute("formRoleId", request.getParameter("formRoleId"));
-
-        return jsp("manager/edit");
+    public String modifyCustomerUI(String _userId, HttpServletRequest request) {
+        User user = userService.getById(_userId);
+        request.setAttribute("customer", user);
+        request.setAttribute("paymentRules", PaymentRule.values());
+        CustomerQueryForm form = new CustomerQueryForm();
+        form.setUserId(request.getParameter("userId"));
+        form.setUsername(request.getParameter("username"));
+        form.setCondition(request.getParameter("condition"));
+        form.setCreatorId(request.getParameter("creatorId"));
+        form.setEndTime(request.getParameter("endTime"));
+        form.setStartTime(request.getParameter("startTime"));
+        form.setPaymentRule(request.getParameter("paymentRule"));
+        form.setStatus(request.getParameter("status"));
+        form.setTelephone(request.getParameter("telephone"));
+        request.setAttribute("form", form);
+        request.setAttribute("queryType", request.getParameter("queryType"));
+        return jsp("customer/edit");
     }
 
     @RequestMapping(value = "/show/UI", method = RequestMethod.GET)
-    public String show(Manager manager, HttpServletRequest request) {
-        User user = userService.getById(manager.getUserId());
-        request.setAttribute("command", user);
-        request.setAttribute("roleMap", roleService.getRoleMap());
-        request.setAttribute("roleIds", userService.getRoleIds(manager));
-        return jsp("manager/show");
+    public String show(String _userId, HttpServletRequest request) {
+        User user = userService.getById(_userId);
+        request.setAttribute("customer", user);
+        return jsp("customer/show");
     }
 
     @RequestMapping(value = "/modify", method = RequestMethod.POST)
-    public String modifyManager(Manager manager, String roleIds, HttpServletRequest request) {
-        userService.modifyManager(manager, roleIds);
-        return redirectTo("list?formUserId=" + request.getParameter("formUserId")
-                + "&formUsername=" + request.getParameter("formUsername")
-                + "&formRoleId=" + request.getParameter("formRoleId")
-                + "&formStatus=" + request.getParameter("formStatus")
+    public String modifyCustomer(Customer customer, HttpServletRequest request) {
+        userService.update(customer);
+        return redirectTo("list?userId=" + request.getParameter("formUserId")
+                + "&username=" + request.getParameter("formUsername")
+                + "&condition=" + request.getParameter("formCondition")
+                + "&creatorId=" + request.getParameter("formCreatorId")
+                + "&endTime=" + request.getParameter("formEndTime")
+                + "&startTime=" + request.getParameter("formStartTime")
+                + "&paymentRule=" + request.getParameter("formPaymentRule")
+                + "&status=" + request.getParameter("formStatus")
+                + "&telephone=" + request.getParameter("formTelephone")
+                + "&queryType=" + request.getParameter("formQueryType")
+        );
+    }
+
+    @RequestMapping(value = "/lock")
+    public String lock(String _userId, HttpServletRequest request) {
+        User user = new User();
+        user.setUserId(_userId);
+        userService.lock(user);
+        return redirectTo("list?userId=" + request.getParameter("userId")
+                + "&username=" + request.getParameter("username")
+                + "&condition=" + request.getParameter("condition")
+                + "&creatorId=" + request.getParameter("creatorId")
+                + "&endTime=" + request.getParameter("endTime")
+                + "&startTime=" + request.getParameter("startTime")
+                + "&paymentRule=" + request.getParameter("paymentRule")
+                + "&status=" + request.getParameter("status")
+                + "&telephone=" + request.getParameter("telephone")
+                + "&queryType=" + request.getParameter("queryType")
+        );
+    }
+
+    @RequestMapping(value = "/unlock")
+    public String unlock(String _userId, HttpServletRequest request) {
+        User user = new User();
+        user.setUserId(_userId);
+        userService.unlock(user);
+        return redirectTo("list?userId=" + request.getParameter("userId")
+                + "&username=" + request.getParameter("username")
+                + "&condition=" + request.getParameter("condition")
+                + "&creatorId=" + request.getParameter("creatorId")
+                + "&endTime=" + request.getParameter("endTime")
+                + "&startTime=" + request.getParameter("startTime")
+                + "&paymentRule=" + request.getParameter("paymentRule")
+                + "&status=" + request.getParameter("status")
+                + "&telephone=" + request.getParameter("telephone")
+                + "&queryType=" + request.getParameter("queryType")
         );
     }
 
     @RequestMapping(value = "/delete")
-    public String delete(Manager manager, HttpServletRequest request) {
-        userService.lock(manager);
-        return redirectTo("list?formUserId=" + request.getParameter("formUserId")
-                + "&formUsername=" + request.getParameter("formUsername")
-                + "&formRoleId=" + request.getParameter("formRoleId")
-                + "&formStatus=" + request.getParameter("formStatus")
+    public String delete(String _userId, HttpServletRequest request) {
+        userService.delete(_userId);
+        return redirectTo("list?userId=" + request.getParameter("userId")
+                + "&username=" + request.getParameter("username")
+                + "&condition=" + request.getParameter("condition")
+                + "&creatorId=" + request.getParameter("creatorId")
+                + "&endTime=" + request.getParameter("endTime")
+                + "&startTime=" + request.getParameter("startTime")
+                + "&paymentRule=" + request.getParameter("paymentRule")
+                + "&status=" + request.getParameter("status")
+                + "&telephone=" + request.getParameter("telephone")
+                + "&queryType=" + request.getParameter("queryType")
         );
     }
 
     @RequestMapping(value = "/resetPassword")
-    public String resetPassword(Manager manager, HttpServletRequest request) {
-        userService.resetPassword(manager);
-        return redirectTo("list?formUserId=" + request.getParameter("formUserId")
-                + "&formUsername=" + request.getParameter("formUsername")
-                + "&formRoleId=" + request.getParameter("formRoleId")
-                + "&formStatus=" + request.getParameter("formStatus")
+    public String resetPassword(String _userId, HttpServletRequest request) {
+        User user = new User();
+        user.setUserId(_userId);
+        userService.resetPassword(user);
+        return redirectTo("list?userId=" + request.getParameter("userId")
+                + "&username=" + request.getParameter("username")
+                + "&condition=" + request.getParameter("condition")
+                + "&creatorId=" + request.getParameter("creatorId")
+                + "&endTime=" + request.getParameter("endTime")
+                + "&startTime=" + request.getParameter("startTime")
+                + "&paymentRule=" + request.getParameter("paymentRule")
+                + "&status=" + request.getParameter("status")
+                + "&telephone=" + request.getParameter("telephone")
+                + "&queryType=" + request.getParameter("queryType")
         );
     }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public String list(String formUserId, String formUsername, Integer formRoleId, String formStatus,Integer pageNo, HttpServletRequest request) {
-        if (formUsername != null) {
+    public String list(CustomerQueryForm form, Integer pageNo, Boolean queryType, HttpServletRequest request) {
+        if (form.getUsername() != null) {
             try {
-                formUsername = new String(formUsername.getBytes("ISO8859-1"), "UTF-8");
+                form.setUsername(new String(form.getUsername().getBytes("ISO8859-1"), "UTF-8"));
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
         }
+        if (!StringUtils.isEmpty(form.getUserId())) {
+            form.setCondition(form.getUserId());
+        }
+        if (!StringUtils.isEmpty(form.getUsername())) {
+            form.setCondition(form.getUsername());
+        }
         Page page = new Page();
-        page.put("username", formUsername);
-        page.put("userId", formUserId);
-        page.put("roleId", formRoleId);
-        page.put("status", formStatus);
+        page.addBean(form);
         if (null == pageNo) {
             pageNo = 1;
         }
         page.setPageNo(pageNo);
-        List managers = userService.queryManagersByCondition(page);
-        page.setResults(managers);
+        List customers = userService.queryCustomersByCondition(page);
+        page.setResults(customers);
         request.setAttribute("page", page);
-        ManagerQueryForm command = new ManagerQueryForm(formUserId, formUsername, formRoleId, formStatus);
-        request.setAttribute("command", command);
-        Map<Integer, String> roleMap = roleService.getRoleMap();
-        request.setAttribute("roleMap", roleMap);
+        request.setAttribute("form", form);
+        request.setAttribute("paymentRules", PaymentRule.values());
         Map<String, String> statusMap = new HashMap<>();
         for (UserStatus status : UserStatus.values()) {
             statusMap.put(status.toString(), status.getDesc());
         }
         request.setAttribute("statusMap", statusMap);
-        return (jsp("manager/list"));
+        if (null == queryType) queryType = false;
+        request.setAttribute("queryType", queryType);
+        return (jsp("customer/list"));
     }
 }

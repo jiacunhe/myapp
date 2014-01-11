@@ -20,6 +20,8 @@ import java.util.Map;
 public interface UserService extends BaseService<User> {
     boolean login(HttpServletRequest request, String userId, String password);
 
+    boolean loginManage(HttpServletRequest request, String userId, String password);
+
     void modifyPaymentRule(String userId, PaymentRule paymentRule);
 
     void assignRole(User user, List<Role> roles);

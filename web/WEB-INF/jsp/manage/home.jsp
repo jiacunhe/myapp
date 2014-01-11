@@ -38,7 +38,7 @@
     <div class="ht_content_left">
         <div class="ht_yangshi"></div>
         <dl>
-            <dt><A href="#"><img src="${basePath}/manage/images/ht_ico1.png"/>客户管理</A></dt>
+            <dt><A href="/customer/list" target="main"><img src="${basePath}/manage/images/ht_ico1.png"/>客户管理</A></dt>
         </dl>
 
         <dl>
