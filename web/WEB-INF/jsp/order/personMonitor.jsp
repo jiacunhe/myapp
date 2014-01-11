@@ -11,7 +11,11 @@
 
     <script language="javascript" src="/js/1.js"> </script>
     <title>人员监控</title>
-
+    <style type="text/css">
+        .deleteLine{text-align:center; width:35px;}
+        .input_for_addline{background:none; border:none; border-bottom:#666666 1px solid; width:150px;}
+        .select_for_addline{background:none;  width:150px; height: 20px;}
+    </style>
 
 </head>
 
@@ -29,27 +33,27 @@
             <table  id="gtb" width="749" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1">
                 <tr class="sub_tr1">
                     <th width="22%">证件类型*</th>
-                    <th width="22%">注册号*</th>
-                    <th width="24%"><p>企业名称*</p></th>
+                    <th width="22%">证件号*</th>
+                    <th width="24%"><p>名称*</p></th>
                     <th width="22%"><p>备 注</p></th>
                     <th width="10%">操 作</th>
                 </tr>
                 <tr align="center">
                     <td valign="bottom">
-                        <select id="certificate1"  name="certificate1" style="background:none;  width:150px; height: 20px;">
+                        <select id="certificate1"  name="certificate1" class="select_for_addline">
                             <option value="身份证">身份证</option>
                         </select>
                     </td>
                     <td valign="bottom">
-                        <input type="text" id="groupcode1"  name="groupcode1" style="background:none; border:none; border-bottom:#666666 1px solid; width:150px;">
+                        <input type="text" id="groupcode1"  name="groupcode1" class="input_for_addline">
                     </td>
                     <td valign="bottom">
-                        <input type="text" id="groupname1"  name="groupname1" style="background:none; border:none; border-bottom:#666666 1px solid; width:150px;">
+                        <input type="text" id="groupname1"  name="groupname1" class="input_for_addline">
                     </td>
                     <td valign="bottom">
-                        <input type="text" id="groupremark1"  name="groupremark1"  style="background:none; border:none; border-bottom:#666666 1px solid; width:150px;">
+                        <input type="text" id="groupremark1"  name="groupremark1"  class="input_for_addline">
                     </td>
-                    <td valign="bottom" align="center"><div style="width:100%; text-align: center"> <a href="#" onclick="delrow(this)" >删除</a></div></td>
+                    <td valign="bottom" align="center"><div style="width:100%; text-align: center"> <a href="#" onclick="delrow(this)" class="deleteLine" >删除</a></div></td>
                 </tr>
             </table>
             <!--p class="cxjg">本次查询条数：<span>2</span>条</p>
@@ -141,11 +145,11 @@
         var w=row.insertCell(3);w.vAlign='bottom';
         var v=row.insertCell(4);v.vAlign='bottom';        v.align = "center";
 
-        z.innerHTML='<select id="certificate'+i+'"  name="certificate'+i+'" style="background:none;  width:150px; height: 20px;"> <option value="身份证">身份证</option> </select>';
-        y.innerHTML='<input type="text" id="groupcode'+i+'" name="groupcode'+i+'" style="background:none; border:none; border-bottom:#666666 1px solid; width:150px;">';
-        x.innerHTML='<input type="text" id="groupname'+i+'" name="groupname'+i+'"  style="background:none; border:none; border-bottom:#666666 1px solid; width:150px;">';
-        w.innerHTML='<input type="text" id="groupremark'+i+'" name="groupremark'+i+'"  style="background:none; border:none; border-bottom:#666666 1px solid; width:150px;">';
-        v.innerHTML='<div style="width:100%; text-align: center"> <a href="#" onclick="delrow(this)">删除</a></div>';
+        z.innerHTML='<select id="certificate'+i+'"  name="certificate'+i+'"  class="select_for_addline"> <option value="身份证">身份证</option> </select>';
+        y.innerHTML='<input type="text" id="groupcode'+i+'" name="groupcode'+i+'"  class="input_for_addline">';
+        x.innerHTML='<input type="text" id="groupname'+i+'" name="groupname'+i+'"  class="input_for_addline">';
+        w.innerHTML='<input type="text" id="groupremark'+i+'" name="groupremark'+i+'"  class="input_for_addline">';
+        v.innerHTML='<div style="width:100%; text-align: center"> <a href="#" onclick="delrow(this)" class="deleteLine">删除</a></div>';
 
     }
 

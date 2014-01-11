@@ -24,18 +24,22 @@
     <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1">
         <tr class="sub_tr1">
             <th width="15%">序 号</th>
-            <th width="65%">查询条件</th>
+            <th width="65%">消息时间</th>
             <th width="20%">查看</th>
         </tr>
 
         <c:forEach  var="obj" items="${objects.list}"   varStatus="status">
             <tr <c:if test="${status.count%2==0}">class="sub_tr1"</c:if>>
-                <td style="text-align:center">${object.page*5+status.count}</td>
-                <td>${obj.objCode } |  ${obj.objName}</td>
+                <td style="text-align:center">${objects.page*5+status.count}</td>
 
-                <td  style="text-align:center"> <c:if test="${obj.status eq '5'}"><a href="javascript:viewer('${obj.id}')">查看结果</a></c:if>
-                    <c:if test="${obj.status ne '5'}">${obj.statusName}</c:if>
-                                                    &nbsp;</td>
+
+                <td>${obj.messageTime }</td>
+
+                <td  style="text-align:center">
+                    <a href="javascript:viewer(${obj.id})"><img src="/images/26.png" alt="查看" title="查看"></a>
+
+                </td>
+
             </tr>
         </c:forEach>
         <tr class="page">
@@ -43,35 +47,35 @@
 
                 <ul>
 
-                    <li><a href="/order/subsidiary?orderId=${objects.orderId}&page=${objects.page -1}&type=${objects.type}"  title="上一页"> < </a></li>
+                    <li><a href="/order/subsidiary?id=${objects.orderDetailId}&page=${objects.page -1}&orderType=${objects.orderType}"  title="上一页"> < </a></li>
 
 
 
                     <c:if test="${objects.page <= 9}">
                         <c:forEach var="i" begin="${1}" end="${objects.page-1}" step="1">
-                            <li><a href="/order/subsidiary?orderId=${objects.orderId}&page=${i}&type=${objects.type}">${i}</a></li>
+                            <li><a href="/order/subsidiary?id=${objects.orderDetailId}&page=${i}&orderType=${objects.orderType}">${i}</a></li>
                         </c:forEach>
                     </c:if>
 
 
                     <c:if test="${objects.page > 9}">
                         <c:forEach var="i" begin="${objects.page-5}" end="${objects.page-1}" step="1">
-                            <li><a href="/order/subsidiary?orderId=${objects.orderId}&page=${i}&type=${objects.type}">${i}</a></li>
+                            <li><a href="/order/subsidiary?id=${objects.orderDetailId}&page=${i}&orderType=${objects.orderType}">${i}</a></li>
                         </c:forEach>
                     </c:if>
 
 
-                    <li><a href="/order/subsidiary?orderId=${objects.orderId}&page=${objects.page}&type=${objects.type}" style="color:#FF0000">${objects.page}</a></li>
+                    <li><a href="/order/subsidiary?id=${objects.orderDetailId}&page=${objects.page}&orderType=${objects.orderType}" style="color:#FF0000">${objects.page}</a></li>
 
 
                     <c:forEach var="j" begin="${objects.page+1}" end="${objects.page + 5}" step="1">
-                        <c:if test="${j <= objects.totalpage}">
-                            <li><a href="/order/subsidiary?orderId=${objects.orderId}&page=${j}&type=${objects.type}">${j}</a></li>
+                        <c:if test="${j <= objects.totalPage}">
+                            <li><a href="/order/subsidiary?id=${objects.orderDetailId}&page=${j}&orderType=${objects.orderType}">${j}</a></li>
                         </c:if>
                     </c:forEach>
 
-                    <li><a href="/order/subsidiary?orderId=${objects.orderId}&page=${objects.page +1}&type=${objects.type}" title="下一页"> > </a></li>
-                    <li><span >共 ${objects.totalitem }条 ，当前第 <strong> ${objects.page }</strong> / <span> <strong>${objects.totalpage}</strong> </span> 页 </span> </li>
+                    <li><a href="/order/subsidiary?id=${objects.orderDetailId}&page=${objects.page +1}&orderType=${objects.orderType}" title="下一页"> > </a></li>
+                    <li><span >共 ${objects.totalItem }条 ，当前第 <strong> ${objects.page }</strong> / <span> <strong>${objects.totalPage}</strong> </span> 页 </span> </li>
                 </ul>
 
             </td>
@@ -82,7 +86,9 @@
     </table>
     <script type="text/javascript">
         function viewer(id){
-            parent.window.location.href="/order/result?id="+id;
+
+          alert("sorry,测试阶段，无具体数据信息");
+           // parent.window.location.href="/order/result?id="+id;
         }
 
     </script>

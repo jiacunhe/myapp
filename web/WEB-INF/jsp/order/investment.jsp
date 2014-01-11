@@ -50,7 +50,7 @@
                     <td valign="bottom">
                         <input type="text" id="groupremark1"  name="groupremark1"  style="background:none; border:none; border-bottom:#666666 1px solid; width:150px;">
                     </td>
-                    <td valign="bottom"><div style="width:100%;text-align: center;"> <a href="#" onclick="delrow(this)">删除</a></div></td>
+                    <td valign="bottom"><div style="width:100%;text-align: center;"> <input type="hidden" id="group1monitor" name="group1monitor" value="0"><a href="#" onclick="delrow(this)">删除</a></div></td>
                 </tr>
             </table>
             <!--p class="cxjg">本次查询条数：<span>2</span>条</p>
@@ -62,7 +62,7 @@
                 <input type="hidden" id="groupcode" name="groupCode" value="">
                 <input type="hidden" id="groupname" name="groupName" value="">
                 <input type="hidden" id="groupremark" name="groupRemark" value="">
-
+                <input type="hidden" id="groupmonitor" name="groupMonitor" value="">
             </form>
 
 
@@ -125,17 +125,17 @@
         var row=document.getElementById('gtb').insertRow(j);
         row.align='center';
         i++;
-        var z=row.insertCell(0);z.vAlign='bottom';
-        var y=row.insertCell(1);y.vAlign='bottom';
-        var x=row.insertCell(2);x.vAlign='bottom';
-        var w=row.insertCell(3);w.vAlign='bottom';
-        var v=row.insertCell(4);v.vAlign='bottom';
+      //  var z=row.insertCell(0);z.vAlign='bottom';
+        var y=row.insertCell(0);y.vAlign='bottom';
+        var x=row.insertCell(1);x.vAlign='bottom';
+        var w=row.insertCell(2);w.vAlign='bottom';
+        var v=row.insertCell(3);v.vAlign='bottom';
         v.align = "center";
-        z.innerHTML=' <input type="checkbox" name="checkbox'+i+'" value="'+i+'">';
+      //  z.innerHTML=' <input type="checkbox" name="checkbox'+i+'" value="'+i+'">';
         y.innerHTML='<input type="text" id="groupcode'+i+'" name="groupcode'+i+'" style="background:none; border:none; border-bottom:#666666 1px solid; width:150px;">';
         x.innerHTML='<input type="text" id="groupname'+i+'" name="groupname'+i+'"  style="background:none; border:none; border-bottom:#666666 1px solid; width:150px;">';
         w.innerHTML='<input type="text" id="groupremark'+i+'" name="groupremark'+i+'"  style="background:none; border:none; border-bottom:#666666 1px solid; width:150px;">';
-        v.innerHTML='<div style="width:100%;text-align: center;"> <a href="#" onclick="delrow(this)">删除</a></div>';
+        v.innerHTML='<div style="width:100%;text-align: center;"> <input type="hidden" id="group'+i+'monitor" name="group'+i+'monitor" value="0"><a href="#" onclick="delrow(this)">删除</a></div>';
 
     }
 
@@ -145,14 +145,14 @@
         var groupcode="";
         var groupname="";
         var groupremark="";
-     //   var groupmonitor="";
+        var groupmonitor="";
         for(k=1;k<i+1;k++){
             if(document.getElementById('groupcode'+k) == undefined || document.getElementById('groupcode'+k).value == ""){
             }else{
                 groupcode += document.getElementById('groupcode'+k).value+",";
                 groupname += document.getElementById('groupname'+k).value+",";
                 groupremark += document.getElementById('groupremark'+k).value+",";
-             //   groupmonitor += document.getElementById('group'+k+"monitor").value+",";
+                groupmonitor += document.getElementById('group'+k+"monitor").value+",";
             }
         }
         if(groupcode==""){
@@ -161,7 +161,7 @@
             document.getElementById('groupcode').value=	groupcode+"--";
             document.getElementById('groupname').value= groupname+"--";
             document.getElementById('groupremark').value= groupremark+"--";
-
+            document.getElementById('groupmonitor').value= groupmonitor+"--";
             document.getElementById('groupfrom').submit();
         }
 

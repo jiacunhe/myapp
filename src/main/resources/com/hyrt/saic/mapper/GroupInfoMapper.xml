@@ -23,12 +23,13 @@
     <result column="lastInspectionDate" property="lastInspectionDate" jdbcType="VARCHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
     <result column="orderId" property="orderId" jdbcType="INTEGER" />
+    <result column="messageTime" property="messageTime" jdbcType="TIMESTAMP"  />
   </resultMap>
   <sql id="Base_Column_List" >
     id, groupName, legalPersonName, registrationCode, registeredCapital, currencyType, 
     createTime, effectiveDate, deadline, groupType, status, address, permissionProject, 
     generalProject, businessScope, businessMode, RA, lastInspectionYear, lastInspectionDate, 
-    remark, orderId
+    remark, orderId,messageTime
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
@@ -41,10 +42,22 @@
         select
         <include refid="Base_Column_List" />
         from t_group_info
-        where orderId = #{orderDetailId,jdbcType=BIGINT} order by id desc limit 0,1
+        where orderId = #{orderDetailId,jdbcType=BIGINT} order by id desc    limit 0,1
     </select>
 
 
+    <select id="selectMonitorInfo" resultMap="BaseResultMap" parameterType="java.util.Map" >
+        select
+        <include refid="Base_Column_List" />
+        from t_group_info
+        where orderId = #{orderDetailId,jdbcType=BIGINT} order by id desc  limit ${cursor},${length}
+    </select>
+    <select id="selectCount" resultType="java.lang.Integer" parameterType="java.util.Map" >
+        select
+       count(*)
+        from t_group_info
+        where orderId = #{orderDetailId,jdbcType=BIGINT}
+    </select>
 
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >

@@ -23,6 +23,18 @@
     from t_recharge_record
     where id = #{id,jdbcType=INTEGER}
   </select>
+
+  <select id="selectSelective" resultType="java.util.Map" parameterType="java.util.Map">
+
+    SELECT r.id,r.`userId`,r.`packageId`,r.`createTime`,r.chargeTime,r.`amount`,r.`returnResult`,r.`status`,r.`chargeType`,c.`packageName`,c.`price`,c.`status` packageStatus,c.`type`
+    FROM t_recharge_record r,t_charge_package c WHERE r.`packageId`=c.`id`
+    AND r.userId=#{userId,jdbcType=VARCHAR}
+    AND DATE_FORMAT(r.chargeTime,'%Y-%m-%d') BETWEEN #{startDate,jdbcType=VARCHAR} AND #{endDate,jdbcType=VARCHAR}
+    and r.status=#{status,jdbcType=VARCHAR}
+
+  </select>
+
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from t_recharge_record
     where id = #{id,jdbcType=INTEGER}

@@ -9,7 +9,7 @@ package com.hyrt.saic.util.enums;
  */
 public enum OrderStatus {
 
-    下单,审核中,通过审核,进行中,结束,查询无果,未通过审核,账户支付失败;
+    查询中,成功,无结果,未通过审核,账户支付失败,监控中;
 
     @Override
     public String toString() {

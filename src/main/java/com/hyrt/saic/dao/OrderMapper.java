@@ -25,7 +25,7 @@ public interface OrderMapper {
 
     int selectCount(Map params);
 
-    OrderInfo selectOrderInfoByOrderId(String id);
+    Map selectOrderInfoByOrderId(String id);
 
     Integer selectForPermissionView(Map params);
 

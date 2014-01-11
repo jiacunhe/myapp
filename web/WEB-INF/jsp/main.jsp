@@ -1,7 +1,15 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %> <%
+    response.setHeader("Cache-Control","no-cache"); //Forces caches to obtain a new copy of the page from the origin server
+    response.setHeader("Cache-Control","no-store"); //Directs caches not to store the page under any circumstance
+    response.setDateHeader("Expires", 0); //Causes the proxy cache to see the page as "stale"
+    response.setHeader("Pragma","no-cache");
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+    <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+    <meta HTTP-EQUIV="expires" CONTENT="0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="/css/public.css" rel="stylesheet" type="text/css" />
     <link href="/css/sub.css" rel="stylesheet" type="text/css" />
@@ -85,20 +93,24 @@
                 <ul>
                     <li><a href="/order/groupMonitor" target="mainIframe">企业监控</a></li>
                     <li><a href="/order/personMonitor" target="mainIframe">人员监控</a></li>
-                    <li><a href="#">监控列表</a></li>
+                  <!--  <li><a href="#">监控列表</a></li>     -->
                 </ul>
             </dd>
         </dl>
+
+
+        <dl>
+            <dt><img src="../images/ico4.png" /> <A onclick=javascript:ShowFLT(4) href="/order/search" target="mainIframe">我的查询</A></dt>
+            <dd id=LM4 style="DISPLAY: none"></dd>
+        </dl>
+
 
         <dl>
             <dt><img src="../images/ico3.png" /> <A onclick=javascript:ShowFLT(3) href="/package/buy" target="mainIframe">套餐购买</A></dt>
             <dd id=LM3 style="DISPLAY: none"></dd>
         </dl>
 
-        <dl>
-            <dt><img src="../images/ico4.png" /> <A onclick=javascript:ShowFLT(4) href="/order/search" target="mainIframe">我的订单</A></dt>
-            <dd id=LM4 style="DISPLAY: none"></dd>
-        </dl>
+
 
 
         <dl>
@@ -107,7 +119,7 @@
                 <ul>
                     <li><a href="#">个人资料</a></li>
                     <li><a href="#">安全中心</a></li>
-                    <li><a href="#">消费明细</a></li>
+                    <li><a href="/bill/rechargeRecord" target="mainIframe">消费明细</a></li>
                     <li><a href="#">我的消息</a></li>
                 </ul>
             </dd>

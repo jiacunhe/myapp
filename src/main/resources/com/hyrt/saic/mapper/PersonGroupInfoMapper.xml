@@ -13,9 +13,10 @@
     <result column="G" property="g" jdbcType="VARCHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
     <result column="orderId" property="orderId" jdbcType="VARCHAR" />
+      <result column="messageTime" property="messageTime" jdbcType="TIMESTAMP"  />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, personType, A, B, C, D, E, F, G, remark, orderId
+    id, personType, A, B, C, D, E, F, G, remark, orderId,messageTime
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
@@ -36,7 +37,19 @@
         SELECT * FROM t_person_group_info WHERE id =3
         UNION SELECT * FROM t_person_group_info WHERE personType ='senior' AND orderId =  #{_parameter,jdbcType=BIGINT}
     </select>
+    <select id="selectMonitorInfo" resultMap="BaseResultMap" parameterType="java.util.Map" >
+        select
+        <include refid="Base_Column_List" />
+        from t_person_group_info
+        where orderId = #{orderDetailId,jdbcType=BIGINT} order by personType,id desc  limit ${cursor},${length}
+    </select>
 
+    <select id="selectCount" resultType="java.lang.Integer" parameterType="java.util.Map" >
+        select
+       count(*)
+        from t_person_group_info
+        where orderId = #{orderDetailId,jdbcType=BIGINT}
+    </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from t_person_group_info

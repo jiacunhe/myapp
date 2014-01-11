@@ -25,49 +25,22 @@
 
 <div class="content_right">
     <div class="yemei">
-        <p>您当前所在位置：<a href="#">首页</a> >> <span>我的订单</span></p>
+        <p>您当前所在位置：<a href="#">首页</a> >> <span>查询提交</span></p>
     </div>
     <div class="sub_rttop0">
         <ul class="ztxs">
-            <li class="tj">1.提交订单</li>
-            <c:choose>
-                <c:when test="${orderInfo.status eq '3'}">
-                    <li class="tj">2.通过审核</li>
-                </c:when>
-                <c:when test="${orderInfo.status eq '4'}">
-                    <li class="tj">2.查询中</li>
-                </c:when>
-                <c:otherwise>
-                        <li>2.审核中</li>
-                </c:otherwise>
-            </c:choose>
+            <li class="tj">1.提交</li>
+            <li>2.查询中</li>
+            <li>3.成功</li>
 
-            <c:choose>
-                <c:when test="${orderInfo.status eq '5'}">
-                    <li class="tj">3.成功</li>
-                </c:when>
-                <c:when test="${orderInfo.status eq '6'}">
-                    <li class="tj">3.查询无果</li>
-                </c:when>
-                <c:when test="${orderInfo.status eq '7'}">
-                    <li class="tj">3.未通过审核</li>
-                </c:when>
-                <c:when test="${orderInfo.status eq '8'}">
-                    <li class="tj">3.账户支付失败</li>
-                </c:when>
-                <c:otherwise>
-                    <li>3.</li>
-                </c:otherwise>
-            </c:choose>
         </ul>
         <ul class="tiem">
             <li class="xz">${orderInfo.createTime}</li>
-            <c:if test="${orderInfo.status<5}">
-                <li>${orderInfo.verifyTime}</li>
-            </c:if>
-            <c:if test="${orderInfo.status>4}">
-                <li>${orderInfo.finishTime}</li>
-            </c:if>
+
+                <li class="xz">${orderInfo.verifyTime}</li>
+
+                <li class="xz">${orderInfo.finishTime}</li>
+
 
         </ul>
     </div>
@@ -78,27 +51,22 @@
                 <li style="width: 340px;">订单号：${orderInfo.id}</li>
                 <li>当前订单状态：<span>
                     <c:choose>
-                        <c:when test="${orderInfo.status<3}">
-                         审核中</li>
+                        <c:when test="${orderInfo.status ==1}">
+                            <li class="tj">查询中</li>
                         </c:when>
-                        <c:when test="${orderInfo.status ==3}">
-                            <li class="tj">通过审核、查询中</li>
-                        </c:when>
-                        <c:when test="${orderInfo.status eq '4'}">
-                            <li class="tj">等待查询结果</li>
-                        </c:when>
-                        <c:when test="${orderInfo.status eq '5'}">
+                        <c:when test="${orderInfo.status ==2}">
                             <li class="tj">成功</li>
                         </c:when>
-                        <c:when test="${orderInfo.status eq '6'}">
-                            <li class="tj">无查询结果</li>
+                        <c:when test="${orderInfo.status ==3}">
+                            <li class="tj">无结果</li>
                         </c:when>
-                        <c:when test="${orderInfo.status eq '7'}">
+                        <c:when test="${orderInfo.status ==4}">
                             <li class="tj">未通过审核</li>
                         </c:when>
-                        <c:when test="${orderInfo.status eq '8'}">
+                        <c:when test="${orderInfo.status ==5}">
                             <li class="tj">账户支付失败</li>
                         </c:when>
+
                       </c:choose>
                </span></li>
             </ul>
@@ -123,7 +91,6 @@
                 <th>序号</th>
                 <th>查询对象</th>
                 <th>状态</th>
-                <th>&nbsp;</th>
             </tr>
             <c:forEach  var="obj" items="${objects.list}"   varStatus="status">
                 <tr class="sub_tr1">
@@ -131,30 +98,23 @@
                     <td>${obj.objCode } |  ${obj.objName}</td>
                     <td>
                         <c:choose>
-                            <c:when test="${obj.status<3}">
-                                <li class="tj">审核中</li>
-                            </c:when>
-                            <c:when test="${obj.status eq '3'}">
-                                <li class="tj">通过审核</li>
-                            </c:when>
-                            <c:when test="${obj.status eq '4'}">
+                            <c:when test="${obj.status ==1}">
                                 <li class="tj">查询中</li>
                             </c:when>
-                            <c:when test="${obj.status eq '5'}">
+                            <c:when test="${obj.status ==2}">
                                 <li class="tj">成功</li>
                             </c:when>
-                            <c:when test="${obj.status eq '6'}">
-                                <li class="tj">无查询结果</li>
+                            <c:when test="${obj.status ==3}">
+                                <li class="tj">无结果</li>
                             </c:when>
-                            <c:when test="${obj.status eq '7'}">
+                            <c:when test="${obj.status ==4}">
                                 <li class="tj">未通过审核</li>
                             </c:when>
-                            <c:when test="${obj.status eq '8'}">
+                            <c:when test="${obj.status ==5}">
                                 <li class="tj">账户支付失败</li>
                             </c:when>
                         </c:choose>
                     </td>
-                    <td> <c:if test="${obj.status eq '5'}"><a href="/order/result?id=${obj.id}&orderType=${orderInfo.orderType}">查看结果</a></c:if>&nbsp;</td>
                 </tr>
             </c:forEach>
 

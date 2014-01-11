@@ -1,7 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    response.setHeader("Cache-Control","no-cache"); //Forces caches to obtain a new copy of the page from the origin server
+    response.setHeader("Cache-Control","no-store"); //Directs caches not to store the page under any circumstance
+    response.setDateHeader("Expires", 0); //Causes the proxy cache to see the page as "stale"
+    response.setHeader("Pragma","no-cache"); //HTTP 1.0 backward compatibility
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+    <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+    <meta HTTP-EQUIV="expires" CONTENT="0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="/css/public.css" rel="stylesheet" type="text/css" />
     <link href="/css/sub.css" rel="stylesheet" type="text/css" />
@@ -10,7 +19,13 @@
     <script src="/images/dialog/dialog.js" type="text/javascript"></script>
 
     <title>人员查询</title>
-
+    <style type="text/css">
+        .addMonitor{float: left; width: 75px; text-align: center}
+        .removeMonitor{display: none; float: left; width:75px; text-align: center; color: #0e6999}
+        .deleteLine{text-align:center; width:35px; margin-left:10px; float:left;}
+        .input_for_addline{background:none; border:none; border-bottom:#666666 1px solid; width:150px;}
+        .select_for_addline{background:none;  width:150px; height: 20px;}
+    </style>
 
 </head>
 
@@ -33,8 +48,8 @@
                 <tr class="sub_tr1">
                    <!-- <th width="8%"><input type="checkbox" /></th>    -->
                     <th width="19%">证件类型*</th>
-                    <th width="19%">注册号*</th>
-                    <th width="20%"><p>企业名称*</p></th>
+                    <th width="19%">证件号*</th>
+                    <th width="20%"><p>名称*</p></th>
                     <th width="19%"><p>备 注</p></th>
                     <th width="15%">操 作</th>
                 </tr>
@@ -44,20 +59,20 @@
                     </td>     -->
 
                     <td valign="bottom">
-                        <select id="certificate1"  name="certificate1" style="background:none;  width:150px; height: 20px;">
+                        <select id="certificate1"  name="certificate1" class="select_for_addline">
                             <option value="身份证">身份证</option>
                         </select>
                     </td>
                     <td valign="bottom">
-                        <input type="text" id="groupcode1"  name="groupcode1" style="background:none; border:none; border-bottom:#666666 1px solid; width:150px;">
+                        <input type="text" id="groupcode1"  name="groupcode1" class="input_for_addline">
                     </td>
                     <td valign="bottom">
-                        <input type="text" id="groupname1"  name="groupname1" style="background:none; border:none; border-bottom:#666666 1px solid; width:150px;">
+                        <input type="text" id="groupname1"  name="groupname1" class="input_for_addline">
                     </td>
                     <td valign="bottom">
-                        <input type="text" id="groupremark1"  name="groupremark1"  style="background:none; border:none; border-bottom:#666666 1px solid; width:150px;">
+                        <input type="text" id="groupremark1"  name="groupremark1" class="input_for_addline">
                     </td>
-                    <td valign="bottom" align="center"><div style="width:120px; margin: auto"><input type="hidden" id="group1monitor" name="group1monitor" value="0"><a  href="javascript:monitoradd('group1')" id="group1add" style="float: left; width: 75px; text-align: center">加入监控</a> <a id="group1remove" href="javascript:monitorremove('group1')" style="display: none; float: left; width:75px; text-align: center">取消监控</a>  <a href="#" onclick="delrow(this)" style="float: left; width: 35px; text-align: center; margin-left: 10px;">删除</a></div></td>
+                    <td valign="bottom" align="center"><div style="width:120px; margin: auto"><input type="hidden" id="group1monitor" name="group1monitor" value="0"><a  href="javascript:monitoradd('group1')" id="group1add" class="addMonitor">加入监控</a> <a id="group1remove" href="javascript:monitorremove('group1')" class="removeMonitor">取消监控</a>  <a href="#" onclick="delrow(this)" class="deleteLine">删除</a></div></td>
                 </tr>
             </table>
             <!--p class="cxjg">本次查询条数：<span>2</span>条</p>
@@ -202,19 +217,19 @@
         var row=document.getElementById('gtb').insertRow(j);
         row.align='center';
         i++;
-        var z=row.insertCell(0);z.vAlign='bottom';
-        var y=row.insertCell(1);y.vAlign='bottom';
-        var x=row.insertCell(2);x.vAlign='bottom';
-        var w=row.insertCell(3);w.vAlign='bottom';
-        var v=row.insertCell(4);v.vAlign='bottom';
-        var u=row.insertCell(5);u.vAlign='bottom';
+     //   var z=row.insertCell(0);z.vAlign='bottom';
+        var y=row.insertCell(0);y.vAlign='bottom';
+        var x=row.insertCell(1);x.vAlign='bottom';
+        var w=row.insertCell(2);w.vAlign='bottom';
+        var v=row.insertCell(3);v.vAlign='bottom';
+        var u=row.insertCell(4);u.vAlign='bottom';
         u.align = "center";
-        z.innerHTML=' <input type="checkbox" name="checkbox'+i+'" value="'+i+'">';
-        y.innerHTML='<select id="certificate'+i+'"  name="certificate'+i+'" style="background:none;  width:150px; height: 20px;"> <option value="身份证">身份证</option> </select>';
-        x.innerHTML='<input type="text" id="groupcode'+i+'" name="groupcode'+i+'" style="background:none; height: 20px; border:none; border-bottom:#666666 1px solid; width:150px;">';
-        w.innerHTML='<input type="text" id="groupname'+i+'" name="groupname'+i+'"  style="background:none; height: 20px; border:none; border-bottom:#666666 1px solid; width:150px;">';
-        v.innerHTML='<input type="text" id="groupremark'+i+'" name="groupremark'+i+'"  style="background:none; height: 20px; border:none; border-bottom:#666666 1px solid; width:150px;">';
-        u.innerHTML='<div style="width:120px; margin:auto"><input type="hidden" id="group'+i+'monitor" name="group'+i+'monitor" value="0"> <a href="javascript:monitoradd(\'group'+i+'\')" id="group'+i+'add" style="float:left; width: 75px; text-align: center">加入监控</a> <a style="display:none; float:left;width:75px; text-align: center" id="group'+i+'remove"  href="javascript:monitorremove(\'group'+i+'\')">取消监控</a>  <a href="#" onclick="delrow(this)" style=" text-align:center; width:35px; margin-left:10px; float:left;">删除</a></div>';
+      //  z.innerHTML=' <input type="checkbox" name="checkbox'+i+'" value="'+i+'">';
+        y.innerHTML='<select id="certificate'+i+'"  name="certificate'+i+'" class="select_for_addline"> <option value="身份证">身份证</option> </select>';
+        x.innerHTML='<input type="text" id="groupcode'+i+'" name="groupcode'+i+'" class="input_for_addline">';
+        w.innerHTML='<input type="text" id="groupname'+i+'" name="groupname'+i+'" class="input_for_addline">';
+        v.innerHTML='<input type="text" id="groupremark'+i+'" name="groupremark'+i+'" class="input_for_addline">';
+        u.innerHTML='<div style="width:120px; margin:auto"><input type="hidden" id="group'+i+'monitor" name="group'+i+'monitor" value="0"> <a href="javascript:monitoradd(\'group'+i+'\')" id="group'+i+'add" class="addMonitor">加入监控</a> <a id="group'+i+'remove"  href="javascript:monitorremove(\'group'+i+'\')" class="removeMonitor">取消监控</a>  <a href="#" onclick="delrow(this)" class="deleteLine">删除</a></div>';
 
     }
 

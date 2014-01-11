@@ -11,7 +11,12 @@
 
     <script language="javascript" src="/js/1.js"> </script>
     <title>企业监控</title>
-
+    <style type="text/css">
+        .addMonitor{float: left; width: 75px; text-align: center}
+        .removeMonitor{display: none; float: left; width:75px; text-align: center; color: #0e6999}
+        .deleteLine{text-align:center; width:35px;}
+        .input_for_addline{background:none; border:none; border-bottom:#666666 1px solid; width:150px;}
+    </style>
 
 </head>
 
@@ -37,15 +42,15 @@
                 <tr align="center">
 
                     <td valign="bottom">
-                        <input type="text" id="groupcode1"  name="groupcode1" style="background:none; border:none; border-bottom:#666666 1px solid; width:150px;">
+                        <input type="text" id="groupcode1"  name="groupcode1" class="input_for_addline">
                     </td>
                     <td valign="bottom">
-                        <input type="text" id="groupname1"  name="groupname1" style="background:none; border:none; border-bottom:#666666 1px solid; width:150px;">
+                        <input type="text" id="groupname1"  name="groupname1" class="input_for_addline">
                     </td>
                     <td valign="bottom">
-                        <input type="text" id="groupremark1"  name="groupremark1"  style="background:none; border:none; border-bottom:#666666 1px solid; width:150px;">
+                        <input type="text" id="groupremark1"  name="groupremark1"  class="input_for_addline">
                     </td>
-                    <td valign="bottom" align="center"><div style="width:100%; text-align: center"> <a href="#" onclick="delrow(this)" >删除</a></div></td>
+                    <td valign="bottom" align="center"><div style="width:100%; text-align: center"> <a href="#" onclick="delrow(this)" class="deleteLine">删除</a></div></td>
                 </tr>
             </table>
             <!--p class="cxjg">本次查询条数：<span>2</span>条</p>
@@ -139,10 +144,10 @@
         var v=row.insertCell(3);v.vAlign='bottom';
         v.align = "center";
        // z.innerHTML=' <input type="checkbox" name="checkbox'+i+'" value="'+i+'">';
-        y.innerHTML='<input type="text" id="groupcode'+i+'" name="groupcode'+i+'" style="background:none; border:none; border-bottom:#666666 1px solid; width:150px;">';
-        x.innerHTML='<input type="text" id="groupname'+i+'" name="groupname'+i+'"  style="background:none; border:none; border-bottom:#666666 1px solid; width:150px;">';
-        w.innerHTML='<input type="text" id="groupremark'+i+'" name="groupremark'+i+'"  style="background:none; border:none; border-bottom:#666666 1px solid; width:150px;">';
-        v.innerHTML='<div style="width:100%; text-align: center"> <a href="#" onclick="delrow(this)">删除</a></div>';
+        y.innerHTML='<input type="text" id="groupcode'+i+'" name="groupcode'+i+'"  class="input_for_addline">';
+        x.innerHTML='<input type="text" id="groupname'+i+'" name="groupname'+i+'"   class="input_for_addline">';
+        w.innerHTML='<input type="text" id="groupremark'+i+'" name="groupremark'+i+'"  class="input_for_addline">';
+        v.innerHTML='<div style="width:100%; text-align: center"> <a href="#" onclick="delrow(this)" class="deleteLine" style="float:none">删除</a></div>';
 
     }
 

@@ -1,8 +1,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%
+    response.setHeader("Cache-Control","no-cache"); //Forces caches to obtain a new copy of the page from the origin server
+    response.setHeader("Cache-Control","no-store"); //Directs caches not to store the page under any circumstance
+    response.setDateHeader("Expires", 0); //Causes the proxy cache to see the page as "stale"
+    response.setHeader("Pragma","no-cache"); //HTTP 1.0 backward compatibility
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+    <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+    <meta HTTP-EQUIV="expires" CONTENT="0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="../css/public.css" rel="stylesheet" type="text/css" />
     <link href="../css/sub.css" rel="stylesheet" type="text/css" />
@@ -16,6 +25,8 @@
         table tr td{ padding-left: 5px;}
         .page ul{ width: 80%; float: left}
         .page ul li{ float: left; margin-left: 0px; margin-left: 5px; padding: 3px;}
+        .loadingback{Z-INDEX: 998; FILTER: alpha(opacity=60); LEFT: 0px; WIDTH: 100%; POSITION: absolute; TOP: 0px; HEIGHT: 100%; BACKGROUND-COLOR: #ffffff; opacity: 0.6}
+        .loading{ POSITION: absolute;Z-INDEX: 999;width:200px;height:18px; line-height: 18px;}
         -->
     </style>
 </head>
@@ -85,7 +96,25 @@
 
     </table>
 
-    <p> <a href="/order/createOrderByFile">生成订单</a>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <a href="/welcome.jsp">放弃</a></p>
+    <p> <a href="/order/createOrderByFile" onclick="waiting()">生成订单</a>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <a href="/welcome.jsp">放弃</a></p>
 </div>
+
+
+<script type="text/javascript">
+    function waiting()
+    {
+        var dialogMask = document.createElement("div");
+        dialogMask.className="loadingback";
+        document.body.appendChild(dialogMask);
+        dialogMask.style.height=document.body.clientHeight+"px";
+        var loading = document.createElement("div");
+        loading.className="loading";
+        document.body.appendChild(loading);
+        loading.innerHTML="<span><img src='/images/loading.gif'></span><span>正在处理，请稍候...</span>";
+        loading.style.left=(document.body.scrollWidth-58)/2;
+        loading.style.top=(document.body.scrollHeight-20)/2;
+    }
+
+</script>
 </body>
 </html>

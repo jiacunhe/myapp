@@ -42,7 +42,9 @@ public class OrderController {
     OrderService orderService;
 
     @RequestMapping("/group")
+
     public String group (HttpServletRequest request){
+
         request.setAttribute("businessTypeId","1");
         request.setAttribute("orderTypeId","1");
        return "/order/group.jsp";
@@ -88,7 +90,7 @@ public class OrderController {
 
 
     @RequestMapping("/search")
-    public String orderSearch (String type,String sday,String eday,String id,String submit,HttpServletRequest request){
+    public String orderSearch (String type,String sday,String eday,String code,String name,String submit,HttpServletRequest request){
         request.setAttribute("orderTypeList",orderService.selectOrderType());
 
         if(submit!=null){
@@ -96,32 +98,33 @@ public class OrderController {
 
             params.put("userId","1");
 
-            if(!"".equals(id)) {
-                params.put("id",id);
-            }else{
+            if(!"".equals(code))  params.put("code",code);
                 if( !"".equals(type))  params.put("type",type);
                 if( !"".equals(sday))  params.put("sday",sday);
                 if( !"".equals(eday))  params.put("eday",eday);
-            }
-            Map all = orderService.selectOrder(params);
-            params.put("orderStatus","'"+OrderStatus.结束+"','"+OrderStatus.未通过审核+"','"+OrderStatus.查询无果+"','"+OrderStatus.账户支付失败+"'");
-            Map done = orderService.selectOrder(params);
-            params.put("orderStatus","'"+OrderStatus.下单+"','"+OrderStatus.审核中+"','"+OrderStatus.通过审核+"','"+OrderStatus.进行中+"'");
-            Map undone = orderService.selectOrder(params);
-            params.put("orderStatus","'"+OrderStatus.查询无果+"'");
-            Map nothing = orderService.selectOrder(params);
+                if( !"".equals(name))  params.put("name",name);
 
-            request.setAttribute("all",all);
-            request.setAttribute("done",done);
-            request.setAttribute("undone",undone);
-            request.setAttribute("nothing",nothing);
+
+            params.put("businessType",1);
+            Map disposable = orderService.selectOrder(params);
+            params.put("businessType",2);
+            Map recyclable = orderService.selectOrder(params);
+
+           // Map all = orderService.selectOrder(params);
+           // params.put("orderStatus","'"+OrderStatus.查询无果+"'");
+           // Map nothing = orderService.selectOrder(params);
+           // request.setAttribute("all",all);
+
+            request.setAttribute("disposable",disposable);
+            request.setAttribute("recyclable",recyclable);
+
 
 
             request.setAttribute("type",type);
             request.setAttribute("sday",sday);
             request.setAttribute("eday",eday);
-            request.setAttribute("id",id);
-
+            request.setAttribute("code",code);
+            request.setAttribute("name",name);
         }
 
         return "/order/search.jsp";
@@ -130,37 +133,34 @@ public class OrderController {
 
 
     @RequestMapping(value="/searchForAjax", produces = {"application/json;charset=UTF-8"})
-    public @ResponseBody String searchByAjax (String type,String sday,String eday,String id,Integer page,String status,HttpServletRequest request){
+    public @ResponseBody String searchByAjax (String type,String sday,String eday,String code,String name,Integer page,String status,String businessType,HttpServletRequest request){
   //      System.out.println(page+"------------------------");
             HashMap params = new HashMap();
 
             params.put("userId","1");
 
-            if(!"".equals(id)) {
-                params.put("id",id);
+
+
+            if(!"".equals(code)) {
+                params.put("id",code);
             }else{
-                if( !"".equals(type))
-                    params.put("type",type);
-                if( !"".equals(sday))
-                    params.put("sday",sday);
-                if( !"".equals(eday))
-                    params.put("eday",eday);
+                if( !"".equals(type))  params.put("type",type);
+                if( !"".equals(sday))  params.put("sday",sday);
+                if( !"".equals(eday))  params.put("eday",eday);
+                if( !"".equals(name))  params.put("name",name);
             }
 
             params.put("page",page);
-            if(status==null || status.equals("all") ){
+            if(businessType==null || businessType.equals("all") ){
 
-            }else if("done".equals(status)){
-                params.put("orderStatus","'"+OrderStatus.结束+"','"+OrderStatus.未通过审核+"','"+OrderStatus.查询无果+"','"+OrderStatus.账户支付失败+"'");
-            }else if("undone".equals(status)){
-                params.put("orderStatus","'"+OrderStatus.下单+"','"+OrderStatus.审核中+"','"+OrderStatus.通过审核+"','"+OrderStatus.进行中+"'");
-            }else if("nothing".equals(status)){
-                params.put("orderStatus","'"+OrderStatus.查询无果+"'");
+            }else if("disposable".equals(businessType)){
+                params.put("businessType","1");
+            }else if("recyclable".equals(businessType)){
+                params.put("businessType","2");
             }
 
             Map res = orderService.selectOrder(params);
-            res.put("status",status);
-
+            res.put("businessType",businessType);
              return JSON.toJSONString(res);
     }
 
@@ -184,17 +184,17 @@ public class OrderController {
             String orderId = UUID.randomUUID().toString();
             String orderId2 = UUID.randomUUID().toString();
 
-            int a=0,b=0;
+            int a=0,b=0,c=0;
             List beans = new ArrayList();
 
 
             OrderDetail orderDetail;
             for(int i=0;i<code.length-1;i++){
-                if(!code[i].equals("")&& (monitor==null || monitor[i].equals("0"))){
+                if(!code[i].equals("")&& monitor!=null && monitor[i].equals("0")){
                     if(a==0){
-                        beans.add( new Order(orderId,businessType,orderType,new Timestamp(new Date().getTime()),userId,OrderStatus.下单,cycle));
+                        beans.add( new Order(orderId,businessType,orderType,new Timestamp(new Date().getTime()),userId,OrderStatus.查询中,cycle));
                     }
-                    orderDetail = new  OrderDetail( orderId, businessType+"", name[i],  code[i], null,OrderStatus.下单, remark[i]);
+                    orderDetail = new  OrderDetail( orderId, businessType+"", name[i],  code[i], null,OrderStatus.查询中, remark[i]);
                     if(certType!=null){
                                       orderDetail.setCertType(certType[i]);
                     }
@@ -202,22 +202,34 @@ public class OrderController {
                     a++;
                 } else if(!code[i].equals("")&&  monitor!=null&& monitor[i].equals("1")){
                     if(b==0){
-                        beans.add( new Order(orderId2,businessType+1,orderType+3,new Timestamp(new Date().getTime()),userId,OrderStatus.下单,cycle));
+                        beans.add( new Order(orderId2,businessType+1,orderType+3,new Timestamp(new Date().getTime()),userId,OrderStatus.查询中,cycle));
                     }
-                    orderDetail = new  OrderDetail( orderId2, (businessType+1)+"", name[i],  code[i], null,OrderStatus.下单, remark[i]);
+                    orderDetail = new  OrderDetail( orderId2, (businessType+1)+"", name[i],  code[i], null,OrderStatus.查询中, remark[i]);
                     if(certType!=null){
                         orderDetail.setCertType(certType[i]);
                     }
                     beans.add(orderDetail);
                     b++;
+                } else if(!code[i].equals("")&&  monitor==null){
+                    if(c==0){
+                        beans.add( new Order(orderId2,businessType,orderType,new Timestamp(new Date().getTime()),userId,OrderStatus.查询中,cycle));
+                    }
+                    orderDetail = new  OrderDetail( orderId2, businessType+"", name[i],  code[i], null,OrderStatus.查询中, remark[i]);
+                    if(certType!=null){
+                        orderDetail.setCertType(certType[i]);
+                    }
+                    beans.add(orderDetail);
+                    c++;
                 }
             }
             request.getSession().setAttribute("orderBeans",beans);
+
              request.setAttribute("orderTypeName",((Map)request.getServletContext().getAttribute("orderType")).get(orderType));
              request.setAttribute("businessTypeName",((Map)request.getServletContext().getAttribute("businessType")).get(businessType));
            // request.setAttribute("orderType",((Map)request.getServletContext().getAttribute("orderType")).get(orderType));
            // request.setAttribute("businessType",((Map)request.getServletContext().getAttribute("businessType")).get(businessType));
             request.setAttribute("countA",a);
+            request.setAttribute("countC",c);
             request.setAttribute("orderTypeNameA",((Map)request.getServletContext().getAttribute("orderType")).get(orderType));
             request.setAttribute("countB",b);
             request.setAttribute("orderTypeNameB",((Map)request.getServletContext().getAttribute("orderType")).get(orderType+3));
@@ -232,6 +244,7 @@ public class OrderController {
     public String confirm(HttpServletRequest request){
             Map map = new HashMap();
             List beans = (List)request.getSession().getAttribute("orderBeans");
+
             map.put(DataOperateType.INSERT,beans);
 
             try {
@@ -289,13 +302,13 @@ public class OrderController {
 
 
     @RequestMapping("/subsidiary")
-    public String subsidiary(String orderId,String type,Integer page,HttpServletRequest request){
+    public String subsidiary(String id,Integer page,Integer orderType,HttpServletRequest request){
 
         Map params = new HashMap();
-        params.put("orderId",orderId);
-        params.put("type",type);
+        params.put("orderDetailId",id);
+        params.put("orderType",orderType);
         params.put("page",page);
-        request.setAttribute("objects",orderService.selectByOrderId(params));
+        request.setAttribute("objects",orderService.selectMonitorResultList(params));
 
          return "/order/subsidiary.jsp";
     }
@@ -409,7 +422,7 @@ public class OrderController {
             String[] obj;
 
             List beans = new ArrayList();
-            beans.add( new Order(orderId,1,orderType,new Timestamp(new Date().getTime()),userId,OrderStatus.下单,null));
+            beans.add( new Order(orderId,1,orderType,new Timestamp(new Date().getTime()),userId,OrderStatus.查询中,null));
 
             for(int i=0;i<size;i++){
                   obj = (String[])upObjList.get(i);
@@ -417,9 +430,9 @@ public class OrderController {
 //                                String orderId,String monitorType,String objName, String objCode,String certType,OrderStatus status,String remark
 //                }
                 if(orderTypeStr.equals("1")||orderTypeStr.equals("3")){
-                    beans.add(new OrderDetail(orderId,"1",obj[1],obj[0],null,OrderStatus.下单,obj[2]));
+                    beans.add(new OrderDetail(orderId,"1",obj[1],obj[0],null,OrderStatus.查询中,obj[2]));
                 }else if(orderTypeStr.equals("2")){
-                    beans.add(new OrderDetail(orderId,"1",obj[1],obj[0],obj[3],OrderStatus.下单,obj[2]));
+                    beans.add(new OrderDetail(orderId,"1",obj[1],obj[0],obj[3],OrderStatus.查询中,obj[2]));
                 }
 
 

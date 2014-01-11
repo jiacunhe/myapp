@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.hyrt.saic.dao.OrderMapper" >
+
+
   <resultMap id="BaseResultMap" type="com.hyrt.saic.bean.order.Order" >
     <id column="id" property="id" jdbcType="VARCHAR" />
     <result column="userId" property="userId" jdbcType="VARCHAR" />
@@ -18,19 +20,18 @@
   </resultMap>
 
     <resultMap id="orderInfo" type="com.hyrt.saic.bean.order.OrderInfo">
-        <result column="id" property="id" jdbcType="VARCHAR" />
+        <result column="id" property="id" jdbcType="BIGINT" />
+        <result column="orderId" property="orderId" jdbcType="VARCHAR" />
         <result column="userId" property="userId" jdbcType="VARCHAR" />
-        <result column="orderType" property="orderType" jdbcType="VARCHAR" />
-        <result column="createTime" property="createTime" jdbcType="VARCHAR" />
+        <result column="orderType" property="orderType" jdbcType="INTEGER" />
+        <result column="monitorType" property="monitorType" jdbcType="VARCHAR" />
+        <result column="objCode" property="objCode" jdbcType="VARCHAR" />
+        <result column="objName" property="objName" jdbcType="VARCHAR" />
+        <result column="objCertType" property="objCertType" jdbcType="VARCHAR" />
         <result column="status" property="status" jdbcType="VARCHAR" />
-        <result column="total" property="total" jdbcType="INTEGER" />
-        <result column="doneNum" property="doneNum" jdbcType="INTEGER" />
-        <result column="undoneNum" property="undoneNum" jdbcType="INTEGER" />
-        <result column="payTime" property="payTime" jdbcType="VARCHAR" />
-        <result column="verifyTime" property="verifyTime" jdbcType="VARCHAR" />
-        <result column="finishTime" property="finishTime" jdbcType="VARCHAR" />
+        <result column="createTime" property="createTime" jdbcType="VARCHAR" />
+        <result column="cycle" property="cycle" jdbcType="INTEGER" />
         <result column="remark" property="remark" jdbcType="VARCHAR" />
-        <result column="orderTypeName" property="orderTypeName" jdbcType="VARCHAR" />
 
     </resultMap>
 
@@ -241,12 +242,15 @@
 
 
     <select id="selectOrderInfo" resultMap="orderInfo" parameterType="java.util.Map" >
-        SELECT o.id,o.userId,t.orderName orderType,o.createTime,o.status,
-                (SELECT COUNT(*) FROM t_order_detail WHERE orderId = o.id) total,
-                (SELECT COUNT(*) FROM t_order_detail WHERE orderId = o.id AND STATUS  ='5') doneNum
-        FROM t_order o LEFT JOIN t_order_type t ON t.id = o.orderType  where 1=1
-        <if test="id != null" >
-            and o.id = #{id,jdbcType=VARCHAR}
+        SELECT d.id,d.`orderId`,d.`monitorType`,d.`objCode`,d.`objName`,d.`certType` objCertType,d.`status`,d.`remark`,
+        o.`orderType`,DATE_FORMAT(o.createTime,'%Y-%m-%d %H:%i') createTime,o.`userId`,o.`cycle`,
+        t.`orderName` orderTypeName
+        FROM t_order_detail d,t_order o,t_order_type t WHERE d.`orderId`=o.`id` AND o.`orderType`=t.`id`
+        <if test="code != null" >
+            and d.objCode like '%${code}%'
+        </if>
+        <if test="name != null" >
+            and d.objName like '%${name}%'
         </if>
         <if test="type != null" >
             and o.orderType = #{type,jdbcType=VARCHAR}
@@ -260,45 +264,52 @@
         <if test="userId != null" >
             and o.userId = #{userId,jdbcType=VARCHAR}
         </if>
-        <if test="orderStatus != null" >
-            and o.status in (${orderStatus})
+        <if test="status != null" >
+            and d.status = #{status,jdbcType=VARCHAR}
         </if>
-        order by createTime desc limit #{cursor,jdbcType=INTEGER} ,#{length,jdbcType=INTEGER}
+
+        <if test="businessType != null" >
+            and d.monitorType= #{businessType,jdbcType=VARCHAR}
+        </if>
+        order by createTime,id desc limit #{cursor,jdbcType=INTEGER} ,#{length,jdbcType=INTEGER}
 
     </select>
 
-    <select id="selectOrderInfoByOrderId" resultMap="orderInfo" parameterType="java.lang.String" >
+  <select id="selectOrderInfoByOrderId" resultType="java.util.Map" parameterType="java.lang.String" >
         SELECT o.id,o.userId,o.orderType,t.orderName orderTypeName,o.createTime,o.status,o.payTime,o.verifyTime,o.finishTime,o.remark,
-        (SELECT COUNT(*) FROM t_order_detail WHERE orderId = o.id) total,
-        (SELECT COUNT(*) FROM t_order_detail WHERE orderId = o.id AND STATUS  ='5') doneNum
+        (SELECT COUNT(*) FROM t_order_detail WHERE orderId = o.id) total
         FROM t_order o LEFT JOIN t_order_type t ON t.id = o.orderType  where o.id = #{_parameter,jdbcType=VARCHAR}
     </select>
 
 
     <select id="selectCount" resultType="java.lang.Integer" parameterType="java.util.Map" >
-      select count(*) from(  SELECT o.id,o.userId,t.orderName,o.createTime,o.status,
-        (SELECT COUNT(*) FROM t_order_detail WHERE orderId = o.id) total,
-        (SELECT COUNT(*) FROM t_order_detail WHERE orderId = o.id AND STATUS ='5') doneNum
-        FROM t_order o LEFT JOIN t_order_type t ON t.id = o.orderType where 1=1
-        <if test="id != null" >
-            and o.id = #{id,jdbcType=VARCHAR}
+        SELECT count(*)
+        FROM t_order_detail d,t_order o,t_order_type t WHERE d.`orderId`=o.`id` AND o.`orderType`=t.`id`
+        <if test="code != null" >
+            and d.objCode like '%${code}%'
+        </if>
+        <if test="name != null" >
+            and d.objName like '%${name}%'
         </if>
         <if test="type != null" >
             and o.orderType = #{type,jdbcType=VARCHAR}
         </if>
         <if test="sday != null" >
-            <![CDATA[  and DATE_FORMAT(o.createTime,'%Y-%m-%d') >= #{sday,jdbcType=VARCHAR}    ]]>
+            <![CDATA[  and DATE_FORMAT(o.createTime,'%Y-%m-%d') >= #{sday,jdbcType=VARCHAR}]]>
         </if>
         <if test="eday != null" >
-            <![CDATA[   and DATE_FORMAT(o.createTime,'%Y-%m-%d')  <= #{eday,jdbcType=VARCHAR}  ]]>
+            <![CDATA[  and DATE_FORMAT(o.createTime,'%Y-%m-%d') <=  #{eday,jdbcType=VARCHAR}]]>
         </if>
         <if test="userId != null" >
             and o.userId = #{userId,jdbcType=VARCHAR}
         </if>
-        <if test="orderStatus != null" >
-            and o.status in (${orderStatus})
+        <if test="status != null" >
+            and d.status  =#{status,jdbcType=VARCHAR}
         </if>
-        )  ccc
+
+        <if test="businessType != null" >
+            and d.monitorType =#{businessType,jdbcType=VARCHAR}
+        </if>
 
     </select>
 
