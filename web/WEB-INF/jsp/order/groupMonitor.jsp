@@ -12,8 +12,6 @@
     <script language="javascript" src="/js/1.js"> </script>
     <title>企业监控</title>
     <style type="text/css">
-        .addMonitor{float: left; width: 75px; text-align: center}
-        .removeMonitor{display: none; float: left; width:75px; text-align: center; color: #0e6999}
         .deleteLine{text-align:center; width:35px;}
         .input_for_addline{background:none; border:none; border-bottom:#666666 1px solid; width:150px;}
     </style>

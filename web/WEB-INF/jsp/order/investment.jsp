@@ -11,7 +11,10 @@
 
     <script language="javascript" src="/js/1.js"> </script>
     <title>企业对外投资查询</title>
-
+    <style type="text/css">
+        .deleteLine{text-align:center; width:35px;}
+        .input_for_addline{background:none; border:none; border-bottom:#666666 1px solid; width:150px;}
+    </style>
 
 </head>
 
@@ -42,15 +45,15 @@
                         <input type="checkbox" id="checkbox1" value="1">
                     </td>   -->
                     <td valign="bottom">
-                        <input type="text" id="groupcode1"  name="groupcode1" style="background:none; border:none; border-bottom:#666666 1px solid; width:150px;">
+                        <input type="text" id="groupcode1"  name="groupcode1" class="input_for_addline">
                     </td>
                     <td valign="bottom">
-                        <input type="text" id="groupname1"  name="groupname1" style="background:none; border:none; border-bottom:#666666 1px solid; width:150px;">
+                        <input type="text" id="groupname1"  name="groupname1"  class="input_for_addline">
                     </td>
                     <td valign="bottom">
-                        <input type="text" id="groupremark1"  name="groupremark1"  style="background:none; border:none; border-bottom:#666666 1px solid; width:150px;">
+                        <input type="text" id="groupremark1"  name="groupremark1"  class="input_for_addline">
                     </td>
-                    <td valign="bottom"><div style="width:100%;text-align: center;"> <input type="hidden" id="group1monitor" name="group1monitor" value="0"><a href="#" onclick="delrow(this)">删除</a></div></td>
+                    <td valign="bottom"><div style="width:100%;text-align: center;"> <input type="hidden" id="group1monitor" name="group1monitor" value="0"><a href="#" onclick="delrow(this)" class="deleteLine">删除</a></div></td>
                 </tr>
             </table>
             <!--p class="cxjg">本次查询条数：<span>2</span>条</p>
