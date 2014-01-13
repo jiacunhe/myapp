@@ -28,25 +28,19 @@
 
 <div class="ht_content_rightnr">
     <div class="ht_yemei">
-        <p>您当前所在位置：<a href="#">首页</a> >> <a href="#">系统管理</a> >> <span>套餐制定</span></p>
+        <p>您当前所在位置：<a href="#">首页</a> >> <a href="#">个人中心</a> >> <span>套餐分配</span></p>
     </div>
     <div class="ht_sub_nr1">
         <h4 class="ht_sub_title0"><img src="../images/ht_ico06.png" /><p>新增</p></h4>
 
         <form action="/package/insert"  method="post" class="ht_sub_form5">
-
+            <span><p>用户名称：</p>${userId}</span>
+            <span><p>套餐类型：</p>私有套餐</span>
             <span><p>套餐名称：</p><input id="packageName" name="packageName" type="text" class="ht_sub_input11"/></span>
             <span><p>套餐价格：</p><input id="price" name="price" type="text" class="ht_sub_input11"/>元</span>
-                             <input id="userId" name="userId" type="hidden"/>
+            <input id="type" name="type" type="hidden" value="private"/>
+            <input id="userId" name="userId" type="hidden" value="${userId}"/>
 
-            <span><p>套餐类型：</p><select  name="type" id="type">
-                                    <option value="public">
-                                        公有套餐
-                                    </option>
-                                    <option value="vip">
-                                        大客户套餐
-                                    </option>
-                                </select></span>
                         <span class="neirong"><p>套餐内容：</p>
                         	<div class="ht_sub_tcnr">
                                 <ul>

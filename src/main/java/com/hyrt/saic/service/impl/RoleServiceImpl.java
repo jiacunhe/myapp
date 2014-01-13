@@ -28,7 +28,7 @@ public class RoleServiceImpl extends BaseServiceImpl<Role> implements RoleServic
     public Role buildEntity(Object id) {
         Role role = new Role();
         if (id != null) {
-            role.setId((int) id);
+            role.setId((Integer) id);
         }
         return role;
     }
