@@ -19,7 +19,7 @@
         .nowpage{ color:#000000; font-weight: 600;}
         .flleft{text-align: left; padding-left: 4px;}
     </style>
-    <title>我的查询</title>
+    <title>用户查询</title>
 
     <script type="text/javascript">
         window.onload = function(){   new JsDatePick({ useMode:2,  target:"sday",  dateFormat:"%Y-%m-%d" });  new JsDatePick({  useMode:2, target:"eday",  dateFormat:"%Y-%m-%d" }); }
@@ -47,7 +47,7 @@
     <div class="content_right_nr" style=" margin-top:16px;">
         <h4 class="sub_title1"><p class="sub_p5">搜索</p></h4>
         <div style="height:120px;">
-            <form method="post" action="/order/search" class="sub_form3">
+            <form method="post" action="/orderManage/search" class="sub_form3">
 
                 <p style="width: 80px">查询时间：</p>
                 <input type="text"  class="sub_input01" style="background:url(/images/ico013.jpg) right no-repeat;width: 160px;  " name="sday" id="sday" value="${sday}" >
@@ -64,10 +64,12 @@
                 </span>
 
                 <div class="clear"></div>
-                <p style="width: 80px">证件号：</p>
+                <p style="width: 80px;"> 用户帐号：</p>
+                <input type="text" name="userId" value="${userId}" class="sub_input01" style="width: 160px"/>
+<%--                <p style="width: 80px">证件号：</p>
                 <input type="text" name="code" value="${code}" class="sub_input01" style="width: 160px"/>
                 <p style="width: 50px;"> 名称：</p>
-                <input type="text" name="name" value="${name}" class="sub_input01" style="width: 160px"/>
+                <input type="text" name="name" value="${name}" class="sub_input01" style="width: 160px"/>--%>
                 <input type="hidden" name="submit" value="1">
                 <input type="submit" value="查询"  class="but_cx0" style="margin-left:30px"/>
             </form>
@@ -103,17 +105,19 @@
 <dd style="display:none;" id="content2">
     <table width="749" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1">
         <tr class="sub_tr1">
-            <th width="10%">序号</th>
-            <th width="12%">查询类型</th>
-            <th width="42%">查询对象</th>
-            <th width="16%">查询时间</th>
-            <th width="12%">状态</th>
-            <th width="8%">数据</th>
+            <th width="7%">序号</th>
+            <th width="11%">用户ID</th>
+            <th width="10%">查询类型</th>
+            <th width="41%">查询对象</th>
+            <th width="14%">查询时间</th>
+            <th width="10%">状态</th>
+            <th width="7%">数据</th>
         </tr>
 
         <c:forEach  var="obj" items="${disposable.list}"   varStatus="status">
             <tr style="text-align: center">
                 <td>${(disposable.page-1)*5+status.count}</td>
+                <td>${obj.userId}</td>
                 <td>${obj.orderTypeName}</td>
                 <td  class="flleft">${obj.objCode} | ${obj.objName}</td>
                 <td>${obj.createTime}</td>
@@ -130,7 +134,7 @@
 
         </c:forEach>
         <tr class="page">
-            <td colspan="6">
+            <td colspan="7">
                 <ul>
                     <li><a href="javascript:search('disposable',${disposable.page -1})">Prev</a></li>
                     <c:if test="${disposable.page <= 9}">
@@ -159,17 +163,19 @@
 <dd style="display:none;" id="content3">
     <table width="749" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1">
         <tr class="sub_tr1">
-            <th width="7%">序号</th>
+            <th width="5%">序号</th>
+            <th width="10%">用户ID</th>
             <th width="10%">查询类型</th>
-            <th width="42%">查询对象</th>
-            <th width="14%">查询时间</th>
-            <th width="13%">状态</th>
-            <th width="7%">动态</th>
-            <th width="7%">数据</th>
+            <th width="40%">查询对象</th>
+            <th width="13%">查询时间</th>
+            <th width="10%">状态</th>
+            <th width="6%">动态</th>
+            <th width="6%">数据</th>
         </tr>
         <c:forEach  var="obj" items="${recyclable.list}"   varStatus="status">
             <tr style="text-align: center">
                 <td>${(recyclable.page-1)*5+status.count}</td>
+                <td>${obj.userId}</td>
                 <td>${obj.orderTypeName}</td>
                 <td class="flleft">${obj.objCode} | ${obj.objName}</td>
                 <td>${obj.createTime}</td>
@@ -209,7 +215,7 @@
         </c:forEach>
 
         <tr class="page">
-            <td colspan="7">
+            <td colspan="8">
                 <ul>
                     <li><a href="javascript:search('recyclable',${recyclable.page -1})">Prev</a></li>
                     <c:if test="${recyclable.page <= 9}">
@@ -299,10 +305,10 @@
     //var statuscode;
     function search(monitor,page){
      //   statuscode = status;
-        var url = '/order/searchForAjax';
+        var url = '/orderManage/searchForAjax';
         request.open("POST", url, "true");
 
-        var post = "type=${type}&eday=${eday}&sday=${sday}&code=${code}&submit=true&page="+page+"&status=${status}&name=${name}&businessType="+monitor;
+        var post = "userId=${userId}&type=${type}&eday=${eday}&sday=${sday}&code=${code}&submit=true&page="+page+"&status=${status}&name=${name}&businessType="+monitor;
         //    post = encodeURI(post);
         //    post = encodeURI(post);
         request.setRequestHeader("Cache-Control","no-cache");
@@ -335,18 +341,20 @@
         var content=' <table width="749" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1"> ';
 
         content+='<tr class="sub_tr1">';
-        content+='<th width="10%">序号</th>';
-        content+='<th width="12%">查询类型</th>';
-        content+='<th width="42%">查询对象</th>';
-        content+='<th width="16%">查询时间</th>';
-        content+='<th width="12%">状态</th>';
-        content+='<th width="8%">数据</th>';
+        content+='<th width="7%">序号</th>';
+        content+='<th width="11%">用户ID</th>';
+        content+='<th width="10%">查询类型</th>';
+        content+='<th width="41%">查询对象</th>';
+        content+='<th width="14%">查询时间</th>';
+        content+='<th width="10%">状态</th>';
+        content+='<th width="7%">数据</th>';
         content+='</tr>';
 
 
         for(var i=0;i<obj.list.length;i++){
             content+='<tr style="text-align: center">';
             content+='<td>'+((obj.page-1)*5+i)+'</td>';
+            content+='<td>'+obj.list[i].userId+'</td>';
             content+='<td>'+obj.list[i].orderTypeName+'</td>';
             content+='<td class="flleft">'+obj.list[i].objCode+'| '+obj.list[i].objName+'</td>';
             content+='<td>'+obj.list[i].createTime+'</td>';
@@ -364,7 +372,7 @@
 
 
         content+='<tr class="page">';
-        content+='<td colspan="6">';
+        content+='<td colspan="7">';
         content+='<ul>';
         content+='<li><a href="javascript:search(\''+obj.businessType+'\','+(obj.page-1)+')">Prev</a></li>';
         if(obj.page<=9){
@@ -398,25 +406,27 @@
         var content=' <table width="749" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1"> ';
 
         content+='<tr class="sub_tr1">';
-        content+='<th width="7%">序号</th>';
+        content+='<th width="5%">序号</th>';
+        content+='<th width="10%">用户ID</th>';
         content+='<th width="10%">查询类型</th>';
-        content+='<th width="42%">查询对象</th>';
-        content+='<th width="14%">查询时间</th>';
-        content+='<th width="13%">状态</th>';
-        content+='<th width="7%">动态</th>';
-        content+='<th width="7%">数据</th>';
+        content+='<th width="40%">查询对象</th>';
+        content+='<th width="13%">查询时间</th>';
+        content+='<th width="10%">状态</th>';
+        content+='<th width="6%">动态</th>';
+        content+='<th width="6%">数据</th>';
         content+='</tr>';
 
 
         for(var i=0;i<obj.list.length;i++){
             content+='<tr style="text-align: center">';
             content+='<td>'+((obj.page-1)*5+i)+'</td>';
+            content+='<td>'+obj.list[i].userId+'</td>';
             content+='<td>'+obj.list[i].orderTypeName+'</td>';
             content+='<td class="flleft">'+obj.list[i].objCode+'| '+obj.list[i].objName+'</td>';
             content+='<td>'+obj.list[i].createTime+'</td>';
             content+='<td>'+obj.list[i].statusName+'</td>';
             if(obj.list[i].status == '2'|| obj.list[i].status == '6'){
-                content+=' <td><a href="javascript:openDetail('+obj.list[i].id+','+obj.list[i].orderType+')"><img src="/images/kaka.png" alt="查看" title="查看" height="20" width="20"></a></td>';
+                content+='<td> <a href="javascript:openDetail('+obj.list[i].id+','+obj.list[i].orderType+')"><img src="/images/kaka.png" alt="查看" title="查看" height="20" width="20"></a></td>';
             }else{
                 content+='<td><img src="/images/nomessage.png" alt="查看" title="查看" height="20" width="20"></td>';
             }
@@ -432,7 +442,7 @@
 
 
         content+='<tr class="page">';
-        content+='<td colspan="7">';
+        content+='<td colspan="8">';
         content+='<ul>';
         content+='<li><a href="javascript:search(\''+obj.businessType+'\','+(obj.page-1)+')">Prev</a></li>';
         if(obj.page<=9){

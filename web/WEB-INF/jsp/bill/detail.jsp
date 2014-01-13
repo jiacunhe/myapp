@@ -22,74 +22,32 @@
 
 
 
-    <div id="woookaka" class="content_right_nr">
-        <c:if test="${!empty privatePackage}">
-        <h4 class="sub_title1"><p class="sub_p2">我的专属资费信息</p></h4>
-        <ul>
-           <li><span>${privatePackage.packageName}</span></li>
-            <li>价格：<span>${privatePackage.price}</span></li>
-            <li>可用查询条数：<span>${privatePackage.b1q}</span> 次</li>
-            <li>可用监控条数：<span>${privatePackage.b2q}</span> 次/1年</li>
-        </ul>
-        </c:if>
-        <c:if test="${!empty monthlyPackage}">
-        <h4 class="sub_title1"><p class="sub_p2">我的包月套餐定制</p></h4>
-        <ul>
-            <li><span>${monthlyPackage.packageName}</span></li>
-            <li>含查询条数：<span>${monthlyPackage.b1q}</span> 次</li>
-            <li>含监控条数：<span>${monthlyPackage.b2q}</span> 次/1年</li>
-        </ul>
-        </c:if>
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     <div class="content_right_nr">
 
-            <dl class="sub_dl2">
-                <dt><h4 class="sub_title1" id="select_table" onclick="tabCard(); return false;" >
+        <dl class="sub_dl2">
+            <dt><h4 class="sub_title1" id="select_table" onclick="tabCard(); return false;" >
 
-                <a id="searchResultTab1" href="#">充值购买记录</a>
-                <a id="searchResultTab2" href="#">包月套餐记录</a>
-            </h4></dt>
+            <a id="searchResultTab1" href="#">充值购买记录</a>
+            <a id="searchResultTab2" href="#">包月套餐记录</a>
+        </h4></dt>
 
 
 
-                <div class="sub_nr">
+            <div class="sub_nr">
 
-                    <dd style="display:block;" id="content">
-                    </dd>
-                </div>
+                <dd style="display:block;" id="content">
+                </dd>
+            </div>
 
-            </dl>
+        </dl>
 
 
 
         <%--<h4 class="sub_title1" id="select_table" onclick="tabCard(); return false;">--%>
-            <%--<a id="searchResultTab1" href="#">充值购买记录</a>--%>
-            <%--<a id="searchResultTab2" href="#">包月套餐记录</a>--%>
+        <%--<a id="searchResultTab1" href="#">充值购买记录</a>--%>
+        <%--<a id="searchResultTab2" href="#">包月套餐记录</a>--%>
         <%--</h4>--%>
 
         <div  id="content1" style="display: none">
@@ -111,15 +69,15 @@
                 </tr>
 
                 <c:forEach  var="obj" items="${relist}"   varStatus="status">
-                <tr align="center" <c:if test="${status.count%2==0}">class="sub_tr1"</c:if> >
-                    <td>${status.count}</td>
-                    <td>${obj.chargeTime}</td>
-                    <td>${obj.amount}</td>
-                    <td>${obj.packageName}</td>
-                    <td>${obj.chargeType} | ${obj.returnResult}</td>
-                </tr>
+                    <tr align="center" <c:if test="${status.count%2==0}">class="sub_tr1"</c:if> >
+                        <td>${status.count}</td>
+                        <td>${obj.chargeTime}</td>
+                        <td>${obj.amount}</td>
+                        <td>${obj.packageName}</td>
+                        <td>${obj.chargeType} | ${obj.returnResult}</td>
+                    </tr>
                 </c:forEach>
-             </table>
+            </table>
         </div>
 
         <div  id="content2" style="display: none">
@@ -136,12 +94,12 @@
                 <tr class="sub_tr1">
                     <th>序号</th>
                     <th>类型</th>
-<%--                    <th>客户账号</th>
-                    <th>客户姓名</th>--%>
+                    <%--                    <th>客户账号</th>
+                                        <th>客户姓名</th>--%>
                     <th>月份</th>
                     <th>分配者</th>
                     <th>查询(包/用条数)</th>
-                    <th>监控(包/用条数)</th>
+                  <%--  <th>监控(包/用条数)</th>--%>
 
 
                 </tr>
@@ -150,18 +108,61 @@
                     <tr align="center" <c:if test="${status.count%2==0}">class="sub_tr1"</c:if> >
                         <td>${status.count}</td>
                         <td>包月</td>
-                  <%--      <td></td>
-                        <td></td>--%>
+                            <%--      <td></td>
+                                  <td></td>--%>
                         <td>${obj.yearMonth}</td>
                         <td>${obj.assignorName}</td>
                         <td>${obj.b1q} / ${obj.b1uq}</td>
-                        <td>${obj.b2q} / ${obj.b2uq}</td>
+                  <%--      <td>${obj.b2q} / ${obj.b2uq}</td>--%>
                     </tr>
                 </c:forEach>
             </table>
         </div>
 
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="woookaka" class="content_right_nr">
+        <c:if test="${!empty privatePackage}">
+        <h4 class="sub_title1"><p class="sub_p2">我的专属资费信息</p></h4>
+        <ul>
+           <li><span>${privatePackage.packageName}</span></li>
+            <li>价格：<span>${privatePackage.price}</span></li>
+            <li>可用查询条数：<span>${privatePackage.b1q}</span> 次</li>
+            <li>可用监控条数：<span>${privatePackage.b2q}</span> 次/1年</li>
+        </ul>
+        </c:if>
+        <c:if test="${!empty monthlyPackage}">
+        <h4 class="sub_title1"><p class="sub_p2">我的包月套餐定制</p></h4>
+        <ul>
+            <li><span>${monthlyPackage.packageName}</span></li>
+            <li>含查询条数：<span>${monthlyPackage.b1q}</span> 次</li>
+         <%--   <li>含监控条数：<span>${monthlyPackage.b2q}</span> 次/1年</li>--%>
+        </ul>
+        </c:if>
+    </div>
+
+
+
+
 
 </div>
 
