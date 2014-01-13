@@ -25,11 +25,10 @@
         <img src="${basePath}/manage/images/ht_logo.png" class="ht_logo"/>
 
         <div class="ht_top_xx">
-            <p>当前用户：<span>${user.username}</span></p>
+            <p>当前用户：<span>${manage.username}</span></p>
         </div>
         <div class="ht_top_button">
-            <a href="#"><img src="${basePath}/manage/images/ht_xgmm.png"/></a><a href="#"><img
-                src="${basePath}/manage/images/ht_tc.png"/></a>
+            <a href="#"><img src="${basePath}/manage/images/ht_xgmm.png"/></a><a href="#"><img src="${basePath}/manage/images/ht_tc.png"/></a>
         </div>
     </div>
 </div>

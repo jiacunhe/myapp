@@ -53,4 +53,6 @@ public interface UserService extends BaseService<User> {
     void lock(User user);
 
     void unlock(User user);
+
+    boolean checkUserId(String userId);
 }

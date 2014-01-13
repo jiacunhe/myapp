@@ -35,6 +35,13 @@ border-right:1px solid #c2c8d0;}
 .ht_bottom_content{ width:1000px; height:41px; margin:0px auto; text-align:center;}
 .ht_bottom_content p{ color:#5db1e8; line-height:41px;}
 
+form label.error {
+    color: Red;
+    font-size: 13px;
+    margin-left: 5px;
+    padding-left: 16px;
+}
+
 
 
 

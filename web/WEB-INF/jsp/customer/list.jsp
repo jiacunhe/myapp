@@ -5,7 +5,7 @@
 <head>
     <%@ include file="/WEB-INF/jsp/manage/commons.jspf" %>
     <title>客户管理</title>
-    <link rel="stylesheet" type="text/css" media="all" href="/css/jsDatePick_ltr.min.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="/css/jsDatePick_ltr.min.css"/>
     <script type="text/javascript" src="/js/jsDatePick.min.1.3.js"></script>
     <script type="text/javascript">
         function refreshQuery(more) {
@@ -20,30 +20,42 @@
             }
             window.document.forms[0].queryType.value = more;
         }
-        window.onload=function() {
+        window.onload = function () {
             new JsDatePick({ useMode: 2, target: "startTime", dateFormat: "%Y-%m-%d" });
             new JsDatePick({ useMode: 2, target: "endTime", dateFormat: "%Y-%m-%d" });
         }
         $(document).ready(function () {
             var more = ${queryType};
             refreshQuery(more);
-            $("#status").click(function () {
+            $("#toggle").click(function () {
                 more = !more;
                 refreshQuery(more);
+            });
+            $("#s_unlock").change(function () {
+                if ($(this).attr("checked")) {
+                    $("#status").attr("checked", true);
+                } else {
+                    $("#status").removeAttr("checked");
+                }
+            });
+            $("#status").change(function () {
+                if ($(this).attr("checked")) {
+                    $("#s_unlock").attr("checked", true);
+                } else {
+                    $("#s_unlock").removeAttr("checked");
+                }
             });
             $("#searchId").click(function () {
                 window.document.forms[0].queryType.value = false;
                 window.document.forms[0].userId.value = $("#condition").val();
                 window.document.forms[0].username.value = "";
                 window.document.forms[0].pageNo.value = 1;
-                window.document.forms[0].status.value = $("#s_unlock").attr("checked");
                 window.document.forms[0].submit();
             });
             $("#searchName").click(function () {
                 window.document.forms[0].queryType.value = false;
                 window.document.forms[0].userId.value = "";
                 window.document.forms[0].username.value = $("#condition").val();
-                window.document.forms[0].status.value = $("#s_unlock").attr("checked");
                 window.document.forms[0].pageNo.value = 1;
                 window.document.forms[0].submit();
             });
@@ -55,9 +67,11 @@
             function showOperation(op) {
                 $(op).parent().removeAttr("style");
             }
+
             function hideOperation(op) {
                 $(op).parent().attr("style", "display:none");
             }
+
             $("input[type='checkbox'][list='true']").attr("checked", false);
             hideOperation($("#edit"));
             hideOperation($("#delete"));
@@ -68,7 +82,6 @@
             $("input[type='checkbox'][list='true']").each(function () {
                 $(this).change(function () {
                     $("input[type='checkbox'][list='true']").attr("checked", false);
-                    $(this).attr("checked", true);
                     showOperation($("#edit"));
                     showOperation($("#delete"));
                     showOperation($("#detail"));
@@ -81,6 +94,7 @@
                         hideOperation($("#lock"));
                         showOperation($("#unlock"))
                     }
+                    $(this).attr("checked", "checked");
                 });
             });
 
@@ -190,14 +204,15 @@
 
 <!--content-->
 
-<div class="ht_content_rightnr">
+<div class="ht_content_rightnr" style="position: relative">
     <div class="ht_yemei">
         <p>您当前所在位置：<a href="#">首页</a> >> <span>客户管理</span></p>
     </div>
     <div class="ht_kongbai"></div>
     <div class="ht_rtbut">
         <ul>
-            <li><a id="refresh" href="javascript: window.document.forms[0].submit();"><img src="${basePath}/manage/images/ht_ico012.png"/>
+            <li><a id="refresh" href="javascript: window.document.forms[0].submit();"><img
+                    src="${basePath}/manage/images/ht_ico012.png"/>
 
                 <p>刷 新</p></a></li>
             <li>
@@ -241,7 +256,7 @@
     <div class="ht_sub_nr1">
         <h4 class="ht_sub_title0"><img src="${basePath}/manage/images/ht_ico09.png"/>
 
-            <p id="status" style="cursor:pointer;">显示高级搜索</p></h4>
+            <p id="toggle" style="cursor:pointer;">显示高级搜索</p></h4>
         <form method="get" action="/customer/list" class="ht_sub_form3">
             <input type="hidden" id="queryType" name="queryType" value="false"/>
             <input type="hidden" id="pageNo" name="pageNo" value="1"/>
@@ -263,10 +278,10 @@
                 <input type="text" name="username" value="${form.username}" class="ht_sub_input01"/>
 
                 <p>账户类型：</p>
-                        <span class="ht_span03"><select name="type" class="ht_sub_input013">
+                        <span class="ht_span03"><select name="paymentRule" class="ht_sub_input013">
                             <option value="">全部</option>
                             <c:forEach items="${paymentRules}" var="item">
-                                <option value="${item}">${item.desc}</option>
+                                <option value="${item}" ${form.paymentRule == item ? 'selected' : ''}>${item.desc}</option>
                             </c:forEach>
                         </select></span><br/>
 
@@ -275,16 +290,21 @@
 
                 <p>联系电话：</p>
                 <input type="text" name="telephone" value="${form.telephone}" class="ht_sub_input01"/>
-                <input type="checkbox" name="status" ${form.status == 'NORMAL' ? 'checked' : ''} class="ht_sub_input7"
+                <input type="checkbox" id="status" name="status" ${form.status == 'NORMAL' ? 'checked' : ''}
+                       class="ht_sub_input7"
                        style="margin-left:10px; margin-right: 0px; margin-top: 8px"/>
 
                 <p style="margin-top:2px; width:200px; text-align:left;">只显示未锁定用户</p>
                 <br/>
+
                 <div style="position: absolute;">
-                <p>注册时间：</p>
-                <input type="text" id="startTime" readonly name="startTime" value="${form.startTime}" class="ht_sub_input01" />
-                <span style="float:left; margin:0px 10px 0px 0px;">至</span>
-                <input type="text" id="endTime" readonly name="endTime" value="${form.endTime}" class="ht_sub_input01"/></div><br/>
+                    <p>注册时间：</p>
+                    <input type="text" id="startTime" readonly name="startTime" value="${form.startTime}"
+                           class="ht_sub_input01"/>
+                    <span style="float:left; margin:0px 10px 0px 0px;">至</span>
+                    <input type="text" id="endTime" readonly name="endTime" value="${form.endTime}"
+                           class="ht_sub_input01"/></div>
+                <br/>
                 <input type="button" id="searchAll" value="开始查询" class="ht_but_cx0"
                        style="margin-top: 15px; margin-left: 80px"/>
             </div>
@@ -305,13 +325,17 @@
             </tr>
             <c:forEach items="${page.results}" var="customer">
                 <tr align="center">
-                    <td><input type="checkbox" list="true" id="${customer.userId}" status="${customer.status}" username="${customer.username}"/></td>
+                    <td><input type="checkbox" list="true" id="${customer.userId}" status="${customer.status}"
+                               username="${customer.username}"/></td>
                     <td>${customer.paymentRule.desc}</td>
                     <td>${customer.userId}</td>
                     <td>${customer.username}</td>
                     <td>${customer.telephone}</td>
                     <td>${customer.regTime}</td>
-                    <td>${customer.creatorName}</td>
+                    <td>
+                        <c:if test="${customer.isChild}">
+                        <a href="/customer/show/UI?_userId=${customer.creatorId}">${customer.creatorId}</a>
+                        </c:if></td>
                     <td>${customer.status.desc}</td>
                 </tr>
             </c:forEach>

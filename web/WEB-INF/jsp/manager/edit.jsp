@@ -5,6 +5,34 @@
 <head>
     <%@ include file="/WEB-INF/jsp/manage/commons.jspf" %>
     <title>管理员信息修改</title>
+    <script type="text/javascript">
+        $().ready(function () {
+            $.validator.addMethod("chinese", function (value, element) {
+                var chinese = /^[\u4e00-\u9fa5]+$/;
+                return this.optional(element) || (chinese.test(value));
+            }, "只能输入中文");
+            $.validator.addMethod("telephone", function (value, element) {
+                var telephone = /(^[0-9]{3,4}\-[0-9]{7,8}$)|(^[0-9]{7,8}$)|(^\([0-9]{3,4}\)[0-9]{3,8}$)|(^0{0,1}13[0-9]{9}$)/;
+                return this.optional(element) || (telephone.test(value));
+            }, "只能输入中文");
+            $("#form").validate({
+                rules: {
+                    username: {
+                        required: true,
+                        chinese: true
+                    },
+                    roleIds: "required"
+                },
+                messages: {
+                    username: {
+                        required: "请输入姓名",
+                        chinese: "只能输入中文"
+                    },
+                    roleIds: "请选择角色"
+                }
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -19,7 +47,7 @@
         <h4 class="ht_sub_title0"><img src="${basePath}/manage/images/ht_ico010.png"/>
 
             <p>管理员信息修改</p></h4>
-        <sp:form method="post" action="/manager/modify" class="ht_sub_form1" style="margin-left:100px;">
+        <sp:form id="form" method="post" action="/manager/modify" class="ht_sub_form1" style="margin-left:100px;">
             <p>*用户名：</p>
             <sp:input path="userId" readonly="true" class="ht_sub_input1"/>
             <sp:errors path="userId"/><br/>
@@ -44,6 +72,7 @@
             <input type="hidden" name="formUserId" value="${formUserId}"/>
             <input type="hidden" name="formUsername" value="${formUsername}"/>
             <input type="hidden" name="formRoleId" value="${formRoleId}"/>
+            <input type="hidden" name="formStatus" value="${formStatus}"/>
             <input type="submit" value="确定" class="ht_but_qd0"/>
             <a href="javascript:history.go(-1);" class="ht_but_qx0">取消</a>
         </sp:form>

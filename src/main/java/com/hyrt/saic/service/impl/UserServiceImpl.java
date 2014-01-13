@@ -91,8 +91,8 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
         User user = (User) request.getSession().getAttribute(Config.MANAGE);
         customer.setCreatorId(user.getUserId());
         boolean userType = user instanceof Manager;
-        customer.setBasal(userType); //管理员创建的是普通客户，普通客户创建的是子账户，子账户不能创建客户
-        customer.setChild(!userType);
+        customer.setBasal(userType);
+        customer.setChild(!userType); //管理员创建的是普通客户，普通客户创建的是子账户，子账户不能创建客户
         customer.setUserType(UserType.CUSTOMER);
         customer.setPassword(toMD5(Config.PASSWORD_CUSTOMER_DEFAULT));
         customer.setRegTime(new Timestamp(System.currentTimeMillis()));
@@ -103,7 +103,7 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
 
     @Override
     public void addManager(Manager manager, HttpServletRequest request, String roleIds) {
-        User user = (User) request.getSession().getAttribute(Config.USER);
+        User user = (User) request.getSession().getAttribute(Config.MANAGE);
         manager.setCreatorId(user.getUserId());
         manager.setUserType(UserType.MANAGER);
         manager.setStatus(UserStatus.NORMAL);
@@ -135,6 +135,11 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     public void unlock(User user) {
         user.setStatus(UserStatus.NORMAL);
         super.update(user);
+    }
+
+    @Override
+    public boolean checkUserId(String userId) {
+        return null == userMapper.getById(new User(userId));
     }
 
     @Override

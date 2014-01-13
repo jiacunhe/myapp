@@ -4,6 +4,49 @@
 <head>
     <%@ include file="/WEB-INF/jsp/manage/commons.jspf" %>
     <title>新建管理员</title>
+    <script type="text/javascript">
+        $().ready(function () {
+            $.validator.addMethod("chinese", function (value, element) {
+                var chinese = /^[\u4e00-\u9fa5]+$/;
+                return this.optional(element) || (chinese.test(value));
+            }, "只能输入中文");
+            $.validator.addMethod("telephone", function (value, element) {
+                var telephone = /(^[0-9]{3,4}\-[0-9]{7,8}$)|(^[0-9]{7,8}$)|(^\([0-9]{3,4}\)[0-9]{3,8}$)|(^0{0,1}13[0-9]{9}$)/;
+                return this.optional(element) || (telephone.test(value));
+            }, "只能输入中文");
+            $("#form").validate({
+                rules: {
+                    userId: {
+                        required: true,
+                        minlength: 6,
+                        maxlength: 16,
+                        remote: {
+                            url: "/user/checkUserId"
+                        }
+                    },
+                    username: {
+                        required: true,
+                        chinese: true
+                    },
+                    roleIds: "required"
+                },
+                messages: {
+                    userId: {
+                        required: "请输入用户名",
+                        minlength: "用户名不能少于6位",
+                        maxlength: "用户名不能超过16位",
+                        remote:"用户名被占用"
+                    },
+                    username: {
+                        required: "请输入姓名",
+                        chinese: "只能输入中文"
+                    },
+                    roleIds: "请选择角色"
+                }
+            });
+        });
+    </script>
+
 </head>
 
 <body>
@@ -18,7 +61,7 @@
         <h4 class="ht_sub_title0"><img src="${basePath}/manage/images/ht_ico06.png"/>
 
             <p>增加</p></h4>
-        <sp:form method="post" action="/manager/add" class="ht_sub_form1" style="margin-left:100px;">
+        <sp:form id="form" method="post" action="/manager/add" class="ht_sub_form1" style="margin-left:100px;">
             <p>*用户名：</p>
             <sp:input path="userId" class="ht_sub_input1"/>
             <sp:errors path="userId"/><br/>

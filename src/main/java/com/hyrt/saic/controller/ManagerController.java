@@ -55,6 +55,7 @@ public class ManagerController extends BaseController {
         request.setAttribute("formUserId", request.getParameter("formUserId"));
         request.setAttribute("formUsername", request.getParameter("formUsername"));
         request.setAttribute("formRoleId", request.getParameter("formRoleId"));
+        request.setAttribute("formStatus", request.getParameter("formStatus"));
 
         return jsp("manager/edit");
     }
