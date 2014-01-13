@@ -8,6 +8,7 @@
     <result column="type" property="type" jdbcType="VARCHAR" />
     <result column="userId" property="userId" jdbcType="VARCHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
+      <result column="status" property="status" jdbcType="VARCHAR" />
   </resultMap>
 
     <resultMap id="resultMap" type="com.hyrt.saic.bean.ChargePackageResultMap" >
@@ -24,21 +25,50 @@
         <result column="detailRemark" property="detailRemark" jdbcType="VARCHAR" />
     </resultMap>
   <sql id="Base_Column_List" >
-    id, packageName, price, type, userId, remark
+    id, packageName, price, type, userId, remark ,status
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select   LAST_INSERT_ID()
+    select
       <include refid="Base_Column_List" />
     from t_charge_package
     where id = #{id,jdbcType=INTEGER}
   </select>
-    <select id="countNum" resultType="java.lang.Integer" >
+
+
+    <select id="countNum" resultType="java.lang.Integer" parameterType="com.hyrt.saic.bean.ChargePackage" >
         select
         count(id)
         from t_charge_package
+        where 1=1
+        <if test="userId!= null" >
+            and userId=#{userId,jdbcType=VARCHAR}
+        </if>
+        <if test="type!= null" >
+            and type=#{type,jdbcType=VARCHAR}
+        </if>
+        <if test="status!= null" >
+            and status=#{status,jdbcType=VARCHAR}
+        </if>
+    </select> <!-->hh增加<-->
+
+
+
+    <select id="countNumUser" resultType="java.lang.Integer" parameterType="com.hyrt.saic.bean.ChargePackage" >
+        select
+        count(id)
+        from t_charge_package
+        where 1=1
+
+        <if test="type!= null" >
+            and (type=#{type,jdbcType=VARCHAR} or  userId=#{userId,jdbcType=VARCHAR})
+        </if>
+
+        <if test="status!= null" >
+            and status=#{status,jdbcType=VARCHAR}
+        </if>
     </select> <!-->hh增加<-->
     <select id="select" resultType="java.util.Map" parameterType="java.util.Map"  >
-        SELECT id,MAX(packageName) packageName,MAX(price) price,MAX(TYPE) _type,MAX(userId) userId, MAX(remark) remark,
+        SELECT id,MAX(packageName) packageName,MAX(price) price,MAX(TYPE) _type,MAX(userId) userId, MAX(remark) remark,MAX(status) status,
         MAX(CASE businessTypeId WHEN  1 THEN detailId ELSE 0 END) detailIdA,
         MAX(CASE businessTypeId WHEN  1 THEN businessName ELSE 0 END) businessNameA,
         MAX(CASE businessTypeId WHEN  1 THEN quantity ELSE 0 END) quantityA,
@@ -49,19 +79,50 @@
         MAX(CASE businessTypeId WHEN  2 THEN detailRemark ELSE 0 END) detailRemarkB FROM(
         SELECT p.*,d.id detailId,d.`businessTypeId`,b.`businessName`,d.`quantity`,d.`remark` detailRemark
         FROM t_charge_package p,t_charge_package_detail d,t_business_type b WHERE d.`packageId` = p.`id` AND d.`businessTypeId` = b.`id`
+        <if test="status!= null" >
+            and p.status=#{status,jdbcType=VARCHAR}
+        </if>
         <if test="type!= null" >
             and p.type=#{type,jdbcType=VARCHAR}
         </if>
+        <if test="userId!= null" >
+            and p.userId=#{userId,jdbcType=VARCHAR}
+        </if>
+
+       ) xx GROUP BY id
         <if test="order!= null" >
-            order by p.price
-            <if test="order!= up" >
+            order by price
+            <if test="order=='down'" >
                 desc
             </if>
         </if>
-        limit  #{start,jdbcType=INTEGER} ,#{num,jdbcType=INTEGER}) xx GROUP BY id
+        limit  #{start,jdbcType=INTEGER} ,#{num,jdbcType=INTEGER}
     </select> <!-->hh增加<-->
+
+    <select id="selectUser"  resultType="java.util.Map" parameterType="java.util.Map">
+        SELECT id,MAX(packageName) packageName,MAX(price) price,MAX(TYPE) _type,MAX(userId) userId, MAX(remark) remark,MAX(status) status,
+        MAX(CASE businessTypeId WHEN  1 THEN detailId ELSE 0 END) detailIdA,
+        MAX(CASE businessTypeId WHEN  1 THEN businessName ELSE 0 END) businessNameA,
+        MAX(CASE businessTypeId WHEN  1 THEN quantity ELSE 0 END) quantityA,
+        MAX(CASE businessTypeId WHEN  1 THEN detailRemark ELSE 0 END) detailRemarkA,
+        MAX(CASE businessTypeId WHEN  2 THEN detailId ELSE 0 END) detailIdB,
+        MAX(CASE businessTypeId WHEN  2 THEN businessName ELSE 0 END) businessNameB,
+        MAX(CASE businessTypeId WHEN  2 THEN quantity ELSE 0 END) quantityB,
+        MAX(CASE businessTypeId WHEN  2 THEN detailRemark ELSE 0 END) detailRemarkB FROM(
+        SELECT p.*,d.id detailId,d.`businessTypeId`,b.`businessName`,d.`quantity`,d.`remark` detailRemark
+        FROM t_charge_package p,t_charge_package_detail d,t_business_type b WHERE d.`packageId` = p.`id` AND d.`businessTypeId` = b.`id`
+        <if test="status!= null" >
+            and p.status=#{status,jdbcType=VARCHAR}
+        </if>
+        <if test="type!= null" >
+            and (p.type=#{type,jdbcType=VARCHAR} or  p.userId=#{userId,jdbcType=VARCHAR} )
+        </if>
+      ) xx GROUP BY id      limit  #{start,jdbcType=INTEGER} ,#{num,jdbcType=INTEGER}
+    </select> <!-->hh增加<-->
+
+
     <select id="selectById" resultType="java.util.Map" parameterType="java.lang.Integer" >
-         SELECT id,MAX(packageName) packageName,MAX(price) price,MAX(TYPE) _type,MAX(userId) userId, MAX(remark) remark,
+         SELECT id,MAX(packageName) packageName,MAX(price) price,MAX(TYPE) _type,MAX(userId) userId, MAX(remark) remark,MAX(status) status
             MAX(CASE businessTypeId WHEN  1 THEN detailId ELSE 0 END) detailIdA,
             MAX(CASE businessTypeId WHEN  1 THEN businessName ELSE 0 END) businessNameA,
             MAX(CASE businessTypeId WHEN  1 THEN quantity ELSE 0 END) quantityA,
@@ -84,19 +145,17 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.hyrt.saic.bean.ChargePackage" >
-    insert into t_charge_package (id, packageName, price, 
-      type, userId, remark
+    insert into t_charge_package (id, packageName, price,
+      type, userId, remark ,status
       )
     values (#{id,jdbcType=INTEGER}, #{packageName,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL},
-      #{type,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
+      #{type,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR},#{status,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.hyrt.saic.bean.ChargePackage" >
     insert into t_charge_package
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
+
       <if test="packageName != null" >
         packageName,
       </if>
@@ -112,11 +171,12 @@
       <if test="remark != null" >
         remark,
       </if>
+        <if test="status != null" >
+            status,
+        </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
+
       <if test="packageName != null" >
         #{packageName,jdbcType=VARCHAR},
       </if>
@@ -132,6 +192,9 @@
       <if test="remark != null" >
         #{remark,jdbcType=VARCHAR},
       </if>
+        <if test="status != null" >
+            #{status,jdbcType=VARCHAR},
+        </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.hyrt.saic.bean.ChargePackage" >
@@ -152,6 +215,9 @@
       <if test="remark != null" >
         remark = #{remark,jdbcType=VARCHAR},
       </if>
+        <if test="status != null" >
+            status= #{status,jdbcType=VARCHAR},
+        </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -161,7 +227,14 @@
       price = #{price,jdbcType=DECIMAL},
       type = #{type,jdbcType=VARCHAR},
       userId = #{userId,jdbcType=VARCHAR},
-      remark = #{remark,jdbcType=VARCHAR}
+      remark = #{remark,jdbcType=VARCHAR},
+      status= #{status,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+
+    <update id="updateStatusById" parameterType="com.hyrt.saic.bean.ChargePackage" >
+    update t_charge_package  set status=#{status,jdbcType=VARCHAR}  where id=#{id,jdbcType=INTEGER}
+  </update>
+
 </mapper>
