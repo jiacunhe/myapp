@@ -42,12 +42,12 @@
         </dl>
 
         <dl>
-            <dt><A href="#"><img src="${basePath}/manage/images/ht_ico2.png"/>订单管理</A></dt>
+            <dt><A href="/orderManage/search" target="main"><img src="${basePath}/manage/images/ht_ico2.png"/>订单查询</A></dt>
         </dl>
 
-        <dl>
+<%--        <dl>
             <dt><A href="#"><img src="${basePath}/manage/images/ht_ico3.png"/>信息监控列表</A></dt>
-        </dl>
+        </dl>--%>
 
         <dl>
             <dt><A href="#"><img src="${basePath}/manage/images/ht_ico4.png"/>套餐制定</A></dt>
@@ -55,7 +55,7 @@
 
 
         <dl>
-            <dt><A href="#"><img src="${basePath}/manage/images/ht_ico5.png"/>套餐使用记录</A></dt>
+            <dt><A href="/userAccount/search" target="main"><img src="${basePath}/manage/images/ht_ico5.png"/>套餐使用记录</A></dt>
         </dl>
 
 
