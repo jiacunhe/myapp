@@ -59,6 +59,16 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
         return false;
     }
 
+    @Override
+    public boolean loginManage(HttpServletRequest request, String userId, String password) {
+        User user = userMapper.loginManage(userId, toMD5(password));
+        if (null != user) {
+            request.getSession().setAttribute(Config.MANAGE, user);
+            return true;
+        }
+        return false;
+    }
+
     private String toMD5(String resource) {
         byte[] bytes = DigestUtils.md5Digest(resource.getBytes());
         return new String(bytes);
@@ -78,22 +88,23 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
 
     @Override
     public void addCustomer(Customer customer, HttpServletRequest request) {
-        User user = (User) request.getSession().getAttribute("user");
-        if (null != user) {
-            customer.setCreatorId(user.getUserId());
-        }
+        User user = (User) request.getSession().getAttribute(Config.MANAGE);
+        customer.setCreatorId(user.getUserId());
+        boolean userType = user instanceof Manager;
+        customer.setBasal(userType); //管理员创建的是普通客户，普通客户创建的是子账户，子账户不能创建客户
+        customer.setChild(!userType);
         customer.setUserType(UserType.CUSTOMER);
         customer.setPassword(toMD5(Config.PASSWORD_CUSTOMER_DEFAULT));
         customer.setRegTime(new Timestamp(System.currentTimeMillis()));
+        customer.setStatus(UserStatus.NORMAL);
+
         userMapper.insert(customer);
     }
 
     @Override
     public void addManager(Manager manager, HttpServletRequest request, String roleIds) {
         User user = (User) request.getSession().getAttribute(Config.USER);
-        if (null != user) {
-            manager.setCreatorId(user.getUserId());
-        }
+        manager.setCreatorId(user.getUserId());
         manager.setUserType(UserType.MANAGER);
         manager.setStatus(UserStatus.NORMAL);
         manager.setPassword(toMD5(Config.PASSWORD_MANAGER_DEFAULT));
@@ -111,6 +122,13 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
             user.setStatus(UserStatus.LOCK);
             super.update(user);
         }
+    }
+
+    @Override
+    public void delete(Object id) {
+        User user = getById(id);
+        user.setStatus(UserStatus.DELETED);
+        super.update(user);
     }
 
     @Override
@@ -132,14 +150,13 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
 
     @Override
     public List<Manager> queryManagersByCondition(Map<String, Object> condition) {
-        Object roleId = condition.get("roleId");
         return userMapper.getManagers(condition);
 //        return userMapper.getManagers((String) condition.get("userId"), (String) condition.get("username"), null == roleId ? 0 : (int) roleId, (String) condition.get("status"));
     }
 
     @Override
     public List<Customer> queryCustomersByCondition(Map<String, Object> condition) {
-        return null;
+        return userMapper.getCustomers(condition);
     }
 
     @Override

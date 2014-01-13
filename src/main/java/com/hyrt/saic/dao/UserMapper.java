@@ -1,5 +1,6 @@
 package com.hyrt.saic.dao;
 
+import com.hyrt.saic.bean.Customer;
 import com.hyrt.saic.bean.Manager;
 import com.hyrt.saic.bean.User;
 import com.hyrt.saic.sql.provider.UserSql;
@@ -14,12 +15,19 @@ import java.util.Map;
 public interface UserMapper extends BaseMapper<User> {
 
     @SelectProvider(type = UserSql.class, method = "login")
-    @ResultMap({"user"})
+    @ResultMap({"BaseResultMap"})
     User login(@Param("userId") String userId, @Param("password") String password);
+
+    @SelectProvider(type = UserSql.class, method = "loginManage")
+    @ResultMap({"BaseResultMap"})
+    User loginManage(@Param("userId") String userId, @Param("password") String password);
 
     @SelectProvider(type = UserSql.class, method = "getManagers")
     @ResultMap({"managerWithRole"})
     List<Manager> getManagers(Map<String, Object> param);
-//    List<Manager> getManagers(@Param("userId") String userId, @Param("username") String username, @Param("roleId") int roleId, @Param("status") String status);
+
+    @SelectProvider(type = UserSql.class, method = "getCustomers")
+    @ResultMap("BaseResultMap")
+    List<Customer> getCustomers(Map<String, Object> param);
 
 }

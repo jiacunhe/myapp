@@ -2,6 +2,7 @@ package com.hyrt.saic.controller;
 
 import com.hyrt.saic.bean.User;
 import com.hyrt.saic.service.UserService;
+import com.hyrt.saic.util.Config;
 import com.hyrt.saic.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,15 +30,15 @@ public class SystemController extends BaseController {
 
     @RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.POST})
     public String loginUI(@ModelAttribute User user, HttpServletRequest request) {
-        if (request.getSession().getAttribute(USER) != null) {
-            return jsp("home");
+        if (request.getSession().getAttribute(Config.USER) != null) {
+            return jsp("main");
         }
         return jsp("login");
     }
 
     @RequestMapping(value = "/manage", method = RequestMethod.GET)
     public String managerLoginUI(HttpServletRequest request) {
-        if (request.getSession().getAttribute(USER) != null) {
+        if (request.getSession().getAttribute(Config.MANAGE) != null) {
             return jsp("manage/home");
         }
         return jsp("manage/login");
@@ -73,7 +74,7 @@ public class SystemController extends BaseController {
         if (result.hasFieldErrors()) {
             return jsp("manage/login");
         }
-        if (userService.login(request, user.getUserId(), user.getPassword())) {
+        if (userService.loginManage(request, user.getUserId(), user.getPassword())) {
             return redirectTo("");
         } else {
             request.setAttribute("userId", user.getUserId());

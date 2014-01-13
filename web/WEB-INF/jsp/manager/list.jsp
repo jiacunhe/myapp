@@ -188,7 +188,7 @@
                     <td><c:forEach items="${manager.roles}" var="role">${role.roleName},</c:forEach></td>
                     <td>${manager.remark}&nbsp;</td>
                     <td>
-                            ${'LOCK' == manager.status ? '锁定' : '正常'}
+                            ${manager.status.desc}
                             <%--
                                                     <a href="/manager/show/UI?userId=${manager.userId}&formUserId=${command.formUserId}&formUsername=${command.formUsername}&formRoleId=${command.formRoleId}">查看</a>
                             --%>
