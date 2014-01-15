@@ -88,8 +88,10 @@ public class SystemController extends BaseController {
         binder.setValidator(new UserValidator());
     }
 
-    public String home() {
-        return jsp("home");
+
+    @RequestMapping("/index")
+    public String index() {
+        return jsp("manage/index");
     }
 
 

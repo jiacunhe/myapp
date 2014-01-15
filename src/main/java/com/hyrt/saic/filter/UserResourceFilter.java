@@ -24,7 +24,7 @@ import java.util.StringTokenizer;
  * Time: 下午4:47
  * To change this template use File | Settings | File Templates.
  */
-public class UserResoureFilter implements Filter {
+public class UserResourceFilter implements Filter {
     protected FilterConfig filterConfig = null;
     private String redirectURL = null;
     private List notCheckURLList = new ArrayList();

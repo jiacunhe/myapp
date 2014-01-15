@@ -108,7 +108,7 @@
     </div>
     <div class="ht_content_right">
 
-        <iframe id="main" name="main" src="/customer/list" scrolling="no"></iframe>
+        <iframe id="main" name="main" src="/index" scrolling="no"></iframe>
 
     </div>
 </div>
