@@ -5,10 +5,20 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="roleName" property="roleName" jdbcType="VARCHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
+     <collection  property="resources" column="id" ofType="com.hyrt.saic.bean.SysResoure" select="com.hyrt.saic.dao.RoleMapper.queryResourceByRole">
+         <id column="id" property="id" jdbcType="INTEGER" />
+         <result column="resourceName" property="resourceName" jdbcType="VARCHAR" />
+         <result column="resourceUri" property="resourceUri" jdbcType="VARCHAR" />
+         <result column="remark" property="remark" jdbcType="VARCHAR" />
+            </collection>
   </resultMap>
   <sql id="Base_Column_List" >
     id, roleName, remark
   </sql>
+    <select id="queryResourceByRole" parameterType="java.lang.Integer" resultType="com.hyrt.saic.bean.SysResoure">
+           SELECT tsr.`id` ,tsr.`resourceName`,tsr.`resourceUri`,tsr.`remark` ,tsr.`pid` FROM t_role_sys_resource trsr LEFT JOIN t_sys_resource tsr ON tsr.`id`=trsr.`resourceId` WHERE trsr.`roleId`= #{id,jdbcType=INTEGER}
+
+    </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select
     <include refid="Base_Column_List" />
@@ -19,7 +29,7 @@
     delete from t_role
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert1" parameterType="com.hyrt.saic.bean.Role" >
+  <insert id="insertid" parameterType="com.hyrt.saic.bean.Role" useGeneratedKeys="true" keyProperty="id">
     insert into t_role (id, roleName, remark
       )
     values (#{id,jdbcType=INTEGER}, #{roleName,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
@@ -68,4 +78,33 @@
       remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+   <select id="selectAllRoles" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_role
+
+
+
+    </select>
+    <delete id="deleteByroleids" parameterType="java.lang.String">
+    delete from t_role
+    where id in (${_parameter})
+  </delete>
+
+    <select id="getByRolename"  parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+        from t_role tr where 1=1
+
+        and tr.roleName='${_parameter}'
+
+
+    </select>
+    <select id="getRolesByuserid"  parameterType="java.lang.String" resultMap="BaseResultMap">
+
+SELECT  r.`id`,r.`roleName`,r.`remark` FROM t_role r  JOIN t_user_role tur ON r.`id`=tur.`roleId` WHERE tur.`userId`='${_parameter}'
+
+
+    </select>
+
 </mapper>

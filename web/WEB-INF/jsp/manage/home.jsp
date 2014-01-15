@@ -10,6 +10,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link href="${basePath}/manage/css/ht_public.css" rel="stylesheet" type="text/css"/>
     <link href="${basePath}/manage/css/ht_sub.css" rel="stylesheet" type="text/css"/>
+    <%@ taglib uri="/WEB-INF/tld/mytag.tld"  prefix="hyrt"%>
     <script src="${basePath}/manage/js/ht_iepng.js" type="text/javascript"></script>
     <script src="${basePath}/js/jquery-1.8.0.min.js" type="text/javascript"></script>
     <script type="text/javascript">
@@ -97,7 +98,7 @@
                     src="${basePath}/manage/images/ht_ico10.png"/>系统管理</A></dt>
             <dd id=LM3 style="DISPLAY: none">
                 <ul>
-                    <li><a href="#">角色管理</a></li>
+                    <li><hyrt:checkResoure resoureName="角色管理" resoureuri="/role/manager"><a href="/role/manager" target="main"></hyrt:checkResoure>角色管理</a></li>
                     <li><a href="/manager/list" target="main">用户管理</a></li>
                 </ul>
             </dd>

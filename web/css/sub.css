@@ -169,7 +169,7 @@
 .ddjg_top h4{ font-size:24px; color:#1b1a1a; letter-spacing:2px; line-height:90px; font-weight:500; float:left; width:790px; text-align:center;}
 .ddjg_top p{ text-align:right; float:right; margin-top:31px;}
 .ddjg_top p a{ margin-left:12px;} 
-.ddjg_content{ width:1000px; height:auto; overflow:hidden; margin:0px auto;}
+/*.ddjg_content{ width:1000px; height:auto; overflow:hidden; margin:0px auto;}
 .ddjg_content h4{ font-size:16px; height:30px; margin-top:40px; color:#2d2c2c;}
 .ddjg_content table{ background:#fff;} 
 .ddjg_content table tr{ height:38px; line-height:38px; font-size:14px;}
@@ -177,4 +177,17 @@
 .ddjg_content table tr th p{ width:150px; text-align:right;}
 .sub_table3 tr td{ text-align:left;}
 .ddjg_content table tr td span{ width:690px; margin-left:35px; display:block; line-height:22px;}
+.ddjg_p1{ height:20px; line-height:20px; margin-top:50px;}*/
+.ddjg_content{ width:707px; height:auto; overflow:hidden; margin:0px auto;}
+.ddjg_content h5{ font-size:14px; height:30px; margin-top:40px; color:#2d2c2c;}
+.ddjg_content table{ background:#fff;}
+.ddjg_content table tr{ height:38px; line-height:38px; font-size:12px;}
+.ddjg_content table tr th{ width:230px; background:#f6f6f6;}
+.ddjg_content table tr th p{ width:130px; text-align:right;}
+.sub_table3 tr td{ text-align:left;}
+.ddjg_content table tr td span{ width:500px; margin-left:35px; display:block; line-height:22px;}
 .ddjg_p1{ height:20px; line-height:20px; margin-top:50px;}
+
+.sub_ddxx{ float:left; background:url(../images/ico017.png) no-repeat left center; text-indent:26px;}
+.sub_button{ float:right; margin-top:3px;}
+.sub_button a{ margin-right:8px;}

@@ -13,4 +13,5 @@ public class Config {
     public static final String USER = "user";
     public static final String MANAGE = "manage";
     public static final int PAGE_SIZE = 10;
+    public static final String URI_PATH_KEY="/UI";
 }

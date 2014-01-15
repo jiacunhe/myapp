@@ -20,7 +20,7 @@ public class MainTest {
     public static void main(String args[]){
 
 
-        char [] chars = "中国梦".toCharArray();
+       /* char [] chars = "中国梦".toCharArray();
         String asciiArgs="";
         for(char c:chars){
                          asciiArgs+="\\u"+Integer.toHexString(c);
@@ -44,6 +44,17 @@ public class MainTest {
         cal.add(Calendar.MONTH,-12);
 
         System.out.println(sdf.format(cal.getTime()));
+
+
+        */
+String sss="/manage/images/*";
+        String  url="/manage/images/abc.jpg";
+        String acb= url.substring(url.indexOf("/")+1,url.length());
+
+        System.out.println(acb.substring(0,acb.lastIndexOf("/")));
+        System.out.println(sss.lastIndexOf("*"));
+        System.out.println(sss.length());
+        System.out.println(sss.contains("/manage/images/"));
 
 
 
