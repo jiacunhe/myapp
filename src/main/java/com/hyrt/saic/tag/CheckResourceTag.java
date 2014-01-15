@@ -1,5 +1,12 @@
 package com.hyrt.saic.tag;
 
+import com.hyrt.saic.bean.Role;
+import com.hyrt.saic.bean.SysResoure;
+import com.hyrt.saic.bean.User;
+import com.hyrt.saic.service.RoleResourceService;
+import com.hyrt.saic.util.Config;
+import org.springframework.web.context.WebApplicationContext;
+
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspContext;
@@ -12,13 +19,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.hyrt.saic.bean.Role;
-import com.hyrt.saic.bean.SysResoure;
-import com.hyrt.saic.bean.User;
-import com.hyrt.saic.service.RoleResourceService;
-import com.hyrt.saic.util.Config;
-import org.springframework.web.context.WebApplicationContext;
-
 /**
  * Created with IntelliJ IDEA.
  * User: wangdy
@@ -26,7 +26,7 @@ import org.springframework.web.context.WebApplicationContext;
  * Time: 上午9:25
  * To change this template use File | Settings | File Templates.
  */
-public class CheckResoureTag implements SimpleTag {
+public class CheckResourceTag implements SimpleTag {
     private PageContext pageContext;
     //标签体
     private JspFragment jspFragment;

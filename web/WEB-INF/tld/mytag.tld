@@ -10,7 +10,7 @@
     <uri>http://www.hyrt.com.cn</uri>
     <tag>
         <name>checkResoure</name>
-        <tag-class>com.hyrt.saic.tag.CheckResoureTag</tag-class>
+        <tag-class>com.hyrt.saic.tag.CheckResourceTag</tag-class>
         <!-- ??????? -->
         <body-content>scriptless</body-content>
         <attribute>
