@@ -1,5 +1,5 @@
 // JavaScript Document
-var number=3;
+var number=2;
 
 function LMYC() {
 var lbmc;
