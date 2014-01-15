@@ -1,7 +1,15 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %> <%
+    response.setHeader("Cache-Control","no-cache"); //Forces caches to obtain a new copy of the page from the origin server
+    response.setHeader("Cache-Control","no-store"); //Directs caches not to store the page under any circumstance
+    response.setDateHeader("Expires", 0); //Causes the proxy cache to see the page as "stale"
+    response.setHeader("Pragma","no-cache");
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+    <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+    <meta HTTP-EQUIV="expires" CONTENT="0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="/css/public.css" rel="stylesheet" type="text/css" />
     <link href="/css/sub.css" rel="stylesheet" type="text/css" />
@@ -21,7 +29,7 @@
         <div class="top_xx">
             <div><p>当前用户：<span>xiaozhang</span></p>
 
-                <ul class="menu">
+              <!--  <ul class="menu">
                     <li>
                         <a href="#"class="tablink"><img src="../images/ico01.png" /></a>
                         <ul>
@@ -48,7 +56,7 @@
                         </ul>
                     </li>
 
-                </ul>
+                </ul> -->
 
 
             </div>
@@ -73,8 +81,8 @@
             <dd id=LM1 style="DISPLAY: none">
                 <ul>
                     <li><a href="/order/group" target="mainIframe">企业查询</a></li>
-                    <li><a href="#">人员</a></li>
-                    <li><a href="#">对外投资查询</a></li>
+                    <li><a href="/order/person" target="mainIframe">人员查询</a></li>
+                    <li><a href="/order/investment" target="mainIframe">对外投资</a></li>
                 </ul>
             </dd>
         </dl>
@@ -83,22 +91,26 @@
             <dt><img src="../images/ico2.png" /> <A onclick=javascript:ShowFLT(2) href="javascript:void(null)">信息监控</A></dt>
             <dd id=LM2 style="DISPLAY: none">
                 <ul>
-                    <li><a href="#">企业监控</a></li>
-                    <li><a href="#">人员监控</a></li>
-                    <li><a href="#">监控列表</a></li>
+                    <li><a href="/order/groupMonitor" target="mainIframe">企业监控</a></li>
+                    <li><a href="/order/personMonitor" target="mainIframe">人员监控</a></li>
+                  <!--  <li><a href="#">监控列表</a></li>     -->
                 </ul>
             </dd>
         </dl>
+
+
+        <dl>
+            <dt><img src="../images/ico4.png" /> <A onclick=javascript:ShowFLT(4) href="/order/search" target="mainIframe">我的查询</A></dt>
+            <dd id=LM4 style="DISPLAY: none"></dd>
+        </dl>
+
 
         <dl>
             <dt><img src="../images/ico3.png" /> <A onclick=javascript:ShowFLT(3) href="/package/buy" target="mainIframe">套餐购买</A></dt>
             <dd id=LM3 style="DISPLAY: none"></dd>
         </dl>
 
-        <dl>
-            <dt><img src="../images/ico4.png" /> <A onclick=javascript:ShowFLT(4) href="javascript:void(null)">我的订单</A></dt>
-            <dd id=LM4 style="DISPLAY: none"></dd>
-        </dl>
+
 
 
         <dl>
@@ -107,7 +119,8 @@
                 <ul>
                     <li><a href="#">个人资料</a></li>
                     <li><a href="#">安全中心</a></li>
-                    <li><a href="#">消费明细</a></li>
+                    <li><a href="/bill/rechargeRecord" target="mainIframe">消费明细</a></li>
+                    <li><a href="/accountInfo/list" target="mainIframe">账户余额</a></li>
                     <li><a href="#">我的消息</a></li>
                 </ul>
             </dd>
@@ -129,7 +142,7 @@
     </div>
     <div class="content_right" style="background: none">
 
-        <iframe id="mainIframe" name="mainIframe"  scrolling="no"  frameborder="0" src="/welcome" width="100%" height="100%" onload="Javascript:SetWinHeight(this)" ></iframe>
+        <iframe id="mainIframe" name="mainIframe"  scrolling="no" frameborder="0" src="/welcome.jsp" width="100%" onload="SetWinHeight(this)" ></iframe>
 
     </div>
 </div>
@@ -138,7 +151,7 @@
 
 <!--bottom-->
 <div class="clear"></div>
-<div class="bottom"   style="position:absolute; bottom:0;">
+<div class="bottom">
     <div class="bottom_content">
         <p>Copyright 2011-2013 某某版权所有 豫ICP备00000000号</p>
     </div>
@@ -151,9 +164,9 @@
         if (document.getElementById){
             if (win && !window.opera) {
                 if (win.contentDocument && win.contentDocument.body.offsetHeight)
-                    win.height = win.contentDocument.body.offsetHeight+100;
+                    win.height = win.contentDocument.body.offsetHeight+100>600?win.contentDocument.body.offsetHeight+100:600;
                 else if(win.Document && win.Document.body.scrollHeight)
-                    win.height = win.Document.body.scrollHeight+100;
+                    win.height = win.Document.body.scrollHeight+100>600? win.Document.body.scrollHeight+100:600;
             }
         }
     }

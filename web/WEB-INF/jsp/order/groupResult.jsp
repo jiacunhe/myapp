@@ -10,7 +10,7 @@
 <head>
     <title></title>
 </head>
-<body>
+<body style="background:#ffffff">
                ${result}
 </body>
 </html>

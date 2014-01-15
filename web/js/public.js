@@ -1,5 +1,8 @@
 
+<<<<<<< HEAD
+=======
 //选项卡插件
+>>>>>>> 28d424e4ca7ef4b9137d5a2154cd293282964d80
 (function($){
 	$.fn.tabs=function(options){
 		var setting={event:"mouseover",now:1};    

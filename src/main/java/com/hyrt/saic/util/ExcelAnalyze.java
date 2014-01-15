@@ -42,19 +42,23 @@ public class ExcelAnalyze implements Runnable{
             Sheet sheet = rwb.getSheet(0);
             int rowCount = sheet.getRows();
 
-            String code,name,remark;
+            String code,name,remark=null,cert=null;
 
 
             for (int i = 1; i < rowCount; i++) {
 
-                if ( sheet.getCell(0, i).getContents()!=null  && ! sheet.getCell(0, i).getContents().toString().trim().equals("")) {
+                if ( sheet.getCell(0, i).getContents()!=null &&sheet.getCell(1, i).getContents()!=null  && ! sheet.getCell(0, i).getContents().toString().trim().equals("")) {
                     code = sheet.getCell(0, i).getContents().toString().trim();
                     name = sheet.getCell(1, i).getContents().toString().trim();
+                    if(sheet.getCell(2, i).getContents()!=null)
                     remark=sheet.getCell(2, i).getContents().toString().trim();
-                    reslist.add(new String[]{code,name,remark});
+                    if(sheet.getCell(3, i).getContents()!=null)
+                    cert=sheet.getCell(3, i).getContents().toString().trim();
+
+                    reslist.add(new String[]{code,name,remark,cert});
+
                     success++;
                     if (i % 100 == 0) {
-
                         ufp.write(i, rowCount);
                         System.out.println(i+"/"+ rowCount+"="+ufp.progress+"------------------------------");
                         pool.p.put(sn, ufp);

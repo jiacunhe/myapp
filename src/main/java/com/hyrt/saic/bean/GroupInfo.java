@@ -1,5 +1,7 @@
 package com.hyrt.saic.bean;
 
+import java.sql.Timestamp;
+
 public class GroupInfo {
     private Long id;
 
@@ -42,6 +44,17 @@ public class GroupInfo {
     private String remark;
 
     private Integer orderId;
+
+
+    private Timestamp messageTime;
+
+    public Timestamp getMessageTime() {
+        return messageTime;
+    }
+
+    public void setMessageTime(Timestamp messageTime) {
+        this.messageTime = messageTime;
+    }
 
     public Long getId() {
         return id;

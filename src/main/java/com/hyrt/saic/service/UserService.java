@@ -20,6 +20,8 @@ import java.util.Map;
 public interface UserService extends BaseService<User> {
     boolean login(HttpServletRequest request, String userId, String password);
 
+    boolean loginManage(HttpServletRequest request, String userId, String password);
+
     void modifyPaymentRule(String userId, PaymentRule paymentRule);
 
     void assignRole(User user, List<Role> roles);
@@ -28,15 +30,27 @@ public interface UserService extends BaseService<User> {
 
     void addCustomer(Customer customer, HttpServletRequest request);
 
-    void addManager(Manager manager, HttpServletRequest request);
+    void addManager(Manager manager, HttpServletRequest request, String roleIds);
 
-    List<Manager> queryManagersByCondition(Map<String, Object> conditon);
+    List<Manager> queryManagersByCondition(Map<String, Object> condition);
 
-    List<Customer> queryCustomersByCondition(Map<String, Object> conditon);
+    List<Customer> queryCustomersByCondition(Map<String, Object> condition);
 
     List<User> getByCreator(User creator);
 
     void resetPassword(User user);
 
     void modifyPassword(User user, String newPassword);
+
+    List<Integer> getRoleIds(User user);
+
+    void setRoles(String userId, String[] roleIds);
+
+    void deleteRoles(String userId);
+
+    void modifyManager(Manager manager, String roleIds);
+
+    void lock(User user);
+
+    void unlock(User user);
 }

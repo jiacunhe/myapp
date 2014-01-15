@@ -2,6 +2,7 @@ package com.hyrt.saic.controller;
 
 import com.hyrt.saic.bean.User;
 import com.hyrt.saic.service.UserService;
+import com.hyrt.saic.util.Config;
 import com.hyrt.saic.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,20 +28,32 @@ public class SystemController extends BaseController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST})
-    public String loginUI(@ModelAttribute User user) {
+    @RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.POST})
+    public String loginUI(@ModelAttribute User user, HttpServletRequest request) {
+        if (request.getSession().getAttribute(Config.USER) != null) {
+            return jsp("main");
+        }
         return jsp("login");
     }
 
     @RequestMapping(value = "/manage", method = RequestMethod.GET)
-    public String managerLoginUI() {
+    public String managerLoginUI(HttpServletRequest request) {
+        if (request.getSession().getAttribute(Config.MANAGE) != null) {
+            return jsp("manage/home");
+        }
         return jsp("manage/login");
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logout(HttpSession session) {
         session.invalidate();
-        return forwardTo("login");
+        return redirectTo("");
+    }
+
+    @RequestMapping(value = "/manage/logout", method = RequestMethod.GET)
+    public String manageLogout(HttpSession session) {
+        session.invalidate();
+        return redirectTo("");
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -49,9 +62,24 @@ public class SystemController extends BaseController {
             return jsp("login");
         }
         if (userService.login(request, user.getUserId(), user.getPassword())) {
-            return forwardTo(jsp("home"));
+            return jsp("main");
         } else {
-            return "";
+            request.setAttribute("error", "密码错误");
+            return jsp("login");
+        }
+    }
+
+    @RequestMapping(value = "/manage/login", method = RequestMethod.POST)
+    public String manageLogin(@Validated User user, BindingResult result, HttpServletRequest request) {
+        if (result.hasFieldErrors()) {
+            return jsp("manage/login");
+        }
+        if (userService.loginManage(request, user.getUserId(), user.getPassword())) {
+            return redirectTo("");
+        } else {
+            request.setAttribute("userId", user.getUserId());
+            request.setAttribute("error", "账号与密码不匹配，请核对后重试");
+            return jsp("manage/login");
         }
     }
 

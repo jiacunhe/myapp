@@ -1,9 +1,12 @@
 package cn.com.hyrt.test;
 
 import com.hyrt.saic.util.enums.OrderStatus;
+import org.springframework.util.DigestUtils;
 
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 /**
  * Created with IntelliJ IDEA.
@@ -23,7 +26,25 @@ public class MainTest {
                          asciiArgs+="\\u"+Integer.toHexString(c);
         }
         System.out.println(asciiArgs+"-----------");
-        System.out.println(OrderStatus.下单);
+
+
+
+        String ppp="12,32,,,,,,,,22332,";
+
+        System.out.println(ppp.split(",").length);
+
+        for(String t:ppp.split(",")){
+            System.out.println(t+"------------------");
+        }
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+        System.out.println(sdf.format(cal.getTime()));
+
+        cal.add(Calendar.MONTH,-12);
+
+        System.out.println(sdf.format(cal.getTime()));
+
 
 
 

@@ -30,7 +30,7 @@ public class PackageCotroller {
     private PackageService packageService;
     @RequestMapping("/list")
     public String listPackage(String type,String order,Integer page,String userId,String status,HttpServletRequest request){
-        System.out.println(status+"-----------------------------------");
+
         if("".equals(status))
             status=null;
         if("".equals(userId))
@@ -52,7 +52,7 @@ public class PackageCotroller {
 
        // System.out.println(((List)res.get("list")).get(0).getClass().getName()+"------------------------------------");
        // request.setAttribute("name",((List)res.get("list")).size());
-        return "packageList.jsp";
+        return "/package/list.jsp";
     }
     @RequestMapping("/buy")
     public String listPackageBuy(String order,Integer page,String userId,HttpServletRequest request){
@@ -67,7 +67,7 @@ public class PackageCotroller {
 
         // System.out.println(((List)res.get("list")).get(0).getClass().getName()+"------------------------------------");
         // request.setAttribute("name",((List)res.get("list")).size());
-        return "tcgm.jsp";
+        return "/package/buy.jsp";
     }
    /* @RequestMapping("/delete")
     public String deletePackage(int id,String type,String order,Integer page,String userId,String status,HttpServletRequest request){
@@ -81,7 +81,7 @@ public class PackageCotroller {
 
         // System.out.println(((List)res.get("list")).get(0).getClass().getName()+"------------------------------------");
         // request.setAttribute("name",((List)res.get("list")).size());
-        return "packageList.jsp";
+        return "list.jsp";
     }
 
 
@@ -129,10 +129,28 @@ public class PackageCotroller {
 
         return  listPackage(type,order,page,userId,status,request);
     }
-    @RequestMapping("/insert")
+
+    @RequestMapping("/add/UI")
+    public String packageAddUI(){
+        return "/package/add.jsp";
+    }
+
+    @RequestMapping("/add")
     public String insertPackage(String packageName,BigDecimal price,String type,String userId,String remark, String status,
                                 Integer quantity,String remark2,
                                 Integer quantity2,String remark3,HttpServletResponse response){
+        if("".equals(packageName)) packageName=null;
+        if("".equals(price))  price=null;
+        if("".equals(type)) type=null;
+        if("".equals(userId)) userId=null;
+        if("".equals(remark))  remark=null;
+        if("".equals(status)) status=null;
+        if("".equals(quantity)) quantity=null;
+        if("".equals(remark2)) remark2=null;
+        if("".equals(quantity2)) quantity2=null;
+        if("".equals(remark3))  remark3=null;
+
+
         ChargePackage chargePackage=new ChargePackage();
         chargePackage.setPackageName(packageName);
         chargePackage.setPrice(price);
@@ -165,14 +183,14 @@ public class PackageCotroller {
           Map res=packageService.selectById(id);
           request.setAttribute("p",res);
 
-        return "packageChange.jsp";
+        return "change.jsp";
     }
 
     @RequestMapping("/insertUser")
     public String packageInsertUser(String userId,HttpServletRequest request){
          userId="007";
         request.setAttribute("userId",userId);
-       return "packageInsertUser.jsp";
+       return "insertUser.jsp";
     }
 
 }

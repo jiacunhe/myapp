@@ -98,7 +98,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
 
-    public OrderInfo selectOrderInfoByOrderId(String id){
+    public Map selectOrderInfoByOrderId(String id){
         return orderMapper.selectOrderInfoByOrderId(id);
     }
 
@@ -109,6 +109,14 @@ public class OrderServiceImpl implements OrderService {
 
         if (params.get("page") == null) page = 1;else page = (Integer)params.get("page") ;
         if (params.get("pageSize") == null) pageSize = 5;else pageSize = (Integer)params.get("pageSize") ;
+
+//        if(params.get("type")!=null){
+//             if(params.get("type").equals("done")){
+//                     params.put("status","'5'");
+//             }else{
+//                 params.put("status","'1','2','3','4','6','7','8'");
+//             }
+//        }
 
         int countItem = orderDetailMapper.selectCount(params);
 
@@ -123,31 +131,37 @@ public class OrderServiceImpl implements OrderService {
         List list = orderDetailMapper.selectByOrderId(params);
 
 
-        Map res = new HashMap();
-        res.put("page",page);
-        res.put("totalpage",totalpage);
-        res.put("totalitem",countItem);
-        res.put("list",list);
-        return res;
+      //  Map res = new HashMap();
+        params.put("page",page);
+        params.put("totalpage",totalpage);
+        params.put("totalitem",countItem);
+        params.put("list",list);
+        return params;
 
     }
 
     public Map selectGroupInfo(Long id){
-
-        GroupInfo groupInfo =  groupInfoMapper.selectByOrderDetailId(id);
-        List groupAnnualInspectionList = groupAnnualInspectionMapper.selectByGroupId(id);
-        List groupChangingList = groupChangingMapper.selectByGroupId(id);
-        List groupExternalInvestmentList = groupExternalInvestmentMapper.selectByGroupId(id);
-        List groupSeniorList = groupSeniorMapper.selectByGroupId(id);
-        List groupShareholderInfoList = groupShareholderInfoMapper.selectByGroupId(id);
-
         Map resmap = new HashMap();
-        resmap.put("groupInfo",groupInfo);
-        resmap.put("groupAnnualInspectionList",groupAnnualInspectionList);
-        resmap.put("groupChangingList",groupChangingList);
-        resmap.put("groupExternalInvestmentList",groupExternalInvestmentList);
-        resmap.put("groupSeniorList",groupSeniorList);
-        resmap.put("groupShareholderInfoList",groupShareholderInfoList);
+        GroupInfo groupInfo =  groupInfoMapper.selectByOrderDetailId(id);
+        if(groupInfo!=null){
+            List groupAnnualInspectionList = groupAnnualInspectionMapper.selectByGroupId(groupInfo.getId());
+            List groupChangingList = groupChangingMapper.selectByGroupId(groupInfo.getId());
+            List groupExternalInvestmentList = groupExternalInvestmentMapper.selectByGroupId(groupInfo.getId());
+            List groupSeniorList = groupSeniorMapper.selectByGroupId(groupInfo.getId());
+            List groupShareholderInfoList = groupShareholderInfoMapper.selectByGroupId(groupInfo.getId());
+
+
+            resmap.put("groupInfo",groupInfo);
+
+            resmap.put("groupAnnualInspectionList",groupAnnualInspectionList);
+            resmap.put("groupChangingList",groupChangingList);
+            resmap.put("groupExternalInvestmentList",groupExternalInvestmentList);
+            resmap.put("groupSeniorList",groupSeniorList);
+            resmap.put("groupShareholderInfoList",groupShareholderInfoList);
+        }
+
+
+
         return resmap;
     }
 
@@ -158,4 +172,60 @@ public class OrderServiceImpl implements OrderService {
         return resList;
     }
 
+
+    public Integer selectForPermissionView(Map params){
+
+        return orderMapper.selectForPermissionView(params);
+    }
+
+
+    public Map selectMonitorResultList(Map params){
+                List res=null;
+               if(params.get("orderType")!=null){
+                   System.out.println(params.get("orderType")+"------------------------------");
+
+                   int page,pageSize;
+                   if (params.get("page") == null) page = 1;else page = (Integer)params.get("page") ;
+                   if (params.get("pageSize") == null) pageSize = 5;else pageSize = (Integer)params.get("pageSize") ;
+                   int type=(Integer)params.get("orderType");
+                   if(type==4){
+
+                       int countItem = groupInfoMapper.selectCount(params);
+
+                       int totalPage = (countItem + pageSize - 1) / pageSize;
+                       if (page > totalPage) page = totalPage;
+                       if (page < 1) page = 1;
+
+                       params.put("cursor",(page -1)*pageSize);
+                       params.put("length",pageSize);
+
+                       res = groupInfoMapper.selectMonitorInfo(params);
+
+                       params.put("list",res);
+                       params.put("totalPage",totalPage);
+                       params.put("countItem",countItem);
+                       params.put("page",page);
+
+                   }else if(type==5){
+
+
+                       int countItem = groupInfoMapper.selectCount(params);
+
+                       int totalPage = (countItem + pageSize - 1) / pageSize;
+                       if (page > totalPage) page = totalPage;
+                       if (page < 1) page = 1;
+
+                       params.put("cursor",(page -1)*pageSize);
+                       params.put("length",pageSize);
+                       res = personGroupInfoMapper.selectMonitorInfo(params);
+                       params.put("list",res);
+
+                       params.put("totalPage",totalPage);
+                       params.put("countItem",countItem);
+                       params.put("page",page);
+                   }
+               }
+
+        return params;
+    }
 }

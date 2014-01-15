@@ -1,13 +1,13 @@
 /* CSS Document */
-.content_right{ background:#eee; width:779px; height:662px; overflow:auto; overflow-x:hidden; border-right:1px solid #013f68;}
-.content_right iframe{ width:100%; border:none; height:662px;}
+.content_right{ background:#eee; width:779px; overflow:auto; overflow-x:hidden; border-right:1px solid #013f68;}
+.content_right iframe{ width:100%; border:none;}
 .yemei{ height:33px; overflow:hidden; line-height:33px; background:url(../images/ym_bg.gif) repeat-x;}
 .yemei p{ color:#696969; margin-left:16px;}
 .yemei a{ color:#696969;}
 .yemei a:hover{ color:#000;}
 .yemei span{ color:#3d3d3d;}
-.content_right_nr{ width:749px; height:auto; overflow:hidden; margin:30px 0px 0px 15px; background:#FFF;}
-.sub_title1{ height:34px; line-height:34px; overflow:hidden; background:url(../images/sub_ttbg1.gif) no-repeat; font-size:12px; color:#3f3f3f;}
+.content_right_nr{ width:749px;margin:30px 0px 0px 15px; background:#FFF;}
+.sub_title1{ height:34px; line-height:34px; background:url(../images/sub_ttbg1.gif) no-repeat; font-size:12px; color:#3f3f3f;}
 .sub_p1{ margin-left:16px; background:url(../images/ico06.png) no-repeat left center; text-indent:26px;}
 .sub_nr{ width:747px; height:auto; overflow:hidden; border-bottom:1px solid #d7d7d7; border-left:1px solid #d7d7d7; border-right:1px solid #d7d7d7;}
 .sub_form1{  margin:50px 0px 0px 70px;overflow:hidden; line-height:48px;}
@@ -108,7 +108,7 @@
 .dd_list1{ line-height:60px; margin-left:45px; font-size:14px;}
 .dd_list1 li{ width:210px; float:left;}
 .dd_list1 li span{ color:#fc7d01;}
-.sub_form3{  margin:12px 0px 0px 15px;overflow:hidden; line-height:48px; font-size:14px;}
+.sub_form3{  margin:12px 0px 0px 15px; line-height:48px; font-size:14px;}
 .sub_form3 p{ float:left; font-size:14px; width:70px; text-align:right; margin-left:10px; display:inline;}
 .sub_form3 input,select{ height:28px; overflow:hidden; line-height:28px; }
 .sub_input013{ width:120px; border:1px solid #d7d7d7;margin-top:6px; text-indent:10px; margin-right:0px;}
@@ -120,7 +120,7 @@
 .rili002{ width:16px; height:15px; overflow:hidden; position:absolute; left:504px; top:13px; z-index:1000;}
 .but_cx0{ width:120px; height:28px; border:none; background:url(../images/but_bg4.gif) no-repeat; font-weight:bold; color:#fff; text-align:center; line-height:28px; float:left; margin:10px 0px 0px 80px; display:inline; cursor:pointer;}
 .sub_dl2 dt a{display:block;width:187px;height:34px;line-height:34px;float:left;margin-top:1px;text-align:center;font-weight:bold;font-size:12px; display:inline; color:#3f3f3f;}
-.sub_dl2 dt a:hover,.sub_dl2 dt a.now{  background:url(../images/sub_ttbg4.gif) no-repeat; color:#fd7d00;}
+/* .sub_dl2 dt a:hover,.sub_dl2 dt a.now{  background:url(../images/sub_ttbg4.gif) no-repeat; color:#fd7d00;}      */
 
 .sub_title4{ height:40px; overflow:hidden; background:url(../images/sub_ttbg2.gif) no-repeat; font-size:14px; color:#000; border-bottom:1px solid #d7d7d7;}
 .sub_title4 form{ margin:10px 0px 0px 16px;}

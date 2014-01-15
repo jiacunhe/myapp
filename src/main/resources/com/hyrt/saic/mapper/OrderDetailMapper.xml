@@ -25,13 +25,20 @@
         select
         <include refid="Base_Column_List" />
         from t_order_detail
-        where orderId = #{orderId,jdbcType=VARCHAR} order by id desc  limit #{cursor,jdbcType=INTEGER} ,#{length,jdbcType=INTEGER}
+        where orderId = #{orderId,jdbcType=VARCHAR}
+        <if test="status != null" >
+            and status in( ${status})
+        </if>
+        order by id desc  limit #{cursor,jdbcType=INTEGER} ,#{length,jdbcType=INTEGER}
     </select>
 
     <select id="selectCount" resultType="java.lang.Integer" parameterType="java.util.Map" >
         select  count(*)
         from t_order_detail
         where orderId = #{orderId,jdbcType=VARCHAR}
+        <if test="status != null" >
+            and status in( ${status})
+        </if>
     </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >

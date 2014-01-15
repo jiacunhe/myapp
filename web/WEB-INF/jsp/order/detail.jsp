@@ -1,99 +1,165 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: yang
-  Date: 13-12-31
-  Time: 下午1:25
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="/css/public.css" rel="stylesheet" type="text/css" />
+    <link href="/css/sub.css" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" type="text/css"  href="/images/dialog/dialog.css">
     <script src="/images/dialog/dialog.js" type="text/javascript"></script>
-    <link rel="stylesheet" type="text/css" media="all"  href="/images/dialog/dialog.css">
+
+    <script language="javascript" src="/js/1.js"> </script>
+    <title>订单详情</title>
+    <style type="text/css">
+
+        .sub_tr1 ul{ width: 80%; float: left}
+        .sub_tr1 ul li{ float: left; margin-left: 0px; margin-left: 5px; padding: 3px;}
+    </style>
+
 </head>
-<body>                         <pre>
-订单号：${orderInfo.id}
-状态：  ${orderInfo.status}
-createTime: ${orderInfo.createTime}
-verifyTime: ${orderInfo.verifyTime}
-finishTime: ${orderInfo.finishTime}
-                                </pre>
+
+<body>
 
 
-             <pre>
-订单类型：${orderInfo.orderTypeName}
-条数： <a href="javascript:openContent()"> ${orderInfo.total} </a>
-                                </pre>
+<div class="content_right">
+    <div class="yemei">
+        <p>您当前所在位置：<a href="#">首页</a> >> <span>查询提交</span></p>
+    </div>
+    <div class="sub_rttop0">
+        <ul class="ztxs">
+            <li class="tj">1.提交</li>
+            <li>2.查询中</li>
+            <li>3.成功</li>
 
- <div id="content" style="display:none">
-      <table style="font-size: 12px">
-     <tr>
-         <td>序号</td>
-         <td>查询对象</td>
-         <td>状态</td>
-         <td>&nbsp;</td>
-     </tr>
-     <c:forEach  var="obj" items="${objects.list}"   varStatus="status">
-         <tr>
-             <td>${object.page*5+status.count}</td>
-             <td>${obj.objCode }: ${obj.objName}</td>
-             <td>${obj.status}</td>
-             <td><a href="/order/result?id=${obj.id}&orderType=${orderInfo.orderType}">查看结果</a></td>
-         </tr>
-     </c:forEach>
+        </ul>
+        <ul class="tiem">
+            <li class="xz">${orderInfo.createTime}</li>
 
-          <tr>
-                  <td colspan="4">
+                <li class="xz">${orderInfo.verifyTime}</li>
 
-                      <ul>
-
-                          <li><a href="javascript:search('nothing',${objects.page -1})">Prev</a></li>
+                <li class="xz">${orderInfo.finishTime}</li>
 
 
+        </ul>
+    </div>
+    <div class="content_right_nr" style="margin-top:16px;">
+        <h4 class="sub_title1"><p class="sub_p9">订单—${orderInfo.id}</p></h4>
+        <div class="sub_nr">
+            <ul class="ddzt">
+                <li style="width: 340px;">订单号：${orderInfo.id}</li>
+                <li>当前订单状态：<span>
+                    <c:choose>
+                        <c:when test="${orderInfo.status ==1}">
+                            <li class="tj">查询中</li>
+                        </c:when>
+                        <c:when test="${orderInfo.status ==2}">
+                            <li class="tj">成功</li>
+                        </c:when>
+                        <c:when test="${orderInfo.status ==3}">
+                            <li class="tj">无结果</li>
+                        </c:when>
+                        <c:when test="${orderInfo.status ==4}">
+                            <li class="tj">未通过审核</li>
+                        </c:when>
+                        <c:when test="${orderInfo.status ==5}">
+                            <li class="tj">账户支付失败</li>
+                        </c:when>
 
-                          <c:if test="${objects.page <= 9}">
-                              <c:forEach var="i" begin="${1}" end="${objects.page-1}" step="1">
-                                  <li><a href="javascript:search('nothing',${i})">${i}</a></li>
-                              </c:forEach>
-                          </c:if>
+                      </c:choose>
+               </span></li>
+            </ul>
+            <div class="clear"></div>
+            <!--p class="zhushi" style="border-bottom:none; text-indent:40px;">订单正在发货，请耐心等待。</p-->
+        </div>
+    </div>
+    <div class="content_right_nr" style="margin-top:16px;">
+        <h4 class="sub_title1"><p class="sub_p9">订单信息</p></h4>
+        <div class="sub_nr" style="height:60px;">
+            <ul class="dd_list1">
+                <!--li>订单号：1005 <span>（<b>1</b>）</span></li-->
+                <li>查询类型：${orderInfo.orderTypeName}</li>
+                <li>查询条数：<span><b>${orderInfo.total}</b></span>条</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content_right_nr" style="margin-top:16px;">
+        <table width="749" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table2" style="margin-top:0px;">
+            <tr class="sub_tr1">
+                <th>序号</th>
+                <th>查询对象</th>
+                <th>状态</th>
+            </tr>
+            <c:forEach  var="obj" items="${objects.list}"   varStatus="status">
+                <tr class="sub_tr1">
+                    <td>${object.page*5+status.count}</td>
+                    <td>${obj.objCode } |  ${obj.objName}</td>
+                    <td>
+                        <c:choose>
+                            <c:when test="${obj.status ==1}">
+                                <li class="tj">查询中</li>
+                            </c:when>
+                            <c:when test="${obj.status ==2}">
+                                <li class="tj">成功</li>
+                            </c:when>
+                            <c:when test="${obj.status ==3}">
+                                <li class="tj">无结果</li>
+                            </c:when>
+                            <c:when test="${obj.status ==4}">
+                                <li class="tj">未通过审核</li>
+                            </c:when>
+                            <c:when test="${obj.status ==5}">
+                                <li class="tj">账户支付失败</li>
+                            </c:when>
+                        </c:choose>
+                    </td>
+                </tr>
+            </c:forEach>
+
+            <tr class="sub_tr1">
+                <td colspan="4">
+
+                    <ul>
+
+                        <li><a href="/order/detail?id=${orderInfo.id}&page=${objects.page -1}"  title="上一页"> < </a></li>
 
 
-                          <c:if test="${objects.page > 9}">
-                              <c:forEach var="i" begin="${objects.page-5}" end="${objects.page-1}" step="1">
-                                  <li><a href="javascript:search('nothing',${i})">${i}</a></li>
-                              </c:forEach>
-                          </c:if>
+
+                        <c:if test="${objects.page <= 9}">
+                            <c:forEach var="i" begin="${1}" end="${objects.page-1}" step="1">
+                                <li><a href="/order/detail?id=${orderInfo.id}&page=${i}">${i}</a></li>
+                            </c:forEach>
+                        </c:if>
 
 
-                          <li><a href="javascript:search('nothing',${objects.page})" style="color:#FF0000">${objects.page}</a></li>
+                        <c:if test="${objects.page > 9}">
+                            <c:forEach var="i" begin="${objects.page-5}" end="${objects.page-1}" step="1">
+                                <li><a href="/order/detail?id=${orderInfo.id}&page=${i}">${i}</a></li>
+                            </c:forEach>
+                        </c:if>
 
 
-                          <c:forEach var="j" begin="${objects.page+1}" end="${objects.page + 5}" step="1">
-                              <c:if test="${j <= objects.totalpage}">
-                                  <li><a href="javascript:search('nothing',${j})">${j}</a></li>
-                              </c:if>
-                          </c:forEach>
+                        <li><a href="/order/detail?id=${orderInfo.id}&page=${objects.page}" style="color:#FF0000">${objects.page}</a></li>
 
-                          <li><a href="javascript:search('nothing',${objects.page + 1})">Next</a></li>
-                          <li><span >共 ${objects.totalitem }条 ，当前第 <strong> ${objects.page }</strong> / <span> <strong>${objects.totalpage}</strong> </span> 页 </span> </li>
-                      </ul>
 
-                  </td>
-          </tr>
-      </table>
- </div>
-<script type="text/javascript">
-    var dialog;
-    function openContent(){
-        dialog=new Dialog("查询条目");
-        dialog.SetRange(600,300);
-        dialog.SetXY((window.document.body.clientWidth -600)/2,50);
-        //dialog.OpenWindow("http://www.baidu.com");
+                        <c:forEach var="j" begin="${objects.page+1}" end="${objects.page + 5}" step="1">
+                            <c:if test="${j <= objects.totalpage}">
+                                <li><a href="/order/detail?id=${orderInfo.id}&page=${j}">${j}</a></li>
+                            </c:if>
+                        </c:forEach>
 
-        dialog.OpenWindow2(document.getElementById("content").innerHTML);
-    }
-</script>
+                        <li><a href="/order/detail?id=${orderInfo.id}&page=${objects.page+1}" title="下一页"> > </a></li>
+                        <li><span >共 ${objects.totalitem }条 ，当前第 <strong> ${objects.page }</strong> / <span> <strong>${objects.totalpage}</strong> </span> 页 </span> </li>
+                    </ul>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
 </body>
 </html>

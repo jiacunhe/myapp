@@ -20,6 +20,48 @@
     from t_user_apply_package
     where id = #{id,jdbcType=INTEGER}
   </select>
+
+
+
+  <select id="selective" resultType="java.util.Map" parameterType="java.util.Map">
+
+     SELECT MAX(userId),MAX(userName) userName,assignorId,MAX(assignorName) assignorName,yearMonth,
+       MAX(CASE businessId WHEN 1 THEN assignQuantity ELSE 0 END) b1q ,
+       MAX(CASE businessId WHEN 1 THEN usedQuantity ELSE 0 END) b1uq ,
+       MAX(CASE businessId WHEN 2 THEN assignQuantity ELSE 0 END) b2q ,
+       MAX(CASE businessId WHEN 2 THEN usedQuantity ELSE 0 END) b2uq
+     FROM (
+          SELECT u.userId,u.userName,a.assignorId,
+                  (SELECT username FROM t_user WHERE userId = a.assignorId) assignorName,
+                  a.yearMonth,a.businessId,a.assignQuantity,a.usedQuantity
+          FROM t_user u,t_user_apply_package a
+          WHERE u.userId=a.userId
+          <if test="userId != null" >
+              AND a.userId=#{userId,jdbcType=VARCHAR}
+          </if>
+          <if test="yearMonth != null" >
+              <![CDATA[  AND yearMonth >=#{yearMonth,jdbcType=VARCHAR}  ]]>
+          </if>
+
+     ) xx
+     GROUP BY assignorId,yearMonth
+     ORDER BY yearMonth DESC
+
+  </select>
+
+
+
+  <select id="select" parameterType="java.util.Map" resultType="java.util.Map">
+      select <include refid="Base_Column_List"/>
+      from t_user_apply_package
+      where userId=#{userId,jdbcType=VARCHAR}
+      and yearMonth=#{yearMonth,jdbcType=VARCHAR}
+  </select>
+
+
+
+
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from t_user_apply_package
     where id = #{id,jdbcType=INTEGER}

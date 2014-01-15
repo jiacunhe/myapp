@@ -104,6 +104,9 @@ public class CommonServiceImpl<T> implements CommonService<T> {
                     params.put("_table",_table);
                     params.put("_column",_column.toString().substring(0,_column.toString().length()-1));
                     params.put("_values",_values.toString().substring(0,_values.toString().length()-1));
+
+
+                    System.out.println(_column+"===========================");
                     commonMapper.insert(params);
                 }
             }else if(key.toString().equals("UPDATE")){

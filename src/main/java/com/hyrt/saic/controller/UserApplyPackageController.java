@@ -21,7 +21,7 @@ public class UserApplyPackageController {
     UserApplyPackageService userApplyPackageService;
     @RequestMapping("/list")
     public String select(String userId){
-       List list2= userApplyPackageService.select(userId);
-        return "accountInfo.jsp";
+
+        return "list.jsp";
     }
 }

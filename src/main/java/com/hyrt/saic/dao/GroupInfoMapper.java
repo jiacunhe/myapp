@@ -3,6 +3,7 @@ package com.hyrt.saic.dao;
 import com.hyrt.saic.bean.GroupInfo;
 
 import java.util.List;
+import java.util.Map;
 
 public interface GroupInfoMapper {
     int deleteByPrimaryKey(Long id);
@@ -19,5 +20,10 @@ public interface GroupInfoMapper {
 
 
     GroupInfo selectByOrderDetailId(Long orderDetailId);
+
+    List selectMonitorInfo(Map params);
+
+
+    Integer selectCount(Map params);
 
 }

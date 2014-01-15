@@ -4,6 +4,8 @@ import com.hyrt.saic.bean.UserApplyPackage;
 
 import java.util.List;
 
+import java.util.Map;
+
 public interface UserApplyPackageMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -17,5 +19,8 @@ public interface UserApplyPackageMapper {
 
     int updateByPrimaryKey(UserApplyPackage record);
 
-    List select(String userId);
+
+    List select(Map map);
+
+    List selective(Map params);
 }

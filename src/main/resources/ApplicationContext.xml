@@ -52,7 +52,7 @@
     </bean>
     <tx:annotation-driven transaction-manager="transactionManager"/>
     <!--
-      <tx:advice id="txAdvice" transaction-manager="transactionManager">
+      <tx:advice id="txAdvice" transaction-customer="transactionManager">
           <tx:attributes>
               <tx:method name="*" propagation="REQUIRED" read-only="false"
                   rollback-for="java.lang.Exception"/>

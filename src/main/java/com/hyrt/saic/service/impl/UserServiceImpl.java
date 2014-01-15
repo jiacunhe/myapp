@@ -1,12 +1,12 @@
 package com.hyrt.saic.service.impl;
 
-import com.hyrt.saic.bean.Customer;
-import com.hyrt.saic.bean.Manager;
-import com.hyrt.saic.bean.Role;
-import com.hyrt.saic.bean.User;
+import com.hyrt.saic.bean.*;
 import com.hyrt.saic.dao.UserMapper;
+import com.hyrt.saic.dao.UserRoleMapper;
 import com.hyrt.saic.service.UserService;
+import com.hyrt.saic.util.Config;
 import com.hyrt.saic.util.enums.PaymentRule;
+import com.hyrt.saic.util.enums.UserStatus;
 import com.hyrt.saic.util.enums.UserType;
 import me.sfce.library.mybatis.persistence.BaseMapper;
 import me.sfce.library.mybatis.service.impl.BaseServiceImpl;
@@ -16,6 +16,7 @@ import org.springframework.util.DigestUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -30,6 +31,9 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     @Autowired
     UserMapper userMapper;
 
+    @Autowired
+    UserRoleMapper userRoleMapper;
+
     @Override
     public void save(User user) {
         user.setRegTime(new Timestamp(System.currentTimeMillis()));
@@ -39,15 +43,27 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
 
     @Override
     public void update(User user) {
-        user.setUpdateTime(new Timestamp(System.currentTimeMillis()));
-        super.update(user);
+        if (!Config.ADMIN.equals(user.getUserId())) {
+            user.setUpdateTime(new Timestamp(System.currentTimeMillis()));
+            super.update(user);
+        }
     }
 
     @Override
     public boolean login(HttpServletRequest request, String userId, String password) {
         User user = userMapper.login(userId, toMD5(password));
         if (null != user) {
-            request.getSession().setAttribute("user", user);
+            request.getSession().setAttribute(Config.USER, user);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean loginManage(HttpServletRequest request, String userId, String password) {
+        User user = userMapper.loginManage(userId, toMD5(password));
+        if (null != user) {
+            request.getSession().setAttribute(Config.MANAGE, user);
             return true;
         }
         return false;
@@ -68,41 +84,79 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
 
     @Override
     public void invalid(User user) {
-        userMapper.delete(user);
     }
 
     @Override
     public void addCustomer(Customer customer, HttpServletRequest request) {
-        User user = (User) request.getSession().getAttribute("user");
-        if (null != user) {
-            customer.setCreatorId(user.getUserId());
-        }
+        User user = (User) request.getSession().getAttribute(Config.MANAGE);
+        customer.setCreatorId(user.getUserId());
+        boolean userType = user instanceof Manager;
+        customer.setBasal(userType); //管理员创建的是普通客户，普通客户创建的是子账户，子账户不能创建客户
+        customer.setChild(!userType);
         customer.setUserType(UserType.CUSTOMER);
-        customer.setPassword(toMD5(customer.getPassword()));
+        customer.setPassword(toMD5(Config.PASSWORD_CUSTOMER_DEFAULT));
         customer.setRegTime(new Timestamp(System.currentTimeMillis()));
+        customer.setStatus(UserStatus.NORMAL);
+
         userMapper.insert(customer);
     }
 
     @Override
-    public void addManager(Manager manager, HttpServletRequest request) {
-        User user = (User) request.getSession().getAttribute("user");
-        if (null != user) {
-            manager.setCreatorId(user.getUserId());
-        }
+    public void addManager(Manager manager, HttpServletRequest request, String roleIds) {
+        User user = (User) request.getSession().getAttribute(Config.USER);
+        manager.setCreatorId(user.getUserId());
         manager.setUserType(UserType.MANAGER);
-        manager.setPassword(toMD5(manager.getPassword()));
+        manager.setStatus(UserStatus.NORMAL);
+        manager.setPassword(toMD5(Config.PASSWORD_MANAGER_DEFAULT));
         manager.setRegTime(new Timestamp(System.currentTimeMillis()));
         userMapper.insert(manager);
+        if (null != roleIds) {
+            String[] roleIdArray = roleIds.split(",");
+            this.setRoles(manager.getUserId(), roleIdArray);
+        }
     }
 
     @Override
-    public List<Manager> queryManagersByCondition(Map<String, Object> conditon) {
-        return null;
+    public void lock(User user) {
+        if (!Config.ADMIN.equals(user.getUserId())) {
+            user.setStatus(UserStatus.LOCK);
+            super.update(user);
+        }
     }
 
     @Override
-    public List<Customer> queryCustomersByCondition(Map<String, Object> conditon) {
-        return null;
+    public void delete(Object id) {
+        User user = getById(id);
+        user.setStatus(UserStatus.DELETED);
+        super.update(user);
+    }
+
+    @Override
+    public void unlock(User user) {
+        user.setStatus(UserStatus.NORMAL);
+        super.update(user);
+    }
+
+    @Override
+    public void modifyManager(Manager manager, String roleIds) {
+        if (Config.ADMIN.equals(manager.getUserId())) return;
+        super.update(manager);
+        userRoleMapper.deleteByUser(manager.getUserId());
+        if (null != roleIds) {
+            String[] roleIdArray = roleIds.split(",");
+            this.setRoles(manager.getUserId(), roleIdArray);
+        }
+    }
+
+    @Override
+    public List<Manager> queryManagersByCondition(Map<String, Object> condition) {
+        return userMapper.getManagers(condition);
+//        return userMapper.getManagers((String) condition.get("userId"), (String) condition.get("username"), null == roleId ? 0 : (int) roleId, (String) condition.get("status"));
+    }
+
+    @Override
+    public List<Customer> queryCustomersByCondition(Map<String, Object> condition) {
+        return userMapper.getCustomers(condition);
     }
 
     @Override
@@ -112,10 +166,45 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
 
     @Override
     public void resetPassword(User user) {
+        if (user instanceof Manager) {
+            user.setPassword(toMD5(Config.PASSWORD_MANAGER_DEFAULT));
+        } else {
+            user.setPassword(toMD5(Config.PASSWORD_CUSTOMER_DEFAULT));
+        }
+        user.setUpdateTime(new Timestamp(System.currentTimeMillis()));
+        super.update(user);
     }
 
     @Override
     public void modifyPassword(User user, String newPassword) {
+        user.setPassword(toMD5(newPassword));
+        user.setUpdateTime(new Timestamp(System.currentTimeMillis()));
+        super.update(user);
+    }
+
+    @Override
+    public List<Integer> getRoleIds(User userId) {
+        List<UserRole> userRoles = userRoleMapper.getByUser(userId);
+        List<Integer> result = new ArrayList<>();
+        for (UserRole userRole : userRoles) {
+            result.add(userRole.getRoleId());
+        }
+        return result;
+    }
+
+    @Override
+    public void deleteRoles(String userId) {
+        userRoleMapper.deleteByUser(userId);
+    }
+
+    @Override
+    public void setRoles(String userId, String[] roleIds) {
+        for (String roleId : roleIds) {
+            UserRole userRole = new UserRole();
+            userRole.setUserId(userId);
+            userRole.setRoleId(Integer.valueOf(roleId));
+            userRoleMapper.insert(userRole);
+        }
     }
 
     @Override

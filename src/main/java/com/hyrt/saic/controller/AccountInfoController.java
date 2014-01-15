@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -29,9 +31,24 @@ public class AccountInfoController {
         userId="admin";
 
         List list= accountInfoService.select(userId);
-        List list2= userApplyPackageService.select(userId);
+        boolean package1,package2;
+        if(list.size()==0){
+             package1=false;
+        } else  package1=true;
+
+        SimpleDateFormat sdf= new SimpleDateFormat("yyyyMM");
+        Date curDate= new Date();
+        String dateStr=sdf.format(curDate);
+
+
+        List list2= userApplyPackageService.select(userId,dateStr);
+        if(list2.size()==0){
+           package2=false;
+        }  else  package2=true;
         request.setAttribute("list",list);
         request.setAttribute("list2",list2);
-        return "accountInfo.jsp";
+        request.setAttribute("package1",package1);
+        request.setAttribute("package2",package2);
+        return "/accountInfo/list.jsp";
     }
 }

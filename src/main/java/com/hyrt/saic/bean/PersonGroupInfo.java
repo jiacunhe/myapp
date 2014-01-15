@@ -2,6 +2,8 @@ package com.hyrt.saic.bean;
 
 import com.hyrt.saic.util.enums.PersonGroupInfoType;
 
+import java.sql.Timestamp;
+
 public class PersonGroupInfo {
     private Long id;
 
@@ -25,6 +27,15 @@ public class PersonGroupInfo {
 
     private String orderId;
 
+    private Timestamp messageTime;
+
+    public Timestamp getMessageTime() {
+        return messageTime;
+    }
+
+    public void setMessageTime(Timestamp messageTime) {
+        this.messageTime = messageTime;
+    }
 
     public  PersonGroupInfo(){
 

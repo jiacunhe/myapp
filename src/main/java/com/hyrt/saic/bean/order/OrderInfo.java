@@ -1,5 +1,7 @@
 package com.hyrt.saic.bean.order;
 
+import com.hyrt.saic.util.enums.OrderStatus;
+
 import java.sql.Timestamp;
 
 /**
@@ -10,47 +12,42 @@ import java.sql.Timestamp;
  * To change this template use File | Settings | File Templates.
  */
 public class OrderInfo {
-
-    private String id;
-
+ //   d.id,d.`orderId`,d.`monitorType`,d.`objCode`,d.`objName`,d.`certType`,d.`status`,d.`remark`,
+  //  o.`orderType`,o.`createTime`,o.`userId`,o.`cycle`,
+ //   t.`orderName`
+    private Long id;
+    private String orderId;
     private String userId;
-
-    private String orderType;
-
-    private String createTime;
-
-    private String payTime;
-
-    private String verifyTime;
-
-    private String finishTime;
-
+    private String monitorType;
+    private String objCode;
+    private String objName;
+    private String objCertType;
     private String status;
-
-    private Integer total=0;
-
-    private Integer doneNum=0;
-
-    private Integer undoneNum=0;
-
+    private String orderType;
+    private String createTime;
+    private Integer cycle;
     private String remark;
-
     private String orderTypeName;
 
-    public String getOrderTypeName() {
-        return orderTypeName;
-    }
+    private String statusName;
 
-    public void setOrderTypeName(String orderTypeName) {
-        this.orderTypeName = orderTypeName;
-    }
 
-    public String getId() {
+
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
     }
 
     public String getUserId() {
@@ -59,6 +56,50 @@ public class OrderInfo {
 
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    public String getMonitorType() {
+        return monitorType;
+    }
+
+    public void setMonitorType(String monitorType) {
+        this.monitorType = monitorType;
+    }
+
+    public String getObjCode() {
+        return objCode;
+    }
+
+    public void setObjCode(String objCode) {
+        this.objCode = objCode;
+    }
+
+    public String getObjName() {
+        return objName;
+    }
+
+    public void setObjName(String objName) {
+        this.objName = objName;
+    }
+
+    public String getObjCertType() {
+        return objCertType;
+    }
+
+    public void setObjCertType(String objCertType) {
+        this.objCertType = objCertType;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+        if(status !=null && !"".equals(status.trim()))
+            this.statusName= OrderStatus.values()[Integer.valueOf(status.trim())-1].name();
+        else
+            this.status = null;
     }
 
     public String getOrderType() {
@@ -77,65 +118,12 @@ public class OrderInfo {
         this.createTime = createTime;
     }
 
-    public String getStatus() {
-        return status;
+    public Integer getCycle() {
+        return cycle;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public Integer getTotal() {
-        return total;
-    }
-
-    public void setTotal(Integer total) {
-        this.total = total;
-        if( this.total==null)  this.total=0;
-    }
-
-    public Integer getDoneNum() {
-        return doneNum;
-    }
-
-    public void setDoneNum(Integer doneNum) {
-        this.doneNum = doneNum;
-        if( this.doneNum==null)  this.doneNum=0;
-    }
-
-    public Integer getUndoneNum() {
-        return undoneNum;
-    }
-
-    public void setUndoneNum(Integer undoneNum) {
-        this.undoneNum = undoneNum;
-        if( this.undoneNum==null)  this.undoneNum=0;
-
-    }
-
-
-    public String getPayTime() {
-        return payTime;
-    }
-
-    public void setPayTime(String payTime) {
-        this.payTime = payTime;
-    }
-
-    public String getVerifyTime() {
-        return verifyTime;
-    }
-
-    public void setVerifyTime(String verifyTime) {
-        this.verifyTime = verifyTime;
-    }
-
-    public String getFinishTime() {
-        return finishTime;
-    }
-
-    public void setFinishTime(String finishTime) {
-        this.finishTime = finishTime;
+    public void setCycle(Integer cycle) {
+        this.cycle = cycle;
     }
 
     public String getRemark() {
@@ -144,5 +132,21 @@ public class OrderInfo {
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public String getOrderTypeName() {
+        return orderTypeName;
+    }
+
+    public void setOrderTypeName(String orderTypeName) {
+        this.orderTypeName = orderTypeName;
+    }
+
+    public String getStatusName() {
+        return statusName;
+    }
+
+    public void setStatusName(String statusName) {
+        this.statusName = statusName;
     }
 }

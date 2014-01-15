@@ -24,12 +24,16 @@ public interface OrderService {
 
       public Map selectOrder(HashMap map);
 
-      public OrderInfo selectOrderInfoByOrderId(String id);
+      public Map selectOrderInfoByOrderId(String id);
 
       public Map selectByOrderId(Map params);
 
       public Map selectGroupInfo(Long id);
 
       public List selectPersonInfo(Long id);
+
+      public Integer selectForPermissionView(Map params);
+
+      public Map selectMonitorResultList(Map params);
 
 }

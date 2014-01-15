@@ -1,5 +1,7 @@
 package com.hyrt.saic.bean.order;
 
+import com.hyrt.saic.util.enums.OrderStatus;
+
 public class OrderDetail {
     private Long id;
 
@@ -17,17 +19,19 @@ public class OrderDetail {
 
     private String remark;
 
+    private String statusName;
 
     public OrderDetail(){
 
     }
 
-    public OrderDetail(String orderId,String monitorType,String objName, String objCode,String certType,String remark){
+    public OrderDetail(String orderId,String monitorType,String objName, String objCode,String certType,OrderStatus status,String remark){
         this.objCode = objCode;
         this.orderId= orderId;
         this.monitorType=monitorType;
         this.objName=objName;
         this.certType=certType;
+        this.status = status.toString();
         this.remark=remark;
     }
 
@@ -94,5 +98,17 @@ public class OrderDetail {
 
     public void setStatus(String status) {
         this.status = status;
+        if(status !=null && !"".equals(status.trim()))
+            this.statusName= OrderStatus.values()[Integer.valueOf(status.trim())-1].name();
+        else
+            this.status = null;
+    }
+
+    public String getStatusName() {
+        return statusName;
+    }
+
+    public void setStatusName(String statusName) {
+        this.statusName = statusName;
     }
 }

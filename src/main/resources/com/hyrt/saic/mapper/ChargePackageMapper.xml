@@ -137,7 +137,7 @@
     </select>   <!-->hh增加<-->
 
     <select id="lastInsertId" resultType="java.lang.Integer">
-        SELECT LAST_INSERT_ID()
+        SELECT LAST_INSERT_ID() from dual
     </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
