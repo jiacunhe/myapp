@@ -217,7 +217,7 @@ public class CommonServiceImpl<T> implements CommonService<T> {
         if (page > totalpage) page = totalpage;
         if (page < 1) page = 1;
 
-        List list = commonMapper.selectBySql(sql+"limit "+(page - 1) * 10+","+pagesize);
+        List list = commonMapper.selectBySql(sql+"limit "+(page - 1) * pagesize+","+pagesize);
 
 
         Map res = new HashMap();

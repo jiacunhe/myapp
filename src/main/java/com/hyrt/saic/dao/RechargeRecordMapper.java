@@ -19,4 +19,8 @@ public interface RechargeRecordMapper {
     int updateByPrimaryKey(RechargeRecord record);
 
     List selectSelective(Map params);
+
+    List selectivePage(Map params);
+
+    int selectivePageCount(Map params);
 }

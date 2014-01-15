@@ -17,4 +17,7 @@ public interface RechargeRecordService {
 
      public List getRechargeRecord(Map params);
 
+
+     public Map  selectRechargeRecordByPage(String userId,String startDate,String endDate,String lowPrice,String highPrice,Integer page);
+
 }

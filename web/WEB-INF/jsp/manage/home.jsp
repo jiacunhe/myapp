@@ -55,24 +55,24 @@
 
 
         <dl>
-            <dt><A href="/userAccount/search" target="main"><img src="${basePath}/manage/images/ht_ico5.png"/>套餐使用记录</A></dt>
+            <dt><A href="/userAccount/search" target="main"><img src="${basePath}/manage/images/ht_ico5.png"/>用户账户信息</A></dt>
         </dl>
 
 
         <dl>
-            <dt><A onclick=javascript:ShowFLT(1) href="javascript:void(null)"><img
-                    src="${basePath}/manage/images/ht_ico6.png"/>包月套餐</A></dt>
-            <dd id=LM1 style="DISPLAY: none">
-                <ul>
-                    <li><a href="#">包月套餐分配</a></li>
-                    <li><a href="#">包月金额统计</a></li>
-                </ul>
-            </dd>
+            <dt><A  href="/userAccount/allotSearch" target="main"><img   src="${basePath}/manage/images/ht_ico6.png"/>包月套餐分配</A></dt>
+            <%--           <dt><A onclick=javascript:ShowFLT(1) href="javascript:void(null)"><img   src="${basePath}/manage/images/ht_ico6.png"/>包月套餐分配</A></dt>
+                   <dd id=LM1 style="DISPLAY: none">
+                         <ul>
+                             <li><a href="#">包月套餐分配</a></li>
+                             <li><a href="#">包月金额统计</a></li>
+                         </ul>
+                     </dd>--%>
         </dl>
 
 
         <dl>
-            <dt><A href="#"><img src="${basePath}/manage/images/ht_ico7.png"/>付款明细</A></dt>
+            <dt><A href="/userAccount/rechargeSearch" target="main"><img src="${basePath}/manage/images/ht_ico7.png"/>付款明细</A></dt>
         </dl>
 
         <dl>

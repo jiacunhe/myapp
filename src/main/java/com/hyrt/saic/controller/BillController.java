@@ -37,6 +37,8 @@ public class BillController {
 
           Calendar cal = Calendar.getInstance();
           SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdf2 = new SimpleDateFormat("yyyyMM");
+
 
           Map params = new HashMap();
           params.put("userId",userId);
@@ -59,7 +61,7 @@ public class BillController {
 
          cal.setTime(new Date());
          cal.add(Calendar.MONTH,-12);
-         params.put("yearMonth",sdf.format(cal.getTime()));
+         params.put("yearMonth",sdf2.format(cal.getTime()));
          List monthlyList =  userPackageApplyService.selectUsedPackage(params);
          request.setAttribute("monthlyList",monthlyList);
 

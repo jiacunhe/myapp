@@ -25,7 +25,7 @@
 
   <select id="selective" resultType="java.util.Map" parameterType="java.util.Map">
 
-     SELECT MAX(userId),MAX(userName) userName,assignorId,MAX(assignorName) assignorName,yearMonth,
+     SELECT MAX(userId) userId,MAX(userName) userName,assignorId,MAX(assignorName) assignorName,yearMonth,max(remark) remark,
        MAX(CASE businessId WHEN 1 THEN assignQuantity ELSE 0 END) b1q ,
        MAX(CASE businessId WHEN 1 THEN usedQuantity ELSE 0 END) b1uq ,
        MAX(CASE businessId WHEN 2 THEN assignQuantity ELSE 0 END) b2q ,
@@ -33,24 +33,59 @@
      FROM (
           SELECT u.userId,u.userName,a.assignorId,
                   (SELECT username FROM t_user WHERE userId = a.assignorId) assignorName,
-                  a.yearMonth,a.businessId,a.assignQuantity,a.usedQuantity
+                  a.yearMonth,a.businessId,a.assignQuantity,a.usedQuantity,a.remark
           FROM t_user u,t_user_apply_package a
           WHERE u.userId=a.userId
           <if test="userId != null" >
               AND a.userId=#{userId,jdbcType=VARCHAR}
           </if>
-          <if test="yearMonth != null" >
-              <![CDATA[  AND yearMonth >=#{yearMonth,jdbcType=VARCHAR}  ]]>
+          <if test="userName != null" >
+              AND u.userName like '%${userName}%'
           </if>
+          <if test="yearMonth != null" >
+              <![CDATA[  AND yearMonth =#{yearMonth,jdbcType=VARCHAR}  ]]>
+          </if>
+
 
      ) xx
      GROUP BY assignorId,yearMonth
      ORDER BY yearMonth DESC
-
+      <if test="cursor != null" >
+          limit #{cursor,jdbcType=INTEGER} ,#{length,jdbcType=INTEGER}
+      </if>
   </select>
+    <select id="selectiveCount"  resultType="java.lang.Integer" parameterType="java.util.Map">
+       select count(*) from (
+        SELECT MAX(userId),MAX(userName) userName,assignorId,MAX(assignorName) assignorName,yearMonth,max(remark) remark,
+        MAX(CASE businessId WHEN 1 THEN assignQuantity ELSE 0 END) b1q ,
+        MAX(CASE businessId WHEN 1 THEN usedQuantity ELSE 0 END) b1uq ,
+        MAX(CASE businessId WHEN 2 THEN assignQuantity ELSE 0 END) b2q ,
+        MAX(CASE businessId WHEN 2 THEN usedQuantity ELSE 0 END) b2uq
+        FROM (
+        SELECT u.userId,u.userName,a.assignorId,
+        (SELECT username FROM t_user WHERE userId = a.assignorId) assignorName,
+        a.yearMonth,a.businessId,a.assignQuantity,a.usedQuantity,a.remark
+        FROM t_user u,t_user_apply_package a
+        WHERE u.userId=a.userId
+        <if test="userId != null" >
+            AND a.userId=#{userId,jdbcType=VARCHAR}
+        </if>
+        <if test="userName != null" >
+            AND u.userName like '%${userName}%'
+        </if>
+        <if test="yearMonth != null" >
+            <![CDATA[  AND yearMonth =#{yearMonth,jdbcType=VARCHAR}  ]]>
+        </if>
+        ) xx
+        GROUP BY assignorId,yearMonth
+        ) yyy
+    </select>
 
-
-
+    <update id="updateAllotPackageQuantity" parameterType="java.util.Map" >
+    update t_user_apply_package
+    set usedQuantity = usedQuantity + #{quantity,jdbcType=INTEGER}
+    where userId = #{userId,jdbcType=INTEGER}  and businessId=1 and yearMonth=#{yearMonth,jdbcType=VARCHAR}
+  </update>
 
 
 

@@ -19,4 +19,8 @@ public interface UserApplyPackageMapper {
     int updateByPrimaryKey(UserApplyPackage record);
 
     List selective(Map params);
+
+    Integer selectiveCount(Map params);
+
+    void updateAllotPackageQuantity(Map params);
 }

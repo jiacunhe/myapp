@@ -1,5 +1,6 @@
 package com.hyrt.saic.bean;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class UserAssignPackage {
@@ -15,7 +16,7 @@ public class UserAssignPackage {
 
     private Integer durationMonths;
 
-    private Date createTime;
+    private Timestamp createTime;
 
     private String effectiveType;
 
@@ -71,11 +72,11 @@ public class UserAssignPackage {
         this.durationMonths = durationMonths;
     }
 
-    public Date getCreateTime() {
+    public Timestamp getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(Timestamp createTime) {
         this.createTime = createTime;
     }
 

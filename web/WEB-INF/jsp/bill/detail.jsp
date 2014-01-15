@@ -146,8 +146,8 @@
         <ul>
            <li><span>${privatePackage.packageName}</span></li>
             <li>价格：<span>${privatePackage.price}</span></li>
-            <li>可用查询条数：<span>${privatePackage.b1q}</span> 次</li>
-            <li>可用监控条数：<span>${privatePackage.b2q}</span> 次/1年</li>
+            <li>含查询条数：<span>${privatePackage.b1q}</span> 次</li>
+            <li>含监控条数：<span>${privatePackage.b2q}</span> 次/1年</li>
         </ul>
         </c:if>
         <c:if test="${!empty monthlyPackage}">
