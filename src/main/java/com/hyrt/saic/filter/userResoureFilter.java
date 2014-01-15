@@ -94,12 +94,10 @@ public class userResoureFilter implements Filter {
 
 
                 }else{
-                   //否 判断路径中是否包含ajax
-                    if (manageuri.contains("ajax")){
-
+                   //否 则继续
                         filterChain.doFilter(request, response);
                         return;
-                    }
+
 
                 }
 
