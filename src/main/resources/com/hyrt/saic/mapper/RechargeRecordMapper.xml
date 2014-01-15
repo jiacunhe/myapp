@@ -35,6 +35,59 @@
   </select>
 
 
+    <select id="selectivePage" resultType="java.util.Map" parameterType="java.util.Map">
+
+    SELECT r.id,r.`userId`,r.`packageId`,r.`createTime`,r.chargeTime,r.`amount`,r.`returnResult`,r.`status`,r.`chargeType`,c.`packageName`,c.`price`,c.`status` packageStatus,c.`type`
+    FROM t_recharge_record r,t_charge_package c WHERE r.`packageId`=c.`id`
+        <if test="userId != null" >
+            AND r.userId=#{userId,jdbcType=VARCHAR}
+        </if>
+
+        <if test="startDate != null" >
+            <![CDATA[   AND DATE_FORMAT(r.chargeTime,'%Y-%m-%d') >=  #{startDate,jdbcType=VARCHAR} ]]>
+        </if>
+        <if test="endDate != null" >
+            <![CDATA[   AND DATE_FORMAT(r.chargeTime,'%Y-%m-%d') <=  #{endDate,jdbcType=VARCHAR}               ]]>
+        </if>
+        <if test="lowPrice != null" >
+            <![CDATA[   AND r.amount >=  #{lowPrice,jdbcType=DECIMAL} ]]>
+        </if>
+        <if test="highPrice != null" >
+            <![CDATA[   AND  r.amount <=  #{highPrice,jdbcType=DECIMAL}   ]]>
+        </if>
+
+    and r.status='1'
+    order by id desc
+    <if test="cursor != null" >
+        limit #{cursor,jdbcType=INTEGER} ,#{length,jdbcType=INTEGER}
+    </if>
+  </select>
+
+    <select id="selectivePageCount" resultType="java.lang.Integer" parameterType="java.util.Map">
+
+        SELECT count(*)
+        FROM t_recharge_record r,t_charge_package c WHERE r.`packageId`=c.`id`
+        <if test="userId != null" >
+            AND r.userId=#{userId,jdbcType=VARCHAR}
+        </if>
+
+        <if test="startDate != null" >
+            <![CDATA[   AND DATE_FORMAT(r.chargeTime,'%Y-%m-%d') >=  #{startDate,jdbcType=VARCHAR} ]]>
+        </if>
+        <if test="endDate != null" >
+            <![CDATA[   AND DATE_FORMAT(r.chargeTime,'%Y-%m-%d') <=  #{endDate,jdbcType=VARCHAR}  ]]>
+        </if>
+        <if test="lowPrice != null" >
+            <![CDATA[   AND r.amount >=  #{lowPrice,jdbcType=DECIMAL} ]]>
+        </if>
+        <if test="highPrice != null" >
+            <![CDATA[   AND  r.amount <=  #{highPrice,jdbcType=DECIMAL}   ]]>
+        </if>
+        and r.status='1'
+
+    </select>
+
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from t_recharge_record
     where id = #{id,jdbcType=INTEGER}

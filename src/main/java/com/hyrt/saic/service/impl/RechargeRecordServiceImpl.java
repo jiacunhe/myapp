@@ -5,6 +5,7 @@ import com.hyrt.saic.service.RechargeRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -23,5 +24,38 @@ public class RechargeRecordServiceImpl implements RechargeRecordService{
     @Override
     public List getRechargeRecord(Map params) {
         return rechargeRecordMapper.selectSelective(params);
+    }
+
+
+    public Map  selectRechargeRecordByPage(String userId,String startDate,String endDate,String lowPrice,String highPrice,Integer page){
+
+        Map params = new HashMap();
+        if(!"".equals(userId))params.put("userId",userId);
+        if(!"".equals(startDate))params.put("startDate",startDate);
+        if(!"".equals(endDate))params.put("endDate",endDate);
+        if(!"".equals(lowPrice))params.put("lowPrice",lowPrice);
+        if(!"".equals(highPrice))params.put("highPrice",highPrice);
+
+        int pageSize=10;
+
+        if (page== null) page = 1;
+
+        int countItem = rechargeRecordMapper.selectivePageCount(params);
+
+        int totalPage = (countItem + pageSize - 1) / pageSize;
+        if (page > totalPage) page = totalPage;
+        if (page < 1) page = 1;
+
+        params.put("cursor",(page -1)*pageSize);
+        params.put("length",pageSize);
+
+
+        List list= rechargeRecordMapper.selectivePage(params);
+        params.put("page",page);
+        params.put("totalPage",totalPage);
+        params.put("countItem",countItem);
+        params.put("list",list);
+
+        return params;
     }
 }

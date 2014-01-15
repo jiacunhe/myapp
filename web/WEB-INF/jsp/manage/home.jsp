@@ -44,12 +44,12 @@
         </dl>
 
         <dl>
-            <dt><A href="#"><img src="${basePath}/manage/images/ht_ico2.png"/>订单管理</A></dt>
+            <dt><A href="/orderManage/search" target="main"><img src="${basePath}/manage/images/ht_ico2.png"/>订单查询</A></dt>
         </dl>
 
-        <dl>
+<%--        <dl>
             <dt><A href="#"><img src="${basePath}/manage/images/ht_ico3.png"/>信息监控列表</A></dt>
-        </dl>
+        </dl>--%>
 
         <dl>
             <dt><A href="/package/list" target="main" ><img src="${basePath}/manage/images/ht_ico4.png"/>套餐制定</A></dt>
@@ -57,30 +57,23 @@
 
 
         <dl>
-            <dt><A href="#"><img src="${basePath}/manage/images/ht_ico5.png"/>套餐使用记录</A></dt>
+            <dt><A href="/userAccount/search" target="main"><img src="${basePath}/manage/images/ht_ico5.png"/>用户账户信息</A></dt>
         </dl>
 
+
+        <dl>
+            <dt><A  href="/userAccount/allotSearch" target="main"><img   src="${basePath}/manage/images/ht_ico6.png"/>包月套餐分配</A></dt>
+        </dl>
+
+
+        <dl>
+            <dt><A href="/userAccount/rechargeSearch" target="main"><img src="${basePath}/manage/images/ht_ico7.png"/>付款明细</A></dt>
+        </dl>
 
         <dl>
             <dt><A onclick=javascript:ShowFLT(1) href="javascript:void(null)"><img
-                    src="${basePath}/manage/images/ht_ico6.png"/>包月套餐</A></dt>
-            <dd id=LM1 style="DISPLAY: none">
-                <ul>
-                    <li><a href="#">包月套餐分配</a></li>
-                    <li><a href="#">包月金额统计</a></li>
-                </ul>
-            </dd>
-        </dl>
-
-
-        <dl>
-            <dt><A href="#"><img src="${basePath}/manage/images/ht_ico7.png"/>付款明细</A></dt>
-        </dl>
-
-        <dl>
-            <dt><A onclick=javascript:ShowFLT(2) href="javascript:void(null)"><img
                     src="${basePath}/manage/images/ht_ico8.png"/>统计分析</A></dt>
-            <dd id=LM2 style="DISPLAY: none">
+            <dd id=LM1 style="DISPLAY: none">
                 <ul>
                     <li><a href="#">消费统计</a></li>
                     <li><a href="#">查询数据统计</a></li>
@@ -94,9 +87,9 @@
         </dl>
 
         <dl>
-            <dt><A onclick=javascript:ShowFLT(3) href="javascript:void(null)"><img
+            <dt><A onclick=javascript:ShowFLT(2) href="javascript:void(null)"><img
                     src="${basePath}/manage/images/ht_ico10.png"/>系统管理</A></dt>
-            <dd id=LM3 style="DISPLAY: none">
+            <dd id=LM2 style="DISPLAY: none">
                 <ul>
                     <li><hyrt:checkResoure resoureName="角色管理" resoureuri="/role/manager"><a href="/role/manager" target="main"></hyrt:checkResoure>角色管理</a></li>
                     <li><a href="/manager/list" target="main">用户管理</a></li>
@@ -108,7 +101,7 @@
     </div>
     <div class="ht_content_right">
 
-        <iframe id="main" name="main" src="/customer/list" scrolling="no"></iframe>
+        <iframe id="main" name="main" src="/index" scrolling="no"></iframe>
 
     </div>
 </div>

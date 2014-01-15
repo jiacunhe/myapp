@@ -23,4 +23,8 @@ public interface UserApplyPackageMapper {
     List select(Map map);
 
     List selective(Map params);
+
+    Integer selectiveCount(Map params);
+
+    void updateAllotPackageQuantity(Map params);
 }

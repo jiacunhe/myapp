@@ -8,8 +8,11 @@ import java.util.List;
 
 public interface RoleSysResourceMapper {
     int deleteByPrimaryKey(Integer id);
+
     int deleteByRoleReaourceids(HashMap<String, String> hashMap);
+
     int insertListRoelRoleSysResource(List<RoleSysResource> roleSysResources);
+
     int insert(RoleSysResource record);
 
     int insertSelective(RoleSysResource record);
@@ -19,6 +22,7 @@ public interface RoleSysResourceMapper {
     int updateByPrimaryKeySelective(RoleSysResource record);
 
     int updateByPrimaryKey(RoleSysResource record);
+
     List<SysResoure> getResoureByUserRoleids(String roleids);
 
 }

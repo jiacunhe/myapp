@@ -141,14 +141,15 @@ public class OrderController {
 
 
 
-            if(!"".equals(code)) {
-                params.put("id",code);
-            }else{
+//            if(!"".equals(code)) {
+//                params.put("id",code);
+//            }else{
+                if( !"".equals(code))  params.put("code",code);
                 if( !"".equals(type))  params.put("type",type);
                 if( !"".equals(sday))  params.put("sday",sday);
                 if( !"".equals(eday))  params.put("eday",eday);
                 if( !"".equals(name))  params.put("name",name);
-            }
+ //           }
 
             params.put("page",page);
             if(businessType==null || businessType.equals("all") ){

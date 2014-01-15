@@ -416,7 +416,7 @@
             content+='<td>'+obj.list[i].createTime+'</td>';
             content+='<td>'+obj.list[i].statusName+'</td>';
             if(obj.list[i].status == '2'|| obj.list[i].status == '6'){
-                content+=' <a href="javascript:openDetail('+obj.list[i].id+','+obj.list[i].orderType+')"><img src="/images/kaka.png" alt="查看" title="查看" height="20" width="20"></a>';
+                content+=' <td><a href="javascript:openDetail('+obj.list[i].id+','+obj.list[i].orderType+')"><img src="/images/kaka.png" alt="查看" title="查看" height="20" width="20"></a></td>';
             }else{
                 content+='<td><img src="/images/nomessage.png" alt="查看" title="查看" height="20" width="20"></td>';
             }
