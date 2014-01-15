@@ -19,7 +19,7 @@ public class User extends BasePojo {
     private String creatorId; //创建者
     @Ignore
     private String creatorName; //创建者姓名
-    private boolean isBasal; //是否有子客户
+    private Boolean isBasal; //是否有子客户
     private UserStatus status; //状态
     private String remark;
     private List<Role> roles;
@@ -44,11 +44,11 @@ public class User extends BasePojo {
         this.creatorId = creatorId;
     }
 
-    public boolean isBasal() {
+    public Boolean getIsBasal() {
         return isBasal;
     }
 
-    public void setBasal(boolean basal) {
+    public void setBasal(Boolean basal) {
         isBasal = basal;
     }
 

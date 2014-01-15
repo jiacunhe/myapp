@@ -12,6 +12,7 @@ import me.sfce.library.mybatis.persistence.BaseMapper;
 import me.sfce.library.mybatis.service.impl.BaseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 
 import javax.servlet.http.HttpServletRequest;
@@ -60,6 +61,18 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     }
 
     @Override
+    public boolean checkPassword(String userId, String password) {
+        return null != userMapper.login(userId, toMD5(password));
+    }
+
+    @Override
+    public void modifyPassword(String userId, String password) {
+        User user = new User(userId);
+        user.setPassword(toMD5(password));
+        super.update(user);
+    }
+
+    @Override
     public boolean loginManage(HttpServletRequest request, String userId, String password) {
         User user = userMapper.loginManage(userId, toMD5(password));
         if (null != user) {
@@ -91,8 +104,8 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
         User user = (User) request.getSession().getAttribute(Config.MANAGE);
         customer.setCreatorId(user.getUserId());
         boolean userType = user instanceof Manager;
-        customer.setBasal(userType); //管理员创建的是普通客户，普通客户创建的是子账户，子账户不能创建客户
-        customer.setChild(!userType);
+        customer.setBasal(userType);
+        customer.setChild(!userType); //管理员创建的是普通客户，普通客户创建的是子账户，子账户不能创建客户
         customer.setUserType(UserType.CUSTOMER);
         customer.setPassword(toMD5(Config.PASSWORD_CUSTOMER_DEFAULT));
         customer.setRegTime(new Timestamp(System.currentTimeMillis()));
@@ -101,9 +114,10 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
         userMapper.insert(customer);
     }
 
+    @Transactional
     @Override
     public void addManager(Manager manager, HttpServletRequest request, String roleIds) {
-        User user = (User) request.getSession().getAttribute(Config.USER);
+        User user = (User) request.getSession().getAttribute(Config.MANAGE);
         manager.setCreatorId(user.getUserId());
         manager.setUserType(UserType.MANAGER);
         manager.setStatus(UserStatus.NORMAL);
@@ -138,6 +152,12 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     }
 
     @Override
+    public boolean checkUserId(String userId) {
+        return null == userMapper.getById(new User(userId));
+    }
+
+    @Transactional
+    @Override
     public void modifyManager(Manager manager, String roleIds) {
         if (Config.ADMIN.equals(manager.getUserId())) return;
         super.update(manager);
@@ -151,7 +171,6 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     @Override
     public List<Manager> queryManagersByCondition(Map<String, Object> condition) {
         return userMapper.getManagers(condition);
-//        return userMapper.getManagers((String) condition.get("userId"), (String) condition.get("username"), null == roleId ? 0 : (int) roleId, (String) condition.get("status"));
     }
 
     @Override
@@ -171,13 +190,6 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
         } else {
             user.setPassword(toMD5(Config.PASSWORD_CUSTOMER_DEFAULT));
         }
-        user.setUpdateTime(new Timestamp(System.currentTimeMillis()));
-        super.update(user);
-    }
-
-    @Override
-    public void modifyPassword(User user, String newPassword) {
-        user.setPassword(toMD5(newPassword));
         user.setUpdateTime(new Timestamp(System.currentTimeMillis()));
         super.update(user);
     }

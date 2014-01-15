@@ -6,8 +6,53 @@
 <head>
     <%@ include file="/WEB-INF/jsp/manage/commons.jspf" %>
     <title>新增</title>
+    <script type="text/javascript">
+        $().ready(function () {
+            $.validator.addMethod("chinese", function (value, element) {
+                var chinese = /^[\u4e00-\u9fa5]+$/;
+                return this.optional(element) || (chinese.test(value));
+            }, "只能输入中文");
+            $.validator.addMethod("telephone", function (value, element) {
+                var telephone = /(^[0-9]{3,4}\-[0-9]{7,8}$)|(^[0-9]{7,8}$)|(^\([0-9]{3,4}\)[0-9]{3,8}$)|(^0{0,1}13[0-9]{9}$)/;
+                return this.optional(element) || (telephone.test(value));
+            }, "电话号码不正确");
+            $("#form").validate({
+                rules: {
+                    userId: {
+                        required: true,
+                        minlength: 6,
+                        maxlength: 16,
+                        remote: {
+                            url: "/user/checkUserId"
+                        }
+                    },
+                    username: {
+                        required: true,
+                        chinese: true
+                    },
+                    certificateCode: "required",
+                    email: {email: true},
+                    telephone: {telephone: true}
+                },
+                messages: {
+                    userId: {
+                        required: "请输入用户名",
+                        minlength: "用户名不能少于6位",
+                        maxlength: "用户名不能超过16位",
+                        remote:"用户名被占用"
+                    },
+                    username: {
+                        required: "请输入姓名",
+                        chinese: "只能输入中文"
+                    },
+                    certificateCode: "请输入证件号码",
+                    email: "电子邮箱格式不正确",
+                    telephone: "电话号码不正确"
+                }
+            });
+        });
+    </script>
 </head>
-
 <body>
 
 <!--content-->
@@ -21,7 +66,7 @@
         <h4 class="ht_sub_title0"><img src="${basePath}/manage/images/ht_ico06.png"/>
 
             <p>新增</p></h4>
-        <form action="/customer/add" method="post">
+        <form id="form" action="/customer/add" method="post">
             <dl class="ht_sub_dl1">
                 <dd>
                     <ul class="ht_sub_ul2">
@@ -33,7 +78,7 @@
                                 </c:forEach>
                             </select>
                         </li>
-                        <li><span>*账 号：</span><input name="userId" type=text class="ht_sub_li3">
+                        <li><span>*账 号：</span><input id="userId" name="userId" type=text class="ht_sub_li3">
                         </li>
                         <li><span>*姓 名：</span><input name="username" type=text class="ht_sub_li3"></li>
                         <li>
@@ -46,11 +91,11 @@
                         </li>
                         <li><span>*证件号码：</span><input name="certificateCode" type=text class="ht_sub_li3"></li>
                         <li>
-                            <span>行 业</span>
+                            <span>行 业：</span>
                             <input name="trade" class="ht_sub_li3"/>
                         </li>
                         <li>
-                            <span> 职 业：</span>
+                            <span>职 业：</span>
                             <input name="vocation" class="ht_sub_li3"/>
                         </li>
                         <li><span>电子邮箱：</span><input name="email" type="text" class="ht_sub_li3"/></li>

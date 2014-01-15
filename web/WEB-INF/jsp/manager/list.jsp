@@ -10,7 +10,7 @@
         $(function () {
             $("input[type='checkbox']").attr("checked", false);
             $("#edit").parent().attr("style", "display:none");
-            $("#delete").parent().attr("style", "display:none");
+            $("#lock").parent().attr("style", "display:none");
             $("#unlock").parent().attr("style", "display:none");
             $("#resetPassword").parent().attr("style", "display:none");
             $("input[type='checkbox']").each(function () {
@@ -21,16 +21,16 @@
                     var userId = $(this).attr("userId");
                     if ('admin' == userId) {
                         $("#edit").parent().attr("style", "display:none");
-                        $("#delete").parent().attr("style", "display:none");
+                        $("#lock").parent().attr("style", "display:none");
                         $("#unlock").parent().attr("style", "display:none");
                     } else {
                         $("#edit").parent().removeAttr("style");
                         var status = $(this).attr("status");
                         if ("NORMAL" == status) {
                             $("#unlock").parent().attr("style", "display:none");
-                            $("#delete").parent().removeAttr("style");
+                            $("#lock").parent().removeAttr("style");
                         } else {
-                            $("#delete").parent().attr("style", "display:none");
+                            $("#lock").parent().attr("style", "display:none");
                             $("#unlock").parent().removeAttr("style");
                         }
                     }
@@ -51,7 +51,7 @@
                     }
                 }
             });
-            $("#delete").click(function () {
+            $("#lock").click(function () {
                 var obj = $("input[type='checkbox']:checked");
                 if (obj.length != 0) {
                     if (obj.length > 1) {
@@ -60,7 +60,7 @@
                     } else {
                         var param = $(obj).attr("id");
                         var name = $(obj).attr("name");
-                        $("#delete").attr("href", "/manager/delete" + param);
+                        $("#lock").attr("href", "/manager/lock" + param);
                         return window.confirm('确定要锁定管理员：' + name + '?');
                     }
                 } else {
@@ -129,7 +129,7 @@
             <li><a id="resetPassword" href="/"><img src="${basePath}/manage/images/ht_ico03.png"/>
 
                 <p>重置密码</p></a></li>
-            <li><a id="delete" href="/"><img src="${basePath}/manage/images/ht_ico015.png"/>
+            <li><a id="lock" href="/"><img src="${basePath}/manage/images/ht_ico015.png"/>
 
                 <p>锁定</p></a></li>
             <li><a id="unlock" href="/"><img src="${basePath}/manage/images/ht_ico016.png"/>

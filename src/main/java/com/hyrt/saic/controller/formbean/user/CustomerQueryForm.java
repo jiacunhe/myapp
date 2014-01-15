@@ -1,6 +1,7 @@
 package com.hyrt.saic.controller.formbean.user;
 
 import com.hyrt.saic.util.enums.UserStatus;
+import org.springframework.util.StringUtils;
 
 /**
  * Created with IntelliJ IDEA.
@@ -24,7 +25,7 @@ public class CustomerQueryForm {
     }
 
     public void setStatus(String status) {
-        this.status = null != status ? UserStatus.NORMAL.toString(): "";
+        this.status = !StringUtils.isEmpty(status) ? UserStatus.NORMAL.toString(): "";
     }
 
     public String getCondition() {

@@ -79,4 +79,40 @@
       remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+    <parameterMap  type  ="java.util.HashMap" id="delparameterMap">
+        <parameter property="roleId"/>
+        <parameter property="resourceIds"/>
+    </parameterMap>
+    <delete id="deleteByRoleReaourceids" parameterType="java.util.Map" >
+    delete  from t_role_sys_resource
+    where 1=1
+     and
+     resourceId IN (  ${resourceIds} )
+     and
+     roleId = #{roleId,jdbcType=INTEGER}
+
+  </delete>
+
+
+
+    <insert id="insertListRoelRoleSysResource" parameterType="java.util.ArrayList" >
+        INSERT INTO t_role_sys_resource ( roleId, resourceId,remark)
+        VALUES
+       <foreach collection="list" item="rsr"  separator="," >
+           ( #{rsr.roleId,jdbcType=INTEGER}, #{rsr.resourceId,jdbcType=INTEGER},#{rsr.remark,jdbcType=VARCHAR})
+
+       </foreach>
+
+    </insert>
+<select id="getResoureByUserRoleids" parameterType="java.lang.String" resultMap="com.hyrt.saic.dao.SysResoureMapper.BaseResultMap">
+
+SELECT ts.`id`,ts.`resourceName`,ts.`resourceUri`,ts.`remark`,ts.`pid` FROM t_sys_resource ts  JOIN t_role_sys_resource trsr ON trsr.`resourceId`=ts.`id`
+
+  WHERE trsr.`roleId` IN ('${_parameter}')
+
+
+
+</select>
+
 </mapper>

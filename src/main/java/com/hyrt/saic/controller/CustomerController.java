@@ -1,10 +1,12 @@
 package com.hyrt.saic.controller;
 
 import com.hyrt.saic.bean.Customer;
+import com.hyrt.saic.bean.Manager;
 import com.hyrt.saic.bean.User;
 import com.hyrt.saic.controller.formbean.user.CustomerQueryForm;
 import com.hyrt.saic.service.RoleService;
 import com.hyrt.saic.service.UserService;
+import com.hyrt.saic.util.Config;
 import com.hyrt.saic.util.enums.PaymentRule;
 import com.hyrt.saic.util.enums.UserStatus;
 import me.sfce.library.mybatis.util.Page;
@@ -36,13 +38,27 @@ public class CustomerController extends BaseController {
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String addCustomer(Customer customer, HttpServletRequest request) {
+        /*if (customer.getPaymentRule() == null) {
+            throw new PageError("付费规则不能为空");
+        }
+        if (StringUtils.isEmpty(customer.getUserId())) {
+            throw new PageError("用户名不能为空");
+        }
+        if (StringUtils.isEmpty(customer.getPassword())) {
+            throw new PageError("密码不能为空");
+        }*/
         userService.addCustomer(customer, request);
         return redirectTo("list");
     }
 
     @RequestMapping(value = "/add/UI", method = RequestMethod.GET)
     public String addCustomerUI(HttpServletRequest request) {
-        request.setAttribute("paymentRules", PaymentRule.values());
+        Object user = request.getSession().getAttribute(Config.MANAGE);
+        if (user instanceof Manager) {
+            request.setAttribute("paymentRules", PaymentRule.values());
+        } else {
+            request.setAttribute("paymentRules", new PaymentRule[]{PaymentRule.PAY_BEFORE});
+        }
         return jsp("customer/add");
     }
 

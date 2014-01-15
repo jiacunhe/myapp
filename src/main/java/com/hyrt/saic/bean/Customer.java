@@ -19,7 +19,7 @@ public class Customer extends User {
     private String address;
     private String certificate; //证件
     private String certificateCode; //证件号
-    private boolean isChild;
+    private Boolean isChild;
     private String trade; // 行业
     private String vocation; //职业
     private PaymentRule paymentRule; // 付费规则
@@ -80,11 +80,11 @@ public class Customer extends User {
         this.certificateCode = certificateCode;
     }
 
-    public boolean isChild() {
+    public Boolean getIsChild() {
         return isChild;
     }
 
-    public void setChild(boolean child) {
+    public void setChild(Boolean child) {
         isChild = child;
     }
 
