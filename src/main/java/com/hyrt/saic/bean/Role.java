@@ -2,6 +2,8 @@ package com.hyrt.saic.bean;
 
 import me.sfce.library.mybatis.domain.BasePojo;
 
+import java.util.List;
+
 public class Role extends BasePojo {
     private Integer id;
 
@@ -9,12 +11,9 @@ public class Role extends BasePojo {
 
     private String remark;
 
-    public Role() {
-    }
 
-    public Role(Integer id) {
-        this.id = id;
-    }
+
+    private List<SysResoure> resources;
 
     public Integer getId() {
         return id;
@@ -38,5 +37,12 @@ public class Role extends BasePojo {
 
     public void setRemark(String remark) {
         this.remark = remark == null ? null : remark.trim();
+    }
+    public List<SysResoure> getResources() {
+        return resources;
+    }
+
+    public void setResources(List<SysResoure> resources) {
+        this.resources = resources;
     }
 }

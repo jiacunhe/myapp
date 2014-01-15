@@ -79,7 +79,7 @@
                         </select></span>
             <p style="margin-left:0px;">用户名：</p>
             <input name="userId" id="userId" type="text" value="${userId}" class="ht_sub_input01"/><br />
-            <input type="submit" value="开始查询"  class="ht_but_cx"/>
+            <input type="submit" value="开始查询"  class="ht_but_cx0"/>
         </form>
     </div>
 

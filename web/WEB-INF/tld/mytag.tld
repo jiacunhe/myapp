@@ -8,11 +8,30 @@
     <tlib-version>1.0</tlib-version>
     <short-name>hyrt</short-name>
     <uri>http://www.hyrt.com.cn</uri>
-
+    <tag>
+        <name>checkResoure</name>
+        <tag-class>com.hyrt.saic.tag.CheckResourceTag</tag-class>
+        <!-- ??????? -->
+        <body-content>scriptless</body-content>
+        <attribute>
+            <name>resoureName</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>resoureuri</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
     <!-- Invoke 'Generate' action to add tags or functions -->
     <function>
         <name>contains</name>
         <function-class>com.hyrt.saic.ex.Function</function-class>
         <function-signature>boolean contains(java.util.Collection, java.lang.Object)</function-signature>
     </function>
+
+
+
+
 </taglib>

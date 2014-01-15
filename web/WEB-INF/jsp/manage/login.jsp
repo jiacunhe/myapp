@@ -10,7 +10,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>后台登录</title>
     <link href="${path}/manage/css/ht_denglu.css" rel="stylesheet" type="text/css"/>
-    <script language="javascript" src="${basePath}/js/jquery.min.js"></script>
+    <script language="javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 </head>
 <script language="javascript">
     $(function () {

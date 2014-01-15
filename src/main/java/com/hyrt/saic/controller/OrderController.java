@@ -283,7 +283,9 @@ public class OrderController {
             if(orderType!=null){
                 if(orderType==1 || orderType==3 || orderType==4){
 
+
                     request.setAttribute("result",JSON.toJSONString(orderService.selectGroupInfo(id)));
+                    request.setAttribute("groupresult",orderService.selectGroupInfo(id));
                     return "/order/groupResult.jsp";
 
 

@@ -6,10 +6,29 @@
     <result column="resourceName" property="resourceName" jdbcType="VARCHAR" />
     <result column="resourceUri" property="resourceUri" jdbcType="VARCHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
+      <result column="pid" property="pid" jdbcType="INTEGER" />
+      <result column="open" property="open" jdbcType="INTEGER" />
+      <collection  property="children"  column="id" ofType="com.hyrt.saic.bean.SysResoure" javaType="java.util.ArrayList"
+                   select="com.hyrt.saic.dao.SysResoureMapper.queryResourceBypid">
+          <id column="id" property="id" jdbcType="INTEGER" />
+          <result column="resourceName" property="resourceName" jdbcType="VARCHAR" />
+          <result column="resourceUri" property="resourceUri" jdbcType="VARCHAR" />
+          <result column="remark" property="remark" jdbcType="VARCHAR" />
+          <result column="pid" property="pid" jdbcType="INTEGER" />
+          <result column="open" property="open" jdbcType="INTEGER" />
+
+      </collection>
   </resultMap>
   <sql id="Base_Column_List" >
-    id, resourceName, resourceUri, remark
+    id, resourceName, resourceUri, remark,pid
   </sql>
+    <select id="queryResourceBypid"  parameterType="java.lang.Integer" resultType="com.hyrt.saic.bean.SysResoure">
+
+           SELECT  tsr.`id` ,tsr.`resourceName`,tsr.`resourceUri`,tsr.`remark`,tsr.`pid` FROM t_sys_resource tsr WHERE  tsr.`pid`= #{pid,jdbcType=INTEGER}
+
+    </select>
+    
+    
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -79,4 +98,21 @@
       remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+    <select id="getAllSysResource" resultMap="BaseResultMap"  >
+        select
+        <include refid="Base_Column_List" />
+        from t_sys_resource  t
+        where t.pid=0
+
+    </select>
+    <select id="getChildSysResource" resultMap="BaseResultMap"  >
+        SELECT  tsr.`id` ,tsr.`resourceName`,tsr.`resourceUri`,tsr.`remark`,tsr.`pid` FROM t_sys_resource tsr WHERE  tsr.`pid`= #{pid,jdbcType=INTEGER}
+
+    </select>
+    <select id="getAllSysResourcewithoutTree" resultMap="BaseResultMap"  >
+        select
+        <include refid="Base_Column_List" />
+        from t_sys_resource  t
+    </select>
 </mapper>

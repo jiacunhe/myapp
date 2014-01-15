@@ -26,7 +26,7 @@ public interface UserMapper extends BaseMapper<User> {
     @ResultMap({"managerWithRole"})
     List<Manager> getManagers(Map<String, Object> param);
 
-    @SelectProvider(type = UserSql.class, method = "getCustomers")
+    @SelectProvider(type = UserSql.class, method = "getCustomers2")
     @ResultMap("BaseResultMap")
     List<Customer> getCustomers(Map<String, Object> param);
 

@@ -2,6 +2,7 @@ package com.hyrt.saic.controller;
 
 import com.hyrt.saic.bean.ChargePackage;
 import com.hyrt.saic.bean.ChargePackageDetaill;
+import com.hyrt.saic.bean.User;
 import com.hyrt.saic.service.PackageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -46,19 +47,20 @@ public class PackageCotroller {
         request.setAttribute("type",type);
         request.setAttribute("userId",userId);
         request.setAttribute("status",status);
-        request.setAttribute("totalpage",res.get("totalpage"));    //总页数
+        request  .setAttribute("totalpage", res.get("totalpage"));    //总页数
         request.setAttribute("page",res.get("page"));    //当前页
         request.setAttribute("list",(List)res.get("list"));    //查询结果list
 
-       // System.out.println(((List)res.get("list")).get(0).getClass().getName()+"------------------------------------");
-       // request.setAttribute("name",((List)res.get("list")).size());
         return "/package/list.jsp";
     }
     @RequestMapping("/buy")
     public String listPackageBuy(String order,Integer page,String userId,HttpServletRequest request){
         String type="public";
         String status="on";
-        userId="1";
+        User user = (User) request.getSession().getAttribute("user");
+
+        userId=user.getUserId();
+
         Map res=packageService.listChargePackageUser(type,order,page,userId,status);
         request.setAttribute("totalitem",res.get("totalitem"));    //总元素
         request.setAttribute("totalpage",res.get("totalpage"));    //总页数
