@@ -40,8 +40,6 @@ public interface UserService extends BaseService<User> {
 
     void resetPassword(User user);
 
-    void modifyPassword(User user, String newPassword);
-
     List<Integer> getRoleIds(User user);
 
     void setRoles(String userId, String[] roleIds);
@@ -55,4 +53,8 @@ public interface UserService extends BaseService<User> {
     void unlock(User user);
 
     boolean checkUserId(String userId);
+
+    boolean checkPassword(String userId, String password);
+
+    void modifyPassword(String userId, String password);
 }

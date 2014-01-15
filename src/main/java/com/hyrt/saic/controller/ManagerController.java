@@ -79,9 +79,19 @@ public class ManagerController extends BaseController {
         );
     }
 
-    @RequestMapping(value = "/delete")
-    public String delete(Manager manager, HttpServletRequest request) {
+    @RequestMapping(value = "/lock")
+    public String lock(Manager manager, HttpServletRequest request) {
         userService.lock(manager);
+        return redirectTo("list?formUserId=" + request.getParameter("formUserId")
+                + "&formUsername=" + request.getParameter("formUsername")
+                + "&formRoleId=" + request.getParameter("formRoleId")
+                + "&formStatus=" + request.getParameter("formStatus")
+        );
+    }
+
+    @RequestMapping(value = "/unlock")
+    public String unlock(Manager manager, HttpServletRequest request) {
+        userService.unlock(manager);
         return redirectTo("list?formUserId=" + request.getParameter("formUserId")
                 + "&formUsername=" + request.getParameter("formUsername")
                 + "&formRoleId=" + request.getParameter("formRoleId")

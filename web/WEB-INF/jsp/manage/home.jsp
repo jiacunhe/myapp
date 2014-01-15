@@ -11,6 +11,7 @@
     <link href="${basePath}/manage/css/ht_public.css" rel="stylesheet" type="text/css"/>
     <link href="${basePath}/manage/css/ht_sub.css" rel="stylesheet" type="text/css"/>
     <script src="${basePath}/manage/js/ht_iepng.js" type="text/javascript"></script>
+    <script src="${basePath}/js/jquery-1.8.0.min.js" type="text/javascript"></script>
     <script type="text/javascript">
         EvPNG.fix('div, ul, img, li, input,dt');
     </script>
@@ -28,7 +29,8 @@
             <p>当前用户：<span>${manage.username}</span></p>
         </div>
         <div class="ht_top_button">
-            <a href="#"><img src="${basePath}/manage/images/ht_xgmm.png"/></a><a href="#"><img src="${basePath}/manage/images/ht_tc.png"/></a>
+            <a href="/user/password/modify/UI" target="main"><img src="${basePath}/manage/images/ht_xgmm.png"/></a>
+            <a href="/manage/logout"><img src="${basePath}/manage/images/ht_tc.png"/></a>
         </div>
     </div>
 </div>
@@ -105,7 +107,7 @@
     </div>
     <div class="ht_content_right">
 
-        <iframe id="main" name="main" src="user add.html" scrolling="no"></iframe>
+        <iframe id="main" name="main" src="/customer/list" scrolling="no"></iframe>
 
     </div>
 </div>

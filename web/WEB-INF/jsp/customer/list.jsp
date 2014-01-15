@@ -4,6 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <%@ include file="/WEB-INF/jsp/manage/commons.jspf" %>
+    <script type="text/javascript" src="${basePath}/js/util.js"></script>
     <title>客户管理</title>
     <link rel="stylesheet" type="text/css" media="all" href="/css/jsDatePick_ltr.min.css"/>
     <script type="text/javascript" src="/js/jsDatePick.min.1.3.js"></script>

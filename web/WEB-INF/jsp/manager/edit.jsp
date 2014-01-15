@@ -14,7 +14,7 @@
             $.validator.addMethod("telephone", function (value, element) {
                 var telephone = /(^[0-9]{3,4}\-[0-9]{7,8}$)|(^[0-9]{7,8}$)|(^\([0-9]{3,4}\)[0-9]{3,8}$)|(^0{0,1}13[0-9]{9}$)/;
                 return this.optional(element) || (telephone.test(value));
-            }, "只能输入中文");
+            }, "电话号码不正确");
             $("#form").validate({
                 rules: {
                     username: {
