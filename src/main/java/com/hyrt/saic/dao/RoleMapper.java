@@ -9,7 +9,6 @@ public interface RoleMapper extends BaseMapper<Role> {
     int deleteByPrimaryKey(Integer id);
 
 
-
     int insertSelective(Role record);
 
     Role selectByPrimaryKey(Integer id);
@@ -21,8 +20,11 @@ public interface RoleMapper extends BaseMapper<Role> {
     List<Role> selectAllRoles();
 
     List<Role> getByRolename(String rolename);
-    List<Role>  getRolesByuserid(String userid);
+
+    List<Role> getRolesByuserid(String userid);
+
     int insertid(Role role);
+
     int deleteByroleids(String roleids);
 
 

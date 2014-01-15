@@ -31,31 +31,28 @@ public class RoleResourceServiceImpl implements RoleResourceService {
     SysResoureMapper sysResoureMapper;
     @Autowired
     RoleSysResourceMapper roleSysResourceMapper;
+
     @Override
     public List getAllRoles() {
-        List<Role> roles=  roleMapper.selectAllRoles();
-
-
-        return roles;  //To change body of implemented methods use File | Settings | File Templates.
+        List<Role> roles = roleMapper.selectAllRoles();
+        return roles;
     }
 
     @Override
     public Role selectByPrimaryKey(Integer roleid) {
-        Role role=roleMapper.selectByPrimaryKey(roleid);
-
-        return role;  //To change body of implemented methods use File | Settings | File Templates.
+        Role role = roleMapper.selectByPrimaryKey(roleid);
+        return role;
     }
 
     @Override
     public List getAllSysResource() {
-
-        List<SysResoure> sysResoures= sysResoureMapper.getAllSysResource();
-        return sysResoures;  //To change body of implemented methods use File | Settings | File Templates.
+        List<SysResoure> sysResoures = sysResoureMapper.getAllSysResource();
+        return sysResoures;
     }
 
     @Override
     public List getAllSysResourcewithoutTree() {
-        return sysResoureMapper.getAllSysResourcewithoutTree();  //To change body of implemented methods use File | Settings | File Templates.
+        return sysResoureMapper.getAllSysResourcewithoutTree();
     }
 
     @Override
@@ -66,14 +63,14 @@ public class RoleResourceServiceImpl implements RoleResourceService {
 
     @Override
     @Transactional
-    public void deleteResoureByRole(HashMap<String,String> hashMap) {
-    roleSysResourceMapper.deleteByRoleReaourceids(hashMap);
+    public void deleteResoureByRole(HashMap<String, String> hashMap) {
+        roleSysResourceMapper.deleteByRoleReaourceids(hashMap);
     }
 
     @Override
     @Transactional
     public void insertResoureByRoel(List<RoleSysResource> roleSysResources) {
-      roleSysResourceMapper.insertListRoelRoleSysResource(roleSysResources);
+        roleSysResourceMapper.insertListRoelRoleSysResource(roleSysResources);
     }
 
     @Override
@@ -85,43 +82,37 @@ public class RoleResourceServiceImpl implements RoleResourceService {
     @Override
     @Transactional
     public void inserRole(Role role, String[] roleresource) {
-
         roleMapper.insertid(role);
-        List<RoleSysResource> roleSysResources=new ArrayList<RoleSysResource>();
-        if(roleresource!=null&&roleresource.length>0){
-            for(String resourceid:roleresource){
-                RoleSysResource rsresource=new RoleSysResource();
+        List<RoleSysResource> roleSysResources = new ArrayList<RoleSysResource>();
+        if (roleresource != null && roleresource.length > 0) {
+            for (String resourceid : roleresource) {
+                RoleSysResource rsresource = new RoleSysResource();
                 rsresource.setRoleId(role.getId());
                 rsresource.setResourceId(Integer.valueOf(resourceid));
                 roleSysResources.add(rsresource);
             }
-             roleSysResourceMapper.insertListRoelRoleSysResource(roleSysResources);
+            roleSysResourceMapper.insertListRoelRoleSysResource(roleSysResources);
         }
     }
 
     @Override
     public List getChiledResoureBypid(Integer pid) {
-        return  sysResoureMapper.getChildSysResource(pid);  //To change body of implemented methods use File | Settings | File Templates.
+        return sysResoureMapper.getChildSysResource(pid);
     }
 
     @Override
     public List getRoleNamebyString(String rolename) {
-
         return roleMapper.getByRolename(rolename);
     }
 
     @Override
     public List getResoureByUserRoleids(String roleids) {
-
-
-
-
         return roleSysResourceMapper.getResoureByUserRoleids(roleids);
     }
 
     @Override
     public List getRolesByuserid(String userid) {
-        return roleMapper.getRolesByuserid(userid);  //To change body of implemented methods use File | Settings | File Templates.
+        return roleMapper.getRolesByuserid(userid);
     }
 
 

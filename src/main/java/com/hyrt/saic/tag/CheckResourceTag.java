@@ -31,82 +31,69 @@ public class CheckResourceTag implements SimpleTag {
     //标签体
     private JspFragment jspFragment;
     private ServletContext servletContext;
-
-
-
-    //<itcast:checkMemu  resoureName=""   resoureuri="">
     private String resoureName;
     private String resoureuri;
-
-
 
 
     @Override
     public void doTag() throws JspException, IOException {
 
         //获取request对象
-        HttpServletRequest request=(HttpServletRequest)pageContext.getRequest();
-        servletContext= pageContext.getServletContext();
-        WebApplicationContext context =  (WebApplicationContext)servletContext.getAttribute(WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE);
+        HttpServletRequest request = (HttpServletRequest) pageContext.getRequest();
+        servletContext = pageContext.getServletContext();
+        WebApplicationContext context = (WebApplicationContext) servletContext.getAttribute(WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE);
         //获取当前登陆用户
-
-        User   user = (User)request.getSession().getAttribute(Config.MANAGE);
-
-        if(user==null){
+        User user = (User) request.getSession().getAttribute(Config.MANAGE);
+        if (user == null) {
             return;
         }
-        List<Role> haveRoleList=new ArrayList<Role>();
-        haveRoleList=((RoleResourceService)context.getBean("roleResourceService")).getRolesByuserid(user.getUserId());
-        if(haveRoleList.size()==0){
+        List<Role> haveRoleList = new ArrayList<Role>();
+        haveRoleList = ((RoleResourceService) context.getBean("roleResourceService")).getRolesByuserid(user.getUserId());
+        if (haveRoleList.size() == 0) {
             return;
         }
-        StringBuffer stringBuffer=new StringBuffer();
-        String roleids="";
-        if(haveRoleList.size()>0){
-            for(Role role:haveRoleList){
+        StringBuffer stringBuffer = new StringBuffer();
+        String roleids = "";
+        if (haveRoleList.size() > 0) {
+            for (Role role : haveRoleList) {
                 stringBuffer.append(role.getId());
                 stringBuffer.append(",");
             }
-            if(stringBuffer.length()>0&&stringBuffer.indexOf(",")>0)
-                roleids=stringBuffer.toString().substring(0,stringBuffer.indexOf(","));
-        List<SysResoure> haveSysResoureList=((RoleResourceService)context.getBean("roleResourceService")).getResoureByUserRoleids(roleids);
-          if(resoureuri.lastIndexOf(Config.URI_PATH_KEY)>0)
-              resoureuri=resoureuri.substring(0,resoureuri.lastIndexOf(Config.URI_PATH_KEY));
-            for(SysResoure sysResoure:haveSysResoureList){
-                if(sysResoure.getResourceUri().equals(resoureuri)&&sysResoure.getResourceName().equals(resoureName)){
+            if (stringBuffer.length() > 0 && stringBuffer.indexOf(",") > 0)
+                roleids = stringBuffer.toString().substring(0, stringBuffer.indexOf(","));
+            List<SysResoure> haveSysResoureList = ((RoleResourceService) context.getBean("roleResourceService")).getResoureByUserRoleids(roleids);
+            if (resoureuri.lastIndexOf(Config.URI_PATH_KEY) > 0)
+                resoureuri = resoureuri.substring(0, resoureuri.lastIndexOf(Config.URI_PATH_KEY));
+            for (SysResoure sysResoure : haveSysResoureList) {
+                if (sysResoure.getResourceUri().equals(resoureuri) && sysResoure.getResourceName().equals(resoureName)) {
                     //如果在集合中存在,输出标签体
                     this.jspFragment.invoke(null);
                     break;
-
                 }
-
             }
-
-
-
         }
-
     }
 
     @Override
     public void setParent(JspTag jspTag) {
-        //To change body of implemented methods use File | Settings | File Templates.
+
     }
 
     @Override
     public JspTag getParent() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return null;
     }
 
     @Override
     public void setJspContext(JspContext jspContext) {
-        this.pageContext=(PageContext) jspContext;
+        this.pageContext = (PageContext) jspContext;
     }
 
     @Override
     public void setJspBody(JspFragment jspFragment) {
-        this.jspFragment=jspFragment;
+        this.jspFragment = jspFragment;
     }
+
     public String getResoureName() {
         return resoureName;
     }

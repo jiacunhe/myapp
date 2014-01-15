@@ -85,7 +85,7 @@
 	</servlet-mapping>
 <filter>
     <filter-name>userResoureFilter</filter-name>
-    <filter-class>com.hyrt.saic.filter.userResoureFilter</filter-class>
+    <filter-class>com.hyrt.saic.filter.UserResoureFilter</filter-class>
     <init-param>
         <param-name>redirectURL</param-name>
         <param-value>/</param-value>

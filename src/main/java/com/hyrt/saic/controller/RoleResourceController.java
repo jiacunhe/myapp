@@ -28,79 +28,64 @@ import java.util.List;
 @Controller
 @RequestMapping("/role")
 public class RoleResourceController {
-
     @Autowired
     CommonService commonService;
     @Autowired
     RoleResourceService roleResourceService;
 
-
     @RequestMapping("/manager")
-    public String getRoleList(HttpServletRequest request,HttpServletResponse resposne){
-
-        List<Role>  roleList=roleResourceService.getAllRoles();
-        request.setAttribute("roleList",roleList);
-
+    public String getRoleList(HttpServletRequest request, HttpServletResponse resposne) {
+        //取出角色列表
+        List<Role> roleList = roleResourceService.getAllRoles();
+        request.setAttribute("roleList", roleList);
         return "/role/rolelist.jsp";
     }
 
     @RequestMapping("/editup/UI")
-    public String getEditRoleDetails(String[] roleid,HttpServletRequest request){
-        if (roleid!=null&&!"".equals(roleid)&&roleid.length>0) {
+    public String getEditRoleDetails(String[] roleid, HttpServletRequest request) {
+        if (roleid != null && !"".equals(roleid) && roleid.length > 0) {
             Role role = roleResourceService.selectByPrimaryKey(Integer.valueOf(roleid[0]));
-            request.setAttribute("role",role);
+            request.setAttribute("role", role);
             //查出角色的可选资源列表
-           List<SysResoure> allSysResoure=roleResourceService.getAllSysResource();
-          for(SysResoure systop:allSysResoure){
-              List<SysResoure> syslevel2=     systop.getChildren() ;
-              for ( SysResoure sysroesourcelevel2:syslevel2){
-                  List<SysResoure> syslevel3=   roleResourceService.getChiledResoureBypid(sysroesourcelevel2.getId());
-                  sysroesourcelevel2.setChildren(syslevel3);
-
-              }
-          }
-
-           // request.setAttribute("allSysResoure",allSysResoure);
-
-            request.setAttribute("topList",allSysResoure);
-
-
-        }else
-        request.setAttribute("eorroMassage","角色id不正确");
-
+            List<SysResoure> allSysResoure = roleResourceService.getAllSysResource();
+            for (SysResoure systop : allSysResoure) {
+                List<SysResoure> syslevel2 = systop.getChildren();
+                for (SysResoure sysroesourcelevel2 : syslevel2) {
+                    List<SysResoure> syslevel3 = roleResourceService.getChiledResoureBypid(sysroesourcelevel2.getId());
+                    sysroesourcelevel2.setChildren(syslevel3);
+                }
+            }
+            // request.setAttribute("allSysResoure",allSysResoure);
+            request.setAttribute("topList", allSysResoure);
+        } else
+            request.setAttribute("eorroMassage", "角色id不正确");
         return "role/roleeditpage.jsp";
     }
 
     @RequestMapping("/getajaxroledetail")
-    public String getAjaxEditRoleDetails(String roleid,HttpServletRequest request){
-        if (roleid!=null&&!"".equals(roleid)) {
+    public String getAjaxEditRoleDetails(String roleid, HttpServletRequest request) {
+        if (roleid != null && !"".equals(roleid)) {
             Role role = roleResourceService.selectByPrimaryKey(Integer.valueOf(roleid));
-            request.setAttribute("role",role);
+            request.setAttribute("role", role);
             //查出角色的可选资源列表
-            List<SysResoure> allSysResoure=roleResourceService.getAllSysResource();
-            for(SysResoure systop:allSysResoure){
-                List<SysResoure> syslevel2=     systop.getChildren() ;
-                for ( SysResoure sysroesourcelevel2:syslevel2){
-                    List<SysResoure> syslevel3=   roleResourceService.getChiledResoureBypid(sysroesourcelevel2.getId());
+            List<SysResoure> allSysResoure = roleResourceService.getAllSysResource();
+            for (SysResoure systop : allSysResoure) {
+                List<SysResoure> syslevel2 = systop.getChildren();
+                for (SysResoure sysroesourcelevel2 : syslevel2) {
+                    List<SysResoure> syslevel3 = roleResourceService.getChiledResoureBypid(sysroesourcelevel2.getId());
                     sysroesourcelevel2.setChildren(syslevel3);
-
                 }
             }
-
             // request.setAttribute("allSysResoure",allSysResoure);
-
-            request.setAttribute("topList",allSysResoure);
-
-
-        }else
-            request.setAttribute("eorroMassage","角色id不正确");
-
+            request.setAttribute("topList", allSysResoure);
+        } else
+            request.setAttribute("eorroMassage", "角色id不正确");
         return "/role/getajaxroleresource.jsp";
     }
-    @RequestMapping("/editup")
-    public String updateRoleDetails(String roleid,String[] resourceIds,String rolename,String rolermark,HttpServletRequest request,HttpServletResponse resposne){
 
-        if (roleid!=null&&!"".equals(roleid)) {
+    @RequestMapping("/editup")
+    public String updateRoleDetails(String roleid, String[] resourceIds, String rolename, String rolermark, HttpServletRequest request, HttpServletResponse resposne) {
+        if (roleid != null && !"".equals(roleid)) {
             Role role = roleResourceService.selectByPrimaryKey(Integer.valueOf(roleid));
             role.setRoleName(rolename);
             role.setRemark(rolermark);
@@ -109,70 +94,58 @@ public class RoleResourceController {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
-
-
-
-
-
-
             //处理资源关联表
-            List<SysResoure> sysResourelist=role.getResources(); //资源总数
+            List<SysResoure> sysResourelist = role.getResources(); //资源总数
+            List<Integer> sysResoureallid = new ArrayList<Integer>();     //资源id总数
+            List<Integer> sysResouredeleteid = new ArrayList<Integer>();  //需要删除的id集合
 
-            List<Integer> sysResoureallid=new ArrayList<Integer>();     //资源id总数
-
-            List<Integer> sysResouredeleteid=new ArrayList<Integer>();  //需要删除的id集合
-
-
-
-            for(SysResoure sysResoure:sysResourelist){
+            for (SysResoure sysResoure : sysResourelist) {
                 sysResoureallid.add(sysResoure.getId());
                 sysResouredeleteid.add(sysResoure.getId());
             }
-            List<String> contentResourceId=new ArrayList<String>();          //拥有的id集合
-            List<String> addResourceId=new ArrayList<String>();       //需要新增的id集合
-            Boolean iscontentid=false;
-                          if(resourceIds !=null){
-            for(String rsId: resourceIds){
-                if(sysResourelist.size()>0)   {
-            for(SysResoure sysResoure:sysResourelist){
-                iscontentid=false;
-                //查找出不同的数据  区分出 新增的id值
-                                 if(sysResoure.getId()==Integer.valueOf(rsId)) {
-                                     iscontentid=true;
-                                     break;
-                                 }
-                     }
-                if(iscontentid)
-                    contentResourceId.add(rsId);
-                else
-                    addResourceId.add(rsId);
-            }else if(sysResourelist.size()==0){
-                    addResourceId.add(rsId);
+            List<String> contentResourceId = new ArrayList<String>();          //拥有的id集合
+            List<String> addResourceId = new ArrayList<String>();       //需要新增的id集合
+            Boolean iscontentid = false;
+            if (resourceIds != null) {
+                for (String rsId : resourceIds) {
+                    if (sysResourelist.size() > 0) {
+                        for (SysResoure sysResoure : sysResourelist) {
+                            iscontentid = false;
+                            //查找出不同的数据  区分出 新增的id值
+                            if (sysResoure.getId() == Integer.valueOf(rsId)) {
+                                iscontentid = true;
+                                break;
+                            }
+                        }
+                        if (iscontentid)
+                            contentResourceId.add(rsId);
+                        else
+                            addResourceId.add(rsId);
+                    } else if (sysResourelist.size() == 0) {
+                        addResourceId.add(rsId);
+                    }
                 }
             }
-        }
-                       if(contentResourceId.size()<sysResoureallid.size()){
-                           //区分出删除id
-                           if(contentResourceId.size()>0){
-                                         for(String contentRId:contentResourceId){
-                                             if(sysResouredeleteid.contains(Integer.valueOf(contentRId)))
-                                             sysResouredeleteid.remove(Integer.valueOf(contentRId));
-                                         }
-                           }
+            if (contentResourceId.size() < sysResoureallid.size()) {
+                //区分出删除id
+                if (contentResourceId.size() > 0) {
+                    for (String contentRId : contentResourceId) {
+                        if (sysResouredeleteid.contains(Integer.valueOf(contentRId)))
+                            sysResouredeleteid.remove(Integer.valueOf(contentRId));
+                    }
+                }
 
-                           } else if(contentResourceId.size()==sysResoureallid.size()){
-                           sysResouredeleteid.clear();
-                       }
-
+            } else if (contentResourceId.size() == sysResoureallid.size()) {
+                sysResouredeleteid.clear();
+            }
 //            System.out.println(contentResourceId.size());
 //            System.out.println(addResourceId.size());
 //            System.out.println(sysResouredeleteid.size());
-            if(addResourceId.size()>0){
+            if (addResourceId.size() > 0) {
                 //处理新增资源权限
-                   List<RoleSysResource> roleSysResources=new ArrayList<RoleSysResource>();
-                for(String addrsid : addResourceId)    {
-                RoleSysResource addRoleSR=new RoleSysResource();
+                List<RoleSysResource> roleSysResources = new ArrayList<RoleSysResource>();
+                for (String addrsid : addResourceId) {
+                    RoleSysResource addRoleSR = new RoleSysResource();
                     addRoleSR.setRoleId(Integer.valueOf(roleid));
                     addRoleSR.setResourceId(Integer.valueOf(addrsid));
                     addRoleSR.setRemark(null);
@@ -180,110 +153,85 @@ public class RoleResourceController {
                 }
                 roleResourceService.insertResoureByRoel(roleSysResources);
             }
-           if (sysResouredeleteid.size()>0&&sysResouredeleteid.size()<=sysResoureallid.size()){
-              // 处理删除资源权限
-               HashMap<String,String> hashMap=new HashMap<>();
-               hashMap.put("roleId",roleid);
-               StringBuffer sbids=new StringBuffer();
-                for(Integer deleId:sysResouredeleteid)  {
+            if (sysResouredeleteid.size() > 0 && sysResouredeleteid.size() <= sysResoureallid.size()) {
+                // 处理删除资源权限
+                HashMap<String, String> hashMap = new HashMap<>();
+                hashMap.put("roleId", roleid);
+                StringBuffer sbids = new StringBuffer();
+                for (Integer deleId : sysResouredeleteid) {
                     sbids.append(String.valueOf(deleId));
                     sbids.append(",");
                 }
-               sbids.deleteCharAt(sbids.lastIndexOf(","));
-               hashMap.put("resourceIds",sbids.toString());
-               roleResourceService.deleteResoureByRole(hashMap);
-
-
-
-           }
-
-            }
-
-
-
-
-            request.setAttribute("successMassage","success");
-            List<Role>  roleList=roleResourceService.getAllRoles();
-            request.setAttribute("roleList",roleList);
-
-
-
-        return "redirect:../role/manager";
-    }
-    @RequestMapping("/deleterole")
-    public  String  getDeleterole(String[] roleid,HttpServletRequest request){
-         if(roleid!=null&&!roleid.equals("")&&roleid.length>0){
-             StringBuffer sb=new StringBuffer();
-             for(String rid:roleid){
-                 sb.append(rid);
-                 sb.append(",");
-             }
-             sb.deleteCharAt(sb.lastIndexOf(","));
-        roleResourceService.deleteRole(sb.toString());
-
-         }
-          else
-             request.setAttribute("successMassage", "id不存在");
-
-
-
-        request.setAttribute("successMassage","success");
-        List<Role>  roleList=roleResourceService.getAllRoles();
-        request.setAttribute("roleList",roleList);
-        return "redirect:../role/manager";
-    }
-    @RequestMapping("/insert/UI")
-    public String getInsertrole(HttpServletRequest request){
-        //查出角色的可选资源列表
-        List<SysResoure> allSysResoure=roleResourceService.getAllSysResource();
-        for(SysResoure systop:allSysResoure){
-            List<SysResoure> syslevel2=     systop.getChildren() ;
-            for ( SysResoure sysroesourcelevel2:syslevel2){
-                List<SysResoure> syslevel3=   roleResourceService.getChiledResoureBypid(sysroesourcelevel2.getId());
-                sysroesourcelevel2.setChildren(syslevel3);
-
+                sbids.deleteCharAt(sbids.lastIndexOf(","));
+                hashMap.put("resourceIds", sbids.toString());
+                roleResourceService.deleteResoureByRole(hashMap);
             }
         }
+        request.setAttribute("successMassage", "success");
+        List<Role> roleList = roleResourceService.getAllRoles();
+        request.setAttribute("roleList", roleList);
+        return "redirect:../role/manager";
+    }
 
+    @RequestMapping("/deleterole")
+    public String getDeleterole(String[] roleid, HttpServletRequest request) {
+        if (roleid != null && !roleid.equals("") && roleid.length > 0) {
+            StringBuffer sb = new StringBuffer();
+            for (String rid : roleid) {
+                sb.append(rid);
+                sb.append(",");
+            }
+            sb.deleteCharAt(sb.lastIndexOf(","));
+            roleResourceService.deleteRole(sb.toString());
+
+        } else
+            request.setAttribute("successMassage", "id不存在");
+        request.setAttribute("successMassage", "success");
+        List<Role> roleList = roleResourceService.getAllRoles();
+        request.setAttribute("roleList", roleList);
+        return "redirect:../role/manager";
+    }
+
+    @RequestMapping("/insert/UI")
+    public String getInsertrole(HttpServletRequest request) {
+        //查出角色的可选资源列表
+        List<SysResoure> allSysResoure = roleResourceService.getAllSysResource();
+        for (SysResoure systop : allSysResoure) {
+            List<SysResoure> syslevel2 = systop.getChildren();
+            for (SysResoure sysroesourcelevel2 : syslevel2) {
+                List<SysResoure> syslevel3 = roleResourceService.getChiledResoureBypid(sysroesourcelevel2.getId());
+                sysroesourcelevel2.setChildren(syslevel3);
+            }
+        }
         // request.setAttribute("allSysResoure",allSysResoure);
-
-        request.setAttribute("topList",allSysResoure);
-
+        request.setAttribute("topList", allSysResoure);
        /* List<SysResoure> allsysresoure=roleResourceService.getAllSysResource();
         request.setAttribute("allsysresoure",allsysresoure);*/
         return "/role/roleinsert.jsp";
     }
 
     @RequestMapping("/insert")
-    public String doinsertrole(String rolename,String[] resourceIds,String rolermark,HttpServletRequest request){
-        Role role=new Role();
+    public String doinsertrole(String rolename, String[] resourceIds, String rolermark, HttpServletRequest request) {
+        Role role = new Role();
         role.setRoleName(rolename);
         role.setRemark(rolermark);
-        roleResourceService.inserRole(role,resourceIds);
-
-
-
-
-
-
-
-
-    request.setAttribute("successMassage","success");
-    List<Role>  roleList=roleResourceService.getAllRoles();
-    request.setAttribute("roleList",roleList);
-    return "redirect:../role/manager";
+        roleResourceService.inserRole(role, resourceIds);
+        request.setAttribute("successMassage", "success");
+        List<Role> roleList = roleResourceService.getAllRoles();
+        request.setAttribute("roleList", roleList);
+        return "redirect:../role/manager";
     }
 
-    @RequestMapping(value="/ajaxrolenameexist", produces = {"application/json;charset=UTF-8"})
-    public @ResponseBody String docheckrolenameexist(String roleName){
-        HashMap res=new HashMap();
-        boolean exist=false;
-        List rolelist=roleResourceService.getRoleNamebyString(roleName);
-        if(rolelist.size()>0)
-            exist=true;
-        res.put("rolenameexist",exist);
+    @RequestMapping(value = "/ajaxrolenameexist", produces = {"application/json;charset=UTF-8"})
+    public
+    @ResponseBody
+    String docheckrolenameexist(String roleName) {
+        HashMap res = new HashMap();
+        boolean exist = false;
+        List rolelist = roleResourceService.getRoleNamebyString(roleName);
+        if (rolelist.size() > 0)
+            exist = true;
+        res.put("rolenameexist", exist);
         return JSON.toJSONString(res);
     }
-
-
 }

@@ -15,22 +15,28 @@ import java.util.List;
  */
 
 public interface RoleResourceService {
-/*
-
-
- */
+    //获取所有角色
     public List getAllRoles();
+
     public Role selectByPrimaryKey(Integer roleid);
+
     //获取所有根节点的资源带树形结构
     public List getAllSysResource();
+
     //获取所有根节点的资源不带树形结构
     public List getAllSysResourcewithoutTree();
+
     public void updateByPrimaryKeySelective(Role role);
-    public void deleteResoureByRole(HashMap<String, String> hashMap) ;
-    public void insertResoureByRoel(List<RoleSysResource> roleSysResources)  ;
+
+    public void deleteResoureByRole(HashMap<String, String> hashMap);
+
+    public void insertResoureByRoel(List<RoleSysResource> roleSysResources);
+
     public void deleteRole(String roleids);
+
     public void inserRole(Role role, String[] roleresource);
-    public List getChiledResoureBypid( Integer pid);
+
+    public List getChiledResoureBypid(Integer pid);
 
     public List getRoleNamebyString(String rolename);
 
