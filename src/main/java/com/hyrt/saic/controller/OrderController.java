@@ -16,11 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.sql.Timestamp;
 import java.util.*;
 
@@ -87,7 +86,39 @@ public class OrderController {
         return "/order/upFile.jsp";
     }
 
+    @RequestMapping("download")
+    public void download(String path,HttpServletRequest request,HttpServletResponse response){
+        System.out.println(this.getClass().getResource("/").getPath()+"----------------------------");
 
+
+        File fileObj = new File(this.getClass().getResource("/").getPath()+"model.xls");
+
+
+        if (fileObj!=null && fileObj.exists()) {
+            try {
+           //   System.out.println(  fileObj.getName().substring(fileObj.getName().lastIndexOf("/")));
+                InputStream inStream = new FileInputStream(fileObj);
+                response.reset();
+                response.setContentType("application/vnd.ms-excel;charset=GBK");
+
+                response.setBufferSize(10 * 1024);
+
+                response.setHeader("Content-Disposition","attachment; filename=model.xls");
+                byte[] b = new byte[1024*10];
+                int len;
+                ServletOutputStream outs = response.getOutputStream();
+                while ((len = inStream.read(b)) > 0) {
+                    outs.write(b, 0, len);
+                }
+                outs.flush();
+                outs.close();
+                inStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
 
     @RequestMapping("/search")
     public String orderSearch (String type,String sday,String eday,String code,String name,String submit,HttpServletRequest request){

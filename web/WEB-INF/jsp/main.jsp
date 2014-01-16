@@ -1,4 +1,5 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %> <%
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
     response.setHeader("Cache-Control","no-cache"); //Forces caches to obtain a new copy of the page from the origin server
     response.setHeader("Cache-Control","no-store"); //Directs caches not to store the page under any circumstance
     response.setDateHeader("Expires", 0); //Causes the proxy cache to see the page as "stale"
@@ -19,6 +20,13 @@
     <script language=javascript src="/js/js.js"> </script>
     <script language=javascript src="/js/public.js"></script>
     <title>企业查询</title>
+    <style type="text/css">
+
+
+        body {
+            overflow-x : hidden;
+        }
+    </style>
 </head>
 
 <body>
@@ -27,7 +35,7 @@
     <div class="top_content">
         <img src="../images/logo.png" class="logo"/>
         <div class="top_xx">
-            <div><p>当前用户：<span>xiaozhang</span></p>
+            <div><p>当前用户：<span>${user.userId}</span></p>
 
               <!--  <ul class="menu">
                     <li>
@@ -61,11 +69,18 @@
 
             </div>
             <div class="clear"></div>
-            <p>您好！今天是 2013-12-23  星期一</p>
+            <p>您好！今天是
+                <script language="JavaScript">
+                    today = new Date();
+                     document.write(today.getFullYear() + '年' +(today.getMonth() + 1) + '月'+today.getDate()+'日');
+                    var days = new Array("日","一", "二", "三", "四", "五", "六");
+                    document.write("&nbsp; &nbsp; 星期"+days[today.getDay()]);
+                </script>
+</p>
         </div>
         <div class="top_button">
             <ul>
-                <li><a href="#">首页</a></li>
+                <li><a href="javascript:parent.window.location.assign(location);">首页</a></li>
                 <li><a href="#">修改密码</a></li>
                 <li><a href="#">退出</a></li>
             </ul>
@@ -139,9 +154,9 @@
 
 
     </div>
-    <div class="content_right" style="background: none">
+    <div style="background:#eee; width:779px; height: 100%; overflow: hidden">
 
-        <iframe id="mainIframe" name="mainIframe"  scrolling="no" frameborder="0" src="/welcome.jsp" width="100%" onload="SetWinHeight(this)" ></iframe>
+        <iframe id="mainIframe" name="mainIframe" scrolling="no" style="width:100%; height: 666px; overflow: hidden; position:relative;" frameborder="0" src="/welcome.jsp" ></iframe>
 
     </div>
 </div>
@@ -163,9 +178,9 @@
         if (document.getElementById){
             if (win && !window.opera) {
                 if (win.contentDocument && win.contentDocument.body.offsetHeight)
-                    win.height = win.contentDocument.body.offsetHeight+100>600?win.contentDocument.body.offsetHeight+100:600;
+                    win.height = win.contentDocument.body.offsetHeight+100>660?win.contentDocument.body.offsetHeight+100:660;
                 else if(win.Document && win.Document.body.scrollHeight)
-                    win.height = win.Document.body.scrollHeight+100>600? win.Document.body.scrollHeight+100:600;
+                    win.height = win.Document.body.scrollHeight+100>660? win.Document.body.scrollHeight+100:660;
             }
         }
     }

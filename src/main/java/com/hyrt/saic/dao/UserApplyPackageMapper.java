@@ -20,6 +20,8 @@ public interface UserApplyPackageMapper {
 
     List selective(Map params);
 
+    List selectiveByPage(Map params);
+
     Integer selectiveCount(Map params);
 
     void updateAllotPackageQuantity(Map params);

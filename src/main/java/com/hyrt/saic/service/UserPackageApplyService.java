@@ -24,4 +24,6 @@ public interface UserPackageApplyService {
 
     public void allotStop(Integer id,String assignor);
 
+    public List selectUsedPackageByPage(Map params);
+
 }

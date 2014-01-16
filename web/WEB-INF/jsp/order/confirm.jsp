@@ -27,7 +27,7 @@
     <div class="yemei">
         <p>您当前所在位置：<a href="#">首页</a> >> <a href="#">${businessTypeName}</a> >> <span>${orderTypeName}</span></p>
     </div>
-    <div class="content_right_nr1" style="height: 1000px">
+    <div class="content_right_nr1" style="height:630px;overflow-y: scroll">
 
         <h4 class="sub_title3">订单信息</h4>
         <c:if test="${countA >0}">
@@ -124,7 +124,7 @@
         <div class="sub_tx2">
             <span><b>特别声明：</b><p>用户请认真核实、填写查询条件和联系信息，点击“提交订单”后不能更改，因客户填写订单失误产生的查询损失责任自负，产生的相关费用不予退还。</p></span>
         </div>
-        <div style="clear: both; width: 100%; height: 1px;"></div>
+        <div style="clear: both; width: 100%; height: 25px;"></div>
     </div>
 
 </body>

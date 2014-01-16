@@ -6,7 +6,7 @@
         body {
             margin-left: 0px;
             margin-top: 0px;
-            background-color: #FFFFFF;
+            background-color: #FFFFFF;       font-size: 12px;;
         }
         -->
     </style>
@@ -22,7 +22,7 @@
                 <input type="file" name="file" style="width:260px; height:24px">
                 <input type="submit" value="上传"  onclick="showResview()" style=" border: none; background-color:#0f9bc6; height: 24px; width: 40px;">
             </form>
-            <p><a>下载模版</a></p>
+            <p><a href="/order/download?file=model.xls">下载模版</a></p>
         </div>
     </div>
 
