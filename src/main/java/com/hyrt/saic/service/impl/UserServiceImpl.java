@@ -61,8 +61,8 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
         User user = userMapper.login(userId, toMD5(password));
         if (null != user) {
             request.getSession().setAttribute(Config.USER, user);
-            List<SysResoure> userHaveResourelist = getHaveSysResoure(user,request);
-            request.getSession().setAttribute("userHaveResourelist", userHaveResourelist);
+            List<SysResoure> userHaveResourelist = getHaveSysResoure(user, request);
+            request.getSession().setAttribute(Config.USER_HAVE_RESOURCE_KEY, userHaveResourelist);
             return true;
         }
         return false;
@@ -85,8 +85,8 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
         User user = userMapper.loginManage(userId, toMD5(password));
         if (null != user) {
             request.getSession().setAttribute(Config.MANAGE, user);
-            List<SysResoure> userHaveResourelist = getHaveSysResoure(user,request);
-            request.getSession().setAttribute("userHaveResourelist", userHaveResourelist);
+            List<SysResoure> userHaveResourelist = getHaveSysResoure(user, request);
+            request.getSession().setAttribute(Config.USER_HAVE_RESOURCE_KEY, userHaveResourelist);
 
             return true;
         }
