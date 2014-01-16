@@ -93,16 +93,9 @@
     </init-param>
     <init-param>
     <param-name>notCheckURLList</param-name>
-    <param-value>/;/login;/WEB-INF/jsp/public/commons.jspf;/js/*;/css/*;/images/*;/manage/js/*;/manage/css/*;/manage/images/*;/favicon.ico;/manage/;/manage/login;/WEB-INF/jsp/manage/login.jsp;/meiyouqiuanxian</param-value>
+    <param-value>/;/login;/js/*;/css/*;/images/*;/manage/js/*;/manage/css/*;/manage/images/*;/favicon.ico;/manage/;/manage/login;/noPrivilege</param-value>
     </init-param>
-    <init-param>
-    <param-name>checkSessionKey</param-name>
-    <param-value>user</param-value>
-    </init-param>
-    <init-param>
-    <param-name>checkSessionKeyManage</param-name>
-    <param-value>manage</param-value>
-    </init-param>
+
 </filter>
     <filter-mapping>
         <filter-name>userResoureFilter</filter-name>

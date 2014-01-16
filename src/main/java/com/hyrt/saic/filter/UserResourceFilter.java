@@ -31,16 +31,17 @@ public class UserResourceFilter implements Filter {
     private String sessionKey = null;
     private String sessionKeyManage = null;
     private ServletContext servletContext;
-    private List<SysResoure> allSysResoureList = new ArrayList<SysResoure>();
+    private static List<SysResoure> allSysResoureList = new ArrayList<SysResoure>();
     private List<SysResoure> haveSysResoureList = new ArrayList<SysResoure>();
     private List<SysResoure> allchild123List = new ArrayList<SysResoure>();
+
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         this.filterConfig = filterConfig;
         redirectURL = filterConfig.getInitParameter("redirectURL");
-        sessionKey = filterConfig.getInitParameter("checkSessionKey");
-        sessionKeyManage = filterConfig.getInitParameter("checkSessionKeyManage");
+        sessionKey =Config.USER;
+        sessionKeyManage = Config.MANAGE;
         String notCheckURLListStr = filterConfig.getInitParameter("notCheckURLList");
         servletContext = filterConfig.getServletContext();
         if (notCheckURLListStr != null) {
@@ -67,10 +68,11 @@ public class UserResourceFilter implements Filter {
         WebApplicationContext context = (WebApplicationContext) servletContext.getAttribute(WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE);
         HttpSession session = request.getSession();
         String manageuri = request.getServletPath() + (request.getPathInfo() == null ? "" : request.getPathInfo());
-        if (sessionKey == null) {
-            filterChain.doFilter(request, response);
-            return;
-        }
+        //所有受限资源集合 静态
+        if(allSysResoureList==null||allSysResoureList.size()==0)
+            allSysResoureList = ((RoleResourceService) context.getBean("roleResourceService")).getAllSysResourcewithoutTree();
+        haveSysResoureList = (List<SysResoure>)session.getAttribute("userHaveResourelist");
+
         if ((!checkRequestURIIntNotFilterList(request)) && session.getAttribute(sessionKey) == null) {
             String returnloginuri = "/";
             if (session.getAttribute(sessionKeyManage) == null) {
@@ -159,7 +161,7 @@ public class UserResourceFilter implements Filter {
 
     private boolean isLimitedResources(HttpServletRequest request, WebApplicationContext context, String uril) {
         boolean isOrNotLimited = false;
-        allSysResoureList = ((RoleResourceService) context.getBean("roleResourceService")).getAllSysResourcewithoutTree();
+
         if (uril.lastIndexOf(Config.URI_PATH_KEY) > 0)
             uril = uril.substring(0, uril.lastIndexOf(Config.URI_PATH_KEY));
         for (SysResoure sysResoure : allSysResoureList) {
@@ -175,17 +177,7 @@ public class UserResourceFilter implements Filter {
         boolean ishaveAccess = false;
         User user = (User) request.getSession().getAttribute(Config.MANAGE);
         if (user != null) {
-            List<Role> rolelist = ((RoleResourceService) context.getBean("roleResourceService")).getRolesByuserid(user.getUserId());
-            StringBuffer stringBuffer = new StringBuffer();
-            String roleids = "";
-            if (rolelist.size() > 0) {
-                for (Role role : rolelist) {
-                    stringBuffer.append(role.getId());
-                    stringBuffer.append(",");
-                }
-                if (stringBuffer.length() > 0 && stringBuffer.indexOf(",") > 0)
-                    roleids = stringBuffer.toString().substring(0, stringBuffer.indexOf(","));
-                haveSysResoureList = ((RoleResourceService) context.getBean("roleResourceService")).getResoureByUserRoleids(roleids);
+            if (haveSysResoureList!=null&&haveSysResoureList.size()>0) {
                 if (uril.lastIndexOf(Config.URI_PATH_KEY) > 0)
                     uril = uril.substring(0, uril.lastIndexOf(Config.URI_PATH_KEY));
                 for (SysResoure sysResoure : haveSysResoureList) {
@@ -198,11 +190,11 @@ public class UserResourceFilter implements Filter {
                     filterChain.doFilter(request, response);
                     return;
                 } else {
-                    response.sendRedirect("/meiyouqiuanxian");
+                    response.sendRedirect("/noPrivilege");
                     return;
                 }
             } else {
-                response.sendRedirect("/meiyouquanxian");
+                response.sendRedirect("/noPrivilege");
                 return;
             }
         } else
