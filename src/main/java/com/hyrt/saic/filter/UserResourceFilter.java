@@ -26,15 +26,13 @@ import java.util.StringTokenizer;
  */
 public class UserResourceFilter implements Filter {
     protected FilterConfig filterConfig = null;
-    private String redirectURL = null;
+    private String redirectURL = null;//未登录的定向url
     private List notCheckURLList = new ArrayList();
     private String sessionKey = null;
     private String sessionKeyManage = null;
     private ServletContext servletContext;
     private static List<SysResoure> allSysResoureList = new ArrayList<SysResoure>();
     private List<SysResoure> haveSysResoureList = new ArrayList<SysResoure>();
-    private List<SysResoure> allchild123List = new ArrayList<SysResoure>();
-
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
