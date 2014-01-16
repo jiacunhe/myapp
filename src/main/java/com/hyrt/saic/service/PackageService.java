@@ -12,12 +12,11 @@ import java.util.Map;
  * User: huanghe
  * Date: 13-12-26
  * Time: 下午2:54
- * To change this template use File | Settings | File Templates.
  */
 public interface PackageService  {
 
     public Map listChargePackage(String type,String order,Integer page,String userId,String status);
-    public Map listChargePackageUser(String type,String order,Integer page,String userId,String status);
+    public Map listChargePackageUser(String type,String order,Integer pageNo,String userId,String status);
     public void deleteById(int id);
     public void insert(ChargePackage chargePackage, List<ChargePackageDetaill> ChargePackageDetaillList);
     public void update(ChargePackage chargePackage,List<ChargePackageDetaill> ChargePackageDetaillList);

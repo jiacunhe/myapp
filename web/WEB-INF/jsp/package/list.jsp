@@ -34,6 +34,8 @@
         .pagination ul{width: 100%; height: 33px; line-height: 33px; padding-left: 20px;}
         .pagination ul li{ list-style: none; float: left}
         .pagination ul li a{ padding: 3px; width: 20px;}
+        .gy_foot{ height: 20px; line-height: 20px; overflow: hidden; margin-top: 30px; margin-bottom: 15px;}
+        .gy_foot a{ padding: 3px; float: left}
     </style>
 
 </head>
@@ -87,23 +89,21 @@
         <h4 class="ht_sub_title0"><img src="${basePath}/manage/images/ht_ico05.png" /><p>列表</p></h4>
         <table width="768" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="ht_sub_table1">
             <tr class="ht_sub_tr1">
-                <th width="60">套餐编号</th>
-                <th width="60">用户ID</th>
-                <th width="100">套餐名称</th>
-                <th width="100">套餐类型</th>
-                <th width="100">查询类型</th>
-                <th width="100">查询数量</th>
-                <th width="100">查询类型</th>
-                <th width="100">查询数量</th>
-                <th width="70">价格（元）</th>
-                <th width="70">套餐状态</th>
-                <th width="130">操作</th>
+                <th width="7%">编号</th>
+                <th width="6%">用户ID</th>
+                <th width="25%">套餐名称</th>
+                <th width="12%">套餐类型</th>
+                <th width="9%">含查询数</th>
+                <th width="9%">含监控询数</th>
+                <th width="8%">价格（元）</th>
+                <th width="7%">套餐状态</th>
+                <th width="12%">操作</th>
             </tr>
 
 
         <c:forEach var="p" items="${list}"  varStatus="status">
 
-            <tr align="center">
+            <tr align="center" <c:if test="${status.count%2==0}">class="ht_sub_tr1" </c:if>>
                 <td>${(page-1)*5+status.count}</td>
 
                 <td>${p.userId}</td>
@@ -112,9 +112,9 @@
                     <c:if test="${p._type  eq 'private'}">私有套餐</c:if>
                     <c:if test="${p._type  eq 'vip'}">包月套餐</c:if>
                </td>
-                <td>${p.businessNameA}</td>
+             <%--   <td>${p.businessNameA}</td>--%>
                 <td>${p.quantityA}</td>
-                <td>${p.businessNameB}</td>
+              <%--  <td>${p.businessNameB}</td>--%>
                 <td>${p.quantityB}</td>
                 <td>${p.price}</td>
                 <td><c:choose><c:when test="${p.status=='on'}">开通</c:when>
@@ -140,7 +140,41 @@
 
 
 <div class="pagination" style="height:30px; line-height:30px;">
-    <ul>
+
+
+    <div class="gy_foot">
+        <div style="float: left; margin-left: 20px; display: inline;">
+            页次：${page}/${totalpage}页 &nbsp;
+            总记录数：${totalitem}条
+        </div>
+        <div style="float: right; margin-right: 20px; display: inline">
+            <a href="javascript:go2Page(1)" title="首页" style="cursor: hand;">
+                <img src="${pageContext.request.contextPath}/images/firstPage.png" style="float: left; margin: 3px;"/>
+            </a>
+            <c:forEach var="i" begin="${page - 5>=1?page - 5:1}" end="${page + 4}" step="1">
+                <c:if test="${i <= totalpage}">
+
+                    <a href="javascript:go2Page(${i});"  <c:if test="${i == page}">style="color:#000000; font-weight: 600;"     </c:if>>${i}</a>
+
+                </c:if>
+            </c:forEach>
+            <a href="javascript: go2Page(${totalpage})" title="尾页" style="cursor: hand;">
+                <img src="${pageContext.request.contextPath}/images/lastPage.png" style="float: left; margin: 3px 8px 3px 3px;"/>
+            </a>
+
+            转到第 <input id="pn" onFocus="this.select();" maxlength="2" type="text" value="1" name="currPage" tabindex="0" style="width: 18px; height: 14px; text-align: center; text-indent: 0"/> 页
+            <input type="button" name="goBtn" value="前往" class="MiddleButtonStyle" onclick="go2Page(document.getElementById('pn').value)" style="width: 32px; height: 20px; border: 1px solid #218bc6; background: #27a5ec; color: #fff;"/>
+        </div>
+    </div>
+    <script type="text/javascript">
+        function go2Page(pageNo) {
+            if(pageNo == undefined || pageNo==null || pageNo=="")pageNo=1;
+            window.location.href="/package/list?type=${type}&userId=${userId}&order=${order}&status=${status}&page="+pageNo;
+        }
+    </script>
+
+
+<%--    <ul>
 
         <li><a href="/package/list?page=${page - 1}">前一页</a></li>
 
@@ -171,7 +205,7 @@
 
         <li><a href="/package/list?page=${page + 1}">下一页</a></li>
         <li><span class="STYLE4" style="margin-left: 20px">共 ${totalitem }条       当前第 <strong> ${page }</strong> / <span class="STYLE22"> <strong>${totalpage}</strong> </span> 页 </span> </li>
-    </ul>
+    </ul>--%>
  </div>
 </div>
 

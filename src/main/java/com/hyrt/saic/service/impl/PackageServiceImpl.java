@@ -19,7 +19,6 @@ import java.util.Map;
  * User: huanghe
  * Date: 13-12-26
  * Time: 下午3:38
- * To change this template use File | Settings | File Templates.
  */
 @Service("packageService")
 public class PackageServiceImpl implements PackageService {
@@ -30,17 +29,16 @@ public class PackageServiceImpl implements PackageService {
     ChargePackageDetaillMapper chargePackageDetaillMapper;
 
     @Override
-    public Map listChargePackage(String type,String order,Integer page,String userId,String status) {
-        int  pageSize=5;
+    public Map listChargePackage(String type, String order, Integer page, String userId, String status) {
+        int pageSize = 5;
         if (page == null) page = 1;
-        ChargePackage c=new ChargePackage();
-        if(status!="")
+        ChargePackage c = new ChargePackage();
+        if (status != "")
             c.setStatus(status);
-        if(type!="")
+        if (type != "")
             c.setType(type);
-        if(userId!="")
+        if (userId != "")
             c.setUserId(userId);
-
 
 
         Integer countItem = chargePackageMapper.countNum(c);
@@ -49,39 +47,38 @@ public class PackageServiceImpl implements PackageService {
         if (page > totalpage) page = totalpage;
         if (page < 1) page = 1;
 
-        Map params=new HashMap();
+        Map params = new HashMap();
 
-        if(!"".equals(type))  params.put("type",type);
-        if(!"".equals(status))params.put("status",status);
-        if(!"".equals(userId))  params.put("userId",userId);
-        if(!"".equals(order)) params.put("order",order);
+        if (!"".equals(type)) params.put("type", type);
+        if (!"".equals(status)) params.put("status", status);
+        if (!"".equals(userId)) params.put("userId", userId);
+        if (!"".equals(order)) params.put("order", order);
 
 
-       // params.put("page",page);
-        params.put("start",(page - 1) * pageSize);
-        params.put("num",pageSize);
+        params.put("start", (page - 1) * pageSize);
+        params.put("num", pageSize);
 
-        List list=chargePackageMapper.select(params);
+        List list = chargePackageMapper.select(params);
 
         Map res = new HashMap();
-        res.put("page",page);
-        res.put("totalpage",totalpage);
-        res.put("totalitem",countItem);
-        res.put("list",list);
+        res.put("page", page);
+        res.put("totalpage", totalpage);
+        res.put("totalitem", countItem);
+        res.put("list", list);
         return res;
     }
 
     @Override
     public Map listChargePackageUser(String type, String order, Integer page, String userId, String status) {
-        int  pageSize=5;
+        int pageSize = 5;
         if (page == null) page = 1;
-        ChargePackage c=new ChargePackage();
-        if(status!="")
-        c.setStatus(status);
-        if(type!="")
-        c.setType(type);
-        if(userId!="")
-        c.setUserId(userId);
+        ChargePackage c = new ChargePackage();
+        if (status != "")
+            c.setStatus(status);
+        if (type != "")
+            c.setType(type);
+        if (userId != "")
+            c.setUserId(userId);
 
 
         Integer countItem = chargePackageMapper.countNumUser(c);
@@ -90,23 +87,23 @@ public class PackageServiceImpl implements PackageService {
         if (page > totalpage) page = totalpage;
         if (page < 1) page = 1;
 
-        Map params=new HashMap();
-        if(!"".equals(type))  params.put("type",type);
-        if(!"".equals(status))params.put("status",status);
-        if(!"".equals(userId))    params.put("userId",userId);
-        if(!"".equals(order))     params.put("order",order);
+        Map params = new HashMap();
+        if (!"".equals(type)) params.put("type", type);
+        if (!"".equals(status)) params.put("status", status);
+        if (!"".equals(userId)) params.put("userId", userId);
+        if (!"".equals(order)) params.put("order", order);
 
-        params.put("start",(page - 1) * pageSize);
-        params.put("num",pageSize);
+        params.put("start", (page - 1) * pageSize);
+        params.put("num", pageSize);
 
 
-        List list=chargePackageMapper.selectUser(params);
+        List list = chargePackageMapper.selectUser(params);
 
         Map res = new HashMap();
-        res.put("page",page);
-        res.put("totalpage",totalpage);
-        res.put("totalitem",countItem);
-        res.put("list",list);
+        res.put("page", page);
+        res.put("totalpage", totalpage);
+        res.put("totalitem", countItem);
+        res.put("list", list);
         return res;
 
     }
@@ -115,7 +112,7 @@ public class PackageServiceImpl implements PackageService {
     @Transactional
     public void deleteById(int id) {
 
-        int PackageId=id;
+        int PackageId = id;
         chargePackageDetaillMapper.deleteByPackageId(PackageId);   //先删除外键才能删除主键
         chargePackageMapper.deleteByPrimaryKey(id);
     }
@@ -123,37 +120,36 @@ public class PackageServiceImpl implements PackageService {
     @Override
     @Transactional
     public void insert(ChargePackage chargePackage, List<ChargePackageDetaill> ChargePackageDetaillList) {
-        //To change body of implemented methods use File | Settings | File Templates.
-         chargePackageMapper.insertSelective(chargePackage);
+        chargePackageMapper.insertSelective(chargePackage);
         int lastId = chargePackageMapper.lastInsertId();
 
-         for(ChargePackageDetaill chargePackageDetaill:ChargePackageDetaillList) {
+        for (ChargePackageDetaill chargePackageDetaill : ChargePackageDetaillList) {
 
-             chargePackageDetaill.setPackageId(lastId);
+            chargePackageDetaill.setPackageId(lastId);
 
             chargePackageDetaillMapper.insertSelective(chargePackageDetaill);
-         }
+        }
     }
 
     @Override
     @Transactional
     public void update(ChargePackage chargePackage, List<ChargePackageDetaill> ChargePackageDetaillList) {
-        //To change body of implemented methods use File | Settings | File Templates.
         chargePackageMapper.updateByPrimaryKeySelective(chargePackage);
-        for(ChargePackageDetaill chargePackageDetaill:ChargePackageDetaillList)  {
+        for (ChargePackageDetaill chargePackageDetaill : ChargePackageDetaillList) {
             chargePackageDetaill.setPackageId(chargePackage.getId());
-        chargePackageDetaillMapper.updateByPrimaryKeySelective(chargePackageDetaill);}
+            chargePackageDetaillMapper.updateByPrimaryKeySelective(chargePackageDetaill);
+        }
     }
 
     @Override
     public Map selectById(int id) {
-       Map packageMap= chargePackageMapper.selectById(id);
+        Map packageMap = chargePackageMapper.selectById(id);
         return packageMap;
     }
 
     @Override
-    public void updateStatusById(int id,String status) {
-        ChargePackage c=new ChargePackage();
+    public void updateStatusById(int id, String status) {
+        ChargePackage c = new ChargePackage();
         c.setStatus(status);
         c.setId(id);
         chargePackageMapper.updateStatusById(c);

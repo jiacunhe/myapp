@@ -25,7 +25,7 @@ import java.util.Map;
  * Time: 下午12:03
  */
 @Controller
-@RequestMapping("manager")
+@RequestMapping("/manager")
 public class ManagerController extends BaseController {
     @Autowired
     UserService userService;
