@@ -114,11 +114,21 @@
         ) yyy
     </select>
 
+
+
+  <select id="select" parameterType="java.util.Map" resultType="java.util.Map">
+      select <include refid="Base_Column_List"/>
+      from t_user_apply_package
+      where userId=#{userId,jdbcType=VARCHAR}
+      and yearMonth=#{yearMonth,jdbcType=VARCHAR}
+  </select>
+
     <update id="updateAllotPackageQuantity" parameterType="java.util.Map" >
     update t_user_apply_package
     set usedQuantity = usedQuantity + #{quantity,jdbcType=INTEGER}
     where userId = #{userId,jdbcType=INTEGER}  and businessId=1 and yearMonth=#{yearMonth,jdbcType=VARCHAR}
   </update>
+
 
 
 

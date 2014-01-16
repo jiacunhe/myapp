@@ -2,62 +2,96 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.hyrt.saic.dao.AccountInfoMapper" >
   <resultMap id="BaseResultMap" type="com.hyrt.saic.bean.AccountInfo" >
-    <id column="userId" property="userId" jdbcType="VARCHAR" />
-    <result column="businessId" property="businessId" jdbcType="INTEGER" />
-    <result column="balance" property="balance" jdbcType="INTEGER" />
-    <result column="summation" property="summation" jdbcType="INTEGER" />
+    <id column="userId" property="userid" jdbcType="VARCHAR" />
+    <id column="businessId" property="businessid" jdbcType="INTEGER" />
+    <result column="remainder" property="remainder" jdbcType="INTEGER" />
+    <result column="totality" property="totality" jdbcType="INTEGER" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    userId, businessId, balance, summation, remark
+    userId, businessId, remainder, totality, remark
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.hyrt.saic.bean.AccountInfoKey" >
     select 
     <include refid="Base_Column_List" />
     from t_account_info
-    where userId = #{userId,jdbcType=VARCHAR}
+    where userId = #{userid,jdbcType=VARCHAR}
+
+          and businessId = #{businessid,jdbcType=INTEGER}
+
+
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    <select id="select" resultType="java.util.Map" parameterType="java.lang.String" >
+        select
+        userId, businessId, remainder, totality, remark
+        from t_account_info
+        where userId = #{_parameter,jdbcType=VARCHAR}
+
+
+    </select>
+    <select id="selectByPage" resultType="java.util.Map" parameterType="java.util.Map" >
+        select
+        userId, businessId, remainder, totality, remark
+        from t_account_info
+        where 1=1
+        <if test="userId!=null">
+        userId = #{_parameter,jdbcType=VARCHAR}
+        </if>
+        limit  #{start,jdbcType=INTEGER} ,#{num,jdbcType=INTEGER}
+    </select>
+
+    <select id="countNum" resultType="java.lang.Integer" parameterType="com.hyrt.saic.bean.AccountInfo" >
+        select
+        count(id)
+        from t_account_info
+        where 1=1
+        <if test="userId!= null" >
+            and userId=#{userId,jdbcType=VARCHAR}
+        </if>
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="com.hyrt.saic.bean.AccountInfoKey" >
     delete from t_account_info
-    where userId = #{userId,jdbcType=VARCHAR}
+    where userId = #{userid,jdbcType=VARCHAR}
+      and businessId = #{businessid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.hyrt.saic.bean.AccountInfo" >
-    insert into t_account_info (userId, businessId, balance, 
-      summation, remark)
-    values (#{userId,jdbcType=VARCHAR}, #{businessId,jdbcType=INTEGER}, #{balance,jdbcType=INTEGER},
-      #{summation,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR})
+    insert into t_account_info (userId, businessId, remainder, 
+      totality, remark)
+    values (#{userid,jdbcType=VARCHAR}, #{businessid,jdbcType=INTEGER}, #{remainder,jdbcType=INTEGER}, 
+      #{totality,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.hyrt.saic.bean.AccountInfo" >
     insert into t_account_info
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="userId != null" >
+      <if test="userid != null" >
         userId,
       </if>
-      <if test="businessId != null" >
+      <if test="businessid != null" >
         businessId,
       </if>
-      <if test="balance != null" >
-        balance,
+      <if test="remainder != null" >
+        remainder,
       </if>
-      <if test="summation != null" >
-        summation,
+      <if test="totality != null" >
+        totality,
       </if>
       <if test="remark != null" >
         remark,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="userId != null" >
-        #{userId,jdbcType=VARCHAR},
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
       </if>
-      <if test="businessId != null" >
-        #{businessId,jdbcType=INTEGER},
+      <if test="businessid != null" >
+        #{businessid,jdbcType=INTEGER},
       </if>
-      <if test="balance != null" >
-        #{balance,jdbcType=INTEGER},
+      <if test="remainder != null" >
+        #{remainder,jdbcType=INTEGER},
       </if>
-      <if test="summation != null" >
-        #{summation,jdbcType=INTEGER},
+      <if test="totality != null" >
+        #{totality,jdbcType=INTEGER},
       </if>
       <if test="remark != null" >
         #{remark,jdbcType=VARCHAR},
@@ -67,27 +101,25 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.hyrt.saic.bean.AccountInfo" >
     update t_account_info
     <set >
-      <if test="businessId != null" >
-        businessId = #{businessId,jdbcType=INTEGER},
+      <if test="remainder != null" >
+        remainder = #{remainder,jdbcType=INTEGER},
       </if>
-      <if test="balance != null" >
-        balance = #{balance,jdbcType=INTEGER},
-      </if>
-      <if test="summation != null" >
-        summation = #{summation,jdbcType=INTEGER},
+      <if test="totality != null" >
+        totality = #{totality,jdbcType=INTEGER},
       </if>
       <if test="remark != null" >
         remark = #{remark,jdbcType=VARCHAR},
       </if>
     </set>
-    where userId = #{userId,jdbcType=VARCHAR}
+    where userId = #{userid,jdbcType=VARCHAR}
+      and businessId = #{businessid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hyrt.saic.bean.AccountInfo" >
     update t_account_info
-    set businessId = #{businessId,jdbcType=INTEGER},
-      balance = #{balance,jdbcType=INTEGER},
-      summation = #{summation,jdbcType=INTEGER},
+    set remainder = #{remainder,jdbcType=INTEGER},
+      totality = #{totality,jdbcType=INTEGER},
       remark = #{remark,jdbcType=VARCHAR}
-    where userId = #{userId,jdbcType=VARCHAR}
+    where userId = #{userid,jdbcType=VARCHAR}
+      and businessId = #{businessid,jdbcType=INTEGER}
   </update>
 </mapper>

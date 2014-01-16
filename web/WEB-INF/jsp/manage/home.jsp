@@ -52,7 +52,7 @@
         </dl>--%>
 
         <dl>
-            <dt><A href="#"><img src="${basePath}/manage/images/ht_ico4.png"/>套餐制定</A></dt>
+            <dt><A href="/package/list" target="main" ><img src="${basePath}/manage/images/ht_ico4.png"/>套餐制定</A></dt>
         </dl>
 
 
@@ -63,13 +63,6 @@
 
         <dl>
             <dt><A  href="/userAccount/allotSearch" target="main"><img   src="${basePath}/manage/images/ht_ico6.png"/>包月套餐分配</A></dt>
-            <%--           <dt><A onclick=javascript:ShowFLT(1) href="javascript:void(null)"><img   src="${basePath}/manage/images/ht_ico6.png"/>包月套餐分配</A></dt>
-                   <dd id=LM1 style="DISPLAY: none">
-                         <ul>
-                             <li><a href="#">包月套餐分配</a></li>
-                             <li><a href="#">包月金额统计</a></li>
-                         </ul>
-                     </dd>--%>
         </dl>
 
 
@@ -78,9 +71,9 @@
         </dl>
 
         <dl>
-            <dt><A onclick=javascript:ShowFLT(2) href="javascript:void(null)"><img
+            <dt><A onclick=javascript:ShowFLT(1) href="javascript:void(null)"><img
                     src="${basePath}/manage/images/ht_ico8.png"/>统计分析</A></dt>
-            <dd id=LM2 style="DISPLAY: none">
+            <dd id=LM1 style="DISPLAY: none">
                 <ul>
                     <li><a href="#">消费统计</a></li>
                     <li><a href="#">查询数据统计</a></li>
@@ -94,9 +87,9 @@
         </dl>
 
         <dl>
-            <dt><A onclick=javascript:ShowFLT(3) href="javascript:void(null)"><img
+            <dt><A onclick=javascript:ShowFLT(2) href="javascript:void(null)"><img
                     src="${basePath}/manage/images/ht_ico10.png"/>系统管理</A></dt>
-            <dd id=LM3 style="DISPLAY: none">
+            <dd id=LM2 style="DISPLAY: none">
                 <ul>
                     <li><hyrt:checkResoure resoureName="角色管理" resoureuri="/role/manager"><a href="/role/manager" target="main"></hyrt:checkResoure>角色管理</a></li>
                     <li><a href="/manager/list" target="main">用户管理</a></li>
@@ -108,7 +101,7 @@
     </div>
     <div class="ht_content_right">
 
-        <iframe id="main" name="main" src="/customer/list" scrolling="no"></iframe>
+        <iframe id="main" name="main" src="/index" scrolling="no"></iframe>
 
     </div>
 </div>
@@ -118,7 +111,7 @@
 <div class="clear"></div>
 <div class="ht_bottom">
     <div class="ht_bottom_content">
-        <p>Copyright 2011-2013 某某版权所有 豫ICP备00000000号</p>
+        <p>Copyright 2011-2013 某某版权所有 豫ICP备00000001号</p>
     </div>
 </div>
 

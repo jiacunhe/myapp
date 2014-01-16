@@ -135,6 +135,7 @@
                     <li><a href="#">个人资料</a></li>
                     <li><a href="#">安全中心</a></li>
                     <li><a href="/bill/rechargeRecord" target="mainIframe">消费明细</a></li>
+                    <li><a href="/accountInfo/list" target="mainIframe">账户余额</a></li>
                     <li><a href="#">我的消息</a></li>
                 </ul>
             </dd>

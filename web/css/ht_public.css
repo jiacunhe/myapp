@@ -1,0 +1,43 @@
+/* CSS Document */
+*{ padding:0px; margin:0px;}
+body{ font-family:"宋体"; font-size:12px; color:#636363; background:#ccd2da;}
+a{ text-decoration:none; color:#fd7d00;} 
+a:hover{ text-decoration:none;}
+a img{ border:none;}
+ul{ list-style-type:none;}
+.clear{ clear:both;}
+
+.ht_top{ width:100%; height:93px; overflow:hidden; background:url(../images/ht_top_bg0.png) repeat-x;}
+.ht_top_content{ width:1000px; height:93px; overflow:hidden; margin:0px auto; background:url(../images/ht_top_bg.png) no-repeat;}
+.ht_logo{ float:left; margin:22px 60px 0px 0px;}
+.ht_top_xx{ float:left; width:auto; overflow:hidden; margin-top:30px; line-height:22px;}
+.ht_top_xx p{ color:#fff; font-family:"微软雅黑"; margin-right:10px;}
+.ht_top_xx p span{ color:#ffa200; margin-right:10PX;}
+.ht_top_xx p a{ margin-left:8px;}
+.ht_top_button{ width:156px; height:54px; float:right; overflow:hidden; margin-top:16px;}
+.ht_top_button a{ width:66px; height:54px; display:inline-block; float:left; margin-left:12px;}
+.ht_top_button a img{ width:66px; height:54px;}
+
+.ht_content{ width:1000px; height:636px; overflow:hidden; margin:0px auto;}
+.ht_content_left{ width:218px; height:636px; overflow:hidden; background:#ecf2fa; border-left:1px solid #fff; border-right:1px solid #fff; float:left;}
+.ht_yangshi{ height:20px; overflow:hidden;}
+.ht_content_left dl dt a{ width:218px; background:url(../images/ht_ttbg1.gif) no-repeat; font-size:14px; font-weight:bold; color:#37393a; letter-spacing:1px; display:block;  height:40px; overflow:hidden; line-height:40px; text-decoration:none; margin-bottom:10px; font-family:"微软雅黑";}
+.ht_content_left dl dt a:hover{ color:#fff; background:url(../images/ht_ttbg2.gif) no-repeat;}
+.ht_content_left dl dt a img{ margin:8px 12px 0px 36px; float:left; display:inline;}
+.ht_content_left dl ul{ width:217px; height:auto; overflow:hidden; margin:0px 0px 20px 2px;}
+.ht_content_left dl ul li{ height:34px; overflow:hidden; line-height:34px; background:url(../images/ttbg2.png) no-repeat left bottom; text-indent:70px;}
+.ht_content_left dl ul li a{ font-size:12px; color:#37393a;}
+.ht_content_left dl ul li a:hover{ text-decoration:none; color:#ffa200;}
+.ht_content_right{ width:768px; height:636px; overflow:hidden; float:left; margin-left:10px; display:inline; background:#e4e9f1; border-left:1px solid #c2c8d0;
+border-right:1px solid #c2c8d0;}
+
+.ht_bottom{ width:100%; height:41px; overflow:hidden; background:url(../images/ht_bottombg.gif) repeat-x;}
+.ht_bottom_content{ width:1000px; height:41px; margin:0px auto; text-align:center;}
+.ht_bottom_content p{ color:#5db1e8; line-height:41px;}
+
+
+
+
+
+
+

@@ -9,16 +9,12 @@
 <html>
 <head>
     <%@ include file="/WEB-INF/jsp/manage/commons.jspf" %>
-    <link href="../css/ht_public.css" rel="stylesheet" type="text/css" />
-    <link href="../css/ht_sub.css" rel="stylesheet" type="text/css" />
-    <script src="../js/ht_iepng.js" type="text/javascript"></script>
-    <script type="text/javascript">
-        EvPNG.fix('div, ul, img, li, input,dt');
-    </script>
-    <script language=javascript src="../js/ht_select.js" id=clientEventHandlersJS> </script>
+  
 
+
+    <script language=javascript src="${basePath}/js/ht_select.js" id=clientEventHandlersJS> </script>
     <!--The pop-up page-->
-    <script language=javascript src="../js/tanchu.js" id=clientEventHandlersJS> </script>
+    <script language=javascript src="${basePath}/js/tanchu.js" id=clientEventHandlersJS> </script>
 
         <SCRIPT TYPE="text/javascript">
             // 选择所有
@@ -49,20 +45,20 @@
     <div class="ht_rtbut">
         <ul>
             <hyrt:checkResoure resoureName="角色添加" resoureuri="/role/insert/UI">
-            <li><a href="/role/insert/UI"><img src="../images/ht_ico02.png" /><p>增 加</p></a></li>
+            <li><a href="/role/insert/UI"><img src="${basePath}/images/ht_ico02.png" /><p>增 加</p></a></li>
             </hyrt:checkResoure>
             <hyrt:checkResoure resoureName="角色更新" resoureuri="/role/editup/UI">
-            <li><a href="javascript:roleeditform()"><img src="../images/ht_ico03.png" /><p>修 改</p></a></li>
+            <li><a href="javascript:roleeditform()"><img src="${basePath}/images/ht_ico03.png" /><p>修 改</p></a></li>
             </hyrt:checkResoure>
             <hyrt:checkResoure resoureName="角色删除" resoureuri="/role/deleterole">
-            <li><a href="javascript:roledeleteform()"><img src="../images/ht_ico04.png" /><p>删 除</p></a></li>
+            <li><a href="javascript:roledeleteform()"><img src="${basePath}/images/ht_ico04.png" /><p>删 除</p></a></li>
             </hyrt:checkResoure>
         </ul>
     </div>
     <div class="ht_sub_nr1">
-        <h4 class="ht_sub_title0"><img src="../images/ht_ico05.png" /><p>列表</p></h4>
+        <h4 class="ht_sub_title0"><img src="${basePath}/images/ht_ico05.png" /><p>列表</p></h4>
         <form id="rolemanager" action="###" method="post">
-        <table width="768" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="ht_sub_table1">
+        <table width="768" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="ht_sub_table1" style="font-size:12px">
 
             <tr class="ht_sub_tr1">
                 <th width="80"><input type="checkbox" id="allchecked" onClick="selectAll(this.checked)"/></th>

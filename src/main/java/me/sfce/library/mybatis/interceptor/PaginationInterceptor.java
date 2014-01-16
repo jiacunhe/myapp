@@ -66,7 +66,7 @@ public class PaginationInterceptor implements Interceptor {
         //TODO
         System.out.println("===========================================");
         System.out.println(boundSql.getSql());
-      //  System.out.println(obj.toString());
+       // System.out.println(obj.toString());
         System.out.println("############################################");
 
         //这里我们简单的通过传入的是Page对象就认定它是需要进行分页操作的。

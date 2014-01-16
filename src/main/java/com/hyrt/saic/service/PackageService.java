@@ -16,10 +16,11 @@ import java.util.Map;
  */
 public interface PackageService  {
 
-    public Map listChargePackage(String type,String order,Integer page);
-
+    public Map listChargePackage(String type,String order,Integer page,String userId,String status);
+    public Map listChargePackageUser(String type,String order,Integer page,String userId,String status);
     public void deleteById(int id);
     public void insert(ChargePackage chargePackage, List<ChargePackageDetaill> ChargePackageDetaillList);
     public void update(ChargePackage chargePackage,List<ChargePackageDetaill> ChargePackageDetaillList);
     public Map  selectById(int id);
+    public void updateStatusById(int id,String status);
 }
