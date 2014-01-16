@@ -89,7 +89,7 @@ public class UserAccountController {
 
             params.put("cursor",(page - 1) * pageSize);
             params.put("length",pageSize);
-            List monthlyList =  userPackageApplyService.selectUsedPackage(params);
+            List monthlyList =  userPackageApplyService.selectUsedPackageByPage(params);
             request.setAttribute("userId",userId);
             request.setAttribute("userName",userName);
             request.setAttribute("yearMonth",yearMonth);

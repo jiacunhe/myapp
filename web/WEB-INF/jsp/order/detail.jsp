@@ -23,7 +23,7 @@
 <body>
 
 
-<div class="content_right">
+<div class="content_right" style="height: 666px;">
     <div class="yemei">
         <p>您当前所在位置：<a href="#">首页</a> >> <span>查询提交</span></p>
     </div>

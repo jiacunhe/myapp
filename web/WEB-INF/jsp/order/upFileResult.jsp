@@ -13,8 +13,8 @@
     <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
     <meta HTTP-EQUIV="expires" CONTENT="0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="../css/public.css" rel="stylesheet" type="text/css" />
-    <link href="../css/sub.css" rel="stylesheet" type="text/css" />
+    <link href="/css/public.css" rel="stylesheet" type="text/css" />
+    <link href="/css/sub.css" rel="stylesheet" type="text/css" />
     <title>subsidiary</title>
     <style type="text/css">
         <!--
@@ -22,11 +22,16 @@
             margin-left: 0px;
             margin-top: 0px;
         }
-        table tr td{ padding-left: 5px;}
+        table th{border: 1px solid #dadada;}
+        table tr{border: 1px solid #dadada;}
+        table tr td{ padding-left: 5px;border: 1px solid #dadada;}
         .page ul{ width: 80%; float: left}
         .page ul li{ float: left; margin-left: 0px; margin-left: 5px; padding: 3px;}
+        .commitfield{height: 33px; line-height: 33px; margin-top: 25px;padding-left: 33px;}
+        .commitfield a{width:90px; height:28px; border:none; background:url(/images/but_bg2.gif) no-repeat; margin-left: 20px; text-align:center; float: left; color: #ffffff;}
         .loadingback{Z-INDEX: 998; FILTER: alpha(opacity=60); LEFT: 0px; WIDTH: 100%; POSITION: absolute; TOP: 0px; HEIGHT: 100%; BACKGROUND-COLOR: #ffffff; opacity: 0.6}
         .loading{ POSITION: absolute;Z-INDEX: 999;width:200px;height:18px; line-height: 18px;}
+
         -->
     </style>
 </head>
@@ -38,23 +43,25 @@
             </span>>> <span>批量导入</span></p>
     </div>
     <h4 class="sub_title1" style="margin-top: 10px; margin-right: 2px; margin-left: 5px;"><p class="sub_p5">导入数据</p></h4>
-    <table style="margin-top: 10px; margin-right: 2px; margin-left: 5px; width: 98%" cellpadding="0" cellspacing="0" class="sub_table1" style="margin-left: 5px;">
-          <tr class="sub_tr1" style="border-left: 1px;">
-            <th style="border-left: 1px solid #dadada; ">code</th>
-            <th style="border-left: 1px solid #dadada; ">name</th>
-            <th style="border-left: 1px solid #dadada; ">remark</th>
+    <table  class="sub_table1" style="margin-left: 5px;margin-top: 10px; margin-right: 25px; margin-left: 5px; width:748px" cellpadding="0" cellspacing="0">
+          <tr class="sub_tr1">
+            <th class="bordebottom">证件号</th>
+            <th class="bordebottom">名称</th>
+            <th class="bordebottom">备注</th>
+              <th class="bordebottom">证件类型</th>
           </tr>
 
           <c:forEach  var="obj" items="${upObjList}"   varStatus="status">
           <tr <c:if test="${status.count%2==0}">class="sub_tr1"</c:if>>
-            <td style="border-left: 1px solid #dadada; ">${obj[0]}</td>
-            <td style="border-left: 1px solid #dadada; ">${obj[1]}</td>
-            <td style="border-left: 1px solid #dadada; ">${obj[2]}</td>
+            <td class="bordebottom">${obj[0]}</td>
+            <td class="bordebottom">${obj[1]}</td>
+            <td class="bordebottom">${obj[2]}</td>
+            <td class="bordebottom">${obj[3]}</td>
           </tr>
         </c:forEach>
 
         <tr class="page">
-            <td colspan="3">
+            <td colspan="4">
 
                 <ul>
                     <li><a href="/order/upFileResult?page=${1}"  title="首页"> << </a></li>
@@ -96,7 +103,7 @@
 
     </table>
 
-    <p> <a href="/order/createOrderByFile" onclick="waiting()">生成订单</a>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <a href="/welcome.jsp">放弃</a></p>
+    <p class="commitfield"> <a href="/order/createOrderByFile" onclick="waiting()">生成订单</a> <a href="/welcome.jsp">放弃</a></p>
 </div>
 
 
