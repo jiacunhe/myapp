@@ -1,6 +1,8 @@
 package com.hyrt.saic.service.impl;
 
 import com.hyrt.saic.bean.*;
+import com.hyrt.saic.dao.RoleMapper;
+import com.hyrt.saic.dao.RoleSysResourceMapper;
 import com.hyrt.saic.dao.UserMapper;
 import com.hyrt.saic.dao.UserRoleMapper;
 import com.hyrt.saic.service.UserService;
@@ -31,9 +33,13 @@ import java.util.Map;
 public class UserServiceImpl extends BaseServiceImpl<User> implements UserService {
     @Autowired
     UserMapper userMapper;
-
     @Autowired
     UserRoleMapper userRoleMapper;
+
+    @Autowired
+    RoleMapper roleMapper;
+    @Autowired
+    RoleSysResourceMapper roleSysResourceMapper;
 
     @Override
     public void save(User user) {
@@ -55,6 +61,8 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
         User user = userMapper.login(userId, toMD5(password));
         if (null != user) {
             request.getSession().setAttribute(Config.USER, user);
+            List<SysResoure> userHaveResourelist = getHaveSysResoure(user, request);
+            request.getSession().setAttribute(Config.USER_HAVE_RESOURCE_KEY, userHaveResourelist);
             return true;
         }
         return false;
@@ -77,6 +85,9 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
         User user = userMapper.loginManage(userId, toMD5(password));
         if (null != user) {
             request.getSession().setAttribute(Config.MANAGE, user);
+            List<SysResoure> userHaveResourelist = getHaveSysResoure(user, request);
+            request.getSession().setAttribute(Config.USER_HAVE_RESOURCE_KEY, userHaveResourelist);
+
             return true;
         }
         return false;
@@ -85,6 +96,21 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     private String toMD5(String resource) {
         byte[] bytes = DigestUtils.md5Digest(resource.getBytes());
         return new String(bytes);
+    }
+
+    private List<SysResoure> getHaveSysResoure(User user, HttpServletRequest request) {
+
+        List<Role> rolelist = roleMapper.getRolesByuserid(user.getUserId());
+        StringBuffer stringBuffer = new StringBuffer();
+        String roleids = "";
+        for (Role role : rolelist) {
+            stringBuffer.append(role.getId());
+            stringBuffer.append(",");
+        }
+        if (stringBuffer.length() > 0 && stringBuffer.indexOf(",") > 0)
+            roleids = stringBuffer.toString().substring(0, stringBuffer.indexOf(","));
+        List<SysResoure> userHaveResourelist = roleSysResourceMapper.getResoureByUserRoleids(roleids);
+        return userHaveResourelist;
     }
 
     @Override

@@ -25,7 +25,9 @@
         .addMonitor{float: left; width: 75px; text-align: center}
         .removeMonitor{display: none; float: left; width:75px; text-align: center; color: #0e6999}
         .deleteLine{text-align:center; width:35px; margin-left:10px; float:left;}
-        .input_for_addline{background:none; border:none; border-bottom:#666666 1px solid; width:150px;}
+
+
+        .input_for_addline{background:none; border:#eee 1px solid; width:90%; height: 20px; margin-left: 1%;}
     </style>
 
 
@@ -45,7 +47,7 @@
     <div class="content_right_nr">
         <h4 class="sub_title1"><p class="sub_p5">企业查询</p></h4>
         <div class="sub_nr">
-            <table  id="gtb" width="749" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1">
+            <table  id="gtb" width="749" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1" >
                 <tr class="sub_tr1">
                  <!--   <th width="64"><input type="checkbox" /></th>     -->
                     <th width="180">注册号*</th>
@@ -57,16 +59,16 @@
                   <!--  <td valign="bottom">
                         <input type="checkbox" id="checkbox1" value="1">
                     </td>   -->
-                    <td valign="bottom">
+                    <td>
                         <input type="text" id="groupcode1"  name="groupcode1" class="input_for_addline">
                     </td>
-                    <td valign="bottom">
+                    <td>
                         <input type="text" id="groupname1"  name="groupname1"  class="input_for_addline">
                     </td>
-                    <td valign="bottom">
+                    <td>
                         <input type="text" id="groupremark1"  name="groupremark1"  class="input_for_addline">
                     </td>
-                    <td valign="bottom" align="center"><div style="width:120px; margin: auto"><input type="hidden" id="group1monitor" name="group1monitor" value="0"><a  href="javascript:monitoradd('group1')" id="group1add" class="addMonitor">加入监控</a> <a id="group1remove" href="javascript:monitorremove('group1')" class="removeMonitor">取消监控</a>  <a href="#" onclick="delrow(this)" class="deleteLine">删除</a></div></td>
+                    <td align="center"><div style="width:120px; margin: auto"><input type="hidden" id="group1monitor" name="group1monitor" value="0"><a  href="javascript:monitoradd('group1')" id="group1add" class="addMonitor">加入监控</a> <a id="group1remove" href="javascript:monitorremove('group1')" class="removeMonitor">取消监控</a>  <a href="#" onclick="delrow(this)" class="deleteLine">删除</a></div></td>
                 </tr>
             </table>
             <!--p class="cxjg">本次查询条数：<span>2</span>条</p>
@@ -144,9 +146,9 @@ function insRow()
         row.align='center';
 	i++;
    // var z=row.insertCell(0);z.vAlign='bottom';
-    var y=row.insertCell(0);y.vAlign='bottom';
-    var x=row.insertCell(1);x.vAlign='bottom';
-    var w=row.insertCell(2);w.vAlign='bottom';
+    var y=row.insertCell(0);
+    var x=row.insertCell(1);
+    var w=row.insertCell(2);
     var v=row.insertCell(3);v.vAlign='bottom';
 	v.align = "center";
   //  z.innerHTML=' <input type="checkbox" name="checkbox'+i+'" value="'+i+'">';

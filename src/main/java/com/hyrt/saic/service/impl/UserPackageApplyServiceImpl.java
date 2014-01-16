@@ -38,6 +38,12 @@ public class UserPackageApplyServiceImpl implements UserPackageApplyService {
         return userApplyPackageMapper.selective(params);
     }
 
+
+
+    @Override
+    public List selectUsedPackageByPage(Map params) {
+        return userApplyPackageMapper.selectiveByPage(params);
+    }
     public Integer selectiveCount(Map params){
         return userApplyPackageMapper.selectiveCount(params);
     }

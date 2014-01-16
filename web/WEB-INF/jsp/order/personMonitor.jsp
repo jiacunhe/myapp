@@ -13,8 +13,8 @@
     <title>人员监控</title>
     <style type="text/css">
         .deleteLine{text-align:center; width:35px;}
-        .input_for_addline{background:none; border:none; border-bottom:#666666 1px solid; width:150px;}
-        .select_for_addline{background:none;  width:150px; height: 20px;}
+        .input_for_addline{background:none; border:#eee 1px solid; width:90%; height: 20px; margin-left: 1%;}
+        .select_for_addline{background:none; border:#eee 1px solid; width:90%; height: 20px; margin-left: 1%;}
     </style>
 
 </head>
@@ -39,18 +39,18 @@
                     <th width="10%">操 作</th>
                 </tr>
                 <tr align="center">
-                    <td valign="bottom">
+                    <td>
                         <select id="certificate1"  name="certificate1" class="select_for_addline">
                             <option value="身份证">身份证</option>
                         </select>
                     </td>
-                    <td valign="bottom">
+                    <td>
                         <input type="text" id="groupcode1"  name="groupcode1" class="input_for_addline">
                     </td>
-                    <td valign="bottom">
+                    <td>
                         <input type="text" id="groupname1"  name="groupname1" class="input_for_addline">
                     </td>
-                    <td valign="bottom">
+                    <td>
                         <input type="text" id="groupremark1"  name="groupremark1"  class="input_for_addline">
                     </td>
                     <td valign="bottom" align="center"><div style="width:100%; text-align: center"> <a href="#" onclick="delrow(this)" class="deleteLine" >删除</a></div></td>
@@ -139,10 +139,10 @@
         var row=document.getElementById('gtb').insertRow(j);
         row.align='center';
         i++;
-        var z=row.insertCell(0);z.vAlign='bottom';
-        var y=row.insertCell(1);y.vAlign='bottom';
-        var x=row.insertCell(2);x.vAlign='bottom';
-        var w=row.insertCell(3);w.vAlign='bottom';
+        var z=row.insertCell(0);
+        var y=row.insertCell(1);
+        var x=row.insertCell(2);
+        var w=row.insertCell(3);
         var v=row.insertCell(4);v.vAlign='bottom';        v.align = "center";
 
         z.innerHTML='<select id="certificate'+i+'"  name="certificate'+i+'"  class="select_for_addline"> <option value="身份证">身份证</option> </select>';

@@ -13,7 +13,7 @@
     <title>企业对外投资查询</title>
     <style type="text/css">
         .deleteLine{text-align:center; width:35px;}
-        .input_for_addline{background:none; border:none; border-bottom:#666666 1px solid; width:150px;}
+        .input_for_addline{background:none; border:#eee 1px solid; width:90%; height: 20px; margin-left: 1%;}
     </style>
 
 </head>
@@ -44,13 +44,13 @@
                   <!--  <td valign="bottom">
                         <input type="checkbox" id="checkbox1" value="1">
                     </td>   -->
-                    <td valign="bottom">
+                    <td>
                         <input type="text" id="groupcode1"  name="groupcode1" class="input_for_addline">
                     </td>
-                    <td valign="bottom">
+                    <td>
                         <input type="text" id="groupname1"  name="groupname1"  class="input_for_addline">
                     </td>
-                    <td valign="bottom">
+                    <td>
                         <input type="text" id="groupremark1"  name="groupremark1"  class="input_for_addline">
                     </td>
                     <td valign="bottom"><div style="width:100%;text-align: center;"> <input type="hidden" id="group1monitor" name="group1monitor" value="0"><a href="#" onclick="delrow(this)" class="deleteLine">删除</a></div></td>
@@ -129,9 +129,9 @@
         row.align='center';
         i++;
       //  var z=row.insertCell(0);z.vAlign='bottom';
-        var y=row.insertCell(0);y.vAlign='bottom';
-        var x=row.insertCell(1);x.vAlign='bottom';
-        var w=row.insertCell(2);w.vAlign='bottom';
+        var y=row.insertCell(0);
+        var x=row.insertCell(1);
+        var w=row.insertCell(2);
         var v=row.insertCell(3);v.vAlign='bottom';
         v.align = "center";
       //  z.innerHTML=' <input type="checkbox" name="checkbox'+i+'" value="'+i+'">';

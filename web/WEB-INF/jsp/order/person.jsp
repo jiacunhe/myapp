@@ -20,11 +20,11 @@
 
     <title>人员查询</title>
     <style type="text/css">
-        .addMonitor{float: left; width: 75px; text-align: center}
-        .removeMonitor{display: none; float: left; width:75px; text-align: center; color: #0e6999}
-        .deleteLine{text-align:center; width:35px; margin-left:10px; float:left;}
-        .input_for_addline{background:none; border:none; border-bottom:#666666 1px solid; width:150px;}
-        .select_for_addline{background:none;  width:150px; height: 20px;}
+        .addMonitor{float: left; width: 70px; text-align: center}
+        .removeMonitor{display: none; float: left; width:70px; text-align: center; color: #0e6999}
+        .deleteLine{text-align:center; width:35px; margin-left:5px; float:left;}
+        .input_for_addline{background:none; border:#eee 1px solid; width:90%; height: 20px; margin-left: 1%;}
+        .select_for_addline{background:none; border:#eee 1px solid; width:90%; height: 20px; margin-left: 1%;}
     </style>
 
 </head>
@@ -58,18 +58,18 @@
                         <input type="checkbox" id="checkbox1" value="1">
                     </td>     -->
 
-                    <td valign="bottom">
+                    <td>
                         <select id="certificate1"  name="certificate1" class="select_for_addline">
                             <option value="身份证">身份证</option>
                         </select>
                     </td>
-                    <td valign="bottom">
+                    <td>
                         <input type="text" id="groupcode1"  name="groupcode1" class="input_for_addline">
                     </td>
-                    <td valign="bottom">
+                    <td>
                         <input type="text" id="groupname1"  name="groupname1" class="input_for_addline">
                     </td>
-                    <td valign="bottom">
+                    <td>
                         <input type="text" id="groupremark1"  name="groupremark1" class="input_for_addline">
                     </td>
                     <td valign="bottom" align="center"><div style="width:120px; margin: auto"><input type="hidden" id="group1monitor" name="group1monitor" value="0"><a  href="javascript:monitoradd('group1')" id="group1add" class="addMonitor">加入监控</a> <a id="group1remove" href="javascript:monitorremove('group1')" class="removeMonitor">取消监控</a>  <a href="#" onclick="delrow(this)" class="deleteLine">删除</a></div></td>
@@ -218,10 +218,10 @@
         row.align='center';
         i++;
      //   var z=row.insertCell(0);z.vAlign='bottom';
-        var y=row.insertCell(0);y.vAlign='bottom';
-        var x=row.insertCell(1);x.vAlign='bottom';
-        var w=row.insertCell(2);w.vAlign='bottom';
-        var v=row.insertCell(3);v.vAlign='bottom';
+        var y=row.insertCell(0);
+        var x=row.insertCell(1);
+        var w=row.insertCell(2);
+        var v=row.insertCell(3);
         var u=row.insertCell(4);u.vAlign='bottom';
         u.align = "center";
       //  z.innerHTML=' <input type="checkbox" name="checkbox'+i+'" value="'+i+'">';

@@ -53,19 +53,19 @@ public class BillController {
           }else{
               cal.add(Calendar.MONTH,-1);
           }
-
+          //购买查询
          params.put("startDate",sdf.format(cal.getTime()));
          List relist=  rechargeRecordService.getRechargeRecord(params);
          request.setAttribute("relist",relist);
          request.setAttribute("period",period);
-
+         //包月历史查询，显示最近12个月
          cal.setTime(new Date());
          cal.add(Calendar.MONTH,-12);
          params.put("yearMonth",sdf2.format(cal.getTime()));
          List monthlyList =  userPackageApplyService.selectUsedPackage(params);
          request.setAttribute("monthlyList",monthlyList);
 
-
+         //绑定私有包查询
          String sql = "SELECT MAX(packageName) packageName,MAX(price) price," +
                  "       MAX(CASE businessTypeId WHEN 1 THEN quantity ELSE 0 END) b1q ," +
                  "       MAX(CASE businessTypeId WHEN 2 THEN quantity ELSE 0 END) b2q   " +
@@ -79,7 +79,7 @@ public class BillController {
              request.setAttribute("privatePackage",list.get(0));
          }
 
-
+        //绑定包月包查询
         sql ="SELECT MAX(packageName) packageName,MAX(price) price," +
                 "       MAX(CASE businessTypeId WHEN 1 THEN quantity ELSE 0 END) b1q ," +
                 "       MAX(CASE businessTypeId WHEN 2 THEN quantity ELSE 0 END) b2q   " +

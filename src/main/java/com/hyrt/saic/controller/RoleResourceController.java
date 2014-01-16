@@ -95,38 +95,38 @@ public class RoleResourceController {
                 e.printStackTrace();
             }
             //处理资源关联表
-            List<SysResoure> sysResourelist = role.getResources(); //资源总数
-            List<Integer> sysResoureallid = new ArrayList<Integer>();     //资源id总数
+            List<SysResoure> sysResoureList = role.getResources(); //资源总数
+            List<Integer> sysResoureAllId = new ArrayList<Integer>();     //资源id总数
             List<Integer> sysResouredeleteid = new ArrayList<Integer>();  //需要删除的id集合
 
-            for (SysResoure sysResoure : sysResourelist) {
-                sysResoureallid.add(sysResoure.getId());
+            for (SysResoure sysResoure : sysResoureList) {
+                sysResoureAllId.add(sysResoure.getId());
                 sysResouredeleteid.add(sysResoure.getId());
             }
             List<String> contentResourceId = new ArrayList<String>();          //拥有的id集合
             List<String> addResourceId = new ArrayList<String>();       //需要新增的id集合
-            Boolean iscontentid = false;
+            Boolean isContentId = false;
             if (resourceIds != null) {
                 for (String rsId : resourceIds) {
-                    if (sysResourelist.size() > 0) {
-                        for (SysResoure sysResoure : sysResourelist) {
-                            iscontentid = false;
+                    if (sysResoureList.size() > 0) {
+                        for (SysResoure sysResoure : sysResoureList) {
+                            isContentId = false;
                             //查找出不同的数据  区分出 新增的id值
                             if (sysResoure.getId() == Integer.valueOf(rsId)) {
-                                iscontentid = true;
+                                isContentId = true;
                                 break;
                             }
                         }
-                        if (iscontentid)
+                        if (isContentId)
                             contentResourceId.add(rsId);
                         else
                             addResourceId.add(rsId);
-                    } else if (sysResourelist.size() == 0) {
+                    } else if (sysResoureList.size() == 0) {
                         addResourceId.add(rsId);
                     }
                 }
             }
-            if (contentResourceId.size() < sysResoureallid.size()) {
+            if (contentResourceId.size() < sysResoureAllId.size()) {
                 //区分出删除id
                 if (contentResourceId.size() > 0) {
                     for (String contentRId : contentResourceId) {
@@ -135,7 +135,7 @@ public class RoleResourceController {
                     }
                 }
 
-            } else if (contentResourceId.size() == sysResoureallid.size()) {
+            } else if (contentResourceId.size() == sysResoureAllId.size()) {
                 sysResouredeleteid.clear();
             }
 //            System.out.println(contentResourceId.size());
@@ -153,7 +153,7 @@ public class RoleResourceController {
                 }
                 roleResourceService.insertResoureByRoel(roleSysResources);
             }
-            if (sysResouredeleteid.size() > 0 && sysResouredeleteid.size() <= sysResoureallid.size()) {
+            if (sysResouredeleteid.size() > 0 && sysResouredeleteid.size() <= sysResoureAllId.size()) {
                 // 处理删除资源权限
                 HashMap<String, String> hashMap = new HashMap<>();
                 hashMap.put("roleId", roleid);
@@ -174,7 +174,7 @@ public class RoleResourceController {
     }
 
     @RequestMapping("/deleterole")
-    public String getDeleterole(String[] roleid, HttpServletRequest request) {
+    public String getDeleteRole(String[] roleid, HttpServletRequest request) {
         if (roleid != null && !roleid.equals("") && roleid.length > 0) {
             StringBuffer sb = new StringBuffer();
             for (String rid : roleid) {
@@ -193,7 +193,7 @@ public class RoleResourceController {
     }
 
     @RequestMapping("/insert/UI")
-    public String getInsertrole(HttpServletRequest request) {
+    public String getInsertRole(HttpServletRequest request) {
         //查出角色的可选资源列表
         List<SysResoure> allSysResoure = roleResourceService.getAllSysResource();
         for (SysResoure systop : allSysResoure) {
@@ -211,10 +211,10 @@ public class RoleResourceController {
     }
 
     @RequestMapping("/insert")
-    public String doinsertrole(String rolename, String[] resourceIds, String rolermark, HttpServletRequest request) {
+    public String doInsertRole(String roleName, String[] resourceIds, String roleRemark, HttpServletRequest request) {
         Role role = new Role();
-        role.setRoleName(rolename);
-        role.setRemark(rolermark);
+        role.setRoleName(roleName);
+        role.setRemark(roleRemark);
         roleResourceService.inserRole(role, resourceIds);
         request.setAttribute("successMassage", "success");
         List<Role> roleList = roleResourceService.getAllRoles();
@@ -225,11 +225,11 @@ public class RoleResourceController {
     @RequestMapping(value = "/ajaxrolenameexist", produces = {"application/json;charset=UTF-8"})
     public
     @ResponseBody
-    String docheckrolenameexist(String roleName) {
+    String doCheckRoleNameExist(String roleName) {
         HashMap res = new HashMap();
         boolean exist = false;
-        List rolelist = roleResourceService.getRoleNamebyString(roleName);
-        if (rolelist.size() > 0)
+        List roleList = roleResourceService.getRoleNamebyString(roleName);
+        if (roleList.size() > 0)
             exist = true;
         res.put("rolenameexist", exist);
         return JSON.toJSONString(res);

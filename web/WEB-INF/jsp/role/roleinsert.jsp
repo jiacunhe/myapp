@@ -32,7 +32,7 @@
         <form id="inserrole" action="/role/insert" method="post" class="ht_sub_form00">
 
             <p>*角色名称：</p>
-            <input type="text" id="rolename" name="rolename"  class="ht_sub_input1" style=" height:28px; overflow:hidden; line-height:28px;"/>
+            <input type="text" id="roleName" name="roleName"  class="ht_sub_input1" style=" height:28px; overflow:hidden; line-height:28px;"/>
             <br />
             <p id="nullmessage"></p>
             <div class="clear"></div>
@@ -139,7 +139,7 @@
             <div id="mask"></div>
 
             </p>
-            <textarea class="ht_sub_input2" id="rolermark" name="rolermark" style="height:200px; overflow:hidden; line-height:28px; "></textarea><br />
+            <textarea class="ht_sub_input2" id="roleRemark" name="roleRemark" style="height:200px; overflow:hidden; line-height:28px; "></textarea><br />
 
            <div class="clear"></div> <p>权限设置：</p>
 
