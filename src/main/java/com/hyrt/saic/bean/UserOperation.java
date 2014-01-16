@@ -1,8 +1,10 @@
 package com.hyrt.saic.bean;
 
+import me.sfce.library.mybatis.domain.BasePojo;
+
 import java.util.Date;
 
-public class UserOperation {
+public class UserOperation extends BasePojo {
     private Integer id;
 
     private String userId;
