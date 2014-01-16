@@ -52,7 +52,7 @@
         </dl>--%>
 
         <dl>
-            <dt><A href="#"><img src="${basePath}/manage/images/ht_ico4.png"/>套餐制定</A></dt>
+            <dt><A href="/package/list" target="main" ><img src="${basePath}/manage/images/ht_ico4.png"/>套餐制定</A></dt>
         </dl>
 
 
@@ -111,7 +111,7 @@
 <div class="clear"></div>
 <div class="ht_bottom">
     <div class="ht_bottom_content">
-        <p>Copyright 2011-2013 某某版权所有 豫ICP备00000000号</p>
+        <p>Copyright 2011-2013 某某版权所有 豫ICP备00000001号</p>
     </div>
 </div>
 

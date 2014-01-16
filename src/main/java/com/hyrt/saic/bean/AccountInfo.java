@@ -1,46 +1,26 @@
 package com.hyrt.saic.bean;
 
-public class AccountInfo {
-    private String userId;
+public class AccountInfo extends AccountInfoKey {
+    private Integer remainder;
 
-    private Integer businessId;
-
-    private Integer balance;
-
-    private Integer summation;
+    private Integer totality;
 
     private String remark;
 
-    public String getUserId() {
-        return userId;
+    public Integer getRemainder() {
+        return remainder;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId == null ? null : userId.trim();
+    public void setRemainder(Integer remainder) {
+        this.remainder = remainder;
     }
 
-    public Integer getBusinessId() {
-        return businessId;
+    public Integer getTotality() {
+        return totality;
     }
 
-    public void setBusinessId(Integer businessId) {
-        this.businessId = businessId;
-    }
-
-    public Integer getBalance() {
-        return balance;
-    }
-
-    public void setBalance(Integer balance) {
-        this.balance = balance;
-    }
-
-    public Integer getSummation() {
-        return summation;
-    }
-
-    public void setSummation(Integer summation) {
-        this.summation = summation;
+    public void setTotality(Integer totality) {
+        this.totality = totality;
     }
 
     public String getRemark() {

@@ -66,13 +66,11 @@ public class PaginationInterceptor implements Interceptor {
         //TODO
         System.out.println("===========================================");
         System.out.println(boundSql.getSql());
-        if (null != obj) {
-            System.out.println(obj.toString());
-        }
+       // System.out.println(obj.toString());
         System.out.println("############################################");
 
         //这里我们简单的通过传入的是Page对象就认定它是需要进行分页操作的。
-        if (null != obj && obj instanceof Page) {
+        if (obj!=null && obj instanceof Page) {
             Page page = (Page) obj;
             //通过反射获取delegate父类BaseStatementHandler的mappedStatement属性
             MappedStatement mappedStatement = (MappedStatement) ReflectUtil.getFieldValue(delegate, "mappedStatement");
