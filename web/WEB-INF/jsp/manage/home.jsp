@@ -52,7 +52,7 @@
         </dl>--%>
 
         <dl>
-            <dt><A href="/package/list" target="main" ><img src="${basePath}/manage/images/ht_ico4.png"/>套餐制定</A></dt>
+            <dt><hyrt:privilege uri="/package/list"><A href="/package/list" target="main" ><img src="${basePath}/manage/images/ht_ico4.png"/>套餐制定</A></hyrt:privilege></dt>
         </dl>
 
 

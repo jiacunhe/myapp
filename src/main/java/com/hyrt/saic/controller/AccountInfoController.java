@@ -1,8 +1,11 @@
 package com.hyrt.saic.controller;
 
+import com.hyrt.saic.bean.User;
+import com.hyrt.saic.bean.UserOperation;
 import com.hyrt.saic.service.AccountInfoService;
 import com.hyrt.saic.service.PackageService;
 import com.hyrt.saic.service.UserApplyPackageService;
+import com.hyrt.saic.service.UserOperationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,9 +29,13 @@ public class AccountInfoController {
     private AccountInfoService accountInfoService;
     @Autowired
     UserApplyPackageService userApplyPackageService;
+    @Autowired
+    UserOperationService userOperationService;
     @RequestMapping("/list")
-    public String select(String userId,HttpServletRequest request){
-        userId="admin";
+    public String select(HttpServletRequest request){
+        User user = (User) request.getSession().getAttribute("user");
+        String userId=user.getUserId();
+
 
         List list= accountInfoService.select(userId);
         boolean package1,package2;
@@ -49,6 +56,11 @@ public class AccountInfoController {
         request.setAttribute("list2",list2);
         request.setAttribute("package1",package1);
         request.setAttribute("package2",package2);
+
+
+        UserOperation operation = new UserOperation(user.getUserId(), "/accountInfo/list", "显示用户套餐余量", new Date(), request.getRemoteAddr());
+        userOperationService.save(operation);
+
         return "/accountInfo/list.jsp";
     }
 }

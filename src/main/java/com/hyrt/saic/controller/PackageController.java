@@ -3,7 +3,9 @@ package com.hyrt.saic.controller;
 import com.hyrt.saic.bean.ChargePackage;
 import com.hyrt.saic.bean.ChargePackageDetaill;
 import com.hyrt.saic.bean.User;
+import com.hyrt.saic.bean.UserOperation;
 import com.hyrt.saic.service.PackageService;
+import com.hyrt.saic.service.UserOperationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -28,6 +31,8 @@ import java.util.Map;
 public class PackageController {
     @Autowired
     private PackageService packageService;
+    @Autowired
+    private UserOperationService userOperationService;
     @RequestMapping("/list")
     public String listPackage(String type,String order,Integer page,String userId,String status,HttpServletRequest request){
 
@@ -50,21 +55,28 @@ public class PackageController {
         request.setAttribute("page",res.get("page"));    //当前页
         request.setAttribute("list",(List)res.get("list"));    //查询结果list
 
+        User user = (User) request.getSession().getAttribute("manage");
+        UserOperation operation = new UserOperation(user.getUserId(), "/package/list", "后台查询资费套餐", new Date(), request.getRemoteAddr());
+        userOperationService.save(operation);
+
         return "/package/list.jsp";
     }
     @RequestMapping("/buy")
-    public String listPackageBuy(String order,Integer page,String userId,HttpServletRequest request){
+    public String listPackageBuy(String order,Integer page,HttpServletRequest request){
         String type="public";
         String status="on";
         User user = (User) request.getSession().getAttribute("user");
 
-        userId=user.getUserId();
+        String userId=user.getUserId();
 
         Map res=packageService.listChargePackageUser(type,order,page,userId,status);
         request.setAttribute("totalitem",res.get("totalitem"));    //总元素
         request.setAttribute("totalpage",res.get("totalpage"));    //总页数
         request.setAttribute("page",res.get("page"));    //当前页
         request.setAttribute("list",(List)res.get("list"));    //查询结果list
+
+        UserOperation operation = new UserOperation(user.getUserId(), "/package/buy", "前台查询可购买资费套餐", new Date(), request.getRemoteAddr());
+        userOperationService.save(operation);
 
         return "/package/buy.jsp";
     }
@@ -74,18 +86,28 @@ public class PackageController {
 
             packageService.updateStatusById(id,status2);
 
+        User user = (User) request.getSession().getAttribute("manage");
+        UserOperation operation = new UserOperation(user.getUserId(), "/package/updateStatus", "修改套餐状态", new Date(), request.getRemoteAddr());
+        userOperationService.save(operation);
+
         return  listPackage(type,order,page,userId,status,request);
     }
 
     @RequestMapping("/add/UI")
-    public String packageAddUI(){
+    public String packageAddUI(HttpServletRequest request){
+
+        User user = (User) request.getSession().getAttribute("manage");
+        UserOperation operation = new UserOperation(user.getUserId(), "/package/add/UI", "前往增加页面", new Date(), request.getRemoteAddr());
+        userOperationService.save(operation);
+
+
         return "/package/add.jsp";
     }
 
     @RequestMapping("/add")
     public String insertPackage(String packageName,BigDecimal price,String type,String userId,String remark, String status,
                                 Integer quantity,String remark2,
-                                Integer quantity2,String remark3,HttpServletResponse response){
+                                Integer quantity2,String remark3,HttpServletResponse response,HttpServletRequest request){
         if("".equals(packageName)) packageName=null;
         if("".equals(price))  price=null;
         if("".equals(type)) type=null;
@@ -118,6 +140,12 @@ public class PackageController {
         chargePackageDetaillList.add(cd1);
         chargePackageDetaillList.add(cd2);
          packageService.insert(chargePackage,chargePackageDetaillList);
+
+        User user = (User) request.getSession().getAttribute("manage");
+        UserOperation operation = new UserOperation(user.getUserId(), "/package/add", "增加资费套餐", new Date(), request.getRemoteAddr());
+        userOperationService.save(operation);
+
+
         try {
             response.sendRedirect("/package/list");
         } catch (IOException e) {
@@ -125,11 +153,5 @@ public class PackageController {
         }
         return null;
     }
-    @RequestMapping("/change")
-    public String selectById(int id,HttpServletRequest request) {
-          Map res=packageService.selectById(id);
-          request.setAttribute("p",res);
 
-        return "change.jsp";
-    }
 }
