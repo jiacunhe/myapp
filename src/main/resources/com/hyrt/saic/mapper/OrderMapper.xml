@@ -314,8 +314,14 @@
     </select>
 
     <select id="selectForPermissionView" resultType="java.lang.Integer" parameterType="java.util.Map" >
-        SELECT r.orderType FROM t_order_detail o,t_order r WHERE o.orderId = r.id AND o.id=#{id,jdbcType=BIGINT} AND r.userId = #{userId,jdbcType=VARCHAR}
+        SELECT r.orderType
+        FROM t_order_detail o,t_order r
+        WHERE o.orderId = r.id AND o.id=#{id,jdbcType=BIGINT}
 
+
+        <if test="userId != null" >
+            AND r.userId = #{userId,jdbcType=VARCHAR}
+        </if>
     </select>
 
 

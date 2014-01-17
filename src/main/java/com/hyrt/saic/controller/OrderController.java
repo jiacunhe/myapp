@@ -315,6 +315,7 @@ public class OrderController {
     public String result(Long id, HttpServletRequest request){
 
         User user =(User) request.getSession().getAttribute("user");
+      //  if(user==null)user=(User)  request.getSession().getAttribute("manage");
         String userId=user.getUserId();
 
         if(id!=null){

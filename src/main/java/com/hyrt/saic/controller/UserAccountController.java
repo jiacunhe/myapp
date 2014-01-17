@@ -108,7 +108,7 @@ public class UserAccountController {
     @RequestMapping("/allotPackage")
     public String allotPackage(String submitttt,String receiver,String effectiveType,Integer quantity,Integer month,HttpServletRequest request){
 
-        User user =(User) request.getSession().getAttribute("user");
+        User user =(User) request.getSession().getAttribute("manage");
         String userId=user.getUserId();
 
         Map params = new HashMap();
@@ -173,7 +173,7 @@ public class UserAccountController {
 
     @RequestMapping("/allotSearch")
     public String allotSearch(Integer page,String status,String allocatee,String receiver, HttpServletRequest request){
-        User user =(User) request.getSession().getAttribute("user");
+        User user =(User) request.getSession().getAttribute("manage");
         String userId=user.getUserId();
         //String userId="admin";
         if(!user.getUserType().equals("MANAGER")){
@@ -191,7 +191,7 @@ public class UserAccountController {
 
     @RequestMapping("/allotStop")
     public String allotStop(Integer page,String status,String allocatee,String receiver,Integer id, HttpServletRequest request){
-        User user =(User) request.getSession().getAttribute("user");
+        User user =(User) request.getSession().getAttribute("manage");
         String userId=user.getUserId();
         //String userId="admin";
         if(!user.getUserType().equals("MANAGER")){

@@ -116,7 +116,7 @@
                 <td>${obj.statusName}</td>
                 <td>
                     <c:if test="${obj.status eq '2'}">
-                        <a href="/order/result?id=${obj.id}"><img src="/images/newmessage.png" alt="查看" title="查看" height="20" width="20"></a>
+                        <a href="/orderManage/result?id=${obj.id}"><img src="/images/newmessage.png" alt="查看" title="查看" height="20" width="20"></a>
                     </c:if>
                     <c:if test="${obj.status ne '2'}">
                        <img src="/images/nomessage.png"  height="20" width="20">
@@ -188,10 +188,10 @@
 
                     <c:choose>
                         <c:when  test="${obj.status eq '6'}">
-                            <a href="/order/result?id=${obj.id}"><img src="/images/newmessage.png" alt="查看" title="查看" height="20" width="20"></a>
+                            <a href="/orderManage/result?id=${obj.id}"><img src="/images/newmessage.png" alt="查看" title="查看" height="20" width="20"></a>
                         </c:when>
                         <c:when  test="${obj.status eq '2'}">
-                            <a href="/order/result?id=${obj.id}"><img src="/images/newmessage.png" alt="查看" title="查看" height="20" width="20"></a>
+                            <a href="/orderManage/result?id=${obj.id}"><img src="/images/newmessage.png" alt="查看" title="查看" height="20" width="20"></a>
                         </c:when>
                         <c:otherwise>
                             <img src="/images/nomessage.png"  height="20" width="20">
@@ -346,7 +346,7 @@
 
 
             if(obj.list[i].status == '2'){
-                content+='<td> <a href="/order/result?id='+obj.list[i].id+'"><img src="/images/newmessage.png" alt="查看" title="查看" height="20" width="20"></a></td>';
+                content+='<td> <a href="/orderManage/result?id='+obj.list[i].id+'"><img src="/images/newmessage.png" alt="查看" title="查看" height="20" width="20"></a></td>';
             }else{
                 content+='<td><img src="/images/nomessage.png" alt="查看" title="查看" height="20" width="20"></td>';
             }
@@ -413,7 +413,7 @@
             }
 
             if(obj.list[i].status == '2'|| obj.list[i].status == '6'){
-                content+='<td> <a href="/order/result?id='+obj.list[i].id+'"><img src="/images/newmessage.png" alt="查看" title="查看" height="20" width="20"></a></td>';
+                content+='<td> <a href="/orderManage/result?id='+obj.list[i].id+'"><img src="/images/newmessage.png" alt="查看" title="查看" height="20" width="20"></a></td>';
             }else{
                 content+='<td><img src="/images/nomessage.png" alt="查看" title="查看" height="20" width="20"></td>';
             }
@@ -458,7 +458,7 @@
         dialog=new Dialog("查看监控信息");
         dialog.SetRange(500,300);
         dialog.SetXY((window.document.body.clientWidth -500)/2,150);
-        dialog.OpenWindow("/order/subsidiary?id="+id+"&orderType="+orderType);
+        dialog.OpenWindow("/orderManage/subsidiary?id="+id+"&orderType="+orderType);
     }
 
 </script>

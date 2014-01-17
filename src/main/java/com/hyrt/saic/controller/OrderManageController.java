@@ -1,6 +1,7 @@
 package com.hyrt.saic.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.hyrt.saic.bean.User;
 import com.hyrt.saic.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -99,5 +100,56 @@ public class OrderManageController {
         Map res = orderService.selectOrder(params);
         res.put("businessType",businessType);
         return JSON.toJSONString(res);
+    }
+
+
+
+    @RequestMapping("/result")
+    public String result(Long id, HttpServletRequest request){
+
+       // User user =(User) request.getSession().getAttribute("user");
+      //  if(user==null)user=(User)  request.getSession().getAttribute("manage");
+      //  String userId=user.getUserId();
+
+        if(id!=null){
+
+
+
+            Map params = new HashMap();
+            params.put("id",id);
+        //    params.put("userId",userId);
+            Integer orderType= orderService.selectForPermissionView(params);
+            if(orderType!=null){
+                if(orderType==1 || orderType==3 || orderType==4){
+
+
+                    request.setAttribute("result",JSON.toJSONString(orderService.selectGroupInfo(id)));
+                    request.setAttribute("groupresult",orderService.selectGroupInfo(id));
+                    return "/order/groupResult.jsp";
+
+
+                }else{
+                    request.setAttribute("result",JSON.toJSONString(orderService.selectPersonInfo(id)));
+                    return "/order/personResult.jsp";
+                }
+            }else{
+                return null;
+            }
+        }else{
+            return null;
+        }
+    }
+
+
+    @RequestMapping("/subsidiary")
+    public String subsidiary(String id,Integer page,Integer orderType,HttpServletRequest request){
+
+        Map params = new HashMap();
+        params.put("orderDetailId",id);
+        params.put("orderType",orderType);
+        params.put("page",page);
+        request.setAttribute("objects",orderService.selectMonitorResultList(params));
+
+        return "/order/subsidiary.jsp";
     }
 }
