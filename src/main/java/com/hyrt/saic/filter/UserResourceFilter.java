@@ -1,6 +1,6 @@
 package com.hyrt.saic.filter;
 
-import com.hyrt.saic.bean.SysResoure;
+import com.hyrt.saic.bean.SysResource;
 import com.hyrt.saic.bean.User;
 import com.hyrt.saic.service.RoleResourceService;
 import com.hyrt.saic.util.Config;
@@ -29,8 +29,8 @@ public class UserResourceFilter implements Filter {
     private String sessionKey = null;
     private String sessionKeyManage = null;
     private ServletContext servletContext;
-    private static List<SysResoure> allSysResoureList = new ArrayList<SysResoure>();
-    private List<SysResoure> haveSysResoureList = new ArrayList<SysResoure>();
+    private static List<SysResource> allSysResourceList = new ArrayList<SysResource>();
+    private List<SysResource> haveSysResourceList = new ArrayList<SysResource>();
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -65,9 +65,9 @@ public class UserResourceFilter implements Filter {
         HttpSession session = request.getSession();
         String manageUri = request.getServletPath() + (request.getPathInfo() == null ? "" : request.getPathInfo());
         //所有受限资源集合 静态
-        if (allSysResoureList == null || allSysResoureList.size() == 0)
-            allSysResoureList = ((RoleResourceService) context.getBean("roleResourceService")).getAllSysResourcewithoutTree();
-        haveSysResoureList = (List<SysResoure>) session.getAttribute(Config.USER_HAVE_RESOURCE_KEY);
+        if (allSysResourceList == null || allSysResourceList.size() == 0)
+            allSysResourceList = ((RoleResourceService) context.getBean("roleResourceService")).getAllSysResourcewithoutTree();
+        haveSysResourceList = (List<SysResource>) session.getAttribute(Config.USER_HAVE_RESOURCE_KEY);
 
         if ((!checkRequestURIIntNotFilterList(request)) && session.getAttribute(sessionKey) == null) {
             String returnLoginUri = "/";
@@ -158,10 +158,10 @@ public class UserResourceFilter implements Filter {
     private boolean isLimitedResources(HttpServletRequest request, WebApplicationContext context, String uril) {
         boolean isOrNotLimited = false;
 
-        if (uril.lastIndexOf(Config.UI_SUFFIX) > 0)
-            uril = uril.substring(0, uril.lastIndexOf(Config.UI_SUFFIX));
-        for (SysResoure sysResoure : allSysResoureList) {
-            if (sysResoure.getResourceUri().contains(uril)) {
+        if (uril.lastIndexOf(Config._UI) > 0)
+            uril = uril.substring(0, uril.lastIndexOf(Config._UI));
+        for (SysResource sysResource : allSysResourceList) {
+            if (sysResource.getResourceUri().contains(uril)) {
                 isOrNotLimited = true;
                 return isOrNotLimited;
             }
@@ -173,11 +173,11 @@ public class UserResourceFilter implements Filter {
         boolean isHaveAccess = false;
         User user = (User) request.getSession().getAttribute(Config.MANAGE);
         if (user != null) {
-            if (haveSysResoureList != null && haveSysResoureList.size() > 0) {
-                if (uril.lastIndexOf(Config.UI_SUFFIX) > 0)
-                    uril = uril.substring(0, uril.lastIndexOf(Config.UI_SUFFIX));
-                for (SysResoure sysResoure : haveSysResoureList) {
-                    if (sysResoure.getResourceUri().contains(uril)) {
+            if (haveSysResourceList != null && haveSysResourceList.size() > 0) {
+                if (uril.lastIndexOf(Config._UI) > 0)
+                    uril = uril.substring(0, uril.lastIndexOf(Config._UI));
+                for (SysResource sysResource : haveSysResourceList) {
+                    if (sysResource.getResourceUri().contains(uril)) {
                         isHaveAccess = true;
                         break;
                     }

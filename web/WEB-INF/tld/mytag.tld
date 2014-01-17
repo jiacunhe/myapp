@@ -14,7 +14,7 @@
         <!-- ??????? -->
         <body-content>scriptless</body-content>
         <attribute>
-            <name>resoureuri</name>
+            <name>uri</name>
             <required>true</required>
             <rtexprvalue>true</rtexprvalue>
         </attribute>

@@ -2,31 +2,22 @@ package com.hyrt.saic.bean;
 
 import java.util.List;
 
-public class SysResoure {
+public class SysResource {
     private Integer id;
-
-
-
     private Integer pid;//上级节点id
-
     private String resourceName;
-
     private String resourceUri;
-
     private String remark;
-
     private Integer open;
-    private List<SysResoure> children;
+    private List<SysResource> children;
 
-    public List<SysResoure> getChildren() {
+    public List<SysResource> getChildren() {
         return children;
     }
 
-    public void setChildren(List<SysResoure> children) {
+    public void setChildren(List<SysResource> children) {
         this.children = children;
     }
-
-
 
     public Integer getOpen() {
         return open;
@@ -35,11 +26,6 @@ public class SysResoure {
     public void setOpen(Integer open) {
         this.open = open;
     }
-
-
-
-
-
 
     public Integer getPid() {
         return pid;

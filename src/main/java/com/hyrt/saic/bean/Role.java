@@ -13,7 +13,7 @@ public class Role extends BasePojo {
 
 
 
-    private List<SysResoure> resources;
+    private List<SysResource> resources;
 
     public Integer getId() {
         return id;
@@ -38,11 +38,11 @@ public class Role extends BasePojo {
     public void setRemark(String remark) {
         this.remark = remark == null ? null : remark.trim();
     }
-    public List<SysResoure> getResources() {
+    public List<SysResource> getResources() {
         return resources;
     }
 
-    public void setResources(List<SysResoure> resources) {
+    public void setResources(List<SysResource> resources) {
         this.resources = resources;
     }
 }

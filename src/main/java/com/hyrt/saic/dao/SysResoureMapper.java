@@ -1,21 +1,21 @@
 package com.hyrt.saic.dao;
 
-import com.hyrt.saic.bean.SysResoure;
+import com.hyrt.saic.bean.SysResource;
 
 import java.util.List;
 
 public interface SysResoureMapper {
     int deleteByPrimaryKey(Integer id);
 
-    int insert(SysResoure record);
+    int insert(SysResource record);
 
-    int insertSelective(SysResoure record);
+    int insertSelective(SysResource record);
 
-    SysResoure selectByPrimaryKey(Integer id);
+    SysResource selectByPrimaryKey(Integer id);
 
-    int updateByPrimaryKeySelective(SysResoure record);
+    int updateByPrimaryKeySelective(SysResource record);
 
-    int updateByPrimaryKey(SysResoure record);
+    int updateByPrimaryKey(SysResource record);
 
     List getAllSysResource();
     List getAllSysResourcewithoutTree();

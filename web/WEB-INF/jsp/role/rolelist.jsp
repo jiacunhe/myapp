@@ -44,13 +44,13 @@
     <div class="ht_kongbai"></div>
     <div class="ht_rtbut">
         <ul>
-            <hyrt:checkResoure  resoureuri="/role/insert/UI">
+            <hyrt:checkResoure  uri="/role/insert/UI">
             <li><a href="/role/insert/UI"><img src="${basePath}/images/ht_ico02.png" /><p>增 加</p></a></li>
             </hyrt:checkResoure>
-            <hyrt:checkResoure  resoureuri="/role/editup/UI">
+            <hyrt:checkResoure  uri="/role/editup/UI">
             <li><a href="javascript:roleeditform()"><img src="${basePath}/images/ht_ico03.png" /><p>修 改</p></a></li>
             </hyrt:checkResoure>
-            <hyrt:checkResoure resoureuri="/role/deleterole">
+            <hyrt:checkResoure uri="/role/deleterole">
             <li><a href="javascript:roledeleteform()"><img src="${basePath}/images/ht_ico04.png" /><p>删 除</p></a></li>
             </hyrt:checkResoure>
         </ul>

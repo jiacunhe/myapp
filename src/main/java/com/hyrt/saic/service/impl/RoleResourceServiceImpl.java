@@ -2,7 +2,7 @@ package com.hyrt.saic.service.impl;
 
 import com.hyrt.saic.bean.Role;
 import com.hyrt.saic.bean.RoleSysResource;
-import com.hyrt.saic.bean.SysResoure;
+import com.hyrt.saic.bean.SysResource;
 import com.hyrt.saic.dao.RoleMapper;
 import com.hyrt.saic.dao.RoleSysResourceMapper;
 import com.hyrt.saic.dao.SysResoureMapper;
@@ -46,8 +46,8 @@ public class RoleResourceServiceImpl implements RoleResourceService {
 
     @Override
     public List getAllSysResource() {
-        List<SysResoure> sysResoures = sysResoureMapper.getAllSysResource();
-        return sysResoures;
+        List<SysResource> sysResources = sysResoureMapper.getAllSysResource();
+        return sysResources;
     }
 
     @Override

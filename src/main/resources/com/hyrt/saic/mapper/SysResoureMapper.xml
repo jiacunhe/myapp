@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.hyrt.saic.dao.SysResoureMapper" >
-  <resultMap id="BaseResultMap" type="com.hyrt.saic.bean.SysResoure" >
+  <resultMap id="BaseResultMap" type="com.hyrt.saic.bean.SysResource" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="resourceName" property="resourceName" jdbcType="VARCHAR" />
     <result column="resourceUri" property="resourceUri" jdbcType="VARCHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
       <result column="pid" property="pid" jdbcType="INTEGER" />
       <result column="open" property="open" jdbcType="INTEGER" />
-      <collection  property="children"  column="id" ofType="com.hyrt.saic.bean.SysResoure" javaType="java.util.ArrayList"
+      <collection  property="children"  column="id" ofType="com.hyrt.saic.bean.SysResource" javaType="java.util.ArrayList"
                    select="com.hyrt.saic.dao.SysResoureMapper.queryResourceBypid">
           <id column="id" property="id" jdbcType="INTEGER" />
           <result column="resourceName" property="resourceName" jdbcType="VARCHAR" />
@@ -22,7 +22,7 @@
   <sql id="Base_Column_List" >
     id, resourceName, resourceUri, remark,pid
   </sql>
-    <select id="queryResourceBypid"  parameterType="java.lang.Integer" resultType="com.hyrt.saic.bean.SysResoure">
+    <select id="queryResourceBypid"  parameterType="java.lang.Integer" resultType="com.hyrt.saic.bean.SysResource">
 
            SELECT  tsr.`id` ,tsr.`resourceName`,tsr.`resourceUri`,tsr.`remark`,tsr.`pid` FROM t_sys_resource tsr WHERE  tsr.`pid`= #{pid,jdbcType=INTEGER}
 
@@ -39,13 +39,13 @@
     delete from t_sys_resource
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.hyrt.saic.bean.SysResoure" >
-    insert into t_sys_resource (id, resourceName, resourceUri, 
+  <insert id="insert" parameterType="com.hyrt.saic.bean.SysResource" >
+    insert into t_sys_resource (id, resourceName, resourceUri,
       remark)
     values (#{id,jdbcType=INTEGER}, #{resourceName,jdbcType=VARCHAR}, #{resourceUri,jdbcType=VARCHAR},
       #{remark,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.hyrt.saic.bean.SysResoure" >
+  <insert id="insertSelective" parameterType="com.hyrt.saic.bean.SysResource" >
     insert into t_sys_resource
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -55,7 +55,7 @@
         resourceName,
       </if>
       <if test="resourceUri != null" >
-        resourceUri,
+          resourceUri,
       </if>
       <if test="remark != null" >
         remark,
@@ -76,14 +76,14 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.hyrt.saic.bean.SysResoure" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.hyrt.saic.bean.SysResource" >
     update t_sys_resource
     <set >
       <if test="resourceName != null" >
         resourceName = #{resourceName,jdbcType=VARCHAR},
       </if>
       <if test="resourceUri != null" >
-        resourceUri = #{resourceUri,jdbcType=VARCHAR},
+          resourceUri = #{resourceUri,jdbcType=VARCHAR},
       </if>
       <if test="remark != null" >
         remark = #{remark,jdbcType=VARCHAR},
@@ -91,7 +91,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.hyrt.saic.bean.SysResoure" >
+  <update id="updateByPrimaryKey" parameterType="com.hyrt.saic.bean.SysResource" >
     update t_sys_resource
     set resourceName = #{resourceName,jdbcType=VARCHAR},
       resourceUri = #{resourceUri,jdbcType=VARCHAR},

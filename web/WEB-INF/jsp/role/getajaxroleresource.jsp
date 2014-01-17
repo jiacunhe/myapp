@@ -138,7 +138,7 @@
 
                 <br/>
                 <!--
-                  <c:forEach var="resourceslist" items="${allSysResoure}" varStatus="statu" >
+                  <c:forEach var="resourceslist" items="${allSysResource}" varStatus="statu" >
                   <input type="checkbox" name="resource" id="resource" value="${resourceslist.id}"
 
                      <c:forEach var="roleresource" items="${role.resources}" >
