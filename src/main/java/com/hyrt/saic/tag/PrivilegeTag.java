@@ -39,6 +39,7 @@ public class PrivilegeTag implements SimpleTag {
         }
         if (Config.ADMIN.equals(user.getUserId())) {
             this.jspFragment.invoke(null);
+            return;
         }
         List<SysResource> haveSysResourceList = (List) request.getSession().getAttribute(Config.USER_HAVE_RESOURCE_KEY);
         if (uri.lastIndexOf(Config._UI) > 0)
@@ -47,7 +48,7 @@ public class PrivilegeTag implements SimpleTag {
             if (sysResource.getResourceUri().equals(uri)) {
                 //如果在集合中存在,输出标签体
                 this.jspFragment.invoke(null);
-                break;
+                return;
             }
         }
     }
