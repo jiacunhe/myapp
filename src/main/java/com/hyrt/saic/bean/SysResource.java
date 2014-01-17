@@ -4,17 +4,10 @@ import java.util.List;
 
 public class SysResource {
     private Integer id;
-
-
-
     private Integer pid;//上级节点id
-
     private String resourceName;
-
     private String resourceUri;
-
     private String remark;
-
     private Integer open;
     private List<SysResource> children;
 
@@ -26,8 +19,6 @@ public class SysResource {
         this.children = children;
     }
 
-
-
     public Integer getOpen() {
         return open;
     }
@@ -35,11 +26,6 @@ public class SysResource {
     public void setOpen(Integer open) {
         this.open = open;
     }
-
-
-
-
-
 
     public Integer getPid() {
         return pid;
