@@ -158,8 +158,8 @@ public class UserResourceFilter implements Filter {
     private boolean isLimitedResources(HttpServletRequest request, WebApplicationContext context, String uril) {
         boolean isOrNotLimited = false;
 
-        if (uril.lastIndexOf(Config.URI_PATH_KEY) > 0)
-            uril = uril.substring(0, uril.lastIndexOf(Config.URI_PATH_KEY));
+        if (uril.lastIndexOf(Config.UI_SUFFIX) > 0)
+            uril = uril.substring(0, uril.lastIndexOf(Config.UI_SUFFIX));
         for (SysResoure sysResoure : allSysResoureList) {
             if (sysResoure.getResourceUri().contains(uril)) {
                 isOrNotLimited = true;
@@ -174,8 +174,8 @@ public class UserResourceFilter implements Filter {
         User user = (User) request.getSession().getAttribute(Config.MANAGE);
         if (user != null) {
             if (haveSysResoureList != null && haveSysResoureList.size() > 0) {
-                if (uril.lastIndexOf(Config.URI_PATH_KEY) > 0)
-                    uril = uril.substring(0, uril.lastIndexOf(Config.URI_PATH_KEY));
+                if (uril.lastIndexOf(Config.UI_SUFFIX) > 0)
+                    uril = uril.substring(0, uril.lastIndexOf(Config.UI_SUFFIX));
                 for (SysResoure sysResoure : haveSysResoureList) {
                     if (sysResoure.getResourceUri().contains(uril)) {
                         isHaveAccess = true;
