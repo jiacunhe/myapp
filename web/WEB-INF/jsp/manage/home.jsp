@@ -39,10 +39,11 @@
 <div class="ht_content">
     <div class="ht_content_left">
         <div class="ht_yangshi"></div>
+        <hyrt:privilege uri="/customer/list">
         <dl>
             <dt><A href="/customer/list" target="main"><img src="${basePath}/manage/images/ht_ico1.png"/>客户管理</A></dt>
         </dl>
-
+        </hyrt:privilege>
         <dl>
             <dt><A href="/orderManage/search" target="main"><img src="${basePath}/manage/images/ht_ico2.png"/>订单查询</A></dt>
         </dl>
