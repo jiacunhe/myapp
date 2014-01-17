@@ -4,7 +4,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <%@ include file="/WEB-INF/jsp/manage/commons.jspf" %>
-    <script type="text/javascript" src="${basePath}/js/util.js"></script>
     <title>客户管理</title>
     <link rel="stylesheet" type="text/css" media="all" href="/css/jsDatePick_ltr.min.css"/>
     <script type="text/javascript" src="/js/jsDatePick.min.1.3.js"></script>
@@ -21,11 +20,9 @@
             }
             window.document.forms[0].queryType.value = more;
         }
-        window.onload = function () {
+        $(function () {
             new JsDatePick({ useMode: 2, target: "startTime", dateFormat: "%Y-%m-%d" });
             new JsDatePick({ useMode: 2, target: "endTime", dateFormat: "%Y-%m-%d" });
-        }
-        $(document).ready(function () {
             var more = ${queryType};
             refreshQuery(more);
             $("#toggle").click(function () {
