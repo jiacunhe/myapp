@@ -94,5 +94,9 @@ public class SystemController extends BaseController {
         return jsp("manage/index");
     }
 
+    @RequestMapping(value = "/noPrivilege", method = RequestMethod.GET)
+    public String logintest(HttpServletRequest request) {
+            return jsp("/manage/remindpermissions");
+    }
 
 }

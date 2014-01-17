@@ -1,9 +1,7 @@
 package com.hyrt.saic.filter;
 
-import com.hyrt.saic.bean.Role;
 import com.hyrt.saic.bean.SysResoure;
 import com.hyrt.saic.bean.User;
-import com.hyrt.saic.dao.SysResoureMapper;
 import com.hyrt.saic.service.RoleResourceService;
 import com.hyrt.saic.util.Config;
 import org.springframework.web.context.WebApplicationContext;
@@ -26,21 +24,19 @@ import java.util.StringTokenizer;
  */
 public class UserResourceFilter implements Filter {
     protected FilterConfig filterConfig = null;
-    private String redirectURL = null;
+    private String redirectURL = null;//未登录的定向url
     private List notCheckURLList = new ArrayList();
     private String sessionKey = null;
     private String sessionKeyManage = null;
     private ServletContext servletContext;
     private static List<SysResoure> allSysResoureList = new ArrayList<SysResoure>();
     private List<SysResoure> haveSysResoureList = new ArrayList<SysResoure>();
-    private List<SysResoure> allchild123List = new ArrayList<SysResoure>();
-
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         this.filterConfig = filterConfig;
         redirectURL = filterConfig.getInitParameter("redirectURL");
-        sessionKey =Config.USER;
+        sessionKey = Config.USER;
         sessionKeyManage = Config.MANAGE;
         String notCheckURLListStr = filterConfig.getInitParameter("notCheckURLList");
         servletContext = filterConfig.getServletContext();
@@ -56,55 +52,55 @@ public class UserResourceFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-    /**
-     * 用于检测用户是否登陆的过滤器，如果未登录，则重定向到指的登录页面<p>
-     * 配置参数<p>
-     * checkSessionKey 需检查的在 Session 中保存的关键字<br/>
-     * redirectURL 如果用户未登录，则重定向到指定的页面，URL不包括 ContextPath<br/>
-     * notCheckURLList 不做检查的URL列表，以分号分开，并且 URL 中不包括 ContextPath<br/>
-     */
+        /**
+         * 用于检测用户是否登陆的过滤器，如果未登录，则重定向到指的登录页面<p>
+         * 配置参数<p>
+         * checkSessionKey 需检查的在 Session 中保存的关键字<br/>
+         * redirectURL 如果用户未登录，则重定向到指定的页面，URL不包括 ContextPath<br/>
+         * notCheckURLList 不做检查的URL列表，以分号分开，并且 URL 中不包括 ContextPath<br/>
+         */
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         WebApplicationContext context = (WebApplicationContext) servletContext.getAttribute(WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE);
         HttpSession session = request.getSession();
-        String manageuri = request.getServletPath() + (request.getPathInfo() == null ? "" : request.getPathInfo());
+        String manageUri = request.getServletPath() + (request.getPathInfo() == null ? "" : request.getPathInfo());
         //所有受限资源集合 静态
-        if(allSysResoureList==null||allSysResoureList.size()==0)
+        if (allSysResoureList == null || allSysResoureList.size() == 0)
             allSysResoureList = ((RoleResourceService) context.getBean("roleResourceService")).getAllSysResourcewithoutTree();
-        haveSysResoureList = (List<SysResoure>)session.getAttribute("userHaveResourelist");
+        haveSysResoureList = (List<SysResoure>) session.getAttribute(Config.USER_HAVE_RESOURCE_KEY);
 
         if ((!checkRequestURIIntNotFilterList(request)) && session.getAttribute(sessionKey) == null) {
-            String returnloginuri = "/";
+            String returnLoginUri = "/";
             if (session.getAttribute(sessionKeyManage) == null) {
-                if (manageuri.contains("manage"))
-                    returnloginuri = "/manage";
+                if (manageUri.contains("manage"))
+                    returnLoginUri = "/manage";
                 else
-                    returnloginuri = "/";
+                    returnLoginUri = "/";
             } else if (session.getAttribute(sessionKeyManage) != null) {
                 //判断是否受限制资源
-                if (isLimitedResources(request, context, manageuri)) {
+                if (isLimitedResources(request, context, manageUri)) {
                     //是 则判断用户是否有权访问受限制资源
-                    isHaveAccess(request, response, filterChain, context, manageuri);
+                    isHaveAccess(request, response, filterChain, context, manageUri);
                 } else {
                     //否 则继续
                     filterChain.doFilter(request, response);
                     return;
                 }
             }
-            resposenuri(request, response, returnloginuri);
+            responseUri(request, response, returnLoginUri);
             //   response.sendRedirect(request.getContextPath() + redirectURL);
             return;
         } else if ((!checkRequestURIIntNotFilterList(request)) && session.getAttribute(sessionKey) != null && session.getAttribute(sessionKeyManage) == null) {
-            if (isLimitedResources(request, context, manageuri)) {
+            if (isLimitedResources(request, context, manageUri)) {
                 //  是 则跳转后台登录页面，
-                resposenuri(request, response, "/manage");
+                responseUri(request, response, "/manage");
             }
             //否则继续
         } else if ((!checkRequestURIIntNotFilterList(request)) && session.getAttribute(sessionKey) != null && session.getAttribute(sessionKeyManage) != null) {
             //判断是否受限制资源，
-            if (isLimitedResources(request, context, manageuri)) {
+            if (isLimitedResources(request, context, manageUri)) {
                 //是 则判断manager是否有权访问受限制资源
-                isHaveAccess(request, response, filterChain, context, manageuri);
+                isHaveAccess(request, response, filterChain, context, manageUri);
             } else {
                 filterChain.doFilter(request, response);
                 return;
@@ -122,28 +118,28 @@ public class UserResourceFilter implements Filter {
     private boolean checkRequestURIIntNotFilterList(HttpServletRequest request) {
         String uri = request.getServletPath() + (request.getPathInfo() == null ? "" : request.getPathInfo());
         //针对images、js和css不过滤处理
-        boolean checkcontains = false;
-        String panuri = "";
+        boolean checkContains = false;
+        String panUri = "";
         if (uri.length() > 1) {
-            panuri = uri.substring(uri.indexOf("/") + 1, uri.length());
-            if (panuri.indexOf("/") > 0)
-                panuri = panuri.substring(0, panuri.indexOf("/"));
+            panUri = uri.substring(uri.indexOf("/") + 1, uri.length());
+            if (panUri.indexOf("/") > 0)
+                panUri = panUri.substring(0, panUri.indexOf("/"));
         }
         if (uri.length() > 1 && uri.contains("manage")) {
-            panuri = uri.substring(uri.indexOf("/") + 1, uri.length());
-            if (panuri.indexOf("/") > 0)
-                panuri = panuri.substring(0, panuri.lastIndexOf("/"));
+            panUri = uri.substring(uri.indexOf("/") + 1, uri.length());
+            if (panUri.indexOf("/") > 0)
+                panUri = panUri.substring(0, panUri.lastIndexOf("/"));
         }
-        for (Object checkuri : notCheckURLList) {
-            if ((((String) checkuri).contains("/*") && ((String) checkuri).contains(panuri))) {
-                checkcontains = true;
-                return checkcontains;
+        for (Object checkUri : notCheckURLList) {
+            if ((((String) checkUri).contains("/*") && ((String) checkUri).contains(panUri))) {
+                checkContains = true;
+                return checkContains;
             }
         }
         return notCheckURLList.contains(uri);
     }
 
-    private void resposenuri(HttpServletRequest request, HttpServletResponse response, String keylogin) throws IOException {
+    private void responseUri(HttpServletRequest request, HttpServletResponse response, String keylogin) throws IOException {
         java.io.PrintWriter out = response.getWriter();
         StringBuffer sb = new StringBuffer();
         sb.append("<html>");
@@ -162,8 +158,8 @@ public class UserResourceFilter implements Filter {
     private boolean isLimitedResources(HttpServletRequest request, WebApplicationContext context, String uril) {
         boolean isOrNotLimited = false;
 
-        if (uril.lastIndexOf(Config.URI_PATH_KEY) > 0)
-            uril = uril.substring(0, uril.lastIndexOf(Config.URI_PATH_KEY));
+        if (uril.lastIndexOf(Config.UI_SUFFIX) > 0)
+            uril = uril.substring(0, uril.lastIndexOf(Config.UI_SUFFIX));
         for (SysResoure sysResoure : allSysResoureList) {
             if (sysResoure.getResourceUri().contains(uril)) {
                 isOrNotLimited = true;
@@ -174,19 +170,19 @@ public class UserResourceFilter implements Filter {
     }
 
     private void isHaveAccess(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain, WebApplicationContext context, String uril) throws IOException, ServletException {
-        boolean ishaveAccess = false;
+        boolean isHaveAccess = false;
         User user = (User) request.getSession().getAttribute(Config.MANAGE);
         if (user != null) {
-            if (haveSysResoureList!=null&&haveSysResoureList.size()>0) {
-                if (uril.lastIndexOf(Config.URI_PATH_KEY) > 0)
-                    uril = uril.substring(0, uril.lastIndexOf(Config.URI_PATH_KEY));
+            if (haveSysResoureList != null && haveSysResoureList.size() > 0) {
+                if (uril.lastIndexOf(Config.UI_SUFFIX) > 0)
+                    uril = uril.substring(0, uril.lastIndexOf(Config.UI_SUFFIX));
                 for (SysResoure sysResoure : haveSysResoureList) {
                     if (sysResoure.getResourceUri().contains(uril)) {
-                        ishaveAccess = true;
+                        isHaveAccess = true;
                         break;
                     }
                 }
-                if (ishaveAccess) {
+                if (isHaveAccess) {
                     filterChain.doFilter(request, response);
                     return;
                 } else {
@@ -198,7 +194,7 @@ public class UserResourceFilter implements Filter {
                 return;
             }
         } else
-            resposenuri(request, response, "/manage");
+            responseUri(request, response, "/manage");
     }
 
 }

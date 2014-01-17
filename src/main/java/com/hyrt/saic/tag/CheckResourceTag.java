@@ -1,11 +1,8 @@
 package com.hyrt.saic.tag;
 
-import com.hyrt.saic.bean.Role;
 import com.hyrt.saic.bean.SysResoure;
 import com.hyrt.saic.bean.User;
-import com.hyrt.saic.service.RoleResourceService;
 import com.hyrt.saic.util.Config;
-import org.springframework.web.context.WebApplicationContext;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +13,6 @@ import javax.servlet.jsp.tagext.JspFragment;
 import javax.servlet.jsp.tagext.JspTag;
 import javax.servlet.jsp.tagext.SimpleTag;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -31,7 +27,6 @@ public class CheckResourceTag implements SimpleTag {
     //标签体
     private JspFragment jspFragment;
     private ServletContext servletContext;
-    private String resoureName;
     private String resoureuri;
 
 
@@ -41,35 +36,19 @@ public class CheckResourceTag implements SimpleTag {
         //获取request对象
         HttpServletRequest request = (HttpServletRequest) pageContext.getRequest();
         servletContext = pageContext.getServletContext();
-        WebApplicationContext context = (WebApplicationContext) servletContext.getAttribute(WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE);
         //获取当前登陆用户
         User user = (User) request.getSession().getAttribute(Config.MANAGE);
         if (user == null) {
             return;
         }
-        List<Role> haveRoleList = new ArrayList<Role>();
-        haveRoleList = ((RoleResourceService) context.getBean("roleResourceService")).getRolesByuserid(user.getUserId());
-        if (haveRoleList.size() == 0) {
-            return;
-        }
-        StringBuffer stringBuffer = new StringBuffer();
-        String roleids = "";
-        if (haveRoleList.size() > 0) {
-            for (Role role : haveRoleList) {
-                stringBuffer.append(role.getId());
-                stringBuffer.append(",");
-            }
-            if (stringBuffer.length() > 0 && stringBuffer.indexOf(",") > 0)
-                roleids = stringBuffer.toString().substring(0, stringBuffer.indexOf(","));
-            List<SysResoure> haveSysResoureList = ((RoleResourceService) context.getBean("roleResourceService")).getResoureByUserRoleids(roleids);
-            if (resoureuri.lastIndexOf(Config.URI_PATH_KEY) > 0)
-                resoureuri = resoureuri.substring(0, resoureuri.lastIndexOf(Config.URI_PATH_KEY));
-            for (SysResoure sysResoure : haveSysResoureList) {
-                if (sysResoure.getResourceUri().equals(resoureuri) && sysResoure.getResourceName().equals(resoureName)) {
-                    //如果在集合中存在,输出标签体
-                    this.jspFragment.invoke(null);
-                    break;
-                }
+        List<SysResoure> haveSysResoureList = (List) request.getSession().getAttribute(Config.USER_HAVE_RESOURCE_KEY);
+        if (resoureuri.lastIndexOf(Config.UI_SUFFIX) > 0)
+            resoureuri = resoureuri.substring(0, resoureuri.lastIndexOf(Config.UI_SUFFIX));
+        for (SysResoure sysResoure : haveSysResoureList) {
+            if (sysResoure.getResourceUri().equals(resoureuri)) {
+                //如果在集合中存在,输出标签体
+                this.jspFragment.invoke(null);
+                break;
             }
         }
     }
@@ -92,14 +71,6 @@ public class CheckResourceTag implements SimpleTag {
     @Override
     public void setJspBody(JspFragment jspFragment) {
         this.jspFragment = jspFragment;
-    }
-
-    public String getResoureName() {
-        return resoureName;
-    }
-
-    public void setResoureName(String resoureName) {
-        this.resoureName = resoureName;
     }
 
     public String getResoureuri() {

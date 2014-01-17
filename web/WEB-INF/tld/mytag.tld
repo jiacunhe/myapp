@@ -14,11 +14,6 @@
         <!-- ??????? -->
         <body-content>scriptless</body-content>
         <attribute>
-            <name>resoureName</name>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-        <attribute>
             <name>resoureuri</name>
             <required>true</required>
             <rtexprvalue>true</rtexprvalue>
