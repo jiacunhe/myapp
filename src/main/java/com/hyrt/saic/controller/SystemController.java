@@ -1,6 +1,8 @@
 package com.hyrt.saic.controller;
 
 import com.hyrt.saic.bean.User;
+import com.hyrt.saic.bean.UserOperation;
+import com.hyrt.saic.service.UserOperationService;
 import com.hyrt.saic.service.UserService;
 import com.hyrt.saic.util.Config;
 import com.hyrt.saic.validator.UserValidator;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 
 /**
  * Created with IntelliJ IDEA.
@@ -27,6 +30,8 @@ import javax.servlet.http.HttpSession;
 public class SystemController extends BaseController {
     @Autowired
     private UserService userService;
+    @Autowired
+    private UserOperationService operationService;
 
     @RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.POST})
     public String loginUI(@ModelAttribute User user, HttpServletRequest request) {
@@ -62,6 +67,8 @@ public class SystemController extends BaseController {
             return jsp("login");
         }
         if (userService.login(request, user.getUserId(), user.getPassword())) {
+            UserOperation operation = new UserOperation(user.getUserId(), "/login", "登录前台系统", new Date(), request.getRemoteAddr());
+            operationService.save(operation);
             return jsp("main");
         } else {
             request.setAttribute("error", "密码错误");
@@ -75,6 +82,8 @@ public class SystemController extends BaseController {
             return jsp("manage/login");
         }
         if (userService.loginManage(request, user.getUserId(), user.getPassword())) {
+            UserOperation operation = new UserOperation(user.getUserId(), "/manage/login", "登录后台系统", new Date(), request.getRemoteAddr());
+            operationService.save(operation);
             return redirectTo("");
         } else {
             request.setAttribute("userId", user.getUserId());

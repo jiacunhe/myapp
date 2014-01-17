@@ -19,9 +19,8 @@ import java.util.List;
  * User: wangdy
  * Date: 14-1-14
  * Time: 上午9:25
- * To change this template use File | Settings | File Templates.
  */
-public class CheckResourceTag implements SimpleTag {
+public class PrivilegeTag implements SimpleTag {
     private PageContext pageContext;
     //标签体
     private JspFragment jspFragment;

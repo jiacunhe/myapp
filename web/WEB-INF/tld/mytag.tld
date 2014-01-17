@@ -9,9 +9,8 @@
     <short-name>hyrt</short-name>
     <uri>http://www.hyrt.com.cn</uri>
     <tag>
-        <name>checkResoure</name>
-        <tag-class>com.hyrt.saic.tag.CheckResourceTag</tag-class>
-        <!-- ??????? -->
+        <name>privilege</name>
+        <tag-class>com.hyrt.saic.tag.PrivilegeTag</tag-class>
         <body-content>scriptless</body-content>
         <attribute>
             <name>uri</name>

@@ -91,7 +91,7 @@
                     src="${basePath}/manage/images/ht_ico10.png"/>系统管理</A></dt>
             <dd id=LM2 style="DISPLAY: none">
                 <ul>
-                    <li><hyrt:checkResoure uri="/role/manager"><a href="/role/manager" target="main"></hyrt:checkResoure>角色管理</a></li>
+                    <li><hyrt:privilege uri="/role/manager"><a href="/role/manager" target="main"></hyrt:privilege>角色管理</a></li>
                     <li><a href="/manager/list" target="main">用户管理</a></li>
                 </ul>
             </dd>

@@ -15,6 +15,12 @@
 
     <mvc:annotation-driven />
     <mvc:default-servlet-handler />
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/"/>
+            <bean class="com.hyrt.saic.filter.LogInterceptor"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
 
     <bean id="fmXmlEscape" class="freemarker.template.utility.XmlEscape" />
