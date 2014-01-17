@@ -22,14 +22,6 @@
 
                 $("[id=roleid]").attr("checked", checkedValue);
             }
-
-            //异步请求资源列表
-            $("#ajaxresourelist").click(function(){
-                htmlobj=$.ajax({url:"/jquery/test1.txt",async:false});
-                $("#myDiv").html(htmlobj.responseText);
-            });
-
-
         </script>
 
     <title>角色管理</title>

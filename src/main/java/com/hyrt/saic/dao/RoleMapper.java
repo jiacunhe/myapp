@@ -6,16 +6,9 @@ import me.sfce.library.mybatis.persistence.BaseMapper;
 import java.util.List;
 
 public interface RoleMapper extends BaseMapper<Role> {
-    int deleteByPrimaryKey(Integer id);
-
-
-    int insertSelective(Role record);
-
     Role selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKeySelective(Role record);
-
-    int updateByPrimaryKey(Role record);
 
     List<Role> selectAllRoles();
 

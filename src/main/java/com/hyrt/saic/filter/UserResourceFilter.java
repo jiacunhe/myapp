@@ -77,6 +77,10 @@ public class UserResourceFilter implements Filter {
                 else
                     returnLoginUri = "/";
             } else if (session.getAttribute(sessionKeyManage) != null) {
+                if (Config.ADMIN.equals(((User)request.getSession().getAttribute(Config.MANAGE)).getUserId())) {
+                    filterChain.doFilter(request, response);
+                    return;
+                }
                 //判断是否受限制资源
                 if (isLimitedResources(request, context, manageUri)) {
                     //是 则判断用户是否有权访问受限制资源
@@ -97,6 +101,10 @@ public class UserResourceFilter implements Filter {
             }
             //否则继续
         } else if ((!checkRequestURIIntNotFilterList(request)) && session.getAttribute(sessionKey) != null && session.getAttribute(sessionKeyManage) != null) {
+            if (Config.ADMIN.equals(((User)request.getSession().getAttribute(Config.MANAGE)).getUserId())) {
+                filterChain.doFilter(request, response);
+                return;
+            }
             //判断是否受限制资源，
             if (isLimitedResources(request, context, manageUri)) {
                 //是 则判断manager是否有权访问受限制资源
