@@ -271,7 +271,7 @@
         <if test="businessType != null" >
             and d.monitorType= #{businessType,jdbcType=VARCHAR}
         </if>
-        order by createTime,id desc limit #{cursor,jdbcType=INTEGER} ,#{length,jdbcType=INTEGER}
+        order by id desc limit #{cursor,jdbcType=INTEGER} ,#{length,jdbcType=INTEGER}
 
     </select>
 

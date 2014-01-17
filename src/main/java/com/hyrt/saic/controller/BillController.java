@@ -1,5 +1,6 @@
 package com.hyrt.saic.controller;
 
+import com.hyrt.saic.bean.User;
 import com.hyrt.saic.service.CommonService;
 import com.hyrt.saic.service.RechargeRecordService;
 import com.hyrt.saic.service.UserPackageApplyService;
@@ -33,7 +34,8 @@ public class BillController {
 
     @RequestMapping("/rechargeRecord")
     public String searchRechargeRecord(String period,HttpServletRequest request){
-          String userId="1";
+         User user =(User) request.getSession().getAttribute("user");
+          String userId=user.getUserId();
 
           Calendar cal = Calendar.getInstance();
           SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -75,7 +77,7 @@ public class BillController {
                  "WHERE  p.id = d.packageId AND p.userId = '"+userId+"' AND p.status ='on' " +
                  ")xx GROUP BY id";
          List list = commonService.selectBySql(sql);
-         if(list!=null && list.get(0)!=null){
+         if(list!=null && list.size()>0){
              request.setAttribute("privatePackage",list.get(0));
          }
 
@@ -90,7 +92,7 @@ public class BillController {
                 ")xx GROUP BY id";
 
          list = commonService.selectBySql(sql);
-        if(list!=null && list.get(0)!=null){
+        if(list!=null && list.size()>0){
             request.setAttribute("monthlyPackage",list.get(0));
         }
 

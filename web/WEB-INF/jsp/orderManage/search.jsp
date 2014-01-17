@@ -14,8 +14,9 @@
     <script  type="text/javascript"  src="/images/dialog/dialog.js"></script>
     <style type="text/css">
 
-        .page ul{ width: 80%; float: left}
+        .page ul{ width: 97%; float: left}
         .page ul li{ float: left; margin-left: 0px; margin-left: 5px; padding: 3px;}
+        .page ul li a img{padding-top: 7px;}
         .nowpage{ color:#000000; font-weight: 600;}
         .flleft{text-align: left; padding-left: 4px;}
     </style>
@@ -33,16 +34,7 @@
     <div class="yemei">
         <p>您当前所在位置：<a href="#">首页</a> >> <span>我的查询</span></p>
     </div>
-<!--div class="content_right_nr">
-    <h4 class="sub_title1"><p class="sub_p8">提 醒</p></h4>
-    <div class="sub_nr" style="height:60px;">
-        <ul class="dd_list1">
-            <li>已完成的订单：<span>（<b>1</b>）</span></li>
-            <li>未完成的订单：<span>（<b>0</b>）</span></li>
-            <li>未查到的订单：<span>（<b>0</b>）</span></li>
-        </ul>
-    </div>
-</div-->
+
 
     <div class="content_right_nr" style=" margin-top:16px;">
         <h4 class="sub_title1"><p class="sub_p5">搜索</p></h4>
@@ -136,26 +128,23 @@
         <tr class="page">
             <td colspan="7">
                 <ul>
-                    <li><a href="javascript:search('disposable',${disposable.page -1})">Prev</a></li>
-                    <c:if test="${disposable.page <= 9}">
-                        <c:forEach var="i" begin="${1}" end="${disposable.page-1}" step="1">
-                            <li><a href="javascript:search('disposable',${i})">${i}</a></li>
-                        </c:forEach>
-                    </c:if>
-                    <c:if test="${disposable.page > 9}">
-                        <c:forEach var="i" begin="${disposable.page-5}" end="${disposable.page-1}" step="1">
-                            <li><a href="javascript:search('disposable',${i})">${i}</a></li>
-                        </c:forEach>
-                    </c:if>
-                    <li><a href="javascript:search('disposable',${disposable.page})" class="nowpage">${done.page}</a></li>
-                    <c:forEach var="j" begin="${disposable.page+1}" end="${disposable.page + 5}" step="1">
-                        <c:if test="${j <= disposable.totalpage}">
-                            <li><a href="javascript:search('disposable',${j})">${j}</a></li>
+
+                    <li>页次：<strong> ${disposable.page }</strong>/<span><strong>${disposable.totalpage}</strong></span> 页 </span> <span >总记录数：${disposable.totalitem }条 </li>
+                    <li><a href="javascript:search('disposable',1)"><img src="${pageContext.request.contextPath}/images/firstPage.png"/></a></li>
+                    <c:forEach var="i" begin="${disposable.page - 5>=1?disposable.page - 5:1}" end="${disposable.page + 4}" step="1">
+                        <c:if test="${i <= disposable.totalpage}">
+                            <li> <a href="javascript:search('disposable',${i})"  <c:if test="${i == disposable.page}">style="color:#000000; font-weight: 600;"     </c:if>>${i}</a>  </li>
                         </c:if>
                     </c:forEach>
-                    <li><a href="javascript:search('disposable',${disposable.page + 1})">Next</a></li>
-                    <li><span >共 ${disposable.totalitem }条 ，当前第 <strong> ${disposable.page }</strong> / <span> <strong>${disposable.totalpage}</strong> </span> 页 </span> </li>
+
+                    <li><a href="javascript:search('disposable',${disposable.totalpage})"><img src="${pageContext.request.contextPath}/images/lastPage.png"/></a></li>
+                    <li>
+                         转到第 <input id="pn" onFocus="this.select();" maxlength="5" type="text" value="1" name="currPage" tabindex="0" style="width: 33px; height: 14px; text-align: center; text-indent: 0"/> 页
+                        <input type="button" name="goBtn" value="前往" class="MiddleButtonStyle" onclick="search('disposable',document.getElementById('pn').value)" style="width: 32px; height: 20px; border: 1px solid #218bc6; background: #27a5ec; color: #fff;"/>
+                    </li>
                 </ul>
+
+
             </td>
         </tr>
     </table>
@@ -217,26 +206,22 @@
         <tr class="page">
             <td colspan="8">
                 <ul>
-                    <li><a href="javascript:search('recyclable',${recyclable.page -1})">Prev</a></li>
-                    <c:if test="${recyclable.page <= 9}">
-                        <c:forEach var="i" begin="${1}" end="${recyclable.page-1}" step="1">
-                            <li><a href="javascript:search('recyclable',${i})">${i}</a></li>
-                        </c:forEach>
-                    </c:if>
-                    <c:if test="${recyclable.page > 9}">
-                        <c:forEach var="i" begin="${recyclable.page-5}" end="${recyclable.page-1}" step="1">
-                            <li><a href="javascript:search('recyclable',${i})">${i}</a></li>
-                        </c:forEach>
-                    </c:if>
-                    <li><a href="javascript:search('recyclable',${recyclable.page})" class="nowpage">${undone.page}</a></li>
-                    <c:forEach var="j" begin="${recyclable.page+1}" end="${undone.page + 5}" step="1">
-                        <c:if test="${j <= recyclable.totalpage}">
-                            <li><a href="javascript:search('recyclable',${j})">${j}</a></li>
+                    <li>页次：<strong> ${recyclable.page }</strong>/<span><strong>${recyclable.totalpage}</strong></span> 页 </span> <span >总记录数：${recyclable.totalitem }条 </li>
+                    <li><a href="javascript:search('recyclable',1)"><img src="${pageContext.request.contextPath}/images/firstPage.png"/></a></li>
+
+                    <c:forEach var="i" begin="${recyclable.page - 5>=1?recyclable.page - 5:1}" end="${recyclable.page + 4}" step="1">
+                        <c:if test="${i <= recyclable.totalpage}">
+                            <li> <a href="javascript:search('recyclable',${i})"  <c:if test="${i == recyclable.page}">style="color:#000000; font-weight: 600;"     </c:if>>${i}</a>  </li>
                         </c:if>
                     </c:forEach>
-                    <li><a href="javascript:search('recyclable',${recyclable.page + 1})">Next</a></li>
-                    <li><span >共 ${recyclable.totalitem }条 ，当前第 <strong> ${recyclable.page }</strong> / <span> <strong>${recyclable.totalpage}</strong> </span> 页 </span> </li>
+
+                    <li><a href="javascript:search('recyclable',${recyclable.totalpage})"><img src="${pageContext.request.contextPath}/images/lastPage.png"/></a></li>
+                    <li> 转到第 <input id="pn2" onFocus="this.select();" maxlength="5" type="text" value="1" name="currPage" tabindex="0" style="width: 33px; height: 14px; text-align: center; text-indent: 0"/> 页
+                        <input type="button" name="goBtn" value="前往" class="MiddleButtonStyle" onclick="search('recyclable',document.getElementById('pn2').value)" style="width: 32px; height: 20px; border: 1px solid #218bc6; background: #27a5ec; color: #fff;"/>
+
+                    </li>
                 </ul>
+
             </td>
         </tr>
     </table>
@@ -300,7 +285,7 @@
             }
         }
     }
-  //  request.setRequestHeader("Content-Type", "utf-8");
+
 
     //var statuscode;
     function search(monitor,page){
@@ -309,8 +294,7 @@
         request.open("POST", url, "true");
 
         var post = "userId=${userId}&type=${type}&eday=${eday}&sday=${sday}&code=${code}&submit=true&page="+page+"&status=${status}&name=${name}&businessType="+monitor;
-        //    post = encodeURI(post);
-        //    post = encodeURI(post);
+
         request.setRequestHeader("Cache-Control","no-cache");
         request.setRequestHeader("Content-type","application/x-www-form-urlencoded");
         request.onreadystatechange = searchResult;//隐性的循环
@@ -356,7 +340,7 @@
             content+='<td>'+((obj.page-1)*5+i)+'</td>';
             content+='<td>'+obj.list[i].userId+'</td>';
             content+='<td>'+obj.list[i].orderTypeName+'</td>';
-            content+='<td class="flleft">'+obj.list[i].objCode+'| '+obj.list[i].objName+'</td>';
+            content+='<td class="flleft">'+obj.list[i].objCode+' | '+obj.list[i].objName+'</td>';
             content+='<td>'+obj.list[i].createTime+'</td>';
             content+='<td>'+obj.list[i].statusName+'</td>';
 
@@ -374,26 +358,23 @@
         content+='<tr class="page">';
         content+='<td colspan="7">';
         content+='<ul>';
-        content+='<li><a href="javascript:search(\''+obj.businessType+'\','+(obj.page-1)+')">Prev</a></li>';
-        if(obj.page<=9){
-            for(var i=1;i<obj.page-1;i++){
-                content+='<li><a href="javascript:search(\''+obj.businessType+'\','+i+')">'+i+'</a></li>';
+        content+=' <li>页次：<strong>'+obj.page+'</strong>/<span><strong>'+obj.totalpage+'</strong></span> 页 </span> <span >总记录数： '+obj.totalitem+'条 </li>';
+        content+='<li><a href="javascript:search(\''+obj.businessType+'\',1)"><img src="${pageContext.request.contextPath}/images/firstPage.png"/></a></li>';
+        var styl="";
+        var i = obj.page - 5>=1?obj.page - 5:1;
+        for(;i<obj.page+4;i++){
+            if(i==obj.page){styl="color:#000000; font-weight: 600;";} else{styl=""}
+            if(i<=obj.totalpage)  {
+                content+='<li><a href="javascript:search(\''+obj.businessType+'\','+i+')" style="'+styl+'">'+i+'</a></li>';
             }
         }
-        if(obj.page>9){
-            for(var i=obj.page-5;i<obj.page-1;i++){
-                content+='<li><a href="javascript:search(\''+obj.businessType+'\','+i+')">'+i+'</a></li>';
-            }
-        }
-        content+='<li><a href="javascript:search(\''+obj.businessType+'\','+obj.page+')" class="nowpage">'+obj.page+'</a></li>';
-        for(var i=obj.page-1+2;i<obj.page+5;i++){
-            if(i<=obj.totalpage){
-                content+='<li><a href="javascript:search(\''+obj.businessType+'\','+i+')">'+i+'</a></li>';
-            }
-        }
-        content+='<li><a href="javascript:search(\''+obj.businessType+'\','+(obj.page-1+2)+')">Next</a></li>';
-        content+='<li><span >共 '+obj.totalitem+' 条 ，当前第 <strong>  '+obj.page+' </strong> / <span> <strong> '+obj.totalpage+' </strong> </span> 页 </span> </li>';
+
+        content+='<li><a href="javascript:search(\''+obj.businessType+'\','+obj.totalpage+')"><img src="${pageContext.request.contextPath}/images/lastPage.png"/></a></li>';
+        content+='<li> 转到第 <input id="pnpp" onFocus="this.select();" maxlength="5" type="text" value="1" name="currPage" tabindex="0" style="width: 33px; height: 14px; text-align: center; text-indent: 0"/> 页 ';
+        content+='<input type="button" name="goBtn" value="前往" class="MiddleButtonStyle" onclick="search(\''+obj.businessType+'\',document.getElementById(\'pnpp\').value)" style="width: 32px; height: 20px; border: 1px solid #218bc6; background: #27a5ec; color: #fff;"/>  ';
         content+='</ul>';
+
+
 
         content+='</td>';
         content+='</tr>';
@@ -422,7 +403,7 @@
             content+='<td>'+((obj.page-1)*5+i)+'</td>';
             content+='<td>'+obj.list[i].userId+'</td>';
             content+='<td>'+obj.list[i].orderTypeName+'</td>';
-            content+='<td class="flleft">'+obj.list[i].objCode+'| '+obj.list[i].objName+'</td>';
+            content+='<td class="flleft">'+obj.list[i].objCode+' | '+obj.list[i].objName+'</td>';
             content+='<td>'+obj.list[i].createTime+'</td>';
             content+='<td>'+obj.list[i].statusName+'</td>';
             if(obj.list[i].status == '2'|| obj.list[i].status == '6'){
@@ -443,26 +424,22 @@
 
         content+='<tr class="page">';
         content+='<td colspan="8">';
+
         content+='<ul>';
-        content+='<li><a href="javascript:search(\''+obj.businessType+'\','+(obj.page-1)+')">Prev</a></li>';
-        if(obj.page<=9){
-            for(var i=1;i<obj.page-1;i++){
-                content+='<li><a href="javascript:search(\''+obj.businessType+'\','+i+')">'+i+'</a></li>';
+        content+=' <li>页次：<strong>'+obj.page+'</strong>/<span><strong>'+obj.totalpage+'</strong></span> 页 </span> <span >总记录数： '+obj.totalitem+'条 </li>';
+        content+='<li><a href="javascript:search(\''+obj.businessType+'\',1)"><img src="${pageContext.request.contextPath}/images/firstPage.png"/></a></li>';
+        var styl="";
+        var i = obj.page - 5>=1?obj.page - 5:1;
+        for(;i<obj.page+4;i++){
+            if(i==obj.page){styl="color:#000000; font-weight: 600;";} else{styl=""}
+            if(i<=obj.totalpage)  {
+                content+='<li><a href="javascript:search(\''+obj.businessType+'\','+i+')" style="'+styl+'">'+i+'</a></li>';
             }
         }
-        if(obj.page>9){
-            for(var i=obj.page-5;i<obj.page-1;i++){
-                content+='<li><a href="javascript:search(\''+obj.businessType+'\','+i+')">'+i+'</a></li>';
-            }
-        }
-        content+='<li><a href="javascript:search(\''+obj.businessType+'\','+obj.page+')" class="nowpage">'+obj.page+'</a></li>';
-        for(var i=obj.page-1+2;i<obj.page+5;i++){
-            if(i<=obj.totalpage){
-                content+='<li><a href="javascript:search(\''+obj.businessType+'\','+i+')">'+i+'</a></li>';
-            }
-        }
-        content+='<li><a href="javascript:search(\''+obj.businessType+'\','+(obj.page-1+2)+')">Next</a></li>';
-        content+='<li><span >共 '+obj.totalitem+' 条 ，当前第 <strong>  '+obj.page+' </strong> / <span> <strong> '+obj.totalpage+' </strong> </span> 页 </span> </li>';
+
+        content+='<li><a href="javascript:search(\''+obj.businessType+'\','+obj.totalpage+')"><img src="${pageContext.request.contextPath}/images/lastPage.png"/></a></li>';
+        content+='<li> 转到第 <input id="pnpp" onFocus="this.select();" maxlength="5" type="text" value="1" name="currPage" tabindex="0" style="width: 33px; height: 14px; text-align: center; text-indent: 0"/> 页 ';
+        content+='<input type="button" name="goBtn" value="前往" class="MiddleButtonStyle" onclick="search(\''+obj.businessType+'\',document.getElementById(\'pnpp\').value)" style="width: 32px; height: 20px; border: 1px solid #218bc6; background: #27a5ec; color: #fff;"/>  ';
         content+='</ul>';
 
         content+='</td>';

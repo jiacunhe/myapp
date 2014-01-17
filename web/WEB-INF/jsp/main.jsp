@@ -80,9 +80,9 @@
         </div>
         <div class="top_button">
             <ul>
-                <li><a href="javascript:parent.window.location.assign(location);">首页</a></li>
+                <li><a href="javascript:goHome();">首页</a></li>
                 <li><a href="#">修改密码</a></li>
-                <li><a href="#">退出</a></li>
+                <li><a href="/logout">退出</a></li>
             </ul>
         </div>
     </div>
@@ -184,6 +184,10 @@
                     win.height = win.Document.body.scrollHeight+100>660? win.Document.body.scrollHeight+100:660;
             }
         }
+    }
+
+    function goHome(){
+        document.getElementById("mainIframe").src="/welcome.jsp";
     }
 </script>
 

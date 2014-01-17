@@ -123,15 +123,10 @@
     {
 
         var j=document.getElementById('gtb').rows.length;
-        //alert(i);
+
         if(j>5){
             alert("Sorry！您不能再增加了...");return false;
-
-//            dialog=new Dialog("提示");
-//            dialog.SetXY(200,200);
-//            dialog.OpenWindow2("<p class='msg'><span>Sorry！您不能再增加了...</span></p>");
         }
-//    var i=document.getElementById('gtb').rows.length;
         var row=document.getElementById('gtb').insertRow(j);
         row.align='center';
         i++;

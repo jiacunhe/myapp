@@ -1,11 +1,13 @@
 package com.hyrt.saic.controller;
 
+import com.hyrt.saic.bean.User;
 import com.hyrt.saic.bean.UserAssignPackage;
 import com.hyrt.saic.dao.RechargeRecordMapper;
 import com.hyrt.saic.service.CommonService;
 import com.hyrt.saic.service.RechargeRecordService;
 import com.hyrt.saic.service.UserPackageApplyService;
 import com.hyrt.saic.util.enums.DataOperateType;
+import me.sfce.library.mybatis.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -58,8 +60,8 @@ public class UserAccountController {
 
            Map resmap = commonService.selectBySql(sql,page,5);
            request.setAttribute("resmap",resmap);
-           request.setAttribute("userId",userId);
-           request.setAttribute("userName",userName);
+           request.setAttribute("_userId",userId);
+           request.setAttribute("_userName",userName);
        }
 
         return "/userAccount/search.jsp";
@@ -106,7 +108,8 @@ public class UserAccountController {
     @RequestMapping("/allotPackage")
     public String allotPackage(String submitttt,String receiver,String effectiveType,Integer quantity,Integer month,HttpServletRequest request){
 
-        String userId="admin";
+        User user =(User) request.getSession().getAttribute("user");
+        String userId=user.getUserId();
 
         Map params = new HashMap();
 
@@ -170,8 +173,10 @@ public class UserAccountController {
 
     @RequestMapping("/allotSearch")
     public String allotSearch(Integer page,String status,String allocatee,String receiver, HttpServletRequest request){
-        String userId="admin";
-        if(false){
+        User user =(User) request.getSession().getAttribute("user");
+        String userId=user.getUserId();
+        //String userId="admin";
+        if(!user.getUserType().equals("MANAGER")){
             allocatee = userId;
         }
         if(status==null){status="1";}
@@ -186,31 +191,34 @@ public class UserAccountController {
 
     @RequestMapping("/allotStop")
     public String allotStop(Integer page,String status,String allocatee,String receiver,Integer id, HttpServletRequest request){
-        String userId="admin";
-        if(false){
+        User user =(User) request.getSession().getAttribute("user");
+        String userId=user.getUserId();
+        //String userId="admin";
+        if(!user.getUserType().equals("MANAGER")){
             allocatee = userId;
         }
         userPackageApplyService.allotStop(id,allocatee);
         return this.allotSearch(page,status,allocatee,receiver,request);
-//        Map result= userPackageApplyService.allotSearch(page,status,allocatee,receiver);
-//        request.setAttribute("thisUserType","MANAGER");
-//
-//        request.setAttribute("result",result);
-//
-//        return "/userAccount/allotSearch.jsp";
+
     }
 
 
 
     @RequestMapping("/rechargeSearch")
-    public String rechargeSearch(String commit,String userId,String startDate,String endDate,String lowPrice,String highPrice,Integer page,HttpServletRequest request){
+    public String rechargeSearch(String commit,String userId,String startDate,String endDate,String lowPrice,String highPrice,Integer pageNo,HttpServletRequest request){
        // String userId="admin";
        // if(commit!=null){
 
 
-            Map result = rechargeRecordService.selectRechargeRecordByPage(userId,startDate,endDate,lowPrice,highPrice,page);
-    //
-            request.setAttribute("result",result);
+            Map result = rechargeRecordService.selectRechargeRecordByPage(userId,startDate,endDate,lowPrice,highPrice,pageNo);
+
+        Page p = new Page();
+        p.setPageNo((Integer)result.get("page"));
+        p.setPageSize(5);
+        p.setTotalRecord((Integer)result.get("countItem"));
+                request.setAttribute("page",p);
+
+                request.setAttribute("result",result);
       //  }
         return "/userAccount/rechargeSearch.jsp";
     }

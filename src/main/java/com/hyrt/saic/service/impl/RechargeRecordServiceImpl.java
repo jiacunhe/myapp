@@ -36,7 +36,7 @@ public class RechargeRecordServiceImpl implements RechargeRecordService{
         if(!"".equals(lowPrice))params.put("lowPrice",lowPrice);
         if(!"".equals(highPrice))params.put("highPrice",highPrice);
 
-        int pageSize=10;
+        int pageSize=5;
 
         if (page== null) page = 1;
 
@@ -55,6 +55,9 @@ public class RechargeRecordServiceImpl implements RechargeRecordService{
         params.put("totalPage",totalPage);
         params.put("countItem",countItem);
         params.put("list",list);
+
+
+
 
         return params;
     }

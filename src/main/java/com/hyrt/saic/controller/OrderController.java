@@ -1,6 +1,7 @@
 package com.hyrt.saic.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.hyrt.saic.bean.User;
 import com.hyrt.saic.bean.order.Order;
 import com.hyrt.saic.bean.order.OrderDetail;
 import com.hyrt.saic.service.CommonService;
@@ -88,15 +89,12 @@ public class OrderController {
 
     @RequestMapping("download")
     public void download(String path,HttpServletRequest request,HttpServletResponse response){
-        System.out.println(this.getClass().getResource("/").getPath()+"----------------------------");
-
 
         File fileObj = new File(this.getClass().getResource("/").getPath()+"model.xls");
 
 
         if (fileObj!=null && fileObj.exists()) {
             try {
-           //   System.out.println(  fileObj.getName().substring(fileObj.getName().lastIndexOf("/")));
                 InputStream inStream = new FileInputStream(fileObj);
                 response.reset();
                 response.setContentType("application/vnd.ms-excel;charset=GBK");
@@ -125,9 +123,13 @@ public class OrderController {
         request.setAttribute("orderTypeList",orderService.selectOrderType());
 
         if(submit!=null){
+
+            User user =(User) request.getSession().getAttribute("user");
+            String userId=user.getUserId();
+
             HashMap params = new HashMap();
 
-            params.put("userId","1");
+            params.put("userId",userId);
 
             if(!"".equals(code))  params.put("code",code);
                 if( !"".equals(type))  params.put("type",type);
@@ -141,10 +143,6 @@ public class OrderController {
             params.put("businessType",2);
             Map recyclable = orderService.selectOrder(params);
 
-           // Map all = orderService.selectOrder(params);
-           // params.put("orderStatus","'"+OrderStatus.查询无果+"'");
-           // Map nothing = orderService.selectOrder(params);
-           // request.setAttribute("all",all);
 
             request.setAttribute("disposable",disposable);
             request.setAttribute("recyclable",recyclable);
@@ -165,10 +163,13 @@ public class OrderController {
 
     @RequestMapping(value="/searchForAjax", produces = {"application/json;charset=UTF-8"})
     public @ResponseBody String searchByAjax (String type,String sday,String eday,String code,String name,Integer page,String status,String businessType,HttpServletRequest request){
-  //      System.out.println(page+"------------------------");
-            HashMap params = new HashMap();
 
-            params.put("userId","1");
+
+                User user =(User) request.getSession().getAttribute("user");
+                String userId=user.getUserId();
+                HashMap params = new HashMap();
+
+                params.put("userId",userId);
 
 
 
@@ -202,7 +203,9 @@ public class OrderController {
 
         if(groupCode!=null && groupName!=null && groupRemark !=null){
           // && !"".equals(groupCode) && !"".equals(groupName) && !"".equals(groupRemark) && !"".equals(groupMonitor)
-            String userId="1";
+            User user =(User) request.getSession().getAttribute("user");
+            String userId=user.getUserId();
+
             String[] code = groupCode.split(",");
             String[] name = groupName.split(",");
             String[] remark = groupRemark.split(",");
@@ -222,10 +225,15 @@ public class OrderController {
 
             OrderDetail orderDetail;
             for(int i=0;i<code.length-1;i++){
+                if(code[i].length()>50)code[i].substring(0,50);
+                if(name[i].length()>100)name[i].substring(0,100);
+                if(remark[i].length()>100)remark[i].substring(0,100);
+
                 if(!code[i].equals("")&& monitor!=null && monitor[i].equals("0")){
                     if(a==0){
                         beans.add( new Order(orderId,businessType,orderType,new Timestamp(new Date().getTime()),userId,OrderStatus.查询中,cycle));
                     }
+
                     orderDetail = new  OrderDetail( orderId, businessType+"", name[i],  code[i], null,OrderStatus.查询中, remark[i]);
                     if(certType!=null){
                                       orderDetail.setCertType(certType[i]);
@@ -258,8 +266,7 @@ public class OrderController {
 
              request.setAttribute("orderTypeName",((Map)request.getServletContext().getAttribute("orderType")).get(orderType));
              request.setAttribute("businessTypeName",((Map)request.getServletContext().getAttribute("businessType")).get(businessType));
-           // request.setAttribute("orderType",((Map)request.getServletContext().getAttribute("orderType")).get(orderType));
-           // request.setAttribute("businessType",((Map)request.getServletContext().getAttribute("businessType")).get(businessType));
+
             request.setAttribute("countA",a);
             request.setAttribute("countC",c);
             request.setAttribute("orderTypeNameA",((Map)request.getServletContext().getAttribute("orderType")).get(orderType));
@@ -306,11 +313,17 @@ public class OrderController {
 
     @RequestMapping("/result")
     public String result(Long id, HttpServletRequest request){
-        //验证ID 是否该用户
+
+        User user =(User) request.getSession().getAttribute("user");
+        String userId=user.getUserId();
+
         if(id!=null){
+
+
+
             Map params = new HashMap();
             params.put("id",id);
-            params.put("userId","1");
+            params.put("userId",userId);
             Integer orderType= orderService.selectForPermissionView(params);
             if(orderType!=null){
                 if(orderType==1 || orderType==3 || orderType==4){
@@ -381,7 +394,6 @@ public class OrderController {
             if("rm".equals(param)){
                 ObjectPool pool = ObjectPool.getPool();
                 pool.p.remove(sn);
-              //  System.out.println("the sn be removed----------------------------------");
             }else{
                 //返回进度信息
                 ObjectPool pool = ObjectPool.getPool();
@@ -394,12 +406,8 @@ public class OrderController {
         } else {
             result = "0.00%;   非法操作<a href='/exit'>返回</a>";
         }
-        System.out.println(result+"------request----------------------------");
-//        char [] chars = result.toCharArray();
-//        String asciiArgs="";
-//        for(char c:chars){
-//            asciiArgs+="\\u"+Integer.toHexString(c);
-//        }
+ //       System.out.println(result+"------request----------------------------");
+
 
          return result;
 
@@ -444,9 +452,12 @@ public class OrderController {
 
     @RequestMapping("/createOrderByFile")
     public String createOrderByFile(HttpServletRequest request,HttpServletResponse response) throws  Exception{
-       String orderTypeStr = (String)request.getSession().getAttribute("fileOrderType");
+        String orderTypeStr = (String)request.getSession().getAttribute("fileOrderType");
         String sn = (String) request.getSession().getAttribute("fileSerialNumber");
-        String userId="1";
+        User user =(User) request.getSession().getAttribute("user");
+        String userId=user.getUserId();
+
+
         if (orderTypeStr != null && sn!=null) {
             Integer orderType = Integer.valueOf(orderTypeStr);
             String orderId = UUID.randomUUID().toString();
@@ -460,9 +471,7 @@ public class OrderController {
 
             for(int i=0;i<size;i++){
                   obj = (String[])upObjList.get(i);
-//                if(!obj[0].equals("")&& (monitor==null || monitor[i].equals("0"))){
-//                                String orderId,String monitorType,String objName, String objCode,String certType,OrderStatus status,String remark
-//                }
+
                 if(orderTypeStr.equals("1")||orderTypeStr.equals("3")){
                     beans.add(new OrderDetail(orderId,"1",obj[1],obj[0],null,OrderStatus.查询中,obj[2]));
                 }else if(orderTypeStr.equals("2")){
@@ -481,13 +490,7 @@ public class OrderController {
             } catch (Exception e) {
                 e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
             }
-            return      this.detail(orderId,1,request);
-
-//                if(!code[i].equals("")&& (monitor==null || monitor[i].equals("0"))){
-//                    if(a==0){
-//
-//                    }
-//
+            return this.detail(orderId,1,request);
 
         }else{
             request.setAttribute("errorMessage","未知错误");
