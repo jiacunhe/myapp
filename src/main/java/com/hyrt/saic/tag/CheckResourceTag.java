@@ -1,11 +1,8 @@
 package com.hyrt.saic.tag;
 
-import com.hyrt.saic.bean.Role;
 import com.hyrt.saic.bean.SysResoure;
 import com.hyrt.saic.bean.User;
-import com.hyrt.saic.service.RoleResourceService;
 import com.hyrt.saic.util.Config;
-import org.springframework.web.context.WebApplicationContext;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +13,6 @@ import javax.servlet.jsp.tagext.JspFragment;
 import javax.servlet.jsp.tagext.JspTag;
 import javax.servlet.jsp.tagext.SimpleTag;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -46,8 +42,8 @@ public class CheckResourceTag implements SimpleTag {
             return;
         }
         List<SysResoure> haveSysResoureList = (List) request.getSession().getAttribute(Config.USER_HAVE_RESOURCE_KEY);
-        if (resoureuri.lastIndexOf(Config.URI_PATH_KEY) > 0)
-            resoureuri = resoureuri.substring(0, resoureuri.lastIndexOf(Config.URI_PATH_KEY));
+        if (resoureuri.lastIndexOf(Config.UI_SUFFIX) > 0)
+            resoureuri = resoureuri.substring(0, resoureuri.lastIndexOf(Config.UI_SUFFIX));
         for (SysResoure sysResoure : haveSysResoureList) {
             if (sysResoure.getResourceUri().equals(resoureuri)) {
                 //如果在集合中存在,输出标签体
