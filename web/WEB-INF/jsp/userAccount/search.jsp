@@ -8,20 +8,14 @@
     <link href="/manage/css/ht_public.css" rel="stylesheet" type="text/css" />
     <link href="/manage/css/ht_sub.css" rel="stylesheet" type="text/css" />
 
-<%--
-   <script src="/manage/js/ht_iepng.js" type="text/javascript"></script>
-  <script type="text/javascript">
-        EvPNG.fix('div, ul, img, li, input,dt');
-    </script>
-    <script language=javascript src="/manage/js/ht_select.js" id=clientEventHandlersJS> </script>
 
-    <!--table选项卡-->
-    <script type="text/javascript" src="/manage/js/sub_main.js"></script>
-    <script type="text/javascript" src="/manage/js/sub_public.js"></script>--%>
     <style type="text/css">
 
         .sub_tr1 ul{ width: 80%; float: left}
         .sub_tr1 ul li{ float: left; margin-left: 0px; margin-left: 5px; padding: 3px;}
+        .gy_foot{ height: 20px; line-height: 20px; overflow: hidden; margin-top: 30px; margin-bottom: 15px;}
+        .gy_foot a{ padding: 3px; float: left}
+
     </style>
     <title>用户账户信息</title>
 
@@ -60,19 +54,9 @@
 <div id="content1" style="display:none">
 
     <form method="post" action="/userAccount/search" class="ht_sub_form7" style="margin-left:40px;">
-        <span><p>客户账号：</p><input type="text" class="ht_sub_input11" name="userId" value="${userId}"/></span>
-        <span><p>客户名称：</p><input type="text"  class="ht_sub_input11" name="userName" value="${userName}"/></span>
-        <%--                                 <span><p>套餐类型：</p><select class="ht_sub_input016">
-                                             <option>全部</option>
-                                             <option>合同套餐</option>
-                                             <option>固定套餐</option>
-                                         </select></span>
-                                        <span><p>套餐状态：</p><select class="ht_sub_input016">
-                                            <option>全部</option>
-                                            <option>活动</option>
-                                            <option>暂停</option>
-                                            <option>终止</option>
-                                        </select></span>--%>
+        <span><p>客户账号：</p><input type="text" class="ht_sub_input11" name="userId" value="${_userId}"/></span>
+        <span><p>客户名称：</p><input type="text"  class="ht_sub_input11" name="userName" value="${_userName}"/></span>
+
         <div class="clear"></div>
         <input type="hidden" name="page" value="1">
         <input type="submit" value="开始查询" class=" ht_but_cx4"/>
@@ -101,38 +85,41 @@
         <tr class="sub_tr1">
             <td colspan="4">
 
-                <ul>
-
-                    <li><a href="/userAccount/search?userId=${userId}&userName=${userName}&page=${resmap.page -1}"  title="上一页"> < </a></li>
 
 
+                <div class="gy_foot">
+                    <div style="float: left; margin-left: 20px; display: inline;">
+                        页次：${resmap.page}/${resmap.totalpage}页 &nbsp;
+                        总记录数：${resmap.totalitem}条
+                    </div>
+                    <div style="float: right; margin-right: 20px; display: inline">
+                        <a href="javascript:go2Page(1)" title="首页" style="cursor: hand;">
+                            <img src="${pageContext.request.contextPath}/images/firstPage.png" style="float: left; margin: 3px;"/>
+                        </a>
+                        <c:forEach var="i" begin="${resmap.page - 5>=1?resmap.page - 5:1}" end="${resmap.page + 4}" step="1">
+                                <c:if test="${i <= resmap.totalpage}">
 
-                    <c:if test="${resmap.page <= 9}">
-                        <c:forEach var="i" begin="${1}" end="${resmap.page-1}" step="1">
-                            <li><a href="/userAccount/search?userId=${userId}&userName=${userName}&page=${i}">${i}</a></li>
+                                        <a href="javascript:go2Page(${i});"    <c:if test="${i == resmap.page}">style="color:#000000; font-weight: 600;"</c:if>>${i}</a>
+
+                                </c:if>
                         </c:forEach>
-                    </c:if>
+                        <a href="javascript: go2Page(${resmap.totalpage})" title="尾页" style="cursor: hand;">
+                            <img src="${pageContext.request.contextPath}/images/lastPage.png" style="float: left; margin: 3px 8px 3px 3px;"/>
+                        </a>
+
+                        转到第 <input id="pn" onFocus="this.select();" maxlength="2" type="text" value="1" name="currPage" tabindex="0" style="width: 18px; height: 14px; text-align: center; text-indent: 0"/> 页
+                        <input type="button" name="goBtn" value="前往" class="MiddleButtonStyle" onclick="go2Page(document.getElementById('pn').value)" style="width: 32px; height: 20px; border: 1px solid #218bc6; background: #27a5ec; color: #fff;"/>
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    function go2Page(pageNo) {
+                        if(pageNo == undefined || pageNo==null || pageNo=="")pageNo=1;
+                           window.location.href="/userAccount/search?userId=${userId}&userName=${userName}&page="+pageNo;
+                    }
+                </script>
 
 
-                    <c:if test="${resmap.page > 9}">
-                        <c:forEach var="i" begin="${resmap.page-5}" end="${resmap.page-1}" step="1">
-                            <li><a href="/userAccount/search?userId=${userId}&userName=${userName}&page=${i}">${i}</a></li>
-                        </c:forEach>
-                    </c:if>
 
-
-                    <li><a href="/userAccount/search?userId=${userId}&userName=${userName}&page=${resmap.page}" style="color:#FF0000">${resmap.page}</a></li>
-
-
-                    <c:forEach var="j" begin="${resmap.page+1}" end="${resmap.page + 5}" step="1">
-                        <c:if test="${j <= resmap.totalpage}">
-                            <li><a href="/userAccount/search?userId=${userId}&userName=${userName}&page=${j}">${j}</a></li>
-                        </c:if>
-                    </c:forEach>
-
-                    <li><a href="/userAccount/search?userId=${userId}&userName=${userName}&page=${resmap.page+1}" title="下一页"> > </a></li>
-                    <li><span >共 ${resmap.totalitem }条 ，当前第 <strong> ${resmap.page }</strong> / <span> <strong>${resmap.totalpage}</strong> </span> 页 </span> </li>
-                </ul>
 
             </td>
         </tr>
@@ -144,18 +131,17 @@
 
 <div id="content2" style="display:none">
     <form method="post" action="/userAccount/searchMonthly" class="ht_sub_form7" style="margin-left:40px;">
-        <span><p>客户账号：</p><input type="text" class="ht_sub_input11" name="userId" value="${userId}"/></span>
-        <span><p>客户名称：</p><input type="text"  class="ht_sub_input11" name="userName" value="${userName}"/></span>
-                    <span><p>月份：</p>
+
+                             <span><p>月份：</p>
                         <select class="ht_sub_input016" name="yearMonth">
                             <script language="JavaScript">
                                 today = new Date();
                                 for (t = 0; t < 12; t++) {
                                     var selec = "";
                                     var mont = (today.getMonth() + 1);
-                                     if((today.getMonth() + 1)<10){
-                                         mont =  "0"+(today.getMonth() + 1);
-                                     }
+                                    if((today.getMonth() + 1)<10){
+                                        mont =  "0"+(today.getMonth() + 1);
+                                    }
                                     var ym = ""+ today.getFullYear() + mont;
 
                                     if('${yearMonth}'== ym ){
@@ -172,14 +158,11 @@
 
 
                     </span>
-        <%--                           <span style="width:500px;"><p>日期：</p>
-                                     <input type="text"  class="ht_sub_input17"/> <b>至</b> <input type="text" class="ht_sub_input17"/></span>
-                                         <span><p>套餐状态：</p><select class="ht_sub_input016">
-                                             <option>全部</option>
-                                             <option>活动</option>
-                                             <option>暂停</option>
-                                             <option>终止</option>
-                                         </select></span>--%>
+
+
+        <span><p>客户账号：</p><input type="text" class="ht_sub_input11" name="userId" value="${userId}"/></span>
+        <span><p>客户名称：</p><input type="text"  class="ht_sub_input11" name="userName" value="${userName}"/></span>
+
         <div class="clear"></div>
         <input type="hidden" name="page" value="1">
         <input type="submit" value="开始查询" class=" ht_but_cx4"/>
@@ -217,38 +200,38 @@
         <tr class="sub_tr1">
             <td colspan="8">
 
-                <ul>
+                <div class="gy_foot">
+                    <div style="float: left; margin-left: 20px; display: inline;">
+                        页次：${page}/${totalPage}页 &nbsp;
+                        总记录数：${countItem}条
+                    </div>
+                    <div style="float: right; margin-right: 20px; display: inline">
+                        <a href="javascript:goPage(1)" title="首页" style="cursor: hand;">
+                            <img src="${pageContext.request.contextPath}/images/firstPage.png" style="float: left; margin: 3px;"/>
+                        </a>
+                        <c:forEach var="i" begin="${page - 5>=1?page - 5:1}" end="${page + 4}" step="1">
+                                <c:if test="${i <= totalPage}">
 
-                    <li><a href="/userAccount/searchMonthly?userId=${userId}&userName=${userName}&page=${page -1}"  title="上一页"> < </a></li>
+                                        <a href="javascript:goPage(${i});" <c:if test="${i == page}"> style="color:#000000; font-weight: 600;" </c:if> >${i}</a>
 
-
-
-                    <c:if test="${resmap.page <= 9}">
-                        <c:forEach var="i" begin="${1}" end="${resmap.page-1}" step="1">
-                            <li><a href="/userAccount/searchMonthly?userId=${userId}&userName=${userName}&page=${i}">${i}</a></li>
+                                </c:if>
                         </c:forEach>
-                    </c:if>
+                        <a href="javascript: goPage(${totalPage})" title="尾页" style="cursor: hand;">
+                            <img src="${pageContext.request.contextPath}/images/lastPage.png" style="float: left; margin: 3px 8px 3px 3px;"/>
+                        </a>
+
+                        转到第 <input id="pn2" onFocus="this.select();" maxlength="2" type="text" value="1" name="currPage" tabindex="0" style="width: 18px; height: 14px; text-align: center; text-indent: 0"/> 页
+                        <input type="button" name="goBtn" value="前往" class="MiddleButtonStyle" onclick="goPage(document.getElementById('pn2').value)" style="width: 32px; height: 20px; border: 1px solid #218bc6; background: #27a5ec; color: #fff;"/>
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    function goPage(pageNo) {
+                        if(pageNo == undefined || pageNo==null || pageNo=="")pageNo=1;
+                        window.location.href="/userAccount/searchMonthly?yearMonth=${yearMonth}&userId=${userId}&userName=${userName}&page="+pageNo;
+                    }
+                </script>
 
 
-                    <c:if test="${page > 9}">
-                        <c:forEach var="i" begin="${page-5}" end="${page-1}" step="1">
-                            <li><a href="/userAccount/searchMonthly?userId=${userId}&userName=${userName}&page=${i}">${i}</a></li>
-                        </c:forEach>
-                    </c:if>
-
-
-                    <li><a href="/userAccount/searchMonthly?userId=${userId}&userName=${userName}&page=${page}" style="color:#FF0000">${resmap.page}</a></li>
-
-
-                    <c:forEach var="j" begin="${page+1}" end="${page + 5}" step="1">
-                        <c:if test="${j <= totalPage}">
-                            <li><a href="/userAccount/searchMonthly?userId=${userId}&userName=${userName}&page=${j}">${j}</a></li>
-                        </c:if>
-                    </c:forEach>
-
-                    <li><a href="/userAccount/searchMonthly?userId=${userId}&userName=${userName}&page=${page+1}" title="下一页"> > </a></li>
-                    <li><span >共 ${countItem }条 ，当前第 <strong> ${page }</strong> / <span> <strong>${totalPage}</strong> </span> 页 </span> </li>
-                </ul>
 
             </td>
         </tr>
@@ -293,7 +276,7 @@
         e.style.background = "url(/manage/images/ht_ttbg4.gif) no-repeat";
         e.style.color = "#ffffff";
 
-        e.blur();			//Chrome和Opera不需要
+        e.blur();
     }
 </script>
 

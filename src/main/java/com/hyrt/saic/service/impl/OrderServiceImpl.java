@@ -45,22 +45,7 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private PersonGroupInfoMapper personGroupInfoMapper;
 
-  /*  private OrderDetailMapper orderDetailMapper;
 
-    @Override
-    @Transactional
-    public void commitOrder(Order order, List<OrderDetail> list) {
-
-          orderMapper.insertSelective(order);
-          int id = orderMapper.selectLastInsertId();
-
-          for(int i=0;i<list.size();i++){
-
-                OrderDetail  orderDetail = list.get(i);
-               orderDetail.setOrderId(id);
-          }
-
-    }*/
 
     @Override
     public List<OrderType> selectOrderType() {
@@ -110,13 +95,7 @@ public class OrderServiceImpl implements OrderService {
         if (params.get("page") == null) page = 1;else page = (Integer)params.get("page") ;
         if (params.get("pageSize") == null) pageSize = 5;else pageSize = (Integer)params.get("pageSize") ;
 
-//        if(params.get("type")!=null){
-//             if(params.get("type").equals("done")){
-//                     params.put("status","'5'");
-//             }else{
-//                 params.put("status","'1','2','3','4','6','7','8'");
-//             }
-//        }
+
 
         int countItem = orderDetailMapper.selectCount(params);
 
@@ -182,7 +161,7 @@ public class OrderServiceImpl implements OrderService {
     public Map selectMonitorResultList(Map params){
                 List res=null;
                if(params.get("orderType")!=null){
-                   System.out.println(params.get("orderType")+"------------------------------");
+               //    System.out.println(params.get("orderType")+"------------------------------");
 
                    int page,pageSize;
                    if (params.get("page") == null) page = 1;else page = (Integer)params.get("page") ;

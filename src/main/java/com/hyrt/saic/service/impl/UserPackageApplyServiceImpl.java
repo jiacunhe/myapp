@@ -74,7 +74,7 @@ public class UserPackageApplyServiceImpl implements UserPackageApplyService {
         if(!"".equals(allocatee))params.put("allocatee",allocatee);
         if(!"".equals(receiver))params.put("receiver",receiver);
 
-        int pageSize=10;
+        int pageSize=5;
 
         if (page== null) page = 1;
 

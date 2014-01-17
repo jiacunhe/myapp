@@ -11,6 +11,8 @@
 
         .sub_tr1 ul{ width: 80%; float: left}
         .sub_tr1 ul li{ float: left; margin-left: 0px; margin-left: 5px; padding: 3px;}
+        .gy_foot{ height: 20px; line-height: 20px; overflow: hidden; margin-top: 30px; margin-bottom: 15px;}
+        .gy_foot a{ padding: 3px; float: left}
     </style>
 
     <title>包月套餐分配查询</title>
@@ -28,8 +30,6 @@
     <div class="ht_rtbut">
         <ul>
             <li><img src="/manage/images/ht_ico02.png" /><p><a href="/userAccount/allotPackage">新增分配</a></p></li>
-            <%--<li><img src="/manage/images/ht_ico03.png" /><p><a href="#">修改分配</a></p></li>
-            <li><img src="/manage/images/ht_ico04.png" /><p><a href="#">删 除</a></p></li>--%>
         </ul>
     </div>
 
@@ -39,21 +39,11 @@
 <c:if test="${thisUserType eq 'MANAGER' }">  <p>分配者： </p>
                         <span class="ht_span03">
                             <input type="text" name="allocatee"  class="ht_sub_input01" value="${result.allocatee}">
-           <%--                 <select class="ht_sub_input013">
-                            <option>全部</option>
-                            <option>大客户一</option>
-                            <option>大客户二</option>
-                        </select>--%>
                         </span>
 </c:if>
             <p>使用者： </p>
                         <span class="ht_span03">
                               <input type="text" name="receiver" class="ht_sub_input01" value="${result.receiver}">
-        <%--                    <select class="ht_sub_input013">
-                            <option>全部</option>
-                            <option>大客户一</option>
-                            <option>大客户二</option>
-                        </select>--%>
 
                         </span>
             <p>套餐状态： </p>
@@ -96,38 +86,38 @@
             <tr class="sub_tr1">
                 <td colspan="<c:if test="${thisUserType eq 'MANAGER' }">8</c:if><c:if test="${thisUserType ne 'MANAGER' }">7</c:if>">
 
-                    <ul>
-
-                        <li><a href="/userAccount/allotSearch?status=${result.status}&allocatee=${result.allocatee}&receiver=${result.receiver}&page=${result.page -1}"  title="上一页"> < </a></li>
 
 
+                    <div class="gy_foot">
+                        <div style="float: left; margin-left: 20px; display: inline;">
+                            页次：${result.page}/${result.totalPage}页 &nbsp;
+                            总记录数：${result.countItem}条
+                        </div>
+                        <div style="float: right; margin-right: 20px; display: inline">
+                            <a href="javascript:go2Page(1)" title="首页" style="cursor: hand;">
+                                <img src="${pageContext.request.contextPath}/images/firstPage.png" style="float: left; margin: 3px;"/>
+                            </a>
+                            <c:forEach var="i" begin="${result.page - 5>=1?result.page - 5:1}" end="${result.page + 4}" step="1">
+                                <c:if test="${i <= result.totalPage}">
 
-                        <c:if test="${result.page <= 9}">
-                            <c:forEach var="i" begin="${1}" end="${result.page-1}" step="1">
-                                <li><a href="/userAccount/allotSearch?status=${result.status}&allocatee=${result.allocatee}&receiver=${result.receiver}&page=${i}">${i}</a></li>
+                                    <a href="javascript:go2Page(${i});"  <c:if test="${i == result.page}">style="color:#000000; font-weight: 600;"     </c:if>>${i}</a>
+
+                                </c:if>
                             </c:forEach>
-                        </c:if>
+                            <a href="javascript: go2Page(${result.totalPage})" title="尾页" style="cursor: hand;">
+                                <img src="${pageContext.request.contextPath}/images/lastPage.png" style="float: left; margin: 3px 8px 3px 3px;"/>
+                            </a>
 
-
-                        <c:if test="${result.page > 9}">
-                            <c:forEach var="i" begin="${result.page-5}" end="${result.page-1}" step="1">
-                                <li><a href="/userAccount/allotSearch?status=${result.status}&allocatee=${result.allocatee}&receiver=${result.receiver}&page=${i}">${i}</a></li>
-                            </c:forEach>
-                        </c:if>
-
-
-                        <li><a href="/userAccount/allotSearch?status=${result.status}&allocatee=${result.allocatee}&receiver=${result.receiver}&page=${result.page}" style="color:#FF0000">${result.page}</a></li>
-
-
-                        <c:forEach var="j" begin="${result.page+1}" end="${result.page + 5}" step="1">
-                            <c:if test="${j <= result.totalPage}">
-                                <li><a href="/userAccount/allotSearch?status=${result.status}&allocatee=${result.allocatee}&receiver=${result.receiver}&page=${j}">${j}</a></li>
-                            </c:if>
-                        </c:forEach>
-
-                        <li><a href="/userAccount/allotSearch?status=${result.status}&allocatee=${result.allocatee}&receiver=${result.receiver}&page=${result.page+1}" title="下一页"> > </a></li>
-                        <li><span >共 ${result.countItem }条 ，当前第 <strong> ${result.page }</strong> / <span> <strong>${result.totalPage}</strong> </span> 页 </span> </li>
-                    </ul>
+                            转到第 <input id="pn" onFocus="this.select();" maxlength="2" type="text" value="1" name="currPage" tabindex="0" style="width: 18px; height: 14px; text-align: center; text-indent: 0"/> 页
+                            <input type="button" name="goBtn" value="前往" class="MiddleButtonStyle" onclick="go2Page(document.getElementById('pn').value)" style="width: 32px; height: 20px; border: 1px solid #218bc6; background: #27a5ec; color: #fff;"/>
+                        </div>
+                    </div>
+                    <script type="text/javascript">
+                        function go2Page(pageNo) {
+                            if(pageNo == undefined || pageNo==null || pageNo=="")pageNo=1;
+                            window.location.href="/userAccount/allotSearch?status=${result.status}&allocatee=${result.allocatee}&receiver=${result.receiver}&page="+pageNo;
+                        }
+                    </script>
 
                 </td>
             </tr>

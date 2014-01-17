@@ -28,6 +28,7 @@
 </div>
 <script type="text/javascript">
 	function go2Page(pageNo) {
+        if(pageNo == undefined || pageNo==null || pageNo=="")pageNo=1;
 		if (pageNo > ${page.totalPage}) {
 			alert("页码无效");
 			return;

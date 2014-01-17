@@ -88,7 +88,6 @@
         function viewer(id){
 
           alert("sorry,测试阶段，无具体数据信息");
-           // parent.window.location.href="/order/result?id="+id;
         }
 
     </script>
