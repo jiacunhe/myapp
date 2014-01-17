@@ -13,11 +13,11 @@
             if (more) {
                 $("#simple").hide();
                 $("#all").show();
-                $("#status").html("收起高级搜索");
+                $("#toggle").html("收起高级搜索");
             } else {
                 $("#simple").show();
                 $("#all").hide();
-                $("#status").html("显示高级搜索");
+                $("#toggle").html("显示高级搜索");
             }
             window.document.forms[0].queryType.value = more;
         }
@@ -216,41 +216,41 @@
                     src="${basePath}/manage/images/ht_ico012.png"/>
 
                 <p>刷 新</p></a></li>
-            <li>
+            <hyrt:privilege uri="/customer/add"><li>
                 <a href="/customer/add/UI?condition=${form.condition}&userId=${form.userId}&username=${form.username}&creatorId=${form.creatorId}&telephone=${form.telephone}&startTime=${form.startTime}&endTime=${form.endTime}&paymentRule=${form.paymentRule}&status=${form.status}"
                    id="add"><img src="${basePath}/manage/images/ht_ico02.png"/>
 
-                    <p>新 增</p></a></li>
-            <li>
+                    <p>新 增</p></a></li></hyrt:privilege>
+            <hyrt:privilege uri="/customer/modify"><li>
                 <a href="/customer/modify/UI?condition=${form.condition}&userId=${form.userId}&username=${form.username}&creatorId=${form.creatorId}&telephone=${form.telephone}&startTime=${form.startTime}&endTime=${form.endTime}&paymentRule=${form.paymentRule}&status=${form.status}"
                    id="edit"><img src="${basePath}/manage/images/ht_ico03.png"/>
 
-                    <p>编 辑</p></a></li>
-            <li>
+                    <p>编 辑</p></a></li></hyrt:privilege>
+            <hyrt:privilege uri="/customer/delete"><li>
                 <a href="/customer/delete?condition=${form.condition}&userId=${form.userId}&username=${form.username}&creatorId=${form.creatorId}&telephone=${form.telephone}&startTime=${form.startTime}&endTime=${form.endTime}&paymentRule=${form.paymentRule}&status=${form.status}"
                    id="delete"><img src="${basePath}/manage/images/ht_ico04.png"/>
 
-                    <p>删 除</p></a></li>
+                    <p>删 除</p></a></li></hyrt:privilege>
             <li>
                 <a href="/customer/show/UI?condition=${form.condition}&userId=${form.userId}&username=${form.username}&creatorId=${form.creatorId}&telephone=${form.telephone}&startTime=${form.startTime}&endTime=${form.endTime}&paymentRule=${form.paymentRule}&status=${form.status}"
                    id="detail"><img src="${basePath}/manage/images/ht_ico013.png"/>
 
                     <p>查看详细</p></a></li>
-            <li>
+            <hyrt:privilege uri="/customer/resetPassword"><li>
                 <a href="/customer/resetPassword?condition=${form.condition}&userId=${form.userId}&username=${form.username}&creatorId=${form.creatorId}&telephone=${form.telephone}&startTime=${form.startTime}&endTime=${form.endTime}&paymentRule=${form.paymentRule}&status=${form.status}"
                    id="resetPassword"><img src="${basePath}/manage/images/ht_ico014.png"/>
 
-                    <p>重置密码</p></a></li>
-            <li>
+                    <p>重置密码</p></a></li></hyrt:privilege>
+            <hyrt:privilege uri="/customer/lock"><li>
                 <a href="/customer/lock?condition=${form.condition}&userId=${form.userId}&username=${form.username}&creatorId=${form.creatorId}&telephone=${form.telephone}&startTime=${form.startTime}&endTime=${form.endTime}&paymentRule=${form.paymentRule}&status=${form.status}"
                    id="lock"><img src="${basePath}/manage/images/ht_ico015.png"/>
 
-                    <p>锁 定</p></a></li>
-            <li>
+                    <p>锁 定</p></a></li></hyrt:privilege>
+            <hyrt:privilege uri="/customer/unlock"><li>
                 <a href="/customer/unlock?condition=${form.condition}&userId=${form.userId}&username=${form.username}&creatorId=${form.creatorId}&telephone=${form.telephone}&startTime=${form.startTime}&endTime=${form.endTime}&paymentRule=${form.paymentRule}&status=${form.status}"
                    id="unlock"><img src="${basePath}/manage/images/ht_ico016.png"/>
 
-                    <p>解 封</p></a></li>
+                    <p>解 封</p></a></li></hyrt:privilege>
         </ul>
     </div>
 

@@ -30,6 +30,7 @@
             <p>当前用户：<span>${manage.username}</span></p>
         </div>
         <div class="ht_top_button">
+            <a href="/index" target="main"><img src="${basePath}/manage/images/ht_sy.png"/></a>
             <a href="/user/password/modify/UI" target="main"><img src="${basePath}/manage/images/ht_xgmm.png"/></a>
             <a href="/manage/logout"><img src="${basePath}/manage/images/ht_tc.png"/></a>
         </div>
