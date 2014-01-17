@@ -6,16 +6,21 @@ import java.util.Date;
 
 public class UserOperation extends BasePojo {
     private Integer id;
-
     private String userId;
-
     private String resourceUri;
-
     private String description;
-
     private Date operateTime;
-
     private String remark;
+
+    public UserOperation() {}
+
+    public UserOperation(String userId, String resourceUri, String description, Date operateTime, String remark) {
+        this.userId = userId;
+        this.resourceUri = resourceUri;
+        this.description = description;
+        this.operateTime = operateTime;
+        this.remark = remark;
+    }
 
     public Integer getId() {
         return id;

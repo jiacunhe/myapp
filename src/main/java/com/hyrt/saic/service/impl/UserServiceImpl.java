@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -95,7 +96,12 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
 
     private String toMD5(String resource) {
         byte[] bytes = DigestUtils.md5Digest(resource.getBytes());
-        return new String(bytes);
+        try {
+            return new String(bytes, "gbk");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     private List<SysResource> getHaveSysResource(User user, HttpServletRequest request) {
