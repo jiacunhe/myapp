@@ -5,7 +5,7 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="roleName" property="roleName" jdbcType="VARCHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
-     <collection  property="resources" column="id" ofType="com.hyrt.saic.bean.SysResoure" select="com.hyrt.saic.dao.RoleMapper.queryResourceByRole">
+     <collection  property="resources" column="id" ofType="com.hyrt.saic.bean.SysResource" select="com.hyrt.saic.dao.RoleMapper.queryResourceByRole">
          <id column="id" property="id" jdbcType="INTEGER" />
          <result column="resourceName" property="resourceName" jdbcType="VARCHAR" />
          <result column="resourceUri" property="resourceUri" jdbcType="VARCHAR" />
@@ -15,7 +15,7 @@
   <sql id="Base_Column_List" >
     id, roleName, remark
   </sql>
-    <select id="queryResourceByRole" parameterType="java.lang.Integer" resultType="com.hyrt.saic.bean.SysResoure">
+    <select id="queryResourceByRole" parameterType="java.lang.Integer" resultType="com.hyrt.saic.bean.SysResource">
            SELECT tsr.`id` ,tsr.`resourceName`,tsr.`resourceUri`,tsr.`remark` ,tsr.`pid` FROM t_role_sys_resource trsr LEFT JOIN t_sys_resource tsr ON tsr.`id`=trsr.`resourceId` WHERE trsr.`roleId`= #{id,jdbcType=INTEGER}
 
     </select>

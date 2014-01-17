@@ -4147,8 +4147,8 @@ DataType 1 0
 </o:Column>
 <o:Column Id="o197">
 <a:ObjectID>E4B4B587-00E3-4C5E-8511-CC22D448A9A3</a:ObjectID>
-<a:Name>resourceUri</a:Name>
-<a:Code>resourceUri</a:Code>
+<a:Name>uri</a:Name>
+<a:Code>uri</a:Code>
 <a:CreationDate>1387361108</a:CreationDate>
 <a:Creator>yang</a:Creator>
 <a:ModificationDate>1387361110</a:ModificationDate>
@@ -5028,8 +5028,8 @@ DataType 1 0
 </o:Column>
 <o:Column Id="o259">
 <a:ObjectID>A8933EAE-1239-4192-A269-9CAFA82D13AF</a:ObjectID>
-<a:Name>resourceUri</a:Name>
-<a:Code>resourceUri</a:Code>
+<a:Name>uri</a:Name>
+<a:Code>uri</a:Code>
 <a:CreationDate>1387361108</a:CreationDate>
 <a:Creator>yang</a:Creator>
 <a:ModificationDate>1387361110</a:ModificationDate>

@@ -61,7 +61,7 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
         User user = userMapper.login(userId, toMD5(password));
         if (null != user) {
             request.getSession().setAttribute(Config.USER, user);
-            List<SysResoure> userHaveResourelist = getHaveSysResoure(user, request);
+            List<SysResource> userHaveResourelist = getHaveSysResource(user, request);
             request.getSession().setAttribute(Config.USER_HAVE_RESOURCE_KEY, userHaveResourelist);
             return true;
         }
@@ -85,7 +85,7 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
         User user = userMapper.loginManage(userId, toMD5(password));
         if (null != user) {
             request.getSession().setAttribute(Config.MANAGE, user);
-            List<SysResoure> userHaveResourelist = getHaveSysResoure(user, request);
+            List<SysResource> userHaveResourelist = getHaveSysResource(user, request);
             request.getSession().setAttribute(Config.USER_HAVE_RESOURCE_KEY, userHaveResourelist);
 
             return true;
@@ -98,19 +98,18 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
         return new String(bytes);
     }
 
-    private List<SysResoure> getHaveSysResoure(User user, HttpServletRequest request) {
+    private List<SysResource> getHaveSysResource(User user, HttpServletRequest request) {
 
-        List<Role> rolelist = roleMapper.getRolesByuserid(user.getUserId());
+        List<Role> roles = roleMapper.getRolesByuserid(user.getUserId());
         StringBuffer stringBuffer = new StringBuffer();
-        String roleids = "";
-        for (Role role : rolelist) {
+        String roleIds = "";
+        for (Role role : roles) {
             stringBuffer.append(role.getId());
             stringBuffer.append(",");
         }
         if (stringBuffer.length() > 0 && stringBuffer.indexOf(",") > 0)
-            roleids = stringBuffer.toString().substring(0, stringBuffer.indexOf(","));
-        List<SysResoure> userHaveResourelist = roleSysResourceMapper.getResoureByUserRoleids(roleids);
-        return userHaveResourelist;
+            roleIds = stringBuffer.toString().substring(0, stringBuffer.indexOf(","));
+        return roleSysResourceMapper.getResoureByUserRoleids(roleIds);
     }
 
     @Override

@@ -1,10 +1,9 @@
 package com.hyrt.saic.tag;
 
-import com.hyrt.saic.bean.SysResoure;
+import com.hyrt.saic.bean.SysResource;
 import com.hyrt.saic.bean.User;
 import com.hyrt.saic.util.Config;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspContext;
 import javax.servlet.jsp.JspException;
@@ -26,8 +25,7 @@ public class CheckResourceTag implements SimpleTag {
     private PageContext pageContext;
     //标签体
     private JspFragment jspFragment;
-    private ServletContext servletContext;
-    private String resoureuri;
+    private String uri;
 
 
     @Override
@@ -35,17 +33,19 @@ public class CheckResourceTag implements SimpleTag {
 
         //获取request对象
         HttpServletRequest request = (HttpServletRequest) pageContext.getRequest();
-        servletContext = pageContext.getServletContext();
         //获取当前登陆用户
         User user = (User) request.getSession().getAttribute(Config.MANAGE);
         if (user == null) {
             return;
         }
-        List<SysResoure> haveSysResoureList = (List) request.getSession().getAttribute(Config.USER_HAVE_RESOURCE_KEY);
-        if (resoureuri.lastIndexOf(Config.UI_SUFFIX) > 0)
-            resoureuri = resoureuri.substring(0, resoureuri.lastIndexOf(Config.UI_SUFFIX));
-        for (SysResoure sysResoure : haveSysResoureList) {
-            if (sysResoure.getResourceUri().equals(resoureuri)) {
+        if (Config.ADMIN.equals(user.getUserId())) {
+            this.jspFragment.invoke(null);
+        }
+        List<SysResource> haveSysResourceList = (List) request.getSession().getAttribute(Config.USER_HAVE_RESOURCE_KEY);
+        if (uri.lastIndexOf(Config._UI) > 0)
+            uri = uri.substring(0, uri.lastIndexOf(Config._UI));
+        for (SysResource sysResource : haveSysResourceList) {
+            if (sysResource.getResourceUri().equals(uri)) {
                 //如果在集合中存在,输出标签体
                 this.jspFragment.invoke(null);
                 break;
@@ -73,11 +73,11 @@ public class CheckResourceTag implements SimpleTag {
         this.jspFragment = jspFragment;
     }
 
-    public String getResoureuri() {
-        return resoureuri;
+    public String getUri() {
+        return uri;
     }
 
-    public void setResoureuri(String resoureuri) {
-        this.resoureuri = resoureuri;
+    public void setUri(String uri) {
+        this.uri = uri;
     }
 }

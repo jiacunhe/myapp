@@ -2,7 +2,7 @@ package com.hyrt.saic.bean;
 
 import java.util.List;
 
-public class SysResoure {
+public class SysResource {
     private Integer id;
 
 
@@ -16,13 +16,13 @@ public class SysResoure {
     private String remark;
 
     private Integer open;
-    private List<SysResoure> children;
+    private List<SysResource> children;
 
-    public List<SysResoure> getChildren() {
+    public List<SysResource> getChildren() {
         return children;
     }
 
-    public void setChildren(List<SysResoure> children) {
+    public void setChildren(List<SysResource> children) {
         this.children = children;
     }
 

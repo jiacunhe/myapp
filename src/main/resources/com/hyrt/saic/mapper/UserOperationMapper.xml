@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.hyrt.saic.bean.UserOperation" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="userId" property="userId" jdbcType="VARCHAR" />
-    <result column="resourceUri" property="resourceUri" jdbcType="VARCHAR" />
+    <result column="uri" property="uri" jdbcType="VARCHAR" />
     <result column="description" property="description" jdbcType="VARCHAR" />
     <result column="operateTime" property="operateTime" jdbcType="TIMESTAMP" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
