@@ -51,7 +51,8 @@
     <div class="ht_kongbai"></div>
     <div class="ht_rtbut">
         <ul>
-            <li><a href="/package/add/UI" ><img src="${basePath}/manage/images/ht_ico02.png" /></a><p><a href="/package/add/UI" >新 增</a></p></li>
+            <hyrt:privilege uri="/package/add/UI">
+            <li><a href="/package/add/UI" ><img src="${basePath}/manage/images/ht_ico02.png" /></a><p><a href="/package/add/UI" >新 增</a></p></li></hyrt:privilege>
         </ul>
     </div>
 

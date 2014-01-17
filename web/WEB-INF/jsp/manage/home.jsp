@@ -55,11 +55,10 @@
                 </dl>--%>
 
         <dl>
-<<<<<<< HEAD
-            <dt><hyrt:privilege uri="/package/list"><dt><A href="/package/list" target="main" ><img src="${basePath}/manage/images/ht_ico4.png"/>套餐制定</A></dt></hyrt:privilege>
-=======
+
+
             <hyrt:privilege uri="/package/list"><dt><A href="/package/list" target="main" ><img src="${basePath}/manage/images/ht_ico4.png"/>套餐制定</A></dt></hyrt:privilege>
->>>>>>> 6a7caac0481af8a77fc1d13a854d406030bd9927
+
         </dl>
 
 
