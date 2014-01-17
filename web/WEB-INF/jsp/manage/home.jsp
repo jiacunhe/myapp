@@ -10,7 +10,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link href="${basePath}/manage/css/ht_public.css" rel="stylesheet" type="text/css"/>
     <link href="${basePath}/manage/css/ht_sub.css" rel="stylesheet" type="text/css"/>
-    <%@ taglib uri="/WEB-INF/tld/mytag.tld"  prefix="hyrt"%>
+    <%@ taglib uri="/WEB-INF/tld/mytag.tld" prefix="hyrt" %>
     <script src="${basePath}/manage/js/ht_iepng.js" type="text/javascript"></script>
     <script src="${basePath}/js/jquery-1.8.0.min.js" type="text/javascript"></script>
     <script type="text/javascript">
@@ -40,35 +40,44 @@
     <div class="ht_content_left">
         <div class="ht_yangshi"></div>
         <hyrt:privilege uri="/customer/list">
-        <dl>
-            <dt><A href="/customer/list" target="main"><img src="${basePath}/manage/images/ht_ico1.png"/>客户管理</A></dt>
-        </dl>
+            <dl>
+                <dt><A href="/customer/list" target="main"><img src="${basePath}/manage/images/ht_ico1.png"/>客户管理</A>
+                </dt>
+            </dl>
         </hyrt:privilege>
         <dl>
-            <dt><A href="/orderManage/search" target="main"><img src="${basePath}/manage/images/ht_ico2.png"/>订单查询</A></dt>
+            <dt><A href="/orderManage/search" target="main"><img src="${basePath}/manage/images/ht_ico2.png"/>订单查询</A>
+            </dt>
         </dl>
 
-<%--        <dl>
-            <dt><A href="#"><img src="${basePath}/manage/images/ht_ico3.png"/>信息监控列表</A></dt>
-        </dl>--%>
+        <%--        <dl>
+                    <dt><A href="#"><img src="${basePath}/manage/images/ht_ico3.png"/>信息监控列表</A></dt>
+                </dl>--%>
 
         <dl>
+<<<<<<< HEAD
             <dt><hyrt:privilege uri="/package/list"><dt><A href="/package/list" target="main" ><img src="${basePath}/manage/images/ht_ico4.png"/>套餐制定</A></dt></hyrt:privilege>
+=======
+            <hyrt:privilege uri="/package/list"><dt><A href="/package/list" target="main" ><img src="${basePath}/manage/images/ht_ico4.png"/>套餐制定</A></dt></hyrt:privilege>
+>>>>>>> 6a7caac0481af8a77fc1d13a854d406030bd9927
         </dl>
 
 
         <dl>
-            <dt><A href="/userAccount/search" target="main"><img src="${basePath}/manage/images/ht_ico5.png"/>用户账户信息</A></dt>
+            <dt><A href="/userAccount/search" target="main"><img src="${basePath}/manage/images/ht_ico5.png"/>用户账户信息</A>
+            </dt>
         </dl>
 
 
         <dl>
-            <dt><A  href="/userAccount/allotSearch" target="main"><img   src="${basePath}/manage/images/ht_ico6.png"/>包月套餐分配</A></dt>
+            <dt><A href="/userAccount/allotSearch" target="main"><img src="${basePath}/manage/images/ht_ico6.png"/>包月套餐分配</A>
+            </dt>
         </dl>
 
 
         <dl>
-            <dt><A href="/userAccount/rechargeSearch" target="main"><img src="${basePath}/manage/images/ht_ico7.png"/>付款明细</A></dt>
+            <dt><A href="/userAccount/rechargeSearch" target="main"><img src="${basePath}/manage/images/ht_ico7.png"/>付款明细</A>
+            </dt>
         </dl>
 
         <dl>
@@ -92,8 +101,12 @@
                     src="${basePath}/manage/images/ht_ico10.png"/>系统管理</A></dt>
             <dd id=LM2 style="DISPLAY: none">
                 <ul>
-                    <li><hyrt:privilege uri="/role/manager"><a href="/role/manager" target="main"></hyrt:privilege>角色管理</a></li>
-                    <li><a href="/manager/list" target="main">用户管理</a></li>
+                    <hyrt:privilege uri="/role/manager">
+                    <li><a href="/role/manager" target="main">角色管理</a></li>
+                    </hyrt:privilege>
+                    <hyrt:privilege uri="/role/manager">
+                        <li><a href="/manager/list" target="main">用户管理</a></li>
+                    </hyrt:privilege>
                 </ul>
             </dd>
         </dl>
