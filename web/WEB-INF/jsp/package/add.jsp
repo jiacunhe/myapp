@@ -13,6 +13,17 @@
 <head>
     <%@ include file="/WEB-INF/jsp/manage/commons.jspf" %>
     <title>套餐制定</title>
+    <script language="javascript">
+        function hide(str){
+              if(str=='vip'){
+            document.getElementById('a').style.display = "none";
+            document.getElementById('b').style.display = "none"; }
+            else{
+                  document.getElementById('a').style.display = "block";
+                  document.getElementById('b').style.display = "block"
+              }
+        }
+    </script>
 </head>
 
 <body>
@@ -32,7 +43,7 @@
             <span><p>套餐价格：</p><input id="price" name="price" type="text" class="ht_sub_input11"/>元</span>
                              <input id="userId" name="userId" type="hidden"/>
 
-            <span><p>套餐类型：</p><select  name="type" id="type">
+            <span><p>套餐类型：</p><select  name="type" id="type" onchange="hide(this.value)">
                                     <option value="public">
                                         公有套餐
                                     </option>
@@ -46,10 +57,13 @@
 
                                     <li><p style="width:100px">查询条数：</p><input  id="quantity" name="quantity" type="text" />条</li>
                                     <li><p style="width:100px">备注：</p><input  id="remark2" name="remark2" type="text" style=" margin-top:12px;" /></li>
-                                    <li><p style="width:100px">企业或人员监控：</p><input id="quantity2" name="quantity2" type="text" />条/年</li>
-                                    <li><p style="width:100px">备注：</p><input  id="remark3" name="remark3" type="text"  style=" margin-top:12px;" /></li>
+                                    <li id="a" style="display: block"><p style="width:100px">企业或人员监控：</p><input id="quantity2" name="quantity2" type="text" />条/年</li>
+                                    <li id="b" style="display: block"><p style="width:100px">备注：</p><input  id="remark3" name="remark3" type="text"  style=" margin-top:12px;" /></li>
+
                                 </ul>
+
                             </div>
+                            (查询包含：企业查询，人员查询和对外投资查询)
                         </span>
             <div class="clear"></div>
             <input  type="submit" value="确定"  class="ht_but_qd0" style="margin-left:220px;"/>

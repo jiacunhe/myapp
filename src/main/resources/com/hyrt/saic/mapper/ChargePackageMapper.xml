@@ -88,6 +88,7 @@
         <if test="userId!= null" >
             and p.userId=#{userId,jdbcType=VARCHAR}
         </if>
+             and p.type in('public','vip')
 
        ) xx GROUP BY id
         <if test="order!= null" >
