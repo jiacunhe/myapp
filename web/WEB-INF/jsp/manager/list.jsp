@@ -95,7 +95,6 @@
                         var param = $(obj).attr("id");
                         var name = $(obj).attr("name");
                         $("#resetPassword").attr("href", "/manager/resetPassword" + param);
-                        alert(param);
                         return window.confirm('确定要重置管理员：' + name + '的密码?');
                     }
                 } else {
@@ -118,23 +117,23 @@
     <div class="ht_kongbai"></div>
     <div class="ht_rtbut">
         <ul>
-            <li>
+            <hyrt:privilege uri="/manager/add/UI"><li>
                 <a href="/manager/add/UI?formUserId=${command.formUserId}&formUsername=${command.formUsername}&formRoleId=${command.formRoleId}">
                     <img src="${basePath}/manage/images/ht_ico02.png"/>
 
-                    <p>增加</p></a></li>
-            <li><a id="edit" href="/"><img src="${basePath}/manage/images/ht_ico08.png"/>
+                    <p>增加</p></a></li></hyrt:privilege>
+            <hyrt:privilege uri="/manager/modify"><li><a id="edit" href="/"><img src="${basePath}/manage/images/ht_ico08.png"/>
 
-                <p>信息修改</p></a></li>
-            <li><a id="resetPassword" href="/"><img src="${basePath}/manage/images/ht_ico03.png"/>
+                <p>信息修改</p></a></li></hyrt:privilege>
+            <hyrt:privilege uri="/manager/resetPassword"><li><a id="resetPassword" href="/"><img src="${basePath}/manage/images/ht_ico03.png"/>
 
-                <p>重置密码</p></a></li>
-            <li><a id="lock" href="/"><img src="${basePath}/manage/images/ht_ico015.png"/>
+                <p>重置密码</p></a></li></hyrt:privilege>
+            <hyrt:privilege uri="/manager/lock"><li><a id="lock" href="/"><img src="${basePath}/manage/images/ht_ico015.png"/>
 
-                <p>锁定</p></a></li>
-            <li><a id="unlock" href="/"><img src="${basePath}/manage/images/ht_ico016.png"/>
+                <p>锁定</p></a></li></hyrt:privilege>
+            <hyrt:privilege uri="/manager/unlock"><li><a id="unlock" href="/"><img src="${basePath}/manage/images/ht_ico016.png"/>
 
-                <p>解锁</p></a></li>
+                <p>解锁</p></a></li></hyrt:privilege>
         </ul>
     </div>
 

@@ -9,13 +9,13 @@ ul{ list-style-type:none;}
 
 .ht_top{ width:100%; height:93px; overflow:hidden; background:url(../images/ht_top_bg0.png) repeat-x;}
 .ht_top_content{ width:1000px; height:93px; overflow:hidden; margin:0px auto; background:url(../images/ht_top_bg.png) no-repeat;}
-.ht_logo{ float:left; margin:22px 60px 0px 0px;}
+.ht_logo{ float:left; margin:22px 30px 0px 0px;}
 .ht_top_xx{ float:left; width:auto; overflow:hidden; margin-top:30px; line-height:22px;}
 .ht_top_xx p{ color:#fff; font-family:"微软雅黑"; margin-right:10px;}
 .ht_top_xx p span{ color:#ffa200; margin-right:10PX;}
 .ht_top_xx p a{ margin-left:8px;}
-.ht_top_button{ width:156px; height:54px; float:right; overflow:hidden; margin-top:16px;}
-.ht_top_button a{ width:66px; height:54px; display:inline-block; float:left; margin-left:12px;}
+.ht_top_button{ width:228px; height:54px; float:right; overflow:hidden; margin-top:16px;}
+.ht_top_button a{ width:66px; height:54px; display:inline-block; float:left; margin-left:10px;}
 .ht_top_button a img{ width:66px; height:54px;}
 
 .ht_content{ width:1000px; height:636px; overflow:hidden; margin:0px auto;}

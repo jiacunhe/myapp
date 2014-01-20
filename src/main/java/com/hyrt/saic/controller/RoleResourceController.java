@@ -1,11 +1,11 @@
 package com.hyrt.saic.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.hyrt.saic.bean.Role;
-import com.hyrt.saic.bean.RoleSysResource;
-import com.hyrt.saic.bean.SysResource;
+import com.hyrt.saic.bean.*;
 import com.hyrt.saic.service.CommonService;
 import com.hyrt.saic.service.RoleResourceService;
+import com.hyrt.saic.service.UserOperationService;
+import com.hyrt.saic.util.Config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -32,6 +33,8 @@ public class RoleResourceController {
     CommonService commonService;
     @Autowired
     RoleResourceService roleResourceService;
+    @Autowired
+    private UserOperationService operationService;
 
     @RequestMapping("/manager")
     public String getRoleList(HttpServletRequest request, HttpServletResponse resposne) {
@@ -55,7 +58,7 @@ public class RoleResourceController {
                     sysroesourcelevel2.setChildren(syslevel3);
                 }
             }
-            // request.setAttribute("allSysResource",allSysResource);
+            // 权限资源参数
             request.setAttribute("topList", allSysResource);
         } else
             request.setAttribute("eorroMassage", "角色id不正确");
@@ -141,7 +144,10 @@ public class RoleResourceController {
 //            System.out.println(contentResourceId.size());
 //            System.out.println(addResourceId.size());
 //            System.out.println(sysResouredeleteid.size());
+            StringBuffer sbLog = new StringBuffer();
+
             if (addResourceId.size() > 0) {
+                sbLog.append(" 新增资源id{");
                 //处理新增资源权限
                 List<RoleSysResource> roleSysResources = new ArrayList<RoleSysResource>();
                 for (String addrsid : addResourceId) {
@@ -150,10 +156,14 @@ public class RoleResourceController {
                     addRoleSR.setResourceId(Integer.valueOf(addrsid));
                     addRoleSR.setRemark(null);
                     roleSysResources.add(addRoleSR);
+                    sbLog.append(addrsid + ",");
+
                 }
+                sbLog.append("} ");
                 roleResourceService.insertResoureByRoel(roleSysResources);
             }
             if (sysResouredeleteid.size() > 0 && sysResouredeleteid.size() <= sysResoureAllId.size()) {
+
                 // 处理删除资源权限
                 HashMap<String, String> hashMap = new HashMap<>();
                 hashMap.put("roleId", roleid);
@@ -165,11 +175,25 @@ public class RoleResourceController {
                 sbids.deleteCharAt(sbids.lastIndexOf(","));
                 hashMap.put("resourceIds", sbids.toString());
                 roleResourceService.deleteResoureByRole(hashMap);
+                sbLog.append("删除资源id{");
+                sbLog.append(sbids.toString());
+                sbLog.append("}");
+            }
+
+            try {
+                UserOperation operation = new UserOperation(((User) request.getSession().getAttribute(Config.MANAGE)).getUserId(), "/editup", "修改角色: " + role.getRoleName() +" 角色备注:"+rolermark+(sbLog.length()>0? " 的资源权限 " + sbLog.toString():""), new Date(), request.getRemoteAddr());
+                operationService.save(operation);
+            } catch (Exception e) {
+                UserOperation operation = new UserOperation("未获取到用户id", "/editup", "修改角色: " + rolename +" 角色备注:"+rolermark+(sbLog.length()>0? " 的资源权限 " + sbLog.toString():""), new Date(), request.getRemoteAddr());
+                operationService.save(operation);
+                e.printStackTrace();
             }
         }
         request.setAttribute("successMassage", "success");
         List<Role> roleList = roleResourceService.getAllRoles();
         request.setAttribute("roleList", roleList);
+        //角色更新日志信息
+
         return "redirect:../role/manager";
     }
 
@@ -183,12 +207,22 @@ public class RoleResourceController {
             }
             sb.deleteCharAt(sb.lastIndexOf(","));
             roleResourceService.deleteRole(sb.toString());
+            //角色删除日志信息
+            try {
+                UserOperation operation = new UserOperation(((User) request.getSession().getAttribute(Config.MANAGE)).getUserId(), "/deleterole", "删除角色id{" + sb.toString() + "}", new Date(), request.getRemoteAddr());
+                operationService.save(operation);
+            } catch (Exception e) {
+                UserOperation operation = new UserOperation("未获取到用户id", "/deleterole", "删除角色id{" + sb.toString() + "}", new Date(), request.getRemoteAddr());
+                operationService.save(operation);
+                e.printStackTrace();
+            }
 
         } else
             request.setAttribute("successMassage", "id不存在");
         request.setAttribute("successMassage", "success");
         List<Role> roleList = roleResourceService.getAllRoles();
         request.setAttribute("roleList", roleList);
+
         return "redirect:../role/manager";
     }
 
@@ -219,6 +253,23 @@ public class RoleResourceController {
         request.setAttribute("successMassage", "success");
         List<Role> roleList = roleResourceService.getAllRoles();
         request.setAttribute("roleList", roleList);
+        StringBuffer sb=new StringBuffer();
+
+        for(String rId:resourceIds){
+            sb.append(rId);
+            sb.append(",");
+        }
+        //角色删除日志信息
+        try {
+            UserOperation operation = new UserOperation(((User) request.getSession().getAttribute(Config.MANAGE)).getUserId(), "/insert", "添加角色名称:" + roleName + " 备注:" + roleRemark+" 角色资源{"+sb.toString()+"}", new Date(), request.getRemoteAddr());
+            operationService.save(operation);
+
+        } catch (Exception e) {
+            UserOperation operation = new UserOperation("未获取到用户id", "/insert", "添加角色名称:" + roleName + " 备注:" + roleRemark+" 角色资源{"+sb.toString()+"}", new Date(), request.getRemoteAddr());
+            operationService.save(operation);
+            e.printStackTrace();
+        }
+
         return "redirect:../role/manager";
     }
 

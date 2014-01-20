@@ -12,9 +12,8 @@
 
 <div class="ht_content_rightnr">
 
-    <div class="ht_sub_nr1" style="margin-top:20px;">
-        <h4 class="ht_sub_titlesy">快捷方式</h4>
-        <ul class="ht_sylist">
+    <div class="ht_sub_nr1" style="margin-top:20px; height: 614px;">
+        <ul class="ht_sylist" style="margin-top: 40px;">
             <li><a href="/customer/list" class="ht_sykh">客户管理</a></li>
             <li><a href="#" class="ht_sydd">订单管理</a></li>
             <li><a href="#" class="ht_syxxjk">信息监控列表</a></li>
