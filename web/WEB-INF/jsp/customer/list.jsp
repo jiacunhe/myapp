@@ -8,7 +8,18 @@
     <link rel="stylesheet" type="text/css" media="all" href="/css/jsDatePick_ltr.min.css"/>
     <script type="text/javascript" src="/js/jsDatePick.min.1.3.js"></script>
     <script type="text/javascript">
-        function refreshQuery(more) {
+
+        $(document).ready(function(){
+
+            $("#sc").click(function(){
+                $("#startTime").val("");
+                $("#sc").hide();
+            });
+        });
+
+
+
+            function refreshQuery(more) {
             if (more) {
                 $("#simple").hide();
                 $("#all").show();
@@ -259,6 +270,7 @@
 
             <p id="toggle" style="cursor:pointer;">显示高级搜索</p></h4>
         <form method="get" action="/customer/list" class="ht_sub_form3">
+
             <input type="hidden" id="queryType" name="queryType" value="false"/>
             <input type="hidden" id="pageNo" name="pageNo" value="1"/>
 
@@ -272,6 +284,9 @@
                 <div style="margin-top:4px; float:left;">只显示未锁定用户</div>
             </div>
             <div id="all">
+                <div id="sc" style="position:absolute; top:264px; left:176px; z-index: 1">
+                    <img src="${basePath}/manage/images/ht_icosc.gif">
+                </div>
                 <p>账号：</p>
                 <input type="text" name="userId" value="${form.userId}" class="ht_sub_input01"/>
 
@@ -303,7 +318,7 @@
                 <div style="position: absolute;">
                     <p>注册时间：</p>
                     <input type="text" id="startTime" readonly name="startTime" value="${form.startTime}"
-                           class="ht_sub_input01"/>
+                           class="ht_sub_input01" style="text-indent: 0px;"/>
                     <span style="float:left; margin:0px 10px 0px 0px;">至</span>
                     <input type="text" id="endTime" readonly name="endTime" value="${form.endTime}"
                            class="ht_sub_input01"/></div>
