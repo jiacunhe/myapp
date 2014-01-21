@@ -14,5 +14,5 @@ public class Config {
     public static final String MANAGE = "manage";
     public static final int PAGE_SIZE = 10;
     public static final String _UI = "/UI";
-    public static final String USER_HAVE_RESOURCE_KEY = "userHaveResourelist";
+    public static final String USER_RESOURCE_LIST = "userHaveResourelist";
 }

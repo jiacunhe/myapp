@@ -13,15 +13,18 @@
                 return this.optional(element) || (chinese.test(value));
             }, "只能输入中文");
             $.validator.addMethod("telephone", function (value, element) {
-                var telephone = /(^[0-9]{3,4}\-[0-9]{7,8}$)|(^[0-9]{7,8}$)|(^\([0-9]{3,4}\)[0-9]{3,8}$)|(^0{0,1}13[0-9]{9}$)/;
+                var telephone = /(^[0-9]{3,4}\-[0-9]{7,8}$)|(^[0-9]{7,8}$)|(^\([0-9]{3,4}\)[0-9]{3,8}$)|(^0{0,1}1[3|4|5|8][0-9]{9}$)/;
                 return this.optional(element) || (telephone.test(value));
+            }, "电话号码不正确");
+            $.validator.addMethod("userId", function (value, element) {
+                var userId = /^[a-zA-Z]{1}[a-zA-Z0-9]{5,14}$/;
+                return this.optional(element) || (userId.test(value));
             }, "电话号码不正确");
             $("#form").validate({
                 rules: {
                     userId: {
                         required: true,
-                        minlength: 6,
-                        maxlength: 16,
+                        userId: true,
                         remote: {
                             url: "/user/checkUserId"
                         }
@@ -36,10 +39,9 @@
                 },
                 messages: {
                     userId: {
-                        required: "请输入用户名",
-                        minlength: "用户名不能少于6位",
-                        maxlength: "用户名不能超过16位",
-                        remote:"用户名被占用"
+                        required: "请输入账号",
+                        userId: "账号必须为以字母开头的6-15位字母和数字组合",
+                        remote:"账号已存在"
                     },
                     username: {
                         required: "请输入姓名",
@@ -82,7 +84,7 @@
                         </li>
                         <li><span>*姓 名：</span><input name="username" type=text class="ht_sub_li3"></li>
                         <li>
-                            <span>*证件类型：</span>
+                            <span>证件类型：</span>
                             <SELECT class="ht_sub_li3" name="certificate">
                                 <OPTION value="身份证">身份证</OPTION>
                                 <OPTION value="港澳通行证">港澳通行证</OPTION>

@@ -11,6 +11,7 @@ import com.hyrt.saic.service.UserService;
 import com.hyrt.saic.util.Config;
 import com.hyrt.saic.util.enums.PaymentRule;
 import com.hyrt.saic.util.enums.UserStatus;
+import com.hyrt.saic.util.enums.UserType;
 import me.sfce.library.mybatis.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -73,7 +74,11 @@ public class CustomerController extends BaseController {
     public String modifyCustomerUI(String _userId, HttpServletRequest request) {
         User user = userService.getById(_userId);
         request.setAttribute("customer", user);
-        request.setAttribute("paymentRules", PaymentRule.values());
+        if (user instanceof Manager) {
+            request.setAttribute("paymentRules", PaymentRule.values());
+        } else {
+            request.setAttribute("paymentRules", new PaymentRule[]{PaymentRule.PAY_BEFORE});
+        }
         CustomerQueryForm form = new CustomerQueryForm();
         form.setUserId(request.getParameter("userId"));
         form.setUsername(request.getParameter("username"));
@@ -196,6 +201,10 @@ public class CustomerController extends BaseController {
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String list(CustomerQueryForm form, Integer pageNo, Boolean queryType, HttpServletRequest request) {
+        User operator = (User) request.getSession().getAttribute(Config.MANAGE);
+        if (operator.getUserType() == UserType.CUSTOMER) {
+            form.setCreatorId(operator.getUserId());
+        }
         if (form.getUsername() != null) {
             try {
                 form.setUsername(new String(form.getUsername().getBytes("ISO8859-1"), "UTF-8"));
@@ -227,7 +236,6 @@ public class CustomerController extends BaseController {
         request.setAttribute("statusMap", statusMap);
         if (null == queryType) queryType = false;
         request.setAttribute("queryType", queryType);
-        User operator = (User) request.getSession().getAttribute(Config.MANAGE);
         userOperationService.save(new UserOperation(operator.getUserId(), "/customer/list", "访问客户管理", new Date(), request.getRemoteAddr()));
         return (jsp("customer/list"));
     }
