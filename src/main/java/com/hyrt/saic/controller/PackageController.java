@@ -81,6 +81,28 @@ public class PackageController {
         return "/package/buy.jsp";
     }
 
+    @RequestMapping("/assign")
+    public String listPackageGive(String order,String userId,Integer page,HttpServletRequest request){
+        String type="vip";
+        String status="on";
+        User user = (User) request.getSession().getAttribute("user");
+
+
+
+        Map res=packageService.listChargePackageUser(type,order,page,null,status);
+        request.setAttribute("totalitem",res.get("totalitem"));    //总元素
+        request.setAttribute("totalpage",res.get("totalpage"));    //总页数
+        request.setAttribute("page",res.get("page"));    //当前页
+        request.setAttribute("type",type);
+        request.setAttribute("userId",userId);
+        request.setAttribute("list",(List)res.get("list"));    //查询结果list
+
+        UserOperation operation = new UserOperation(user.getUserId(), "/package/give", "后台查询包月套餐", new Date(), request.getRemoteAddr());
+        userOperationService.save(operation);
+
+        return "/package/assign.jsp";
+    }
+
     @RequestMapping("/updateStatus")
     public String updateStatus(Integer id,Integer page,String status,String status2,String order,String userId,String type, HttpServletRequest request, HttpServletResponse response){
 
@@ -153,5 +175,69 @@ public class PackageController {
         }
         return null;
     }
+
+
+    @RequestMapping("/contract/UI")
+    public String packageContractAddUI(String userId,HttpServletRequest request){
+
+        User user = (User) request.getSession().getAttribute("manage");
+        UserOperation operation = new UserOperation(user.getUserId(), "/package/add/contractUI", "前往增加合同套餐页面", new Date(), request.getRemoteAddr());
+        userOperationService.save(operation);
+        request.setAttribute("userId",userId);
+
+        return "/package/contract.jsp";
+    }
+
+    @RequestMapping("/addContract")
+    public String insertContractPackage(String packageName,BigDecimal price,String type,String userId,String remark, String status,
+                                Integer quantity,String remark2,
+                                Integer quantity2,String remark3,HttpServletResponse response,HttpServletRequest request){
+        if("".equals(packageName)) packageName=null;
+        if("".equals(price))  price=null;
+        if("".equals(type)) type=null;
+        if("".equals(userId)) userId=null;
+        if("".equals(remark))  remark=null;
+        if("".equals(status)) status=null;
+        if("".equals(quantity)) quantity=null;
+        if("".equals(remark2)) remark2=null;
+        if("".equals(quantity2)) quantity2=null;
+        if("".equals(remark3))  remark3=null;
+
+        type="private";
+
+        ChargePackage chargePackage=new ChargePackage();
+        chargePackage.setPackageName(packageName);
+        chargePackage.setPrice(price);
+        chargePackage.setType(type);
+        chargePackage.setUserId(userId);
+        chargePackage.setRemark(remark);
+        chargePackage.setStatus(status);
+        ChargePackageDetaill cd1=new ChargePackageDetaill();
+        cd1.setBusinessTypeId(1);
+
+        cd1.setQuantity(quantity);
+        cd1.setRemark(remark2);
+        ChargePackageDetaill cd2=new ChargePackageDetaill();
+        cd2.setBusinessTypeId(2);
+        cd2.setQuantity(quantity2);
+        cd2.setRemark(remark3);
+        List<ChargePackageDetaill> chargePackageDetaillList=new ArrayList<ChargePackageDetaill>();
+        chargePackageDetaillList.add(cd1);
+        chargePackageDetaillList.add(cd2);
+        packageService.insert(chargePackage,chargePackageDetaillList);
+
+        User user = (User) request.getSession().getAttribute("manage");
+        UserOperation operation = new UserOperation(user.getUserId(), "/package/addContract", "增加合同套餐", new Date(), request.getRemoteAddr());
+        userOperationService.save(operation);
+
+
+        try {
+            response.sendRedirect("/customer/list");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 
 }

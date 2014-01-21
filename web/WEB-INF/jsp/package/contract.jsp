@@ -13,17 +13,7 @@
 <head>
     <%@ include file="/WEB-INF/jsp/manage/commons.jspf" %>
     <title>套餐制定</title>
-    <script language="javascript">
-        function hide(str){
-              if(str=='vip'){
-            document.getElementById('a').style.display = "none";
-            document.getElementById('b').style.display = "none"; }
-            else{
-                  document.getElementById('a').style.display = "block";
-                  document.getElementById('b').style.display = "block"
-              }
-        }
-    </script>
+
 </head>
 
 <body>
@@ -37,20 +27,11 @@
     <div class="ht_sub_nr1">
         <h4 class="ht_sub_title0"><img src="${basePath}/manage/images/ht_ico06.png" /><p>新增</p></h4>
 
-        <form action="/package/add"  method="post" class="ht_sub_form5">
-
+        <form action="/package/addContract"  method="post" class="ht_sub_form5">
+            <span><p>用户名称：</p><input id="userId" name="userId" type="text" readonly/>  </span>
             <span><p>套餐名称：</p><input id="packageName" name="packageName" type="text" class="ht_sub_input11"/></span>
             <span><p>套餐价格：</p><input id="price" name="price" type="text" class="ht_sub_input11"/>元</span>
-                             <input id="userId" name="userId" type="hidden"/>
-
-            <span><p>套餐类型：</p><select  name="type" id="type" onchange="hide(this.value)">
-                                    <option value="public">
-                                        公有套餐
-                                    </option>
-                                    <option value="vip">
-                                        包月套餐
-                                    </option>
-                                </select></span>
+            <span><p>套餐类型：</p><input id="type" name="type" value="合同套餐" readonly type="text" class="ht_sub_input11"/></span>
                         <span class="neirong"><p>套餐内容：</p>
                         	<div class="ht_sub_tcnr">
                                 <ul>
