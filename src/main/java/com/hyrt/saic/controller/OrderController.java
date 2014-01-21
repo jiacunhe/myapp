@@ -2,10 +2,12 @@ package com.hyrt.saic.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.hyrt.saic.bean.User;
+import com.hyrt.saic.bean.UserOperation;
 import com.hyrt.saic.bean.order.Order;
 import com.hyrt.saic.bean.order.OrderDetail;
 import com.hyrt.saic.service.CommonService;
 import com.hyrt.saic.service.OrderService;
+import com.hyrt.saic.service.UserOperationService;
 import com.hyrt.saic.util.enums.DataOperateType;
 import com.hyrt.saic.util.ExcelAnalyze;
 import com.hyrt.saic.util.enums.OrderStatus;
@@ -40,7 +42,8 @@ public class OrderController {
     CommonService commonService;
     @Autowired
     OrderService orderService;
-
+    @Autowired
+    private UserOperationService operationService;
     @RequestMapping("/group")
 
     public String group (HttpServletRequest request){
@@ -155,7 +158,8 @@ public class OrderController {
             request.setAttribute("code",code);
             request.setAttribute("name",name);
   //      }
-
+        UserOperation operation = new UserOperation(user.getUserId(), "/order/search", "订单查询，查询条件：类型>"+type+";开始时间>"+sday+";结束时间>"+eday+";查询条件>"+code+"|"+name, new Date(), request.getRemoteAddr());
+        operationService.save(operation);
         return "/order/search.jsp";
     }
 
@@ -194,6 +198,10 @@ public class OrderController {
 
             Map res = orderService.selectOrder(params);
             res.put("businessType",businessType);
+
+
+        UserOperation operation = new UserOperation(user.getUserId(), "/order/search", "订单查询，查询条件：类型>"+type+";开始时间>"+sday+";结束时间>"+eday+";查询条件>"+code+"|"+name+";page>"+page, new Date(), request.getRemoteAddr());
+        operationService.save(operation);
              return JSON.toJSONString(res);
     }
 
@@ -201,10 +209,11 @@ public class OrderController {
     @RequestMapping("/submit")
     public String submit(Integer orderType,String groupCode,String groupName,String groupRemark,String groupMonitor,Integer businessType,String certificate,Integer cycle, HttpServletRequest request){
           cycle=1;
+        User user =(User) request.getSession().getAttribute("user");
+        String userId=user.getUserId();
         if(groupCode!=null && groupName!=null && groupRemark !=null){
           // && !"".equals(groupCode) && !"".equals(groupName) && !"".equals(groupRemark) && !"".equals(groupMonitor)
-            User user =(User) request.getSession().getAttribute("user");
-            String userId=user.getUserId();
+
 
             String[] code = groupCode.split(",");
             String[] name = groupName.split(",");
@@ -276,12 +285,15 @@ public class OrderController {
             request.setAttribute("orderTypePP",orderType);
 
         }
-
+        UserOperation operation = new UserOperation(user.getUserId(), "/order/submit", "填写订单", new Date(), request.getRemoteAddr());
+        operationService.save(operation);
         return "/order/confirm.jsp";
     }
 
     @RequestMapping("/confirm")
     public String confirm(HttpServletRequest request){
+        User user =(User) request.getSession().getAttribute("user");
+        String userId=user.getUserId();
             Map map = new HashMap();
             List beans = (List)request.getSession().getAttribute("orderBeans");
 
@@ -292,16 +304,15 @@ public class OrderController {
             } catch (Exception e) {
                 e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
             }
+        UserOperation operation = new UserOperation(user.getUserId(), "/order/confirm", "提交订单", new Date(), request.getRemoteAddr());
+        operationService.save(operation);
         return      this.detail(((Order)beans.get(0)).getId(),1,request);
     }
 
 
     @RequestMapping("/detail")
     public String detail(String id,Integer page,HttpServletRequest request){
-
-
         request.setAttribute("orderInfo", orderService.selectOrderInfoByOrderId(id));
-
         Map params = new HashMap();
         params.put("orderId",id);
         params.put("page",page);
@@ -327,6 +338,9 @@ public class OrderController {
             params.put("id",id);
             params.put("userId",userId);
             Integer orderType= orderService.selectForPermissionView(params);
+
+            UserOperation operation = new UserOperation(user.getUserId(), "/order/result", "查看数据 detailId="+id, new Date(), request.getRemoteAddr());
+            operationService.save(operation);
             if(orderType!=null){
                 if(orderType==1 || orderType==3 || orderType==4){
 
@@ -346,6 +360,9 @@ public class OrderController {
         }else{
             return null;
         }
+
+
+
     }
 
 
@@ -357,8 +374,14 @@ public class OrderController {
         params.put("orderDetailId",id);
         params.put("orderType",orderType);
         params.put("page",page);
+
+
         request.setAttribute("objects",orderService.selectMonitorResultList(params));
 
+
+        User user =(User) request.getSession().getAttribute("user");
+        UserOperation operation = new UserOperation(user.getUserId(), "/order/subsidiary", "查看监控动态 detailId="+id, new Date(), request.getRemoteAddr());
+        operationService.save(operation);
          return "/order/subsidiary.jsp";
     }
 
@@ -380,7 +403,13 @@ public class OrderController {
                 }
 
             }
+
         }
+
+        User user =(User) request.getSession().getAttribute("user");
+        UserOperation operation = new UserOperation(user.getUserId(), "/order/upload", "上传文件", new Date(), request.getRemoteAddr());
+        operationService.save(operation);
+
         return "/order/upFileProgress.jsp";
     }
 
@@ -446,7 +475,6 @@ public class OrderController {
 
         }
 
-
         return "/order/upFileResult.jsp";
 
     }
@@ -492,6 +520,11 @@ public class OrderController {
             } catch (Exception e) {
                 e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
             }
+
+
+            UserOperation operation = new UserOperation(user.getUserId(), "/order/upFileResult", "上传文件生成订单", new Date(), request.getRemoteAddr());
+            operationService.save(operation);
+
             return this.detail(orderId,1,request);
 
         }else{

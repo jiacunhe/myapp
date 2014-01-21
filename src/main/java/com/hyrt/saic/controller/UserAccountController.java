@@ -2,9 +2,11 @@ package com.hyrt.saic.controller;
 
 import com.hyrt.saic.bean.User;
 import com.hyrt.saic.bean.UserAssignPackage;
+import com.hyrt.saic.bean.UserOperation;
 import com.hyrt.saic.dao.RechargeRecordMapper;
 import com.hyrt.saic.service.CommonService;
 import com.hyrt.saic.service.RechargeRecordService;
+import com.hyrt.saic.service.UserOperationService;
 import com.hyrt.saic.service.UserPackageApplyService;
 import com.hyrt.saic.util.enums.DataOperateType;
 import me.sfce.library.mybatis.util.Page;
@@ -37,6 +39,9 @@ public class UserAccountController {
     @Autowired
     private RechargeRecordService rechargeRecordService;
 
+    @Autowired
+    private UserOperationService operationService;
+
     @RequestMapping("/search")
     public String search(Integer page,String userId,String userName,HttpServletRequest request){
 
@@ -66,7 +71,9 @@ public class UserAccountController {
         if(page == null){
                         this.searchMonthly(null,null,null,null,request);
         }
-
+        User user =(User) request.getSession().getAttribute("manage");
+        UserOperation operation = new UserOperation(user.getUserId(), "/userAccount/search", "查看用户账户信息 userId="+userId+";userName="+userName, new Date(), request.getRemoteAddr());
+        operationService.save(operation);
         return "/userAccount/search.jsp";
 
     }
@@ -105,7 +112,9 @@ public class UserAccountController {
             request.setAttribute("totalPage",totalPage);
             request.setAttribute("countItem",countItem);
    //     }
-
+        User user =(User) request.getSession().getAttribute("manage");
+        UserOperation operation = new UserOperation(user.getUserId(), "/userAccount/searchMonthly", "查看用户包月信息 userId="+userId+";userName="+userName+";yearMonth="+yearMonth, new Date(), request.getRemoteAddr());
+        operationService.save(operation);
         return "/userAccount/search.jsp";
 
     }
@@ -158,6 +167,11 @@ public class UserAccountController {
                 }*/
                 request.setAttribute("message","分配成功");
                 request.setAttribute("availableNum",(all-used-quantity));
+
+
+                UserOperation operation = new UserOperation(user.getUserId(), "/userAccount/allotPackage", "给子帐号分配包月条数 userId="+userId+";receiver="+receiver+";effectiveType="+effectiveType+";quantity="+quantity, new Date(), request.getRemoteAddr());
+                operationService.save(operation);
+
             }else if(submitttt!=null){
                 request.setAttribute("message","数据不正确，请勿恶意操作");
             }
@@ -189,7 +203,8 @@ public class UserAccountController {
         request.setAttribute("thisUserType","MANAGER");
 
         request.setAttribute("result",result);
-
+        UserOperation operation = new UserOperation(user.getUserId(), "/userAccount/allotSearch", "包月分配记录查询 userId="+userId+";receiver="+receiver+";page="+page, new Date(), request.getRemoteAddr());
+        operationService.save(operation);
         return "/userAccount/allotSearch.jsp";
     }
 
@@ -203,6 +218,10 @@ public class UserAccountController {
             allocatee = userId;
         }
         userPackageApplyService.allotStop(id,allocatee);
+
+        UserOperation operation = new UserOperation(user.getUserId(), "/userAccount/allotStop", "停止分配 userId="+userId+";receiver="+receiver+";id="+id, new Date(), request.getRemoteAddr());
+        operationService.save(operation);
+
         return this.allotSearch(page,status,allocatee,receiver,request);
 
     }
