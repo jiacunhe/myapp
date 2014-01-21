@@ -119,7 +119,7 @@ function delrow(obj){
 
 	var i=document.getElementById('gtb').rows.length;
 	if(i<3){
-        alert("Sorry！您不能再删除了..."); return false;
+        alert("对不起！您不能再删除了..."); return false;
     }
     
 	var j=((obj.parentNode).parentNode).parentNode.rowIndex;
@@ -135,7 +135,7 @@ function insRow()
 	var j=document.getElementById('gtb').rows.length;
 	//alert(i);
 	if(j>5){
-        alert("Sorry！您不能再增加了...");return false;
+        alert("对不起！您不能再增加了...");return false;
 
 //            dialog=new Dialog("提示");
 //            dialog.SetXY(200,200);
@@ -167,16 +167,22 @@ function checkdata(){
 	var groupremark="";
 	var groupmonitor="";
 	for(k=1;k<i+1;k++){
-		if(document.getElementById('groupcode'+k) == undefined || document.getElementById('groupcode'+k).value == ""){
-		}else{
+		if(document.getElementById('groupcode'+k) == undefined || document.getElementById('groupcode'+k).value == "" || document.getElementById('groupname'+k).value == undefined || document.getElementById('groupname'+k).value == ""){
+
+        }else{
+            if(groupcode.indexOf(document.getElementById('groupcode'+k).value)>=0){
+                alert("对不起！您添加数据有问题请检查...");return false;
+                break;
+            }
 		  groupcode += document.getElementById('groupcode'+k).value+",";
 		  groupname += document.getElementById('groupname'+k).value+",";
 		  groupremark += document.getElementById('groupremark'+k).value+",";
 		  groupmonitor += document.getElementById('group'+k+"monitor").value+",";
 		}
 	}
+
 	if(groupcode==""){
-		 alert("Sorry！您没有添加任何可用数据...");return false;
+		 alert("对不起！您没有添加任何可用数据...");return false;
 	}else{
 //		document.getElementById('groupcode').value=	groupcode.length>0?groupcode.substring(0,groupcode.length-1):"";
 //		document.getElementById('groupname').value= groupname.length>0?groupname.substring(0,groupname.length-1):"";

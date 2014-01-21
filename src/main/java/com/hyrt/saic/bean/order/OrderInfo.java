@@ -31,6 +31,14 @@ public class OrderInfo {
 
     private String statusName;
 
+    private String monitorOverTime;
+    public String getMonitorOverTime() {
+        return monitorOverTime;
+    }
+
+    public void setMonitorOverTime(String monitorOverTime) {
+        this.monitorOverTime = monitorOverTime;
+    }
 
 
 

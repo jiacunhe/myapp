@@ -122,7 +122,7 @@ public class OrderController {
     public String orderSearch (String type,String sday,String eday,String code,String name,String submit,HttpServletRequest request){
         request.setAttribute("orderTypeList",orderService.selectOrderType());
 
-        if(submit!=null){
+ //       if(submit!=null){
 
             User user =(User) request.getSession().getAttribute("user");
             String userId=user.getUserId();
@@ -154,7 +154,7 @@ public class OrderController {
             request.setAttribute("eday",eday);
             request.setAttribute("code",code);
             request.setAttribute("name",name);
-        }
+  //      }
 
         return "/order/search.jsp";
     }
@@ -200,7 +200,7 @@ public class OrderController {
 
     @RequestMapping("/submit")
     public String submit(Integer orderType,String groupCode,String groupName,String groupRemark,String groupMonitor,Integer businessType,String certificate,Integer cycle, HttpServletRequest request){
-
+          cycle=1;
         if(groupCode!=null && groupName!=null && groupRemark !=null){
           // && !"".equals(groupCode) && !"".equals(groupName) && !"".equals(groupRemark) && !"".equals(groupMonitor)
             User user =(User) request.getSession().getAttribute("user");
@@ -242,9 +242,9 @@ public class OrderController {
                     a++;
                 } else if(!code[i].equals("")&&  monitor!=null&& monitor[i].equals("1")){
                     if(b==0){
-                        beans.add( new Order(orderId2,businessType+1,orderType+3,new Timestamp(new Date().getTime()),userId,OrderStatus.查询中,cycle));
+                        beans.add( new Order(orderId2,businessType+1,orderType+3,new Timestamp(new Date().getTime()),userId,OrderStatus.监控中,cycle));
                     }
-                    orderDetail = new  OrderDetail( orderId2, (businessType+1)+"", name[i],  code[i], null,OrderStatus.查询中, remark[i]);
+                    orderDetail = new  OrderDetail( orderId2, (businessType+1)+"", name[i],  code[i], null,OrderStatus.监控中, remark[i]);
                     if(certType!=null){
                         orderDetail.setCertType(certType[i]);
                     }
@@ -252,9 +252,9 @@ public class OrderController {
                     b++;
                 } else if(!code[i].equals("")&&  monitor==null){
                     if(c==0){
-                        beans.add( new Order(orderId2,businessType,orderType,new Timestamp(new Date().getTime()),userId,OrderStatus.查询中,cycle));
+                        beans.add( new Order(orderId2,businessType,orderType,new Timestamp(new Date().getTime()),userId,OrderStatus.监控中,cycle));
                     }
-                    orderDetail = new  OrderDetail( orderId2, businessType+"", name[i],  code[i], null,OrderStatus.查询中, remark[i]);
+                    orderDetail = new  OrderDetail( orderId2, businessType+"", name[i],  code[i], null,OrderStatus.监控中, remark[i]);
                     if(certType!=null){
                         orderDetail.setCertType(certType[i]);
                     }
@@ -273,6 +273,7 @@ public class OrderController {
             request.setAttribute("countB",b);
             request.setAttribute("orderTypeNameB",((Map)request.getServletContext().getAttribute("orderType")).get(orderType+3));
 
+            request.setAttribute("orderTypePP",orderType);
 
         }
 

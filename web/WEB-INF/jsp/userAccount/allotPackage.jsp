@@ -34,7 +34,7 @@
                     <select class="ht_sub_input013" name="receiver">
 
                         <c:forEach  var="obj" items="${subUserList}">
-                            <option value="${obj.userId}">${obj.userName}</option>
+                            <option value="${obj.userId}">${obj.userId}</option>
                         </c:forEach>
                     </select>
                 </span>

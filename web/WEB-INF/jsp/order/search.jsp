@@ -17,7 +17,14 @@
         .page ul{ width: 97%; float: left}
         .page ul li{ float: left; margin-left: 0px; margin-left: 5px; padding: 3px;}
         .page ul li a img{padding-top: 7px;}
-        .flleft{text-align: left; padding-left: 4px;}
+        .tdcc{text-align: left; padding-left: 4px;white-space:nowrap;
+
+            word-break:keep-all;
+
+            overflow:hidden;
+
+            text-overflow:ellipsis;       width: 300px;
+        }
     </style>
     <title>我的查询</title>
 
@@ -103,10 +110,10 @@
         </tr>
 
         <c:forEach  var="obj" items="${disposable.list}"   varStatus="status">
-            <tr style="text-align: center">
+            <tr style="text-align: center; width: 749px;">
                 <td>${(disposable.page-1)*5+status.count}</td>
                 <td>${obj.orderTypeName}</td>
-                <td  class="flleft">${obj.objCode} | ${obj.objName}</td>
+                <td title="${obj.objCode} | ${obj.objName}"><div class="tdcc">${obj.objCode} | ${obj.objName}</div></td>
                 <td>${obj.createTime}</td>
                 <td>${obj.statusName}</td>
                 <td>
@@ -151,20 +158,23 @@
 <dd style="display:none;" id="content3">
     <table width="749" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1">
         <tr class="sub_tr1">
-            <th width="7%">序号</th>
+            <th width="6%">序号</th>
             <th width="10%">查询类型</th>
-            <th width="42%">查询对象</th>
-            <th width="14%">查询时间</th>
-            <th width="13%">状态</th>
-            <th width="7%">动态</th>
-            <th width="7%">数据</th>
+            <th width="39%">查询对象</th>
+            <th width="25%">监控区间</th>
+            <th width="8%">状态</th>
+            <th width="6%">动态</th>
+            <th width="6%">数据</th>
         </tr>
         <c:forEach  var="obj" items="${recyclable.list}"   varStatus="status">
-            <tr style="text-align: center">
+            <tr style="text-align: center;width: 749px">
                 <td>${(recyclable.page-1)*5+status.count}</td>
                 <td>${obj.orderTypeName}</td>
-                <td class="flleft">${obj.objCode} | ${obj.objName}</td>
-                <td>${obj.createTime}</td>
+                <td title="${obj.objCode} | ${obj.objName}"><div class="tdcc">${obj.objCode} | ${obj.objName}</div></td>
+                <td>
+                    ${obj.createTime}  &nbsp; ${obj.monitorOverTime}
+
+                </td>
                 <td>${obj.statusName}</td>
                 <td>
 
@@ -202,8 +212,6 @@
 
         <tr class="page">
             <td colspan="7">
-
-
                 <ul>
                     <li>页次：<strong> ${recyclable.page }</strong>/<span><strong>${recyclable.totalpage}</strong></span> 页 </span> <span >总记录数：${recyclable.totalitem }条 </li>
                     <li><a href="javascript:search('recyclable',1)"><img src="${pageContext.request.contextPath}/images/firstPage.png"/></a></li>
@@ -220,9 +228,6 @@
 
                     </li>
                 </ul>
-
-
-
             </td>
         </tr>
     </table>
@@ -245,7 +250,7 @@
         document.getElementById("content").innerHTML = document.getElementById("content2").innerHTML;
     }
 
-
+    var lastTabl;
     function tabCard(){
         var e = window.event?window.event.srcElement:e.target;
 
@@ -258,16 +263,26 @@
         for(i=0;i<document.getElementById("select_table").childNodes.length;i++)
         {
             if(document.getElementById("select_table").childNodes.item(i).nodeName=="A"){
+             //   alert(document.getElementById("select_table").childNodes.item(i).id);
                 document.getElementById("select_table").childNodes.item(i).style.background = "none";
                 document.getElementById("select_table").childNodes.item(i).style.color = "#3f3f3f";
                // display:block;width:187px;height:34px;line-height:34px;float:left;margin-top:1px;text-align:center;font-weight:bold;font-size:12px; display:inline; color:#3f3f3f;
             }
 
         }
-        e.style.background = "url(/images/sub_ttbg4.gif) no-repeat";
-        e.style.color = "#fd7d00";
+        if(e.nodeName=="A"){
+            lastTabl = e;
+            e.style.background = "url(/images/sub_ttbg4.gif) no-repeat";
+            e.style.color = "#fd7d00";
 
-        e.blur();			//Chrome和Opera不需要
+            e.blur();          //Chrome和Opera不需要
+        }else{
+            lastTabl.style.background = "url(/images/sub_ttbg4.gif) no-repeat";
+            lastTabl.style.color = "#fd7d00";
+
+            lastTabl.blur();          //Chrome和Opera不需要
+        }
+
     }
 </script>
 
@@ -340,7 +355,7 @@
             content+='<tr style="text-align: center">';
             content+='<td>'+((obj.page-1)*5+i+1)+'</td>';
             content+='<td>'+obj.list[i].orderTypeName+'</td>';
-            content+='<td class="flleft">'+obj.list[i].objCode+' | '+obj.list[i].objName+'</td>';
+            content+='<td title="'+obj.list[i].objCode+' | '+obj.list[i].objName+'"><div class="tdcc">'+obj.list[i].objCode+' | '+obj.list[i].objName+'</div></td>';
             content+='<td>'+obj.list[i].createTime+'</td>';
             content+='<td>'+obj.list[i].statusName+'</td>';
 
@@ -391,9 +406,9 @@
         content+='<tr class="sub_tr1">';
         content+='<th width="7%">序号</th>';
         content+='<th width="10%">查询类型</th>';
-        content+='<th width="42%">查询对象</th>';
-        content+='<th width="14%">查询时间</th>';
-        content+='<th width="13%">状态</th>';
+        content+='<th width="40%">查询对象</th>';
+        content+='<th width="19%">监控区间</th>';
+        content+='<th width="10%">状态</th>';
         content+='<th width="7%">动态</th>';
         content+='<th width="7%">数据</th>';
         content+='</tr>';
@@ -403,8 +418,8 @@
             content+='<tr style="text-align: center">';
             content+='<td>'+((obj.page-1)*5+i+1)+'</td>';
             content+='<td>'+obj.list[i].orderTypeName+'</td>';
-            content+='<td class="flleft">'+obj.list[i].objCode+' | '+obj.list[i].objName+'</td>';
-            content+='<td>'+obj.list[i].createTime+'</td>';
+            content+='<td title="'+obj.list[i].objCode+' | '+obj.list[i].objName+'"><div class="tdcc">'+obj.list[i].objCode+' | '+obj.list[i].objName+'<div></td>';
+            content+='<td>'+obj.list[i].createTime +" &nbsp; "+ obj.list[i].monitorOverTime+'</td>';
             content+='<td>'+obj.list[i].statusName+'</td>';
             if(obj.list[i].status == '2'|| obj.list[i].status == '6'){
                 content+=' <td><a href="javascript:openDetail('+obj.list[i].id+','+obj.list[i].orderType+')"><img src="/images/kaka.png" alt="查看" title="查看" height="20" width="20"></a></td>';

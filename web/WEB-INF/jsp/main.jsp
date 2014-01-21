@@ -19,10 +19,8 @@
     <script language="javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script language=javascript src="/js/js.js"> </script>
     <script language=javascript src="/js/public.js"></script>
-    <title>企业查询</title>
+    <title>工商企业查询管理系统</title>
     <style type="text/css">
-
-
         body {
             overflow-x : hidden;
         }

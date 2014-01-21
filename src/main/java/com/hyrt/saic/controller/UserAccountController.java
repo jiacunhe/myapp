@@ -72,10 +72,12 @@ public class UserAccountController {
     @RequestMapping("/searchMonthly")
     public String searchMonthly(Integer page,String userId,String userName,String yearMonth,HttpServletRequest request){
 
-
+//        User user =(User) request.getSession().getAttribute("manage");
+//        String assignorId=user.getUserId();
         if(page !=null){
             int pageSize=5;
             Map params = new HashMap();
+//            if(!"".equals(assignorId)) params.put("assignorId",assignorId);
 
             if(!"".equals(userId)) params.put("userId",userId);
             if(!"".equals(userName)) params.put("userName",userName);

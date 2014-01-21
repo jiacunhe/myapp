@@ -102,7 +102,7 @@
 
         var i=document.getElementById('gtb').rows.length;
         if(i<3){
-            alert("Sorry！您不能再删除了..."); return false;
+            alert("对不起！您不能再删除了..."); return false;
         }
 
         var j=((obj.parentNode).parentNode).parentNode.rowIndex;
@@ -118,7 +118,7 @@
         var j=document.getElementById('gtb').rows.length;
         //alert(i);
         if(j>5){
-            alert("Sorry！您不能再增加了...");return false;
+            alert("对不起！您不能再增加了...");return false;
 
 //            dialog=new Dialog("提示");
 //            dialog.SetXY(200,200);
@@ -135,10 +135,10 @@
         var v=row.insertCell(3);v.vAlign='bottom';
         v.align = "center";
       //  z.innerHTML=' <input type="checkbox" name="checkbox'+i+'" value="'+i+'">';
-        y.innerHTML='<input type="text" id="groupcode'+i+'" name="groupcode'+i+'" style="background:none; border:none; border-bottom:#666666 1px solid; width:150px;">';
-        x.innerHTML='<input type="text" id="groupname'+i+'" name="groupname'+i+'"  style="background:none; border:none; border-bottom:#666666 1px solid; width:150px;">';
-        w.innerHTML='<input type="text" id="groupremark'+i+'" name="groupremark'+i+'"  style="background:none; border:none; border-bottom:#666666 1px solid; width:150px;">';
-        v.innerHTML='<div style="width:100%;text-align: center;"> <input type="hidden" id="group'+i+'monitor" name="group'+i+'monitor" value="0"><a href="#" onclick="delrow(this)">删除</a></div>';
+        y.innerHTML='<input type="text" id="groupcode'+i+'" name="groupcode'+i+'"  class="input_for_addline">';
+        x.innerHTML='<input type="text" id="groupname'+i+'" name="groupname'+i+'"  class="input_for_addline">';
+        w.innerHTML='<input type="text" id="groupremark'+i+'" name="groupremark'+i+'"  class="input_for_addline">';
+        v.innerHTML='<div style="width:100%;text-align: center;"> <input type="hidden" id="group'+i+'monitor" name="group'+i+'monitor" value="0"><a href="#" onclick="delrow(this)" class="deleteLine">删除</a></div>';
 
     }
 
@@ -150,8 +150,12 @@
         var groupremark="";
         var groupmonitor="";
         for(k=1;k<i+1;k++){
-            if(document.getElementById('groupcode'+k) == undefined || document.getElementById('groupcode'+k).value == ""){
+            if(document.getElementById('groupcode'+k) == undefined || document.getElementById('groupcode'+k).value == ""|| document.getElementById('groupname'+k).value == undefined || document.getElementById('groupname'+k).value == ""){
             }else{
+                if(groupcode.indexOf(document.getElementById('groupcode'+k).value)>=0){
+                    alert("对不起！您添加数据有问题请检查...");return false;
+                    break;
+                }
                 groupcode += document.getElementById('groupcode'+k).value+",";
                 groupname += document.getElementById('groupname'+k).value+",";
                 groupremark += document.getElementById('groupremark'+k).value+",";
@@ -159,7 +163,7 @@
             }
         }
         if(groupcode==""){
-            alert("Sorry！您没有添加任何可用数据...");return false;
+            alert("对不起！您没有添加任何可用数据...");return false;
         }else{
             document.getElementById('groupcode').value=	groupcode+"--";
             document.getElementById('groupname').value= groupname+"--";

@@ -32,7 +32,7 @@
         <result column="createTime" property="createTime" jdbcType="VARCHAR" />
         <result column="cycle" property="cycle" jdbcType="INTEGER" />
         <result column="remark" property="remark" jdbcType="VARCHAR" />
-
+        <result column="monitorOverTime" property="monitorOverTime" jdbcType="VARCHAR" />
     </resultMap>
 
   <resultMap id="ResultMapWithBLOBs" type="com.hyrt.saic.bean.order.Order" extends="BaseResultMap" >
@@ -244,7 +244,7 @@
     <select id="selectOrderInfo" resultMap="orderInfo" parameterType="java.util.Map" >
         SELECT d.id,d.`orderId`,d.`monitorType`,d.`objCode`,d.`objName`,d.`certType` objCertType,d.`status`,d.`remark`,
         o.`orderType`,DATE_FORMAT(o.createTime,'%Y-%m-%d %H:%i') createTime,o.`userId`,o.`cycle`,
-        t.`orderName` orderTypeName
+        t.`orderName` orderTypeName,DATE_FORMAT(date_add(o.createTime, interval o.cycle YEAR),'%Y-%m-%d') monitorOverTime
         FROM t_order_detail d,t_order o,t_order_type t WHERE d.`orderId`=o.`id` AND o.`orderType`=t.`id`
         <if test="code != null" >
             and d.objCode like '%${code}%'
@@ -263,6 +263,9 @@
         </if>
         <if test="userId != null" >
             and o.userId = #{userId,jdbcType=VARCHAR}
+        </if>
+        <if test="like_userId != null" >
+            and o.userId  like '%${like_userId}%'
         </if>
         <if test="status != null" >
             and d.status = #{status,jdbcType=VARCHAR}

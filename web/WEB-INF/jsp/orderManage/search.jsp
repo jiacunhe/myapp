@@ -17,8 +17,14 @@
         .page ul{ width: 97%; float: left}
         .page ul li{ float: left; margin-left: 0px; margin-left: 5px; padding: 3px;}
         .page ul li a img{padding-top: 7px;}
-        .nowpage{ color:#000000; font-weight: 600;}
-        .flleft{text-align: left; padding-left: 4px;}
+        .tdcc{text-align: left; padding-left: 4px;white-space:nowrap;
+
+            word-break:keep-all;
+
+            overflow:hidden;
+
+            text-overflow:ellipsis;       width: 300px;
+        }
     </style>
     <title>用户查询</title>
 
@@ -32,7 +38,7 @@
 
 <div style=" width: 100%; height: 700px; background-color:#eeeeee">
     <div class="yemei">
-        <p>您当前所在位置：<a href="#">首页</a> >> <span>我的查询</span></p>
+        <p>您当前所在位置：<a href="#">首页</a> >> <span>订单查询</span></p>
     </div>
 
 
@@ -56,7 +62,7 @@
                 </span>
 
                 <div class="clear"></div>
-                <p style="width: 80px;"> 用户帐号：</p>
+                <p style="width: 80px;"> 客户帐号：</p>
                 <input type="text" name="userId" value="${userId}" class="sub_input01" style="width: 160px"/>
 <%--                <p style="width: 80px">证件号：</p>
                 <input type="text" name="code" value="${code}" class="sub_input01" style="width: 160px"/>
@@ -98,7 +104,7 @@
     <table width="749" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1">
         <tr class="sub_tr1">
             <th width="7%">序号</th>
-            <th width="11%">用户ID</th>
+            <th width="11%">客户帐号</th>
             <th width="10%">查询类型</th>
             <th width="41%">查询对象</th>
             <th width="14%">查询时间</th>
@@ -111,7 +117,7 @@
                 <td>${(disposable.page-1)*5+status.count}</td>
                 <td>${obj.userId}</td>
                 <td>${obj.orderTypeName}</td>
-                <td  class="flleft">${obj.objCode} | ${obj.objName}</td>
+                <td title="${obj.objCode} | ${obj.objName}"><div class="tdcc">${obj.objCode} | ${obj.objName}</div></td>
                 <td>${obj.createTime}</td>
                 <td>${obj.statusName}</td>
                 <td>
@@ -153,10 +159,10 @@
     <table width="749" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1">
         <tr class="sub_tr1">
             <th width="5%">序号</th>
-            <th width="10%">用户ID</th>
-            <th width="10%">查询类型</th>
-            <th width="40%">查询对象</th>
-            <th width="13%">查询时间</th>
+            <th width="10%">客户帐号</th>
+            <th width="10%">类型</th>
+            <th width="40%">监控对象</th>
+            <th width="13%">监控区间</th>
             <th width="10%">状态</th>
             <th width="6%">动态</th>
             <th width="6%">数据</th>
@@ -166,8 +172,8 @@
                 <td>${(recyclable.page-1)*5+status.count}</td>
                 <td>${obj.userId}</td>
                 <td>${obj.orderTypeName}</td>
-                <td class="flleft">${obj.objCode} | ${obj.objName}</td>
-                <td>${obj.createTime}</td>
+                <td title="${obj.objCode} | ${obj.objName}"><div class="tdcc">${obj.objCode} | ${obj.objName}</div></td>
+                <td>${obj.createTime}  &nbsp;    ${obj.monitorOverTime}</td>
                 <td>${obj.statusName}</td>
                 <td>
 
@@ -244,7 +250,7 @@
         document.getElementById("content").innerHTML = document.getElementById("content2").innerHTML;
     }
 
-
+    var lastTabl;
     function tabCard(){
         var e = window.event?window.event.srcElement:e.target;
 
@@ -263,10 +269,18 @@
             }
 
         }
-        e.style.background = "url(/images/sub_ttbg4.gif) no-repeat";
-        e.style.color = "#fd7d00";
+        if(e.nodeName=="A"){
+            lastTabl = e;
+            e.style.background = "url(/images/sub_ttbg4.gif) no-repeat";
+            e.style.color = "#fd7d00";
 
-        e.blur();			//Chrome和Opera不需要
+            e.blur();          //Chrome和Opera不需要
+        }else{
+            lastTabl.style.background = "url(/images/sub_ttbg4.gif) no-repeat";
+            lastTabl.style.color = "#fd7d00";
+
+            lastTabl.blur();          //Chrome和Opera不需要
+        }
     }
 </script>
 
@@ -340,7 +354,7 @@
             content+='<td>'+((obj.page-1)*5+i)+'</td>';
             content+='<td>'+obj.list[i].userId+'</td>';
             content+='<td>'+obj.list[i].orderTypeName+'</td>';
-            content+='<td class="flleft">'+obj.list[i].objCode+' | '+obj.list[i].objName+'</td>';
+            content+='<td title="'+obj.list[i].objCode+' | '+obj.list[i].objName+'"><div class="tdcc">'+obj.list[i].objCode+' | '+obj.list[i].objName+'</div></td>';
             content+='<td>'+obj.list[i].createTime+'</td>';
             content+='<td>'+obj.list[i].statusName+'</td>';
 
@@ -391,7 +405,7 @@
         content+='<th width="10%">用户ID</th>';
         content+='<th width="10%">查询类型</th>';
         content+='<th width="40%">查询对象</th>';
-        content+='<th width="13%">查询时间</th>';
+        content+='<th width="13%">监控区间</th>';
         content+='<th width="10%">状态</th>';
         content+='<th width="6%">动态</th>';
         content+='<th width="6%">数据</th>';
@@ -403,8 +417,8 @@
             content+='<td>'+((obj.page-1)*5+i)+'</td>';
             content+='<td>'+obj.list[i].userId+'</td>';
             content+='<td>'+obj.list[i].orderTypeName+'</td>';
-            content+='<td class="flleft">'+obj.list[i].objCode+' | '+obj.list[i].objName+'</td>';
-            content+='<td>'+obj.list[i].createTime+'</td>';
+            content+='<td title="'+obj.list[i].objCode+' | '+obj.list[i].objName+'"><div class="tdcc">'+obj.list[i].objCode+' | '+obj.list[i].objName+'</div></td>';
+            content+='<td>'+obj.list[i].createTime +" &nbsp; "+ obj.list[i].monitorOverTime+'</td>';
             content+='<td>'+obj.list[i].statusName+'</td>';
             if(obj.list[i].status == '2'|| obj.list[i].status == '6'){
                 content+='<td> <a href="javascript:openDetail('+obj.list[i].id+','+obj.list[i].orderType+')"><img src="/images/kaka.png" alt="查看" title="查看" height="20" width="20"></a></td>';

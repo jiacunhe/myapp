@@ -56,7 +56,7 @@
 
     <select id="selectiveByPage" resultType="java.util.Map" parameterType="java.util.Map">
 
-        SELECT MAX(userId) userId,MAX(userName) userName,assignorId,MAX(assignorName) assignorName,yearMonth,max(remark) remark,
+        SELECT  userId,MAX(userName) userName,assignorId,MAX(assignorName) assignorName,yearMonth,max(remark) remark,
         MAX(CASE businessId WHEN 1 THEN assignQuantity ELSE 0 END) b1q ,
         MAX(CASE businessId WHEN 1 THEN usedQuantity ELSE 0 END) b1uq ,
         MAX(CASE businessId WHEN 2 THEN assignQuantity ELSE 0 END) b2q ,
@@ -65,11 +65,14 @@
         SELECT u.userId,u.userName,a.assignorId,
         (SELECT username FROM t_user WHERE userId = a.assignorId) assignorName,
         a.yearMonth,a.businessId,a.assignQuantity,a.usedQuantity,a.remark
-        FROM t_user u,t_user_apply_package a
+        FROM t_user_apply_package a,t_user u
         WHERE u.userId=a.userId
         <if test="userId != null" >
             AND a.userId=#{userId,jdbcType=VARCHAR}
         </if>
+<!--        <if test="assignorId != null" >
+            AND a.assignorId=#{assignorId,jdbcType=VARCHAR}
+        </if>-->
         <if test="userName != null" >
             AND u.userName like '%${userName}%'
         </if>
@@ -79,7 +82,7 @@
 
 
         ) xx
-        GROUP BY assignorId,yearMonth
+        GROUP BY userId,assignorId,yearMonth
         ORDER BY yearMonth DESC
         <if test="cursor != null" >
             limit #{cursor,jdbcType=INTEGER} ,#{length,jdbcType=INTEGER}
@@ -103,6 +106,9 @@
         <if test="userId != null" >
             AND a.userId=#{userId,jdbcType=VARCHAR}
         </if>
+<!--        <if test="assignorId != null" >
+            AND a.assignorId=#{assignorId,jdbcType=VARCHAR}
+        </if>-->
         <if test="userName != null" >
             AND u.userName like '%${userName}%'
         </if>
@@ -110,7 +116,7 @@
             <![CDATA[  AND yearMonth =#{yearMonth,jdbcType=VARCHAR}  ]]>
         </if>
         ) xx
-        GROUP BY assignorId,yearMonth
+        GROUP BY userId,assignorId,yearMonth
         ) yyy
     </select>
 
