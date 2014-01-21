@@ -38,8 +38,21 @@
                 <table width="438" cellpadding="0" cellspacing="0" border="1" class="sub_table2">
                     <tr>
 
-                        <th width="80">证件号</th>
-                        <th width="200">名称</th>
+                        <th width="80">
+                            <c:if test="${orderTypePP eq  1}">注册号</c:if>
+                            <c:if test="${orderTypePP eq  2}">证件号</c:if>
+                            <c:if test="${orderTypePP eq  3}">注册号</c:if>
+                            <c:if test="${orderTypePP eq  4}">注册号</c:if>
+                            <c:if test="${orderTypePP eq  5}">证件号</c:if>
+                        </th>
+                        <th width="200">
+                            <c:if test="${orderTypePP eq  1}">企业名称</c:if>
+                            <c:if test="${orderTypePP eq  2}">姓名</c:if>
+                            <c:if test="${orderTypePP eq  3}">企业名称</c:if>
+                            <c:if test="${orderTypePP eq  4}">企业名称</c:if>
+                            <c:if test="${orderTypePP eq  5}">姓名</c:if>
+
+                        </th>
                         <th><p>备 注</p></th>
                     </tr>
 
@@ -66,8 +79,21 @@
                 <li><span>查询列表：</span>
                     <table width="438" cellpadding="0" cellspacing="0" border="1" class="sub_table2">
                         <tr>
-                            <th width="80">证件号</th>
-                            <th width="200">名称</th>
+                            <th width="80">
+                                <c:if test="${orderTypePP eq  1}">注册号</c:if>
+                                <c:if test="${orderTypePP eq  2}">证件号</c:if>
+                                <c:if test="${orderTypePP eq  3}">注册号</c:if>
+                                <c:if test="${orderTypePP eq  4}">注册号</c:if>
+                                <c:if test="${orderTypePP eq  5}">证件号</c:if>
+                            </th>
+                            <th width="200">
+                                <c:if test="${orderTypePP eq  1}">企业名称</c:if>
+                                <c:if test="${orderTypePP eq  2}">姓名</c:if>
+                                <c:if test="${orderTypePP eq  3}">企业名称</c:if>
+                                <c:if test="${orderTypePP eq  4}">企业名称</c:if>
+                                <c:if test="${orderTypePP eq  5}">姓名</c:if>
+
+                            </th>
                             <th><p>备 注</p></th>
                         </tr>
 
@@ -94,8 +120,21 @@
                 <li><span>查询列表：</span>
                     <table width="438" cellpadding="0" cellspacing="0" border="1" class="sub_table2">
                         <tr>
-                            <th width="80">证件号</th>
-                            <th width="200">名称</th>
+                            <th width="80">
+                                <c:if test="${orderTypePP eq  1}">注册号</c:if>
+                                <c:if test="${orderTypePP eq  2}">证件号</c:if>
+                                <c:if test="${orderTypePP eq  3}">注册号</c:if>
+                                <c:if test="${orderTypePP eq  4}">注册号</c:if>
+                                <c:if test="${orderTypePP eq  5}">证件号</c:if>
+                            </th>
+                            <th width="200">
+                                <c:if test="${orderTypePP eq  1}">企业名称</c:if>
+                                <c:if test="${orderTypePP eq  2}">姓名</c:if>
+                                <c:if test="${orderTypePP eq  3}">企业名称</c:if>
+                                <c:if test="${orderTypePP eq  4}">企业名称</c:if>
+                                <c:if test="${orderTypePP eq  5}">姓名</c:if>
+
+                            </th>
                             <th><p>备 注</p></th>
                         </tr>
 

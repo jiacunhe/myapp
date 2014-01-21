@@ -29,7 +29,7 @@
     <div class="ht_kongbai"></div>
     <div class="ht_rtbut">
         <ul>
-            <li><img src="/manage/images/ht_ico02.png" /><p><a href="/userAccount/allotPackage">新增分配</a></p></li>
+            <li><a href="/userAccount/allotPackage"><img src="/manage/images/ht_ico02.png" /><p>新增分配</p></a></li>
         </ul>
     </div>
 
@@ -80,7 +80,7 @@
                 <td><c:if test="${obj.durationMonths < 0 }">长期</c:if><c:if test="${obj.durationMonths>0}">${obj.durationMonths}</c:if></td>
                 <td>${obj.quantity}</td>
                 <td><c:if test="${obj.status eq '1' }">正常</c:if><c:if test="${obj.status eq '2' }">失效</c:if></td>
-                <td><c:if test="${obj.status eq '1' }"><a href="/userAccount/allotStop?id=${obj.id}&status=${result.status}&allocatee=${result.allocatee}&receiver=${result.receiver}&page=${result.page}"><img src="/manage/images/ht_sx.jpg" /></a></c:if></td>
+                <td><c:if test="${obj.status eq '1' }"><a href="/userAccount/allotStop?id=${obj.id}&status=${result.status}&allocatee=${result.allocatee}&receiver=${result.receiver}&page=${result.page}"><img style="width:42px; height:22px;  " src="/manage/images/ht_sx2.jpg" /></a></c:if></td>
             </tr>
   </c:forEach>
             <tr class="sub_tr1">

@@ -34,7 +34,7 @@
                 <tr class="sub_tr1">
                     <th width="22%">证件类型*</th>
                     <th width="22%">证件号*</th>
-                    <th width="24%"><p>名称*</p></th>
+                    <th width="24%"><p>姓名*</p></th>
                     <th width="22%"><p>备 注</p></th>
                     <th width="10%">操 作</th>
                 </tr>
@@ -60,12 +60,12 @@
             <p ><a href="#">提交订单</a></p -->
             <form action="/order/submit" method="post" id="groupfrom" class="sub_form2" style="position:relative">
 
-                <p>监控周期： </p>
+  <%--              <p>监控周期： </p>
                         <span class="span3"><select class="sub_input03" name="cycle">
                             <option>1</option>
                             <option>2</option>
                             <option>3</option>
-                        </select>年</span>
+                        </select>年</span>--%>
 
                 <p class="tijiao1"> <a href="#" onclick="return checkdata()">提交订单</a>   </p>
                 <input type="hidden" value="${businessTypeId}" name="businessType">
@@ -113,7 +113,7 @@
 
         var i=document.getElementById('gtb').rows.length;
         if(i<3){
-            alert("Sorry！您不能再删除了..."); return false;
+            alert("对不起！您不能再删除了..."); return false;
         }
 
         var j=((obj.parentNode).parentNode).parentNode.rowIndex;
@@ -127,7 +127,7 @@
     {
         var j=document.getElementById('gtb').rows.length;
         if(j>5){
-            alert("Sorry！您不能再增加了...");return false;
+            alert("对不起！您不能再增加了...");return false;
         }
 
         var row=document.getElementById('gtb').insertRow(j);
@@ -156,8 +156,12 @@
         var certificate="";
 
         for(k=1;k<i+1;k++){
-            if(document.getElementById('groupcode'+k) == undefined || document.getElementById('groupcode'+k).value == ""){
+            if(document.getElementById('groupcode'+k) == undefined || document.getElementById('groupcode'+k).value == ""|| document.getElementById('groupname'+k).value == undefined || document.getElementById('groupname'+k).value == ""){
             }else{
+                if(groupcode.indexOf(document.getElementById('groupcode'+k).value)>=0){
+                    alert("对不起！您添加数据有问题请检查...");return false;
+                    break;
+                }
                 groupcode += document.getElementById('groupcode'+k).value+",";
                 groupname += document.getElementById('groupname'+k).value+",";
                 groupremark += document.getElementById('groupremark'+k).value+",";
@@ -165,7 +169,7 @@
             }
         }
         if(groupcode==""){
-            alert("Sorry！您没有添加任何可用数据...");return false;
+            alert("对不起！您没有添加任何可用数据...");return false;
         }else{
             document.getElementById('groupcode').value=	groupcode+"--";
             document.getElementById('groupname').value= groupname+"--";

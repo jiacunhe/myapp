@@ -38,7 +38,7 @@
 <body>
 <div class="sub_nr" style="width: 100%; height:660px; background-color:#eeeeee;">
     <div class="yemei">
-        <p>您当前所在位置：<a href="#">首页</a> >> <a href="#">信息查询</a> >> <span>
+        <p>您当前所在位置： <a href="#">信息查询</a> >> <span>
             <c:if test="${fileOrderType == 1}">企业查询</c:if> <c:if test="${fileOrderType == 2}">人员查询</c:if><c:if test="${fileOrderType == 3}">对外投资查询</c:if>
             </span>>> <span>批量导入</span></p>
     </div>
@@ -103,7 +103,7 @@
 
     </table>
 
-    <p class="commitfield"> <a href="/order/createOrderByFile" onclick="waiting()">生成订单</a> <a href="/welcome.jsp">放弃</a></p>
+    <p class="commitfield"> <a href="/order/createOrderByFile" onclick="waiting()">生成订单</a> <a href="javascript:goback()">放弃</a></p>
 </div>
 
 
@@ -120,6 +120,12 @@
         loading.innerHTML="<span><img src='/images/loading.gif'></span><span>正在处理，请稍候...</span>";
         loading.style.left=(document.body.scrollWidth-58)/2;
         loading.style.top=(document.body.scrollHeight-20)/2;
+    }
+
+    function goback(){
+        <c:if test="${fileOrderType == 1}">window.location.href="/order/group";</c:if>
+        <c:if test="${fileOrderType == 2}">window.location.href="/order/person";</c:if>
+        <c:if test="${fileOrderType == 3}">window.location.href="/order/investment";</c:if>
     }
 
 </script>

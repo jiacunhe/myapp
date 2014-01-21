@@ -56,13 +56,13 @@
             <form action="/order/submit" method="post" id="groupfrom" class="sub_form2" style="position:relative">
 
                 <p class="tijiao1">
-                     <span class="span3" style="width: 200px; float: left">监控周期：
+<%--                     <span class="span3" style="width: 200px; float: left">监控周期：
                          <select class="sub_input03" name="cycle">
                             <option>1</option>
                             <option>2</option>
                             <option>3</option>
                         </select>
-                         年</span>
+                         年</span>--%>
 
                  <a href="#" onclick="return checkdata()">提交订单</a> </p>
                 <input type="hidden" value="${businessTypeId}" name="businessType">
@@ -109,7 +109,7 @@
 
         var i=document.getElementById('gtb').rows.length;
         if(i<3){
-            alert("Sorry！您不能再删除了..."); return false;
+            alert("对不起！您不能再删除了..."); return false;
         }
 
         var j=((obj.parentNode).parentNode).parentNode.rowIndex;
@@ -125,7 +125,7 @@
         var j=document.getElementById('gtb').rows.length;
 
         if(j>5){
-            alert("Sorry！您不能再增加了...");return false;
+            alert("对不起！您不能再增加了...");return false;
         }
         var row=document.getElementById('gtb').insertRow(j);
         row.align='center';
@@ -151,15 +151,20 @@
         var groupname="";
         var groupremark="";
         for(k=1;k<i+1;k++){
-            if(document.getElementById('groupcode'+k) == undefined || document.getElementById('groupcode'+k).value == ""){
+            if(document.getElementById('groupcode'+k) == undefined || document.getElementById('groupcode'+k).value == "" || document.getElementById('groupname'+k).value == undefined || document.getElementById('groupname'+k).value == ""){
+
             }else{
+                if(groupcode.indexOf(document.getElementById('groupcode'+k).value)>=0){
+                    alert("对不起！您添加数据有问题请检查...");return false;
+                    break;
+                }
                 groupcode += document.getElementById('groupcode'+k).value+",";
                 groupname += document.getElementById('groupname'+k).value+",";
                 groupremark += document.getElementById('groupremark'+k).value+",";
             }
         }
         if(groupcode==""){
-            alert("Sorry！您没有添加任何可用数据...");return false;
+            alert("对不起！您没有添加任何可用数据...");return false;
         }else{
             document.getElementById('groupcode').value=	groupcode+"--";
             document.getElementById('groupname').value= groupname+"--";

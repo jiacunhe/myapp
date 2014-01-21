@@ -33,11 +33,11 @@ public class OrderManageController {
     public String orderSearch (String type,String sday,String eday,String code,String name,String userId,String submit,HttpServletRequest request){
         request.setAttribute("orderTypeList",orderService.selectOrderType());
 
-        if(submit!=null){
+   //     if(submit!=null){
             HashMap params = new HashMap();
 
           //  params.put("userId","1");
-            if(!"".equals(userId)) params.put("userId",userId);
+            if(!"".equals(userId)) params.put("like_userId",userId);
             if(!"".equals(code))  params.put("code",code);
             if( !"".equals(type))  params.put("type",type);
             if( !"".equals(sday))  params.put("sday",sday);
@@ -60,7 +60,7 @@ public class OrderManageController {
             request.setAttribute("eday",eday);
             request.setAttribute("code",code);
             request.setAttribute("name",name);
-        }
+   //     }
 
         return "/orderManage/search.jsp";
     }
