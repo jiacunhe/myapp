@@ -40,7 +40,7 @@ public class UserAccountController {
     @RequestMapping("/search")
     public String search(Integer page,String userId,String userName,HttpServletRequest request){
 
-       if(page !=null){
+      // if(page !=null){
            String sql="SELECT userId,MAX(userName) userName, " +
                    "SUM(CASE businessId WHEN 1 THEN remainder ELSE 0 END) b1r, " +
                    "SUM(CASE businessId WHEN 2 THEN remainder ELSE 0 END) b2r " +
@@ -48,10 +48,10 @@ public class UserAccountController {
                    " SELECT a.userId,u.username,a.businessId,a.remainder " +
                    " FROM t_account_info a,t_user u " +
                    " WHERE u.userId =a.userId  ";
-           if(!"".equals(userId)){
-               sql+=" and a.userId ='"+userId+"'";
+           if(userId!=null && !"".equals(userId)){
+               sql+=" and a.userId like '%"+userId+"%'";
            }
-           if(!"".equals(userName)){
+           if(userName!=null && !"".equals(userName)){
                sql+=" and u.userName like'%"+userName+"%'";
            }
 
@@ -62,7 +62,10 @@ public class UserAccountController {
            request.setAttribute("resmap",resmap);
            request.setAttribute("_userId",userId);
            request.setAttribute("_userName",userName);
-       }
+      // }
+        if(page == null){
+                        this.searchMonthly(null,null,null,null,request);
+        }
 
         return "/userAccount/search.jsp";
 
@@ -74,7 +77,7 @@ public class UserAccountController {
 
 //        User user =(User) request.getSession().getAttribute("manage");
 //        String assignorId=user.getUserId();
-        if(page !=null){
+     //   if(page !=null){
             int pageSize=5;
             Map params = new HashMap();
 //            if(!"".equals(assignorId)) params.put("assignorId",assignorId);
@@ -101,7 +104,7 @@ public class UserAccountController {
             request.setAttribute("page",page);
             request.setAttribute("totalPage",totalPage);
             request.setAttribute("countItem",countItem);
-        }
+   //     }
 
         return "/userAccount/search.jsp";
 

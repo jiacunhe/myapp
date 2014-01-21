@@ -33,7 +33,7 @@
            and  assignorId=   #{allocatee,jdbcType=VARCHAR}
         </if>
         <if test="receiver != null" >
-            and  userId=   #{receiver,jdbcType=VARCHAR}
+            and  userId like '%${receiver}%'
         </if>
         <if test="status != null" >
             and  status=   #{status,jdbcType=VARCHAR}
@@ -51,7 +51,7 @@
             and  assignorId=   #{allocatee,jdbcType=VARCHAR}
         </if>
         <if test="receiver != null" >
-            and  userId=   #{receiver,jdbcType=VARCHAR}
+            and  userId like '%${receiver}%'
         </if>
         <if test="status != null" >
             and  status=   #{status,jdbcType=VARCHAR}

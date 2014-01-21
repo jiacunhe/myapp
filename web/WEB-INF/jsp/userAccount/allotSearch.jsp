@@ -41,7 +41,7 @@
                             <input type="text" name="allocatee"  class="ht_sub_input01" value="${result.allocatee}">
                         </span>
 </c:if>
-            <p>使用者： </p>
+            <p>分配账号： </p>
                         <span class="ht_span03">
                               <input type="text" name="receiver" class="ht_sub_input01" value="${result.receiver}">
 

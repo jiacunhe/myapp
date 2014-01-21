@@ -55,7 +55,7 @@
 
     <form method="post" action="/userAccount/search" class="ht_sub_form7" style="margin-left:40px;">
         <span><p>客户账号：</p><input type="text" class="ht_sub_input11" name="userId" value="${_userId}"/></span>
-        <span><p>客户名称：</p><input type="text"  class="ht_sub_input11" name="userName" value="${_userName}"/></span>
+        <span><p>客户姓名：</p><input type="text"  class="ht_sub_input11" name="userName" value="${_userName}"/></span>
 
         <div class="clear"></div>
         <input type="hidden" name="page" value="1">
@@ -161,7 +161,7 @@
 
 
         <span><p>客户账号：</p><input type="text" class="ht_sub_input11" name="userId" value="${userId}"/></span>
-        <span><p>客户名称：</p><input type="text"  class="ht_sub_input11" name="userName" value="${userName}"/></span>
+        <span><p>客户姓名：</p><input type="text"  class="ht_sub_input11" name="userName" value="${userName}"/></span>
 
         <div class="clear"></div>
         <input type="hidden" name="page" value="1">
@@ -254,7 +254,7 @@
        document.getElementById("content").innerHTML = document.getElementById("content2").innerHTML;
    }
 
-
+   var lastTabl;
     function tabCard(){
         var e = window.event?window.event.srcElement:e.target;
 
@@ -273,10 +273,21 @@
             }
 
         }
-        e.style.background = "url(/manage/images/ht_ttbg4.gif) no-repeat";
-        e.style.color = "#ffffff";
 
-        e.blur();
+
+        if(e.nodeName=="A"){
+            lastTabl = e;
+            e.style.background = "url(/manage/images/ht_ttbg4.gif) no-repeat";
+            e.style.color = "#ffffff";
+
+            e.blur();
+        }else{
+            lastTabl.style.background = "url(/manage/images/ht_ttbg4.gif) no-repeat";
+            lastTabl.style.color = "#ffffff";
+
+            lastTabl.blur();          //Chrome和Opera不需要
+        }
+
     }
 </script>
 
