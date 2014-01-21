@@ -239,6 +239,7 @@
 
                     <p>重置密码</p></a></li></hyrt:privilege>
             <hyrt:privilege uri="/customer/lock"><li>
+
                 <a href="/customer/lock?condition=${form.condition}&userId=${form.userId}&username=${form.username}&creatorId=${form.creatorId}&telephone=${form.telephone}&startTime=${form.startTime}&endTime=${form.endTime}&paymentRule=${form.paymentRule}&status=${form.status}"
                    id="lock"><img src="${basePath}/manage/images/ht_ico015.png"/>
 

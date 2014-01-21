@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="hyrt" uri="http://www.hyrt.com.cn" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -80,9 +81,8 @@
                             <option value="up" <c:if test="${order eq 'up'}">selected </c:if>>价格从低到高</option>
 
                         </select></span>
-            <p style="margin-left:0px;">用户名：</p>
-            <input name="userId" id="userId" type="text" value="${userId}" class="ht_sub_input01"/><br />
-            <input type="submit" value="开始查询"  class="ht_but_cx0"/>
+
+            <p><input type="submit" value="开始查询"  class="ht_but_cx0"/></p>
         </form>
     </div>
 
@@ -95,7 +95,7 @@
                 <th width="25%">套餐名称</th>
                 <th width="12%">套餐类型</th>
                 <th width="9%">含查询数</th>
-                <th width="9%">含监控询数</th>
+                <th width="9%">含监控条数</th>
                 <th width="8%">价格（元）</th>
                 <th width="7%">套餐状态</th>
                 <th width="12%">操作</th>
