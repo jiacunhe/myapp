@@ -2,9 +2,12 @@ package com.hyrt.saic.controller;
 
 import com.hyrt.saic.bean.Manager;
 import com.hyrt.saic.bean.User;
+import com.hyrt.saic.bean.UserOperation;
 import com.hyrt.saic.controller.formbean.user.ManagerQueryForm;
 import com.hyrt.saic.service.RoleService;
+import com.hyrt.saic.service.UserOperationService;
 import com.hyrt.saic.service.UserService;
+import com.hyrt.saic.util.Config;
 import com.hyrt.saic.util.enums.UserStatus;
 import me.sfce.library.mybatis.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,10 +35,14 @@ public class ManagerController extends BaseController {
     UserService userService;
     @Autowired
     RoleService roleService;
+    @Autowired
+    private UserOperationService userOperationService;
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String addManager(Manager manager, String roleIds, HttpServletRequest request) {
         userService.addManager(manager, request, roleIds);
+        User operator = (User) request.getSession().getAttribute(Config.MANAGE);
+        userOperationService.save(new UserOperation(operator.getUserId(), "/manager/add", "添加用户" + manager.getUserId(), new Date(), request.getRemoteAddr()));
         return redirectTo("list");
     }
 
@@ -66,12 +74,16 @@ public class ManagerController extends BaseController {
         request.setAttribute("command", user);
         request.setAttribute("roleMap", roleService.getRoleMap());
         request.setAttribute("roleIds", userService.getRoleIds(manager));
+        User operator = (User) request.getSession().getAttribute(Config.MANAGE);
+        userOperationService.save(new UserOperation(operator.getUserId(), "/manager/show/UI", "查看用户" + manager.getUserId(), new Date(), request.getRemoteAddr()));
         return jsp("manager/show");
     }
 
     @RequestMapping(value = "/modify", method = RequestMethod.POST)
     public String modifyManager(Manager manager, String roleIds, HttpServletRequest request) {
         userService.modifyManager(manager, roleIds);
+        User operator = (User) request.getSession().getAttribute(Config.MANAGE);
+        userOperationService.save(new UserOperation(operator.getUserId(), "/manager/modify", "修改用户" + manager.getUserId(), new Date(), request.getRemoteAddr()));
         return redirectTo("list?formUserId=" + request.getParameter("formUserId")
                 + "&formUsername=" + request.getParameter("formUsername")
                 + "&formRoleId=" + request.getParameter("formRoleId")
@@ -82,6 +94,8 @@ public class ManagerController extends BaseController {
     @RequestMapping(value = "/lock")
     public String lock(Manager manager, HttpServletRequest request) {
         userService.lock(manager);
+        User operator = (User) request.getSession().getAttribute(Config.MANAGE);
+        userOperationService.save(new UserOperation(operator.getUserId(), "/manager/lock", "锁定用户" + manager.getUserId(), new Date(), request.getRemoteAddr()));
         return redirectTo("list?formUserId=" + request.getParameter("formUserId")
                 + "&formUsername=" + request.getParameter("formUsername")
                 + "&formRoleId=" + request.getParameter("formRoleId")
@@ -92,6 +106,8 @@ public class ManagerController extends BaseController {
     @RequestMapping(value = "/unlock")
     public String unlock(Manager manager, HttpServletRequest request) {
         userService.unlock(manager);
+        User operator = (User) request.getSession().getAttribute(Config.MANAGE);
+        userOperationService.save(new UserOperation(operator.getUserId(), "/manager/unlock", "解锁用户" + manager.getUserId(), new Date(), request.getRemoteAddr()));
         return redirectTo("list?formUserId=" + request.getParameter("formUserId")
                 + "&formUsername=" + request.getParameter("formUsername")
                 + "&formRoleId=" + request.getParameter("formRoleId")
@@ -102,6 +118,8 @@ public class ManagerController extends BaseController {
     @RequestMapping(value = "/resetPassword")
     public String resetPassword(Manager manager, HttpServletRequest request) {
         userService.resetPassword(manager);
+        User operator = (User) request.getSession().getAttribute(Config.MANAGE);
+        userOperationService.save(new UserOperation(operator.getUserId(), "/manager/resetPassword", "重置用户" + manager.getUserId() + "的密码", new Date(), request.getRemoteAddr()));
         return redirectTo("list?formUserId=" + request.getParameter("formUserId")
                 + "&formUsername=" + request.getParameter("formUsername")
                 + "&formRoleId=" + request.getParameter("formRoleId")
@@ -139,6 +157,8 @@ public class ManagerController extends BaseController {
             statusMap.put(status.toString(), status.getDesc());
         }
         request.setAttribute("statusMap", statusMap);
+        User operator = (User) request.getSession().getAttribute(Config.MANAGE);
+        userOperationService.save(new UserOperation(operator.getUserId(), "/manager/list", "访问用户模块", new Date(), request.getRemoteAddr()));
         return (jsp("manager/list"));
     }
 }

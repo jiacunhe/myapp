@@ -9,8 +9,6 @@
     <script type="text/javascript">
         $(function () {
             $("input[type='checkbox']").attr("checked", false);
-            var sss = $("#sssfce");
-            alert(sss == null);
             $("#edit").parent().attr("style", "display:none");
             $("#lock").parent().attr("style", "display:none");
             $("#unlock").parent().attr("style", "display:none");
@@ -97,7 +95,6 @@
                         var param = $(obj).attr("id");
                         var name = $(obj).attr("name");
                         $("#resetPassword").attr("href", "/manager/resetPassword" + param);
-                        alert(param);
                         return window.confirm('确定要重置管理员：' + name + '的密码?');
                     }
                 } else {
