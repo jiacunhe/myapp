@@ -31,7 +31,7 @@
             <span><p>用户名称：</p><input id="userId" name="userId" type="text" readonly/>  </span>
             <span><p>套餐名称：</p><input id="packageName" name="packageName" type="text" class="ht_sub_input11"/></span>
             <span><p>套餐价格：</p><input id="price" name="price" type="text" class="ht_sub_input11"/>元</span>
-            <span><p>套餐类型：</p><input id="type" name="type" value="合同套餐" readonly type="text" class="ht_sub_input11"/></span>
+
                         <span class="neirong"><p>套餐内容：</p>
                         	<div class="ht_sub_tcnr">
                                 <ul>
