@@ -69,7 +69,7 @@
                         <span class="ht_span03"><select name="type" class="ht_sub_input013">
                             <option value="">全部</option>
                             <option value="public" <c:if test="${type eq 'public'}">selected </c:if>>公有套餐</option>
-                            <option value="private" <c:if test="${type eq 'private'}">selected </c:if>>私有套餐</option>
+
                             <option value="vip" <c:if test="${type eq 'vip'}">selected </c:if>>包月套餐</option>
 
                         </select></span>
@@ -91,7 +91,7 @@
         <table width="768" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="ht_sub_table1">
             <tr class="ht_sub_tr1">
                 <th width="7%">编号</th>
-                <th width="6%">用户ID</th>
+
                 <th width="25%">套餐名称</th>
                 <th width="12%">套餐类型</th>
                 <th width="9%">含查询数</th>
@@ -107,10 +107,10 @@
             <tr align="center" <c:if test="${status.count%2==0}">class="ht_sub_tr1" </c:if>>
                 <td>${(page-1)*5+status.count}</td>
 
-                <td>${p.userId}</td>
+
                 <td>${p.packageName}</td>
                 <td> <c:if test="${p._type eq 'public'}">公有套餐</c:if>
-                    <c:if test="${p._type  eq 'private'}">私有套餐</c:if>
+
                     <c:if test="${p._type  eq 'vip'}">包月套餐</c:if>
                </td>
              <%--   <td>${p.businessNameA}</td>--%>

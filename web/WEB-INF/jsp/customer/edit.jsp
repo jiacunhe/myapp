@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <%@ include file="/WEB-INF/jsp/manage/commons.jspf" %>
-    <title>修改</title>
+    <title>编辑</title>
     <script type="text/javascript">
         $().ready(function () {
             $.validator.addMethod("chinese", function (value, element) {
@@ -52,14 +52,14 @@
     <div class="ht_sub_nr1" id="qc_sell_tab">
         <h4 class="ht_sub_title0"><img src="${basePath}/manage/images/ht_ico06.png"/>
 
-            <p>修改</p></h4>
+            <p>编辑</p></h4>
         <form id="form" action="/customer/modify" method="post">
             <dl class="ht_sub_dl1">
                 <dd>
                     <ul class="ht_sub_ul2">
                         <li>
                             <span>*账户类型：</span>
-                            <select name="paymentRule" class="ht_sub_li3">
+                            <select name="paymentRule" class="ht_sub_li3" disabled>
                                 <c:forEach items="${paymentRules}" var="item">
                                     <option value="${item}" ${customer.paymentRule == item ? 'selected':''}>${item.desc}</option>
                                 </c:forEach>

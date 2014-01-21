@@ -67,7 +67,7 @@ public class UserResourceFilter implements Filter {
         //所有受限资源集合 静态
         if (allSysResourceList == null || allSysResourceList.size() == 0)
             allSysResourceList = ((RoleResourceService) context.getBean("roleResourceService")).getAllSysResourcewithoutTree();
-        haveSysResourceList = (List<SysResource>) session.getAttribute(Config.USER_HAVE_RESOURCE_KEY);
+        haveSysResourceList = (List<SysResource>) session.getAttribute(Config.USER_RESOURCE_LIST);
 
         if ((!checkRequestURIIntNotFilterList(request)) && session.getAttribute(sessionKey) == null) {
             String returnLoginUri = "/";

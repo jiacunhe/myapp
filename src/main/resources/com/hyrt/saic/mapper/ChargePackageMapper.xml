@@ -49,6 +49,7 @@
         <if test="status!= null" >
             and status=#{status,jdbcType=VARCHAR}
         </if>
+        and type in  ('public','vip')
     </select> <!-->hh增加<-->
 
 
@@ -66,6 +67,7 @@
         <if test="status!= null" >
             and status=#{status,jdbcType=VARCHAR}
         </if>
+           and type in  ('public','vip')
     </select> <!-->hh增加<-->
     <select id="select" resultType="java.util.Map" parameterType="java.util.Map"  >
         SELECT id,MAX(packageName) packageName,MAX(price) price,MAX(TYPE) _type,MAX(userId) userId, MAX(remark) remark,MAX(status) status,
@@ -88,6 +90,7 @@
         <if test="userId!= null" >
             and p.userId=#{userId,jdbcType=VARCHAR}
         </if>
+             and p.type in('public','vip')
 
        ) xx GROUP BY id
         <if test="order!= null" >

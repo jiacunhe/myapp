@@ -41,7 +41,7 @@ public class PrivilegeTag implements SimpleTag {
             this.jspFragment.invoke(null);
             return;
         }
-        List<SysResource> haveSysResourceList = (List) request.getSession().getAttribute(Config.USER_HAVE_RESOURCE_KEY);
+        List<SysResource> haveSysResourceList = (List) request.getSession().getAttribute(Config.USER_RESOURCE_LIST);
         if (uri.lastIndexOf(Config._UI) > 0)
             uri = uri.substring(0, uri.lastIndexOf(Config._UI));
         for (SysResource sysResource : haveSysResourceList) {
