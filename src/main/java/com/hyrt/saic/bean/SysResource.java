@@ -11,6 +11,13 @@ public class SysResource {
     private Integer open;
     private List<SysResource> children;
 
+    public SysResource() {
+    }
+
+    public SysResource(String resourceUri) {
+        this.resourceUri = resourceUri;
+    }
+
     public List<SysResource> getChildren() {
         return children;
     }

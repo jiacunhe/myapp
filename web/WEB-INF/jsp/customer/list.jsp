@@ -35,6 +35,7 @@
                 } else {
                     $("#status").removeAttr("checked");
                 }
+                window.document.forms[0].submit();
             });
             $("#status").change(function () {
                 if ($(this).attr("checked")) {
@@ -42,6 +43,7 @@
                 } else {
                     $("#s_unlock").removeAttr("checked");
                 }
+                window.document.forms[0].submit();
             });
             $("#searchId").click(function () {
                 window.document.forms[0].queryType.value = false;
@@ -276,16 +278,18 @@
                 <p>姓名：</p>
                 <input type="text" name="username" value="${form.username}" class="ht_sub_input01"/>
 
+                <c:if test="${manage.userType eq 'MANAGER'}">
                 <p>账户类型：</p>
                         <span class="ht_span03"><select name="paymentRule" class="ht_sub_input013">
                             <option value="">全部</option>
                             <c:forEach items="${paymentRules}" var="item">
                                 <option value="${item}" ${form.paymentRule == item ? 'selected' : ''}>${item.desc}</option>
                             </c:forEach>
-                        </select></span><br/>
+                        </select></span></c:if><br/>
 
-                <p>父账户：</p>
-                <input name="creatorId" value="${form.creatorId}" class="ht_sub_input01">
+                <c:if test="${manage.userType eq 'MANAGER'}">
+                <p>父账户：</p></c:if>
+                <input name="creatorId" <c:if test="${manage.userType ne 'MANAGER'}">type="hidden" value="${manage.userId}" </c:if> value="${form.creatorId}" class="ht_sub_input01">
 
                 <p>联系电话：</p>
                 <input type="text" name="telephone" value="${form.telephone}" class="ht_sub_input01"/>

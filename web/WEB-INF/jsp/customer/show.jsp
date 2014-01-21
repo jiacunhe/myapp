@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <%@ include file="/WEB-INF/jsp/manage/commons.jspf" %>
-    <title>查看</title>
+    <title>详细信息</title>
 </head>
 
 <body>
@@ -20,7 +20,7 @@
     <div class="ht_sub_nr1" id="qc_sell_tab">
         <h4 class="ht_sub_title0"><img src="${basePath}/manage/images/ht_ico06.png"/>
 
-            <p>查看</p></h4>
+            <p>详细信息</p></h4>
         <form action="/customer/modify" method="post">
             <dl class="ht_sub_dl1">
                 <dd>

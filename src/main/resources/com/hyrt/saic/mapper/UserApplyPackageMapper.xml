@@ -68,7 +68,7 @@
         FROM t_user_apply_package a,t_user u
         WHERE u.userId=a.userId
         <if test="userId != null" >
-            AND a.userId=#{userId,jdbcType=VARCHAR}
+            AND a.userId like '%${userId}%'
         </if>
 <!--        <if test="assignorId != null" >
             AND a.assignorId=#{assignorId,jdbcType=VARCHAR}
@@ -104,7 +104,7 @@
         FROM t_user u,t_user_apply_package a
         WHERE u.userId=a.userId
         <if test="userId != null" >
-            AND a.userId=#{userId,jdbcType=VARCHAR}
+            AND a.userId like '%${userId}%'
         </if>
 <!--        <if test="assignorId != null" >
             AND a.assignorId=#{assignorId,jdbcType=VARCHAR}

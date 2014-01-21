@@ -62,8 +62,8 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
         User user = userMapper.login(userId, toMD5(password));
         if (null != user) {
             request.getSession().setAttribute(Config.USER, user);
-            List<SysResource> userHaveResourelist = getHaveSysResource(user, request);
-            request.getSession().setAttribute(Config.USER_HAVE_RESOURCE_KEY, userHaveResourelist);
+            List<SysResource> userResourceList = getSysResource(user);
+            request.getSession().setAttribute(Config.USER_RESOURCE_LIST, userResourceList);
             return true;
         }
         return false;
@@ -86,9 +86,25 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
         User user = userMapper.loginManage(userId, toMD5(password));
         if (null != user) {
             request.getSession().setAttribute(Config.MANAGE, user);
-            List<SysResource> userHaveResourelist = getHaveSysResource(user, request);
-            request.getSession().setAttribute(Config.USER_HAVE_RESOURCE_KEY, userHaveResourelist);
-
+            if (user.getUserType() == UserType.MANAGER) {
+                List<SysResource> userResourceList = getSysResource(user);
+                request.getSession().setAttribute(Config.USER_RESOURCE_LIST, userResourceList);
+            } else {
+                List<SysResource> sysResources = new ArrayList<>();
+                sysResources.add(new SysResource("/customer/list"));
+                sysResources.add(new SysResource("/customer/add"));
+                sysResources.add(new SysResource("/customer/modify"));
+                sysResources.add(new SysResource("/customer/lock"));
+                sysResources.add(new SysResource("/customer/unlock"));
+                sysResources.add(new SysResource("/customer/resetPassword"));
+                sysResources.add(new SysResource("/userAccount/allotSearch"));
+                sysResources.add(new SysResource("/userAccount/allotPackage"));
+                sysResources.add(new SysResource("/userAccount/allotStop"));
+                sysResources.add(new SysResource("/userAccount/allotSearch"));
+                sysResources.add(new SysResource("/userAccount/search"));
+                sysResources.add(new SysResource("/userAccount/searchMonthly"));
+                request.getSession().setAttribute(Config.USER_RESOURCE_LIST, sysResources);
+            }
             return true;
         }
         return false;
@@ -104,7 +120,7 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
         }
     }
 
-    private List<SysResource> getHaveSysResource(User user, HttpServletRequest request) {
+    private List<SysResource> getSysResource(User user) {
 
         List<Role> roles = roleMapper.getRolesByuserid(user.getUserId());
         StringBuffer stringBuffer = new StringBuffer();
