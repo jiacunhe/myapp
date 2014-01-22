@@ -6,6 +6,7 @@ import com.hyrt.saic.service.UserOperationService;
 import com.hyrt.saic.service.UserService;
 import com.hyrt.saic.util.Config;
 import com.hyrt.saic.validator.UserValidator;
+import me.sfce.library.mybatis.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -107,5 +109,32 @@ public class SystemController extends BaseController {
     public String logintest(HttpServletRequest request) {
             return jsp("/manage/remindpermissions");
     }
+    @RequestMapping("/manage/userOperation")
+    public String userOperation(String operationTimeStart,String operationTimeEnd,String userId, Integer pageNo,HttpServletRequest request){
 
+        if (null == pageNo) {
+            pageNo = 1;
+        }
+
+        Page page = new Page();
+        if(operationTimeStart!=null&&!operationTimeStart.equals("")){
+            page.put("operationTimeStart",operationTimeStart);
+            request.setAttribute("operationTimeStart",operationTimeStart);
+        }
+        if(operationTimeEnd!=null&&!operationTimeEnd.equals("")){
+            page.put("operationTimeEnd",operationTimeEnd);
+            request.setAttribute("operationTimeEnd",operationTimeEnd);
+        }
+        if (userId!=null&&!userId.equals("")){
+            page.put("userId",userId);
+            request.setAttribute("userId",userId);
+        }
+        page.setPageNo(pageNo);
+        List userOperationList=operationService.getAllListDescByDate(page);
+        page.setResults(userOperationList);
+        request.setAttribute("page", page);
+        UserOperation operation = new UserOperation(((User)request.getSession().getAttribute(Config.MANAGE)).getUserId(), "/manage/userOperation", "操作日志查询", new Date(), request.getRemoteAddr());
+        operationService.save(operation);
+        return jsp("/userOperation/userOperationList");
+    }
 }

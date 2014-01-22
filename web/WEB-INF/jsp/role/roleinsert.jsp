@@ -38,9 +38,17 @@
             <div class="clear"></div>
             <p>备注：
             <div id="massage_box" style=" margin:-100px 0px 0px 110px;left:9%; top:40%;">
-                <div class="massage">
+                <div class="massage" style=" height: 420px; overflow:auto; overflow-x:hidden;   scrollbar-3dlight-color:#D4D0C8;
+  scrollbar-highlight-color:#fff;
+  scrollbar-face-color:#E4E4E4;
+  scrollbar-arrow-color:#666;
+  scrollbar-shadow-color:#808080;
+  scrollbar-darkshadow-color:#D7DCE0;
+  scrollbar-base-color:#D7DCE0;
+  scrollbar-track-color:#;
+">
                     <div class="header" onmousedown=MDown(massage_box)>
-                        <div style="display:inline; position:absolute;"><span style="width: 100%; padding-left:10px;">请选择权限</span></div>
+                        <div style="display:inline;"><span style="width: 100%; padding-left:10px;">请选择权限</span></div>
                         <span onClick="massage_box.style.visibility='hidden'; mask.style.visibility='hidden'" style="float:right; display:inline; cursor:pointer;">×</span>
                     </div>
                     <DIV ID=MainArea>

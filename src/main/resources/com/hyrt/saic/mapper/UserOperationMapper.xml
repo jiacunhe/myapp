@@ -9,4 +9,30 @@
     <result column="operateTime" property="operateTime" jdbcType="TIMESTAMP" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
   </resultMap>
+    <sql id="Base_Column_List" >
+    id, userId, resourceUri,description,operateTime,remark
+  </sql>
+    <select id="getAllListDescByDate" resultMap="BaseResultMap" parameterType="java.util.Map">
+
+
+        SELECT
+        <include refid="Base_Column_List" />
+         FROM t_user_operation t
+        where 1=1
+        <if test="operationTimeStart!= null">
+               and <![CDATA[ DATE_FORMAT(t.`operateTime`,'%Y-%m-%d') >='${operationTimeStart}']]>
+        </if>
+        <if test="operationTimeEnd!= null">
+            and <![CDATA[ DATE_FORMAT(t.`operateTime`,'%Y-%m-%d') <= '${operationTimeEnd}']]>
+        </if>
+        <if test="userId!= null">
+            and
+             t.`userId` LIKE '%${userId}%'
+        </if>
+
+
+
+        ORDER BY t.`operateTime` DESC
+    </select>
+
 </mapper>
