@@ -133,6 +133,8 @@ public class SystemController extends BaseController {
         List userOperationList=operationService.getAllListDescByDate(page);
         page.setResults(userOperationList);
         request.setAttribute("page", page);
+        UserOperation operation = new UserOperation(((User)request.getSession().getAttribute(Config.MANAGE)).getUserId(), "/manage/userOperation", "操作日志查询", new Date(), request.getRemoteAddr());
+        operationService.save(operation);
         return jsp("/userOperation/userOperationList");
     }
 }
