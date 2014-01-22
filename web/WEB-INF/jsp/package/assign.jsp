@@ -35,7 +35,7 @@
     <div class="content_right_nr">
         <h4 class="sub_title1"><p class="sub_p3">套餐购买</p></h4>
         <div class="sub_nr">
-            <span><p>用户名称：</p><input id="userId" name="userId" type="text" readonly/>  </span>
+            <input id="userId" name="userId" value="${userId}" type="hidden" />
             <table width="749" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1" style="margin-top:40px;">
                 <tr align="center">
                     <th width="80"></th>
@@ -45,9 +45,10 @@
                 </tr>
                 <c:forEach var="p" items="${list}"  varStatus="status">
                     <tr align="center">
-                        <td><input type="checkbox" /></td>
+                        <td><input type="checkbox" list="true" userId="${userId}" status="${customer.status}"
+                                   username="${customer.username}" paymentRule="${customer.paymentRule}"/></td>
                         <td>${p.packageName}</td>
-                        <td><p>（查询条数${p.quantityA}条、监控企业或个人条数${p.quantityB}条）</p></td>
+                        <td><p>查询条数${p.quantityA}条(查询包含：按公司查询、按个人查询以及对外投资查询)</p></td>
                         <td>${p.price}元</td>
                     </tr>
                 </c:forEach>
