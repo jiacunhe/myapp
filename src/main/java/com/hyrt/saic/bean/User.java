@@ -24,6 +24,8 @@ public class User extends BasePojo {
     private String remark;
     private List<Role> roles;
 
+
+
     public User(){
         super(false);
     }

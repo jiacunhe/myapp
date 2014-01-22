@@ -6,6 +6,7 @@ import com.hyrt.saic.bean.User;
 import com.hyrt.saic.bean.UserOperation;
 import com.hyrt.saic.service.PackageService;
 import com.hyrt.saic.service.UserOperationService;
+import com.hyrt.saic.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +32,7 @@ import java.util.Map;
 public class PackageController {
     @Autowired
     private PackageService packageService;
+
     @Autowired
     private UserOperationService userOperationService;
     @RequestMapping("/list")
@@ -85,7 +87,7 @@ public class PackageController {
     public String listPackageGive(String order,String userId,Integer page,HttpServletRequest request){
         String type="vip";
         String status="on";
-        User user = (User) request.getSession().getAttribute("user");
+        User user = (User) request.getSession().getAttribute("manage");
 
 
 
@@ -180,6 +182,7 @@ public class PackageController {
     @RequestMapping("/contract/UI")
     public String packageContractAddUI(String userId,HttpServletRequest request){
 
+        System.out.println("-------------------"+userId+"-------------") ;
         User user = (User) request.getSession().getAttribute("manage");
         UserOperation operation = new UserOperation(user.getUserId(), "/package/add/contractUI", "前往增加合同套餐页面", new Date(), request.getRemoteAddr());
         userOperationService.save(operation);
@@ -235,6 +238,31 @@ public class PackageController {
             response.sendRedirect("/customer/list");
         } catch (IOException e) {
             e.printStackTrace();
+        }
+        return null;
+    }
+    @RequestMapping("/check")
+    public String checkUser(String paymentRule,String _userId,HttpServletRequest request,HttpServletResponse response){
+
+        System.out.println("--------------------"+paymentRule+"-------------------------");
+        System.out.println("--------------------"+_userId+"-------------------------");
+        if(paymentRule.startsWith(",")){
+            paymentRule= paymentRule.substring(1);
+        }
+        System.out.println("--------------------"+paymentRule+"-------------------------");
+
+        if(paymentRule.equals("PAY_AFTER")) {
+            try {
+                response.sendRedirect("/package/assign?userId=" +_userId);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else if (paymentRule.equals("PAY_BEFORE")){
+            try {
+                response.sendRedirect("/package/contract/UI?userId=" +_userId);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         return null;
     }

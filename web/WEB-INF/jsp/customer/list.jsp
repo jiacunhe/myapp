@@ -77,6 +77,7 @@
             hideOperation($("#delete"));
             hideOperation($("#detail"));
             hideOperation($("#resetPassword"));
+            hideOperation($("#packageAssign"));
             hideOperation($("#lock"));
             hideOperation($("#unlock"));
             $("input[type='checkbox'][list='true']").each(function () {
@@ -84,6 +85,7 @@
                     $("input[type='checkbox'][list='true']").attr("checked", false);
                     showOperation($("#edit"));
                     showOperation($("#delete"));
+                    showOperation($("#packageAssign"));
                     showOperation($("#detail"));
                     showOperation($("#resetPassword"));
                     var status = $(this).attr("status");
@@ -164,6 +166,23 @@
                 }
             });
 
+
+            $("#packageAssign").click(function () {
+                var obj = $("input[type='checkbox'][list='true']:checked");
+                if (obj.length == 0) {
+                    alert("请选择一项");
+                    return false;
+                } else {
+                    if (obj.length > 1) {
+                        alert("只能选择一项");
+                        return false;
+                    } else {
+                        var userId = $(obj).attr("id");
+                        var paymentRule = $(obj).attr("paymentRule");
+                        $("#packageAssign").attr("href", $("#packageAssign").attr("href") + "&_userId=" + userId + "&paymentRule="+paymentRule);
+                    }
+                }
+            });
             $("#unlock").click(function () {
                 var obj = $("input[type='checkbox'][list='true']:checked");
                 if (obj.length == 0) {
@@ -235,6 +254,15 @@
                    id="detail"><img src="${basePath}/manage/images/ht_ico013.png"/>
 
                     <p>查看详细</p></a></li>
+
+
+            <hyrt:privilege uri="/package/assign"><li>
+                <a href="/package/check?condition=${form.condition}&userId=${form.userId}&username=${form.username}&creatorId=${form.creatorId}&telephone=${form.telephone}&startTime=${form.startTime}&endTime=${form.endTime}&paymentRule=${form.paymentRule}&status=${form.status}"
+                   id="packageAssign"><img src="${basePath}/manage/images/ht_icotcfp.png"/>
+
+                    <p>套餐分配</p></a></li></hyrt:privilege>
+
+
             <hyrt:privilege uri="/customer/resetPassword"><li>
                 <a href="/customer/resetPassword?condition=${form.condition}&userId=${form.userId}&username=${form.username}&creatorId=${form.creatorId}&telephone=${form.telephone}&startTime=${form.startTime}&endTime=${form.endTime}&paymentRule=${form.paymentRule}&status=${form.status}"
                    id="resetPassword"><img src="${basePath}/manage/images/ht_ico014.png"/>
@@ -329,7 +357,7 @@
             <c:forEach items="${page.results}" var="customer">
                 <tr align="center">
                     <td><input type="checkbox" list="true" id="${customer.userId}" status="${customer.status}"
-                               username="${customer.username}"/></td>
+                               username="${customer.username}" paymentRule="${customer.paymentRule}"/></td>
                     <td>${customer.paymentRule.desc}</td>
                     <td>${customer.userId}</td>
                     <td>${customer.username}</td>
