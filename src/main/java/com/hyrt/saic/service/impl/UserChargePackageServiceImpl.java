@@ -6,6 +6,9 @@ import com.hyrt.saic.service.UserChargePackageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Created with IntelliJ IDEA.
  * User: huanghe
@@ -22,6 +25,9 @@ public class UserChargePackageServiceImpl implements UserChargePackageService {
     public void add(String userId, Integer chargePackageId) {
         UserChagePackage userChargePackage=new UserChagePackage();
         userChargePackage.setUserId(userId);
+        userChargePackage.setStatus(1);
+
+        userChargePackage.setCreateTime(new Date());
         userChargePackage.setChargePackageId(chargePackageId);
 
         userChargePackageMapper.insertSelective(userChargePackage);

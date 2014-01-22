@@ -5,10 +5,12 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="userId" property="userId" jdbcType="VARCHAR" />
     <result column="chargePackageId" property="chargePackageId" jdbcType="INTEGER" />
+      <result column="status" property="status" jdbcType="INTEGER" />
+      <result column="createTime" property="createTime" jdbcType="VARCHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, userId, chargePackageId, remark
+    id, userId, chargePackageId, createTime,status,remark
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -35,6 +37,12 @@
       <if test="userId != null" >
         userId,
       </if>
+        <if test="status != null" >
+            status,
+        </if>
+        <if test="createTime != null" >
+            createTime,
+        </if>
       <if test="chargePackageId != null" >
         chargePackageId,
       </if>
@@ -49,6 +57,12 @@
       <if test="userId != null" >
         #{userId,jdbcType=VARCHAR},
       </if>
+        <if test="status != null" >
+            #{status,jdbcType=INTEGER},
+        </if>
+        <if test="createTime != null" >
+            #{createTime,jdbcType=TIMESTAMP},
+        </if>
       <if test="chargePackageId != null" >
         #{chargePackageId,jdbcType=INTEGER},
       </if>

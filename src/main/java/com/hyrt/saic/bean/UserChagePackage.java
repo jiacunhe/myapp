@@ -1,5 +1,7 @@
 package com.hyrt.saic.bean;
 
+import java.util.Date;
+
 public class UserChagePackage {
     private Integer id;
 
@@ -8,6 +10,29 @@ public class UserChagePackage {
     private Integer chargePackageId;
 
     private String remark;
+
+    private Integer status;
+
+    private Date createTime;
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public UserChagePackage() {
+    }
 
     public Integer getId() {
         return id;
