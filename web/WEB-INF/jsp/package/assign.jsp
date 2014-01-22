@@ -22,18 +22,19 @@
         .gy_foot{ height: 20px; line-height: 20px; overflow: hidden; margin-top: 30px; margin-bottom: 15px;}
         .gy_foot a{ padding: 3px; float: left}
     </style>
+
 </head>
 
 <body>
 
-
+<form action="/package/assignUser" method="post">
 <div class="content_right" style="height:666px">
     <div class="yemei">
-        <p>您当前所在位置：<a href="#">首页</a> >> <span>套餐购买</span></p>
+        <p>您当前所在位置：<a href="#">首页</a> >> <a href="#">客户管理</a> >> <span>套餐分配</span></p>
     </div>
 
     <div class="content_right_nr">
-        <h4 class="sub_title1"><p class="sub_p3">套餐购买</p></h4>
+        <h4 class="sub_title1"><p class="sub_p3">套餐分配</p></h4>
         <div class="sub_nr">
             <input id="userId" name="userId" value="${userId}" type="hidden" />
             <table width="749" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1" style="margin-top:40px;">
@@ -45,8 +46,7 @@
                 </tr>
                 <c:forEach var="p" items="${list}"  varStatus="status">
                     <tr align="center">
-                        <td><input type="checkbox" list="true" userId="${userId}" status="${customer.status}"
-                                   username="${customer.username}" paymentRule="${customer.paymentRule}"/></td>
+                        <td><input type="radio" id="packageId" name="packageId" value="${p.id}"   /></td>
                         <td>${p.packageName}</td>
                         <td><p>查询条数${p.quantityA}条(查询包含：按公司查询、按个人查询以及对外投资查询)</p></td>
                         <td>${p.price}元</td>
@@ -97,8 +97,10 @@
 
 
             </div>
-            <p class="button2" style="padding-left:110px; margin-top:40px;"><input type="button" value="分配" class="but_qd" /><input type="button" value="取消" class="but_qx" /></p>
+            <p class="button2" style="padding-left:110px; margin-top:40px;"><input id="assign" type="submit" value="分配" class="but_qd" /><input type="reset" value="取消" class="but_qx" /></p>
             <h4 class="sub_tx1" style=" margin:20px 0px 30px 0px;"><p>享受更多优惠套餐，请<a href="#">联系客服</a></p></h4>
+
+
         </div>
     </div>
 
@@ -108,7 +110,7 @@
 
 
 </div>
-
+</form>
 
 </body>
 </html>

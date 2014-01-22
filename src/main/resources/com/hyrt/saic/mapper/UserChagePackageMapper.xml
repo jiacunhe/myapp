@@ -46,10 +46,10 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="userid != null" >
+      <if test="userId != null" >
         #{userId,jdbcType=VARCHAR},
       </if>
-      <if test="chargepackageid != null" >
+      <if test="chargePackageId != null" >
         #{chargePackageId,jdbcType=INTEGER},
       </if>
       <if test="remark != null" >

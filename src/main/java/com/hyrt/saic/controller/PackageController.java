@@ -5,6 +5,7 @@ import com.hyrt.saic.bean.ChargePackageDetaill;
 import com.hyrt.saic.bean.User;
 import com.hyrt.saic.bean.UserOperation;
 import com.hyrt.saic.service.PackageService;
+import com.hyrt.saic.service.UserChargePackageService;
 import com.hyrt.saic.service.UserOperationService;
 import com.hyrt.saic.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,8 @@ import java.util.Map;
 public class PackageController {
     @Autowired
     private PackageService packageService;
-
+    @Autowired
+    private UserChargePackageService userChargePackageService;
     @Autowired
     private UserOperationService userOperationService;
     @RequestMapping("/list")
@@ -244,12 +246,13 @@ public class PackageController {
     @RequestMapping("/check")
     public String checkUser(String paymentRule,String _userId,HttpServletRequest request,HttpServletResponse response){
 
-        System.out.println("--------------------"+paymentRule+"-------------------------");
-        System.out.println("--------------------"+_userId+"-------------------------");
         if(paymentRule.startsWith(",")){
             paymentRule= paymentRule.substring(1);
         }
-        System.out.println("--------------------"+paymentRule+"-------------------------");
+
+        User user = (User) request.getSession().getAttribute("manage");
+        UserOperation operation = new UserOperation(user.getUserId(), "/package/check", "去往增加套餐页面", new Date(), request.getRemoteAddr());
+        userOperationService.save(operation);
 
         if(paymentRule.equals("PAY_AFTER")) {
             try {
@@ -266,6 +269,21 @@ public class PackageController {
         }
         return null;
     }
+    @RequestMapping("/assignUser")
+    public String assignUser(HttpServletResponse response,String userId,String packageId,HttpServletRequest request){
+         Integer p=Integer.parseInt(packageId);
+         userChargePackageService.add(userId,p);
 
 
+        User user = (User) request.getSession().getAttribute("manage");
+        UserOperation operation = new UserOperation(user.getUserId(), "/package/assignUser", "分配包月套餐", new Date(), request.getRemoteAddr());
+        userOperationService.save(operation);
+
+        try {
+            response.sendRedirect("/customer/list");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

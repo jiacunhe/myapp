@@ -22,7 +22,7 @@
 
 <div class="ht_content_rightnr">
     <div class="ht_yemei">
-        <p>您当前所在位置：<a href="#">首页</a> >> <a href="#">系统管理</a> >> <span>套餐制定</span></p>
+        <p>您当前所在位置：<a href="#">首页</a> >> <a href="#">客户管理</a> >> <span>套餐制定</span></p>
     </div>
     <div class="ht_sub_nr1">
         <h4 class="ht_sub_title0"><img src="${basePath}/manage/images/ht_ico06.png" /><p>新增</p></h4>
