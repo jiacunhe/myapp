@@ -2,13 +2,16 @@ package com.hyrt.saic.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.hyrt.saic.bean.User;
+import com.hyrt.saic.bean.UserOperation;
 import com.hyrt.saic.service.OrderService;
+import com.hyrt.saic.service.UserOperationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,12 +30,13 @@ public class OrderManageController {
 
     @Autowired
     OrderService orderService;
-
+    @Autowired
+    private UserOperationService operationService;
 
     @RequestMapping("/search")
     public String orderSearch (String type,String sday,String eday,String code,String name,String userId,String submit,HttpServletRequest request){
         request.setAttribute("orderTypeList",orderService.selectOrderType());
-
+        User user =(User) request.getSession().getAttribute("manage");
    //     if(submit!=null){
             HashMap params = new HashMap();
 
@@ -61,7 +65,8 @@ public class OrderManageController {
             request.setAttribute("code",code);
             request.setAttribute("name",name);
    //     }
-
+        UserOperation operation = new UserOperation(user.getUserId(), "/orderManage/search", "订单查询，查询条件：userId>"+userId+"类型>"+type+";开始时间>"+sday+";结束时间>"+eday+";查询条件>"+code+"|"+name, new Date(), request.getRemoteAddr());
+        operationService.save(operation);
         return "/orderManage/search.jsp";
     }
 
@@ -107,13 +112,14 @@ public class OrderManageController {
     @RequestMapping("/result")
     public String result(Long id, HttpServletRequest request){
 
-       // User user =(User) request.getSession().getAttribute("user");
+        User user =(User) request.getSession().getAttribute("manage");
       //  if(user==null)user=(User)  request.getSession().getAttribute("manage");
       //  String userId=user.getUserId();
 
         if(id!=null){
 
-
+            UserOperation operation = new UserOperation(user.getUserId(), "/orderManage/result", "查看数据 detailId="+id, new Date(), request.getRemoteAddr());
+            operationService.save(operation);
 
             Map params = new HashMap();
             params.put("id",id);
