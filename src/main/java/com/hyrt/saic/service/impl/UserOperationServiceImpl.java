@@ -5,8 +5,11 @@ import com.hyrt.saic.dao.UserOperationMapper;
 import com.hyrt.saic.service.UserOperationService;
 import me.sfce.library.mybatis.persistence.BaseMapper;
 import me.sfce.library.mybatis.service.impl.BaseServiceImpl;
+import me.sfce.library.mybatis.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -31,5 +34,10 @@ public class UserOperationServiceImpl extends BaseServiceImpl<UserOperation> imp
             operation.setId((int) id);
         }
         return operation;
+    }
+
+    @Override
+    public List<UserOperation> getAllListDescByDate(Page page) {
+        return userOperationMapper.getAllListDescByDate(page);
     }
 }

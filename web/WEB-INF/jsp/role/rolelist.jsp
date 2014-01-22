@@ -64,7 +64,17 @@
                             <div style="display:inline; position:absolute">权限信息</div>
                             <span onClick="massage_box.style.visibility='hidden'; mask.style.visibility='hidden'" style="float:right; display:inline; cursor:pointer;">×</span>
                         </div>
-                        <div id="ajaxresoure"></div>
+                        <div id="ajaxresoure"
+                             style=" height: 420px; overflow:auto; overflow-x:hidden;   scrollbar-3dlight-color:#D4D0C8;
+  scrollbar-highlight-color:#fff;
+  scrollbar-face-color:#E4E4E4;
+  scrollbar-arrow-color:#666;
+  scrollbar-shadow-color:#808080;
+  scrollbar-darkshadow-color:#D7DCE0;
+  scrollbar-base-color:#D7DCE0;
+  scrollbar-track-color:#;
+"
+                                ></div>
                     </div>
                 </div>
                 <div id="mask"></div>

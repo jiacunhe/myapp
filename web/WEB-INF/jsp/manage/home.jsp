@@ -82,6 +82,7 @@
             </dt>
         </dl>
     </hyrt:privilege>
+<hyrt:privilege uri="/manage/analysis">
         <dl>
             <dt><A onclick=javascript:ShowFLT(1) href="javascript:void(null)"><img
                     src="${basePath}/manage/images/ht_ico8.png"/>统计分析</A></dt>
@@ -93,10 +94,12 @@
                 </ul>
             </dd>
         </dl>
-
+    </hyrt:privilege>
+<hyrt:privilege uri="/manage/userOperation">
         <dl>
-            <dt><A href="#"><img src="${basePath}/manage/images/ht_ico9.png"/>操作日志</A></dt>
+            <dt><A href="/manage/userOperation" target="main"><img src="${basePath}/manage/images/ht_ico9.png"/>操作日志</A></dt>
         </dl>
+</hyrt:privilege>
 <hyrt:privilege uri="/manager/list">
         <dl>
             <dt><A onclick=javascript:ShowFLT(2) href="javascript:void(null)"><img
