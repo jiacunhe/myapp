@@ -57,11 +57,11 @@
 
 <body>
 <div class="ht_dl">
-    <h4><img src="${path}/manage/images/ht_logo0.png"/></h4>
+    <h4><img src="${basePath}/manage/images/ht_logo0.png"/></h4>
 
     <div class="ht_dlnr">
-        <h2><img src="${path}/manage/images/ht_dltitle1.png"/></h2>
-        <form id="form" method="post" action="/manage/login">
+        <h2><img src="${basePath}/manage/images/ht_dltitle1.png"/></h2>
+        <form id="form" method="post" action="${basePath}/manage/login">
             <input id="userId" name="userId" type="text" value="${empty userId ? '用户名' : userId}" class="ht_dlinput1"/><br/>
             <input id="password" name="password" type="password" value="" class="ht_dlinput1"/>
             <input id="password2" type="text" value="密码" class="ht_dlinput1"/><br/>
