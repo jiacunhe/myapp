@@ -4,6 +4,8 @@ import com.hyrt.saic.bean.AccountInfo;
 import com.hyrt.saic.bean.AccountInfoKey;
 import com.hyrt.saic.dao.AccountInfoMapper;
 import com.hyrt.saic.service.AccountInfoService;
+import me.sfce.library.mybatis.persistence.BaseMapper;
+import me.sfce.library.mybatis.service.impl.BaseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +22,7 @@ import java.util.Map;
  * To change this template use File | Settings | File Templates.
  */
 @Service("accountInfoService")
-public class AccountInfoServiceImpl implements AccountInfoService{
+public class AccountInfoServiceImpl extends BaseServiceImpl<AccountInfo> implements AccountInfoService{
     @Autowired
     AccountInfoMapper accountInfoMapper;
     @Override
@@ -64,5 +66,15 @@ public class AccountInfoServiceImpl implements AccountInfoService{
         res.put("totalitem",countItem);
         res.put("list",accountInfoList);
         return res;
+    }
+
+    @Override
+    public BaseMapper<AccountInfo> getMapper() {
+        return accountInfoMapper;
+    }
+
+    @Override
+    public AccountInfo buildEntity(Object id) {
+        return null;
     }
 }

@@ -1,10 +1,7 @@
 package com.hyrt.saic.service.impl;
 
 import com.hyrt.saic.bean.*;
-import com.hyrt.saic.dao.RoleMapper;
-import com.hyrt.saic.dao.RoleSysResourceMapper;
-import com.hyrt.saic.dao.UserMapper;
-import com.hyrt.saic.dao.UserRoleMapper;
+import com.hyrt.saic.dao.*;
 import com.hyrt.saic.service.UserService;
 import com.hyrt.saic.util.Config;
 import com.hyrt.saic.util.enums.PaymentRule;
@@ -146,6 +143,9 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     public void invalid(User user) {
     }
 
+    @Autowired
+    AccountInfoMapper accountInfoMapper;
+
     @Override
     public void addCustomer(Customer customer, HttpServletRequest request) {
         User user = (User) request.getSession().getAttribute(Config.MANAGE);
@@ -159,6 +159,20 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
         customer.setStatus(UserStatus.NORMAL);
 
         userMapper.insert(customer);
+
+        AccountInfo queryAccount = new AccountInfo();
+        queryAccount.setUserid(customer.getUserId());
+        queryAccount.setBusinessid(1);
+        queryAccount.setTotality(0);
+        queryAccount.setRemainder(0);
+        accountInfoMapper.insert(queryAccount);
+
+        AccountInfo monitorAccount = new AccountInfo();
+        monitorAccount.setUserid(customer.getUserId());
+        monitorAccount.setBusinessid(2);
+        monitorAccount.setTotality(0);
+        monitorAccount.setRemainder(0);
+        accountInfoMapper.insert(monitorAccount);
     }
 
     @Transactional
