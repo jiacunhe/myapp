@@ -27,7 +27,7 @@
                   <h4 class="sub_title1"><p class="sub_p9"><span class="sub_ddxx">订单详细</span> <span class="sub_button"><a href="#"><img src="../images/button7.jpg" /></a><a href="#"><img src="../images/button8.jpg" /></a></span></p></h4>
 
                   <div class="sub_nr">
-               <div class="ddjg_content">
+               <div class="ddjg_content" style="overflow: auto; height: 560px;">
                    <h5>企业基本信息</h5>
                    <table width="100%" border="1" cellpadding="0" cellspacing="0" class="sub_table2 sub_table3">
                        <tr>
