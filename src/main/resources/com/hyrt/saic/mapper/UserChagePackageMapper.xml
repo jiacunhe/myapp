@@ -6,7 +6,7 @@
     <result column="userId" property="userId" jdbcType="VARCHAR" />
     <result column="chargePackageId" property="chargePackageId" jdbcType="INTEGER" />
       <result column="status" property="status" jdbcType="INTEGER" />
-      <result column="createTime" property="createTime" jdbcType="VARCHAR" />
+      <result column="createTime" property="createTime" jdbcType="TIMESTAMP" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
