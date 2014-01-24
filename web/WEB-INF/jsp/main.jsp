@@ -12,17 +12,8 @@
     <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
     <meta HTTP-EQUIV="expires" CONTENT="0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<<<<<<< HEAD
     <%@ include file="/WEB-INF/jsp/public/commons.jspf" %>
-=======
-    <link href="/css/public.css" rel="stylesheet" type="text/css" />
-    <link href="/css/sub.css" rel="stylesheet" type="text/css" />
 
-    <script language=javascript src="/js/1.js" id=clientEventHandlersJS> </script>
-    <script language="javascript" src="/js/jquery-1.8.0.min.js"></script>
-    <script language=javascript src="/js/js.js"> </script>
-    <script language=javascript src="/js/public.js"></script>
->>>>>>> aee58638654eac54bc137e89671486963193fea1
     <title>工商企业查询管理系统</title>
     <style type="text/css">
         body {
