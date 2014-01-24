@@ -9,8 +9,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>后台登录</title>
-    <link href="${path}/manage/css/ht_denglu.css" rel="stylesheet" type="text/css"/>
-    <script language="javascript" src="${path}/js/jquery-1.8.0.min.js"></script>
+    <link href="${basePath}/manage/css/ht_denglu.css" rel="stylesheet" type="text/css"/>
+    <script language="javascript" src="${basePath}/js/jquery-1.8.0.min.js"></script>
 </head>
 <script language="javascript">
     $(function () {
