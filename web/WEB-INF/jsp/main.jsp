@@ -157,7 +157,7 @@
 
 
     </div>
-    <div style="background:#eee; width:779px; height: 100%; overflow: hidden">
+    <div class="content_right">
 
         <iframe id="mainIframe" name="mainIframe" scrolling="no" style="width:100%; height: 666px; overflow: hidden; position:relative;" frameborder="0" src="${basePath}/welcome.jsp" ></iframe>
 
