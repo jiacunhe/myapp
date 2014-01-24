@@ -48,6 +48,7 @@ public class SystemController extends BaseController {
         if (request.getSession().getAttribute(Config.MANAGE) != null) {
             return jsp("manage/home");
         }
+
         return jsp("manage/login");
     }
 

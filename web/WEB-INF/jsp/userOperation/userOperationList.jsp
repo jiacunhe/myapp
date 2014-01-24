@@ -14,8 +14,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <%@ include file="/WEB-INF/jsp/manage/commons.jspf" %>
-    <link rel="stylesheet" type="text/css" media="all" href="/css/jsDatePick_ltr.min.css"/>
-    <script type="text/javascript" src="/js/jsDatePick.min.1.3.js"></script>
+    <link rel="stylesheet" type="text/css" media="all" href="${basePath}/css/jsDatePick_ltr.min.css"/>
+    <script type="text/javascript" src="${basePath}/js/jsDatePick.min.1.3.js"></script>
     <title>操作日志</title>
     <script type="text/javascript">
     $(function () {
@@ -36,9 +36,9 @@
     </div>
 
     <div class="ht_sub_nr1" style=" height: 100px;">
-        <h4 class="ht_sub_title0"><img src="../images/ht_ico09.png" /><p>查询</p></h4>
+        <h4 class="ht_sub_title0"><img src="${basePath}/images/ht_ico09.png" /><p>查询</p></h4>
 
-        <form method="get" action="/manage/userOperation" class="ht_sub_form8" style="margin:10px 0px 20px 0px;">
+        <form method="get" action="${basePath}/manage/userOperation" class="ht_sub_form8" style="margin:10px 0px 20px 0px;">
             <input type="hidden" id="pageNo" name="pageNo" value="1"/>
             <p>操作时间：</p>
             <input type="text" id="operationTimeStart" name="operationTimeStart" value="${operationTimeStart}"  class="ht_sub_input17" style="margin-top: -5px;"/> <span>至</span> <input type="text" id="operationTimeEnd" name="operationTimeEnd" value="${operationTimeEnd}" class="ht_sub_input17" style="margin-top: -5px;"/>

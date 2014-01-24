@@ -32,7 +32,7 @@
 
 
 
-        <form id="editrole" action="/role/editup" method="post" class="ht_sub_form00">
+        <form id="editrole" action="${basePath}/role/editup" method="post" class="ht_sub_form00">
 <input name="roleid" type="hidden" value="${role.id}" />
             <p>*角色名称：</p>
             <input type="text" id="rolename" name="rolename" value="${role.roleName}"  class="ht_sub_input1" style="height:28px; overflow:hidden; line-height:28px;"/><br />
@@ -161,7 +161,7 @@
             <!-- <img src="${basePath}/images/ht_ico07.jpg" class="ht_img1" />--><br />
             <div class="clear"></div>
             <input type="button" value="更新"  class="ht_but_qd" onclick="editrolesubmit()"/>
-            <input type="button" value="取消"  class="ht_but_qx" onclick="window.open('/role/manager','_self')" />
+            <input type="button" value="取消"  class="ht_but_qx" onclick="window.open('${basePath}/role/manager','_self')" />
         </form>
     </div>
 

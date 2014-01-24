@@ -12,7 +12,7 @@
     <title></title>
 </head>
 <body>
-   <form action="/package/update"  method="post" >
+   <form action="${basePath}/package/update"  method="post" >
     <table>
         <tr><td>包名</td><td><input id="packageName" name="packageName" type="text" value="${p.packageName}"/></td></tr>
         <tr><td>价格</td><td><input id="price" name="price" type="text" value="${p.price}"/></td></tr>

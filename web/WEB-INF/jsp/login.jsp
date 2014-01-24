@@ -24,7 +24,7 @@
         <h4></h4>
 
         <div class="dl_bd">
-            <sp:form method="post" action="/login" modelAttribute="user">
+            <sp:form method="post" action="${basePath}/login" modelAttribute="user">
                 用户名：
                 <sp:input onkeydown="hideErrors();" path="userId" class="dl_input1"/>
                 <sp:errors path="userId"/> <br/>

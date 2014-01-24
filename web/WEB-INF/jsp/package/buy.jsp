@@ -5,9 +5,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="${basePath}/css/public.css" rel="stylesheet" type="text/css" />
-    <link href="${basePath}/css/sub.css" rel="stylesheet" type="text/css" />
     <script src="${basePath}/js/iepng.js" type="text/javascript"></script>
+    <%@ include file="/WEB-INF/jsp/public/commons.jspf" %>
     <script type="text/javascript">
         EvPNG.fix('div, ul, img, li, input,dt');
     </script>
@@ -45,7 +44,8 @@
                 </tr>
                <c:forEach var="p" items="${list}"  varStatus="status">
                 <tr align="center">
-                    <td><input type="checkbox" /></td>
+                    <td><input type="checkbox" id="packageId" name="packageId" value="p.id" /></td>
+
                     <td>${p.packageName}</td>
                     <td><p>（查询条数${p.quantityA}条、监控企业或个人条数${p.quantityB}条）</p></td>
                     <td>${p.price}元</td>
@@ -89,7 +89,7 @@
                 <script type="text/javascript">
                     function go2Page(pageNo) {
                         if(pageNo == undefined || pageNo==null || pageNo=="")pageNo=1;
-                        window.location.href="/package/buy?page="+pageNo;
+                        window.location.href="${basePath}/package/buy?page="+pageNo;
                     }
                 </script>
 

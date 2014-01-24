@@ -5,9 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="${basePath}/css/public.css" rel="stylesheet" type="text/css" />
-    <link href="${basePath}/css/sub.css" rel="stylesheet" type="text/css" />
-    <script src="${basePath}/js/iepng.js" type="text/javascript"></script>
+    <%@ include file="/WEB-INF/jsp/manage/commons.jspf" %>
     <script type="text/javascript">
         EvPNG.fix('div, ul, img, li, input,dt');
     </script>
@@ -27,7 +25,7 @@
 
 <body>
 
-<form action="/package/assignUser" method="post">
+<form action="${basePath}/package/assignUser" method="post">
 <div class="content_right" style="height:666px">
     <div class="yemei">
         <p>您当前所在位置：<a href="#">首页</a> >> <a href="#">客户管理</a> >> <span>套餐分配</span></p>
@@ -90,7 +88,7 @@
                 <script type="text/javascript">
                     function go2Page(pageNo) {
                         if(pageNo == undefined || pageNo==null || pageNo=="")pageNo=1;
-                        window.location.href="/package/buy?page="+pageNo;
+                        window.location.href="${basePath}/package/buy?page="+pageNo;
                     }
                 </script>
 

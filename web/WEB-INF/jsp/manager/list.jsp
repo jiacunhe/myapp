@@ -118,20 +118,20 @@
     <div class="ht_rtbut">
         <ul>
             <hyrt:privilege uri="/manager/add/UI"><li>
-                <a href="/manager/add/UI?formUserId=${command.formUserId}&formUsername=${command.formUsername}&formRoleId=${command.formRoleId}">
+                <a href="${basePath}/manager/add/UI?formUserId=${command.formUserId}&formUsername=${command.formUsername}&formRoleId=${command.formRoleId}">
                     <img src="${basePath}/manage/images/ht_ico02.png"/>
 
                     <p>增加</p></a></li></hyrt:privilege>
-            <hyrt:privilege uri="/manager/modify"><li><a id="edit" href="/"><img src="${basePath}/manage/images/ht_ico08.png"/>
+            <hyrt:privilege uri="/manager/modify"><li><a id="edit" href="${basePath}/"><img src="${basePath}/manage/images/ht_ico08.png"/>
 
                 <p>信息修改</p></a></li></hyrt:privilege>
-            <hyrt:privilege uri="/manager/resetPassword"><li><a id="resetPassword" href="/"><img src="${basePath}/manage/images/ht_ico03.png"/>
+            <hyrt:privilege uri="/manager/resetPassword"><li><a id="resetPassword" href="${basePath}/"><img src="${basePath}/manage/images/ht_ico03.png"/>
 
                 <p>重置密码</p></a></li></hyrt:privilege>
-            <hyrt:privilege uri="/manager/lock"><li><a id="lock" href="/"><img src="${basePath}/manage/images/ht_ico015.png"/>
+            <hyrt:privilege uri="/manager/lock"><li><a id="lock" href="${basePath}/"><img src="${basePath}/manage/images/ht_ico015.png"/>
 
                 <p>锁定</p></a></li></hyrt:privilege>
-            <hyrt:privilege uri="/manager/unlock"><li><a id="unlock" href="/"><img src="${basePath}/manage/images/ht_ico016.png"/>
+            <hyrt:privilege uri="/manager/unlock"><li><a id="unlock" href="${basePath}/"><img src="${basePath}/manage/images/ht_ico016.png"/>
 
                 <p>解锁</p></a></li></hyrt:privilege>
         </ul>
@@ -141,7 +141,7 @@
         <h4 class="ht_sub_title0"><img src="${basePath}/manage/images/ht_ico09.png"/>
 
             <p>查询</p></h4>
-        <sp:form action="/manager/list" method="get" class="ht_sub_form3">
+        <sp:form action="${basePath}/manager/list" method="get" class="ht_sub_form3">
             <input type="hidden" id="pageNo" name="pageNo" value="1"/>
             <p>用户名：</p>
             <sp:input path="formUserId" class="ht_sub_input01"/>

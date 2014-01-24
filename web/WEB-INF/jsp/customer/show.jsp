@@ -21,7 +21,7 @@
         <h4 class="ht_sub_title0"><img src="${basePath}/manage/images/ht_ico06.png"/>
 
             <p>详细信息</p></h4>
-        <form action="/customer/modify" method="post">
+        <form action="${basePath}/customer/modify" method="post">
             <dl class="ht_sub_dl1">
                 <dd>
                     <ul class="ht_sub_ul2">

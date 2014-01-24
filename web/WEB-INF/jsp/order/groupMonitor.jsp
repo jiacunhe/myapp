@@ -3,13 +3,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="/css/public.css" rel="stylesheet" type="text/css" />
-    <link href="/css/sub.css" rel="stylesheet" type="text/css" />
+    <%@ include file="/WEB-INF/jsp/public/commons.jspf" %>
+    <link rel="stylesheet" type="text/css"  href="${basePath}/images/dialog/dialog.css">
+    <script src="${basePath}/images/dialog/dialog.js" type="text/javascript"></script>
 
-    <link rel="stylesheet" type="text/css"  href="/images/dialog/dialog.css">
-    <script src="/images/dialog/dialog.js" type="text/javascript"></script>
-
-    <script language="javascript" src="/js/1.js"> </script>
     <title>企业监控</title>
     <style type="text/css">
         .deleteLine{text-align:center; width:35px;}
@@ -24,7 +21,7 @@
         <p>您当前所在位置：<a href="#">首页</a> >> <a href="#"> 信息监控</a> >> <span>企业监控</span></p>
     </div>
     <div class="sub_rttop">
-        <a href="#" class="first" onclick="insRow()" style="float: right"><img src="../images/button3.jpg" /></a>
+        <a href="#" class="first" onclick="insRow()" style="float: right"><img src="${basePath}/images/button3.jpg" /></a>
     </div>
     <div class="content_right_nr">
         <h4 class="sub_title1"><p class="sub_p5">监控企业名单</p></h4>
@@ -53,7 +50,7 @@
             </table>
             <!--p class="cxjg">本次查询条数：<span>2</span>条</p>
             <p ><a href="#">提交订单</a></p -->
-            <form action="/order/submit" method="post" id="groupfrom" class="sub_form2" style="position:relative">
+            <form action="${basePath}/order/submit" method="post" id="groupfrom" class="sub_form2" style="position:relative">
 
                 <p class="tijiao1">
 <%--                     <span class="span3" style="width: 200px; float: left">监控周期：

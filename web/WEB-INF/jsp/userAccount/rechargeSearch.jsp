@@ -6,10 +6,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="/manage/css/ht_public.css" rel="stylesheet" type="text/css" />
-    <link href="/manage/css/ht_sub.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" type="text/css" media="all" href="/css/jsDatePick_ltr.min.css" />
-    <script type="text/javascript" src="/js/jsDatePick.min.1.3.js"></script>
+    <link rel="stylesheet" type="text/css" media="all" href="${basePath}/css/jsDatePick_ltr.min.css" />
+    <script type="text/javascript" src="${basePath}/js/jsDatePick.min.1.3.js"></script>
+    <%@ include file="/WEB-INF/jsp/manage/commons.jspf" %>
     <script type="text/javascript">
         window.onload = function(){   new JsDatePick({ useMode:2,  target:"startDate",  dateFormat:"%Y-%m-%d" });  new JsDatePick({  useMode:2, target:"endDate",  dateFormat:"%Y-%m-%d" }); }
     </script>
@@ -35,9 +34,9 @@
     </div>
 
     <div class="ht_sub_nr1">
-        <h4 class="ht_sub_title0"><img src="/manage/images/ht_ico09.png" /><p>查询</p></h4>
+        <h4 class="ht_sub_title0"><img src="${basePath}/manage/images/ht_ico09.png" /><p>查询</p></h4>
 
-        <form method="post" action="/userAccount/rechargeSearch">
+        <form method="post" action="${basePath}/userAccount/rechargeSearch">
 
             <li class="formLi">
                 <span>付款金额：</span>

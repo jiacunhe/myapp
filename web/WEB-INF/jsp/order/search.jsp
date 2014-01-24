@@ -5,13 +5,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link href="/css/public.css" rel="stylesheet" type="text/css" />
-    <link href="/css/sub.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" type="text/css" media="all" href="/css/jsDatePick_ltr.min.css" />
-    <script type="text/javascript" src="/js/jsDatePick.min.1.3.js"></script>
+    <%@ include file="/WEB-INF/jsp/public/commons.jspf" %>
+    <link rel="stylesheet" type="text/css" media="all" href="${basePath}/css/jsDatePick_ltr.min.css" />
+    <script type="text/javascript" src="${basePath}/js/jsDatePick.min.1.3.js"></script>
 
-    <link rel="stylesheet" type="text/css"  href="/images/dialog/dialog.css">
-    <script  type="text/javascript"  src="/images/dialog/dialog.js"></script>
+    <link rel="stylesheet" type="text/css"  href="${basePath}/images/dialog/dialog.css">
+    <script  type="text/javascript"  src="${basePath}/images/dialog/dialog.js"></script>
     <style type="text/css">
 
         .page ul{ width: 97%; float: left}
@@ -45,12 +44,12 @@
     <div class="content_right_nr" style=" margin-top:16px;">
         <h4 class="sub_title1"><p class="sub_p5">搜索</p></h4>
         <div style="height:120px;">
-            <form method="post" action="/order/search" class="sub_form3">
+            <form method="post" action="${basePath}/order/search" class="sub_form3">
 
                 <p style="width: 80px">查询时间：</p>
-                <input type="text"  class="sub_input01" style="background:url(/images/ico013.jpg) right no-repeat;width: 160px;  " name="sday" id="sday" value="${sday}" >
+                <input type="text"  class="sub_input01" style="background:url(${basePath}/images/ico013.jpg) right no-repeat;width: 160px;  " name="sday" id="sday" value="${sday}" >
                 <span class="span1" style="float:left; display:inline;">至</span>
-                <input type="text"  class="sub_input01"  style="background:url(/images/ico013.jpg) right no-repeat;width: 160px; " id="eday" name="eday" value="${eday}">
+                <input type="text"  class="sub_input01"  style="background:url(${basePath}/images/ico013.jpg) right no-repeat;width: 160px; " id="eday" name="eday" value="${eday}">
                 <p style="width: 50px">类型：</p>
                 <span class="span03">
                     <select class="sub_input013" name="type" style="width: 162px;">
@@ -118,10 +117,10 @@
                 <td>${obj.statusName}</td>
                 <td>
                     <c:if test="${obj.status eq '2'}">
-                        <a href="/order/result?id=${obj.id}"><img src="/images/newmessage.png" alt="查看" title="查看" height="20" width="20"></a>
+                        <a href="${basePath}/order/result?id=${obj.id}"><img src="${basePath}/images/newmessage.png" alt="查看" title="查看" height="20" width="20"></a>
                     </c:if>
                     <c:if test="${obj.status ne '2'}">
-                       <img src="/images/nomessage.png"  height="20" width="20">
+                       <img src="${basePath}/images/nomessage.png"  height="20" width="20">
                     </c:if>
                 </td>
             </tr>
@@ -180,13 +179,13 @@
 
                     <c:choose>
                         <c:when  test="${obj.status eq '6'}">
-                            <a href="javascript:openDetail(${obj.id},${obj.orderType})"><img src="/images/kaka.png" alt="查看" title="查看" height="20" width="20"></a>
+                            <a href="javascript:openDetail(${obj.id},${obj.orderType})"><img src="${basePath}/images/kaka.png" alt="查看" title="查看" height="20" width="20"></a>
                         </c:when>
                         <c:when  test="${obj.status eq '2'}">
-                            <a href="javascript:openDetail(${obj.id},${obj.orderType})"><img src="/images/kaka.png" alt="查看" title="查看" height="20" width="20"></a>
+                            <a href="javascript:openDetail(${obj.id},${obj.orderType})"><img src="${basePath}/images/kaka.png" alt="查看" title="查看" height="20" width="20"></a>
                         </c:when>
                         <c:otherwise>
-                            <img src="/images/bobo.png"  height="20" width="20">
+                            <img src="${basePath}/images/bobo.png"  height="20" width="20">
                         </c:otherwise>
                     </c:choose>
                 </td>
@@ -195,13 +194,13 @@
 
                     <c:choose>
                         <c:when  test="${obj.status eq '6'}">
-                            <a href="/order/result?id=${obj.id}"><img src="/images/newmessage.png" alt="查看" title="查看" height="20" width="20"></a>
+                            <a href="${basePath}/order/result?id=${obj.id}"><img src="${basePath}/images/newmessage.png" alt="查看" title="查看" height="20" width="20"></a>
                         </c:when>
                         <c:when  test="${obj.status eq '2'}">
-                            <a href="/order/result?id=${obj.id}"><img src="/images/newmessage.png" alt="查看" title="查看" height="20" width="20"></a>
+                            <a href="${basePath}/order/result?id=${obj.id}"><img src="${basePath}/images/newmessage.png" alt="查看" title="查看" height="20" width="20"></a>
                         </c:when>
                         <c:otherwise>
-                            <img src="/images/nomessage.png"  height="20" width="20">
+                            <img src="${basePath}/images/nomessage.png"  height="20" width="20">
                         </c:otherwise>
                     </c:choose>
 
@@ -241,11 +240,11 @@
 
 <script type="text/javascript">
     if('${type}'=='4' || '${type}'=='5'){
-        document.getElementById("searchResultTab2").style.background = "url(/images/sub_ttbg4.gif) no-repeat";
+        document.getElementById("searchResultTab2").style.background = "url(${basePath}/images/sub_ttbg4.gif) no-repeat";
         document.getElementById("searchResultTab2").style.color = "#fd7d00";
         document.getElementById("content").innerHTML = document.getElementById("content3").innerHTML;
     }else{
-        document.getElementById("searchResultTab1").style.background = "url(/images/sub_ttbg4.gif) no-repeat";
+        document.getElementById("searchResultTab1").style.background = "url(${basePath}/images/sub_ttbg4.gif) no-repeat";
         document.getElementById("searchResultTab1").style.color = "#fd7d00";
         document.getElementById("content").innerHTML = document.getElementById("content2").innerHTML;
     }
@@ -272,12 +271,12 @@
         }
         if(e.nodeName=="A"){
             lastTabl = e;
-            e.style.background = "url(/images/sub_ttbg4.gif) no-repeat";
+            e.style.background = "url(${basePath}/images/sub_ttbg4.gif) no-repeat";
             e.style.color = "#fd7d00";
 
             e.blur();          //Chrome和Opera不需要
         }else{
-            lastTabl.style.background = "url(/images/sub_ttbg4.gif) no-repeat";
+            lastTabl.style.background = "url(${basePath}/images/sub_ttbg4.gif) no-repeat";
             lastTabl.style.color = "#fd7d00";
 
             lastTabl.blur();          //Chrome和Opera不需要
@@ -306,7 +305,7 @@
     //var statuscode;
     function search(monitor,page){
      //   statuscode = status;
-        var url = '/order/searchForAjax';
+        var url = '${basePath}/order/searchForAjax';
         request.open("POST", url, "true");
 
         var post = "type=${type}&eday=${eday}&sday=${sday}&code=${code}&submit=true&page="+page+"&status=${status}&name=${name}&businessType="+monitor;
@@ -361,9 +360,9 @@
 
 
             if(obj.list[i].status == '2'){
-                content+='<td> <a href="/order/result?id='+obj.list[i].id+'"><img src="/images/newmessage.png" alt="查看" title="查看" height="20" width="20"></a></td>';
+                content+='<td> <a href="${basePath}/order/result?id='+obj.list[i].id+'"><img src="${basePath}/images/newmessage.png" alt="查看" title="查看" height="20" width="20"></a></td>';
             }else{
-                content+='<td><img src="/images/nomessage.png" alt="查看" title="查看" height="20" width="20"></td>';
+                content+='<td><img src="${basePath}/images/nomessage.png" alt="查看" title="查看" height="20" width="20"></td>';
             }
 
             content+='</tr>';
@@ -422,15 +421,15 @@
             content+='<td>'+obj.list[i].createTime +" &nbsp; "+ obj.list[i].monitorOverTime+'</td>';
             content+='<td>'+obj.list[i].statusName+'</td>';
             if(obj.list[i].status == '2'|| obj.list[i].status == '6'){
-                content+=' <td><a href="javascript:openDetail('+obj.list[i].id+','+obj.list[i].orderType+')"><img src="/images/kaka.png" alt="查看" title="查看" height="20" width="20"></a></td>';
+                content+=' <td><a href="javascript:openDetail('+obj.list[i].id+','+obj.list[i].orderType+')"><img src="${basePath}/images/kaka.png" alt="查看" title="查看" height="20" width="20"></a></td>';
             }else{
-                content+='<td><img src="/images/nomessage.png" alt="查看" title="查看" height="20" width="20"></td>';
+                content+='<td><img src="${basePath}/images/nomessage.png" alt="查看" title="查看" height="20" width="20"></td>';
             }
 
             if(obj.list[i].status == '2'|| obj.list[i].status == '6'){
-                content+='<td> <a href="/order/result?id='+obj.list[i].id+'"><img src="/images/newmessage.png" alt="查看" title="查看" height="20" width="20"></a></td>';
+                content+='<td> <a href="${basePath}/order/result?id='+obj.list[i].id+'"><img src="${basePath}/images/newmessage.png" alt="查看" title="查看" height="20" width="20"></a></td>';
             }else{
-                content+='<td><img src="/images/nomessage.png" alt="查看" title="查看" height="20" width="20"></td>';
+                content+='<td><img src="${basePath}/images/nomessage.png" alt="查看" title="查看" height="20" width="20"></td>';
             }
 
             content+='</tr>';
@@ -472,7 +471,7 @@
         dialog=new Dialog("查看监控信息");
         dialog.SetRange(500,300);
         dialog.SetXY((window.document.body.clientWidth -500)/2,150);
-        dialog.OpenWindow("/order/subsidiary?id="+id+"&orderType="+orderType);
+        dialog.OpenWindow("${basePath}/order/subsidiary?id="+id+"&orderType="+orderType);
     }
 
 </script>

@@ -12,11 +12,9 @@
     <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
     <meta HTTP-EQUIV="expires" CONTENT="0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="/css/public.css" rel="stylesheet" type="text/css" />
-    <link href="/css/sub.css" rel="stylesheet" type="text/css" />
-
-    <link rel="stylesheet" type="text/css"  href="/images/dialog/dialog.css">
-    <script src="/images/dialog/dialog.js" type="text/javascript"></script>
+    <%@ include file="/WEB-INF/jsp/public/commons.jspf" %>
+    <link rel="stylesheet" type="text/css"  href="${basePath}/images/dialog/dialog.css">
+    <script src="${basePath}/images/dialog/dialog.js" type="text/javascript"></script>
 
     <title>人员查询</title>
     <style type="text/css">
@@ -37,8 +35,8 @@
     <div class="sub_rttop">
      <!--   <a href="#" class="first" style="float: right"><img src="../images/button1.jpg" /></a>   -->
 
-        <a href="#" onclick="insRow()" style="float: right"><img src="../images/button3.jpg" /></a>
-        <a href="#" onclick="openUpFile()" style="float: right"><img src="../images/button2.jpg" /></a>
+        <a href="#" onclick="insRow()" style="float: right"><img src="${basePath}/images/button3.jpg" /></a>
+        <a href="#" onclick="openUpFile()" style="float: right"><img src="${basePath}/images/button2.jpg" /></a>
 
     </div>
     <div class="content_right_nr">
@@ -77,7 +75,7 @@
             </table>
             <!--p class="cxjg">本次查询条数：<span>2</span>条</p>
             <p ><a href="#">提交订单</a></p -->
-            <form action="/order/submit" method="post" id="groupfrom">
+            <form action="${basePath}/order/submit" method="post" id="groupfrom">
                 <p class="tijiao1"> <a href="#" onclick="return checkdata()">提交订单</a>   </p>
                 <input type="hidden" value="${businessTypeId}" name="businessType">
                 <input type="hidden" value="${orderTypeId}" name="orderType">
@@ -313,7 +311,7 @@
         dialog=new Dialog("上传文件");
         dialog.SetRange(500,200);
         dialog.SetXY((window.document.body.clientWidth -500)/2,150);
-        dialog.OpenWindow("/order/upFile?type=2");
+        dialog.OpenWindow("${basePath}/order/upFile?type=2");
     }
 </script>
 </body>

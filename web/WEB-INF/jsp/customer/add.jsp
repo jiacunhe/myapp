@@ -68,7 +68,7 @@
         <h4 class="ht_sub_title0"><img src="${basePath}/manage/images/ht_ico06.png"/>
 
             <p>新增</p></h4>
-        <form id="form" action="/customer/add" method="post">
+        <form id="form" action="${basePath}/customer/add" method="post">
             <dl class="ht_sub_dl1">
                 <dd>
                     <ul class="ht_sub_ul2">

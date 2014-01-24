@@ -4,13 +4,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="/css/public.css" rel="stylesheet" type="text/css" />
-    <link href="/css/sub.css" rel="stylesheet" type="text/css" />
+    <%@ include file="/WEB-INF/jsp/public/commons.jspf" %>
+    <link rel="stylesheet" type="text/css"  href="${basePath}/images/dialog/dialog.css">
+    <script src="${basePath}/images/dialog/dialog.js" type="text/javascript"></script>
 
-    <link rel="stylesheet" type="text/css"  href="/images/dialog/dialog.css">
-    <script src="/images/dialog/dialog.js" type="text/javascript"></script>
-
-    <script language="javascript" src="/js/1.js"> </script>
     <title>订单详情</title>
     <style type="text/css">
 
@@ -123,34 +120,34 @@
 
                     <ul>
 
-                        <li><a href="/order/detail?id=${orderInfo.id}&page=${objects.page -1}"  title="上一页"> < </a></li>
+                        <li><a href="${basePath}/order/detail?id=${orderInfo.id}&page=${objects.page -1}"  title="上一页"> < </a></li>
 
 
 
                         <c:if test="${objects.page <= 9}">
                             <c:forEach var="i" begin="${1}" end="${objects.page-1}" step="1">
-                                <li><a href="/order/detail?id=${orderInfo.id}&page=${i}">${i}</a></li>
+                                <li><a href="${basePath}/order/detail?id=${orderInfo.id}&page=${i}">${i}</a></li>
                             </c:forEach>
                         </c:if>
 
 
                         <c:if test="${objects.page > 9}">
                             <c:forEach var="i" begin="${objects.page-5}" end="${objects.page-1}" step="1">
-                                <li><a href="/order/detail?id=${orderInfo.id}&page=${i}">${i}</a></li>
+                                <li><a href="${basePath}/order/detail?id=${orderInfo.id}&page=${i}">${i}</a></li>
                             </c:forEach>
                         </c:if>
 
 
-                        <li><a href="/order/detail?id=${orderInfo.id}&page=${objects.page}" style="color:#FF0000">${objects.page}</a></li>
+                        <li><a href="${basePath}/order/detail?id=${orderInfo.id}&page=${objects.page}" style="color:#FF0000">${objects.page}</a></li>
 
 
                         <c:forEach var="j" begin="${objects.page+1}" end="${objects.page + 5}" step="1">
                             <c:if test="${j <= objects.totalpage}">
-                                <li><a href="/order/detail?id=${orderInfo.id}&page=${j}">${j}</a></li>
+                                <li><a href="${basePath}/order/detail?id=${orderInfo.id}&page=${j}">${j}</a></li>
                             </c:if>
                         </c:forEach>
 
-                        <li><a href="/order/detail?id=${orderInfo.id}&page=${objects.page+1}" title="下一页"> > </a></li>
+                        <li><a href="${basePath}/order/detail?id=${orderInfo.id}&page=${objects.page+1}" title="下一页"> > </a></li>
                         <li><span >共 ${objects.totalitem }条 ，当前第 <strong> ${objects.page }</strong> / <span> <strong>${objects.totalpage}</strong> </span> 页 </span> </li>
                     </ul>
 

@@ -5,10 +5,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="/manage/css/ht_public.css" rel="stylesheet" type="text/css" />
-    <link href="/manage/css/ht_sub.css" rel="stylesheet" type="text/css" />
 
-
+    <%@ include file="/WEB-INF/jsp/manage/commons.jspf" %>
     <style type="text/css">
 
         .sub_tr1 ul{ width: 80%; float: left}
@@ -31,7 +29,7 @@
     </div>
 
     <div class="ht_sub_nr1" id="qc_sell_tab">
-        <h4 class="ht_sub_title0"><img src="/manage/images/ht_ico09.png" /><p>查询</p></h4>
+        <h4 class="ht_sub_title0"><img src="${basePath}/manage/images/ht_ico09.png" /><p>查询</p></h4>
        <%-- <script type="text/javascript">$(function(){$("#qc_sell_tab").tabs();})</script>--%>
         <dl class="ht_sub_dl1">
             <dt  onclick="tabCard(); return false;" id="select_tab"><a href="#"  id="searchResultTab1">用户账户信息查询</a><a href="#"  id="searchResultTab2">包月套餐信息查询</a></dt>
@@ -53,7 +51,7 @@
 
 <div id="content1" style="display:none">
 
-    <form method="post" action="/userAccount/search" class="ht_sub_form7" style="margin-left:40px;">
+    <form method="post" action="${basePath}/userAccount/search" class="ht_sub_form7" style="margin-left:40px;">
         <span><p>客户账号：</p><input type="text" class="ht_sub_input11" name="userId" value="${_userId}"/></span>
         <span><p>客户姓名：</p><input type="text"  class="ht_sub_input11" name="userName" value="${_userName}"/></span>
 
@@ -114,7 +112,7 @@
                 <script type="text/javascript">
                     function go2Page(pageNo) {
                         if(pageNo == undefined || pageNo==null || pageNo=="")pageNo=1;
-                           window.location.href="/userAccount/search?userId=${userId}&userName=${userName}&page="+pageNo;
+                           window.location.href="${basePath}/userAccount/search?userId=${userId}&userName=${userName}&page="+pageNo;
                     }
                 </script>
 
@@ -130,7 +128,7 @@
 
 
 <div id="content2" style="display:none">
-    <form method="post" action="/userAccount/searchMonthly" class="ht_sub_form7" style="margin-left:40px;">
+    <form method="post" action="${basePath}/userAccount/searchMonthly" class="ht_sub_form7" style="margin-left:40px;">
 
                              <span><p>月份：</p>
                         <select class="ht_sub_input016" name="yearMonth">
@@ -227,7 +225,7 @@
                 <script type="text/javascript">
                     function goPage(pageNo) {
                         if(pageNo == undefined || pageNo==null || pageNo=="")pageNo=1;
-                        window.location.href="/userAccount/searchMonthly?yearMonth=${yearMonth}&userId=${userId}&userName=${userName}&page="+pageNo;
+                        window.location.href="${basePath}/userAccount/searchMonthly?yearMonth=${yearMonth}&userId=${userId}&userName=${userName}&page="+pageNo;
                     }
                 </script>
 
@@ -245,11 +243,11 @@
 <script type="text/javascript">
 
    if('${yearMonth}'==''){
-        document.getElementById("searchResultTab1").style.background = "url(/manage/images/ht_ttbg4.gif) no-repeat";
+        document.getElementById("searchResultTab1").style.background = "url(${basePath}/manage/images/ht_ttbg4.gif) no-repeat";
         document.getElementById("searchResultTab1").style.color = "#ffffff";
         document.getElementById("content").innerHTML = document.getElementById("content1").innerHTML;
    }else{
-       document.getElementById("searchResultTab2").style.background = "url(/manage/images/ht_ttbg4.gif) no-repeat";
+       document.getElementById("searchResultTab2").style.background = "url(${basePath}/manage/images/ht_ttbg4.gif) no-repeat";
        document.getElementById("searchResultTab2").style.color = "#ffffff";
        document.getElementById("content").innerHTML = document.getElementById("content2").innerHTML;
    }
@@ -277,12 +275,12 @@
 
         if(e.nodeName=="A"){
             lastTabl = e;
-            e.style.background = "url(/manage/images/ht_ttbg4.gif) no-repeat";
+            e.style.background = "url(${basePath}/manage/images/ht_ttbg4.gif) no-repeat";
             e.style.color = "#ffffff";
 
             e.blur();
         }else{
-            lastTabl.style.background = "url(/manage/images/ht_ttbg4.gif) no-repeat";
+            lastTabl.style.background = "url(${basePath}/manage/images/ht_ttbg4.gif) no-repeat";
             lastTabl.style.color = "#ffffff";
 
             lastTabl.blur();          //Chrome和Opera不需要

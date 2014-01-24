@@ -1,5 +1,7 @@
 package com.hyrt.saic.util;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * Created with IntelliJ IDEA.
  * User: sfce
@@ -15,4 +17,10 @@ public class Config {
     public static final int PAGE_SIZE = 10;
     public static final String _UI = "/UI";
     public static final String USER_RESOURCE_LIST = "userHaveResourelist";
+    public static  String getBasePath(HttpServletRequest request){
+
+        String path = request.getContextPath();
+        String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path;
+        return basePath;
+    }
 }

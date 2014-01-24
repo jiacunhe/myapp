@@ -82,7 +82,7 @@
         <span class="ht_sub_span2"><img src="${basePath}/manage/images/ht_ico011.gif"/><p>
             定期更换密码可以让您的账户更加安全。请确保登录密码与支付密码不同！建议密码采用字母和数字混合，并且不短于6位.。</p></span>
 
-        <form id="form" method="post" action="/user/password/modify" class="ht_sub_form2">
+        <form id="form" method="post" action="${basePath}/user/password/modify" class="ht_sub_form2">
             <input type="hidden" value="${manage.userId}" name="userId" id="userId"/>
 
             <p>旧密码：</p>

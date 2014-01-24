@@ -10,11 +10,10 @@
 <html>
 <head>
     <title>订单结果页面</title>
-    <link href="../css/public.css" rel="stylesheet" type="text/css" />
-    <link href="../css/sub.css" rel="stylesheet" type="text/css" />
+    <%@ include file="/WEB-INF/jsp/public/commons.jspf" %>
 </head>
 <body>
-               <body style="background:url(../images/bg5.jpg) repeat; font-family:'微软雅黑';">
+               <body style="background:url(${basePath}/images/bg5.jpg) repeat; font-family:'微软雅黑';">
 
 
               <!-- <div class="ddjg_wai" style=" width: 100%">
@@ -24,7 +23,7 @@
                    </div>
                </div>-->
               <div class="content_right_nr">
-                  <h4 class="sub_title1"><p class="sub_p9"><span class="sub_ddxx">订单详细</span> <span class="sub_button"><a href="#"><img src="../images/button7.jpg" /></a><a href="#"><img src="../images/button8.jpg" /></a></span></p></h4>
+                  <h4 class="sub_title1"><p class="sub_p9"><span class="sub_ddxx">订单详细</span> <span class="sub_button"><a href="#"><img src="${basePath}/images/button7.jpg" /></a><a href="#"><img src="${basePath}/images/button8.jpg" /></a></span></p></h4>
 
                   <div class="sub_nr">
                <div class="ddjg_content">

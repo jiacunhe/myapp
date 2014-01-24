@@ -12,7 +12,7 @@ body {
 -->
 </style>
 
-
+  <%@ include file="/WEB-INF/jsp/public/commons.jspf" %>
 </head>
   
 <body>
@@ -46,7 +46,7 @@ ${message}
 	function progress()
 	{
 	
-		var url='/order/progress';
+		var url='${basePath}/order/progress';
 		request.open("GET",url,"true");
 		request.onreadystatechange=writeprogress;//隐性的循环
 		request.send(null);
@@ -55,7 +55,7 @@ ${message}
 	function remov()
 	{
 		document.getElementById("pro").innerHTML =	rest+"<a href='javascript:viewResult()'>生成订单</a>";
-		var url='/order/progress?param=rm';
+		var url='${basePath}/order/progress?param=rm';
 		request.open("GET",url,"true");
 		request.send(null);
 	}
@@ -80,7 +80,7 @@ ${message}
 
 
     function viewResult(){
-        parent.window.location.href="/order/upFileResult";
+        parent.window.location.href="${basePath}/order/upFileResult";
     }
 </script>
 

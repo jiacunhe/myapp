@@ -5,8 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="/manage/css/ht_public.css" rel="stylesheet" type="text/css" />
-    <link href="/manage/css/ht_sub.css" rel="stylesheet" type="text/css" />
+    <%@ include file="/WEB-INF/jsp/manage/commons.jspf" %>
     <style type="text/css">
 
         .sub_tr1 ul{ width: 80%; float: left}
@@ -29,13 +28,13 @@
     <div class="ht_kongbai"></div>
     <div class="ht_rtbut">
         <ul>
-            <li><a href="/userAccount/allotPackage"><img src="/manage/images/ht_ico02.png" /><p>新增分配</p></a></li>
+            <li><a href="${basePath}/userAccount/allotPackage"><img src="${basePath}/manage/images/ht_ico02.png" /><p>新增分配</p></a></li>
         </ul>
     </div>
 
     <div class="ht_sub_nr1">
-        <h4 class="ht_sub_title0"><img src="/manage/images/ht_ico09.png" /><p>查询</p></h4>
-        <form method="post" action="/userAccount/allotSearch" class="ht_sub_form3" >
+        <h4 class="ht_sub_title0"><img src="${basePath}/manage/images/ht_ico09.png" /><p>查询</p></h4>
+        <form method="post" action="${basePath}/userAccount/allotSearch" class="ht_sub_form3" >
 <c:if test="${thisUserType eq 'MANAGER' }">  <p>分配者： </p>
                         <span class="ht_span03">
                             <input type="text" name="allocatee"  class="ht_sub_input01" value="${result.allocatee}">
@@ -58,7 +57,7 @@
     </div>
 
     <div class="ht_sub_nr1">
-        <h4 class="ht_sub_title0"><img src="/manage/images/ht_ico05.png" /><p>分配列表</p></h4>
+        <h4 class="ht_sub_title0"><img src="${basePath}/manage/images/ht_ico05.png" /><p>分配列表</p></h4>
         <table width="768" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="ht_sub_table1">
             <tr class="ht_sub_tr1">
 <c:if test="${thisUserType eq 'MANAGER' }">                 <th width="100">分配者</th> </c:if>
@@ -80,7 +79,7 @@
                 <td><c:if test="${obj.durationMonths < 0 }">长期</c:if><c:if test="${obj.durationMonths>0}">${obj.durationMonths}</c:if></td>
                 <td>${obj.quantity}</td>
                 <td><c:if test="${obj.status eq '1' }">正常</c:if><c:if test="${obj.status eq '2' }">失效</c:if></td>
-                <td><c:if test="${obj.status eq '1' }"><a href="/userAccount/allotStop?id=${obj.id}&status=${result.status}&allocatee=${result.allocatee}&receiver=${result.receiver}&page=${result.page}"><img style="width:42px; height:22px;  " src="/manage/images/ht_sx2.jpg" /></a></c:if></td>
+                <td><c:if test="${obj.status eq '1' }"><a href="${basePath}/userAccount/allotStop?id=${obj.id}&status=${result.status}&allocatee=${result.allocatee}&receiver=${result.receiver}&page=${result.page}"><img style="width:42px; height:22px;  " src="${basePath}/manage/images/ht_sx2.jpg" /></a></c:if></td>
             </tr>
   </c:forEach>
             <tr class="sub_tr1">
@@ -115,7 +114,7 @@
                     <script type="text/javascript">
                         function go2Page(pageNo) {
                             if(pageNo == undefined || pageNo==null || pageNo=="")pageNo=1;
-                            window.location.href="/userAccount/allotSearch?status=${result.status}&allocatee=${result.allocatee}&receiver=${result.receiver}&page="+pageNo;
+                            window.location.href="${basePath}/userAccount/allotSearch?status=${result.status}&allocatee=${result.allocatee}&receiver=${result.receiver}&page="+pageNo;
                         }
                     </script>
 

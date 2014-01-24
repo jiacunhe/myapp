@@ -14,9 +14,7 @@
     <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
     <meta HTTP-EQUIV="expires" CONTENT="0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="/css/public.css" rel="stylesheet" type="text/css" />
-    <link href="/css/sub.css" rel="stylesheet" type="text/css" />
-
+    <%@ include file="/WEB-INF/jsp/public/commons.jspf" %>
 
     <title>查询订单确认</title>
 
@@ -156,7 +154,7 @@
         </c:if>
         <div style="clear: both; width: 100%"></div>
         <p class="button2" style="padding-left:100px; margin-top:0px;">
-            <form action="/order/confirm" method="get">
+            <form action="${basePath}/order/confirm" method="get">
                 <input type="submit" value="订单确认" class="but_qd"  />
             </form>
         </p>

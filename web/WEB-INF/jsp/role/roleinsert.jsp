@@ -29,7 +29,7 @@
 
 
 
-        <form id="inserrole" action="/role/insert" method="post" class="ht_sub_form00">
+        <form id="inserrole" action="${basePath}/role/insert" method="post" class="ht_sub_form00">
 
             <p>*角色名称：</p>
             <input type="text" id="roleName" name="roleName"  class="ht_sub_input1" style=" height:28px; overflow:hidden; line-height:28px;"/>

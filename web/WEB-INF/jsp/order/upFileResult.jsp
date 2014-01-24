@@ -13,8 +13,7 @@
     <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
     <meta HTTP-EQUIV="expires" CONTENT="0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="/css/public.css" rel="stylesheet" type="text/css" />
-    <link href="/css/sub.css" rel="stylesheet" type="text/css" />
+    <%@ include file="/WEB-INF/jsp/public/commons.jspf" %>
     <title>subsidiary</title>
     <style type="text/css">
         <!--
@@ -64,36 +63,36 @@
             <td colspan="4">
 
                 <ul>
-                    <li><a href="/order/upFileResult?page=${1}"  title="首页"> << </a></li>
-                    <li><a href="/order/upFileResult?page=${page -1}"  title="上一页"> < </a></li>
+                    <li><a href="${basePath}/order/upFileResult?page=${1}"  title="首页"> << </a></li>
+                    <li><a href="${basePath}/order/upFileResult?page=${page -1}"  title="上一页"> < </a></li>
 
 
 
                     <c:if test="${page <= 9}">
                         <c:forEach var="i" begin="${1}" end="${page-1}" step="1">
-                            <li><a href="/order/upFileResult?page=${i}">${i}</a></li>
+                            <li><a href="${basePath}/order/upFileResult?page=${i}">${i}</a></li>
                         </c:forEach>
                     </c:if>
 
 
                     <c:if test="${page > 9}">
                         <c:forEach var="i" begin="${page-5}" end="${page-1}" step="1">
-                            <li><a href="/order/upFileResult?page=${i}">${i}</a></li>
+                            <li><a href="${basePath}/order/upFileResult?page=${i}">${i}</a></li>
                         </c:forEach>
                     </c:if>
 
 
-                    <li><a href="/order/upFileResult?page=${page}" style="color:#FF0000">${page}</a></li>
+                    <li><a href="${basePath}/order/upFileResult?page=${page}" style="color:#FF0000">${page}</a></li>
 
 
                     <c:forEach var="j" begin="${page+1}" end="${page + 5}" step="1">
                         <c:if test="${j <= totalPage}">
-                            <li><a href="/order/upFileResult?page=${j}">${j}</a></li>
+                            <li><a href="${basePath}/order/upFileResult?page=${j}">${j}</a></li>
                         </c:if>
                     </c:forEach>
 
-                    <li><a href="/order/upFileResult?page=${page +1}" title="下一页"> > </a></li>
-                    <li><a href="/order/upFileResult?page=${totalPage}" title="末页"> >> </a></li>
+                    <li><a href="${basePath}/order/upFileResult?page=${page +1}" title="下一页"> > </a></li>
+                    <li><a href="${basePath}/order/upFileResult?page=${totalPage}" title="末页"> >> </a></li>
                     <li><span >共 ${countItem }条 ，当前第 <strong> ${page }</strong> / <span> <strong>${totalPage}</strong> </span> 页 </span> </li>
                 </ul>
 
@@ -103,7 +102,7 @@
 
     </table>
 
-    <p class="commitfield"> <a href="/order/createOrderByFile" onclick="waiting()">生成订单</a> <a href="javascript:goback()">放弃</a></p>
+    <p class="commitfield"> <a href="${basePath}/order/createOrderByFile" onclick="waiting()">生成订单</a> <a href="javascript:goback()">放弃</a></p>
 </div>
 
 
@@ -117,15 +116,15 @@
         var loading = document.createElement("div");
         loading.className="loading";
         document.body.appendChild(loading);
-        loading.innerHTML="<span><img src='/images/loading.gif'></span><span>正在处理，请稍候...</span>";
+        loading.innerHTML="<span><img src='${basePath}/images/loading.gif'></span><span>正在处理，请稍候...</span>";
         loading.style.left=(document.body.scrollWidth-58)/2;
         loading.style.top=(document.body.scrollHeight-20)/2;
     }
 
     function goback(){
-        <c:if test="${fileOrderType == 1}">window.location.href="/order/group";</c:if>
-        <c:if test="${fileOrderType == 2}">window.location.href="/order/person";</c:if>
-        <c:if test="${fileOrderType == 3}">window.location.href="/order/investment";</c:if>
+        <c:if test="${fileOrderType == 1}">window.location.href="${basePath}/order/group";</c:if>
+        <c:if test="${fileOrderType == 2}">window.location.href="${basePath}/order/person";</c:if>
+        <c:if test="${fileOrderType == 3}">window.location.href="${basePath}/order/investment";</c:if>
     }
 
 </script>

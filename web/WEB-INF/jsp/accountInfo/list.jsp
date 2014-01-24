@@ -4,8 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="${basePath}/css/public.css" rel="stylesheet" type="text/css" />
-    <link href="${basePath}/css/sub.css" rel="stylesheet" type="text/css" />
+
+    <%@ include file="/WEB-INF/jsp/public/commons.jspf" %>
     <title>套餐余额</title>
     <style type="text/css">
 

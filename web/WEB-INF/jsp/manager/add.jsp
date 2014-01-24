@@ -61,7 +61,7 @@
         <h4 class="ht_sub_title0"><img src="${basePath}/manage/images/ht_ico06.png"/>
 
             <p>增加</p></h4>
-        <sp:form id="form" method="post" action="/manager/add" class="ht_sub_form1" style="margin-left:100px;">
+        <sp:form id="form" method="post" action="${basePath}/manager/add" class="ht_sub_form1" style="margin-left:100px;">
             <p>*用户名：</p>
             <sp:input path="userId" class="ht_sub_input1"/>
             <sp:errors path="userId"/><br/>

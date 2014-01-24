@@ -6,9 +6,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="/manage/css/ht_public.css" rel="stylesheet" type="text/css" />
-    <link href="/manage/css/ht_sub.css" rel="stylesheet" type="text/css" />
-
+    <%@ include file="/WEB-INF/jsp/manage/commons.jspf" %>
 
     <title>包月套餐分配</title>
     <c:if test="${ !empty message }">
@@ -28,8 +26,8 @@
         <p>您当前所在位置：<a href="#">首页</a> >> <a href="#">包月套餐</a> >> <span>包月套餐分配</span></p>
     </div>
     <div class="ht_sub_nr1">
-        <h4 class="ht_sub_title0"><img src="/manage/images/ht_ico06.png" /><p>新增分配</p></h4>
-        <form method="post" action="/userAccount/allotPackage" class="ht_sub_form5" id="formAllotPack">
+        <h4 class="ht_sub_title0"><img src="${basePath}/manage/images/ht_ico06.png" /><p>新增分配</p></h4>
+        <form method="post" action="${basePath}/userAccount/allotPackage" class="ht_sub_form5" id="formAllotPack">
                 <span><p>分配账号：</p>
                     <select class="ht_sub_input013" name="receiver">
 

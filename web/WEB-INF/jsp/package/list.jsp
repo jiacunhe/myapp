@@ -5,9 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="${basePath}/manage/css/ht_public.css" rel="stylesheet" type="text/css" />
-    <link href="${basePath}/manage/css/ht_sub.css" rel="stylesheet" type="text/css" />
-
+    <%@ include file="/WEB-INF/jsp/manage/commons.jspf" %>
     <title>套餐制定</title>
     <script>
         function Function1(id,type,userId,order,page)
@@ -15,7 +13,7 @@
 
             var r=confirm("您确定要暂停这个套餐吗？");
             if(r==true){
-                window.location.href='/package/updateStatus?id='+id+'&type='+type+'&userId='+userId+'&order='+order+'&page='+page+'&status=${status}&status2=off';
+                window.location.href='${basePath}/package/updateStatus?id='+id+'&type='+type+'&userId='+userId+'&order='+order+'&page='+page+'&status=${status}&status2=off';
             }
         }
     </script>
@@ -24,7 +22,7 @@
         {
             var r=confirm("您确定要开启这个套餐吗？");
             if(r==true){
-                window.location.href='/package/updateStatus?id='+id+'&type='+type+'&userId='+userId+'&order='+order+'&page='+page+'&status=${status}&status2=on';
+                window.location.href='${basePath}/package/updateStatus?id='+id+'&type='+type+'&userId='+userId+'&order='+order+'&page='+page+'&status=${status}&status2=on';
             }
         }
     </script>
@@ -53,13 +51,13 @@
     <div class="ht_rtbut">
         <ul>
             <hyrt:privilege uri="/package/add/UI">
-            <li><a href="/package/add/UI" ><img src="${basePath}/manage/images/ht_ico02.png" /></a><p><a href="/package/add/UI" >新 增</a></p></li></hyrt:privilege>
+            <li><a href="${basePath}/package/add/UI" ><img src="${basePath}/manage/images/ht_ico02.png" /></a><p><a href="${basePath}/package/add/UI" >新 增</a></p></li></hyrt:privilege>
         </ul>
     </div>
 
     <div class="ht_sub_nr1">
         <h4 class="ht_sub_title0"><img src="${basePath}/manage/images/ht_ico09.png" /><p>查询</p></h4>
-        <form method="post" action="/package/list" class="ht_sub_form3" >
+        <form method="post" action="${basePath}/package/list" class="ht_sub_form3" >
             <p>套餐状态： </p>
                         <span class="ht_span03"><select  name="status" class="ht_sub_input014">
                             <option value="" >全部</option>
@@ -170,7 +168,7 @@
     <script type="text/javascript">
         function go2Page(pageNo) {
             if(pageNo == undefined || pageNo==null || pageNo=="")pageNo=1;
-            window.location.href="/package/list?type=${type}&userId=${userId}&order=${order}&status=${status}&page="+pageNo;
+            window.location.href="${basePath}/package/list?type=${type}&userId=${userId}&order=${order}&status=${status}&page="+pageNo;
         }
     </script>
 

@@ -27,7 +27,7 @@
     <div class="ht_sub_nr1">
         <h4 class="ht_sub_title0"><img src="${basePath}/manage/images/ht_ico06.png" /><p>新增</p></h4>
 
-        <form action="/package/addContract" id="addPackage" method="post" class="ht_sub_form5">
+        <form action="${basePath}/package/addContract" id="addPackage" method="post" class="ht_sub_form5">
             <span><p>用户名称：</p><input id="userId" name="userId" type="text" value="${userId}" readonly/>  </span>
             <span><p>套餐名称：</p><input id="packageName" name="packageName" type="text" class="ht_sub_input11"/></span>
             <span><p>套餐价格：</p><input id="price" name="price" value="0" type="text" class="ht_sub_input11"/>元</span>

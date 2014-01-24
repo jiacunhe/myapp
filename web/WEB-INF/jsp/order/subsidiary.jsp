@@ -4,8 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="../css/public.css" rel="stylesheet" type="text/css" />
-    <link href="../css/sub.css" rel="stylesheet" type="text/css" />
+    <%@ include file="/WEB-INF/jsp/public/commons.jspf" %>
     <title>subsidiary</title>
     <style type="text/css">
         <!--
@@ -36,7 +35,7 @@
                 <td>${obj.messageTime }</td>
 
                 <td  style="text-align:center">
-                    <a href="javascript:viewer(${obj.id})"><img src="/images/26.png" alt="查看" title="查看"></a>
+                    <a href="javascript:viewer(${obj.id})"><img src="${basePath}/images/26.png" alt="查看" title="查看"></a>
 
                 </td>
 
@@ -47,34 +46,34 @@
 
                 <ul>
 
-                    <li><a href="/order/subsidiary?id=${objects.orderDetailId}&page=${objects.page -1}&orderType=${objects.orderType}"  title="上一页"> < </a></li>
+                    <li><a href="${basePath}/order/subsidiary?id=${objects.orderDetailId}&page=${objects.page -1}&orderType=${objects.orderType}"  title="上一页"> < </a></li>
 
 
 
                     <c:if test="${objects.page <= 9}">
                         <c:forEach var="i" begin="${1}" end="${objects.page-1}" step="1">
-                            <li><a href="/order/subsidiary?id=${objects.orderDetailId}&page=${i}&orderType=${objects.orderType}">${i}</a></li>
+                            <li><a href="${basePath}/order/subsidiary?id=${objects.orderDetailId}&page=${i}&orderType=${objects.orderType}">${i}</a></li>
                         </c:forEach>
                     </c:if>
 
 
                     <c:if test="${objects.page > 9}">
                         <c:forEach var="i" begin="${objects.page-5}" end="${objects.page-1}" step="1">
-                            <li><a href="/order/subsidiary?id=${objects.orderDetailId}&page=${i}&orderType=${objects.orderType}">${i}</a></li>
+                            <li><a href="${basePath}/order/subsidiary?id=${objects.orderDetailId}&page=${i}&orderType=${objects.orderType}">${i}</a></li>
                         </c:forEach>
                     </c:if>
 
 
-                    <li><a href="/order/subsidiary?id=${objects.orderDetailId}&page=${objects.page}&orderType=${objects.orderType}" style="color:#FF0000">${objects.page}</a></li>
+                    <li><a href="${basePath}/order/subsidiary?id=${objects.orderDetailId}&page=${objects.page}&orderType=${objects.orderType}" style="color:#FF0000">${objects.page}</a></li>
 
 
                     <c:forEach var="j" begin="${objects.page+1}" end="${objects.page + 5}" step="1">
                         <c:if test="${j <= objects.totalPage}">
-                            <li><a href="/order/subsidiary?id=${objects.orderDetailId}&page=${j}&orderType=${objects.orderType}">${j}</a></li>
+                            <li><a href="${basePath}/order/subsidiary?id=${objects.orderDetailId}&page=${j}&orderType=${objects.orderType}">${j}</a></li>
                         </c:if>
                     </c:forEach>
 
-                    <li><a href="/order/subsidiary?id=${objects.orderDetailId}&page=${objects.page +1}&orderType=${objects.orderType}" title="下一页"> > </a></li>
+                    <li><a href="${basePath}/order/subsidiary?id=${objects.orderDetailId}&page=${objects.page +1}&orderType=${objects.orderType}" title="下一页"> > </a></li>
                     <li><span >共 ${objects.totalItem }条 ，当前第 <strong> ${objects.page }</strong> / <span> <strong>${objects.totalPage}</strong> </span> 页 </span> </li>
                 </ul>
 

@@ -11,10 +11,10 @@
 <html>
 <head>
     <title></title>
-    <LINK TYPE="text/css" REL="stylesheet" HREF="../css/jquery.treeview.css" />
-    <SCRIPT LANGUAGE="javascript" SRC="../js/jquery.min.js"></SCRIPT>
-    <SCRIPT LANGUAGE="javascript" SRC="../js/jquery.treeview.js"></SCRIPT>
-
+    <LINK TYPE="text/css" REL="stylesheet" HREF="${basePath}/css/jquery.treeview.css" />
+    <SCRIPT LANGUAGE="javascript" SRC="${basePath}/js/jquery.min.js"></SCRIPT>
+    <SCRIPT LANGUAGE="javascript" SRC="${basePath}/js/jquery.treeview.js"></SCRIPT>
+    <%@ include file="/WEB-INF/jsp/manage/commons.jspf" %>
 
 
 

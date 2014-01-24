@@ -37,7 +37,7 @@
     <div class="ht_rtbut">
         <ul>
             <hyrt:privilege  uri="/role/insert/UI">
-            <li><a href="/role/insert/UI"><img src="${basePath}/images/ht_ico02.png" /><p>增 加</p></a></li>
+            <li><a href="${basePath}/role/insert/UI"><img src="${basePath}/images/ht_ico02.png" /><p>增 加</p></a></li>
             </hyrt:privilege>
             <hyrt:privilege  uri="/role/editup/UI">
             <li><a href="javascript:roleeditform()"><img src="${basePath}/images/ht_ico03.png" /><p>修 改</p></a></li>
@@ -115,7 +115,7 @@
   function  ajaxreuquset(ajaxresourceids){
 //alert('/role/getajaxroledetail?roleid='+ajaxresourceids);
       htmlobj=$.ajax({
-          url:'/role/getajaxroledetail?roleid='+ajaxresourceids,async:false});
+          url:'${basePath}/role/getajaxroledetail?roleid='+ajaxresourceids,async:false});
    // alert(htmlobj.responseText);
   $("#ajaxresoure").html(htmlobj.responseText);
   }

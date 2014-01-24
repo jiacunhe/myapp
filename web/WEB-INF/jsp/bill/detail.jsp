@@ -4,8 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="/css/public.css" rel="stylesheet" type="text/css" />
-    <link href="/css/sub.css" rel="stylesheet" type="text/css" />
+    <%@ include file="/WEB-INF/jsp/public/commons.jspf" %>
     <title>消费明细</title>
     <style type="text/css">
 
@@ -18,7 +17,7 @@
 <div class="content_right" style="height:800px;">
 
     <div class="yemei">
-        <p>您当前所在位置：<a href="/welcome.jsp">首页</a> >> <span>消费明细</span></p>
+        <p>您当前所在位置：<a href="${basePath}/welcome.jsp">首页</a> >> <span>消费明细</span></p>
     </div>
 
     <div class="content_right_nr">
@@ -149,14 +148,14 @@
 <script type="text/javascript">
 
     function searchRechargeRecord(val){
-        window.location.href="/bill/rechargeRecord?period="+val;
+        window.location.href="${basePath}/bill/rechargeRecord?period="+val;
     }
 
 </script>
 <script type="text/javascript">
 
 
-        document.getElementById("searchResultTab1").style.background = "url(/images/sub_ttbg4.gif) no-repeat";
+        document.getElementById("searchResultTab1").style.background = "url(${basePath}/images/sub_ttbg4.gif) no-repeat";
         document.getElementById("searchResultTab1").style.color = "#fd7d00";
         document.getElementById("content").innerHTML = document.getElementById("content1").innerHTML;
 
@@ -180,7 +179,7 @@
             }
 
         }
-        e.style.background = "url(/images/sub_ttbg4.gif) no-repeat";
+        e.style.background = "url(${basePath}/images/sub_ttbg4.gif) no-repeat";
         e.style.color = "#fd7d00";
 
         e.blur();			//Chrome和Opera不需要

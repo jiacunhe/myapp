@@ -11,6 +11,7 @@
         -->
     </style>
     <title>上传文件</title>
+    <%@ include file="/WEB-INF/jsp/public/commons.jspf" %>
 </head>
 <body>
 
@@ -18,11 +19,11 @@
 
     <div id="upview" style="width: 95%; height:200px;  padding-top: 46px;padding-left: 20px;">
         <div style="width:100%;height:100%; background-color:#FFFFFF">
-            <form action="/order/upload" method="post" enctype="multipart/form-data">
+            <form action="${basePath}/order/upload" method="post" enctype="multipart/form-data">
                 <input type="file" name="file" style="width:260px; height:24px">
                 <input type="submit" value="上传"  onclick="showResview()" style=" border: none; background-color:#0f9bc6; height: 24px; width: 40px;">
             </form>
-            <p><a href="/order/download?file=model.xls">下载模版</a></p>
+            <p><a href="${basePath}/order/download?file=model.xls">下载模版</a></p>
         </div>
     </div>
 
@@ -66,7 +67,7 @@
     }
     function progress() {
 
-        var url = '/order/progress';
+        var url = '${basePath}/order/progress';
         request.open("GET", url, "true");
         request.onreadystatechange = writeprogress;//隐性的循环
         request.send(null);

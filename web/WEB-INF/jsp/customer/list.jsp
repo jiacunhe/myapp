@@ -5,8 +5,8 @@
 <head>
     <%@ include file="/WEB-INF/jsp/manage/commons.jspf" %>
     <title>客户管理</title>
-    <link rel="stylesheet" type="text/css" media="all" href="/css/jsDatePick_ltr.min.css"/>
-    <script type="text/javascript" src="/js/jsDatePick.min.1.3.js"></script>
+    <link rel="stylesheet" type="text/css" media="all" href="${basePath}/css/jsDatePick_ltr.min.css"/>
+    <script type="text/javascript" src="${basePath}/js/jsDatePick.min.1.3.js"></script>
     <script type="text/javascript">
         function refreshQuery(more) {
             if (more) {
@@ -235,47 +235,47 @@
 
                 <p>刷 新</p></a></li>
             <hyrt:privilege uri="/customer/add"><li>
-                <a href="/customer/add/UI?condition=${form.condition}&userId=${form.userId}&username=${form.username}&creatorId=${form.creatorId}&telephone=${form.telephone}&startTime=${form.startTime}&endTime=${form.endTime}&paymentRule=${form.paymentRule}&status=${form.status}"
+                <a href="${basePath}/customer/add/UI?condition=${form.condition}&userId=${form.userId}&username=${form.username}&creatorId=${form.creatorId}&telephone=${form.telephone}&startTime=${form.startTime}&endTime=${form.endTime}&paymentRule=${form.paymentRule}&status=${form.status}"
                    id="add"><img src="${basePath}/manage/images/ht_ico02.png"/>
 
                     <p>新 增</p></a></li></hyrt:privilege>
             <hyrt:privilege uri="/customer/modify"><li>
-                <a href="/customer/modify/UI?condition=${form.condition}&userId=${form.userId}&username=${form.username}&creatorId=${form.creatorId}&telephone=${form.telephone}&startTime=${form.startTime}&endTime=${form.endTime}&paymentRule=${form.paymentRule}&status=${form.status}"
+                <a href="${basePath}/customer/modify/UI?condition=${form.condition}&userId=${form.userId}&username=${form.username}&creatorId=${form.creatorId}&telephone=${form.telephone}&startTime=${form.startTime}&endTime=${form.endTime}&paymentRule=${form.paymentRule}&status=${form.status}"
                    id="edit"><img src="${basePath}/manage/images/ht_ico03.png"/>
 
                     <p>编 辑</p></a></li></hyrt:privilege>
             <hyrt:privilege uri="/customer/delete"><li>
-                <a href="/customer/delete?condition=${form.condition}&userId=${form.userId}&username=${form.username}&creatorId=${form.creatorId}&telephone=${form.telephone}&startTime=${form.startTime}&endTime=${form.endTime}&paymentRule=${form.paymentRule}&status=${form.status}"
+                <a href="${basePath}/customer/delete?condition=${form.condition}&userId=${form.userId}&username=${form.username}&creatorId=${form.creatorId}&telephone=${form.telephone}&startTime=${form.startTime}&endTime=${form.endTime}&paymentRule=${form.paymentRule}&status=${form.status}"
                    id="delete"><img src="${basePath}/manage/images/ht_ico04.png"/>
 
                     <p>删 除</p></a></li></hyrt:privilege>
             <li>
-                <a href="/customer/show/UI?condition=${form.condition}&userId=${form.userId}&username=${form.username}&creatorId=${form.creatorId}&telephone=${form.telephone}&startTime=${form.startTime}&endTime=${form.endTime}&paymentRule=${form.paymentRule}&status=${form.status}"
+                <a href="${basePath}/customer/show/UI?condition=${form.condition}&userId=${form.userId}&username=${form.username}&creatorId=${form.creatorId}&telephone=${form.telephone}&startTime=${form.startTime}&endTime=${form.endTime}&paymentRule=${form.paymentRule}&status=${form.status}"
                    id="detail"><img src="${basePath}/manage/images/ht_ico013.png"/>
 
                     <p>查看详细</p></a></li>
 
 
             <hyrt:privilege uri="/package/assign"><li>
-                <a href="/package/check?condition=${form.condition}&userId=${form.userId}&username=${form.username}&creatorId=${form.creatorId}&telephone=${form.telephone}&startTime=${form.startTime}&endTime=${form.endTime}&paymentRule=${form.paymentRule}&status=${form.status}"
+                <a href="${basePath}/package/check?condition=${form.condition}&userId=${form.userId}&username=${form.username}&creatorId=${form.creatorId}&telephone=${form.telephone}&startTime=${form.startTime}&endTime=${form.endTime}&paymentRule=${form.paymentRule}&status=${form.status}"
                    id="packageAssign"><img src="${basePath}/manage/images/ht_icotcfp.png"/>
 
                     <p>套餐分配</p></a></li></hyrt:privilege>
 
 
             <hyrt:privilege uri="/customer/resetPassword"><li>
-                <a href="/customer/resetPassword?condition=${form.condition}&userId=${form.userId}&username=${form.username}&creatorId=${form.creatorId}&telephone=${form.telephone}&startTime=${form.startTime}&endTime=${form.endTime}&paymentRule=${form.paymentRule}&status=${form.status}"
+                <a href="${basePath}/customer/resetPassword?condition=${form.condition}&userId=${form.userId}&username=${form.username}&creatorId=${form.creatorId}&telephone=${form.telephone}&startTime=${form.startTime}&endTime=${form.endTime}&paymentRule=${form.paymentRule}&status=${form.status}"
                    id="resetPassword"><img src="${basePath}/manage/images/ht_ico014.png"/>
 
                     <p>重置密码</p></a></li></hyrt:privilege>
             <hyrt:privilege uri="/customer/lock"><li>
 
-                <a href="/customer/lock?condition=${form.condition}&userId=${form.userId}&username=${form.username}&creatorId=${form.creatorId}&telephone=${form.telephone}&startTime=${form.startTime}&endTime=${form.endTime}&paymentRule=${form.paymentRule}&status=${form.status}"
+                <a href="${basePath}/customer/lock?condition=${form.condition}&userId=${form.userId}&username=${form.username}&creatorId=${form.creatorId}&telephone=${form.telephone}&startTime=${form.startTime}&endTime=${form.endTime}&paymentRule=${form.paymentRule}&status=${form.status}"
                    id="lock"><img src="${basePath}/manage/images/ht_ico015.png"/>
 
                     <p>锁 定</p></a></li></hyrt:privilege>
             <hyrt:privilege uri="/customer/unlock"><li>
-                <a href="/customer/unlock?condition=${form.condition}&userId=${form.userId}&username=${form.username}&creatorId=${form.creatorId}&telephone=${form.telephone}&startTime=${form.startTime}&endTime=${form.endTime}&paymentRule=${form.paymentRule}&status=${form.status}"
+                <a href="${basePath}/customer/unlock?condition=${form.condition}&userId=${form.userId}&username=${form.username}&creatorId=${form.creatorId}&telephone=${form.telephone}&startTime=${form.startTime}&endTime=${form.endTime}&paymentRule=${form.paymentRule}&status=${form.status}"
                    id="unlock"><img src="${basePath}/manage/images/ht_ico016.png"/>
 
                     <p>解 封</p></a></li></hyrt:privilege>
@@ -286,7 +286,7 @@
         <h4 class="ht_sub_title0"><img src="${basePath}/manage/images/ht_ico09.png"/>
 
             <p id="toggle" style="cursor:pointer;">显示高级搜索</p></h4>
-        <form method="get" action="/customer/list" class="ht_sub_form3">
+        <form method="get" action="${basePath}/customer/list" class="ht_sub_form3">
             <input type="hidden" id="queryType" name="queryType" value="false"/>
             <input type="hidden" id="pageNo" name="pageNo" value="1"/>
 
@@ -365,7 +365,7 @@
                     <td>${customer.regTime}</td>
                     <td>
                         <c:if test="${customer.isChild}">
-                        <a href="/customer/show/UI?_userId=${customer.creatorId}">${customer.creatorId}</a>
+                        <a href="${basePath}/customer/show/UI?_userId=${customer.creatorId}">${customer.creatorId}</a>
                         </c:if></td>
                     <td>${customer.status.desc}</td>
                 </tr>
