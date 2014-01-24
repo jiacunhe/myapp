@@ -21,7 +21,9 @@
 <link type="text/css" rel="stylesheet" href="${basePath}/css/public.css"/>
 <link type="text/css" rel="stylesheet" href="${basePath}/css/sub.css"/>
 <link type="text/css" rel="stylesheet" href="${basePath}/css/index.css"/>
-
+<!--[if IE 6]>
+<script type="text/javascript" src="${basePath}/manage/js/ht_iepng.js"></script>
 <script type="text/javascript">
     EvPNG.fix('div, ul, img, li, input,dt');
 </script>
+<![endif]-->

@@ -1,6 +1,8 @@
 package com.hyrt.saic.bean;
 
-public class AccountInfoKey {
+import me.sfce.library.mybatis.domain.BasePojo;
+
+public class AccountInfoKey extends BasePojo {
     private String userid;
 
     private Integer businessid;

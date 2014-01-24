@@ -5,8 +5,13 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>后台登录</title>
+<<<<<<< HEAD
     <%@ include file="/WEB-INF/jsp/manage/commons.jspf" %>
     <link href="${basePath}/manage/css/ht_denglu.css" rel="stylesheet" type="text/css"/>
+=======
+    <link href="${basePath}/manage/css/ht_denglu.css" rel="stylesheet" type="text/css"/>
+    <script language="javascript" src="${basePath}/js/jquery-1.8.0.min.js"></script>
+>>>>>>> aee58638654eac54bc137e89671486963193fea1
 </head>
 <script language="javascript">
     $(function () {
