@@ -1,11 +1,14 @@
 package com.hyrt.saic.controller;
 
+import com.hyrt.saic.bean.User;
 import com.hyrt.saic.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created with IntelliJ IDEA.
@@ -43,5 +46,12 @@ public class UserController extends BaseController {
     @RequestMapping(value = "/password/modify/UI", method = RequestMethod.GET)
     public String modifyPasswordUI() {
         return jsp("/manage/password");
+    }
+    @RequestMapping("/info")
+    public String userInfo(HttpServletRequest request){
+        User user = (User) request.getSession().getAttribute("user");
+        String userId=user.getUserId();
+        User user2=userService.getById(userId);
+        return "userInfo.jsp";
     }
 }
