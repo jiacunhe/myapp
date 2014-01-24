@@ -1,6 +1,6 @@
 /* CSS Document */
 .content_right{ background:#eee; height:628px; overflow:hidden; border-right:1px solid #013f68;}
-.content_right iframe{ width:100%; border:none; height:662px;}
+.content_right iframe{ width:100%; border:none;}
 .yemei{ height:33px; overflow:hidden; line-height:33px; background:url(../images/ym_bg.gif) repeat-x;}
 .yemei p{ color:#696969; margin-left:16px;}
 .yemei a{ color:#696969;}
@@ -108,7 +108,7 @@
 .dd_list1{ line-height:60px; margin-left:45px; font-size:14px;}
 .dd_list1 li{ width:210px; float:left;}
 .dd_list1 li span{ color:#fc7d01;}
-.sub_form3{  margin:12px 0px 0px 15px;overflow:hidden; line-height:48px; font-size:14px;}
+.sub_form3{  margin:12px 0px 0px 15px; line-height:48px; font-size:14px;}
 .sub_form3 p{ float:left; font-size:14px; width:70px; text-align:right; margin-left:10px; display:inline;}
 .sub_form3 input,select{ height:28px; overflow:hidden; line-height:28px; }
 .sub_input013{ width:120px; border:1px solid #d7d7d7;margin-top:6px; text-indent:10px; margin-right:0px;}
@@ -120,7 +120,7 @@
 .rili002{ width:16px; height:15px; overflow:hidden; position:absolute; left:504px; top:13px; z-index:1000;}
 .but_cx0{ width:120px; height:28px; border:none; background:url(../images/but_bg4.gif) no-repeat; font-weight:bold; color:#fff; text-align:center; line-height:28px; float:left; margin:10px 0px 0px 80px; display:inline; cursor:pointer;}
 .sub_dl2 dt a{display:block;width:187px;height:34px;line-height:34px;float:left;margin-top:1px;text-align:center;font-weight:bold;font-size:12px; display:inline; color:#3f3f3f;}
-.sub_dl2 dt a:hover,.sub_dl2 dt a.now{  background:url(../images/sub_ttbg4.gif) no-repeat; color:#fd7d00;}
+/* .sub_dl2 dt a:hover,.sub_dl2 dt a.now{  background:url(../images/sub_ttbg4.gif) no-repeat; color:#fd7d00;}      */
 
 .sub_title4{ height:40px; overflow:hidden; background:url(../images/sub_ttbg2.gif) repeat-x; font-size:14px; color:#000; border-bottom:1px solid #d7d7d7;}
 .sub_title4 form{ margin:10px 0px 0px 16px;}
@@ -161,8 +161,8 @@
 .dl_input1{ width:252px; height:32px; line-height:32px; border:none; background:url(../images/input_bg1.png) no-repeat; text-indent:12px; margin-top:8px;}
 .dl_bg{ width:594px; height:73px; background:url(../images/bg3.png) no-repeat; overflow:hidden; margin-top:2px;}
 .dl_input3{ margin:24px 10px 0px 0px; float:left;} 
-.dl_bd form span{ margin-top:19px; font-size:12px; font-weight:normal;}
-.dl_bd form a{ line-height:40px; margin-top:10px; float:left;}
+.dl_bd form span{ margin-top:19px; font-size:12px; font-weight:normal; color:#ff0000;}
+.dl_bd form a{ line-height:40px; margin-top:10px; float:left; color:#fff;}
 
 .ddjg_wai{ width:100%; height:90px; overflow:hidden; background:url(../images/bg4.gif) repeat-x left bottom;}
 .ddjg_top{ width:1000px; height:90px; overflow:hidden; margin:0px auto;}
@@ -180,14 +180,13 @@
 
 .ddjg_content{ width:707px; height:auto; overflow:hidden; margin:0px auto;}
 .ddjg_content h5{ font-size:14px; height:30px; margin-top:40px; color:#2d2c2c;}
-.ddjg_content table{ background:#fff;} 
+.ddjg_content table{ background:#fff;}
 .ddjg_content table tr{ height:38px; line-height:38px; font-size:12px;}
 .ddjg_content table tr th{ width:230px; background:#f6f6f6;}
 .ddjg_content table tr th p{ width:130px; text-align:right;}
 .sub_table3 tr td{ text-align:left;}
 .ddjg_content table tr td span{ width:500px; margin-left:35px; display:block; line-height:22px;}
 .ddjg_p1{ height:20px; line-height:20px; margin-top:50px;}
-
 
 .sub_ddxx{ float:left; background:url(../images/ico017.png) no-repeat left center; text-indent:26px;}
 .sub_button{ float:right; margin-top:3px;}
