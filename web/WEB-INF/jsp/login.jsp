@@ -19,7 +19,7 @@
 </head>
 
 <body>
-<div class="dl_content" style="position:absolute">
+<div class="dl_content" style="position:absolute ;background:url(${basePath}/images/bg.gif) #0465a1 repeat-x top center;">
     <div class="dl_nr">
         <h4></h4>
 

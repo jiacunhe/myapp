@@ -22,148 +22,22 @@
     </style>
 </head>
 
-<body>
-<!--top-->
-<div class="top">
-    <div class="top_content">
-        <img src="${basePath}/images/logo.png" class="logo"/>
-        <div class="top_xx">
-            <div><p>当前用户：<span>${user.userId}</span></p>
-
-              <!--  <ul class="menu">
-                    <li>
-                        <a href="#"class="tablink"><img src="../images/ico01.png" /></a>
-                        <ul>
-                            <li id="qc_sell_tab2">
-
-                                <script type="text/javascript">$(function(){$("#qc_sell_tab2").tabs();})</script>
-                                <dl class="pub_dl">
-                                    <dt><a href="#">订单提醒</a><a href="#">消息提醒</a></dt>
-                                    <dd style="display:block;">
-                                        <p style="width:100px; height:10px; overflow:hidden;">&nbsp;</p>
-                                        <p>已完成订单：<a href="#">（0）</a></p>
-                                        <p>未完成订单：<a href="#">（0）</a></p>
-                                        <p>未查到订单：<a href="#">（0）</a></p>
-                                        <p>企业监控最新动态：<a href="#">（0）</a></p>
-                                        <p>人员监控最新动态：<a href="#">（0）</a></p>
-                                    </dd>
-                                    <dd style="color:#006">
-                                        <p style="width:100px; height:10px; overflow:hidden;">&nbsp;</p>
-                                        <p>消息提醒/通知：<a href="#">（0）</a></p>
-                                    </dd>
-                                </dl>
-
-                            </li>
-                        </ul>
-                    </li>
-
-                </ul> -->
-
-
-            </div>
-            <div class="clear"></div>
-            <p>您好！今天是
-                <script language="JavaScript">
-                    today = new Date();
-                     document.write(today.getFullYear() + '年' +(today.getMonth() + 1) + '月'+today.getDate()+'日');
-                    var days = new Array("日","一", "二", "三", "四", "五", "六");
-                    document.write("&nbsp; &nbsp; 星期"+days[today.getDay()]);
-                </script>
-</p>
-        </div>
-        <div class="top_button">
-            <ul>
-                <li><a href="javascript:goHome();">首页</a></li>
-                <li><a href="#">修改密码</a></li>
-                <li><a href="${basePath}/logout">退出</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-<!--content-->
-<div class="content">
-    <div class="content_left" >
-        <div class="yangshi"></div>
-        <dl>
-            <dt><img src="${basePath}/images/ico1.png" /> <A onclick=javascript:ShowFLT(1) href="javascript:void(null)">信息查询</A></dt>
-            <dd id=LM1 style="DISPLAY: none">
-                <ul>
-                    <li><a href="${basePath}/order/group" target="mainIframe">企业查询</a></li>
-                    <li><a href="${basePath}/order/person" target="mainIframe">人员查询</a></li>
-                    <li><a href="${basePath}/order/investment" target="mainIframe">对外投资</a></li>
-                </ul>
-            </dd>
-        </dl>
-
-        <dl>
-            <dt><img src="${basePath}/images/ico2.png" /> <A onclick=javascript:ShowFLT(2) href="javascript:void(null)">信息监控</A></dt>
-            <dd id=LM2 style="DISPLAY: none">
-                <ul>
-                    <li><a href="${basePath}/order/groupMonitor" target="mainIframe">企业监控</a></li>
-                    <li><a href="${basePath}/order/personMonitor" target="mainIframe">人员监控</a></li>
-                  <!--  <li><a href="#">监控列表</a></li>     -->
-                </ul>
-            </dd>
-        </dl>
-
-
-        <dl>
-            <dt><img src="${basePath}/images/ico4.png" /> <A onclick=javascript:ShowFLT(4) href="${basePath}/order/search" target="mainIframe">我的查询</A></dt>
-            <dd id=LM4 style="DISPLAY: none"></dd>
-        </dl>
-
-
-        <dl>
-            <dt><img src="${basePath}/images/ico3.png" /> <A onclick=javascript:ShowFLT(3) href="${basePath}/package/buy" target="mainIframe">套餐购买</A></dt>
-            <dd id=LM3 style="DISPLAY: none"></dd>
-        </dl>
+<frameset rows="94,*,45"  frameborder="NO" border="0" framespacing="0">
+    <frame src="${basePath}/iframeTop" noresize="noresize" frameborder="NO" name="topFrame" scrolling="no" marginwidth="0" marginheight="0" target="main" />
+    <frameset cols="220,*"  rows="100%,*" id="frame">
+        <frame src="${basePath}/iframeLeft" name="leftFrame" noresize="noresize" marginwidth="0" marginheight="0" frameborder="0" target="mainIframe" />
+        <frame src="${basePath}/welcome.jsp" name="mainIframe" marginwidth="0" marginheight="0" frameborder="0" target="_self"  />
+    </frameset>
+    <frame src="${basePath}/iframeBottom" noresize="noresize" frameborder="NO" name="footFrame" scrolling="no" marginwidth="0" marginheight="0" />
+    <noframes>
+        <body></body>
+    </noframes>
 
 
 
 
-        <dl>
-            <dt><img src="${basePath}/images/ico5.png" /> <A onclick=javascript:ShowFLT(5) href="javascript:void(null)">个人中心</A></dt>
-            <dd id=LM5 style="DISPLAY: none">
-                <ul>
-                    <li><a href="#">个人资料</a></li>
-                    <li><a href="#">安全中心</a></li>
-                    <li><a href="${basePath}/bill/rechargeRecord" target="mainIframe">消费明细</a></li>
-                    <li><a href="${basePath}/accountInfo/list" target="mainIframe">账户余额</a></li>
-                    <li><a href="#">我的消息</a></li>
-                </ul>
-            </dd>
-        </dl>
 
 
-        <dl>
-            <dt><img src="${basePath}/images/ico6.png" /> <A onclick=javascript:ShowFLT(6) href="${basePath}/questions" target="mainIframe">问题解答</A></dt>
-            <dd id=LM6 style="DISPLAY: none"></dd>
-        </dl>
-
-
-        <dl>
-            <dt><img src="${basePath}/images/ico2.png" /> <A onclick=javascript:ShowFLT(7) href="${basePath}/questionOnline" target="mainIframe">在线咨询</A></dt>
-            <dd id=LM7 style="DISPLAY: none"></dd>
-        </dl>
-
-
-    </div>
-    <div class="content_right">
-
-        <iframe id="mainIframe" name="mainIframe" scrolling="no" style="width:100%; height: 666px; overflow: hidden; position:relative;" frameborder="0" src="${basePath}/welcome.jsp" ></iframe>
-
-    </div>
-</div>
-
-
-
-<!--bottom-->
-<div class="clear"></div>
-<div class="bottom">
-    <div class="bottom_content">
-        <p>Copyright 2011-2013 某某版权所有 豫ICP备00000000号</p>
-    </div>
-</div>
 
 
 <script type="text/javascript">
@@ -185,5 +59,5 @@
 </script>
 
 
-</body>
+
 </html>

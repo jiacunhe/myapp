@@ -1,5 +1,5 @@
 /* CSS Document */
-.ht_content_rightnr{ width:768px; height:636px; overflow:auto; overflow-x:hidden; background:#e4e9f1;}
+.ht_content_rightnr{  height:100%;  overflow:hidden; background:#e4e9f1; margin-left:10px;}
 .ht_content_right iframe{ width:100%; border:none; height:636px;}
 .ht_yemei{ height:33px; overflow:hidden; line-height:33px; background:url(../images/ht_ym.gif) repeat-x;}
 .ht_yemei p{ color:#696969; margin-left:16px; background:url(../images/ht_ico01.png) no-repeat left center; text-indent:26px;}

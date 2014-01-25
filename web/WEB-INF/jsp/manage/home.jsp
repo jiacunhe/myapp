@@ -9,121 +9,18 @@
 
     <title>工商企业查询管理系统</title>
 </head>
-
-<body>
-<!--top-->
-<div class="ht_top">
-    <div class="ht_top_content">
-        <img src="${basePath}/manage/images/ht_logo.png" class="ht_logo"/>
-
-        <div class="ht_top_xx">
-            <p>当前用户：<span>${manage.username}</span></p>
-        </div>
-        <div class="ht_top_button">
-            <a href="${basePath}/index" target="main"><img src="${basePath}/manage/images/ht_sy.png"/></a>
-            <a href="${basePath}/user/password/modify/UI" target="main"><img src="${basePath}/manage/images/ht_xgmm.png"/></a>
-            <a href="${basePath}/manage/logout"><img src="${basePath}/manage/images/ht_tc.png"/></a>
-        </div>
-    </div>
-</div>
-<!--content-->
-<div class="ht_content">
-    <div class="ht_content_left">
-        <div class="ht_yangshi"></div>
-        <hyrt:privilege uri="/customer/list">
-            <dl>
-                <dt><A href="${basePath}/customer/list" target="main"><img src="${basePath}/manage/images/ht_ico1.png"/>客户管理</A>
-                </dt>
-            </dl>
-        </hyrt:privilege>
-<hyrt:privilege uri="/orderManage/search">
-        <dl>
-            <dt><A href="${basePath}/orderManage/search" target="main"><img src="${basePath}/manage/images/ht_ico2.png"/>订单查询</A>
-            </dt>
-        </dl>
-</hyrt:privilege>
-
-        <%--        <dl>
-                    <dt><A href="#"><img src="${basePath}/manage/images/ht_ico3.png"/>信息监控列表</A></dt>
-                </dl>--%>
-        <hyrt:privilege uri="/package/list">
-        <dl>
+<frameset rows="93,*,41"  frameborder="NO" border="0" framespacing="0">
+    <frame src="${basePath}/htIframeTop" noresize="noresize" frameborder="NO" name="topFrame" scrolling="no" marginwidth="0" marginheight="0" target="main" />
+    <frameset cols="250,*"  rows="100%,*" id="frame">
+        <frame src="${basePath}/htIframeLeft" name="leftFrame" noresize="noresize" marginwidth="0" marginheight="0" frameborder="0" target="main" />
+        <frame src="${basePath}/index" name="main" marginwidth="0" marginheight="0" frameborder="0" target="_self"  />
+    </frameset>
+    <frame src="${basePath}/htIframeBottom" noresize="noresize" frameborder="NO" name="footFrame" scrolling="no" marginwidth="0" marginheight="0" />
+    <noframes>
+        <body></body>
+    </noframes>
 
 
-            <dt><A href="${basePath}/package/list" target="main" ><img src="${basePath}/manage/images/ht_ico4.png"/>套餐制定</A></dt>
-
-        </dl>
-        </hyrt:privilege>
-<hyrt:privilege uri="/userAccount/search">
-        <dl>
-            <dt><A href="${basePath}/userAccount/search" target="main"><img src="${basePath}/manage/images/ht_ico5.png"/>用户账户信息</A>
-            </dt>
-        </dl>
-</hyrt:privilege>
-<hyrt:privilege uri="/userAccount/allotSearch">
-        <dl>
-            <dt><A href="${basePath}/userAccount/allotSearch" target="main"><img src="${basePath}/manage/images/ht_ico6.png"/>包月套餐分配</A>
-            </dt>
-        </dl>
-</hyrt:privilege>
-    <hyrt:privilege uri="/userAccount/rechargeSearch">
-        <dl>
-            <dt><A href="${basePath}/userAccount/rechargeSearch" target="main"><img src="${basePath}/manage/images/ht_ico7.png"/>付款明细</A>
-            </dt>
-        </dl>
-    </hyrt:privilege>
-<hyrt:privilege uri="/manage/analysis">
-        <dl>
-            <dt><A onclick=javascript:ShowFLT(1) href="javascript:void(null)"><img
-                    src="${basePath}/manage/images/ht_ico8.png"/>统计分析</A></dt>
-            <dd id=LM1 style="DISPLAY: none">
-                <ul>
-                    <li><a href="#">消费统计</a></li>
-                    <li><a href="#">查询数据统计</a></li>
-                    <li><a href="#">订单统计</a></li>
-                </ul>
-            </dd>
-        </dl>
-    </hyrt:privilege>
-<hyrt:privilege uri="/manage/userOperation">
-        <dl>
-            <dt><A href="${basePath}/manage/userOperation" target="main"><img src="${basePath}/manage/images/ht_ico9.png"/>操作日志</A></dt>
-        </dl>
-</hyrt:privilege>
-<hyrt:privilege uri="/manager/list">
-        <dl>
-            <dt><A onclick=javascript:ShowFLT(2) href="javascript:void(null)"><img
-                    src="${basePath}/manage/images/ht_ico10.png"/>系统管理</A></dt>
-            <dd id=LM2 style="DISPLAY: none">
-                <ul>
-                    <hyrt:privilege uri="/role/manager">
-                    <li><a href="${basePath}/role/manager" target="main">角色管理</a></li>
-                    </hyrt:privilege>
-                    <hyrt:privilege uri="/manager/list">
-                        <li><a href="${basePath}/manager/list" target="main">用户管理</a></li>
-                    </hyrt:privilege>
-                </ul>
-            </dd>
-        </dl>
-</hyrt:privilege>
-
-    </div>
-    <div class="ht_content_right">
-
-        <iframe id="main" name="main" src="${basePath}/index" scrolling="no"></iframe>
-
-    </div>
-</div>
 
 
-<!--bottom-->
-<div class="clear"></div>
-<div class="ht_bottom">
-    <div class="ht_bottom_content">
-        <p>Copyright 2011-2013 某某版权所有 豫ICP备00000001号</p>
-    </div>
-</div>
-
-
-</body>
 </html>

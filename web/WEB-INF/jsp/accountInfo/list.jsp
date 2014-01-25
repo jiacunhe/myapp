@@ -54,8 +54,8 @@
 
 
         </c:if>
-
-
+    </div>
+        <div class="content_right_nr">
             <h4 class="sub_title1"><p class="sub_p2">包月套餐剩余</p></h4>
             <c:if test="${package2}">
 

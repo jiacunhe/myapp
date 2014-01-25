@@ -257,8 +257,7 @@
 
     var lastTabl;
     function tabCard(){
-        var e = window.event?window.event.srcElement:e.target;
-
+        var e = window.event ? window.event.srcElement:e.target;
         if(e.innerText == "查询信息"){
             document.getElementById("content").innerHTML = document.getElementById("content2").innerHTML;
         }else if(e.innerText == "监控信息"){

@@ -93,7 +93,7 @@
     </init-param>
     <init-param>
     <param-name>notCheckURLList</param-name>
-    <param-value>/;/login;/js/*;/css/*;/images/*;/manage/js/*;/manage/css/*;/manage/images/*;/favicon.ico;/manage/;/manage/login;/noPrivilege</param-value>
+    <param-value>/;/login;/js/*;/css/*;/images/*;/manage/js/*;/manage/css/*;/manage/images/*;/favicon.ico;/manage/;/manage/login;/noPrivilege;/logout.jsp</param-value>
     </init-param>
 
 </filter>

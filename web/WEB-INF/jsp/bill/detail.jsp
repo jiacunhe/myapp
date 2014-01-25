@@ -22,7 +22,8 @@
 
     <div class="content_right_nr">
 
-        <dl class="sub_dl2">
+        <dl class="sub_dl2" >
+
             <dt><h4 class="sub_title1" id="select_table" onclick="tabCard(); return false;" >
                     <a id="searchResultTab1" href="#">充值购买记录</a>
                     <a id="searchResultTab2" href="#">包月套餐记录</a>
@@ -30,15 +31,9 @@
             </dt>
             <div class="sub_nr">
                 <dd style="display:block;" id="content"></dd>
+
             </div>
         </dl>
-
-    </div>
-
-
-
-
-
 
     <div id="woookaka" class="content_right_nr">
         <c:if test="${!empty privatePackage}">
@@ -162,6 +157,7 @@
 
 
     function tabCard(){
+
         var e = window.event?window.event.srcElement:e.target;
 
         if(e.innerText == "充值购买记录"){
@@ -185,5 +181,6 @@
         e.blur();			//Chrome和Opera不需要
     }
 </script>
+    </div>
 </body>
 </html>

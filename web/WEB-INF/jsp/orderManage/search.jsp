@@ -99,7 +99,7 @@
 
 
 <dd style="display:none;" id="content2">
-    <table width="749" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1">
+    <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1">
         <tr class="sub_tr1">
             <th width="7%">序号</th>
             <th width="11%">客户帐号</th>
@@ -154,7 +154,7 @@
     </table>
 </dd>
 <dd style="display:none;" id="content3">
-    <table width="749" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1">
+    <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1">
         <tr class="sub_tr1">
             <th width="5%">序号</th>
             <th width="10%">客户帐号</th>
