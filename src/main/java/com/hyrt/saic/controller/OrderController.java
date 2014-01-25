@@ -352,6 +352,7 @@ public class OrderController {
 
                 }else{
                     request.setAttribute("result",JSON.toJSONString(orderService.selectPersonInfo(id)));
+                    request.setAttribute("personResult",orderService.selectPersonInfo(id));
                     return "/order/personResult.jsp";
                 }
             }else{
