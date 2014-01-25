@@ -138,4 +138,16 @@ public class SystemController extends BaseController {
         operationService.save(operation);
         return jsp("/userOperation/userOperationList");
     }
+    @RequestMapping("/questions")
+    public String getQuestion(){
+
+        return jsp("/qaAndzx/questions");
+    }
+    @RequestMapping("/questionOnline")
+    public String getQandAOnline(){
+
+        return jsp("/qaAndzx/leaveMessage");
+    }
+
+
 }

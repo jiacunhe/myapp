@@ -136,13 +136,13 @@
 
 
         <dl>
-            <dt><img src="${basePath}/images/ico6.png" /> <A onclick=javascript:ShowFLT(6) href="javascript:void(null)">问题解答</A></dt>
+            <dt><img src="${basePath}/images/ico6.png" /> <A onclick=javascript:ShowFLT(6) href="${basePath}/questions" target="mainIframe">问题解答</A></dt>
             <dd id=LM6 style="DISPLAY: none"></dd>
         </dl>
 
 
         <dl>
-            <dt><img src="${basePath}/images/ico2.png" /> <A onclick=javascript:ShowFLT(7) href="javascript:void(null)">在线咨询</A></dt>
+            <dt><img src="${basePath}/images/ico2.png" /> <A onclick=javascript:ShowFLT(7) href="${basePath}/questionOnline" target="mainIframe">在线咨询</A></dt>
             <dd id=LM7 style="DISPLAY: none"></dd>
         </dl>
 
