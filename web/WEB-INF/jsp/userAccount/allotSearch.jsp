@@ -58,7 +58,7 @@
 
     <div class="ht_sub_nr1">
         <h4 class="ht_sub_title0"><img src="${basePath}/manage/images/ht_ico05.png" /><p>分配列表</p></h4>
-        <table width="768" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="ht_sub_table1">
+        <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="ht_sub_table1">
             <tr class="ht_sub_tr1">
 <c:if test="${thisUserType eq 'MANAGER' }">                 <th width="100">分配者</th> </c:if>
                 <th width="100">分配账号</th>

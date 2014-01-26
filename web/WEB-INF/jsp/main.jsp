@@ -29,34 +29,7 @@
         <div class="top_xx">
             <div><p>当前用户：<span>${user.userId}</span></p>
 
-              <!--  <ul class="menu">
-                    <li>
-                        <a href="#"class="tablink"><img src="../images/ico01.png" /></a>
-                        <ul>
-                            <li id="qc_sell_tab2">
 
-                                <script type="text/javascript">$(function(){$("#qc_sell_tab2").tabs();})</script>
-                                <dl class="pub_dl">
-                                    <dt><a href="#">订单提醒</a><a href="#">消息提醒</a></dt>
-                                    <dd style="display:block;">
-                                        <p style="width:100px; height:10px; overflow:hidden;">&nbsp;</p>
-                                        <p>已完成订单：<a href="#">（0）</a></p>
-                                        <p>未完成订单：<a href="#">（0）</a></p>
-                                        <p>未查到订单：<a href="#">（0）</a></p>
-                                        <p>企业监控最新动态：<a href="#">（0）</a></p>
-                                        <p>人员监控最新动态：<a href="#">（0）</a></p>
-                                    </dd>
-                                    <dd style="color:#006">
-                                        <p style="width:100px; height:10px; overflow:hidden;">&nbsp;</p>
-                                        <p>消息提醒/通知：<a href="#">（0）</a></p>
-                                    </dd>
-                                </dl>
-
-                            </li>
-                        </ul>
-                    </li>
-
-                </ul> -->
 
 
             </div>

@@ -164,7 +164,7 @@
     </div>
 
     <div class="ht_sub_nr1">
-        <table width="768" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="ht_sub_table1">
+        <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="ht_sub_table1">
             <tr class="ht_sub_tr1">
                 <th width="30"></th>
                 <th width="80">姓名</th>

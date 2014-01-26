@@ -40,9 +40,11 @@
         <p>您当前所在位置：<a href="#">首页</a> >> <span>我的查询</span></p>
     </div>
 
+    <div class="content_right_nr0" style="height:465px;margin-top:16px;">
 
-    <div class="content_right_nr0" style=" margin-top:16px;">
-        <div class="content_right_nr01">
+    <div class="content_right_nr01">
+
+
         <h4 class="sub_title1"><p class="sub_p5">搜索</p></h4>
         <div style="height:120px;">
             <form method="post" action="${basePath}/order/search" class="sub_form3">
@@ -75,6 +77,8 @@
 
 
     <div class="content_right_nr01" id="qc_sell_tab">
+       
+
         <dl class="sub_dl2">
                 <dt><h4 class="sub_title1" id="select_table" onclick="tabCard(); return false;" >
 
@@ -88,6 +92,7 @@
 
                     <dd style="display:block;" id="content">
                     </dd>
+
                 </div>
 
         </dl>
@@ -252,8 +257,7 @@
 
     var lastTabl;
     function tabCard(){
-        var e = window.event?window.event.srcElement:e.target;
-
+        var e = window.event ? window.event.srcElement:e.target;
         if(e.innerText == "查询信息"){
             document.getElementById("content").innerHTML = document.getElementById("content2").innerHTML;
         }else if(e.innerText == "监控信息"){
@@ -476,5 +480,6 @@
     }
 
 </script>
+</div>
 </body>
 </html>

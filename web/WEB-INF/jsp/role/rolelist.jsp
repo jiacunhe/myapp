@@ -50,7 +50,7 @@
     <div class="ht_sub_nr1">
         <h4 class="ht_sub_title0"><img src="${basePath}/images/ht_ico05.png" /><p>列表</p></h4>
         <form id="rolemanager" action="###" method="post">
-        <table width="768" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="ht_sub_table1" style="font-size:12px">
+        <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="ht_sub_table1" style="font-size:12px">
 
             <tr class="ht_sub_tr1">
                 <th width="80"><input type="checkbox" id="allchecked" onClick="selectAll(this.checked)"/></th>
@@ -72,9 +72,7 @@
   scrollbar-shadow-color:#808080;
   scrollbar-darkshadow-color:#D7DCE0;
   scrollbar-base-color:#D7DCE0;
-  scrollbar-track-color:#;
-"
-                                ></div>
+  scrollbar-track-color:#;"></div>
                     </div>
                 </div>
                 <div id="mask"></div>

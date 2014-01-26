@@ -9,7 +9,7 @@
 
 </head>
 
-<body>
+<body style="background:#0465a1;">
 
           	<div class="sy_right">
             	<ul>

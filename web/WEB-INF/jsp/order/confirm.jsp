@@ -14,7 +14,9 @@
     <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
     <meta HTTP-EQUIV="expires" CONTENT="0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <%@ include file="/WEB-INF/jsp/public/commons.jspf" %>
+    <link href="/css/public.css" rel="stylesheet" type="text/css" />
+    <link href="/css/sub.css" rel="stylesheet" type="text/css" />
+
 
     <title>查询订单确认</title>
 
@@ -25,7 +27,7 @@
     <div class="yemei">
         <p>您当前所在位置：<a href="#">首页</a> >> <a href="#">${businessTypeName}</a> >> <span>${orderTypeName}</span></p>
     </div>
-    <div class="content_right_nr1" style="height:630px;overflow-y: scroll">
+    <div class="content_right_nr1" style="height:530px;overflow-y: scroll">
 
         <h4 class="sub_title3">订单信息</h4>
         <c:if test="${countA >0}">
@@ -153,11 +155,11 @@
             </ul>
         </c:if>
         <div style="clear: both; width: 100%"></div>
-        <p class="button2" style="padding-left:100px; margin-top:0px;">
-            <form action="${basePath}/order/confirm" method="get">
+
+            <form action="/order/confirm" method="get">
                 <input type="submit" value="订单确认" class="but_qd"  />
             </form>
-        </p>
+
         <div class="sub_tx2">
             <span><b>特别声明：</b><p>用户请认真核实、填写查询条件和联系信息，点击“提交订单”后不能更改，因客户填写订单失误产生的查询损失责任自负，产生的相关费用不予退还。</p></span>
         </div>

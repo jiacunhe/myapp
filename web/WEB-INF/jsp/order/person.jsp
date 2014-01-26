@@ -39,7 +39,9 @@
         <a href="#" onclick="openUpFile()" style="float: right"><img src="${basePath}/images/button2.jpg" /></a>
 
     </div>
-    <div class="content_right_nr">
+    <div class="content_right_nr0" style="height:465px;">
+
+        <div class="content_right_nr01">
         <h4 class="sub_title1"><p class="sub_p5">人员查询</p></h4>
         <div class="sub_nr">
             <table  id="gtb" width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1">
@@ -92,7 +94,7 @@
         </div>
     </div>
 
-    <div class="content_right_nr">
+    <div class="content_right_nr01">
         <h4 class="sub_title1"><p class="sub_p2">查询介绍</p></h4>
         <div class="sub_nr">
             <ul class="cxjs">
@@ -314,5 +316,6 @@
         dialog.OpenWindow("${basePath}/order/upFile?type=2");
     }
 </script>
+</div>
 </body>
 </html>

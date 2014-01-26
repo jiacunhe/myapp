@@ -30,8 +30,9 @@
     <div class="yemei">
         <p>您当前所在位置：<a href="#">首页</a> >> <span>套餐购买</span></p>
     </div>
+    <div class="content_right_nr0" style="height:465px;">
 
-    <div class="content_right_nr">
+        <div class="content_right_nr01">
         <h4 class="sub_title1"><p class="sub_p3">套餐购买</p></h4>
         <div class="sub_nr">
 
@@ -97,7 +98,7 @@
 
             </div>
             <p class="button2" style="padding-left:110px; margin-top:40px;"><input type="button" value="购买" class="but_qd" /><input type="button" value="取消" class="but_qx" /></p>
-            <h4 class="sub_tx1" style=" margin:20px 0px 30px 0px;"><p>享受更多优惠套餐，请<a href="#">联系客服</a></p></h4>
+            <h4 class="sub_tx1" style=" margin:20px 30px 30px 30px;"><p>享受更多优惠套餐，请<a href="#">联系客服</a></p></h4>
         </div>
     </div>
 
@@ -108,6 +109,6 @@
 
 </div>
 
-
+</div>
 </body>
 </html>

@@ -24,7 +24,10 @@
     <div class="sub_rttop">
         <a href="#" class="first" onclick="insRow()" style="float: right"><img src="${basePath}/images/button3.jpg" /></a>
     </div>
-    <div class="content_right_nr">
+    <div class="content_right_nr0" style="height:465px;">
+
+        <div class="content_right_nr01">
+
         <h4 class="sub_title1"><p class="sub_p5">监控人员名单</p></h4>
         <div class="sub_nr">
             <table  id="gtb" width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1">
@@ -79,7 +82,7 @@
         </div>
     </div>
 
-    <div class="content_right_nr">
+    <div class="content_right_nr01">
         <h4 class="sub_title1"><p class="sub_p2">查询介绍</p></h4>
         <div class="sub_nr">
             <ul class="cxjs">
@@ -190,5 +193,6 @@
         dialog.OpenWindow2(document.getElementById("upfile").innerHTML);
     }
 </script>
+    </div>
 </body>
 </html>
