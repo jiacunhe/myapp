@@ -1,5 +1,6 @@
 package com.hyrt.saic.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.hyrt.saic.bean.Customer;
 import com.hyrt.saic.bean.Manager;
 import com.hyrt.saic.bean.User;
@@ -15,9 +16,11 @@ import com.hyrt.saic.util.enums.UserType;
 import me.sfce.library.mybatis.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.DigestUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
@@ -41,6 +44,31 @@ public class CustomerController extends BaseController {
     RoleService roleService;
     @Autowired
     UserOperationService userOperationService;
+
+    @RequestMapping("/info")         //去往前台信息查询页面
+    public String userInfo(HttpServletRequest request){
+        User user = (User) request.getSession().getAttribute("user");
+        String userId=user.getUserId();
+        UserType userType=user.getUserType();
+
+        switch (userType){
+            case MANAGER: Manager manager= (Manager) userService.getById(userId);
+                String role="管理员" ;
+                request.setAttribute("role",role);
+                request.setAttribute("customer",manager);
+                break;
+            case CUSTOMER: Customer customer= (Customer) userService.getById(userId);
+                String role2="普通用户";
+                request.setAttribute("role",role2);
+                request.setAttribute("customer",customer);
+                break;
+        }
+        User operator = (User) request.getSession().getAttribute(Config.USER);
+        userOperationService.save(new UserOperation(operator.getUserId(), "/customer/info", "查看客户:" + userId, new Date(), request.getRemoteAddr()));
+
+
+        return "/user/userInfo.jsp";
+    }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String addCustomer(Customer customer, HttpServletRequest request) {
@@ -94,6 +122,29 @@ public class CustomerController extends BaseController {
         return jsp("customer/edit");
     }
 
+    @RequestMapping(value = "/MD5/UI", method = RequestMethod.GET)   //去往前台修改页面
+    public String MD5CustomerUI(String _userId, HttpServletRequest request) {
+        Customer user = (Customer) userService.getById(_userId);
+        request.setAttribute("customer", user);
+        request.setAttribute("paymentRules", new PaymentRule[]{PaymentRule.PAY_BEFORE});
+        CustomerQueryForm form = new CustomerQueryForm();
+        form.setUserId(request.getParameter("userId"));
+        form.setUsername(request.getParameter("username"));
+        form.setCondition(request.getParameter("condition"));
+        form.setCreatorId(request.getParameter("creatorId"));
+        form.setEndTime(request.getParameter("endTime"));
+        form.setStartTime(request.getParameter("startTime"));
+        form.setPaymentRule(request.getParameter("paymentRule"));
+        form.setStatus(request.getParameter("status"));
+        form.setTelephone(request.getParameter("telephone"));
+        request.setAttribute("form", form);
+        request.setAttribute("queryType", request.getParameter("queryType"));
+
+
+
+        return jsp("user/modify");
+    }
+
     @RequestMapping(value = "/show/UI", method = RequestMethod.GET)
     public String show(String _userId, HttpServletRequest request) {
         User user = userService.getById(_userId);
@@ -119,6 +170,17 @@ public class CustomerController extends BaseController {
                 + "&telephone=" + request.getParameter("formTelephone")
                 + "&queryType=" + request.getParameter("formQueryType")
         );
+    }
+
+    @RequestMapping(value = "/MD5", method = RequestMethod.POST) //前台修改个人信息
+    public String MD5Customer(Customer customer, HttpServletRequest request) {
+        userService.update(customer);
+
+        User operator = (User) request.getSession().getAttribute(Config.USER);
+        userOperationService.save(new UserOperation(operator.getUserId(), "/customer/MD5", "客户修改个人信息:" + customer.getUserId(), new Date(), request.getRemoteAddr()));
+
+        return redirectTo("info");
+
     }
 
     @RequestMapping(value = "/lock")
@@ -199,6 +261,23 @@ public class CustomerController extends BaseController {
         );
     }
 
+    @RequestMapping(value = "/MD5Password/UI")
+    public String toMD5Password(HttpServletRequest request){
+        User user = (User) request.getSession().getAttribute("user");
+
+        String _userId=user.getUserId();
+        userOperationService.save(new UserOperation(user.getUserId(), "/customer/MD5Password/UI", "进入" + _userId + "密码修改页面", new Date(), request.getRemoteAddr()));
+
+        return jsp("user/security");
+
+    }
+
+    @RequestMapping(value = "/MD5Password", method = RequestMethod.POST)
+    public String modifyPassword(String userId, String password) {
+        userService.modifyPassword(userId, password);
+        return jsp("user/passwordResult");
+    }
+
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String list(CustomerQueryForm form, Integer pageNo, Boolean queryType, HttpServletRequest request) {
         User operator = (User) request.getSession().getAttribute(Config.MANAGE);
@@ -238,5 +317,15 @@ public class CustomerController extends BaseController {
         request.setAttribute("queryType", queryType);
         userOperationService.save(new UserOperation(operator.getUserId(), "/customer/list", "访问客户管理", new Date(), request.getRemoteAddr()));
         return (jsp("customer/list"));
+    }
+
+    private String toMD5(String resource) {
+        byte[] bytes = DigestUtils.md5Digest(resource.getBytes());
+        try {
+            return new String(bytes, "gbk");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

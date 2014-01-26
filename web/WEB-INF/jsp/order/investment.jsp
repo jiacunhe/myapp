@@ -29,7 +29,7 @@
     <div class="content_right_nr">
         <h4 class="sub_title1"><p class="sub_p5">企业对外投资查询</p></h4>
         <div class="sub_nr">
-            <table  id="gtb" width="749" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1">
+            <table  id="gtb" width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1">
                 <tr class="sub_tr1">
                  <!--   <th width="64"><input type="checkbox" /></th>            -->
                     <th width="180">注册号*</th>

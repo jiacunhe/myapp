@@ -26,7 +26,7 @@
     <div class="content_right_nr">
         <h4 class="sub_title1"><p class="sub_p5">监控企业名单</p></h4>
         <div class="sub_nr">
-            <table  id="gtb" width="749" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1">
+            <table  id="gtb" width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1">
                 <tr class="sub_tr1">
 
                     <th width="180">注册号*</th>

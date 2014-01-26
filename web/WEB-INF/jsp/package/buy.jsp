@@ -35,7 +35,7 @@
         <h4 class="sub_title1"><p class="sub_p3">套餐购买</p></h4>
         <div class="sub_nr">
 
-            <table width="749" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1" style="margin-top:40px;">
+            <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1" style="margin-top:40px;">
                 <tr align="center">
                     <th width="80"></th>
                     <th width="100">套餐名称</th>
@@ -44,11 +44,11 @@
                 </tr>
                <c:forEach var="p" items="${list}"  varStatus="status">
                 <tr align="center">
-                    <td><input type="checkbox" id="packageId" name="packageId" value="p.id" /></td>
+                    <td width="10%"><input type="checkbox" id="packageId" name="packageId" value="p.id" /></td>
 
-                    <td>${p.packageName}</td>
-                    <td><p>（查询条数${p.quantityA}条、监控企业或个人条数${p.quantityB}条）</p></td>
-                    <td>${p.price}元</td>
+                    <td width="15%">${p.packageName}</td>
+                    <td width="50%"><p>（查询条数${p.quantityA}条、监控企业或个人条数${p.quantityB}条）</p></td>
+                    <td width="25%">${p.price}元</td>
                 </tr>
                </c:forEach>
             </table>

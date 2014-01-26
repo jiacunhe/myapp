@@ -1,12 +1,14 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 
-    <%@ include file="/WEB-INF/jsp/manage/commons.jspf" %>
+    <%@ include file="/WEB-INF/jsp/public/commons.jspf" %>
+    <script type="text/javascript" src="${basePath}/js/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="${basePath}/js/additional-methods.min.js"></script>
     <title>客户管理</title>
     <script type="text/javascript">
-
 
         $().ready(function () {
             $("#form").validate({
@@ -14,11 +16,9 @@
                     oldPassword: {
                         required: true,
                         remote: {
-
                             url: "${basePath}/user/password/check",
                             data: {
                                 userId: function () {
-
                                     return $('#userId').val();
                                 },
                                 password: function () {
@@ -28,7 +28,6 @@
 
                         }
                     },
-
                     password: {
                         required: true,
                         minlength: 6,
@@ -63,38 +62,37 @@
 
 <!--content-->
 
-<div class="ht_content_rightnr">
-    <div class="ht_yemei">
-        <p>您当前所在位置：<a href="#">首页</a> >> <a href="#">系统管理</a> >> <span>用户管理</span></p>
+<div class="content_right">
+    <div class="yemei">
+        <p>您当前所在位置：<a href="#">首页</a> >> <a href="#">个人中心</a> >> <span>安全中心</span></p>
     </div>
 
-    <div class="ht_sub_nr1">
-        <h4 class="ht_sub_title0"><img src="${basePath}/manage/images/ht_ico017.png"/>
+    <div class="content_right_nr">
+        <h4 class="sub_title1"><p class="sub_p1">修改密码</p></h4>
 
-            <p>修改密码</p></h4>
-        <span class="ht_sub_span2"><img src="${basePath}/manage/images/ht_ico011.gif"/><p>
+        <span class="zhushi span"><p>
             定期更换密码可以让您的账户更加安全。请确保登录密码与支付密码不同！建议密码采用字母和数字混合，并且不短于6位。</p></span>
 
-        <form id="form" method="post" action="${basePath}/user/password/modify" class="ht_sub_form2">
-            <input type="hidden" value="${manage.userId}" name="userId" id="userId"/>
+        <form id="form" method="post" action="${basePath}/customer/MD5Password" class="sub_form1">
+            <input type="hidden" value="${user.userId}" name="userId" id="userId"/>
 
             <p>旧密码：</p>
-            <input type="password" name="oldPassword" class="ht_sub_input4" id="oldPassword"/> <span>*</span><br/>
+            <input type="password" name="oldPassword" class="sub_input2" id="oldPassword"/> <span>*</span><br/>
 
             <div class="clear"></div>
             <p>新密码：</p>
-            <input type="password" name="password" class="ht_sub_input4" id="password"/> <span>*</span><br/>
+            <input type="password" name="password" class="sub_input2" id="password"/> <span>*</span><br/>
 
             <div class="clear"></div>
             <p>确认新密码：</p>
-            <input type="password" name="password2" class="ht_sub_input4" id="password2"/> <span>*</span><br/>
+            <input type="password" name="password2" class="sub_input2" id="password2"/> <span>*</span><br/>
 
             <div class="clear"></div>
-            <input id="submit" type="submit" value="确定" class="ht_but_qd1"/>
-            <input type="button" onclick="javascript:history.go(-1);" value="取消" class="ht_but_qx1"/>
+            <input id="submit" type="submit" value="确定" class="but_qd"/>
+            <input type="button" onclick="javascript:history.go(-1);" value="取消" class="but_qx"/>
         </form>
         <div class="clear"></div>
-        <div class="ht_yangshi" style="height:60px;"></div>
+        <div class="yangshi" style="height:60px;"></div>
     </div>
 
 

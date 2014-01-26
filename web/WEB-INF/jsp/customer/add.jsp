@@ -26,7 +26,7 @@
                         required: true,
                         userId: true,
                         remote: {
-                            url: "/user/checkUserId"
+                            url: "${basePath}/user/checkUserId"
                         }
                     },
                     username: {

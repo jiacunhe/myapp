@@ -41,7 +41,8 @@
     </div>
 
 
-    <div class="content_right_nr" style=" margin-top:16px;">
+    <div class="content_right_nr0" style=" margin-top:16px;">
+        <div class="content_right_nr01">
         <h4 class="sub_title1"><p class="sub_p5">搜索</p></h4>
         <div style="height:120px;">
             <form method="post" action="${basePath}/order/search" class="sub_form3">
@@ -73,7 +74,7 @@
 
 
 
-    <div class="content_right_nr" id="qc_sell_tab">
+    <div class="content_right_nr01" id="qc_sell_tab">
         <dl class="sub_dl2">
                 <dt><h4 class="sub_title1" id="select_table" onclick="tabCard(); return false;" >
 
@@ -98,7 +99,7 @@
 
 
 <dd style="display:none;" id="content2">
-    <table width="749" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1">
+    <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1">
         <tr class="sub_tr1">
             <th width="10%">序号</th>
             <th width="12%">查询类型</th>
@@ -155,7 +156,7 @@
     </table>
 </dd>
 <dd style="display:none;" id="content3">
-    <table width="749" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1">
+    <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1">
         <tr class="sub_tr1">
             <th width="6%">序号</th>
             <th width="10%">查询类型</th>
@@ -338,7 +339,7 @@
 
     function createContent(obj){
 
-        var content=' <table width="749" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1"> ';
+        var content=' <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1"> ';
 
         content+='<tr class="sub_tr1">';
         content+='<th width="10%">序号</th>';
@@ -400,7 +401,7 @@
 
     function createContentRecyclable(obj){
 
-        var content=' <table width="749" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1"> ';
+        var content=' <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1"> ';
 
         content+='<tr class="sub_tr1">';
         content+='<th width="7%">序号</th>';

@@ -18,21 +18,23 @@
     </div>
 
     <div class="content_right_nr">
-        <h4 class="sub_title1"><p class="sub_p4">个人资料</p> <p class="button1"><a href="#"><img src="${basePath}/images/button4.gif" /></a></p></h4>
+        <h4 class="sub_title1"><p class="sub_p4">个人资料</p> <c:if test="${role=='普通用户'}"><p class="button1"><a href="${basePath}/customer/MD5/UI?_userId=${customer.userId}"><img src="${basePath}/images/button4.gif" /></a></p></c:if></h4>
         <div class="sub_nr">
             <ul class="grzl_list">
-                <li class="newline"><span>用户类型：</span>普通用户<a href="#">查询资费</a></li>
-                <li><span>账 号：</span>zhangsan</li>
-                <li class="newline"><span>姓 名：</span>张 三</li>
-                <li><span>证件类型：</span>身份证</li>
-                <li class="newline"><span>证件号码：</span>410181198502121542</li>
-                <li><span> 职 业：</span>法律</li>
-                <li class="newline"><span>行 业</span>律师</li>
-                <li><span>电子邮箱：</span>111111@163.com</li>
-                <li class="newline"><span>联系电话：</span>12345678945</li>
-                <li><span>联系人：</span>张 三</li>
-                <li class="newline"><span>邮寄地址：</span>郑州市某某区某某路某某号</li>
-                <li><span>邮 编：</span>450000</li>
+                <li class="newline"><span>用户类型：</span>${role}<c:if test="${role=='普通用户'}"><a  href="#"></a></c:if></li>
+                <li><span>账 号：</span>${customer.userId}</li>
+                <li class="newline"><span>姓 名：</span>${customer.username}</li>
+
+                <c:if test="${role=='普通用户'}">
+                    <li><span>证件类型：</span>${customer.certificate}</li>
+                    <li class="newline"><span>证件号码：</span>${customer.certificateCode}</li>
+                    <li><span> 职 业：</span>${customer.vocation}</li>
+                    <li class="newline"><span>行业：</span>${customer.trade}</li>
+                    <li><span>电子邮箱：</span>${customer.email}</li>
+                    <li class="newline"><span>联系电话：</span>${customer.telephone}</li>
+                    <li><span>联系人：</span>${customer.linkman}</li>
+                    <li class="newline"><span>邮寄地址：</span>${customer.address}</li>
+                </c:if>
             </ul>
         </div>
     </div>

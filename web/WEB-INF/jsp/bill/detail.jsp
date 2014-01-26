@@ -77,7 +77,7 @@
                     <OPTION value="y" <c:if test="${period eq 'y'}">selected </c:if>>最近一年</OPTION>
                 </SELECT>
             </span>
-    <table width="749" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1">
+    <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1">
         <tr class="sub_tr1">
             <th>序号</th>
             <th>时间</th>
@@ -108,7 +108,7 @@
           </SELECT>
 
     </span>  --%>
-    <table width="749" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1">
+    <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1">
         <tr class="sub_tr1">
             <th>序号</th>
             <th>类型</th>

@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+\<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix='fmt' uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions"  prefix="fn"%>
@@ -47,7 +47,7 @@
                         return false;
                     } else {
                         var param = $(obj).attr("id");
-                        $("#edit").attr("href", "/manager/modify/UI" + param);
+                        $("#edit").attr("href", "${basePath}/manager/modify/UI" + param);
                     }
                 }
             });
@@ -60,7 +60,7 @@
                     } else {
                         var param = $(obj).attr("id");
                         var name = $(obj).attr("name");
-                        $("#lock").attr("href", "/manager/lock" + param);
+                        $("#lock").attr("href", "${basePath}/manager/lock" + param);
                         return window.confirm('确定要锁定管理员：' + name + '?');
                     }
                 } else {
@@ -77,7 +77,7 @@
                     } else {
                         var param = $(obj).attr("id");
                         var name = $(obj).attr("name");
-                        $("#unlock").attr("href", "/manager/unlock" + param);
+                        $("#unlock").attr("href", "${basePath}/manager/unlock" + param);
                         return window.confirm('确定要解锁管理员：' + name + '?');
                     }
                 } else {
@@ -94,7 +94,7 @@
                     } else {
                         var param = $(obj).attr("id");
                         var name = $(obj).attr("name");
-                        $("#resetPassword").attr("href", "/manager/resetPassword" + param);
+                        $("#resetPassword").attr("href", "${basePath}/manager/resetPassword" + param);
                         return window.confirm('确定要重置管理员：' + name + '的密码?');
                     }
                 } else {
