@@ -77,7 +77,7 @@
 
 
     <div class="content_right_nr01" id="qc_sell_tab">
-        <script type="text/javascript">$(function(){$("#qc_sell_tab").tabs();})</script>
+       
 
         <dl class="sub_dl2">
                 <dt><h4 class="sub_title1" id="select_table" onclick="tabCard(); return false;" >
