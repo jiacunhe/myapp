@@ -1,8 +1,13 @@
 package com.hyrt.saic.controller;
 
 import com.hyrt.saic.bean.Customer;
+import com.hyrt.saic.bean.SysMessage;
 import com.hyrt.saic.bean.User;
+import com.hyrt.saic.bean.UserOperation;
+import com.hyrt.saic.service.SysMessageService;
+import com.hyrt.saic.service.UserOperationService;
 import com.hyrt.saic.service.UserService;
+import com.hyrt.saic.util.Config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 
 /**
  * Created with IntelliJ IDEA.
@@ -22,6 +28,10 @@ import javax.servlet.http.HttpServletRequest;
 public class UserController extends BaseController {
     @Autowired
     private UserService userService;
+    @Autowired
+    private SysMessageService sysMessageService;
+    @Autowired
+    private UserOperationService userOperationService;
 
     @RequestMapping("/checkUserId")
     public @ResponseBody String check(String userId) {
@@ -49,4 +59,22 @@ public class UserController extends BaseController {
 
         return jsp("/manage/password");
     }
+    @RequestMapping("/message")
+    public String messageSubmit(String message,HttpServletRequest request){
+        User user= (User) request.getSession().getAttribute("user");
+        String userId=user.getUserId();
+        SysMessage sysMessage=new SysMessage();
+        sysMessage.setUserId(userId);
+        sysMessage.setContent(message);
+        sysMessage.setCreateTime(new Date());
+        sysMessage.setType(Config.USER_MESSAGE_TYPE_QUESTION);
+        sysMessage.setStatus(Config.USER_MESSAGE_STATUS_NEW);
+        sysMessageService.messageSubmit(sysMessage);
+
+        UserOperation operation = new UserOperation(user.getUserId(), "/user/message", "前台客户提交问题", new Date(), request.getRemoteAddr());
+        userOperationService.save(operation);
+
+        return jsp("/user/submitSuccess");
+    }
+
 }
