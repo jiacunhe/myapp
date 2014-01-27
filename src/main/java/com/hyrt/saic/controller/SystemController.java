@@ -35,6 +35,7 @@ public class SystemController extends BaseController {
     @Autowired
     private UserOperationService operationService;
 
+
     @RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.POST})
     public String loginUI(@ModelAttribute User user, HttpServletRequest request) {
         if (request.getSession().getAttribute(Config.USER) != null) {
@@ -58,6 +59,10 @@ public class SystemController extends BaseController {
         return redirectTo("/logout.jsp");
     }
 
+    @RequestMapping(value = "/home", method = RequestMethod.GET)
+    public String goHome() {
+        return redirectTo("/welcome.jsp");
+    }
     @RequestMapping(value = "/manage/logout", method = RequestMethod.GET)
     public String manageLogout(HttpSession session) {
         session.invalidate();

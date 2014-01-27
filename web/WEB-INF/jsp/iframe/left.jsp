@@ -58,8 +58,8 @@
         <dt><img src="${basePath}/images/ico5.png" /> <A onclick=javascript:ShowFLT(5) href="javascript:void(null)">个人中心</A></dt>
         <dd id=LM5 style="DISPLAY: none">
             <ul>
-                <li><a href="#">个人资料</a></li>
-                <li><a href="#">安全中心</a></li>
+                <li><a href="${basePath}/customer/info" target="mainIframe">个人资料</a></li>
+                <li><a href="${basePath}/customer/MD5Password/UI" target="mainIframe">安全中心</a></li>
                 <li><a href="${basePath}/bill/rechargeRecord" target="mainIframe">消费明细</a></li>
                 <li><a href="${basePath}/accountInfo/list" target="mainIframe">账户余额</a></li>
                 <li><a href="${basePath}/user/message" target="mainIframe">我的消息</a></li>

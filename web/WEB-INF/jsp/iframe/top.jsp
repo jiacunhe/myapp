@@ -10,6 +10,11 @@
 <head>
     <title></title>
     <%@ include file="/WEB-INF/jsp/public/commons.jspf" %>
+    <script type="text/javascript">
+        function goHome(){
+            document.getElementById("mainIframe").src="${basePath}/welcome.jsp";
+        }
+    </script>
 </head>
 <body>
 <!--top-->
@@ -62,8 +67,8 @@
         </div>
         <div class="top_button">
             <ul>
-                <li><a href="javascript:goHome();">首页</a></li>
-                <li><a href="#">修改密码</a></li>
+                <li><a href="${basePath}/home" target="mainIframe">首页</a></li>
+                <li><a href="${basePath}/customer/MD5Password/UI" target="mainIframe">修改密码</a></li>
                 <li><a href="${basePath}/logout">退出</a></li>
             </ul>
         </div>

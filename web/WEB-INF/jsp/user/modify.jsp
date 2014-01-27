@@ -59,7 +59,7 @@
     </div>
 
     <div class="content_right_nr">
-        <h4 class="sub_title1"><p class="sub_p4">个人资料</p> <p class="button1"></p></h4>
+        <h4 class="sub_title1"><p class="sub_p4">修改个人资料</p> <p class="button1"></p></h4>
         <div class="sub_nr">
             <ul class="grzl_list">
 <<<<<<< HEAD
@@ -110,16 +110,16 @@
                         <c:forEach items="${paymentRules}" var="item">
                             <option value="${item}" ${customer.paymentRule == item ? 'selected':''}>${item.desc}</option>
                         </c:forEach>
-                    </select>    <a href="#">查询资费</a>
+                    </select>
                 </li>
-                <li><span>*账 号：</span><input name="userId" value="${customer.userId}" readonly type=text class="li1">
+                <li><span>*账 号：</span><input name="userId" style="border: none;background-color: #ffffff" value="${customer.userId}" readonly type=text class="li1">
                 </li>
-                <li><span>*姓 名：</span><input name="username" value="${customer.username}" readonly type=text class="li1"></li>
+                <li><span>*姓 名：</span><input name="username" style="border: none;background-color: #ffffff" value="${customer.username}" readonly type=text class="li1"></li>
                 <li>
                     <span>*证件类型：</span>
-                    <input name="certificate" value="${customer.certificate}" readonly type=text class="li1">
+                    <input name="certificate" style="border: none;background-color: #ffffff" value="${customer.certificate}" readonly type=text class="li1">
                 </li>
-                <li><span>*证件号码：</span><input name="certificateCode" value="${customer.certificateCode}" readonly type=text class="li2"></li>
+                <li><span>*证件号码：</span><input name="certificateCode" style="border: none;background-color: #ffffff" value="${customer.certificateCode}" readonly type=text class="li2"></li>
                 <li>
                     <span>行 业：</span>
                     <input name="trade" value="${customer.trade}" class="li3"/>
