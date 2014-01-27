@@ -35,7 +35,7 @@
         <h4 class="sub_title1"><p class="sub_p3">套餐分配</p></h4>
         <div class="sub_nr">
             <input id="userId" name="userId" value="${userId}" type="hidden" />
-            <table width="749" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1" style="margin-top:40px;">
+            <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1" style="margin-top:40px;">
                 <tr align="center">
                     <th width="80"></th>
                     <th width="100">套餐名称</th>

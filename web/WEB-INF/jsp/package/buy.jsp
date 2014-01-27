@@ -45,11 +45,11 @@
                 </tr>
                <c:forEach var="p" items="${list}"  varStatus="status">
                 <tr align="center">
-                    <td><input type="checkbox" id="packageId" name="packageId" value="p.id" /></td>
+                    <td width="10%"><input type="checkbox" id="packageId" name="packageId" value="p.id" /></td>
 
-                    <td>${p.packageName}</td>
-                    <td><p>（查询条数${p.quantityA}条、监控企业或个人条数${p.quantityB}条）</p></td>
-                    <td>${p.price}元</td>
+                    <td width="15%">${p.packageName}</td>
+                    <td width="50%"><p>（查询条数${p.quantityA}条、监控企业或个人条数${p.quantityB}条）</p></td>
+                    <td width="25%">${p.price}元</td>
                 </tr>
                </c:forEach>
             </table>

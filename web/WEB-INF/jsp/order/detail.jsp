@@ -83,7 +83,7 @@
     </div>
 
     <div class="content_right_nr" style="margin-top:16px;">
-        <table width="749" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table2" style="margin-top:0px;">
+        <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table2" style="margin-top:0px;">
             <tr class="sub_tr1">
                 <th>序号</th>
                 <th>查询对象</th>

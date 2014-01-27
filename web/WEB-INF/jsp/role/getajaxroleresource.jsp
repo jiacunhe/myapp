@@ -7,14 +7,20 @@
   Time: 下午4:22
   To change this template use File | Settings | File Templates.
 --%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path;
+    request.setAttribute("basePath", basePath);
+%>
 <html>
 <head>
     <title></title>
     <LINK TYPE="text/css" REL="stylesheet" HREF="${basePath}/css/jquery.treeview.css" />
     <SCRIPT LANGUAGE="javascript" SRC="${basePath}/js/jquery.min.js"></SCRIPT>
     <SCRIPT LANGUAGE="javascript" SRC="${basePath}/js/jquery.treeview.js"></SCRIPT>
-    <%@ include file="/WEB-INF/jsp/manage/commons.jspf" %>
+
 
 
 

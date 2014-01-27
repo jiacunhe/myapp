@@ -13,6 +13,10 @@
     <meta HTTP-EQUIV="expires" CONTENT="0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <%@ include file="/WEB-INF/jsp/public/commons.jspf" %>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 66885e462193d9289b4374896bd84c845f4c2fd8
     <title>工商企业查询管理系统</title>
     <style type="text/css">
         body {
@@ -21,44 +25,23 @@
     </style>
 </head>
 
-<body>
-<!--top-->
-<div class="top">
-    <div class="top_content">
-        <img src="${basePath}/images/logo.png" class="logo"/>
-        <div class="top_xx">
-            <div><p>当前用户：<span>${user.userId}</span></p>
-
-              <!--  <ul class="menu">
-                    <li>
-                        <a href="#"class="tablink"><img src="../images/ico01.png" /></a>
-                        <ul>
-                            <li id="qc_sell_tab2">
-
-                                <script type="text/javascript">$(function(){$("#qc_sell_tab2").tabs();})</script>
-                                <dl class="pub_dl">
-                                    <dt><a href="#">订单提醒</a><a href="#">消息提醒</a></dt>
-                                    <dd style="display:block;">
-                                        <p style="width:100px; height:10px; overflow:hidden;">&nbsp;</p>
-                                        <p>已完成订单：<a href="#">（0）</a></p>
-                                        <p>未完成订单：<a href="#">（0）</a></p>
-                                        <p>未查到订单：<a href="#">（0）</a></p>
-                                        <p>企业监控最新动态：<a href="#">（0）</a></p>
-                                        <p>人员监控最新动态：<a href="#">（0）</a></p>
-                                    </dd>
-                                    <dd style="color:#006">
-                                        <p style="width:100px; height:10px; overflow:hidden;">&nbsp;</p>
-                                        <p>消息提醒/通知：<a href="#">（0）</a></p>
-                                    </dd>
-                                </dl>
-
-                            </li>
-                        </ul>
-                    </li>
-
-                </ul> -->
+<frameset rows="94,*,45"  frameborder="NO" border="0" framespacing="0">
+    <frame src="${basePath}/iframeTop" noresize="noresize" frameborder="NO" name="topFrame" scrolling="no" marginwidth="0" marginheight="0" target="main" />
+    <frameset cols="220,*"  rows="100%,*" id="frame">
+        <frame src="${basePath}/iframeLeft" name="leftFrame" noresize="noresize" marginwidth="0" marginheight="0" frameborder="0" target="mainIframe" />
+        <frame src="${basePath}/welcome.jsp" name="mainIframe" marginwidth="0" marginheight="0" frameborder="0" target="_self"  />
+    </frameset>
+    <frame src="${basePath}/iframeBottom" noresize="noresize" frameborder="NO" name="footFrame" scrolling="no" marginwidth="0" marginheight="0" />
+    <noframes>
+        <body></body>
+    </noframes>
 
 
+
+
+
+
+<<<<<<< HEAD
             </div>
             <div class="clear"></div>
             <p>您好！今天是
@@ -164,6 +147,8 @@
         <p>Copyright 2011-2013 某某版权所有 豫ICP备00000000号</p>
     </div>
 </div>
+=======
+>>>>>>> 66885e462193d9289b4374896bd84c845f4c2fd8
 
 
 <script type="text/javascript">
@@ -185,5 +170,5 @@
 </script>
 
 
-</body>
+
 </html>

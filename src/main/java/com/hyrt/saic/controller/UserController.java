@@ -46,6 +46,7 @@ public class UserController extends BaseController {
 
     @RequestMapping(value = "/password/modify/UI", method = RequestMethod.GET)
     public String modifyPasswordUI() {
+
         return jsp("/manage/password");
     }
 }

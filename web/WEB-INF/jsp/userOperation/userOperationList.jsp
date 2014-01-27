@@ -51,7 +51,7 @@
 
     <div class="ht_sub_nr1">
         <h4 class="ht_sub_title0"><img src="../images/ht_ico05.png" /><p>列表</p></h4>
-        <table width="768" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="ht_sub_table1" style="margin-top:20px;">
+        <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="ht_sub_table1" style="margin-top:20px;">
             <tr class="ht_sub_tr1">
                 <th width="200">时间</th>
 

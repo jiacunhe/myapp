@@ -75,6 +75,11 @@
 
 
     <div class="content_right_nr01" id="qc_sell_tab">
+<<<<<<< HEAD
+=======
+       
+
+>>>>>>> 66885e462193d9289b4374896bd84c845f4c2fd8
         <dl class="sub_dl2">
                 <dt><h4 class="sub_title1" id="select_table" onclick="tabCard(); return false;" >
 
@@ -252,8 +257,7 @@
 
     var lastTabl;
     function tabCard(){
-        var e = window.event?window.event.srcElement:e.target;
-
+        var e = window.event ? window.event.srcElement:e.target;
         if(e.innerText == "查询信息"){
             document.getElementById("content").innerHTML = document.getElementById("content2").innerHTML;
         }else if(e.innerText == "监控信息"){

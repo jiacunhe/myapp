@@ -55,13 +55,13 @@ public class SystemController extends BaseController {
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logout(HttpSession session) {
         session.invalidate();
-        return redirectTo("");
+        return redirectTo("/logout.jsp");
     }
 
     @RequestMapping(value = "/manage/logout", method = RequestMethod.GET)
     public String manageLogout(HttpSession session) {
         session.invalidate();
-        return redirectTo("");
+        return redirectTo("/logout.jsp?manage=true");
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -137,5 +137,45 @@ public class SystemController extends BaseController {
         UserOperation operation = new UserOperation(((User)request.getSession().getAttribute(Config.MANAGE)).getUserId(), "/manage/userOperation", "操作日志查询", new Date(), request.getRemoteAddr());
         operationService.save(operation);
         return jsp("/userOperation/userOperationList");
+    }
+    @RequestMapping("/questions")
+    public String getQuestion(){
+
+        return jsp("/qaAndzx/questions");
+    }
+    @RequestMapping("/questionOnline")
+    public String getQandAOnline(){
+
+        return jsp("/qaAndzx/leaveMessage");
+    }
+    @RequestMapping("/iframeTop")
+    public String getIframeTop(){
+
+        return jsp("/iframe/top");
+    }
+    @RequestMapping("/iframeLeft")
+    public String getIframeLeft(){
+
+        return jsp("/iframe/left");
+    }
+    @RequestMapping("/iframeBottom")
+    public String getIframeBottom(){
+
+        return jsp("/iframe/bottom");
+    }
+    @RequestMapping("/htIframeTop")
+    public String getHtIframeTop(){
+
+        return jsp("/iframe/ht_top");
+    }
+    @RequestMapping("/htIframeLeft")
+    public String getHtIframeLeft(){
+
+        return jsp("/iframe/ht_left");
+    }
+    @RequestMapping("/htIframeBottom")
+    public String getHtIframeBottom(){
+
+        return jsp("/iframe/ht_bottom");
     }
 }
