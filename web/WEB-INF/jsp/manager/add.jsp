@@ -21,7 +21,7 @@
                         minlength: 6,
                         maxlength: 16,
                         remote: {
-                            url: "/user/checkUserId"
+                            url: "${bathPath}/user/checkUserId"
                         }
                     },
                     username: {

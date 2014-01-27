@@ -29,17 +29,13 @@ public class UserController extends BaseController {
     private UserService userService;
 
     @RequestMapping("/checkUserId")
-    public
-    @ResponseBody
-    String check(String userId) {
-        return String.valueOf(userService.checkUserId(userId));
+    public @ResponseBody String check(String userId) {
+          return String.valueOf(userService.checkUserId(userId));
     }
 
     @RequestMapping("/password/check")
-    public
-    @ResponseBody
-    String checkPassword(String userId, String password) {
-        return String.valueOf(userService.checkPassword(userId, password));
+    public @ResponseBody String checkPassword(String userId, String password) {
+          return String.valueOf(userService.checkPassword(userId, password));
     }
 
     @RequestMapping(value = "/password/modify", method = RequestMethod.POST)
@@ -55,6 +51,7 @@ public class UserController extends BaseController {
 
     @RequestMapping(value = "/password/modify/UI", method = RequestMethod.GET)
     public String modifyPasswordUI() {
+
         return jsp("/manage/password");
     }
 

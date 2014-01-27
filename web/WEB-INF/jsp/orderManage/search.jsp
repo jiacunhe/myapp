@@ -334,7 +334,7 @@
 
     function createContent(obj){
 
-        var content=' <table width="749" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1"> ';
+        var content=' <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1"> ';
 
         content+='<tr class="sub_tr1">';
         content+='<th width="7%">序号</th>';
@@ -396,7 +396,7 @@
 
     function createContentRecyclable(obj){
 
-        var content=' <table width="749" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1"> ';
+        var content=' <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1"> ';
 
         content+='<tr class="sub_tr1">';
         content+='<th width="5%">序号</th>';
