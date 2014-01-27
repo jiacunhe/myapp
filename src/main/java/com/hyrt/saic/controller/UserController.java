@@ -1,5 +1,6 @@
 package com.hyrt.saic.controller;
 
+import com.hyrt.saic.bean.Customer;
 import com.hyrt.saic.bean.User;
 import com.hyrt.saic.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,12 +47,5 @@ public class UserController extends BaseController {
     @RequestMapping(value = "/password/modify/UI", method = RequestMethod.GET)
     public String modifyPasswordUI() {
         return jsp("/manage/password");
-    }
-    @RequestMapping("/info")
-    public String userInfo(HttpServletRequest request){
-        User user = (User) request.getSession().getAttribute("user");
-        String userId=user.getUserId();
-        User user2=userService.getById(userId);
-        return "userInfo.jsp";
     }
 }

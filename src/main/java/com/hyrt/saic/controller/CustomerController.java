@@ -42,6 +42,30 @@ public class CustomerController extends BaseController {
     @Autowired
     UserOperationService userOperationService;
 
+    @RequestMapping("/info")
+    public String userInfo(HttpServletRequest request){
+        User user = (User) request.getSession().getAttribute("user");
+        String userId=user.getUserId();
+        UserType userType=user.getUserType();
+
+        switch (userType){
+            case MANAGER: Manager manager= (Manager) userService.getById(userId);
+                String role="管理员" ;
+                request.setAttribute("role",role);
+                request.setAttribute("customer",manager);
+                break;
+            case CUSTOMER: Customer customer= (Customer) userService.getById(userId);
+                String role2="普通用户";
+                request.setAttribute("role",role2);
+                request.setAttribute("customer",customer);
+                break;
+        }
+
+
+
+        return "/user/userInfo.jsp";
+    }
+
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String addCustomer(Customer customer, HttpServletRequest request) {
         /*if (customer.getPaymentRule() == null) {
@@ -72,7 +96,7 @@ public class CustomerController extends BaseController {
 
     @RequestMapping(value = "/modify/UI", method = RequestMethod.GET)
     public String modifyCustomerUI(String _userId, HttpServletRequest request) {
-        User user = userService.getById(_userId);
+        ; = userService.getById(_userId);
         request.setAttribute("customer", user);
         if (user instanceof Manager) {
             request.setAttribute("paymentRules", PaymentRule.values());

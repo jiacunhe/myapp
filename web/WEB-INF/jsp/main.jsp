@@ -12,17 +12,7 @@
     <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
     <meta HTTP-EQUIV="expires" CONTENT="0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<<<<<<< HEAD
     <%@ include file="/WEB-INF/jsp/public/commons.jspf" %>
-=======
-    <link href="/css/public.css" rel="stylesheet" type="text/css" />
-    <link href="/css/sub.css" rel="stylesheet" type="text/css" />
-
-    <script language=javascript src="/js/1.js" id=clientEventHandlersJS> </script>
-    <script language="javascript" src="/js/jquery-1.8.0.min.js"></script>
-    <script language=javascript src="/js/js.js"> </script>
-    <script language=javascript src="/js/public.js"></script>
->>>>>>> aee58638654eac54bc137e89671486963193fea1
     <title>工商企业查询管理系统</title>
     <style type="text/css">
         body {
@@ -134,7 +124,7 @@
             <dt><img src="${basePath}/images/ico5.png" /> <A onclick=javascript:ShowFLT(5) href="javascript:void(null)">个人中心</A></dt>
             <dd id=LM5 style="DISPLAY: none">
                 <ul>
-                    <li><a href="#">个人资料</a></li>
+                    <li><a href="${basePath}/customer/info" target="mainIframe">个人资料</a></li>
                     <li><a href="#">安全中心</a></li>
                     <li><a href="${basePath}/bill/rechargeRecord" target="mainIframe">消费明细</a></li>
                     <li><a href="${basePath}/accountInfo/list" target="mainIframe">账户余额</a></li>
@@ -157,9 +147,10 @@
 
 
     </div>
+
     <div class="content_right">
 
-        <iframe id="mainIframe" name="mainIframe" scrolling="no" style="width:100%; height: 666px; overflow: hidden; position:relative;" frameborder="0" src="${basePath}/welcome.jsp" ></iframe>
+    <iframe id="mainIframe" name="mainIframe" scrolling="no" style="width:100%; height: 666px; overflow: hidden; position:relative;" frameborder="0" src="${basePath}/welcome.jsp" ></iframe>
 
     </div>
 </div>
