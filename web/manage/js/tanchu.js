@@ -12,8 +12,8 @@ pY=event.y-document.all(Obj).style.pixelTop;
 
 function MMove(){
 if(Obj!=''){
-  document.all(Obj).style.left=event.x-pX;
-  document.all(Obj).style.top=event.y-pY;
+ // document.all(Obj).style.left=event.x-pX;
+ // document.all(Obj).style.top=event.y-pY;
   }
 }
 

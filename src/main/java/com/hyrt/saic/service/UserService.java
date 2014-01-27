@@ -1,11 +1,9 @@
 package com.hyrt.saic.service;
 
-import com.hyrt.saic.bean.Customer;
-import com.hyrt.saic.bean.Manager;
-import com.hyrt.saic.bean.Role;
-import com.hyrt.saic.bean.User;
+import com.hyrt.saic.bean.*;
 import com.hyrt.saic.util.enums.PaymentRule;
 import me.sfce.library.mybatis.service.BaseService;
+import me.sfce.library.mybatis.util.Page;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -57,4 +55,10 @@ public interface UserService extends BaseService<User> {
     boolean checkPassword(String userId, String password);
 
     void modifyPassword(String userId, String password);
+
+    List<SysMessage> getUserMessage(Page page);
+
+    void changeMessageStatus(String messageIds);
+
+    void deleteMessageByIds(String messageIds);
 }

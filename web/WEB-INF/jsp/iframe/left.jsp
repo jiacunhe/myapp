@@ -62,7 +62,7 @@
                 <li><a href="#">安全中心</a></li>
                 <li><a href="${basePath}/bill/rechargeRecord" target="mainIframe">消费明细</a></li>
                 <li><a href="${basePath}/accountInfo/list" target="mainIframe">账户余额</a></li>
-                <li><a href="#">我的消息</a></li>
+                <li><a href="${basePath}/user/message" target="mainIframe">我的消息</a></li>
             </ul>
         </dd>
     </dl>

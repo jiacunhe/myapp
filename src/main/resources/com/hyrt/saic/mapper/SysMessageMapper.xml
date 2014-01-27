@@ -114,4 +114,51 @@
       remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+    <select id="getUserMessageList" resultMap="BaseResultMap" parameterType="java.util.Map">
+        SELECT
+        <include refid="Base_Column_List" />
+        from t_sys_message tsm where 1=1
+        <if test="userId!=null">
+            and tsm.`userId`='${userId}'
+        </if>
+        <if test="messageType!=null">
+            and tsm.`type`='${messageType}'
+        </if>
+        <if test="messageStatus!=null">
+            and tsm.`status`='${messageStatus}'
+        </if>
+        <if test="recentTime!=null">
+
+            <if test="recentTime=='oneWeek'">
+                and
+                <![CDATA[  DATE_SUB(CURDATE(), INTERVAL 7 DAY) <= date(tsm.`createTime`)]]>
+            </if>
+            <if test="recentTime=='oneMonth'">
+                and
+                <![CDATA[  DATE_SUB(CURDATE(), INTERVAL 1 MONTH ) <= date(tsm.`createTime`)]]>
+            </if>
+            <if test="recentTime=='threeMonth'">
+                and
+                <![CDATA[  DATE_SUB(CURDATE(), INTERVAL 3 MONTH ) <= date(tsm.`createTime`)]]>
+            </if>
+            <if test="recentTime=='beforThreeMonth'">
+                and
+                <![CDATA[  date(tsm.`createTime`) < DATE_SUB(CURDATE(), INTERVAL 3 MONTH )]]>
+            </if>
+
+        </if>
+        order by tsm.`createTime` desc
+    </select>
+    <update id="changeMessageStatus" parameterType="java.lang.String">
+
+UPDATE t_sys_message tsm SET tsm.`status`='d' WHERE tsm.`id` IN (${_parameter});
+
+    </update>
+    <delete id="deleteMessageByIds" parameterType="java.lang.String">
+
+        delete from t_sys_message   where id IN (${_parameter});
+
+
+    </delete>
+    
 </mapper>

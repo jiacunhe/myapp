@@ -9,6 +9,7 @@ import com.hyrt.saic.util.enums.UserStatus;
 import com.hyrt.saic.util.enums.UserType;
 import me.sfce.library.mybatis.persistence.BaseMapper;
 import me.sfce.library.mybatis.service.impl.BaseServiceImpl;
+import me.sfce.library.mybatis.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -38,6 +39,8 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     RoleMapper roleMapper;
     @Autowired
     RoleSysResourceMapper roleSysResourceMapper;
+    @Autowired
+    SysMessageMapper sysMessageMapper;
 
     @Override
     public void save(User user) {
@@ -76,6 +79,21 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
         User user = new User(userId);
         user.setPassword(toMD5(password));
         super.update(user);
+    }
+
+    @Override
+    public List<SysMessage> getUserMessage(Page page) {
+        return sysMessageMapper.getUserMessageList(page);
+    }
+
+    @Override
+    public void changeMessageStatus(String messageIds) {
+        sysMessageMapper.changeMessageStatus(messageIds);
+    }
+
+    @Override
+    public void deleteMessageByIds(String messageIds) {
+        sysMessageMapper.deleteMessageByIds(messageIds);
     }
 
     @Override
