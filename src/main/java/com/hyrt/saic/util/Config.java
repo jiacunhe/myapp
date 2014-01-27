@@ -20,10 +20,9 @@ public class Config {
     public static final String USER_MESSAGE_TYPE_SYSTEM="s";//系统消息
     public static final String USER_MESSAGE_TYPE_REPLY="r";//问答回复
     public static final String USER_MESSAGE_TYPE_ORDER="o";//订单消息
+    public static final String  USER_MESSAGE_TYPE_QUESTION="q";//客户问题
     public static final String USER_MESSAGE_STATUS_NEW="n";//新消息
     public static final String USER_MESSAGE_STATUS_READ="d";//已读消息
-
-
 
     public static  String getBasePath(HttpServletRequest request){
 

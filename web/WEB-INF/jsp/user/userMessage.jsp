@@ -93,6 +93,9 @@
                             <c:when test="${sm.type=='o'}">
                                 <td>订单消息</td>
                             </c:when>
+                            <c:when test="${sm.type=='q'}">
+                                <td>客户问题</td>
+                            </c:when>
                             <c:otherwise>
                                 <td></td>
                             </c:otherwise>

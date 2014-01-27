@@ -45,11 +45,7 @@ public class CustomerController extends BaseController {
     @Autowired
     UserOperationService userOperationService;
 
-<<<<<<< HEAD
-    @RequestMapping("/info")
-=======
     @RequestMapping("/info")         //去往前台信息查询页面
->>>>>>> 66885e462193d9289b4374896bd84c845f4c2fd8
     public String userInfo(HttpServletRequest request){
         User user = (User) request.getSession().getAttribute("user");
         String userId=user.getUserId();
@@ -67,12 +63,11 @@ public class CustomerController extends BaseController {
                 request.setAttribute("customer",customer);
                 break;
         }
-<<<<<<< HEAD
 
-=======
+
         User operator = (User) request.getSession().getAttribute(Config.USER);
         userOperationService.save(new UserOperation(operator.getUserId(), "/customer/info", "查看客户:" + userId, new Date(), request.getRemoteAddr()));
->>>>>>> 66885e462193d9289b4374896bd84c845f4c2fd8
+
 
 
         return "/user/userInfo.jsp";
@@ -108,7 +103,7 @@ public class CustomerController extends BaseController {
 
     @RequestMapping(value = "/modify/UI", method = RequestMethod.GET)
     public String modifyCustomerUI(String _userId, HttpServletRequest request) {
-        ; = userService.getById(_userId);
+        User user = userService.getById(_userId);
         request.setAttribute("customer", user);
         if (user instanceof Manager) {
             request.setAttribute("paymentRules", PaymentRule.values());

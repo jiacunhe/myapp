@@ -75,11 +75,7 @@
 
 
     <div class="content_right_nr01" id="qc_sell_tab">
-<<<<<<< HEAD
-=======
-       
 
->>>>>>> 66885e462193d9289b4374896bd84c845f4c2fd8
         <dl class="sub_dl2">
                 <dt><h4 class="sub_title1" id="select_table" onclick="tabCard(); return false;" >
 
@@ -480,5 +476,6 @@
     }
 
 </script>
+</div>
 </body>
 </html>

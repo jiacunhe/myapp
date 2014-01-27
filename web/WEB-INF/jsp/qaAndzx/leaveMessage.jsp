@@ -27,7 +27,7 @@
         <h4 class="sub_title1"><p class="sub_p9">问题反馈</p></h4>
         <div class="sub_nr">
             <h2 class="dh">如有问题,请拨打客服电话 ：0371-55656586</h2>
-            <form id="formA" name="formA" method="post" action="${basePath}/user/message" class="sub_form1">
+            <form id="formA" name="formA" method="post" action="${basePath}/user/onlineCommitMessage" class="sub_form1">
                 <p>问题反馈：</p>
                 <textarea id="message" name="message" class="sub_input6"></textarea>
                 <br />
