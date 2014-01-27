@@ -34,8 +34,6 @@
         <body></body>
     </noframes>
 
-
-
 <script type="text/javascript">
     function SetWinHeight(obj){
         var win=obj;
@@ -53,7 +51,4 @@
         document.getElementById("mainIframe").src="${basePath}/welcome.jsp";
     }
 </script>
-
-
-
 </html>

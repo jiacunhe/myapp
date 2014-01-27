@@ -45,6 +45,7 @@ public class CustomerController extends BaseController {
     @Autowired
     UserOperationService userOperationService;
 
+
     @RequestMapping("/info")         //去往前台信息查询页面
     public String userInfo(HttpServletRequest request){
         User user = (User) request.getSession().getAttribute("user");
@@ -64,11 +65,8 @@ public class CustomerController extends BaseController {
                 break;
         }
 
-
         User operator = (User) request.getSession().getAttribute(Config.USER);
         userOperationService.save(new UserOperation(operator.getUserId(), "/customer/info", "查看客户:" + userId, new Date(), request.getRemoteAddr()));
-
-
 
         return "/user/userInfo.jsp";
     }
