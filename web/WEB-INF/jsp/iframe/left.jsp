@@ -5,14 +5,17 @@
   Time: 下午2:35
   To change this template use File | Settings | File Templates.
 --%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
+
+    <%@ include file="/WEB-INF/jsp/public/commons.jspf" %>
+
     <style type="text/css">
         html { overflow-x:hidden; }
     </style>
-    <%@ include file="/WEB-INF/jsp/public/commons.jspf" %>
 </head>
 <body style="background:url(${basePath}/images/xg24.gif) repeat-y">
 <div class="content_left" >
@@ -21,8 +24,18 @@
         <dt><img src="${basePath}/images/ico1.png" /> <A onclick=javascript:ShowFLT(1) href="javascript:void(null)">信息查询</A></dt>
         <dd id=LM1 style="DISPLAY: none">
             <ul>
-                <li><a href="${basePath}/order/group" target="mainIframe">企业查询</a></li>
-                <li><a href="${basePath}/order/person" target="mainIframe">人员查询</a></li>
+                <li><a href="${basePath}/order/group" target="mainIframe" class="hide">企业查询</a>
+                    <ul>
+                        <li><a href="#" target="mainIframe">企业查询结果</a></li>
+
+                    </ul>
+                </li>
+                <li><a href="${basePath}/order/person" target="mainIframe" class="hide">人员查询</a>
+                    <ul>
+                        <li><a href="#" target="mainIframe">人员查询结果</a></li>
+
+                    </ul>
+                </li>
                 <li><a href="${basePath}/order/investment" target="mainIframe">对外投资</a></li>
             </ul>
         </dd>
@@ -32,8 +45,16 @@
         <dt><img src="${basePath}/images/ico2.png" /> <A onclick=javascript:ShowFLT(2) href="javascript:void(null)">信息监控</A></dt>
         <dd id=LM2 style="DISPLAY: none">
             <ul>
-                <li><a href="${basePath}/order/groupMonitor" target="mainIframe">企业监控</a></li>
-                <li><a href="${basePath}/order/personMonitor" target="mainIframe">人员监控</a></li>
+                <li><a href="${basePath}/order/groupMonitor" target="mainIframe" class="hide">企业监控</a>
+                    <ul>
+                        <li><a href="#" target="mainIframe">企业监控结果</a></li>
+                    </ul>
+                </li>
+                <li><a href="${basePath}/order/personMonitor" target="mainIframe" class="hide">人员监控</a>
+                    <ul>
+                        <li><a href="#" target="mainIframe">人员监控结果</a></li>
+                    </ul>
+                </li>
                 <!--  <li><a href="#">监控列表</a></li>     -->
             </ul>
         </dd>
