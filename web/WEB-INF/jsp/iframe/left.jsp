@@ -36,7 +36,12 @@
 
                     </ul>
                 </li>
-                <li><a href="${basePath}/order/investment" target="mainIframe">对外投资</a></li>
+                <li><a href="${basePath}/order/investment" target="mainIframe" class="hide">对外投资</a>
+                    <ul>
+                        <li><a href="#" target="mainIframe">对外查询结果</a></li>
+
+                    </ul>
+                </li>
             </ul>
         </dd>
     </dl>
