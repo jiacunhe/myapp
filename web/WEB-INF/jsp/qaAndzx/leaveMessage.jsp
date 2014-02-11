@@ -10,8 +10,12 @@
             return s.replace(/(^\s*)|(\s*$)/g, "");
         }
         function submitM(){
+<<<<<<< HEAD
                  var msg= $('#message').val();
                  if(JTrim(msg)==""){
+=======
+                 if($('#message').val()==""){
+>>>>>>> b5687ec6b7e2cd00371fa24848e1e0dcab8b7889
                   alert("您提交的问题为空，请填写后再提交。谢谢！")
                  }else{
                     $('#formA').submit();
