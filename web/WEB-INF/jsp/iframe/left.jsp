@@ -26,19 +26,19 @@
             <ul>
                 <li><a href="${basePath}/order/group" target="mainIframe" class="hide">企业查询</a>
                     <ul>
-                        <li><a href="#" target="mainIframe">企业查询结果</a></li>
+                        <li><a href="/order/search?type=1&where=searchGroup" target="mainIframe">企业查询结果</a></li>
 
                     </ul>
                 </li>
                 <li><a href="${basePath}/order/person" target="mainIframe" class="hide">人员查询</a>
                     <ul>
-                        <li><a href="#" target="mainIframe">人员查询结果</a></li>
+                        <li><a href="/order/search?type=2&where=searchPerson" target="mainIframe">人员查询结果</a></li>
 
                     </ul>
                 </li>
                 <li><a href="${basePath}/order/investment" target="mainIframe" class="hide">对外投资</a>
                     <ul>
-                        <li><a href="#" target="mainIframe">对外查询结果</a></li>
+                        <li><a href="/order/search?type=3&where=searchInvestment" target="mainIframe">对外查询结果</a></li>
 
                     </ul>
                 </li>
@@ -51,16 +51,12 @@
         <dd id=LM2 style="DISPLAY: none">
             <ul>
                 <li><a href="${basePath}/order/groupMonitor" target="mainIframe" class="hide">企业监控</a>
-                    <ul>
-                        <li><a href="#" target="mainIframe">企业监控结果</a></li>
-                    </ul>
+
                 </li>
                 <li><a href="${basePath}/order/personMonitor" target="mainIframe" class="hide">人员监控</a>
-                    <ul>
-                        <li><a href="#" target="mainIframe">人员监控结果</a></li>
-                    </ul>
+
                 </li>
-                <!--  <li><a href="#">监控列表</a></li>     -->
+                <li><a href="${basePath}/order/search?where=searchMonitor" target="mainIframe" class="hide">监控列表</a></li>
             </ul>
         </dd>
     </dl>

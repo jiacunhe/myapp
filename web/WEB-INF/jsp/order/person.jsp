@@ -47,9 +47,9 @@
             <table  id="gtb" width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1">
                 <tr class="sub_tr1">
                    <!-- <th width="8%"><input type="checkbox" /></th>    -->
-                    <th width="19%">证件类型*</th>
-                    <th width="19%">证件号*</th>
-                    <th width="20%"><p>姓名*</p></th>
+                    <th width="19%">证件类型</th>
+                    <th width="19%">证件号</th>
+                    <th width="20%"><p>姓名</p></th>
                     <th width="19%"><p>备 注</p></th>
                     <th width="15%">操 作</th>
                 </tr>
@@ -64,10 +64,10 @@
                         </select>
                     </td>
                     <td>
-                        <input type="text" id="groupcode1"  name="groupcode1" class="input_for_addline">
+                        <input type="text" id="groupcode1"  name="groupcode1" class="input_for_addline" value="请准确填写证件号码" onBlur="uncheck_skey(this,'请准确填写证件号码');" onFocus="check_skey(this,'请准确填写证件号码');" style="color: #bbbbbb">
                     </td>
                     <td>
-                        <input type="text" id="groupname1"  name="groupname1" class="input_for_addline">
+                        <input type="text" id="groupname1"  name="groupname1" class="input_for_addline" value="请准确填写姓名" onBlur="uncheck_skey(this,'请准确填写姓名');" onFocus="check_skey(this,'请准确填写姓名');" style="color: #bbbbbb">
                     </td>
                     <td>
                         <input type="text" id="groupremark1"  name="groupremark1" class="input_for_addline">
@@ -226,8 +226,8 @@
         u.align = "center";
       //  z.innerHTML=' <input type="checkbox" name="checkbox'+i+'" value="'+i+'">';
         y.innerHTML='<select id="certificate'+i+'"  name="certificate'+i+'" class="select_for_addline"> <option value="身份证">身份证</option> </select>';
-        x.innerHTML='<input type="text" id="groupcode'+i+'" name="groupcode'+i+'" class="input_for_addline">';
-        w.innerHTML='<input type="text" id="groupname'+i+'" name="groupname'+i+'" class="input_for_addline">';
+        x.innerHTML='<input type="text" id="groupcode'+i+'" name="groupcode'+i+'" class="input_for_addline"  value="请准确填写证件号码" onBlur="uncheck_skey(this,\'请准确填写证件号码\');" onFocus="check_skey(this,\'请准确填写证件号码\');" style="color: #bbbbbb">';
+        w.innerHTML='<input type="text" id="groupname'+i+'" name="groupname'+i+'" class="input_for_addline" value="请准确填写姓名" onBlur="uncheck_skey(this,\'请准确填写姓名\');" onFocus="check_skey(this,\'请准确填写姓名\');" style="color: #bbbbbb">';
         v.innerHTML='<input type="text" id="groupremark'+i+'" name="groupremark'+i+'" class="input_for_addline">';
         u.innerHTML='<div style="width:120px; margin:auto"><input type="hidden" id="group'+i+'monitor" name="group'+i+'monitor" value="0"> <a href="javascript:monitoradd(\'group'+i+'\')" id="group'+i+'add" class="addMonitor">加入监控</a> <a id="group'+i+'remove"  href="javascript:monitorremove(\'group'+i+'\')" class="removeMonitor">取消监控</a>  <a href="#" onclick="delrow(this)" class="deleteLine">删除</a></div>';
 
@@ -242,7 +242,7 @@
         var groupmonitor="";
         var certificate="";
         for(k=1;k<i+1;k++){
-            if(document.getElementById('groupcode'+k) == undefined || document.getElementById('groupcode'+k).value == ""|| document.getElementById('groupname'+k).value == undefined || document.getElementById('groupname'+k).value == ""){
+            if(document.getElementById('groupcode'+k) == undefined || document.getElementById('groupcode'+k).value == ""|| document.getElementById('groupname'+k).value == undefined || document.getElementById('groupname'+k).value == "" || document.getElementById('groupname'+k).value == "请准确填写姓名" || document.getElementById('groupcode'+k).value == "请准确填写证件号码"){
             }else{
                 if(groupcode.indexOf(document.getElementById('groupcode'+k).value)>=0){
                     alert("对不起！您添加数据有问题请检查...");return false;
@@ -316,6 +316,24 @@
         dialog.OpenWindow("${basePath}/order/upFile?type=2");
     }
 </script>
+
+    <script type='text/javascript'>
+
+        function check_skey(skey,str){
+            if(skey.value == str){
+                skey.value	=	'';
+                skey.style.color	=	'#000000';
+            }
+        }
+        function uncheck_skey(skey,str){
+            if(skey.value == ''){
+                skey.value	=	str;
+                skey.style.color	=	'#bbbbbb';
+            }
+        }
+
+    </script>
+
 </div>
 </body>
 </html>

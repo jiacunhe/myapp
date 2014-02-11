@@ -122,10 +122,10 @@ public class OrderController {
     }
 
     @RequestMapping("/search")
-    public String orderSearch (String type,String sday,String eday,String code,String name,String submit,HttpServletRequest request){
+    public String orderSearch (String type,String sday,String eday,String code,String name,String where,HttpServletRequest request){
         request.setAttribute("orderTypeList",orderService.selectOrderType());
 
- //       if(submit!=null){
+
 
             User user =(User) request.getSession().getAttribute("user");
             String userId=user.getUserId();
@@ -157,9 +157,12 @@ public class OrderController {
             request.setAttribute("eday",eday);
             request.setAttribute("code",code);
             request.setAttribute("name",name);
-  //      }
+
         UserOperation operation = new UserOperation(user.getUserId(), "/order/search", "订单查询，查询条件：类型>"+type+";开始时间>"+sday+";结束时间>"+eday+";查询条件>"+code+"|"+name, new Date(), request.getRemoteAddr());
         operationService.save(operation);
+
+        if(where !=null)
+            return "/order/"+where+".jsp";
         return "/order/search.jsp";
     }
 
