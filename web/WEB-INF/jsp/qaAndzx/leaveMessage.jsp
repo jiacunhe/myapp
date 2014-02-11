@@ -5,8 +5,13 @@
     <%@ include file="/WEB-INF/jsp/public/commons.jspf" %>
     <title>在线咨询</title>
     <script type="text/javascript">
+        function JTrim(s)
+        {
+            return s.replace(/(^\s*)|(\s*$)/g, "");
+        }
         function submitM(){
-                 if($('#message').val().trim()==""){
+                 var msg= $('#message').val();
+                 if(JTrim(msg)==""){
                   alert("您提交的问题为空，请填写后再提交。谢谢！")
                  }else{
                     $('#formA').submit();
