@@ -6,7 +6,7 @@
     <title>在线咨询</title>
     <script type="text/javascript">
         function submitM(){
-                 if($('#message').val().trim()==""){
+                 if($('#message').val()==""){
                   alert("您提交的问题为空，请填写后再提交。谢谢！")
                  }else{
                     $('#formA').submit();
