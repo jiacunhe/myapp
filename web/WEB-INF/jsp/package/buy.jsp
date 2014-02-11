@@ -5,11 +5,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <script src="${basePath}/js/iepng.js" type="text/javascript"></script>
+
     <%@ include file="/WEB-INF/jsp/public/commons.jspf" %>
-    <script type="text/javascript">
-        EvPNG.fix('div, ul, img, li, input,dt');
-    </script>
+
     <script language=javascript src="${basePath}/js/1.js" id=clientEventHandlersJS> </script>
     <title>套餐购买</title>
     <style type="text/css">
