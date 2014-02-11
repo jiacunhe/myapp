@@ -34,8 +34,8 @@
             <table  id="gtb" width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1">
                 <tr class="sub_tr1">
                  <!--   <th width="64"><input type="checkbox" /></th>            -->
-                    <th width="180">注册号*</th>
-                    <th width="236"><p>企业名称*</p></th>
+                    <th width="180">注册号</th>
+                    <th width="236"><p>企业名称</p></th>
                     <th width="200"><p>备 注</p></th>
                     <th width="160">操 作</th>
                 </tr>
@@ -44,10 +44,10 @@
                         <input type="checkbox" id="checkbox1" value="1">
                     </td>   -->
                     <td>
-                        <input type="text" id="groupcode1"  name="groupcode1" class="input_for_addline">
+                        <input type="text" id="groupcode1"  name="groupcode1" class="input_for_addline" value="请准确填写企业注册号" onBlur="uncheck_skey(this,'请准确填写企业注册号');" onFocus="check_skey(this,'请准确填写企业注册号');" style="color: #bbbbbb">
                     </td>
                     <td>
-                        <input type="text" id="groupname1"  name="groupname1"  class="input_for_addline">
+                        <input type="text" id="groupname1"  name="groupname1"  class="input_for_addline" value="请准确填写企业全称" onBlur="uncheck_skey(this,'请准确填写企业全称');" onFocus="check_skey(this,'请准确填写企业全称');" style="color: #bbbbbb">
                     </td>
                     <td>
                         <input type="text" id="groupremark1"  name="groupremark1"  class="input_for_addline">
@@ -134,8 +134,8 @@
         var v=row.insertCell(3);v.vAlign='bottom';
         v.align = "center";
       //  z.innerHTML=' <input type="checkbox" name="checkbox'+i+'" value="'+i+'">';
-        y.innerHTML='<input type="text" id="groupcode'+i+'" name="groupcode'+i+'"  class="input_for_addline">';
-        x.innerHTML='<input type="text" id="groupname'+i+'" name="groupname'+i+'"  class="input_for_addline">';
+        y.innerHTML='<input type="text" id="groupcode'+i+'" name="groupcode'+i+'"  class="input_for_addline" value="请准确填写企业注册号" onBlur="uncheck_skey(this,\'请准确填写企业注册号\');" onFocus="check_skey(this,\'请准确填写企业注册号\');" style="color: #bbbbbb">';
+        x.innerHTML='<input type="text" id="groupname'+i+'" name="groupname'+i+'"  class="input_for_addline" value="请准确填写企业全称" onBlur="uncheck_skey(this,\'请准确填写企业全称\');" onFocus="check_skey(this,\'请准确填写企业全称\');" style="color: #bbbbbb">';
         w.innerHTML='<input type="text" id="groupremark'+i+'" name="groupremark'+i+'"  class="input_for_addline">';
         v.innerHTML='<div style="width:100%;text-align: center;"> <input type="hidden" id="group'+i+'monitor" name="group'+i+'monitor" value="0"><a href="#" onclick="delrow(this)" class="deleteLine">删除</a></div>';
 
@@ -149,7 +149,7 @@
         var groupremark="";
         var groupmonitor="";
         for(k=1;k<i+1;k++){
-            if(document.getElementById('groupcode'+k) == undefined || document.getElementById('groupcode'+k).value == ""|| document.getElementById('groupname'+k).value == undefined || document.getElementById('groupname'+k).value == ""){
+            if(document.getElementById('groupcode'+k) == undefined || document.getElementById('groupcode'+k).value == ""|| document.getElementById('groupname'+k).value == undefined || document.getElementById('groupname'+k).value == "" || document.getElementById('groupname'+k).value == "请准确填写企业全称" || document.getElementById('groupcode'+k).value == "请准确填写企业注册号"){
             }else{
                 if(groupcode.indexOf(document.getElementById('groupcode'+k).value)>=0){
                     alert("对不起！您添加数据有问题请检查...");return false;
@@ -195,6 +195,24 @@
         dialog.OpenWindow("${basePath}/order/upFile?type=3");
     }
 </script>
+
+
+    <script type='text/javascript'>
+
+        function check_skey(skey,str){
+            if(skey.value == str){
+                skey.value	=	'';
+                skey.style.color	=	'#000000';
+            }
+        }
+        function uncheck_skey(skey,str){
+            if(skey.value == ''){
+                skey.value	=	str;
+                skey.style.color	=	'#bbbbbb';
+            }
+        }
+
+    </script>
     </div>
 </body>
 </html>

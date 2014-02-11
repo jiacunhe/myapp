@@ -34,21 +34,21 @@
 
 <div style=" width: 100%; height: 700px; background-color:#eeeeee">
     <div class="yemei">
-        <p>您当前所在位置：<a href="#">首页</a> >> <span>我的查询</span></p>
+        <p>您当前所在位置：<a href="#">首页</a> >> <span>企业查询</span> >> <span>查询结果</span></p>
     </div>
 
 
     <div class="content_right_nr0" style=" margin-top:16px;">
-        <div class="content_right_nr01" >
+        <div class="content_right_nr01">
         <h4 class="sub_title1"><p class="sub_p5">搜索</p></h4>
         <div style="height:120px;">
             <form method="post" action="${basePath}/order/search" class="sub_form3">
 
                 <p style="width: 80px">查询时间：</p>
-                <input type="text"  class="sub_input01" style="background:url(${basePath}/images/ico013.jpg) right no-repeat;width: 160px;  " name="sday" id="sday" value="${sday}"  readonly  onClick="WdatePicker()">
+                <input type="text"  class="sub_input01" style="background:url(${basePath}/images/ico013.jpg) right no-repeat;width: 160px;  " name="sday" id="sday" value="${sday}"   readonly  onClick="WdatePicker()">
                 <p style="width: 50px; text-align: center">至</p>
-                <input type="text"  class="sub_input01"  style="background:url(${basePath}/images/ico013.jpg) right no-repeat;width: 160px; " id="eday" name="eday" value="${eday}" readonly  onClick="WdatePicker()">
-                <p style="width: 50px">类型：</p>
+                <input type="text"  class="sub_input01"  style="background:url(${basePath}/images/ico013.jpg) right no-repeat;width: 160px; " id="eday" name="eday" value="${eday}"  readonly  onClick="WdatePicker()">
+         <%--       <p style="width: 50px">类型：</p>
                 <span class="span03">
                     <select class="sub_input013" name="type" style="width: 162px;">
                         <option value="">全部</option>
@@ -56,15 +56,16 @@
                             <option value="${obj.id}" <c:if test="${type eq obj.id}">selected </c:if> >${obj.orderName}</option>
                         </c:forEach>
                     </select>
-                </span>
-
+                </span>--%>
+                              <input type="hidden" name="type" value="1">
+                <input type="hidden" name="where" value="searchGroup">
                 <div class="clear"></div>
-                <p style="width: 80px">证件号：</p>
+                <p style="width: 80px">注册号：</p>
                 <input type="text" name="code" value="${code}" class="sub_input01" style="width: 160px"/>
                 <p style="width: 50px;"> 名称：</p>
                 <input type="text" name="name" value="${name}" class="sub_input01" style="width: 160px"/>
                 <input type="hidden" name="submit" value="1">
-                <input type="submit" value="查询"  class="but_cx0" style="margin-left:60px; margin-top: 6px;"/>
+                <input type="submit" value="查询"  class="but_cx0" style="margin-left:30px"/>
             </form>
         </div>
     </div>
@@ -74,10 +75,9 @@
     <div class="content_right_nr01" id="qc_sell_tab">
 
         <dl class="sub_dl2">
-                <dt><h4 class="sub_title1" id="select_table" onclick="tabCard(); return false;" >
+                <dt><h4 class="sub_title1" id="select_table"  >
 
                     <a id="searchResultTab1" href="#">查询信息</a>
-                    <a id="searchResultTab2" href="#">监控信息</a>
                 </h4></dt>
 
 
@@ -85,6 +85,64 @@
                 <div class="sub_nr">
 
                     <dd style="display:block;" id="content">
+
+
+                        <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1">
+                            <tr class="sub_tr1">
+                                <th width="10%">序号</th>
+                                <th width="12%">查询类型</th>
+                                <th width="42%">查询对象</th>
+                                <th width="16%">查询时间</th>
+                                <th width="12%">状态</th>
+                                <th width="8%">数据</th>
+                            </tr>
+
+                            <c:forEach  var="obj" items="${disposable.list}"   varStatus="status">
+                                <tr style="text-align: center; width: 749px;">
+                                    <td>${(disposable.page-1)*5+status.count}</td>
+                                    <td>${obj.orderTypeName}</td>
+                                    <td title="${obj.objCode} | ${obj.objName}"><div class="tdcc">${obj.objCode} | ${obj.objName}</div></td>
+                                    <td>${obj.createTime}</td>
+                                    <td>${obj.statusName}</td>
+                                    <td>
+                                        <c:if test="${obj.status eq '2'}">
+                                            <a href="${basePath}/order/result?id=${obj.id}"><img src="${basePath}/images/newmessage.png" alt="查看" title="查看" height="20" width="20"></a>
+                                        </c:if>
+                                        <c:if test="${obj.status ne '2'}">
+                                            <img src="${basePath}/images/nomessage.png"  height="20" width="20">
+                                        </c:if>
+                                    </td>
+                                </tr>
+
+                            </c:forEach>
+                            <tr class="page">
+                                <td colspan="6">
+                                    <ul>
+
+                                        <li>页次：<strong> ${disposable.page }</strong>/<span><strong>${disposable.totalpage}</strong></span> 页 </span> <span >总记录数：${disposable.totalitem }条 </li>
+
+                                        <li><a href="javascript:search('disposable',1)"><img src="${pageContext.request.contextPath}/images/firstPage.png"/></a></li>
+
+
+
+                                        <c:forEach var="i" begin="${disposable.page - 5>=1?disposable.page - 5:1}" end="${disposable.page + 4}" step="1">
+                                            <c:if test="${i <= disposable.totalpage}">
+                                                <li> <a href="javascript:search('disposable',${i})"  <c:if test="${i == disposable.page}">style="color:#000000; font-weight: 600;"     </c:if>>${i}</a>  </li>
+                                            </c:if>
+                                        </c:forEach>
+
+                                        <li><a href="javascript:search('disposable',${disposable.totalpage})"><img src="${pageContext.request.contextPath}/images/lastPage.png"/></a></li>
+                                        <li>
+
+                                            转到第 <input id="pn" onFocus="this.select();" maxlength="5" type="text" value="1" name="currPage" tabindex="0" style="width: 33px; height: 14px; text-align: center; text-indent: 0"/> 页
+                                            <input type="button" name="goBtn" value="前往" class="MiddleButtonStyle" onclick="search('disposable',document.getElementById('pn').value)" style="width: 32px; height: 20px; border: 1px solid #218bc6; background: #27a5ec; color: #fff;"/>
+
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </table>
+
                     </dd>
                 </div>
 
@@ -97,63 +155,9 @@
 
 
 <dd style="display:none;" id="content2">
-    <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1">
-        <tr class="sub_tr1">
-            <th width="10%">序号</th>
-            <th width="12%">查询类型</th>
-            <th width="42%">查询对象</th>
-            <th width="16%">查询时间</th>
-            <th width="12%">状态</th>
-            <th width="8%">数据</th>
-        </tr>
 
-        <c:forEach  var="obj" items="${disposable.list}"   varStatus="status">
-            <tr style="text-align: center; width: 749px;">
-                <td>${(disposable.page-1)*5+status.count}</td>
-                <td>${obj.orderTypeName}</td>
-                <td title="${obj.objCode} | ${obj.objName}"><div class="tdcc">${obj.objCode} | ${obj.objName}</div></td>
-                <td>${obj.createTime}</td>
-                <td>${obj.statusName}</td>
-                <td>
-                    <c:if test="${obj.status eq '2'}">
-                        <a href="${basePath}/order/result?id=${obj.id}"><img src="${basePath}/images/newmessage.png" alt="查看" title="查看" height="20" width="20"></a>
-                    </c:if>
-                    <c:if test="${obj.status ne '2'}">
-                       <img src="${basePath}/images/nomessage.png"  height="20" width="20">
-                    </c:if>
-                </td>
-            </tr>
-
-        </c:forEach>
-        <tr class="page">
-            <td colspan="6">
-                <ul>
-
-                    <li>页次：<strong> ${disposable.page }</strong>/<span><strong>${disposable.totalpage}</strong></span> 页 </span> <span >总记录数：${disposable.totalitem }条 </li>
-
-                    <li><a href="javascript:search('disposable',1)"><img src="${pageContext.request.contextPath}/images/firstPage.png"/></a></li>
-
-
-
-                    <c:forEach var="i" begin="${disposable.page - 5>=1?disposable.page - 5:1}" end="${disposable.page + 4}" step="1">
-                    <c:if test="${i <= disposable.totalpage}">
-                        <li> <a href="javascript:search('disposable',${i})"  <c:if test="${i == disposable.page}">style="color:#000000; font-weight: 600;"     </c:if>>${i}</a>  </li>
-                    </c:if>
-                    </c:forEach>
-
-                    <li><a href="javascript:search('disposable',${disposable.totalpage})"><img src="${pageContext.request.contextPath}/images/lastPage.png"/></a></li>
-                    <li>
-
-                         转到第 <input id="pn" onFocus="this.select();" maxlength="5" type="text" value="1" name="currPage" tabindex="0" style="width: 33px; height: 14px; text-align: center; text-indent: 0"/> 页
-                         <input type="button" name="goBtn" value="前往" class="MiddleButtonStyle" onclick="search('disposable',document.getElementById('pn').value)" style="width: 32px; height: 20px; border: 1px solid #218bc6; background: #27a5ec; color: #fff;"/>
-
-                    </li>
-                </ul>
-            </td>
-        </tr>
-    </table>
 </dd>
-<dd style="display:none;" id="content3">
+<%--<dd style="display:none;" id="content3">
     <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1">
         <tr class="sub_tr1">
             <th width="6%">序号</th>
@@ -229,13 +233,13 @@
             </td>
         </tr>
     </table>
-</dd>
+</dd>--%>
 
 
 
 
 
-
+<%--
 
 <script type="text/javascript">
     if('${type}'=='4' || '${type}'=='5'){
@@ -281,7 +285,7 @@
         }
 
     }
-</script>
+</script>--%>
 
 <script type="text/javascript">
     var request;
@@ -322,13 +326,13 @@
                 var rest = request.responseText;
                 if (rest != "") {
                     var jsonObj=eval('('+rest+')');
-                    if(jsonObj.businessType == 'disposable'){
-                        document.getElementById("content2").innerHTML = createContent(jsonObj);
-                        document.getElementById("content").innerHTML = document.getElementById("content2").innerHTML;
-                    }else if(jsonObj.businessType == 'recyclable'){
-                        document.getElementById("content3").innerHTML = createContentRecyclable(jsonObj);
-                        document.getElementById("content").innerHTML = document.getElementById("content3").innerHTML;
-                    }
+                   // if(jsonObj.businessType == 'disposable'){
+                        document.getElementById("content").innerHTML = createContent(jsonObj);
+                      //  document.getElementById("content").innerHTML = document.getElementById("content2").innerHTML;
+                   // }else if(jsonObj.businessType == 'recyclable'){
+                   //     document.getElementById("content3").innerHTML = createContentRecyclable(jsonObj);
+                    //    document.getElementById("content").innerHTML = document.getElementById("content3").innerHTML;
+                 //   }
                 }
             }
         }
@@ -396,7 +400,7 @@
         return content;
     }
 
-    function createContentRecyclable(obj){
+/*    function createContentRecyclable(obj){
 
         var content=' <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1"> ';
 
@@ -458,12 +462,12 @@
         content+='</table>';
         return content;
 
-    }
+    }*/
 </script>
 
 
 
-<script type="text/javascript">
+<%--<script type="text/javascript">
     var dialog;
     function openDetail(id,orderType){
         dialog=new Dialog("查看监控信息");
@@ -472,7 +476,7 @@
         dialog.OpenWindow("${basePath}/order/subsidiary?id="+id+"&orderType="+orderType);
     }
 
-</script>
+</script>--%>
 </div>
 </body>
 </html>
