@@ -165,7 +165,7 @@
 
     <div class="ht_sub_nr1">
         <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="ht_sub_table1">
-            <tr class="ht_sub_tr1">
+            <tr class="ht_sub_tr1" style="font-size: 12px;">
                 <th width="30"></th>
                 <th width="80">姓名</th>
                 <th width="80">用户名</th>
@@ -176,7 +176,7 @@
                 <th>状态</th>
             </tr>
             <c:forEach items="${page.results}" var="manager">
-                <tr align="center">
+                <tr align="center" class="ht_sub_tr1" style="font-size: 12px;">
                     <td><input name="${manager.username}" userId="${manager.userId}" status="${manager.status}"
                                id="?userId=${manager.userId}&formUserId=${command.formUserId}&formUsername=${command.formUsername}&formRoleId=${empty command.formRoleId ? 0 : command.formRoleId}&formStatus=${command.formStatus}"
                                type="checkbox"/></td>

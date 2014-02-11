@@ -144,6 +144,7 @@
     <div class="gy_foot">
         <div style="float: left; margin-left: 20px; display: inline;">
             页次：${page}/${totalpage}页 &nbsp;
+            每页显示：10条 &nbsp;
             总记录数：${totalitem}条
         </div>
         <div style="float: right; margin-right: 20px; display: inline">

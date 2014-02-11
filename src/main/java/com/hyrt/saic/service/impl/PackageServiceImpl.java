@@ -30,7 +30,7 @@ public class PackageServiceImpl implements PackageService {
 
     @Override
     public Map listChargePackage(String type, String order, Integer page, String userId, String status) {
-        int pageSize = 5;
+        int pageSize = 10;
         if (page == null) page = 1;
         ChargePackage c = new ChargePackage();
         if (status != "")
@@ -70,7 +70,7 @@ public class PackageServiceImpl implements PackageService {
 
     @Override
     public Map listChargePackageUser(String type, String order, Integer page, String userId, String status) {
-        int pageSize = 5;
+        int pageSize = 10;
         if (page == null) page = 1;
         ChargePackage c = new ChargePackage();
         if (status != "")
