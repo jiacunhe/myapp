@@ -71,7 +71,7 @@
         <h4 class="sub_title1"><p class="sub_p1">修改密码</p></h4>
 
         <span class="zhushi span"><p>
-            定期更换密码可以让您的账户更加安全。请确保登录密码与支付密码不同！建议密码采用字母和数字混合，并且不短于6位。</p></span>
+            <br>&nbsp;&nbsp;定期更换密码可以让您的账户更加安全。请确保登录密码与支付密码不同！建议密码采用字母和数字混合，并且不短于6位。</p></span>
 
         <form id="form" method="post" action="${basePath}/customer/MD5Password" class="sub_form1">
             <input type="hidden" value="${user.userId}" name="userId" id="userId"/>
