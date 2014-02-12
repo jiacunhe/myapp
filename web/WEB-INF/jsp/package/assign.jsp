@@ -5,12 +5,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <%@ include file="/WEB-INF/jsp/manage/commons.jspf" %>
-    <script type="text/javascript">
-        EvPNG.fix('div, ul, img, li, input,dt');
-    </script>
-    <script language=javascript src="${basePath}/js/1.js" id=clientEventHandlersJS> </script>
-    <title>套餐购买</title>
+    <%@ include file="/WEB-INF/jsp/public/commons.jspf" %>
+
+    <title>套餐分配</title>
     <style type="text/css">
 
         .pagination{ width: 100%; height: 33px; line-height: 33px;}
