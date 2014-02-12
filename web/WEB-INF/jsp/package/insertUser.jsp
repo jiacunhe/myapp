@@ -11,12 +11,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="../css/ht_public.css" rel="stylesheet" type="text/css" />
-    <link href="../css/ht_sub.css" rel="stylesheet" type="text/css" />
-    <script src="../js/ht_iepng.js" type="text/javascript"></script>
-    <script type="text/javascript">
-        EvPNG.fix('div, ul, img, li, input,dt');
-    </script>
+
     <script language=javascript src="${basePath}/js/ht_select.js" id=clientEventHandlersJS> </script>
     <%@ include file="/WEB-INF/jsp/public/commons.jspf" %>
     <title>套餐制定</title>
