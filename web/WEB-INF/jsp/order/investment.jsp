@@ -44,7 +44,7 @@
                         <input type="checkbox" id="checkbox1" value="1">
                     </td>   -->
                     <td>
-                        <input type="text" id="groupcode1"  name="groupcode1" class="input_for_addline" value="请准确填写企业注册号" onBlur="uncheck_skey(this,'请准确填写企业注册号');" onFocus="check_skey(this,'请准确填写企业注册号');" style="color: #bbbbbb">
+                        <input type="text" id="groupcode1"  name="groupcode1" class="input_for_addline">
                     </td>
                     <td>
                         <input type="text" id="groupname1"  name="groupname1"  class="input_for_addline" value="请准确填写企业全称" onBlur="uncheck_skey(this,'请准确填写企业全称');" onFocus="check_skey(this,'请准确填写企业全称');" style="color: #bbbbbb">
@@ -134,7 +134,7 @@
         var v=row.insertCell(3);v.vAlign='bottom';
         v.align = "center";
       //  z.innerHTML=' <input type="checkbox" name="checkbox'+i+'" value="'+i+'">';
-        y.innerHTML='<input type="text" id="groupcode'+i+'" name="groupcode'+i+'"  class="input_for_addline" value="请准确填写企业注册号" onBlur="uncheck_skey(this,\'请准确填写企业注册号\');" onFocus="check_skey(this,\'请准确填写企业注册号\');" style="color: #bbbbbb">';
+        y.innerHTML='<input type="text" id="groupcode'+i+'" name="groupcode'+i+'"  class="input_for_addline">';
         x.innerHTML='<input type="text" id="groupname'+i+'" name="groupname'+i+'"  class="input_for_addline" value="请准确填写企业全称" onBlur="uncheck_skey(this,\'请准确填写企业全称\');" onFocus="check_skey(this,\'请准确填写企业全称\');" style="color: #bbbbbb">';
         w.innerHTML='<input type="text" id="groupremark'+i+'" name="groupremark'+i+'"  class="input_for_addline">';
         v.innerHTML='<div style="width:100%;text-align: center;"> <input type="hidden" id="group'+i+'monitor" name="group'+i+'monitor" value="0"><a href="#" onclick="delrow(this)" class="deleteLine">删除</a></div>';
@@ -149,19 +149,21 @@
         var groupremark="";
         var groupmonitor="";
         for(k=1;k<i+1;k++){
-            if(document.getElementById('groupcode'+k) == undefined || document.getElementById('groupcode'+k).value == ""|| document.getElementById('groupname'+k).value == undefined || document.getElementById('groupname'+k).value == "" || document.getElementById('groupname'+k).value == "请准确填写企业全称" || document.getElementById('groupcode'+k).value == "请准确填写企业注册号"){
+            if(document.getElementById('groupcode'+k) == undefined || document.getElementById('groupname'+k).value == undefined || document.getElementById('groupname'+k).value == "" || document.getElementById('groupname'+k).value == "请准确填写企业全称" ){
             }else{
-                if(groupcode.indexOf(document.getElementById('groupcode'+k).value)>=0){
+                if(groupname.indexOf(document.getElementById('groupname'+k).value)>=0){
                     alert("对不起！您添加数据有问题请检查...");return false;
                     break;
                 }
-                groupcode += document.getElementById('groupcode'+k).value+",";
+                var xxxsdf = document.getElementById('groupcode'+k).value;
+                if(xxxsdf == "")  xxxsdf ="  ";
+                groupcode += xxxsdf+",";
                 groupname += document.getElementById('groupname'+k).value+",";
                 groupremark += document.getElementById('groupremark'+k).value+",";
                 groupmonitor += document.getElementById('group'+k+"monitor").value+",";
             }
         }
-        if(groupcode==""){
+        if(groupname==""){
             alert("对不起！您没有添加任何可用数据...");return false;
         }else{
             document.getElementById('groupcode').value=	groupcode+"--";
