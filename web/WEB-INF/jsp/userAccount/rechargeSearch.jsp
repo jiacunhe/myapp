@@ -6,12 +6,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" type="text/css" media="all" href="${basePath}/css/jsDatePick_ltr.min.css" />
-    <script type="text/javascript" src="${basePath}/js/jsDatePick.min.1.3.js"></script>
+
     <%@ include file="/WEB-INF/jsp/manage/commons.jspf" %>
-    <script type="text/javascript">
-        window.onload = function(){   new JsDatePick({ useMode:2,  target:"startDate",  dateFormat:"%Y-%m-%d" });  new JsDatePick({  useMode:2, target:"endDate",  dateFormat:"%Y-%m-%d" }); }
-    </script>
+    <script language="javascript" type="text/javascript" src="${basePath}/js/My97DatePicker/WdatePicker.js"></script>
+
     <style type="text/css">
 
         .sub_tr1 ul{ width: 80%; float: left}
@@ -40,12 +38,16 @@
 
             <li class="formLi">
                 <span>付款金额：</span>
-                <input type="text" style="width: 70px;" name="lowPrice" value="${result.lowPrice}"/> <span>至</span> <input type="text" style="width: 70px;" name="highPrice" value="${result.highPrice}"/>
+                <input type="text" style="width: 70px;" name="lowPrice" value="${result.lowPrice}"/>
+                <span>至</span>
+                <input type="text" style="width: 70px;" name="highPrice" value="${result.highPrice}"/>
             </li>
 
             <li class="formLi">
                 <span>付款时间：</span>
-                <input type="text" name="startDate" id="startDate"  value="${result.startDate}"/> <span>至</span> <input type="text"  id="endDate"  name="endDate"  value="${result.endDate}"/>
+                <input type="text" name="startDate" id="startDate"  value="${result.startDate}" readonly  onClick="WdatePicker()" style="background:url(${basePath}/images/ico013.jpg) right no-repeat;width: 160px;  "/>
+                <span>至</span>
+                <input type="text"  id="endDate"  name="endDate"  value="${result.endDate}" readonly  onClick="WdatePicker()" style="background:url(${basePath}/images/ico013.jpg) right no-repeat;width: 160px;  "/>
 
                 <span>客户账号：</span>
                 <input type="text" name="userId" id="userId" value="${result.userId}" />

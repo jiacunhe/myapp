@@ -51,7 +51,7 @@
                 <tr class="sub_tr1">
                  <!--   <th width="64"><input type="checkbox" /></th>     -->
                     <th width="180">注册号</th>
-                    <th width="236"><p>企业名称</p></th>
+                    <th width="236"><p>企业名称*</p></th>
                     <th width="200"><p>备 注</p></th>
                     <th width="160">操 作</th>
                 </tr>
@@ -109,7 +109,10 @@
 
 
 <script type="text/javascript">
-
+    function JTrim(s)
+    {
+        return s.replace(/(^\s*)|(\s*$)/g, "");
+    }
 /*
 * 操作表格,为表格添加行,删除行操作
 */
@@ -167,7 +170,7 @@ function checkdata(){
 	var groupremark="";
 	var groupmonitor="";
 	for(k=1;k<i+1;k++){
-		if(document.getElementById('groupcode'+k) == undefined || document.getElementById('groupname'+k).value == undefined || document.getElementById('groupname'+k).value == "" || document.getElementById('groupname'+k).value == "请准确填写企业全称"){
+		if(document.getElementById('groupcode'+k) == undefined || document.getElementById('groupname'+k).value == undefined || JTrim(document.getElementById('groupname'+k).value) == "" || document.getElementById('groupname'+k).value == "请准确填写企业全称"){
 
         }else{
             if(groupname.indexOf(document.getElementById('groupname'+k).value)>=0){
@@ -184,7 +187,7 @@ function checkdata(){
 	}
 
 	if(groupname==""){
-		 alert("对不起！您没有添加任何可用数据...");return false;
+		 alert("对不起！企业名称不能为空...");return false;
 	}else{
 //		document.getElementById('groupcode').value=	groupcode.length>0?groupcode.substring(0,groupcode.length-1):"";
 //		document.getElementById('groupname').value= groupname.length>0?groupname.substring(0,groupname.length-1):"";

@@ -48,7 +48,7 @@
                 <tr class="sub_tr1">
                    <!-- <th width="8%"><input type="checkbox" /></th>    -->
                     <th width="19%">证件类型</th>
-                    <th width="19%">证件号</th>
+                    <th width="19%">证件号*</th>
                     <th width="20%"><p>姓名</p></th>
                     <th width="19%"><p>备 注</p></th>
                     <th width="15%">操 作</th>
@@ -181,7 +181,10 @@
     }
 </script>     -->
 <script type="text/javascript">
-
+    function JTrim(s)
+    {
+        return s.replace(/(^\s*)|(\s*$)/g, "");
+    }
     /*
      操作表格,为表格添加行,删除行操作
      */
@@ -242,7 +245,7 @@
         var groupmonitor="";
         var certificate="";
         for(k=1;k<i+1;k++){
-            if(document.getElementById('groupcode'+k) == undefined || document.getElementById('groupcode'+k).value == ""|| document.getElementById('groupname'+k).value == undefined || document.getElementById('groupname'+k).value == "" || document.getElementById('groupname'+k).value == "请准确填写姓名" || document.getElementById('groupcode'+k).value == "请准确填写证件号码"){
+            if(document.getElementById('groupcode'+k) == undefined || JTrim(document.getElementById('groupcode'+k).value) == ""|| document.getElementById('groupname'+k).value == undefined || document.getElementById('groupname'+k).value == "" || document.getElementById('groupname'+k).value == "请准确填写姓名" || document.getElementById('groupcode'+k).value == "请准确填写证件号码"){
             }else{
                 if(groupcode.indexOf(document.getElementById('groupcode'+k).value)>=0){
                     alert("对不起！您添加数据有问题请检查...");return false;
