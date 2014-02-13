@@ -16,6 +16,7 @@
     <SCRIPT LANGUAGE="javascript" SRC="${basePath}/js/jquery.treeview.js"></SCRIPT>
 
     <script language=javascript src="${basePath}/manage/js/treecheckbox.js"> </script>
+    <script language=javascript src="${basePath}/manage/js/tanchu.js" id=clientEventHandlersJS> </script>
 
 
     <title>用户角色增加</title>
