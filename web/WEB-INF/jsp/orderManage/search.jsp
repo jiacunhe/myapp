@@ -5,9 +5,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" type="text/css" media="all" href="${basePath}/css/jsDatePick_ltr.min.css" />
-    <script type="text/javascript" src="${basePath}/js/jsDatePick.min.1.3.js"></script>
+
     <%@ include file="/WEB-INF/jsp/public/commons.jspf" %>
+
+    <script language="javascript" type="text/javascript" src="${basePath}/js/My97DatePicker/WdatePicker.js"></script>
+
     <link rel="stylesheet" type="text/css"  href="${basePath}/images/dialog/dialog.css">
     <script  type="text/javascript"  src="${basePath}/images/dialog/dialog.js"></script>
     <style type="text/css">
@@ -26,9 +28,6 @@
     </style>
     <title>用户查询</title>
 
-    <script type="text/javascript">
-        window.onload = function(){   new JsDatePick({ useMode:2,  target:"sday",  dateFormat:"%Y-%m-%d" });  new JsDatePick({  useMode:2, target:"eday",  dateFormat:"%Y-%m-%d" }); }
-    </script>
 </head>
 
 <body>
@@ -46,9 +45,9 @@
             <form method="post" action="${basePath}/orderManage/search" class="sub_form3">
 
                 <p style="width: 80px">查询时间：</p>
-                <input type="text"  class="sub_input01" style="background:url(${basePath}/images/ico013.jpg) right no-repeat;width: 160px;  " name="sday" id="sday" value="${sday}" >
-                <span class="span1" style="float:left; display:inline;">至</span>
-                <input type="text"  class="sub_input01"  style="background:url(${basePath}/images/ico013.jpg) right no-repeat;width: 160px; " id="eday" name="eday" value="${eday}">
+                <input type="text"  class="sub_input01" style="background:url(${basePath}/images/ico013.jpg) right no-repeat;width: 160px;  " name="sday" id="sday" value="${sday}" readonly  onClick="WdatePicker()">
+                <p style="width: 50px; text-align: center">至</p>
+                <input type="text"  class="sub_input01"  style="background:url(${basePath}/images/ico013.jpg) right no-repeat;width: 160px; " id="eday" name="eday" value="${eday}" readonly  onClick="WdatePicker()">
                 <p style="width: 50px">类型：</p>
                 <span class="span03">
                     <select class="sub_input013" name="type" style="width: 162px;">

@@ -11,7 +11,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <%@ include file="/WEB-INF/jsp/manage/commons.jspf" %>
     <title>套餐制定</title>
@@ -72,7 +71,7 @@
                         </span>
             <div class="clear"></div>
             <input  type="button" value="确定"  class="ht_but_qd0" onclick="submitPackage()" style="margin-left:220px;"/>
-            <input type="button" onclick="history.go(-1)" value="取消"  class="ht_but_qx0" />
+            <input type="reset" value="取消"  class="ht_but_qx0" />
         </form>
         <div class="ht_sub_yangshi" style="height:60px;"></div>
     </div>

@@ -34,9 +34,9 @@
 
             </div>
         </dl>
-
-    <div id="woookaka" class="content_right_nr">
         <c:if test="${!empty privatePackage}">
+  <div id="woookaka" class="content_right_nr">
+
             <h4 class="sub_title1"><p class="sub_p2">我的专属资费信息</p></h4>
             <ul>
                 <li><span>${privatePackage.packageName}</span></li>
@@ -44,16 +44,22 @@
                 <li>含查询条数：<span>${privatePackage.b1q}</span> 次</li>
                 <li>含监控条数：<span>${privatePackage.b2q}</span> 次/1年</li>
             </ul>
-        </c:if>
+
+
+    </div></c:if>
+
+
         <c:if test="${!empty monthlyPackage}">
+        <div id="woookaka" class="content_right_nr">
+
             <h4 class="sub_title1"><p class="sub_p2">我的包月套餐定制</p></h4>
             <ul>
                 <li><span>${monthlyPackage.packageName}</span></li>
                 <li>含查询条数：<span>${monthlyPackage.b1q}</span> 次</li>
                     <%--   <li>含监控条数：<span>${monthlyPackage.b2q}</span> 次/1年</li>--%>
             </ul>
-        </c:if>
-    </div>
+        </div></c:if>
+
 
 </div>
 
@@ -181,6 +187,6 @@
         e.blur();			//Chrome和Opera不需要
     }
 </script>
-    </div>
+</div>
 </body>
 </html>

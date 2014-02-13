@@ -1,4 +1,4 @@
-\<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix='fmt' uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions"  prefix="fn"%>
@@ -9,29 +9,29 @@
     <script type="text/javascript">
         $(function () {
             $("input[type='checkbox']").attr("checked", false);
-            $("#edit").parent().attr("style", "display:none");
-            $("#lock").parent().attr("style", "display:none");
-            $("#unlock").parent().attr("style", "display:none");
-            $("#resetPassword").parent().attr("style", "display:none");
+            $("#edit").parent().hide();
+            $("#lock").parent().hide();
+            $("#unlock").parent().hide();
+            $("#resetPassword").parent().hide();
             $("input[type='checkbox']").each(function () {
                 $(this).change(function () {
                     $("input[type='checkbox']").attr("checked", false);
                     $(this).attr("checked", true);
-                    $("#resetPassword").parent().removeAttr("style");
+                    $("#resetPassword").parent().show();
                     var userId = $(this).attr("userId");
                     if ('admin' == userId) {
-                        $("#edit").parent().attr("style", "display:none");
-                        $("#lock").parent().attr("style", "display:none");
-                        $("#unlock").parent().attr("style", "display:none");
+                        $("#edit").parent().hide();
+                        $("#lock").parent().hide();
+                        $("#unlock").parent().hide();
                     } else {
-                        $("#edit").parent().removeAttr("style");
+                        $("#edit").parent().show();
                         var status = $(this).attr("status");
                         if ("NORMAL" == status) {
-                            $("#unlock").parent().attr("style", "display:none");
-                            $("#lock").parent().removeAttr("style");
+                            $("#unlock").parent().hide();
+                            $("#lock").parent().show();
                         } else {
-                            $("#lock").parent().attr("style", "display:none");
-                            $("#unlock").parent().removeAttr("style");
+                            $("#lock").parent().hide();
+                            $("#unlock").parent().show();
                         }
                     }
                 });

@@ -22,9 +22,11 @@
 .sub_rttop{ height:79px; border-bottom:1px solid #d7d7d7; overflow:hidden; background:url(../images/sub_bg1.gif) repeat-x; margin-top:10px;}
 .sub_rttop a{ width:129px; height:39px; display:inline-block; float:left; margin:20px 12px 0px 0px;}
 .sub_rttop a.first{ margin-left:15px;}
-.sub_table1{ border-collapse:collapse; border:1px solid #dadada; border-right:none; border-left:none; margin-top:10px; font-size: 12px;}
-.sub_table1 tr th{ border-color:#dadada; border-left:none; color:#3f3f3f;}
-.sub_table1 tr td{ border-color:#dadada; border-left:none;}
+.sub_table1{ border-collapse:collapse; border:1px solid #dadada; /*border-right:none; border-left:none;*/margin-top:10px; font-size: 12px;}
+.sub_table1 tr th{ border: 1px solid #dadada;}
+.sub_table1 tr td{ border: 1px solid #dadada;}
+/*.sub_table1 tr th{ border-color:#dadada; border-left:none; color:#3f3f3f;}
+.sub_table1 tr td{ border-color:#dadada; border-left:none;}*/
 .sub_table1 tr{ height:30px; line-height:30px;}
 .sub_tr1{ background:#f6f6f6;}
 .sub_table1 tr th p, td p{ text-align:left; margin-left:20px;}

@@ -11,15 +11,16 @@
 .ht_rtbut ul li{ width:92px; height:66px; overflow:hidden; background:url(../images/ht_line1.gif) no-repeat right top; text-align:center; float:left;}
 .ht_rtbut ul li img{ margin-top:13px; height: 22px;}
 .ht_rtbut ul li p{ margin-top:6px;}
-.ht_rtbut ul li a{ font-family:"微软雅黑"; color:#585858;}
+.ht_rtbut ul li a{ font-family:"微软雅黑"; color:#585858;  width:92px; height:66px;}
 .ht_rtbut ul li a:hover{ color:#f4a535;}
 .ht_sub_nr1{ width:100%; height:auto; border-bottom:1px solid #c2c8d0; border-top:1px solid #c2c8d0; background:#fff; margin-top:10px;}
 .ht_sub_title0{ height:33px; line-height:33px; overflow:hidden; font-size:12px; color:#37393a; background:url(../images/ht_ttbg0.gif) repeat-x;}
 .ht_sub_title0 img{ margin:7px 12px 0px 18px; float:left; display:inline;}
 .ht_sub_title0 p{ float:left;}
 .ht_sub_table1{ border-collapse:collapse; border-left:none; border:1px solid #dadada; border-left:none; margin-top:0px;}
-.ht_sub_table1 tr th{ border-color:#dadada; border-left:none; color:#3f3f3f;}
-.ht_sub_table1 tr td{ border-color:#dadada; border-left:none;}
+.ht_sub_table1 tr th{ color:#3f3f3f;}
+/*.ht_sub_table1 tr th{ border-color:#dadada; border-left:none; color:#3f3f3f;}
+.ht_sub_table1 tr td{ border-color:#dadada; border-left:none;}*/
 .ht_sub_table1 tr{ height:32px; line-height:32px;}
 .ht_sub_tr1{ background:#f6f6f6;}
 .ht_sub_table1 tr th p, td p{ text-align:left; margin-left:20px;}

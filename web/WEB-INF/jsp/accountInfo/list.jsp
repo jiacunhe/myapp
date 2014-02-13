@@ -29,7 +29,7 @@
            <c:if test="${package1}">
 
 
-                <table class="sub_table1" border="1px solid #dadada" width="100%">
+                <table class="sub_table1" border="1px solid #dadada" bordercolor="#dadada"  width="100%">
 
                     <tr align="center">
                         <td>用户名</td>

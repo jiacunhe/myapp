@@ -24,7 +24,7 @@
     <div class="yemei">
         <p>您当前所在位置：<a href="#">首页</a> >> <span>查询提交</span></p>
     </div>
-    <div class="sub_rttop0">
+   <%-- <div class="sub_rttop0">
         <ul class="ztxs">
             <li class="tj">1.提交</li>
             <li>2.查询中</li>
@@ -70,7 +70,7 @@
             <div class="clear"></div>
             <!--p class="zhushi" style="border-bottom:none; text-indent:40px;">订单正在发货，请耐心等待。</p-->
         </div>
-    </div>
+    </div>--%>
     <div class="content_right_nr" style="margin-top:16px;">
         <h4 class="sub_title1"><p class="sub_p9">订单信息</p></h4>
         <div class="sub_nr" style="height:60px;">
