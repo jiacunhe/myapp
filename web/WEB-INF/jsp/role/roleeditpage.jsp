@@ -182,7 +182,7 @@
         }else{
 
             $.ajax({
-                url: "${bathPath}/role/ajaxrolenameexist?roleName="+$("#rolename").val(),
+                url: "${basePath}/role/ajaxrolenameexist?roleName="+$("#rolename").val(),
                 success: function (data) {
                     if(data.rolenameexist==true){
                         $("#nullmessage").html("<font color=red>角色名称已存在</font>");

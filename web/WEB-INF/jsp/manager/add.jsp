@@ -10,18 +10,18 @@
                 var chinese = /^[\u4e00-\u9fa5]+$/;
                 return this.optional(element) || (chinese.test(value));
             }, "只能输入中文");
-            $.validator.addMethod("telephone", function (value, element) {
+    /*        $.validator.addMethod("telephone", function (value, element) {
                 var telephone = /(^[0-9]{3,4}\-[0-9]{7,8}$)|(^[0-9]{7,8}$)|(^\([0-9]{3,4}\)[0-9]{3,8}$)|(^0{0,1}13[0-9]{9}$)/;
                 return this.optional(element) || (telephone.test(value));
-            }, "电话号码不正确");
-            $("#form").validate({
+            }, "电话号码不正确");*/
+            $("#form1").validate({
                 rules: {
-                    userId: {
+                 userId: {
                         required: true,
                         minlength: 6,
                         maxlength: 16,
                         remote: {
-                            url: "${bathPath}/user/checkUserId"
+                            url: "${basePath}/user/checkUserId"
                         }
                     },
                     username: {
@@ -61,7 +61,7 @@
         <h4 class="ht_sub_title0"><img src="${basePath}/manage/images/ht_ico06.png"/>
 
             <p>增加</p></h4>
-        <sp:form id="form" method="post" action="${basePath}/manager/add" class="ht_sub_form1" style="margin-left:100px;">
+        <sp:form id="form1" method="post" action="${basePath}/manager/add" class="ht_sub_form1" style="margin-left:100px;">
             <p>*用户名：</p>
             <sp:input path="userId" class="ht_sub_input1"/>
             <sp:errors path="userId"/><br/>

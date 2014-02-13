@@ -27,7 +27,7 @@
         .page ul{ width: 80%; float: left}
         .page ul li{ float: left; margin-left: 0px; margin-left: 5px; padding: 3px;}
         .commitfield{height: 33px; line-height: 33px; margin-top: 25px;padding-left: 33px;}
-        .commitfield a{width:90px; height:28px; border:none; background:url(${bathPath}/images/but_bg2.gif) no-repeat; margin-left: 20px; text-align:center; float: left; color: #ffffff;}
+        .commitfield a{width:90px; height:28px; border:none; background:url(${basePath}/images/but_bg2.gif) no-repeat; margin-left: 20px; text-align:center; float: left; color: #ffffff;}
         .loadingback{Z-INDEX: 998; FILTER: alpha(opacity=60); LEFT: 0px; WIDTH: 100%; POSITION: absolute; TOP: 0px; HEIGHT: 100%; BACKGROUND-COLOR: #ffffff; opacity: 0.6}
         .loading{ POSITION: absolute;Z-INDEX: 999;width:200px;height:18px; line-height: 18px;}
 
