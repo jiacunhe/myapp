@@ -126,7 +126,7 @@
           alert("请选择一个角色进行编辑");
           return;
       }
-      $("#rolemanager").attr("action","/role/editup/UI")
+      $("#rolemanager").attr("action","${basePath}/role/editup/UI")
       $("#rolemanager").submit();
 //      $("#form").attr("action","deployResult.jsp");
 //      $("#form").attr("target","_blank");
@@ -139,7 +139,7 @@
                   alert("请自少选择一个角色删除");
                   return;
               }
-              $("#rolemanager").attr("action","/role/deleterole");
+              $("#rolemanager").attr("action","${basePath}/role/deleterole");
               if(confirm("您确定删除吗？")){
               $("#rolemanager").submit();
               }
