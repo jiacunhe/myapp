@@ -173,7 +173,7 @@ public class PackageController {
 
 
         try {
-            response.sendRedirect("web/package/list");
+            response.sendRedirect(request.getContextPath()+"/package/list");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -237,7 +237,7 @@ public class PackageController {
 
 
         try {
-            response.sendRedirect("web/customer/list");
+            response.sendRedirect(request.getContextPath()+"/customer/list");
         } catch (IOException e) {
             e.printStackTrace();
         }
