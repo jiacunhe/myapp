@@ -194,11 +194,11 @@ public class UserResourceFilter implements Filter {
                     filterChain.doFilter(request, response);
                     return;
                 } else {
-                    response.sendRedirect("/noPrivilege");
+                    response.sendRedirect(request.getContextPath()+"/noPrivilege");
                     return;
                 }
             } else {
-                response.sendRedirect("/noPrivilege");
+                response.sendRedirect(request.getContextPath()+"/noPrivilege");
                 return;
             }
         } else
