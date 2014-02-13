@@ -148,6 +148,12 @@ public class PackageServiceImpl implements PackageService {
     }
 
     @Override
+    public ChargePackage selectByPrimaryKey(Integer id) {
+        ChargePackage chargePackage=chargePackageMapper.selectByPrimaryKey(id);
+        return chargePackage;
+    }
+
+    @Override
     public void updateStatusById(int id, String status) {
         ChargePackage c = new ChargePackage();
         c.setStatus(status);

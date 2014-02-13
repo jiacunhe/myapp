@@ -173,7 +173,7 @@ public class PackageController {
 
 
         try {
-            response.sendRedirect("/package/list");
+            response.sendRedirect("web/package/list");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -237,7 +237,7 @@ public class PackageController {
 
 
         try {
-            response.sendRedirect("/customer/list");
+            response.sendRedirect("web/customer/list");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -256,13 +256,13 @@ public class PackageController {
 
         if(paymentRule.equals("PAY_AFTER")) {
             try {
-                response.sendRedirect("/package/assign?userId=" +_userId);
+                response.sendRedirect(request.getContextPath()+"/package/assign?userId=" +_userId);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         } else if (paymentRule.equals("PAY_BEFORE")){
             try {
-                response.sendRedirect("/package/contract/UI?userId=" +_userId);
+                response.sendRedirect(request.getContextPath()+"/package/contract/UI?userId=" +_userId);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -280,10 +280,17 @@ public class PackageController {
         userOperationService.save(operation);
 
         try {
-            response.sendRedirect("/customer/list");
+            response.sendRedirect(request.getContextPath()+"/customer/list");
         } catch (IOException e) {
             e.printStackTrace();
         }
         return null;
+    }
+    @RequestMapping("/confirm")
+    public String confirm(Integer packageId,Integer quantityA,Integer quantityB,HttpServletRequest request){
+        Map p=packageService.selectById(packageId);
+        request.setAttribute("p",p);
+
+        return "/package/confirm.jsp" ;
     }
 }

@@ -95,7 +95,7 @@
 
 
             </div>
-            <p class="button2" style="padding-left:110px; margin-top:40px;"><input id="assign" type="submit" value="分配" class="but_qd" /><input type="reset" value="取消" class="but_qx" /></p>
+            <p class="button2" style="padding-left:110px; margin-top:40px;"><input id="assign" type="submit" value="分配" class="but_qd" /><input type="button" onclick="history.go(-1)" value="取消"  class="but_qx" /></p>
             <h4 class="sub_tx1" style=" margin:20px 0px 30px 0px;"><p>享受更多优惠套餐，请<a href="#">联系客服</a></p></h4>
 
 

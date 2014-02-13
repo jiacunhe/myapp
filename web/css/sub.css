@@ -78,10 +78,10 @@
 .sub_table2 tr td{ color:#3f3f3f; border:1px solid #dadada;}
 .sub_table2 tr th p, td p{ text-align:left; margin-left:20px;}
 .sub_title3{ font-size:14px; color:#333; margin:50px 0px 0px 124px;}
-.sub_tx2{ width:100%; height:100px; overflow:hidden; border-top:1px solid #d7d7d7; margin-top:30px; background:#fbfbfb;}
-.sub_tx2 span{ width:509px; display:block; overflow:hidden; margin:14px 0px 0px 120px; line-height:26px; font-size:12px;}
+.sub_tx2{ width:100%; height:100px; overflow:hidden; border-top:1px solid #d7d7d7; margin-top:60px; background:#fbfbfb;}
+.sub_tx2 span{ width:780px;display:block; overflow:hidden; margin:14px 0px 0px 120px; line-height:26px; font-size:12px;}
 .sub_tx2 span b{ float:left;}
-.sub_tx2 span p{ width:430px; float:left;}   
+.sub_tx2 span p{ width:700px; float:left;}
 
 .sub_p6{ margin-left:16px; background:url(../images/ico014.gif) no-repeat left center; text-indent:26px;}
 .sub_input03{ width:60px; border:1px solid #d7d7d7;margin-top:6px; text-indent:10px; /*float:left;*/ margin-right:8px;}    

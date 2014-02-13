@@ -125,7 +125,7 @@
 
 
     <select id="selectById" resultType="java.util.Map" parameterType="java.lang.Integer" >
-         SELECT id,MAX(packageName) packageName,MAX(price) price,MAX(TYPE) _type,MAX(userId) userId, MAX(remark) remark,MAX(status) status
+         SELECT id,MAX(packageName) packageName,MAX(price) price,MAX(TYPE) _type,MAX(userId) userId, MAX(remark) remark,MAX(status) status,
             MAX(CASE businessTypeId WHEN  1 THEN detailId ELSE 0 END) detailIdA,
             MAX(CASE businessTypeId WHEN  1 THEN businessName ELSE 0 END) businessNameA,
             MAX(CASE businessTypeId WHEN  1 THEN quantity ELSE 0 END) quantityA,

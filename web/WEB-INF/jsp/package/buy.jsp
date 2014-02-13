@@ -5,10 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
     <%@ include file="/WEB-INF/jsp/public/commons.jspf" %>
-
-    <script language=javascript src="${basePath}/js/1.js" id=clientEventHandlersJS> </script>
     <title>套餐购买</title>
     <style type="text/css">
 
@@ -33,7 +30,7 @@
         <div class="content_right_nr01">
         <h4 class="sub_title1"><p class="sub_p3">套餐购买</p></h4>
         <div class="sub_nr">
-
+           <form method="post" action="${basePath}/package/confirm">
             <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="sub_table1" style="margin-top:40px;">
                 <tr align="center">
                     <th width="80"></th>
@@ -41,9 +38,10 @@
                     <th><p>套餐内容</p></th>
                     <th width="100">套餐价格</th>
                 </tr>
+
                <c:forEach var="p" items="${list}"  varStatus="status">
                 <tr align="center">
-                    <td width="10%"><input type="checkbox" id="packageId" name="packageId" value="p.id" /></td>
+                    <td width="10%"><input type="radio"  id="packageId"  name="packageId" value="${p.id}" <c:if test="${status.count==1}">checked="checked"</c:if> /></td>
 
                     <td width="15%">${p.packageName}</td>
                     <td width="50%"><p>（查询条数${p.quantityA}条、监控企业或个人条数${p.quantityB}条）</p></td>
@@ -95,8 +93,11 @@
 
 
             </div>
-            <p class="button2" style="padding-left:110px; margin-top:40px;"><input type="button" value="购买" class="but_qd" /><input type="button" value="取消" class="but_qx" /></p>
+            <p class="button2" style="padding-left:110px; margin-top:40px;"><input type="submit" value="购买" class="but_qd" /><input type="button" value="取消" class="but_qx" /></p>
             <h4 class="sub_tx1" style=" margin:20px 30px 30px 30px;"><p>享受更多优惠套餐，请<a href="#">联系客服</a></p></h4>
+
+           </form>
+
         </div>
     </div>
 

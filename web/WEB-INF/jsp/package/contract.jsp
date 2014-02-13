@@ -49,7 +49,7 @@
                         </span>
             <div class="clear"></div>
             <input  type="button"  onclick="submitPackage()" value="确定"  class="ht_but_qd0" style="margin-left:220px;"/>
-            <input type="reset" value="取消"  class="ht_but_qx0" />
+            <input type="button" onclick="history.go(-1)" value="取消"  class="ht_but_qx0" />
         </form>
         <div class="ht_sub_yangshi" style="height:60px;"></div>
     </div>
