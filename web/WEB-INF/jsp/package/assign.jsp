@@ -6,7 +6,12 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <%@ include file="/WEB-INF/jsp/public/commons.jspf" %>
+    <c:if test="${! empty errormessage}">
 
+        <script type="text/javascript">
+                           alert('${errormessage}');
+        </script>
+    </c:if>
     <title>套餐分配</title>
     <style type="text/css">
 

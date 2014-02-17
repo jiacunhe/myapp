@@ -5,6 +5,7 @@ import com.hyrt.saic.dao.UserChagePackageMapper;
 import com.hyrt.saic.service.UserChargePackageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -22,6 +23,7 @@ public class UserChargePackageServiceImpl implements UserChargePackageService {
     private UserChagePackageMapper userChargePackageMapper;
 
     @Override
+    @Transactional
     public void add(String userId, Integer chargePackageId) {
         UserChagePackage userChargePackage=new UserChagePackage();
         userChargePackage.setUserId(userId);
@@ -30,6 +32,7 @@ public class UserChargePackageServiceImpl implements UserChargePackageService {
         userChargePackage.setCreateTime(new Date());
         userChargePackage.setChargePackageId(chargePackageId);
 
+        userChargePackageMapper.updateByPrimaryKeySelective(new UserChagePackage(userId,0));
         userChargePackageMapper.insertSelective(userChargePackage);
     }
 }

@@ -1,5 +1,7 @@
 package com.hyrt.saic.service;
 
+import com.hyrt.saic.bean.UserApplyPackage;
+
 import java.util.List;
 
 /**
@@ -11,4 +13,8 @@ import java.util.List;
  */
 public interface UserApplyPackageService {
     List select(String userId,String dateStr);
+
+    public UserApplyPackage selectByUserAndMonth(String userId);
+
+    public Integer selectQuantityByPackageId(Integer packageId);
 }

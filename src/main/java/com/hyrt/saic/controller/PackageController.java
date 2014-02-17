@@ -1,13 +1,7 @@
 package com.hyrt.saic.controller;
 
-import com.hyrt.saic.bean.ChargePackage;
-import com.hyrt.saic.bean.ChargePackageDetaill;
-import com.hyrt.saic.bean.User;
-import com.hyrt.saic.bean.UserOperation;
-import com.hyrt.saic.service.PackageService;
-import com.hyrt.saic.service.UserChargePackageService;
-import com.hyrt.saic.service.UserOperationService;
-import com.hyrt.saic.service.UserService;
+import com.hyrt.saic.bean.*;
+import com.hyrt.saic.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,6 +31,10 @@ public class PackageController {
     private UserChargePackageService userChargePackageService;
     @Autowired
     private UserOperationService userOperationService;
+    @Autowired
+    private UserApplyPackageService userApplyPackageService;
+
+
     @RequestMapping("/list")
     public String listPackage(String type,String order,Integer page,String userId,String status,HttpServletRequest request){
 
@@ -86,7 +84,7 @@ public class PackageController {
     }
 
     @RequestMapping("/assign")
-    public String listPackageGive(String order,String userId,Integer page,HttpServletRequest request){
+    public String listPackageGive(String order,String userId,Integer page,String errorcode,HttpServletRequest request){
         String type="vip";
         String status="on";
         User user = (User) request.getSession().getAttribute("manage");
@@ -103,6 +101,10 @@ public class PackageController {
 
         UserOperation operation = new UserOperation(user.getUserId(), "/package/give", "后台查询包月套餐", new Date(), request.getRemoteAddr());
         userOperationService.save(operation);
+
+        if(errorcode!=null && errorcode.equals("10001")){
+               request.setAttribute("errormessage","使用数量已经超过设置套餐数量，暂时不能做此操作");
+        }
 
         return "/package/assign.jsp";
     }
@@ -271,19 +273,33 @@ public class PackageController {
     }
     @RequestMapping("/assignUser")
     public String assignUser(HttpServletResponse response,String userId,String packageId,HttpServletRequest request){
-         Integer p=Integer.parseInt(packageId);
-         userChargePackageService.add(userId,p);
+
+        Integer p=Integer.parseInt(packageId);
+
+        UserApplyPackage userApplyPackage = userApplyPackageService.selectByUserAndMonth(userId);
+        Integer pp = userApplyPackageService.selectQuantityByPackageId(p);
+        if(userApplyPackage.getUsedQuantity()>pp){
+            try {
+                response.sendRedirect(request.getContextPath()+"/package/assign?userId=" +userId+"&errorcode=10001");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }else{
+            userChargePackageService.add(userId,p);
 
 
-        User user = (User) request.getSession().getAttribute("manage");
-        UserOperation operation = new UserOperation(user.getUserId(), "/package/assignUser", "分配包月套餐", new Date(), request.getRemoteAddr());
-        userOperationService.save(operation);
+            User user = (User) request.getSession().getAttribute("manage");
+            UserOperation operation = new UserOperation(user.getUserId(), "/package/assignUser", "分配包月套餐", new Date(), request.getRemoteAddr());
+            userOperationService.save(operation);
 
-        try {
-            response.sendRedirect(request.getContextPath()+"/customer/list");
-        } catch (IOException e) {
-            e.printStackTrace();
+            try {
+                response.sendRedirect(request.getContextPath()+"/customer/list");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
+
+
         return null;
     }
     @RequestMapping("/confirm")
