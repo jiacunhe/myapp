@@ -154,6 +154,7 @@ public class ManagerController extends BaseController {
         request.setAttribute("roleMap", roleMap);
         Map<String, String> statusMap = new HashMap<>();
         for (UserStatus status : UserStatus.values()) {
+            if(status!=UserStatus.DELETED)
             statusMap.put(status.toString(), status.getDesc());
         }
         request.setAttribute("statusMap", statusMap);
