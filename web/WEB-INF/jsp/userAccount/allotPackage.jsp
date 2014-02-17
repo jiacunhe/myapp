@@ -64,7 +64,7 @@
                         </span>
             <div class="clear"></div>
             <input type="button" value="确定"  class="ht_but_qd0" style="margin-left:220px;" onclick=" checkData()"/>
-            <input type="button" value="取消"  class="ht_but_qx0" onclick="history(-1)" />
+            <input type="button" value="取消"  class="ht_but_qx0" onclick="history.back(-1)" />
             <input type="hidden" name="submitttt" value="1">
         </form>
         <div class="ht_sub_yangshi" style="height:60px;"></div>
