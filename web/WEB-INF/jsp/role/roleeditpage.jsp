@@ -16,6 +16,7 @@
     <SCRIPT LANGUAGE="javascript" SRC="${basePath}/js/jquery.treeview.js"></SCRIPT>
 
     <script language=javascript src="${basePath}/manage/js/treecheckbox.js"> </script>
+    <script language=javascript src="${basePath}/manage/js/tanchu.js" id=clientEventHandlersJS> </script>
 
 
     <title>用户角色增加</title>
@@ -168,9 +169,13 @@
 
 </div>
 <script type="text/javascript">
+    function JTrim(s)
+    {
+        return s.replace(/(^\s*)|(\s*$)/g, "");
+    }
     function editrolesubmit(){
 
-        if($("#rolename").val()==""){
+        if( JTrim($("#rolename").val())==""){
             $("#rolename").attr("style","border:1px solid red; height:28px; overflow:hidden; line-height:28px;");
             $("#nullmessage").html("<font color=red>请输入角色名称</font>");
 //            if(confirm("角色名称不能为空")){

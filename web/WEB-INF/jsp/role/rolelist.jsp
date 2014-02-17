@@ -13,9 +13,9 @@
   
 
 
-    <script language=javascript src="${basePath}/js/ht_select.js" id=clientEventHandlersJS> </script>
+
     <!--The pop-up page-->
-    <script language=javascript src="${basePath}/js/tanchu.js" id=clientEventHandlersJS> </script>
+    <script language=javascript src="${basePath}/manage/js/tanchu.js" id=clientEventHandlersJS> </script>
 
         <SCRIPT TYPE="text/javascript">
             // 选择所有
@@ -63,7 +63,7 @@
                     <div class="massage">
                         <div class="header" onmousedown=MDown(massage_box)>
                             <div style="display:inline; position:absolute">权限信息</div>
-                            <span onClick="massage_box.style.visibility='hidden'; mask.style.visibility='hidden'" style="float:right; display:inline; cursor:pointer;">×</span>
+                            <span onClick="Javascript: massage_box.style.visibility='hidden'; mask.style.visibility='hidden'" style="float:right; display:inline; cursor:pointer;">×</span>
                         </div>
                         <div id="ajaxresoure"
                              style=" height: 420px; overflow:auto; overflow-x:hidden;   scrollbar-3dlight-color:#D4D0C8;

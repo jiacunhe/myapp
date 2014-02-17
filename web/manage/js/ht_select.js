@@ -1,10 +1,11 @@
 // JavaScript Document
 var number=2;
 
-function LMYC() {
+function LMYC(i) {
 var lbmc;
+var ii=1;
 //var treePic;
-    for (i=1;i<=number;i++) {
+    for (ii=i;ii<=number;ii++) {
         lbmc = eval('LM' + i);
         //treePic = eval('treePic'+i);
         //treePic.src = 'images/file.gif';
@@ -16,7 +17,7 @@ function ShowFLT(i) {
     lbmc = eval('LM' + i);
     //treePic = eval('treePic' + i)
     if (lbmc.style.display == 'none') {
-        LMYC();
+        LMYC(i);
         //treePic.src = 'images/nofile.gif';
         lbmc.style.display = '';
     }
