@@ -2,12 +2,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix='fmt' uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions"  prefix="fn"%>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <%@ include file="/WEB-INF/jsp/manage/commons.jspf" %>
     <title>用户管理</title>
     <script type="text/javascript">
         $(function () {
+
+
+
             $("input[type='checkbox']").attr("checked", false);
             $("#edit").parent().hide();
             $("#lock").parent().hide();
@@ -102,6 +106,21 @@
                     return false;
                 }
             });
+            <%
+            String messages=request.getParameter("manageResetPassword");
+            if(messages!=null&&!messages.equals("null")&&!messages.equals("")){
+            try{
+              messages=new String(messages.getBytes("iso-8859-1"),"utf-8");
+              }catch (Exception e){
+              e.printStackTrace();
+              }
+              }
+            %>
+            var messagePrompt="<%=messages%>";
+
+            if(messagePrompt!=null&&messagePrompt!='null') {
+                alert(messagePrompt);
+            }
         })
     </script>
 </head>
@@ -175,6 +194,7 @@
                 <th WIDTH="150">备注</th>
                 <th>状态</th>
             </tr>
+
             <c:forEach items="${page.results}" var="manager">
                 <tr align="center" class="ht_sub_tr1" style="font-size: 12px;">
                     <td><input name="${manager.username}" userId="${manager.userId}" status="${manager.status}"

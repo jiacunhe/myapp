@@ -11,7 +11,7 @@ ul{ list-style-type:none;}
 .ht_dl h4{ width:100%; text-align:center; margin-top:60px;}
 .ht_dlnr{ width:425px; height:375px; overflow:hidden; margin:56px auto; background:url(../images/ht_dlbg2.png) no-repeat;}
 .ht_dlnr h2{width:100%; text-align:center; height:65px; overflow:hidden;}
-.ht_dlnr form{ width:322px; height:222px; overflow:hidden; background:url(../images/ht_dlbg3.gif) no-repeat; margin:30px 0px 0px 50px;}
+.ht_dlnr form{ width:322px; height:222px; overflow:hidden; background:url(../images/ht_dlbg3.gif) no-repeat; margin:30px 0px 0px 50px;float:left; display:inline;}
 .ht_dlinput1{ width:216px; height:50px; line-height:50px; border:none; background:none; margin:1px 0px 0px 62px; font-family:"微软雅黑"; font-size:16px; color:#444444;}
 .ht_dlinput2{ background:url(../images/ht_dlbutton1.png) no-repeat; width:197px; height:45px; border:none; margin:38px 30px 0px 0px; float:left; cursor:pointer;}
 .ht_dlnr form a{ font-size:14px; margin-top:48px; float:left;}

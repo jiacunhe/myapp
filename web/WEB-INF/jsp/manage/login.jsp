@@ -9,7 +9,7 @@
     <%@ include file="/WEB-INF/jsp/manage/commons.jspf" %>
     <link href="${basePath}/manage/css/ht_denglu.css" rel="stylesheet" type="text/css"/>
 
-    <link href="${basePath}/manage/css/ht_denglu.css" rel="stylesheet" type="text/css"/>
+
     <script language="javascript" src="${basePath}/js/jquery-1.8.0.min.js"></script>
 
 </head>

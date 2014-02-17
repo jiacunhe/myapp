@@ -215,6 +215,23 @@
                     }
                 }
             });
+            <%
+          String messages=request.getParameter("customerResetPassword");
+          if(messages!=null&&!messages.equals("null")&&!messages.equals("")){
+          try{
+            messages=new String(messages.getBytes("iso-8859-1"),"utf-8");
+            }catch (Exception e){
+            e.printStackTrace();
+            }
+            }
+          %>
+            var messagePrompt="<%=messages%>";
+
+            if(messagePrompt!=null&&messagePrompt!='null') {
+                alert(messagePrompt);
+            }
+
+
         });
     </script>
 </head>

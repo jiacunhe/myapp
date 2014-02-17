@@ -21,6 +21,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.net.URLEncoder;
+import java.net.URLDecoder;
+
 
 /**
  * Created with IntelliJ IDEA.
@@ -118,12 +121,26 @@ public class ManagerController extends BaseController {
     @RequestMapping(value = "/resetPassword")
     public String resetPassword(Manager manager, HttpServletRequest request) {
         userService.resetPassword(manager);
+        User managerName= userService.getById(manager.getUserId());
         User operator = (User) request.getSession().getAttribute(Config.MANAGE);
         userOperationService.save(new UserOperation(operator.getUserId(), "/manager/resetPassword", "重置用户" + manager.getUserId() + "的密码", new Date(), request.getRemoteAddr()));
+        String passwordDefault="";
+        if (manager instanceof Manager) {
+            passwordDefault=  Config.PASSWORD_MANAGER_DEFAULT;
+        } else {
+            passwordDefault= Config.PASSWORD_CUSTOMER_DEFAULT;
+        }
+        String message="";
+        try {
+             message =URLEncoder.encode(managerName.getUsername()+"的帐号密码重置为"+passwordDefault,"utf-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
         return redirectTo("list?formUserId=" + request.getParameter("formUserId")
                 + "&formUsername=" + request.getParameter("formUsername")
                 + "&formRoleId=" + request.getParameter("formRoleId")
                 + "&formStatus=" + request.getParameter("formStatus")
+                +"&manageResetPassword="+message
         );
     }
 

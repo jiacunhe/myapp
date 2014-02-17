@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -246,9 +247,23 @@ public class CustomerController extends BaseController {
     public String resetPassword(String _userId, HttpServletRequest request) {
         User user = new User();
         user.setUserId(_userId);
+        user=  userService.getById(_userId);
         userService.resetPassword(user);
         User operator = (User) request.getSession().getAttribute(Config.MANAGE);
         userOperationService.save(new UserOperation(operator.getUserId(), "/customer/resetPassword", "重置客户:" + _userId + "的密码", new Date(), request.getRemoteAddr()));
+        String passwordDefault="";
+        if (user instanceof Manager) {
+            passwordDefault=  Config.PASSWORD_MANAGER_DEFAULT;
+        } else {
+            passwordDefault= Config.PASSWORD_CUSTOMER_DEFAULT;
+        }
+        String message="";
+        try {
+            message = URLEncoder.encode(user.getUsername() + "的帐号密码重置为" + passwordDefault, "utf-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
         return redirectTo("list?userId=" + request.getParameter("userId")
                 + "&username=" + request.getParameter("username")
                 + "&condition=" + request.getParameter("condition")
@@ -259,6 +274,7 @@ public class CustomerController extends BaseController {
                 + "&status=" + request.getParameter("status")
                 + "&telephone=" + request.getParameter("telephone")
                 + "&queryType=" + request.getParameter("queryType")
+                + "&customerResetPassword=" + message
         );
     }
 
