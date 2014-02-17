@@ -57,7 +57,7 @@
 
         <div class="clear"></div>
         <input type="hidden" name="page" value="1">
-        <input type="submit" value="开始查询" class=" ht_but_cx4"/>
+        <input type="submit" value="开始查询"  class=" ht_but_cx0" style=" margin-left: 430px;"/>
     </form>
 
     <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="ht_sub_table1" style="margin-top:20px;">
@@ -159,11 +159,12 @@
 
 
         <span><p>客户账号：</p><input type="text" class="ht_sub_input11" name="userId" value="${userId}"/></span>
+        <div class="clear"></div>
         <span><p>客户姓名：</p><input type="text"  class="ht_sub_input11" name="userName" value="${userName}"/></span>
 
-        <div class="clear"></div>
+
         <input type="hidden" name="page" value="1">
-        <input type="submit" value="开始查询" class=" ht_but_cx4"/>
+        <input type="submit" value="开始查询" class=" ht_but_cx0" style="margin-left: 100px;"/>
     </form>
 
     <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="ht_sub_table1" style="margin-top:20px;">

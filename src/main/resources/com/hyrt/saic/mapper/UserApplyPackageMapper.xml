@@ -3,7 +3,7 @@
 <mapper namespace="com.hyrt.saic.dao.UserApplyPackageMapper" >
   <resultMap id="BaseResultMap" type="com.hyrt.saic.bean.UserApplyPackage" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="userId" property="userid" jdbcType="VARCHAR" />
+    <result column="userId" property="userId" jdbcType="VARCHAR" />
     <result column="assignorId" property="assignorId" jdbcType="VARCHAR" />
     <result column="yearMonth" property="yearMonth" jdbcType="CHAR" />
     <result column="businessId" property="businessId" jdbcType="INTEGER" />
@@ -21,7 +21,14 @@
     where id = #{id,jdbcType=INTEGER}
   </select>
 
+   <select id="selectByUserAndMonth"    resultMap="BaseResultMap"  parameterType="java.util.Map">
 
+       select       <include refid="Base_Column_List" />
+       from t_user_apply_package
+       where        userId=#{userId,jdbcType=VARCHAR}
+       AND yearMonth=#{yearMonth,jdbcType=VARCHAR}
+
+   </select>
 
   <select id="selective" resultType="java.util.Map" parameterType="java.util.Map">
 
@@ -52,7 +59,12 @@
      ORDER BY yearMonth DESC
 
   </select>
+    <select id="selectQuantityByPackageId" resultType="java.lang.Integer" parameterType="java.util.Map">
 
+       SELECT  quantity FROM t_charge_package_detail
+       WHERE packageId= #{packageId,jdbcType=INTEGER}
+        AND businessTypeId=1
+    </select>
 
     <select id="selectiveByPage" resultType="java.util.Map" parameterType="java.util.Map">
 

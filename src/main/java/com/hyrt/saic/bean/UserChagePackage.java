@@ -15,6 +15,17 @@ public class UserChagePackage {
 
     private Date createTime;
 
+
+    public   UserChagePackage(){
+
+    }
+
+
+    public UserChagePackage(String userId,Integer status) {
+
+        this.userId= userId; this.status = status;
+    }
+
     public Integer getStatus() {
         return status;
     }
@@ -31,8 +42,7 @@ public class UserChagePackage {
         this.createTime = createTime;
     }
 
-    public UserChagePackage() {
-    }
+
 
     public Integer getId() {
         return id;

@@ -29,4 +29,10 @@ public interface UserApplyPackageMapper {
     Integer selectiveCount(Map params);
 
     void updateAllotPackageQuantity(Map params);
+
+
+    public UserApplyPackage selectByUserAndMonth(Map map);
+
+
+    public Integer selectQuantityByPackageId(Map map);
 }
