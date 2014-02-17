@@ -34,7 +34,7 @@
         <form id="inserrole" action="${basePath}/role/insert" method="post" class="ht_sub_form00">
 
             <p>*角色名称：</p>
-            <input type="text" id="roleName" name="roleName"  class="ht_sub_input1" style=" height:28px; overflow:hidden; line-height:28px;"/>
+            <input type="text" id="roleName" name="roleName" value="" class="ht_sub_input1" style=" height:28px; overflow:hidden; line-height:28px;" />
             <br />
             <p id="nullmessage"></p>
             <div class="clear"></div>
@@ -163,16 +163,21 @@
             <!-- <img src="${basePath}/manage/images/ht_ico07.jpg" class="ht_img1" />--><br />
             <div class="clear"></div>
             <input type="button" value="确定"   class="ht_but_qd" onclick="insertsubmit()"/>
-            <input type="button" value="取消"  class="ht_but_qx" onclick="window.open('/role/manager','_self')"/>
+            <input type="button" value="取消"  class="ht_but_qx" onclick="history.back(-1)"/>
         </form>
     </div>
 
 </div>
 <script type="text/javascript">
+    function JTrim(s)
+    {
+        return s.replace(/(^\s*)|(\s*$)/g, "");
+    }
     function insertsubmit(){
 
-        if($("#rolename").val()==""){
-            $("#rolename").attr("style","border:1px solid red; height:28px; overflow:hidden; line-height:28px;");
+        if(JTrim($("#roleName").val())==""){
+
+            $("#roleName").attr("style","border:1px solid red; height:28px; overflow:hidden; line-height:28px;");
             $("#nullmessage").html("<font color=red>请输入角色名称</font>");
 //            if(confirm("角色名称不能为空")){
 //                return;
@@ -180,7 +185,7 @@
         }else{
 
         $.ajax({
-            url: "${basePath}/role/ajaxrolenameexist?roleName="+$("#rolename").val(),
+            url: "${basePath}/role/ajaxrolenameexist?roleName="+$("#roleName").val(),
             success: function (data) {
             if(data.rolenameexist==true){
                 $("#nullmessage").html("<font color=red>角色名称已存在</font>");
