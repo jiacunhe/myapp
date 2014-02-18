@@ -34,31 +34,34 @@
     <div class="ht_sub_nr1">
         <h4 class="ht_sub_title0"><img src="${basePath}/manage/images/ht_ico09.png" /><p>查询</p></h4>
 
-        <form method="post" action="${basePath}/userAccount/rechargeSearch">
+        <form method="post" action="${basePath}/userAccount/rechargeSearch" class="ht_sub_form8">
 
-            <li class="formLi">
-                <span>付款金额：</span>
-                <input type="text" style="width: 70px;" name="lowPrice" value="${result.lowPrice}"/>
+            <p>客户账号：</p>
+            <input type="text" name="userId" id="userId" value="${result.userId}" class="ht_sub_input1"  style="height:28px;" />
+
+            <p>付款时间：</p>
+            <input type="text" name="startDate" id="startDate" class="ht_sub_input17"  value="${result.startDate}" readonly  onClick="WdatePicker()" style="background:url(${basePath}/images/ico013.jpg) right no-repeat;width: 160px;  "/>
+            <span>至</span>
+            <input type="text"  id="endDate"  name="endDate" class="ht_sub_input17"  value="${result.endDate}" readonly  onClick="WdatePicker()" style="background:url(${basePath}/images/ico013.jpg) right no-repeat;width: 160px;  "/>
+            <br/>
+            <div class="clear"></div>
+            <p>付款金额(元)：</p>
+                <input type="text" style="width: 70px;" name="lowPrice" class="ht_sub_input17" value="${result.lowPrice}"/>
                 <span>至</span>
-                <input type="text" style="width: 70px;" name="highPrice" value="${result.highPrice}"/>
-            </li>
+                <input type="text" style="width: 70px;" name="highPrice" class="ht_sub_input17" value="${result.highPrice}"/>
+            <br/>
 
-            <li class="formLi">
-                <span>付款时间：</span>
-                <input type="text" name="startDate" id="startDate"  value="${result.startDate}" readonly  onClick="WdatePicker()" style="background:url(${basePath}/images/ico013.jpg) right no-repeat;width: 160px;  "/>
-                <span>至</span>
-                <input type="text"  id="endDate"  name="endDate"  value="${result.endDate}" readonly  onClick="WdatePicker()" style="background:url(${basePath}/images/ico013.jpg) right no-repeat;width: 160px;  "/>
+            <div class="clear"></div>
 
-                <span>客户账号：</span>
-                <input type="text" name="userId" id="userId" value="${result.userId}" />
-            </li>
 
-            <input type="submit" value="开始查询" class="ht_but_cx2" style="margin-top:20px; margin-left: 76px"/>
+
+
+            <input type="submit" value="开始查询" class="ht_but_cx2" style="margin-top:30px;"/>
             <input type="hidden" value="1" name="commit">
             <input type="hidden" name="pageNo"value="1">
 
         </form>
-
+        <div class="ht_sub_yangshi"></div>
         <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#dadada" class="ht_sub_table1" style="margin-top:20px;">
             <tr class="ht_sub_tr1">
                 <th>序号</th>
