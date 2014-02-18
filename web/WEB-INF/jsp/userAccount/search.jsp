@@ -243,7 +243,7 @@
 
 <script type="text/javascript">
 
-   if('${yearMonth}'==''){
+   if('${tabCard}'=='a'){
         document.getElementById("searchResultTab1").style.background = "url(${basePath}/manage/images/ht_ttbg4.gif) no-repeat";
         document.getElementById("searchResultTab1").style.color = "#ffffff";
         document.getElementById("content").innerHTML = document.getElementById("content1").innerHTML;
