@@ -67,10 +67,9 @@ public class UserAccountController {
            request.setAttribute("resmap",resmap);
            request.setAttribute("_userId",userId);
            request.setAttribute("_userName",userName);
+        request.setAttribute("tabCard","a");
       // }
-        if(page == null){
-                        this.searchMonthly(null,null,null,null,request);
-        }
+        searchMonthly2(null,null,null,null,request);
         User user =(User) request.getSession().getAttribute("manage");
         UserOperation operation = new UserOperation(user.getUserId(), "/userAccount/search", "查看用户账户信息 userId="+userId+";userName="+userName, new Date(), request.getRemoteAddr());
         operationService.save(operation);
@@ -111,13 +110,85 @@ public class UserAccountController {
             request.setAttribute("page",page);
             request.setAttribute("totalPage",totalPage);
             request.setAttribute("countItem",countItem);
+
+        request.setAttribute("tabCard","b");
    //     }
+
+        search2(null,null,null,request);
+
+
         User user =(User) request.getSession().getAttribute("manage");
         UserOperation operation = new UserOperation(user.getUserId(), "/userAccount/searchMonthly", "查看用户包月信息 userId="+userId+";userName="+userName+";yearMonth="+yearMonth, new Date(), request.getRemoteAddr());
         operationService.save(operation);
         return "/userAccount/search.jsp";
 
     }
+
+
+    public void search2(Integer page,String userId,String userName,HttpServletRequest request){
+
+
+        String sql="SELECT userId,MAX(userName) userName, " +
+                "SUM(CASE businessId WHEN 1 THEN remainder ELSE 0 END) b1r, " +
+                "SUM(CASE businessId WHEN 2 THEN remainder ELSE 0 END) b2r " +
+                "FROM(" +
+                " SELECT a.userId,u.username,a.businessId,a.remainder " +
+                " FROM t_account_info a,t_user u " +
+                " WHERE u.userId =a.userId  ";
+        if(userId!=null && !"".equals(userId)){
+            sql+=" and a.userId like '%"+userId+"%'";
+        }
+        if(userName!=null && !"".equals(userName)){
+            sql+=" and u.userName like'%"+userName+"%'";
+        }
+
+        sql += ")xx " +
+                " GROUP BY userId  ";
+
+        Map resmap = commonService.selectBySql(sql,page,5);
+        request.setAttribute("resmap",resmap);
+        request.setAttribute("_userId",userId);
+        request.setAttribute("_userName",userName);
+
+
+    }
+    public void searchMonthly2(Integer page,String userId,String userName,String yearMonth,HttpServletRequest request){
+
+//        User user =(User) request.getSession().getAttribute("manage");
+//        String assignorId=user.getUserId();
+        //   if(page !=null){
+        int pageSize=5;
+        Map params = new HashMap();
+//            if(!"".equals(assignorId)) params.put("assignorId",assignorId);
+
+        if(!"".equals(userId)) params.put("userId",userId);
+        if(!"".equals(userName)) params.put("userName",userName);
+        if(!"".equals(yearMonth)) params.put("yearMonth",yearMonth);
+
+
+        if (page == null) page = 1;
+        int countItem = userPackageApplyService.selectiveCount(params);
+
+        int totalPage = (countItem + pageSize - 1) / pageSize;
+        if (page > totalPage) page = totalPage;
+        if (page < 1) page = 1;
+
+        params.put("cursor",(page - 1) * pageSize);
+        params.put("length",pageSize);
+        List monthlyList =  userPackageApplyService.selectUsedPackageByPage(params);
+        request.setAttribute("userId",userId);
+        request.setAttribute("userName",userName);
+        request.setAttribute("yearMonth",yearMonth);
+        request.setAttribute("monthlyList",monthlyList);
+        request.setAttribute("page",page);
+        request.setAttribute("totalPage",totalPage);
+        request.setAttribute("countItem",countItem);
+        //     }
+
+
+
+    }
+
 
     @RequestMapping("/allotPackage")
     public String allotPackage(String submitttt,String receiver,String effectiveType,Integer quantity,Integer month,HttpServletRequest request){
