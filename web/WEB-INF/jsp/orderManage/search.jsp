@@ -6,7 +6,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-    <%@ include file="/WEB-INF/jsp/public/commons.jspf" %>
+    <%@ include file="/WEB-INF/jsp/manage/commons.jspf"%>
+    <link rel="stylesheet" type="text/css"  href="${basePath}/css/sub.css">
 
     <script language="javascript" type="text/javascript" src="${basePath}/js/My97DatePicker/WdatePicker.js"></script>
 
@@ -30,16 +31,16 @@
 
 </head>
 
-<body>
+<body >
+<div class="ht_content_rightnr" style="position: relative;">
 
-
-<div style=" width: 100%; height: 700px; background-color:#eeeeee">
+<div style=" width: 100%; height: 700px; background-color:#eeeeee;">
     <div class="yemei">
         <p>您当前所在位置：<a href="#">首页</a> >> <span>订单查询</span></p>
     </div>
 
 
-    <div class="content_right_nr" style=" margin-top:16px;">
+    <div class="content_right_nr" style=" margin-top:16px; width: 100%; margin-left: 0px; border-left:none;">
         <h4 class="sub_title1"><p class="sub_p5">搜索</p></h4>
         <div style="height:120px;">
             <form method="post" action="${basePath}/orderManage/search" class="sub_form3">
@@ -73,7 +74,7 @@
 
 
 
-    <div class="content_right_nr" id="qc_sell_tab">
+    <div class="content_right_nr" id="qc_sell_tab" style="width:100%; margin-left: 0px; border-left:none;">
         <dl class="sub_dl2">
                 <dt><h4 class="sub_title1" id="select_table" onclick="tabCard(); return false;" >
 
@@ -230,7 +231,7 @@
     </table>
 </dd>
 
-
+</div>
 
 
 

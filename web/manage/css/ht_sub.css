@@ -6,7 +6,7 @@
 .ht_yemei a{ color:#696969;}
 .ht_yemei a:hover{ color:#000;}
 .ht_yemei span{ color:#0570b4;}
-.ht_kongbai{ width:768px; height:6px; overflow:hidden; background:#fff;}
+.ht_kongbai{ width:100%; height:6px; overflow:hidden; background:#fff;}
 .ht_rtbut{ height:66px; overflow:hidden; border-bottom:1px solid #c2c8d0; border-top:1px solid #c2c8d0; background:#f3f7fd;}
 .ht_rtbut ul li{ width:92px; height:66px; overflow:hidden; background:url(../images/ht_line1.gif) no-repeat right top; text-align:center; float:left;}
 .ht_rtbut ul li img{ margin-top:13px; height: 22px;}
@@ -17,7 +17,7 @@
 .ht_sub_title0{ height:33px; line-height:33px; overflow:hidden; font-size:12px; color:#37393a; background:url(../images/ht_ttbg0.gif) repeat-x;}
 .ht_sub_title0 img{ margin:7px 12px 0px 18px; float:left; display:inline;}
 .ht_sub_title0 p{ float:left;}
-.ht_sub_table1{ border-collapse:collapse; border-left:none; border:1px solid #dadada; border-left:none; margin-top:0px;}
+.ht_sub_table1{ border-collapse:collapse;  border:1px solid #dadada;  margin-top:0px;}
 .ht_sub_table1 tr th{ color:#3f3f3f;}
 /*.ht_sub_table1 tr th{ border-color:#dadada; border-left:none; color:#3f3f3f;}
 .ht_sub_table1 tr td{ border-color:#dadada; border-left:none;}*/
