@@ -73,7 +73,7 @@
             <tr align="center"  <c:if test="${status.count%2==0}">class="ht_sub_tr1"</c:if> >
 
 <c:if test="${thisUserType eq 'MANAGER' }">                 <td>${obj.assignorId}</td> </c:if>
-                <td>${obj.userId}</td>
+                <td>${obj.userId}|${obj.username}</td>
                 <td>${obj.createTime}</td>
                 <td><c:if test="${obj.effectiveType ==1 }">立即生效</c:if><c:if test="${obj.effectiveType==2}">次月生效</c:if></td>
                 <td><c:if test="${obj.durationMonths < 0 }">长期</c:if><c:if test="${obj.durationMonths>0}">${obj.durationMonths}</c:if></td>

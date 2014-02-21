@@ -18,7 +18,7 @@
     <title>用户账户信息</title>
 
 </head>
-
+<c:if test="${sessionScope.manage.userId=='admin'}">
 <body>
 
 <!--content-->
@@ -290,6 +290,6 @@
     }
 </script>
 
-
+</c:if>
 </body>
 </html>

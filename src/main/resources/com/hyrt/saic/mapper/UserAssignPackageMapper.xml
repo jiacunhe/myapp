@@ -25,18 +25,18 @@
   </select>
 
     <select id="selective" parameterType="java.util.Map" resultType="java.util.Map">
-        select  id,userId, assignorId, businessId, quantity, durationMonths, date_format(createTime,'%Y-%m-%d') createTime, effectiveType,
-        status, remark  from t_user_assign_package
+        select  ap.id,ap.userId,u.username, ap.assignorId, ap.businessId, ap.quantity, ap.durationMonths, date_format(ap.createTime,'%Y-%m-%d') createTime, ap.effectiveType,
+        ap.status, ap.remark  from t_user_assign_package ap,t_user u
 
-        where 1=1
+        where u.userId = ap.userId
         <if test="allocatee != null" >
-           and  assignorId=   #{allocatee,jdbcType=VARCHAR}
+           and  ap.assignorId=   #{allocatee,jdbcType=VARCHAR}
         </if>
         <if test="receiver != null" >
-            and  userId like '%${receiver}%'
+            and  ap.userId like '%${receiver}%'
         </if>
         <if test="status != null" >
-            and  status=   #{status,jdbcType=VARCHAR}
+            and  ap.status=   #{status,jdbcType=VARCHAR}
         </if>
         order by     createTime desc limit #{cursor,jdbcType=INTEGER},#{length,jdbcType=INTEGER}
     </select>

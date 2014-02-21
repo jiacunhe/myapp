@@ -42,12 +42,15 @@
 
         </dl>
     </hyrt:privilege>
+
+    <c:if test="${sessionScope.manage.userId=='admin'}">
     <hyrt:privilege uri="/userAccount/search">
         <dl>
             <dt><A href="${basePath}/userAccount/search" target="main"><img src="${basePath}/manage/images/ht_ico5.png"/>用户账户信息</A>
             </dt>
         </dl>
     </hyrt:privilege>
+    </c:if>
     <hyrt:privilege uri="/userAccount/allotSearch">
         <dl>
             <dt><A href="${basePath}/userAccount/allotSearch" target="main"><img src="${basePath}/manage/images/ht_ico6.png"/>包月套餐分配</A>

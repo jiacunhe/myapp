@@ -266,12 +266,14 @@ public class UserAccountController {
         User user =(User) request.getSession().getAttribute("manage");
         String userId=user.getUserId();
         //String userId="admin";
-        if(!user.getUserType().equals("MANAGER")){
+        if(!user.getUserType().name().equals("MANAGER")){
             allocatee = userId;
+        }else{
+            request.setAttribute("thisUserType","MANAGER");
         }
         if(status==null){status="1";}
         Map result= userPackageApplyService.allotSearch(page,status,allocatee,receiver);
-        request.setAttribute("thisUserType","MANAGER");
+
 
         request.setAttribute("result",result);
         UserOperation operation = new UserOperation(user.getUserId(), "/userAccount/allotSearch", "包月分配记录查询 userId="+userId+";receiver="+receiver+";page="+page, new Date(), request.getRemoteAddr());
