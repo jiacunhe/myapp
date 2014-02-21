@@ -105,6 +105,7 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
                 List<SysResource> userResourceList = getSysResource(user);
                 request.getSession().setAttribute(Config.USER_RESOURCE_LIST, userResourceList);
             } else {
+                //设置默认大客户后台权限
                 List<SysResource> sysResources = new ArrayList<>();
                 sysResources.add(new SysResource("/customer/list"));
                 sysResources.add(new SysResource("/customer/add"));
@@ -116,7 +117,8 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
                 sysResources.add(new SysResource("/userAccount/allotPackage"));
                 sysResources.add(new SysResource("/userAccount/allotStop"));
                 sysResources.add(new SysResource("/userAccount/allotSearch"));
-                sysResources.add(new SysResource("/userAccount/search"));
+                //去掉大客户登录后台的用户账户信息查询
+               // sysResources.add(new SysResource("/userAccount/search"));
                 sysResources.add(new SysResource("/userAccount/searchMonthly"));
                 request.getSession().setAttribute(Config.USER_RESOURCE_LIST, sysResources);
             }
