@@ -27,7 +27,9 @@
     <div class="yemei">
         <p>您当前所在位置：<a href="#">首页</a> >> <a href="#">套餐购买</a> >> <span>订单确认</span></p>
     </div>
+    <form action="${basePath}/pay/action" method="post">
     <div class="content_right_nr1">
+
         <h4 class="sub_title3">订单信息</h4>
         <ul class="cxzf_list">
             <li><span>套餐名称：</span>${p.packageName}</li>
@@ -37,13 +39,13 @@
             <li><span>支付方式：</span><input type="radio"  checked name="payMethod" value="bank">网银支付
                                          <input type="radio"  name="payMethod" value="payPal">支付宝支付</li>
         </ul>
-        <p class="button2" style="padding-left:50px; margin-top:0px;"><input type="button" value="确定购买" class="but_qd" />
+        <p class="button2" style="padding-left:50px; margin-top:0px;"><input type="submit" value="确定购买" class="but_qd" />
             <input type="button" value="取消订单" class="but_qx" onclick="history.go(-1)"/></p>
         <div class="sub_tx2">
             <span><b>特别声明：</b><p>用户请认真核实订单信息，点击“确定购买”后不能更改，因客户填写订单失误产生的查询损失责任自负，产生的相关费用不予退还。</p></span>
         </div>
     </div>
-
+    </form>
 
 
 </div>
