@@ -93,7 +93,7 @@
 
 
             </div>
-            <p class="button2" style="padding-left:110px; margin-top:40px;"><input type="submit" value="购买" class="but_qd" /><input type="button" value="取消" class="but_qx" /></p>
+            <p class="button2" style="padding-left:110px; margin-top:40px;"><input type="submit" value="购买" class="but_qd" /><input type="button" value="取消" onclick="self.location='${basePath}/welcome.jsp'" class="but_qx" /></p>
             <h4 class="sub_tx1" style=" margin:20px 30px 30px 30px;"><p>享受更多优惠套餐，请<a href="#">联系客服</a></p></h4>
 
            </form>
