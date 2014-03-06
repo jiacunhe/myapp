@@ -23,6 +23,7 @@ public class Config {
     public static final String  USER_MESSAGE_TYPE_QUESTION="q";//客户问题
     public static final String USER_MESSAGE_STATUS_NEW="n";//新消息
     public static final String USER_MESSAGE_STATUS_READ="d";//已读消息
+    public  static final  String USER_RECHAEGE_RECOED_TYPE="银联在线";
 
     public static  String getBasePath(HttpServletRequest request){
 

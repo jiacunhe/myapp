@@ -3,6 +3,9 @@ package com.hyrt.saic.bean;
 public class AccountInfo extends AccountInfoKey {
     private Integer remainder;
 
+
+
+    private Integer businessId;
     private Integer totality;
 
     private String remark;
@@ -29,5 +32,12 @@ public class AccountInfo extends AccountInfoKey {
 
     public void setRemark(String remark) {
         this.remark = remark == null ? null : remark.trim();
+    }
+    public Integer getBusinessId() {
+        return businessId;
+    }
+
+    public void setBusinessId(Integer businessId) {
+        this.businessId = businessId;
     }
 }

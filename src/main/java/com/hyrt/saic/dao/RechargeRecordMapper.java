@@ -1,6 +1,7 @@
 package com.hyrt.saic.dao;
 
 import com.hyrt.saic.bean.RechargeRecord;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -23,4 +24,9 @@ public interface RechargeRecordMapper {
     List selectivePage(Map params);
 
     int selectivePageCount(Map params);
+
+    int  insertAndGetId(RechargeRecord record);
+
+    RechargeRecord selectByRemarkOrderId(@Param("orderId")String orderId);
+
 }

@@ -69,6 +69,11 @@ public class AccountInfoServiceImpl extends BaseServiceImpl<AccountInfo> impleme
     }
 
     @Override
+    public void updateAccountSearchCount(Map mapPara) {
+        accountInfoMapper.updateAccountSearchCount(String.valueOf(mapPara.get("quantityA")),String.valueOf(mapPara.get("quantityB")),String.valueOf(mapPara.get("userId")));
+    }
+
+    @Override
     public BaseMapper<AccountInfo> getMapper() {
         return accountInfoMapper;
     }

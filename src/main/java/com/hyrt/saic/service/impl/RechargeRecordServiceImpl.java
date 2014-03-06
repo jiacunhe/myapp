@@ -1,13 +1,18 @@
 package com.hyrt.saic.service.impl;
 
+import com.hyrt.saic.bean.RechargeRecord;
+import com.hyrt.saic.dao.AccountInfoMapper;
+import com.hyrt.saic.dao.ChargePackageMapper;
 import com.hyrt.saic.dao.RechargeRecordMapper;
 import com.hyrt.saic.service.RechargeRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Date;
 
 /**
  * Created with IntelliJ IDEA.
@@ -21,6 +26,10 @@ public class RechargeRecordServiceImpl implements RechargeRecordService{
 
     @Autowired
     private RechargeRecordMapper rechargeRecordMapper;
+    @Autowired
+    ChargePackageMapper chargePackageMapper;
+    @Autowired
+    AccountInfoMapper accountInfoMapper;
     @Override
     public List getRechargeRecord(Map params) {
         return rechargeRecordMapper.selectSelective(params);
@@ -60,5 +69,28 @@ public class RechargeRecordServiceImpl implements RechargeRecordService{
 
 
         return params;
+    }
+
+    @Override
+    public void insertUserRechargeRecord(RechargeRecord rechargeRecord) {
+        rechargeRecordMapper.insert(rechargeRecord);
+    }
+
+    @Override
+    @Transactional
+    public RechargeRecord updateRechargeRecordByOrderId(String orderId,String returnqid) {
+        RechargeRecord record=rechargeRecordMapper.selectByRemarkOrderId(orderId);
+        record.setChargeTime(new Date());
+        record.setStatus("1");
+        record.setReturnResult(returnqid);
+        rechargeRecordMapper.updateByPrimaryKeySelective(record);
+        Map mapPara= chargePackageMapper.selectById(record.getPackageId());
+        accountInfoMapper.updateAccountSearchCount(String.valueOf(mapPara.get("quantityA")),String.valueOf(mapPara.get("quantityB")),record.getUserId());
+        return rechargeRecordMapper.selectByRemarkOrderId(orderId);
+    }
+
+    @Override
+    public RechargeRecord getRechargeRecordByOrderId(String orderId) {
+        return rechargeRecordMapper.selectByRemarkOrderId(orderId);  //To change body of implemented methods use File | Settings | File Templates.
     }
 }

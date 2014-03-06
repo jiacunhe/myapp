@@ -8,7 +8,7 @@
     <result column="chargeTime" property="chargeTime" jdbcType="TIMESTAMP" />
     <result column="createTime" property="createTime" jdbcType="TIMESTAMP" />
     <result column="amount" property="amount" jdbcType="DECIMAL" />
-    <result column="chargeType" property="chargetype" jdbcType="CHAR" />
+    <result column="chargeType" property="chargeType" jdbcType="CHAR" />
     <result column="returnResult" property="returnResult" jdbcType="VARCHAR" />
     <result column="status" property="status" jdbcType="CHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
@@ -23,7 +23,16 @@
     from t_recharge_record
     where id = #{id,jdbcType=INTEGER}
   </select>
+<select id="selectByRemarkOrderId" resultMap="BaseResultMap" parameterType="java.lang.String">
 
+
+    select
+    <include refid="Base_Column_List" />
+    from t_recharge_record
+    where remark = #{orderId,jdbcType=VARCHAR}
+</select>
+    
+    
   <select id="selectSelective" resultType="java.util.Map" parameterType="java.util.Map">
 
     SELECT r.id,r.`userId`,r.`packageId`,r.`createTime`,r.chargeTime,r.`amount`,r.`returnResult`,r.`status`,r.`chargeType`,c.`packageName`,c.`price`,c.`status` packageStatus,c.`type`
@@ -215,4 +224,11 @@
       remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+    <insert id="insertAndGetId" parameterType="com.hyrt.saic.bean.RechargeRecord"  useGeneratedKeys="true" keyProperty="id">
+     insert into t_recharge_record(userId, packageId, chargeTime, createTime, amount, chargeType,
+    status) values (#{userId,jdbcType=VARCHAR},#{packageId,jdbcType=INTEGER},#{chargeTime,jdbcType=TIMESTAMP},#{createTime,jdbcType=TIMESTAMP},#{amount,jdbcType=DECIMAL},#{chargeType,jdbcType=CHAR},#{status,jdbcType=CHAR})
+
+
+
+    </insert>
 </mapper>

@@ -9,7 +9,7 @@
     <style type="text/css">
 
        #woookaka ul{ width: 100%; margin-top: 20px;padding-left: 35px;}
-       #woookaka ul li{list-style: none; width: 100%; height: 33px; line-height: 3px; font-size: 12px;}
+       #woookaka ul li{list-style: none; width: 100%; height: 33px; line-height: 33px; font-size: 12px;}
        #woookaka ul li span{ font-weight: 600; color: #fc9901}
     </style>
 </head>

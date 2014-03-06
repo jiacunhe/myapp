@@ -18,6 +18,7 @@ package com.hyrt.saic.upop;
  * 说明：以下代码只是为了方便商户测试而提供的样例代码，商户可以根据自己网站的需要，按照技术文档编写,并非一定要使用该代码。该代码仅供参考。
  * */
 public class PayConf {
+
     // 版本号
     public final static String version = "1.0.0";
 
@@ -27,34 +28,35 @@ public class PayConf {
     // 基础网址（请按相应环境切换）
 
     /* 前台交易测试环境 */
-    private final static String UPOP_BASE_URL = "http://www.epay.lxdns.com/UpopWeb/api/";
+   // private final static String UPOP_BASE_URL = "http://www.epay.lxdns.com/UpopWeb/api/";
 
 	/* 前台交易PM环境（准生产环境） */
-    //private final static String UPOP_BASE_URL = "https://www.epay.lxdns.com/UpopWeb/api/";
+    private final static String UPOP_BASE_URL = "https://www.epay.lxdns.com/UpopWeb/api/";
 
 	/* 前台交易生产环境 */
-    //private final static String UPOP_BASE_URL = "https://unionpaysecure.com/api/";
+   // private final static String UPOP_BASE_URL = "https://unionpaysecure.com/api/";
 
     /* 后台交易测试环境 */
-    private final static String UPOP_BSPAY_BASE_URL = "http://www.epay.lxdns.com/UpopWeb/api/";
+   // private final static String UPOP_BSPAY_BASE_URL = "http://www.epay.lxdns.com/UpopWeb/api/";
 
 	/* 后台交易PM环境（准生产环境） */
-//	private final static String UPOP_BSPAY_BASE_URL = "https://www.epay.lxdns.com/UpopWeb/api/";
+	private final static String UPOP_BSPAY_BASE_URL = "https://www.epay.lxdns.com/UpopWeb/api/";
 
 	/* 后台交易生产环境 */
-    //private final static String UPOP_BSPAY_BASE_URL = "https://besvr.unionpaysecure.com/api/";
+   // private final static String UPOP_BSPAY_BASE_URL = "https://besvr.unionpaysecure.com/api/";
 
     /* 查询交易测试环境 */
-    private final static String UPOP_QUERY_BASE_URL = "http://www.epay.lxdns.com/UpopWeb/api/";
+   // private final static String UPOP_QUERY_BASE_URL = "http://www.epay.lxdns.com/UpopWeb/api/";
 
 	/* 查询交易PM环境（准生产环境） */
-//	private final static String UPOP_QUERY_BASE_URL = "https://www.epay.lxdns.com/UpopWeb/api/";
+	private final static String UPOP_QUERY_BASE_URL = "https://www.epay.lxdns.com/UpopWeb/api/";
 
 	/* 查询交易生产环境 */
-    //private final static String UPOP_QUERY_BASE_URL = "https://query.unionpaysecure.com/api/";
+   // private final static String UPOP_QUERY_BASE_URL = "https://query.unionpaysecure.com/api/";
 
     // 支付网址
     public final static String gateWay = UPOP_BASE_URL + "Pay.action";
+
 
     // 后续交易网址
     public final static String backStagegateWay = UPOP_BSPAY_BASE_URL + "BSPay.action";
@@ -74,17 +76,17 @@ public class PayConf {
     // 商户名称
     public final static String merName = "华源润通(北京)科技有限公司";
 
-    public final static String merFrontEndUrl = "http://112.124.70.119:8080";
+    public final static String merFrontEndUrl = "http://112.124.70.119:8080/";
 
-    public final static String merBackEndUrl = "http://112.124.70.119:8080/pay/back";
+    public final static String merBackEndUrl = "http://112.124.70.119:8080/pay/back";//后台url
 
     // 加密方式
     public final static String signType = "MD5";
     public final static String signType_SHA1withRSA = "SHA1withRSA";
 
     // 商城密匙，需要和银联商户网站上配置的一样
-    public final static String securityKey = "88888888";
-
+    public final static String securityKey = "88888888";//测试
+    //public final static String securityKey = "";
     // 签名
     public final static String signature = "signature";
     public final static String signMethod = "signMethod";

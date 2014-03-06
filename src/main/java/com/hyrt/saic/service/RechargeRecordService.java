@@ -1,5 +1,6 @@
 package com.hyrt.saic.service;
 
+import com.hyrt.saic.bean.RechargeRecord;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,6 +19,11 @@ public interface RechargeRecordService {
      public List getRechargeRecord(Map params);
 
 
-     public Map  selectRechargeRecordByPage(String userId,String startDate,String endDate,String lowPrice,String highPrice,Integer page);
+    public Map  selectRechargeRecordByPage(String userId,String startDate,String endDate,String lowPrice,String highPrice,Integer page);
 
+    public void insertUserRechargeRecord(RechargeRecord rechargeRecord);
+
+    public RechargeRecord  updateRechargeRecordByOrderId(String  orderId,String returnqid);
+
+    RechargeRecord getRechargeRecordByOrderId(String orderId);
 }

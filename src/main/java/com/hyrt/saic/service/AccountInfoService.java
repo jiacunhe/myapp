@@ -15,4 +15,5 @@ import java.util.Map;
 public interface AccountInfoService extends BaseService<AccountInfo> {
     public List select(String userId);
     public Map selectByPage(String userId,Integer page);
+    public void updateAccountSearchCount(Map mapPara);
 }
