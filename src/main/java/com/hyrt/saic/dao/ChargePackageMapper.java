@@ -13,6 +13,7 @@ public interface ChargePackageMapper {
     int insertSelective(ChargePackage record);
 
     ChargePackage selectByPrimaryKey(Integer id);
+    ChargePackage selectByPrimaryKeyAndStatus(Integer id);
 
     int updateByPrimaryKeySelective(ChargePackage record);
 

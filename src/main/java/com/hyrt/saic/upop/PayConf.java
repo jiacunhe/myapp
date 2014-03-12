@@ -18,7 +18,7 @@ package com.hyrt.saic.upop;
  * 说明：以下代码只是为了方便商户测试而提供的样例代码，商户可以根据自己网站的需要，按照技术文档编写,并非一定要使用该代码。该代码仅供参考。
  * */
 public class PayConf {
-
+int ajjsls=10000;
     // 版本号
     public final static String version = "1.0.0";
 
@@ -76,7 +76,7 @@ public class PayConf {
     // 商户名称
     public final static String merName = "华源润通(北京)科技有限公司";
 
-    public final static String merFrontEndUrl = "http://112.124.70.119:8080/";
+    public final static String merFrontEndUrl = "http://112.124.70.119:8080/pay/showSuccessDialog";
 
     public final static String merBackEndUrl = "http://112.124.70.119:8080/pay/back";//后台url
 

@@ -33,6 +33,13 @@
     from t_charge_package
     where id = #{id,jdbcType=INTEGER}
   </select>
+    <select id="selectByPrimaryKeyAndStatus" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select
+        <include refid="Base_Column_List" />
+        from t_charge_package
+        where id = #{id,jdbcType=INTEGER}
+        and status='on';
+    </select>
 
 
     <select id="countNum" resultType="java.lang.Integer" parameterType="com.hyrt.saic.bean.ChargePackage" >

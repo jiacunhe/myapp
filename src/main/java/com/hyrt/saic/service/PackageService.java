@@ -22,5 +22,8 @@ public interface PackageService  {
     public void update(ChargePackage chargePackage,List<ChargePackageDetaill> ChargePackageDetaillList);
     public Map  selectById(int id);
     public ChargePackage selectByPrimaryKey(Integer id);
+
+    public ChargePackage selectByPrimaryKeyAndStatus(Integer id);
     public void updateStatusById(int id,String status);
+
 }

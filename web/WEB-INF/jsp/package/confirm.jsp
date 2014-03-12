@@ -1,4 +1,4 @@
-\<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%
@@ -21,6 +21,7 @@
             $("#determin").click(function(){
                 $("#area").show();
                 $("#zhanshi").hide();
+                topwin();
                 <!--$("#area").toggle();-->
             });
         });
@@ -59,7 +60,7 @@
 
         </ul>
             <div class="clear"></div>
-        <p class="button2" style="padding-left:50px; margin-top:0px;"><input type="submit" id="determin" value="确定购买" class="but_qd" />
+        <p class="button2" style="padding-left:50px; margin-top:0px;"><input type="button" id="determin" value="确定购买" class="but_qd" />
             <input type="button" value="取消订单" class="but_qx" onclick="history.go(-1)"/></p>
         <div class="sub_tx2">
             <span><b>特别声明：</b><p>用户请认真核实订单信息，点击“确定购买”后不能更改，因客户填写订单失误产生的查询损失责任自负，产生的相关费用不予退还。</p></span>
@@ -85,5 +86,18 @@
 
 </div>
 </body>
+<script>
+    function topwin(){
+        var obj = new Object();
+        obj.packageId=${p.id};
 
+
+
+        var stringurl="packageId=${p.id}";
+        //alert("${basePath}/pay/showModalDialog?"+stringurl);
+
+       //中文传值与转码
+        window.showModalDialog("${basePath}/pay/action?"+stringurl,obj,"dialogWidth:500px;dialogHeight:500px;scroll:yes;status:no")
+    }
+</script>
 </html>

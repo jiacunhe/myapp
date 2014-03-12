@@ -1,12 +1,14 @@
 package cn.com.hyrt.test;
 
 import com.hyrt.saic.util.enums.OrderStatus;
+
 import org.springframework.util.DigestUtils;
 
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created with IntelliJ IDEA.
@@ -59,5 +61,20 @@ String sss="/manage/images/*";
         String  urls="<span id=/\"tiao/\">3</span>";
 
         System.out.println(urls);
+        Calendar cal = Calendar.getInstance();
+
+        String beginDate="20140312133751";
+
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddHHmmss");
+        SimpleDateFormat abc=new SimpleDateFormat("yyyy-MM-dd,HH:mm:ss");
+        Date sd=new Date();
+        try {
+            sd = sdf.parse(beginDate);
+        }catch  (Exception e){
+
+        }
+
+
+        System.out.println(abc.format(sd));
     }
 }

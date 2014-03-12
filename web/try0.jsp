@@ -13,7 +13,6 @@
     request.setAttribute("basePath",basePath);
 %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -21,10 +20,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="${basePath}/css/public.css" rel="stylesheet" type="text/css" />
     <link href="${basePath}/css/sub.css" rel="stylesheet" type="text/css" />
-
+    <script src="${basePath}/js/iepng.js" type="text/javascript"></script>
     <script language="javascript" src="${basePath}/js/jquery-1.8.0.min.js"></script>
     <!--[if IE 6]>
-    <script src="${basePath}/js/iepng.js" type="text/javascript"></script>
     <script type="text/javascript">
         EvPNG.fix('div, ul, img, li, input,dt');
     </script>
@@ -47,14 +45,14 @@
 
             <ul class="cxzf_list">
                 <li><span>套餐名称：</span>${packageName}</li>
-                <li><span>完成时间：</span>${tradeTime}</li>
+                <li><span>购买时间：</span>${tradeTime}</li>
                 <li><span>订单金额：</span>${orderAmount}</li>
                 <li><span>购买状态：</span>${tradeStatus}</li>
                 <c:if test="${failMessage!=null}" >
 
                 <li><span>失败原因： </span>
                         ${failMessage}
-                </c:if>
+                    </c:if>
 
             </ul>
 
@@ -62,7 +60,7 @@
             <div class="sub_djs">
                 <img src="${basePath}/images/ico_djs.gif" />
 
-                 <span class="sub_djs1" id="tiao">10</span><a href="javascript:countDown(0)">秒</a>后自动关闭本页……
+                <span class="sub_djs1" id="tiao">30</span><a href="javascript:countDown"></a>秒后自动关闭本页面……
 
 
 
@@ -79,17 +77,11 @@
     function countDown(secs){
         $("#tiao").html(secs);
         if(--secs>0)
-            setTimeout("countDown("+secs+")",1000);
-        else{
-         //ie
-            window.open('','_parent','');
+      setTimeout("countDown("+secs+")",1000);
+        else
             window.close();
-           //FF
-            window.parent.top.close();
-        }
-
     }
-    countDown(10);
+    countDown(30);
 
 </script>
 
