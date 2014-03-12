@@ -74,7 +74,7 @@
     <div style=" height:auto; overflow:hidden; display:none;" id="area">
         <h4 class="sub_successful_title1">套餐信息</h4>
         <ul class="cxzf_list">
-            <li><span>购买套餐：</span>${p.packageName}   （查询条数<strong>${p.quantityA}</strong>条、监控企业条数或监控人员条数<strong>${p.quantityB}</strong>条</li>
+            <li><span>购买套餐：</span>${p.packageName}   （查询条数<strong>${p.quantityA}</strong>条、按年监控企业或按年监控个人条数<strong>${p.quantityB}</strong>条</li>
             <li><span>套餐金额：</span>${p.price}元</li>
             <li><span>付款金额：</span>${p.price}元</li>
         </ul>

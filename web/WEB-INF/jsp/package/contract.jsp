@@ -59,12 +59,15 @@
 <script type="text/javascript">
     function submitPackage(){
 
+        var reg = /^\d+(?=\.{0,1}\d+$|$)/;
+     
 
-
-        if  ($("#packageName").val()==""){
+            if  ($("#packageName").val()==""){
             alert("套餐名称不能为空！"); return;} else {
-            if($("#price").val()==""){
-                alert("套餐价格不能为空！"); return; }else{
+            if(! reg.test($("#price").val())){
+                alert("套餐价格不能小于0！"); return; }else{
+                if($("#price").val()==""){
+                    alert("套餐价格不能为空！"); return; }else{
                 if($("#quantity").val()==""){
                     alert("查询数量不能为空！"); return;}else{
                     if($("#quantity2").val()=="")  {
@@ -72,7 +75,7 @@
                     }  else{$("#addPackage").submit();}
                 }
             }
-
+            }
         }
 
     }

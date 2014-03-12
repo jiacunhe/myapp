@@ -55,6 +55,10 @@ update t_account_info set totality =case
 when (userId=#{userId,jdbcType=VARCHAR} and businessId=1)then totality + #{quantityA,jdbcType=VARCHAR}
 when (userId=#{userId,jdbcType=VARCHAR} and businessId=2)then totality + #{quantityB,jdbcType=VARCHAR}
 end
+,remainder =case
+when (userId=#{userId,jdbcType=VARCHAR} and businessId=1)then remainder + #{quantityA,jdbcType=VARCHAR}
+when (userId=#{userId,jdbcType=VARCHAR} and businessId=2)then remainder + #{quantityB,jdbcType=VARCHAR}
+end
 
 where (userId=#{userId,jdbcType=VARCHAR} and businessId=1) or(userId=#{userId,jdbcType=VARCHAR} and businessId=2)
     </update>

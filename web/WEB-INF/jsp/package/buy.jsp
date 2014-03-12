@@ -25,7 +25,7 @@
     <div class="yemei">
         <p>您当前所在位置：<a href="#">首页</a> >> <span>套餐购买</span></p>
     </div>
-    <div class="content_right_nr0" style="height:465px;">
+    <div class="content_right_nr0">
 
         <div class="content_right_nr01">
         <h4 class="sub_title1"><p class="sub_p3">套餐购买</p></h4>
@@ -44,7 +44,7 @@
                     <td width="10%"><input type="radio"  id="packageId"  name="packageId" value="${p.id}" <c:if test="${status.count==1}">checked="checked"</c:if> /></td>
 
                     <td width="15%">${p.packageName}</td>
-                    <td width="50%"><p>（查询条数${p.quantityA}条、监控企业或个人条数${p.quantityB}条）</p></td>
+                    <td width="50%"><p>（查询条数${p.quantityA}条、按年监控企业或按年监控个人条数${p.quantityB}条）</p></td>
                     <td width="25%">${p.price}元</td>
                 </tr>
                </c:forEach>
