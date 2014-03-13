@@ -33,4 +33,7 @@ public interface ChargePackageMapper {
     void updateStatusById(ChargePackage c);
 
     int lastInsertId();
+
+
+    void deleteByUserId(String userId);
 }

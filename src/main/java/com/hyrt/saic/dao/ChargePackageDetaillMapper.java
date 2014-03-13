@@ -17,4 +17,6 @@ public interface ChargePackageDetaillMapper {
 
 
     void deleteByPackageId(int packageId);
+
+    void deleteByPackageUser(String userId);
 }

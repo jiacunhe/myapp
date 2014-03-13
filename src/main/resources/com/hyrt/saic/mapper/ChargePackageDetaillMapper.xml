@@ -25,6 +25,12 @@
     delete from t_charge_package_detail
     where PackageId = #{packageId,jdbcType=INTEGER}  <!-->hh增加<-->
    </delete>
+
+    <delete id="deleteByPackageUser" parameterType="java.lang.String" >
+        delete from t_charge_package_detail
+        where PackageId in (select id from t_charge_package where  userId=#{_parameter,jdbcType=VARCHAR} and type = 'private')  <!-->hh增加<-->
+    </delete>
+
   <insert id="insert" parameterType="com.hyrt.saic.bean.ChargePackageDetaill" >
     insert into t_charge_package_detail (id, packageId, businessTypeId, 
       quantity, remark)

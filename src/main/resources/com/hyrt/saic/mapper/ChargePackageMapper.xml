@@ -74,8 +74,8 @@
         <if test="status!= null" >
             and status=#{status,jdbcType=VARCHAR}
         </if>
-           and type in  ('public','vip')
-    </select> <!-->hh增加<-->
+
+    </select> <!-->hh增加and type in  ('public','vip')<-->
     <select id="select" resultType="java.util.Map" parameterType="java.util.Map"  >
         SELECT id,MAX(packageName) packageName,MAX(price) price,MAX(TYPE) _type,MAX(userId) userId, MAX(remark) remark,MAX(status) status,
         MAX(CASE businessTypeId WHEN  1 THEN detailId ELSE 0 END) detailIdA,
@@ -154,6 +154,14 @@
     delete from t_charge_package
     where id = #{id,jdbcType=INTEGER}
   </delete>
+
+   <delete id="deleteByUserId" parameterType="java.lang.String">
+
+       delete from t_charge_package where userId=#{_parameter,jdbcType=VARCHAR} and type = 'private'
+
+   </delete>
+
+
   <insert id="insert" parameterType="com.hyrt.saic.bean.ChargePackage" >
     insert into t_charge_package (id, packageName, price,
       type, userId, remark ,status

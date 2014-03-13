@@ -120,6 +120,11 @@ public class PackageServiceImpl implements PackageService {
     @Override
     @Transactional
     public void insert(ChargePackage chargePackage, List<ChargePackageDetaill> ChargePackageDetaillList) {
+
+
+        chargePackageDetaillMapper.deleteByPackageUser(chargePackage.getUserId());
+        chargePackageMapper.deleteByUserId(chargePackage.getUserId());
+
         chargePackageMapper.insertSelective(chargePackage);
         int lastId = chargePackageMapper.lastInsertId();
 
